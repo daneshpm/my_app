@@ -1,0 +1,5 @@
+{
+  "name": "hyperframes",
+  "version": "0.8.137",
+  "description": "Write HTML, render video. Compositions, GSAP and runtime adapter animations, captions, voiceovers, audio-reactive visuals, and website capture for my_app."
+}

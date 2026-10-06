@@ -201,7 +201,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
     <script>
       (function () {
-        var tl = gsap.timeline({ defaults: { ease: "none" } });
+        var tl = gsap.timeline({ paused: true, defaults: { ease: "none" } });
         window.__timelines = window.__timelines || {};
         window.__timelines["main"] = tl;
 

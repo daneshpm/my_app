@@ -1,6 +1,6 @@
 /**
  * Shared Python-runtime probes. Used by Kokoro synthesis (which must
- * actually `import` a module before using it) and by the `auth status` /
+ * actually `import` a module before using it) and by
  * `doctor` readiness checks (which only need to know whether a module is
  * installed, cheaply, without paying the cost of importing heavy packages
  * like torch).

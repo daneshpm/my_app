@@ -2,7 +2,7 @@ import { swallow } from "./diagnostics";
 /**
  * Runtime analytics — vendor-agnostic event emission via postMessage.
  *
- * The host application decides what to do with events: forward to PostHog,
+ * The host application decides what to do with events: forward to analytics,
  * Mixpanel, Amplitude, a custom logger, or nothing at all.
  */
 

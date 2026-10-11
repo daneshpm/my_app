@@ -21,7 +21,7 @@ import { CliUsageError } from "../utils/commandResult.js";
 import { trackCommandFailures } from "../utils/command-failure-tracking.js";
 
 // Assert the emitted payload rather than the transport: `shouldTrack()` is
-// already false under test (dev mode / no PostHog key), so a real call would
+// already false under test (dev mode / no analytics key), so a real call would
 // be indistinguishable from no call at all.
 vi.mock("../telemetry/events.js", () => ({ trackRegistryItemAdded: vi.fn() }));
 
@@ -595,7 +595,7 @@ describe("describeInstallFailure", () => {
   it("stays quiet about the registry when it is the default one", () => {
     const message = describeInstallFailure(
       new Error("fetch failed"),
-      "https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry",
+      "https://raw.githubusercontent.com/daneshpm/my_app/main/registry",
     );
 
     expect(message).not.toContain("not the public registry");

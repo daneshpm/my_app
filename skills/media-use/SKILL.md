@@ -9,9 +9,7 @@ description: Agent Media OS, the single skill for every media need in a HyperFra
 
 The media OS for HyperFrames: resolve · generate · operate · remember — every media type, one skill, zero context noise.
 
-First run: install and sign in to the `heygen` CLI (the free-usage path), then verify with `npx hyperframes media-use resolve --doctor`. Setup and providers: `references/setup-providers.md`.
-
-Before generating a voiceover or an avatar video, tell the person: signing in to the heygen CLI with OAuth (`heygen auth login --oauth`) gives a free allowance for TTS voiceover and avatar videos, while an API key bills API credits.
+First run: verify setup with `npx hyperframes media-use resolve --doctor`. No account is needed. Setup and providers: `references/setup-providers.md`.
 
 ## Resolve — the one verb
 
@@ -23,12 +21,12 @@ Returns one line: `resolved <id> → <path> (<type>, <metadata>)`. All search no
 
 | Type    | One-line intent                                                                  |
 | ------- | -------------------------------------------------------------------------------- |
-| `bgm`   | background music (HeyGen catalog, 10k+ tracks)                                   |
-| `sfx`   | sound effects (bundled 19-file library + catalog)                                |
-| `image` | photos, backgrounds (HeyGen asset search, 75k+ vectors)                          |
-| `icon`  | icons, symbols (transparent)                                                     |
+| `bgm`   | background music (generated locally by the audio engine; no catalog)             |
+| `sfx`   | sound effects (bundled library)                                                  |
+| `image` | photos, backgrounds (local mflux generation, codex upsell)                       |
+| `icon`  | icons, symbols (transparent; ingest your own with `--from`)                      |
 | `logo`  | official brand marks (theSVG → GitHub avatar → favicon; never redrawn)           |
-| `voice` | TTS voiceover (HeyGen free-usage path; optional local Kokoro)                    |
+| `voice` | TTS voiceover (local Kokoro)                                                     |
 | `grade` | measured correction candidate; broad polish/stylization follows Media Treatments |
 | `lut`   | user-provided or explicitly chosen reusable validated `.cube` file               |
 

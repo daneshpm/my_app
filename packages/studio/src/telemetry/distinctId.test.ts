@@ -127,7 +127,7 @@ describe("no-storage fallback must not collapse the population", () => {
   // storage-restricted profile was ONE bucketing unit. Against the shipped
   // hash `calibration-50:anonymous` lands in bucket 44, so that whole
   // population was enrolled at a nominal 50% and would flip together on a
-  // ramp — and they all merged into one PostHog person.
+  // ramp — and they all merged into one analytics person.
   it("differs across sessions rather than sharing one constant", () => {
     const first = resolveStudioDistinctId();
     __resetStudioDistinctIdForTests();

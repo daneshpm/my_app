@@ -57,7 +57,7 @@ export function recordBreadcrumb(event: string, properties: Record<string, unkno
 /**
  * The trail as one line, oldest first, each entry stamped with seconds since
  * the tab opened: `2.1 session_start > 48.7 render_start > 71.2 save_failure`.
- * A single string rather than an array so it stays readable in a PostHog cell
+ * A single string rather than an array so it stays readable in a analytics cell
  * and in whatever the report is pasted into.
  */
 export function breadcrumbTrail(): string {

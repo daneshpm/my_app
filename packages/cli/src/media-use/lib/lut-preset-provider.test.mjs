@@ -61,14 +61,13 @@ test("library look freezes a validated cube from params offline (--local-only)",
   try {
     const match = matchColorLook("teal orange blockbuster");
     assert.equal(match.kind, "library");
-    // localOnly forces the deterministic params path (no network); online, the
-    // same look downloads its .cube from the CDN url (via "url").
+    // The bundled looks carry no hosted url, so they always resolve from params.
     const frozen = await freezeLibraryLut(match, { projectDir, type: "grade", localOnly: true });
     assert.match(frozen.localPath, /^\.media\/luts\/grade_001\.cube$/);
     assert.ok(existsSync(join(projectDir, frozen.localPath)));
     assert.equal(validateCubeFile(join(projectDir, frozen.localPath)).ok, true);
     assert.equal(frozen.lut.src, frozen.localPath);
-    assert.equal(frozen.metadata.provenance.via, "params-fallback");
+    assert.equal(frozen.metadata.provenance.via, "params");
   } finally {
     rmSync(projectDir, { recursive: true, force: true });
   }

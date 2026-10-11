@@ -32,18 +32,15 @@ test("listTypes exposes the v2 media types", () => {
   }
 });
 
-test("heygen provider is first for every type it serves except bundled sfx", () => {
-  for (const t of ["bgm", "image", "icon"]) {
-    const first = getProviders(t)[0];
-    assert.ok(first, `no enabled provider for ${t}`);
-    assert.match(first.name, /^heygen/, `${t} first provider is ${first.name}`);
-  }
+test("bgm and icon have no catalog provider; sfx starts with the bundled library", () => {
+  assert.deepEqual(getProviders("bgm"), []);
+  assert.deepEqual(getProviders("icon"), []);
   assert.equal(getProviders("sfx")[0].name, "bundled.sfx");
 });
 
-test("sanctioned providers only: heygen, local mflux/kokoro/ltx, codex, design spec, logo tiers", () => {
+test("sanctioned providers only: local mflux/kokoro/ltx, codex, design spec, logo tiers", () => {
   const allowed =
-    /^heygen|^bundled\.sfx$|^mflux\.local$|^kokoro\.local$|^ltx\.local$|^codex\.image_gen$|^design_spec$|^thesvg$|^github\.avatar$|^favicon\.ddg$|^color_grade\.local$|^cube_lut\.local$/;
+    /^bundled\.sfx$|^mflux\.local$|^kokoro\.local$|^ltx\.local$|^codex\.image_gen$|^design_spec$|^thesvg$|^github\.avatar$|^favicon\.ddg$|^color_grade\.local$|^cube_lut\.local$/;
   for (const t of listTypes()) {
     for (const p of getProviders(t)) {
       assert.ok(allowed.test(p.name), `${t} lists unsanctioned provider: ${p.name}`);
@@ -51,9 +48,8 @@ test("sanctioned providers only: heygen, local mflux/kokoro/ltx, codex, design s
   }
 });
 
-test("image cascade: heygen catalog, then local mflux, then the codex upsell", () => {
+test("image cascade: local mflux, then the codex upsell", () => {
   const ps = getProviders("image");
-  assert.match(ps[0].name, /^heygen/, "heygen catalog first");
   const names = ps.map((p) => p.name);
   const mflux = ps.find((p) => p.name === "mflux.local");
   const codex = ps.find((p) => p.name === "codex.image_gen");
@@ -64,39 +60,36 @@ test("image cascade: heygen catalog, then local mflux, then the codex upsell", (
   assert.ok(codex.network, "codex is network (skipped under --local-only)");
 });
 
-test("voice cascade: HeyGen TTS first, Kokoro remains the local fallback", () => {
+test("voice cascade: local Kokoro is the only voice provider", () => {
   const ps = getProviders("voice");
-  assert.equal(ps[0].name, "heygen.tts", "HeyGen TTS is first when credentials exist");
-  assert.ok(ps[0].network, "HeyGen TTS is network (skipped under --local-only)");
-  assert.ok(ps[0].paid, "HeyGen TTS may bill after the OAuth free allowance");
-  assert.equal(ps[1].name, "kokoro.local", "local Kokoro is the offline fallback");
-  assert.ok(!ps[1].network, "local Kokoro kept under --local-only");
-  assert.ok(!ps[1].paid, "local Kokoro is free");
+  assert.deepEqual(
+    ps.map((p) => p.name),
+    ["kokoro.local"],
+  );
+  assert.ok(!ps[0].network, "local Kokoro kept under --local-only");
+  assert.ok(!ps[0].paid, "local Kokoro is free");
 });
 
-test("video cascade: HeyGen first, LTX local fallback, generate-only", async () => {
-  assert.deepEqual(providerNamesFor("video"), ["heygen.video", "ltx.local"]);
+test("video cascade: local LTX only, generate-only", async () => {
+  assert.deepEqual(providerNamesFor("video"), ["ltx.local"]);
   assert.equal(providerMatches("video", "ltx.local"), true);
 
   const ps = getProviders("video");
-  assert.ok(ps[0].network, "HeyGen video is network (skipped under --local-only)");
-  assert.ok(ps[0].paid, "HeyGen video may bill after the OAuth free allowance");
-  assert.ok(!ps[1].network, "local LTX is kept under --local-only");
+  assert.ok(!ps[0].network, "local LTX is kept under --local-only");
   assert.equal(await runCapability("video", "search", "x", {}), null);
 });
 
-test("sfx cascade: bundled library first, HeyGen catalog remains the network fallback", () => {
+test("sfx cascade: bundled library only, available offline", () => {
   const ps = getProviders("sfx");
+  assert.equal(ps.length, 1);
   assert.equal(ps[0].name, "bundled.sfx");
   assert.equal(typeof ps[0].search, "function");
   assert.ok(!ps[0].network, "bundled SFX remain available offline");
-  assert.equal(ps[1].name, "heygen.audio.sounds");
-  assert.ok(ps[1].network, "HeyGen SFX catalog is network-only");
 });
 
 test("ctx.provider forces one generator (e.g. 'make an image WITH codex')", async () => {
   const providers = [
-    { name: "heygen.asset.search", network: true, search: async () => null },
+    { name: "catalog.search", network: true, search: async () => null },
     { name: "mflux.local", generate: async () => ({ hit: "local" }) },
     { name: "codex.image_gen", network: true, generate: async () => ({ hit: "codex" }) },
   ];
@@ -125,8 +118,8 @@ test("ctx.provider forces one generator (e.g. 'make an image WITH codex')", asyn
 });
 
 test("getProvider returns the first provider with its type, throws for unknown", () => {
-  const p = getProvider("bgm");
-  assert.equal(p.type, "bgm");
+  const p = getProvider("sfx");
+  assert.equal(p.type, "sfx");
   assert.equal(typeof p.search, "function");
   assert.throws(() => getProvider("unknown_type"), /unknown media type/);
 });
@@ -191,19 +184,14 @@ test("runCapability('bgm','process') is null — process slot is graceful when u
 // --- provider cost tier (telemetry) ---------------------------------------
 
 test("providerTierFor reports the registry's own A/N/P declaration", () => {
-  assert.equal(providerTierFor("heygen.tts"), "network_paid");
-  assert.equal(providerTierFor("heygen.video"), "network_paid");
-  assert.equal(providerTierFor("heygen.audio.sounds"), "network_free");
-  assert.equal(providerTierFor("heygen.asset.search"), "network_free");
   assert.equal(providerTierFor("codex.image_gen"), "network_free");
   assert.equal(providerTierFor("bundled.sfx"), "local");
   assert.equal(providerTierFor("kokoro.local"), "local");
 });
 
 test("providerTierFor agrees across every type that declares the same name", () => {
-  // heygen.audio.sounds serves both bgm and sfx; heygen.asset.search serves both
-  // image and icon. A name whose tier depended on the media type would make the
-  // telemetry property meaningless.
+  // A name whose tier depended on the media type would make the telemetry
+  // property meaningless.
   const byName = new Map();
   for (const type of listTypes()) {
     for (const name of providerNamesFor(type)) {
@@ -246,7 +234,7 @@ test("--local-only skips every network provider (even free remote ones)", async 
   let remoteRan = false;
   const providers = [
     {
-      name: "heygen",
+      name: "remote",
       network: true,
       search: async () => {
         remoteRan = true;

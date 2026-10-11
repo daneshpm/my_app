@@ -341,8 +341,8 @@ describe("registry", () => {
   });
 });
 
-describe("PostHog flag-shaped properties", () => {
-  it("namespaces keys so a canary can never alias a real PostHog flag", () => {
+describe("analytics flag-shaped properties", () => {
+  it("namespaces keys so a canary can never alias a real analytics flag", () => {
     // A real flag namespace already exists in this project, owned by the web
     // app (e.g. `enable-chat-tab`). Without the `canary-` infix a canary named
     // after a real flag would fight it for the same property.
@@ -364,7 +364,7 @@ describe("PostHog flag-shaped properties", () => {
     });
   });
 
-  it("uses string values, matching how PostHog records boolean flags", () => {
+  it("uses string values, matching how analytics records boolean flags", () => {
     const props = canaryFeatureProperties([{ name: "a", enabled: true }]);
     expect(typeof props["$feature/canary-a"]).toBe("string");
   });

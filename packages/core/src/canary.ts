@@ -156,16 +156,16 @@ export function parseCanaryOverride(raw: string | undefined): boolean | undefine
 /**
  * Property-name prefix for canary assignments on telemetry events.
  *
- * PostHog treats `$feature/<key>` as a first-class flag property: breakdowns,
+ * analytics treats `$feature/<key>` as a first-class flag property: breakdowns,
  * funnels split by cohort and the experiment surfaces all key on it. Emitting
  * assignments in that shape means the analysis tooling works on a canary with
  * nothing configured server-side — the decision still happens locally and
  * offline, which the render path requires (no render-time network calls, and
  * behaviour must not depend on analytics being reachable).
  *
- * The `canary-` infix is deliberate. A real PostHog flag namespace already
+ * The `canary-` infix is deliberate. A real analytics flag namespace already
  * exists in this project, owned by the web app (e.g. `enable-chat-tab`, set by
- * posthog-js). Namespacing guarantees a canary key can never alias a real flag
+ * an analytics SDK). Namespacing guarantees a canary key can never alias a real flag
  * key and have the two fight over the same property.
  */
 export const CANARY_FEATURE_PREFIX = "$feature/canary-";
@@ -178,7 +178,7 @@ export function canaryFeatureKey(name: string): string {
 /**
  * Companion key carrying WHY a canary resolved as it did.
  *
- * Deliberately outside the `$feature/` namespace: PostHog treats those as flag
+ * Deliberately outside the `$feature/` namespace: analytics treats those as flag
  * values and a non-boolean there would corrupt the flag's own breakdowns. This
  * is an ordinary property that sits alongside.
  *
@@ -197,7 +197,7 @@ export function canaryReasonKey(name: string): string {
  * Collapsing those makes a ramp unreadable — you cannot tell a control group
  * from an old version.
  *
- * Values are the strings `"true"` / `"false"` to match how PostHog records
+ * Values are the strings `"true"` / `"false"` to match how analytics records
  * boolean flag values, so the property is directly comparable to a real flag.
  *
  * **The reason rides alongside when supplied**, under `canary_reason_<name>`.

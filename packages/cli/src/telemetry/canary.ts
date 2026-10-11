@@ -62,7 +62,7 @@ const decisions = new Map<string, CanaryDecision>();
 // render nothing may change (a render that starts enrolled must finish
 // enrolled), but `hyperframes preview` is a long-lived server that re-serves
 // decisions on every page load — and it used to keep serving pre-opt-out
-// decisions for hours after `hyperframes telemetry disable`, which is exactly
+// decisions for hours after a telemetry opt-out, which is exactly
 // what the docs promise cannot happen.
 let decisionsTelemetryPosture: boolean | undefined;
 
@@ -179,10 +179,10 @@ export function canaryDecisionsForStudio(): Record<string, CliCanaryDecision> {
 }
 
 /**
- * Canary assignments as PostHog flag properties — `$feature/canary-<name>`
+ * Canary assignments as analytics flag properties — `$feature/canary-<name>`
  * set to `"true"` / `"false"` for every registered canary, each paired with a
  * `canary_reason_<name>`. Spread onto every event so any metric can be broken
- * down by cohort using PostHog's native flag tooling, with nothing configured
+ * down by cohort using analytics's native flag tooling, with nothing configured
  * server-side. See `canaryFeatureProperties` for why non-enrolled canaries are
  * emitted too, and why the reason has to ride along.
  *

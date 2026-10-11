@@ -1,20 +1,12 @@
-// sfx.mjs — sound effects for the media audio engine. Provider-gated (NOT a
-// per-cue merge): the decision is made once, by whether HeyGen is configured —
-// mirroring how TTS and BGM degrade.
-//
-//   HeyGen credential present  →  retrieve EVERY cue from HeyGen's audio library
-//        (/v3/audio/sounds, type=sound_effects, min_score=0.4). The bundled
-//        library is NOT consulted.
-//   HeyGen credential absent   →  resolve cues against the bundled 21-file
-//        library (assets/sfx/manifest.json), copying matched files into the
-//        project. Offline, deterministic, free.
+// sfx.mjs — sound effects for the media audio engine. Cues are resolved against
+// the bundled library (assets/sfx/manifest.json), copying matched files into the
+// project. Offline, deterministic, free.
 //
 // A cue that matches nothing is skipped (recorded as an anomaly); SFX never
 // blocks a render. Every cue sits at volume ~0.35, under voice + BGM.
 
 import { copyFileSync, existsSync, mkdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { downloadTo, searchSounds } from "./heygen.mjs";
 import { latestRecordFor } from "../../../scripts/lib/manifest.mjs";
 import { agentWritePath } from "./media-record.mjs";
 
@@ -29,7 +21,7 @@ const r3 = (x) => Number(x.toFixed(3));
 
 // cues: [{ id, name }] (id = the line/frame/scene the cue fires in). Returns
 // { sfx: [{ id, name, file, source, offset_s, duration_s, volume }], anomalies }.
-export async function resolveSfx({ cues, heygenOK, headers, hyperframesDir, sfxLibDir }) {
+export async function resolveSfx({ cues, hyperframesDir, sfxLibDir }) {
   const sfx = [];
   const anomalies = [];
   const destDir = join(hyperframesDir, "assets", "sfx");
@@ -46,50 +38,10 @@ export async function resolveSfx({ cues, heygenOK, headers, hyperframesDir, sfxL
     return true;
   });
 
-  if (heygenOK) {
-    for (const { id, name } of uniq) {
-      try {
-        // SFX hits score low (~0.5–0.67), below the API's default 0.7 which
-        // silently drops most named cues — floor to 0.4. (BGM/music score high
-        // and keep the default.)
-        const results = await searchSounds(name, "sound_effects", headers, {
-          limit: 3,
-          minScore: 0.4,
-        });
-        if (!results.length) {
-          anomalies.push(`sfx "${name}" (id ${id}): no HeyGen match — skipped`);
-          continue;
-        }
-        const top = results[0];
-        const file =
-          fileFor.get(slug(name)) ??
-          agentWritePath(hyperframesDir, `assets/sfx/${slug(name)}.mp3`, {
-            anomalies,
-            taken: new Set(fileFor.values()),
-          });
-        await downloadTo(top.audio_url, join(hyperframesDir, file));
-        fileFor.set(slug(name), file);
-        sfx.push({
-          id,
-          name,
-          file,
-          source: "heygen",
-          offset_s: 0,
-          duration_s: typeof top.duration === "number" ? r3(top.duration) : 1.0,
-          volume: SFX_VOLUME,
-        });
-      } catch (e) {
-        anomalies.push(`sfx "${name}" (id ${id}): retrieval failed — ${e.message}`);
-      }
-    }
-    return { sfx, anomalies };
-  }
-
-  // ── offline: bundled library ──
+  // ── bundled library ──
   const manifestPath = join(sfxLibDir, "manifest.json");
   if (!existsSync(manifestPath)) {
-    if (uniq.length)
-      anomalies.push(`no HeyGen credential and no SFX library at ${sfxLibDir} — all cues dropped`);
+    if (uniq.length) anomalies.push(`no SFX library at ${sfxLibDir} — all cues dropped`);
     return { sfx, anomalies };
   }
   let manifest;
@@ -146,7 +98,7 @@ export async function resolveSfx({ cues, heygenOK, headers, hyperframesDir, sfxL
       anomalies.push(
         `sfx "${name}" (id ${id}): bundled file ${hit.file} missing from the offline ` +
           `library (${sfxLibDir}) — skipped. Reinstall the media-use skill to ` +
-          `restore assets/sfx/*.mp3, or configure a HeyGen credential for retrieval.`,
+          `restore assets/sfx/*.mp3.`,
       );
       continue;
     } // else the engine's earlier copy at dest stands in for the file this install lacks

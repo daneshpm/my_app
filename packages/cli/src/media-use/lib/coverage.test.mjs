@@ -21,10 +21,8 @@ const SKILL = join(
   "media-use",
 );
 
-test("weakness: audio-only → media-use resolves image + icon", () => {
-  for (const t of ["image", "icon"]) {
-    assert.ok(getProviders(t).length > 0, `no provider for ${t}`);
-  }
+test("weakness: no stock images → media-use generates images (local mflux / codex)", () => {
+  assert.ok(getProviders("image").length > 0, "no provider for image");
 });
 
 test("weakness: no third-party brand logos → media-use resolves logo", () => {
@@ -95,10 +93,8 @@ test("weakness: no cross-project memory → global cache + ingest entrypoints ex
   assert.equal(typeof freeze.isDirectMediaUrl, "function", "ingest URL guard missing");
 });
 
-// Wenbo (06-29): heygen free-usage is the default; local models are the opt-out
-// fallback ("if user no, then local"). We still assert the fallback table is
-// populated so the opt-out path stays real.
-test("weakness: weak local defaults → local models exist as the opt-out fallback (tts/asr/upscale)", () => {
+// Local models are the only generation path. Assert the model table is populated.
+test("weakness: weak local defaults → local models exist (tts/asr/upscale)", () => {
   for (const cap of ["tts", "asr", "upscale"]) {
     assert.ok(CAPABILITIES.includes(cap), `capability ${cap} missing`);
     assert.ok(listModels(cap).length > 0, `no local models for ${cap}`);
@@ -121,16 +117,18 @@ test("weakness: no image generation → local mflux (RAM-graded) + codex upsell"
   assert.equal(typeof lm.describeModelLadder, "function", "agent-facing ladder missing");
 });
 
-test("weakness: no video generation → local videogen ladder + heygen avatar upsell", async () => {
+test("weakness: no video generation → local videogen ladder", async () => {
   const lm = await import("./local-models.mjs");
   assert.ok(lm.CAPABILITIES.includes("videogen"), "videogen capability missing");
   assert.ok(lm.listModels("videogen").length >= 2, "videogen ladder too small");
-  const ops = existsSync(join(SKILL, "references", "operations.md"));
-  assert.ok(ops, "operations.md (avatar-upsell recipe) missing");
 });
 
-test("every resolve type has at least one enabled provider", () => {
-  for (const t of listTypes()) {
+// bgm and icon have no catalog provider (music is generated locally by the audio
+// scripts; icons come from the project or the logo/brand paths).
+const NO_CATALOG_PROVIDER = new Set(["bgm", "icon"]);
+
+test("every resolve type has at least one enabled provider (bgm/icon excepted)", () => {
+  for (const t of listTypes().filter((type) => !NO_CATALOG_PROVIDER.has(type))) {
     assert.ok(getProviders(t).length > 0, `type ${t} has no enabled provider`);
   }
 });

@@ -48,5 +48,5 @@ A header block, then one section per spoken line.
 
 Feed each line's spoken text to the provider documented in
 `media-use/audio/references/tts.md`. The `hyperframes tts` command is
-Kokoro-only; use its `--voice` flag, or use the bundled HeyGen helper when word
-timestamps are required. Real per-word timing replaces the `**Time:**` guides.
+Kokoro-only; use its `--voice` flag. Word timestamps come from a local
+`transcribe` pass over the generated audio. Real per-word timing replaces the `**Time:**` guides.

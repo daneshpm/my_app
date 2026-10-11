@@ -97,17 +97,9 @@ npx hyperframes benchmark --json
 
 Renders the project with 5 preset configurations — `30fps draft 2w`, `30fps standard 2w`, `30fps high 2w`, `30fps standard 4w`, `60fps standard 4w` — and prints a comparison of render speed and output file size. Use it to find the fastest acceptable preset for your machine. Not a single-render-with-stage-breakdown.
 
-## telemetry
+## Environment fingerprint properties
 
-```bash
-npx hyperframes telemetry status      # show telemetry state
-npx hyperframes telemetry disable     # disable anonymous usage telemetry
-npx hyperframes telemetry enable      # re-enable telemetry
-```
-
-Telemetry is anonymous usage counters only. Disable globally with `HYPERFRAMES_NO_TELEMETRY=1` if env-var control is preferred over the subcommand.
-
-Events include two fingerprint properties used to distinguish managed-sandbox runs from real laptops — no PII, no env-var **values**, only existence checks:
+The CLI detects (locally, for diagnostics such as `doctor`) two fingerprint properties used to distinguish managed-sandbox runs from real laptops. Nothing is transmitted: properties used to distinguish managed-sandbox runs from real laptops — no PII, no env-var **values**, only existence checks:
 
 - **`sandbox_runtime`**: `gvisor` / `firecracker` / `docker` / `kvm` / `wsl` / `null`. gVisor via kernel string + `/proc/version`. Firecracker via `/dev/vsock` + DMI sys_vendor. Docker via `/.dockerenv` + cgroup.
 - **`agent_runtime`**: `claude_code` / `codex` / `cursor` / `copilot_agent` / `jules` / `replit` / `devin` / `aider` / `gemini_cli` / `hermes` / `openclaw` / `null`. Detected by the existence of well-known vendor env vars; the values themselves are never read.

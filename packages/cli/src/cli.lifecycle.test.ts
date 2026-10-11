@@ -42,7 +42,6 @@ describe("CLI lifecycle", () => {
       flush: () => new Promise<void>(() => {}),
       flushSync: () => order.push("flushSync"),
       incrementCommandCount: vi.fn(),
-      showTelemetryNotice: vi.fn(),
       shouldTrack: () => false,
       trackCliError: vi.fn(),
       trackCommand: vi.fn(),

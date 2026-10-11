@@ -210,7 +210,7 @@ export type RuntimeDataAppliedMessage = {
  * Analytics events emitted by the runtime.
  *
  * The host app receives these via postMessage and forwards to its analytics
- * provider (PostHog, Mixpanel, Amplitude, custom logging, etc.).
+ * provider (analytics, Mixpanel, Amplitude, custom logging, etc.).
  * No analytics SDK runs inside this iframe.
  */
 export type RuntimeAnalyticsMessage = {

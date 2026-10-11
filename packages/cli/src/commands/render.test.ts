@@ -685,7 +685,6 @@ describe("renderLocal browser GPU config", () => {
       browserGpuMode: "software",
       hdrMode: "auto",
       quiet: true,
-      skipFeedback: true,
     });
 
     expect(trackingState.renderObservations).toEqual([

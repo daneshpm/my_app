@@ -503,9 +503,9 @@ export interface HyperframesConfig {
    */
   bucketSeed?: string;
   /**
-   * Ring of the last few local renders (newest last). `hyperframes feedback`
+   * Ring of the last few local renders (newest last). The removed `feedback` command
    * attaches these ids — which are the `render_job_id` /
-   * `observability_render_job_id` on this install's PostHog events — to the
+   * `observability_render_job_id` on this install's analytics events — to the
    * feedback it submits, so a wild bug report can be joined to the exact
    * telemetry rows of the renders it describes.
    */

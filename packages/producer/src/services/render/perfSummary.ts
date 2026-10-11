@@ -69,7 +69,7 @@ export function pushWorkerDedupPerfs(
  * Round a dB value to 1 decimal and clamp at 999 (an `Infinity` PSNR — a
  * bit-exact frame match — must not ship literally to telemetry). Single
  * source of truth for every dB field crossing into `RenderPerfSummary` or
- * `RenderCaptureObservability` — both must agree byte-for-byte so PostHog
+ * `RenderCaptureObservability` — both must agree byte-for-byte so analytics
  * consumers joining `render_complete` against the crash-survival
  * `render_error` mirror never see the same underlying score reported at two
  * different precisions (review finding).

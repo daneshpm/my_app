@@ -257,7 +257,7 @@ export function isCanaryEnabled(name: string): boolean {
 }
 
 /**
- * Canary assignments as PostHog flag properties (`$feature/canary-<name>`)
+ * Canary assignments as analytics flag properties (`$feature/canary-<name>`)
  * plus their `canary_reason_<name>`, attached to every Studio event so any
  * metric can be split by cohort — identical shape to the CLI, so a rollout
  * spanning both reads as one flag.

@@ -321,7 +321,7 @@ export interface ResolverShadowPaths {
  * gates decline it (wrongCompositionFile) and it can never cut over. Every
  * tripwire entry point skips entirely (no event, no attempt): the op belongs
  * in neither the divergence count nor the attempt denominator of the soak
- * rate. PostHog 0.7.41: one cross-file editing session emitted 479 false
+ * rate. analytics 0.7.41: one cross-file editing session emitted 479 false
  * element_not_found events before this rule existed. Callers that pass no
  * paths (isolated consumers/tests) run as before.
  */
@@ -348,7 +348,7 @@ export function runResolverShadow(
     recordAttempt("dom-edit");
     const mismatches = sdkResolverShadowCheck(session, hfId, ops, sourceContent);
     // Emit only on divergence — parity is silent, matching recordResolverParity
-    // and recordAnimationResolverParity. Otherwise this fires a PostHog event on
+    // and recordAnimationResolverParity. Otherwise this fires a analytics event on
     // every style/text/attr edit (the editor's chattiest path) at default-ON.
     if (mismatches.length === 0) return;
     const isElementNotFound = mismatches.some((m) => m.kind === "element_not_found");

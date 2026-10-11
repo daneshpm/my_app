@@ -190,7 +190,7 @@ describe("cohort identity", () => {
 });
 
 describe("telemetry", () => {
-  it("emits the same PostHog flag-shaped properties as the CLI", () => {
+  it("emits the same analytics flag-shaped properties as the CLI", () => {
     expect(canaryEventProperties()).toEqual({
       "$feature/canary-on-everywhere": "true",
       "$feature/canary-off-everywhere": "false",

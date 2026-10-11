@@ -13,7 +13,7 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { downloadToFile } from "./download.js";
+import { downloadToFile } from "./downloadToFile.js";
 
 function makeBytesFetch(bytes: Uint8Array, headers: Record<string, string> = {}): typeof fetch {
   return (async () =>

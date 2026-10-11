@@ -39,7 +39,6 @@ import { fileURLToPath } from "node:url";
 import { createRequire } from "node:module";
 import * as clack from "@clack/prompts";
 import { c } from "../ui/colors.js";
-import { desktopHint } from "../utils/desktopApp.js";
 import { isDevMode } from "../utils/env.js";
 import { normalizeErrorMessage as errorMessage } from "../utils/errorMessage.js";
 import { buildNpxCommand } from "../utils/npxCommand.js";
@@ -1291,8 +1290,6 @@ function printStudioSummary(
   console.log(`  ${c.dim("Project")}   ${c.accent(projectName)}`);
   console.log(`  ${c.dim("Studio")}    ${c.accent(urls.studioUrl)}`);
   console.log(`  ${c.dim("Server")}    ${c.accent(urls.serverUrl)}`);
-  const hint = desktopHint(projectDir);
-  if (hint) console.log(`  ${c.dim("Desktop")}   ${hint}`);
   console.log();
   for (const detail of opts.details ?? []) {
     console.log(`  ${c.dim(detail)}`);

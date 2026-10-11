@@ -4,7 +4,7 @@
 // Studio historically minted TWO independent anonymous ids:
 //   - `hf-studio-anon-id`            (utils/studioTelemetry.ts → studio:* events)
 //   - `hyperframes-studio:anonymousId` (telemetry/config.ts → studio_* + render events)
-// so a single browser looked like two different people in PostHog. This module
+// so a single browser looked like two different people in analytics. This module
 // resolves ONE id that both clients (and the render→CLI channel) share.
 //
 // CLI→Studio identity stitch (Layer 1, no login / no PII):
@@ -13,7 +13,7 @@
 // (see packages/cli/src/server/studioServer.ts). When present we ADOPT it as the
 // Studio distinct_id and persist it, so CLI `cli_command*` events and the
 // browser's `studio:*` / `studio_*` / render events are attributed to the same
-// PostHog person. When absent (Studio opened standalone) we fall back to the
+// analytics person. When absent (Studio opened standalone) we fall back to the
 // previous per-browser localStorage id — behaviour is unchanged.
 // ---------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ function persist(ls: Storage, id: string): void {
  *
  * Precedence:
  *   1. CLI-seeded id (`window.__HF_CLI_DISTINCT_ID`) — adopted + persisted so
- *      the browser session joins the CLI machine's PostHog person.
+ *      the browser session joins the CLI machine's analytics person.
  *   2. Existing persisted id (canonical or legacy key) — unchanged behaviour.
  *   3. A freshly generated UUID — persisted for future loads.
  *
@@ -113,7 +113,7 @@ export function resolveStudioDistinctId(): string {
     // storage-restricted profile one bucketing unit: computed against the
     // shipped hash, `calibration-50:anonymous` lands in bucket 44, so 100% of
     // that population was enrolled at a nominal 50% and would flip together
-    // on any ramp. It also merged unrelated users into a single PostHog
+    // on any ramp. It also merged unrelated users into a single analytics
     // person. A per-session id spreads them and keeps them distinct, while
     // persisting nothing.
     // `cachedId` is guaranteed null here (early-returned at the top otherwise).

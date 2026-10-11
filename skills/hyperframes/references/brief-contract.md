@@ -38,15 +38,15 @@ Default to `collaborative` only when a legacy project lacks enough state to deri
 
 ### Gate behavior
 
-| Gate                                                                            | Collaborative                                                   | Autonomous                                                      |
-| ------------------------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| Preference: preset, voice, caption identity                                     | Ask when the workflow marks it as required.                     | Decide and state the choice with a one-line reason.             |
-| Checkpoint: plan, sketches, pre-render review                                   | Ask and wait.                                                   | Post the same summary, then continue.                           |
-| Quality: fetch completeness, `lint`, `hyperframes check`, workflow verification | Run and stop on errors.                                         | Run and stop on errors.                                         |
-| Routing ambiguity                                                               | Resolve explicitly; a wrong route changes the deliverable.      | Same requirement.                                               |
-| Sign-in or credential unavailable                                               | Show status and wait for sign-in or explicit offline selection. | Show status and continue through an available offline provider. |
+| Gate                                                                            | Collaborative                                              | Autonomous                                                         |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------ |
+| Preference: preset, voice, caption identity                                     | Ask when the workflow marks it as required.                | Decide and state the choice with a one-line reason.                |
+| Checkpoint: plan, sketches, pre-render review                                   | Ask and wait.                                              | Post the same summary, then continue.                              |
+| Quality: fetch completeness, `lint`, `hyperframes check`, workflow verification | Run and stop on errors.                                    | Run and stop on errors.                                            |
+| Routing ambiguity                                                               | Resolve explicitly; a wrong route changes the deliverable. | Same requirement.                                                  |
+| Provider dependency or key unavailable                                          | Show the blocker and wait for a fix or an explicit choice. | Show the blocker and continue through an available local provider. |
 
-Autonomous mode never silently drops a required capability. If the selected workflow has no local, cached, or offline provider for it, surface the blocker instead of omitting the capability. A credential problem does not relax the quality gates.
+Autonomous mode never silently drops a required capability. If the selected workflow has no local, cached, or offline provider for it, surface the blocker instead of omitting the capability. A missing dependency or key does not relax the quality gates.
 
 Rendering remains user-gated in both modes. After checks pass, both open the final Studio preview and ask “render now, or what changes?”; in autonomous runs it is the one kept question. Render only after the answer.
 

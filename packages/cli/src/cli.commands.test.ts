@@ -75,12 +75,11 @@ describe("CLI command registration", () => {
   // must not also nudge the user to go reconcile skills — that nudge is
   // either redundant (it just ran) or misleading (a stale cached count from
   // the 24h background check, contradicting whatever it just reported).
-  it("excludes 'skills' from the background skills-nudge gate, alongside 'upgrade' and 'events'", () => {
+  it("excludes 'skills' from the background skills-nudge gate, alongside 'upgrade'", () => {
     const match = cliSource.match(/if \(([\s\S]*?)\) \{\s*\/\/ Report any completed auto-install/);
     expect(match, "expected to find the background nudge gate's if-condition").toBeTruthy();
     const condition = match![1]!;
     expect(condition).toContain('command !== "upgrade"');
-    expect(condition).toContain('command !== "events"');
     expect(condition).toContain('command !== "skills"');
   });
 

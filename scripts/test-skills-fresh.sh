@@ -4,7 +4,7 @@
 # Generic sandbox for the `test/skills-fresh` branch — fully simulates a real
 # user's `npx` install, with BOTH channels coming from the working tree:
 #   • skills → installed from skills/ via `npx skills add <repo>` (exactly what
-#             `npx skills add heygen-com/hyperframes` does for a real user)
+#             `npx skills add daneshpm/my_app` does for a real user)
 #   • CLI    → wired via a `file:` dep so `npx hyperframes` resolves to the LOCAL
 #             build, which carries this branch's packages/cli/src/capture changes.
 # It adds NO CLAUDE.md / AGENTS.md — it mirrors the plain install, nothing more.
@@ -17,7 +17,7 @@
 #                   ← both launch fully auto (no approval prompts); codex stays
 #                   project-local and does NOT touch your global ~/.codex/skills.
 #
-# Why a sandbox (and not `npx skills add heygen-com/hyperframes#test/skills-fresh`):
+# Why a sandbox (and not `npx skills add daneshpm/my_app#test/skills-fresh`):
 #   `skills add` only copies skills/. The capture tool you changed lives in
 #   packages/cli (the @hyperframes/cli package), so an online skills-only install
 #   would pull this branch's skills but the PUBLISHED CLI's old capture. This

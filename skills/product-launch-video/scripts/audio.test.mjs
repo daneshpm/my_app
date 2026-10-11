@@ -137,14 +137,14 @@ test('a quoted music: "none" is still the silent marker (frontmatter stripQuotes
   assert.equal(existsSync(join(dir, "audio_meta.json")), false);
 });
 
-test("a storyboard music mood still retrieves BGM (marker is exact, not fuzzy)", () => {
+test("a storyboard music mood still requests generated BGM (marker is exact, not fuzzy)", () => {
   const { dir, result } = runAudioRaw({
     storyboard: "---\nmessage: Test\nmusic: upbeat synthwave with heavy drums\n---\n",
   });
 
   assert.equal(result.status, 0, result.stderr);
   const request = JSON.parse(readFileSync(join(dir, "request.json"), "utf8"));
-  assert.equal(request.bgm.mode, "retrieve");
+  assert.equal(request.bgm.mode, "generate");
   assert.equal(request.bgm.query, "upbeat synthwave with heavy drums");
 });
 

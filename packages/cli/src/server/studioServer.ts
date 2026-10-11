@@ -32,7 +32,6 @@ import {
   resolveCliTelemetryDistinctId,
 } from "./telemetryIdentity.js";
 import { emitStudioRenderComplete, emitStudioRenderError } from "./studioRenderTelemetry.js";
-import { mountDesktopRoutes } from "./desktopRoutes.js";
 import { isDevMode } from "../utils/env.js";
 import { runRenderSetupWorker } from "../utils/cancellableProcess.js";
 import type { ProjectLintResult } from "@hyperframes/lint";
@@ -652,7 +651,7 @@ export function createStudioServer(options: StudioServerOptions): StudioServer {
             );
           }
           // Refreshed HERE, not just at render start: a render can run for
-          // minutes, and `hyperframes telemetry disable` during one must be
+          // minutes, and a telemetry opt-out during one must be
           // honoured by the event that reports it. Studio never polls
           // /api/telemetry-identity, so this process would otherwise keep its
           // startup-cached posture for the life of the preview server.
@@ -864,7 +863,7 @@ export function createStudioServer(options: StudioServerOptions): StudioServer {
   // CLI → Studio telemetry identity endpoint (Layer 1). Studio reads the
   // injected `window.__HF_CLI_DISTINCT_ID` first; this GET is a fallback for
   // clients that can't rely on the injected global. Returns the CLI's anonymous
-  // distinct id (no PII) so the browser session can join the CLI's PostHog
+  // distinct id (no PII) so the browser session can join the CLI's analytics
   // person, or `{ distinctId: null }` when CLI telemetry is disabled.
   //
   // Deliberately does NOT serve `bucketSeed`. Studio gets its canary answers
@@ -980,8 +979,6 @@ export function createStudioServer(options: StudioServerOptions): StudioServer {
       command: getFFmpegInstallCommand(),
     });
   });
-
-  mountDesktopRoutes(app, projectDir);
 
   // ── Pre-flight checks for render ────────────────────────────────────────
   // Intercept render requests before they reach the shared API so we can

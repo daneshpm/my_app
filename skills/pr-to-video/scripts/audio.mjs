@@ -11,9 +11,10 @@
 // STORYBOARD.md, which is product-launch-specific).
 //
 // Three modes (unchanged CLI surface):
-//   (default) generate — engine --only tts,bgm. BGM mode is "retrieve" (strict:
-//        no HeyGen credential ⇒ skip, never a detached generate, since this
-//        workflow has no wait-bgm step). Runs in the background during Step 4.
+//   (default) generate — engine --only tts,bgm. BGM mode is "generate" (Lyria with
+//        your own key, else local MusicGen; detached — the track is pending until
+//        `wait-bgm.mjs` confirms it, and assemble-index refuses to build without a
+//        bed unless --allow-pending-bgm). Runs in the background during Step 4.
 //   sync-durations — write real voice durations into STORYBOARD.md (local).
 //   fetch-sfx      — engine --only sfx, merged into the existing meta (Step 5,
 //        after the frames' `sfx:` cues exist).
@@ -160,8 +161,8 @@ function runGenerate(argv) {
   }
   if (!lines.length) console.error("· no SCRIPT.md — silent film (BGM only)");
 
-  // BGM mood: storyboard `music:` → message → arc → default. `mode: retrieve` is
-  // strict here (no wait-bgm step downstream).
+  // BGM mood: storyboard `music:` → message → arc → default. `mode: generate` is
+  // detached; assemble-index refuses while the bed is still pending.
   const query = (g.extra && g.extra.music) || g.message || g.arc || "calm cinematic underscore";
   const request = {
     provider: "auto",
@@ -169,7 +170,7 @@ function runGenerate(argv) {
     lines,
     bgm: bgmOff
       ? { mode: "none" }
-      : { mode: "retrieve", query, blob: g.message || "", arc: g.arc || "" },
+      : { mode: "generate", query, blob: g.message || "", arc: g.arc || "" },
   };
   if (userVoice) request.voice = userVoice;
   if (flag(argv, "tts-model", null)) request.tts_model = flag(argv, "tts-model", null);

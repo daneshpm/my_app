@@ -335,7 +335,7 @@ describe("identityAllowed — loopback-bound vs explicitly LAN-bound", () => {
     });
 
     // The mode this regressed: browsing your own LAN-exposed Studio lost the
-    // CLI stitch entirely, so the same human became two PostHog persons. The
+    // CLI stitch entirely, so the same human became two analytics persons. The
     // names come from this machine, because that is now the actual rule —
     // a hardcoded `192.168.1.10` asserted only that the check was absent.
     it.each(["0.0.0.0:3000", ...localHostCandidates().map((n) => `${n}:3000`)])(
@@ -408,7 +408,7 @@ describe("cross-process opt-out refresh", () => {
     shouldTrack.mockReturnValue(true);
     expect(buildStudioHeadScriptsForHost("", "localhost:3000")).toContain("__HF_CLI_DISTINCT_ID");
 
-    // `hyperframes telemetry disable` in another terminal.
+    // a telemetry opt-out in another terminal.
     shouldTrack.mockReturnValue(false);
     const after = buildStudioHeadScriptsForHost("", "localhost:3000");
     expect(after).not.toContain("__HF_CLI_DISTINCT_ID");

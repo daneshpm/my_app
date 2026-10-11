@@ -6,7 +6,6 @@ import { trackStudioEvent } from "../utils/studioTelemetry";
 import { Button, buttonBase, buttonSizes, buttonVariants, cn, Tooltip } from "./ui";
 import { Dock } from "./dock/Dock";
 import { InspectorIcon } from "./icons/InspectorIcon";
-import { OpenInDesktopButton } from "./OpenInDesktopButton";
 import { HyperframesLogo } from "./ui/HyperframesLogo";
 import { ShowThemeToggle, ThemeToggle } from "./ThemeToggle";
 
@@ -152,7 +151,6 @@ export const StudioHeader = memo(function StudioHeader({
         </div>
         {showThemeToggle && <ThemeToggle />}
         <Dock.WindowMenu />
-        <OpenInDesktopButton />
         <Tooltip
           label={
             ffmpegMissing

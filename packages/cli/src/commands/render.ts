@@ -62,7 +62,6 @@ import { resolve, dirname, join, basename } from "node:path";
 import { execFileSync, spawn } from "node:child_process";
 import { loadProducer } from "../utils/producer.js";
 import { c } from "../ui/colors.js";
-import { desktopHint } from "../utils/desktopApp.js";
 import {
   formatBytes,
   formatRenderSummaryDetail,
@@ -80,7 +79,6 @@ import {
   type RenderOutputShapeTelemetryPayload,
   type RenderEnvironmentTelemetryPayload,
 } from "../telemetry/events.js";
-import { maybePromptRenderFeedback } from "../telemetry/feedback.js";
 import {
   readConfigFresh,
   recordRecentRender,
@@ -108,11 +106,7 @@ import { macosOldChromeCrashRemediation } from "../browser/macosOldChromeCrash.j
 import { windowsChromeCrashRemediation } from "../browser/windowsCrash.js";
 import { killOrphanedProcessesForRender } from "../utils/orphanCleanup.js";
 import { createRenderCancellationScope } from "../utils/renderCancellation.js";
-import {
-  markRenderSucceeded,
-  runPostRenderStep,
-  runPostRenderStepAsync,
-} from "../utils/render-success-state.js";
+import { markRenderSucceeded, runPostRenderStep } from "../utils/render-success-state.js";
 import type { ProducerLogger, RenderJob, RenderPerfSummary } from "@hyperframes/producer";
 import { EXTRACT_CACHE_DIR_DISABLED_ALIASES, type VideoFrameFormat } from "@hyperframes/engine";
 import {
@@ -523,10 +517,6 @@ export interface RenderOptions {
   playerReadyTimeout?: number;
   /** Throw render failures to the caller instead of printing and exiting. */
   throwOnError?: boolean;
-  /** Skip the interactive feedback prompt after a successful render. */
-  skipFeedback?: boolean;
-  /** False for a batch row: one line about the desktop app per batch is noise, not a pointer. */
-  desktopHint?: boolean;
   /**
    * OPT IN to managing the DE parallel-router circuit breaker
    * (`applyDeParallelRouterCircuitBreaker`) for this render. Default OFF —
@@ -890,7 +880,6 @@ async function renderDocker(
     printRenderComplete({
       outputPath,
       projectDir,
-      desktopHint: wantsDesktopHint(options),
       elapsedMs: elapsed,
       quiet: options.quiet,
       format: options.format,
@@ -1144,7 +1133,6 @@ async function executeLocalRender(
     printRenderComplete({
       outputPath,
       projectDir,
-      desktopHint: wantsDesktopHint(options),
       elapsedMs: elapsed,
       quiet: options.quiet,
       format: options.format,
@@ -1155,14 +1143,6 @@ async function executeLocalRender(
   runPostRenderStep("warnIfWebmAlphaDropped", () =>
     warnIfWebmAlphaDropped(outputPath, options.format, options.quiet),
   );
-  if (!options.skipFeedback) {
-    await runPostRenderStepAsync("maybePromptRenderFeedback", () =>
-      maybePromptRenderFeedback({
-        renderDurationMs: elapsed,
-        quiet: options.quiet,
-      }),
-    );
-  }
   if (options.exitAfterComplete) scheduleRenderProcessExit();
   const durationMs = job.perfSummary
     ? Math.round(job.perfSummary.compositionDurationSeconds * 1000)
@@ -1706,7 +1686,6 @@ function handleRenderError(
     ...getMemorySnapshot(),
   });
   // Failed renders join the recent-renders ring too — a bug report filed via
-  // `hyperframes feedback` is MOST likely to be about a failed render.
   if (job?.id) recordRecentRender(job.id, false);
   if (options.throwOnError) {
     throw new Error(message);
@@ -1905,16 +1884,9 @@ function readOutputFootprint(outputPath: string): { fileSize: string; isDirector
   }
 }
 
-/** A render points to the desktop app; a batch row does not. Drafts do too: music-to-video delivers one. */
-export function wantsDesktopHint(options: Pick<RenderOptions, "desktopHint">): boolean {
-  return options.desktopHint !== false;
-}
-
 function printRenderComplete(input: {
   outputPath: string;
   projectDir: string;
-  /** Print the desktop-app line: a delivered render, never a draft or a batch row. */
-  desktopHint: boolean;
   elapsedMs: number;
   quiet: boolean;
   format: RenderFormat;
@@ -1935,8 +1907,6 @@ function printRenderComplete(input: {
   console.log(c.success("\u25C7") + "  " + c.accent(outputPath));
   console.log("   " + c.bold(fileSize) + c.dim(" \u00B7 " + detail));
   if (perf) printRenderPipeline(perf, input.requestedGpuMode);
-  const hint = input.desktopHint ? desktopHint(input.projectDir) : null;
-  if (hint) console.log("   " + c.dim(hint));
 }
 
 function printRenderPipeline(

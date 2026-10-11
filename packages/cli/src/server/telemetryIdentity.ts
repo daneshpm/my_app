@@ -5,7 +5,7 @@
 // browser with its own anonymous `config.anonymousId`. Studio adopts it as its
 // distinct_id (see packages/studio/src/telemetry/distinctId.ts), so the CLI's
 // `cli_command*` events and the browser's `studio:*` / `studio_*` / render
-// events are attributed to one PostHog person.
+// events are attributed to one analytics person.
 //
 // This uses ONLY the existing anonymous machine id (a random UUID, no PII), so
 // the "no personal info" telemetry disclosure stays valid. When CLI telemetry
@@ -241,7 +241,7 @@ export function identityAllowed(host: string | undefined): boolean {
  * `readConfig()`, the identity layer asks `shouldTrack()`, and they would
  * disagree mid-refresh. A long-lived `hyperframes preview` otherwise keeps
  * serving pre-opt-out decisions and injecting the CLI id for hours after
- * `hyperframes telemetry disable` runs in another terminal.
+ * a telemetry opt-out runs in another terminal.
  *
  * Fail-silent and once per request — a config re-read, not a hot path.
  */

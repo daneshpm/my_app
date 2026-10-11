@@ -13,6 +13,7 @@ vi.mock("../version.js", () => ({
   get VERSION() {
     return runningVersion;
   },
+  PACKAGE_NAME: "hyperframes",
 }));
 // isDevMode() is true under vitest (module path ends in .ts), which would
 // suppress the notice unconditionally — mock ./env.js like updateCheck.test.ts does.

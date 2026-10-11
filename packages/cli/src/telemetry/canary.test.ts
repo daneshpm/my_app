@@ -136,7 +136,7 @@ describe("telemetry opt-out is canary opt-out", () => {
     expect(resolveCanary("test-beta")).toEqual({ enabled: true, reason: "forced_on" });
   });
 
-  it("reports every canary as false to PostHog shape when opted out", () => {
+  it("reports every canary as false to analytics shape when opted out", () => {
     configState.telemetryEnabled = false;
     expect(canaryEventProperties()).toEqual({
       "$feature/canary-test-alpha": "false",
@@ -226,7 +226,7 @@ describe("CLI canary binding", () => {
     expect(isCanaryEnabled("test-beta")).toBe(true);
   });
 
-  it("emits PostHog flag-shaped properties for every registered canary", () => {
+  it("emits analytics flag-shaped properties for every registered canary", () => {
     expect(canaryEventProperties()).toEqual({
       "$feature/canary-test-alpha": "true",
       "$feature/canary-test-gamma": expect.stringMatching(/^(true|false)$/),

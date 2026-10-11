@@ -79,14 +79,14 @@ test("music: none with narration keeps TTS but turns BGM off (not fully silent)"
   assert.equal(request.lines.length, 1);
 });
 
-test("a storyboard music mood still retrieves BGM (marker is exact, not fuzzy)", () => {
+test("a storyboard music mood still requests generated BGM (marker is exact, not fuzzy)", () => {
   const { dir, result } = runAudioRaw({
     storyboard: "---\nmessage: Test\nmusic: upbeat synthwave with heavy drums\n---\n",
   });
 
   assert.equal(result.status, 0, result.stderr);
   const request = JSON.parse(readFileSync(join(dir, "request.json"), "utf8"));
-  assert.equal(request.bgm.mode, "retrieve");
+  assert.equal(request.bgm.mode, "generate");
   assert.equal(request.bgm.query, "upbeat synthwave with heavy drums");
 });
 

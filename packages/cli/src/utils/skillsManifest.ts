@@ -28,6 +28,7 @@ import {
 import { homedir } from "node:os";
 import { isAbsolute, join, relative, resolve, sep } from "node:path";
 import { promisify } from "node:util";
+import { PROJECT_REPO_SLUG } from "../project.js";
 
 const execFileAsync = promisify(execFile);
 
@@ -59,7 +60,7 @@ export interface SkillEntry {
 }
 
 export interface SkillsManifest {
-  /** Source repo, e.g. "heygen-com/hyperframes". */
+  /** Source repo, e.g. "daneshpm/my_app". */
   source: string;
   /** Per-skill fingerprint, keyed by skill name. */
   skills: Record<string, SkillEntry>;
@@ -109,7 +110,7 @@ export interface SkillsCheckResult {
   lockMissing: boolean;
 }
 
-const DEFAULT_REPO_SLUG = "heygen-com/hyperframes";
+const DEFAULT_REPO_SLUG = PROJECT_REPO_SLUG;
 /** Manifest filename, published at the repo root. */
 export const MANIFEST_FILE = "skills-manifest.json";
 const FETCH_TIMEOUT_MS = 4000;

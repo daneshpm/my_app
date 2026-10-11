@@ -14,7 +14,7 @@ export const examples: Example[] = [
   ["Upgrade non-interactively", "hyperframes upgrade --yes"],
   ["Bump a project's pinned CLI scripts", "hyperframes upgrade --project"],
 ];
-import { VERSION } from "../version.js";
+import { PACKAGE_NAME, VERSION } from "../version.js";
 import {
   checkForUpdate,
   withMeta,
@@ -238,7 +238,7 @@ function printProjectPinResult(
     `   ${c.success("◇")}  ${verb} project pins ${res.from.join(", ")} → ${c.accent(res.to)}`,
   );
   if (checkOnly)
-    console.log(`   ${c.dim("Run `npx hyperframes@latest upgrade --project` to apply.")}`);
+    console.log(`   ${c.dim(`Run: npx ${PACKAGE_NAME}@latest upgrade --project to apply.`)}`);
 }
 
 export function runDetectedInstall(

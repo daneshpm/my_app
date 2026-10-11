@@ -33,7 +33,7 @@ describe("browser system meta", () => {
 
   it("has a tab id in the no-DOM fallback, not an empty string", async () => {
     // The empty-meta branch is taken on SSR. An empty or missing tab_id would
-    // read in PostHog as "this event predates the property" rather than "this
+    // read in analytics as "this event predates the property" rather than "this
     // event has no page", which is the encoding mistake this property exists
     // to avoid. Stubbing the globals is what actually reaches that branch —
     // happy-dom otherwise satisfies the `typeof window` check every time.

@@ -2,18 +2,13 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { compareVersions } from "compare-versions";
 import { readConfig, readConfigFresh, writeConfig } from "../telemetry/config.js";
-import { VERSION } from "../version.js";
+import { PACKAGE_NAME, VERSION } from "../version.js";
 import { isDevMode } from "./env.js";
-import { hostAnswers } from "./hostAnswers.js";
 import { detectInstaller } from "./installerDetection.js";
 import { readPinnedHyperframesVersions } from "./projectPin.js";
 import { isSafeVersion } from "./safeVersion.js";
 
 export { isSafeVersion } from "./safeVersion.js";
-
-const NPM_REGISTRY_URL = "https://registry.npmjs.org/hyperframes/latest";
-const CHECK_INTERVAL_MS = 24 * 60 * 60 * 1000; // 24 hours
-const FETCH_TIMEOUT_MS = 3000;
 
 /** Returns true if `a` is newer than `b` per semver (handles alpha, beta, rc). */
 function isNewerSemver(a: string, b: string): boolean {
@@ -39,66 +34,21 @@ export interface UpdateMeta {
 }
 
 /**
- * Check npm registry for the latest version. Uses a 24h cache to avoid
- * hitting the registry on every invocation.
+ * Version check, intentionally a no-op: the CLI no longer contacts the npm
+ * registry. It reports the running version (or a previously cached one) and
+ * never touches the network. The package name comes from package.json via
+ * PACKAGE_NAME, so a later rename needs no change here.
  *
- * @param force - Skip the cache, opt-outs and DNS probe: the caller waits for the registry
+ * @param _force - Accepted for API compatibility; ignored.
  */
-export async function checkForUpdate(force?: boolean): Promise<UpdateCheckResult> {
-  const config = readConfig();
-  if (!force && !updateCheckDue(config)) return fallbackResult(config.latestVersion);
-
-  try {
-    if (!force && !(await hostAnswers(new URL(NPM_REGISTRY_URL).hostname))) {
-      return fallbackResult(config.latestVersion);
-    }
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
-    let data: { version?: unknown };
-    try {
-      const res = await fetch(NPM_REGISTRY_URL, {
-        signal: controller.signal,
-        headers: { Connection: "close" },
-      });
-      if (!res.ok) return fallbackResult(config.latestVersion);
-      data = (await res.json()) as { version?: unknown };
-    } finally {
-      clearTimeout(timeout);
-    }
-    // Registry boundary guard: only a strict-semver STRING is trusted. This
-    // value is cached and later flows into an install command that the
-    // background auto-updater executes, so a poisoned or non-string
-    // data.version (e.g. "1.2.3; rm -rf /") must never be persisted. Reject it
-    // and fall back to the last known-good version. Closes the injection class
-    // for every consumer at one point.
-    if (typeof data.version !== "string" || !isSafeVersion(data.version)) {
-      return fallbackResult(config.latestVersion);
-    }
-    const latest = data.version;
-
-    // The registry request can take seconds. Merge its two metadata fields
-    // into a fresh snapshot rather than writing the object captured before
-    // the network call: the stale object previously reverted a concurrent
-    // `telemetry disable` back to the default `true`.
-    const freshConfig = readConfigFresh();
-    freshConfig.lastUpdateCheck = new Date().toISOString();
-    freshConfig.latestVersion = latest;
-    writeConfig(freshConfig);
-
-    return { current: VERSION, latest, updateAvailable: isNewerSemver(latest, VERSION) };
-  } catch {
-    return fallbackResult(config.latestVersion);
-  }
+export async function checkForUpdate(_force?: boolean): Promise<UpdateCheckResult> {
+  return fallbackResult(readConfig().latestVersion);
 }
 
-/** Whether the background check should ask the registry: not opted out, and no fresh safe cache. */
-export function updateCheckDue(config = readConfig()): boolean {
-  if (updateCheckDisabled()) return false;
-  if (!config.lastUpdateCheck || !config.latestVersion || !isSafeVersion(config.latestVersion)) {
-    return true;
-  }
-  const fresh = Date.now() - new Date(config.lastUpdateCheck).getTime() < CHECK_INTERVAL_MS;
-  return !fresh;
+/** Whether the background check should ask a registry. Always false: remote version checks are disabled. */
+export function updateCheckDue(_config = readConfig()): boolean {
+  // No remote version source is configured, so a check is never due.
+  return false;
 }
 
 export function cachedUpdateCheck(): UpdateCheckResult {
@@ -190,7 +140,7 @@ export function printUpdateNotice(): void {
   // the suppression + update-available gates, so it adds no cost to normal runs.
   const safeLatest = isSafeVersion(meta.latestVersion);
   const managerCommand = safeLatest ? detectInstaller().installCommand(meta.latestVersion) : null;
-  const command = managerCommand ?? "npx hyperframes@latest";
+  const command = managerCommand ?? `npx ${PACKAGE_NAME}@latest`;
 
   process.stderr.write(
     `\n  Update available: ${meta.version} \u2192 ${meta.latestVersion}\n` +
@@ -224,7 +174,7 @@ export function printStalePinNotice(cwd: string = process.cwd()): void {
   if (newerPins.length > 0) {
     process.stderr.write(
       `\n  This is hyperframes ${VERSION}, but this project pins hyperframes@${newerPins.join(", ")}.\n` +
-        `  Run it through the project's npm scripts, or npx hyperframes@${newerPins.at(-1)}.\n\n`,
+        `  Run it through the project's npm scripts, or npx ${PACKAGE_NAME}@${newerPins.at(-1)}.\n\n`,
     );
     return;
   }
@@ -248,6 +198,6 @@ export function printStalePinNotice(cwd: string = process.cwd()): void {
 
   process.stderr.write(
     `\n  This project pins hyperframes@${stale.join(", ")} (latest ${latest}).\n` +
-      `  Bump it: npx hyperframes@latest upgrade --project\n\n`,
+      `  Bump it: npx ${PACKAGE_NAME}@latest upgrade --project\n\n`,
   );
 }

@@ -35,8 +35,7 @@ test("published audio helpers import without the CLI package tree", () => {
   const skill = join(root, "media-use");
   try {
     cpSync(new URL("..", import.meta.url), skill, { recursive: true });
-    for (const helper of ["heygen.mjs", "tts.mjs"])
-      run(join(skill, "audio/scripts/lib"), helper, []);
+    for (const helper of ["env.mjs", "tts.mjs"]) run(join(skill, "audio/scripts/lib"), helper, []);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

@@ -20,6 +20,7 @@ import { validRegistryName, validRegistryManifest, validRegistryItem } from "./v
 import { join, basename } from "node:path";
 import { mkdirSync } from "node:fs";
 import { homedir } from "node:os";
+import { RAW_REGISTRY_URL } from "../project.js";
 import {
   ITEM_TYPE_DIRS,
   type FileTarget,
@@ -28,8 +29,7 @@ import {
   type RegistryManifest,
 } from "@hyperframes/core";
 
-export const DEFAULT_REGISTRY_URL =
-  "https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry";
+export const DEFAULT_REGISTRY_URL = RAW_REGISTRY_URL;
 
 const FETCH_TIMEOUT_MS = 10_000;
 const MAX_MANIFEST_BYTES = 10 * 1024 * 1024;

@@ -11,6 +11,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { PROJECT_REPO_SLUG } from "../src/project.js";
 import { buildManifest, MANIFEST_FILE, type SkillsManifest } from "../src/utils/skillsManifest.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -47,7 +48,7 @@ function reportDrift(fresh: SkillsManifest, committed: SkillsManifest | null): v
   }
 }
 
-const fresh = buildManifest(skillsRoot, { source: "heygen-com/hyperframes" });
+const fresh = buildManifest(skillsRoot, { source: PROJECT_REPO_SLUG });
 
 // Read the committed manifest directly (no existsSync precheck) so there's no
 // check-then-write race on outPath — a missing or unreadable file just means

@@ -360,8 +360,6 @@ export function batchRowRenderOptions(
     bestEffort: plan.bestEffort,
     exitAfterComplete: false,
     throwOnError: true,
-    skipFeedback: true,
-    desktopHint: false,
     manageDeParallelRouterBreaker: plan.batchConcurrency <= 1,
   };
 }

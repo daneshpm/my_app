@@ -85,6 +85,7 @@ var __dirname = __hf_dirname(__filename);`,
     "citty",
   ],
   define: {
+    __CLI_NAME__: JSON.stringify(pkg.name),
     __CLI_VERSION__: JSON.stringify(pkg.version),
     __PRODUCER_VERSION__: JSON.stringify(producerPkg.version),
   },

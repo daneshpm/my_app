@@ -43,7 +43,7 @@ export function voicePaths(hyperframesDir, lines, anomalies) {
   return paths;
 }
 
-const SFX_SOURCES = { heygen: "search", local: "bundled" };
+const SFX_SOURCES = { local: "bundled" };
 
 // The files one engine run wrote, each with how it was made, for the project's media manifest.
 export function writtenAssets({ only, lines, voices, ttsProvider, bgm, bgmFields, sfx }) {
@@ -65,7 +65,7 @@ export function writtenAssets({ only, lines, voices, ttsProvider, bgm, bgmFields
     assets.push({
       path: bgm.path,
       type: "bgm",
-      source: bgmFields.bgm_mode === "retrieve" ? "search" : "generated",
+      source: "generated",
       intent: bgm.query,
       duration: bgm.duration_s,
       provider: bgmFields.bgm_provider,
@@ -74,14 +74,13 @@ export function writtenAssets({ only, lines, voices, ttsProvider, bgm, bgmFields
   if (only.has("sfx")) {
     for (const cue of new Map(sfx.map((entry) => [entry.file, entry])).values()) {
       const source = SFX_SOURCES[cue.source];
-      const provider = source === "search" ? "heygen" : "bundled.sfx";
       assets.push({
         path: cue.file,
         type: "sfx",
         source,
         intent: cue.name,
         duration: cue.duration_s,
-        provider,
+        provider: "bundled.sfx",
       });
     }
   }

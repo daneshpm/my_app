@@ -23,6 +23,7 @@ import {
   isBlockItem,
   ITEM_TYPE_DIRS,
 } from "../packages/core/src/registry/types.js";
+import { DEFAULT_RAW_REGISTRY_URL } from "../packages/cli/src/project.ts";
 import { withHostedDefaults } from "./registry-hosted-assets.ts";
 import { declaredVariables } from "./catalog/component-variables.ts";
 import { usesWebgpu } from "./docs-catalog-shared.mjs";
@@ -31,7 +32,7 @@ const scriptDir = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(scriptDir, "..");
 const registryDir = resolve(repoRoot, "registry");
 const docsDir = resolve(repoRoot, "docs");
-const rawSourceBase = "https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry";
+const rawSourceBase = DEFAULT_RAW_REGISTRY_URL;
 const catalogImageBase = "https://static.heygen.ai/hyperframes-oss/docs/images/catalog";
 const payloadRoot = resolve(repoRoot, "docs/public/catalog");
 

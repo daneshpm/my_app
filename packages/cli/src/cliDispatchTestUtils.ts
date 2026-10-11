@@ -14,7 +14,6 @@ export function mockTelemetry(
     flush: vi.fn(async () => {}),
     flushSync: overrides.flushSync ?? vi.fn(),
     incrementCommandCount: vi.fn(),
-    showTelemetryNotice: vi.fn(),
     shouldTrack: () => false,
     trackCliError: vi.fn(),
     trackCommand: vi.fn(),

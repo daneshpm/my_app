@@ -97,9 +97,9 @@
           /* malformed declaration: the scene module falls back to its own defaults */
         }
         var scoped =
-          (window.__hyperframes &&
-            window.__hyperframes.getVariables &&
-            window.__hyperframes.getVariables()) ||
+          (window.__tagreel &&
+            window.__tagreel.getVariables &&
+            window.__tagreel.getVariables()) ||
           {};
         var vars = Object.assign({}, defaults, window.__hfVariables || {}, scoped);
         var root = document.getElementById("pt-root");

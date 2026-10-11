@@ -3,10 +3,7 @@ import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import { runCommand } from "citty";
 import { describe, expect, it, vi } from "vitest";
-import {
-  HF_COLOR_GRADING_ACTIVE_EFFECT_KEYS,
-  getHfColorGradingCapabilities,
-} from "@hyperframes/core";
+import { HF_COLOR_GRADING_ACTIVE_EFFECT_KEYS, getHfColorGradingCapabilities } from "@tagreel/core";
 import {
   applyMediaTreatmentToHtml,
   getMediaTreatmentCapabilityDetail,

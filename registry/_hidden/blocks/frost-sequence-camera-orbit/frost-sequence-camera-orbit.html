@@ -7,8 +7,8 @@
     <script src="assets/gsap-3.14.2.min.js"></script>
     <script>
       // frost.js reads its asset base when it loads; beside this file when mounted.
-      if (typeof __hyperframes !== "undefined" && __hyperframes.assetUrl)
-        window.__frostAssetBase = __hyperframes.assetUrl("assets/");
+      if (typeof __tagreel !== "undefined" && __tagreel.assetUrl)
+        window.__frostAssetBase = __tagreel.assetUrl("assets/");
     </script>
     <script src="assets/frost.js"></script>
     <style>
@@ -2522,8 +2522,8 @@
         );
         const values = {
           ...defaults,
-          ...(window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
+          ...(window.__tagreel && window.__tagreel.getVariables
+            ? window.__tagreel.getVariables()
             : {}),
         };
         // The default logo ships beside this file; a logo the user sets is their project's path.

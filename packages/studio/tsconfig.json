@@ -4,7 +4,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "@hyperframes/player": ["../player/src/hyperframes-player.ts"]
+      "@tagreel/player": ["../player/src/tagreel-player.ts"]
     },
     "jsx": "react-jsx",
     "strict": true,

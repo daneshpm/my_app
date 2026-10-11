@@ -1,7 +1,7 @@
 import type { TimelineEditOutcome } from "../../hooks/timelineEditPermission";
 import { trackKeyframeUsage } from "../../utils/keyframeUsage";
 import { useCallback, useMemo } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { TimelineElement } from "../../player";
 import { usePlayerStore } from "../../player/store/playerStore";
 import type { BlockedTimelineEditIntent } from "../../player/components/timelineEditing";

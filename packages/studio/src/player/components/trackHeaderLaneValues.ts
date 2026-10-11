@@ -8,7 +8,7 @@ import {
   classifyPropertyGroup,
   type GsapAnimation,
   type PropertyGroupName,
-} from "@hyperframes/core/gsap-parser";
+} from "@tagreel/core/gsap-parser";
 import { PROPERTY_DEFAULTS } from "../../hooks/gsapShared";
 import { resolveTweenDuration, resolveTweenStart } from "../../utils/globalTimeCompiler";
 import { easeFunction, keyframedTweenEases } from "../../utils/gsapKeyframeEases";

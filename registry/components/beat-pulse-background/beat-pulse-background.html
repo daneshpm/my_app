@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  beat-pulse-background: HyperFrames video primitive (backgrounds / rhythmic)
+  beat-pulse-background: Tagreel video primitive (backgrounds / rhythmic)
 
   Concept: a deep accent-derived backdrop pulses its glow intensity and
   saturation on a supplied beat grid. Each retained beat owns one fast attack
@@ -130,8 +130,8 @@
             var root = document.getElementById("root");
             var pulse = root.querySelector(".bpb-pulse");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentTokens = {

@@ -15,7 +15,7 @@ const SKILL_MD = read("skills", "figma", "SKILL.md");
 
 describe("figma SKILL.md has no telemetry beacons", () => {
   it("does not instruct any usage beacon", () => {
-    expect(SKILL_MD).not.toContain("hyperframes events");
+    expect(SKILL_MD).not.toContain("tagreel events");
     expect(SKILL_MD).not.toContain("--event=skill_completed");
   });
 });
@@ -32,7 +32,7 @@ describe("figma storyboard doctrine pins", () => {
     ["CLAUDE.md", ["CLAUDE.md"]],
     ["README.md", ["README.md"]],
     ["docs/guides/skills.mdx", ["docs", "guides", "skills.mdx"]],
-    ["skills/hyperframes/SKILL.md", ["skills", "hyperframes", "SKILL.md"]],
+    ["skills/tagreel/SKILL.md", ["skills", "tagreel", "SKILL.md"]],
   ];
 
   it("every catalog surface says reconstructed motion, never animatics", () => {

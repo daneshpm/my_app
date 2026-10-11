@@ -5,7 +5,7 @@
  * via the engine's `BrowserManager`. Because Cloud Run runs a container
  * image rather than a size-capped ZIP, the Chrome story is far simpler than
  * the Lambda adapter's: the `Dockerfile` installs `chrome-headless-shell`
- * into the image at a known path and exports `HYPERFRAMES_CHROME_PATH`.
+ * into the image at a known path and exports `TAGREEL_CHROME_PATH`.
  * The Dockerfile proves that exact executable's full BeginFrame screenshot
  * contract during the image build. There is no runtime decompression-into-
  * /tmp step and no 250 MB packaging ceiling to fight.
@@ -13,7 +13,7 @@
  * Resolution order:
  *   1. `PRODUCER_HEADLESS_SHELL_PATH` — the engine's own override. If a
  *      caller (or the Docker image) already set it, honour it untouched.
- *   2. `HYPERFRAMES_CHROME_PATH` — set by the Dockerfile to the installed
+ *   2. `TAGREEL_CHROME_PATH` — set by the Dockerfile to the installed
  *      `chrome-headless-shell` binary.
  *   3. A small list of conventional install paths, as a last resort for
  *      images built outside our Dockerfile.
@@ -72,12 +72,12 @@ export function resolveChromeExecutablePath(): string {
     return fromEngineOverride;
   }
 
-  const fromImage = process.env.HYPERFRAMES_CHROME_PATH?.trim();
+  const fromImage = process.env.TAGREEL_CHROME_PATH?.trim();
   if (fromImage) {
     if (!existsSync(fromImage)) {
       throw new ChromeBinaryUnavailableError(
         fromImage,
-        `HYPERFRAMES_CHROME_PATH=${JSON.stringify(fromImage)} does not exist on disk.`,
+        `TAGREEL_CHROME_PATH=${JSON.stringify(fromImage)} does not exist on disk.`,
       );
     }
     return fromImage;
@@ -89,7 +89,7 @@ export function resolveChromeExecutablePath(): string {
 
   throw new ChromeBinaryUnavailableError(
     null,
-    "no Chrome binary found. Set HYPERFRAMES_CHROME_PATH (the Dockerfile does this) or " +
+    "no Chrome binary found. Set TAGREEL_CHROME_PATH (the Dockerfile does this) or " +
       "PRODUCER_HEADLESS_SHELL_PATH to the absolute path of a chrome-headless-shell binary. " +
       `Searched: ${FALLBACK_CHROME_PATHS.join(", ")}.`,
   );

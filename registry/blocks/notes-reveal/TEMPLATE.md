@@ -4,7 +4,7 @@
 
 This template depicts a notes application and a hand-lettered checklist. The supplied website provides the declared note and checklist copy; it does not own the notes application chrome. The remix is an advertisement for that brand, and the sign-off strip under the closing card is where that brand is identified: place its real mark in `brandLogo` and its real domain in `brandDomain`.
 
-**The seven note body lines are the video.** They are typed out over the first 20 of 24.9 seconds and are the only place the note says anything, so they carry the pitch. The packaged defaults tell HyperFrames' own story — "my videos sucked", "started HyperFrames three weeks ago" — and every one of them must be rewritten for the brand being advertised. Leaving them is shipping HyperFrames' marketing inside somebody else's ad.
+**The seven note body lines are the video.** They are typed out over the first 20 of 24.9 seconds and are the only place the note says anything, so they carry the pitch. The packaged defaults tell Tagreel' own story — "my videos sucked", "started Tagreel three weeks ago" — and every one of them must be rewritten for the brand being advertised. Leaving them is shipping Tagreel' marketing inside somebody else's ad.
 
 Write them as one person's note, in the first person, arcing from a problem to this brand solving it: three lines of the problem, a turn where the brand enters, then the payoff. Use the brand's own language from the captured page, in the language of that page.
 

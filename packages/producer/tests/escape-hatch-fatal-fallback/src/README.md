@@ -10,7 +10,7 @@
 - `ts=1784039841`
 - Platform: `win32/x64`
 - CLI version: `0.7.57`
-- Reported in `#hyperframes-cli-feedback`
+- Reported in `#tagreel-cli-feedback`
 
 ## Failure mode
 

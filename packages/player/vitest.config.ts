@@ -9,13 +9,13 @@ const coreRoot = resolve(fileURLToPath(new URL("../core/src", import.meta.url)))
 export default defineConfig({
   resolve: {
     alias: {
-      "@hyperframes/core/composition-contract": resolve(coreRoot, "compositionContract.ts"),
-      "@hyperframes/parsers/composition-contract": resolve(
+      "@tagreel/core/composition-contract": resolve(coreRoot, "compositionContract.ts"),
+      "@tagreel/parsers/composition-contract": resolve(
         coreRoot,
         "../../parsers/src/compositionContract.ts",
       ),
-      "@hyperframes/core/slideshow": resolve(coreRoot, "slideshow/index.ts"),
-      "@hyperframes/core/runtime/protocol": resolve(coreRoot, "runtime/protocol.ts"),
+      "@tagreel/core/slideshow": resolve(coreRoot, "slideshow/index.ts"),
+      "@tagreel/core/runtime/protocol": resolve(coreRoot, "runtime/protocol.ts"),
     },
   },
   test: {

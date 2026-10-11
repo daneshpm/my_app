@@ -14,14 +14,14 @@
  * remembering to sync, which is what a single sink prevents.
  */
 
-import { HF_AUDIO_AUTOMATION_ATTR } from "@hyperframes/core/audio-automation";
-import { HF_AUDIO_FX_ATTR } from "@hyperframes/core/audio-fx";
+import { HF_AUDIO_AUTOMATION_ATTR } from "@tagreel/core/audio-automation";
+import { HF_AUDIO_FX_ATTR } from "@tagreel/core/audio-fx";
 import {
   HF_AUDIO_FADE_IN_ATTR,
   HF_AUDIO_FADE_OUT_ATTR,
   readElementFades,
   readFadeSeconds,
-} from "@hyperframes/core/audio-fade";
+} from "@tagreel/core/audio-fade";
 import { usePlayerStore, type TimelineElement } from "../store/playerStore";
 import { groupInfoFor } from "./timelineGroupInfo";
 import {

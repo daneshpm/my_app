@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "beat-freeze-cut",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Beat Freeze Cut",
   "description": "A beat-driven speed ramp, freeze-frame hit, and hard-cut sequence for music-led promos and montages.",
   "tags": ["transition", "music", "beat-driven", "freeze-frame"],
@@ -14,7 +14,7 @@
     {
       "path": "beat-freeze-cut.html",
       "target": "compositions/beat-freeze-cut.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ],
   "params": [

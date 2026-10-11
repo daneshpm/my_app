@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":146}}
   attribution={{"path":"registry/components/directional-wipe","tags":["transition-primitive"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/directional-wipe/directional-wipe.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/directional-wipe/directional-wipe.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html directional-wipe.html
 <!--
-  Directional Wipe - catalog component for HyperFrames.
+  Directional Wipe - catalog component for Tagreel.
 
   Paste the markup and CSS into a composition. Drive the timeline integration
   from a paused GSAP timeline so renders remain deterministic.
@@ -136,8 +136,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides fall back to their declared defaults.
@@ -175,7 +175,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add directional-wipe" item="directional-wipe" />
+<InstallCommand command="npx tagreel add directional-wipe" item="directional-wipe" />
 
 That writes one file: `compositions/components/directional-wipe.html`.
 

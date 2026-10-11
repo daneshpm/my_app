@@ -42,8 +42,8 @@ import {
   runFfmpeg,
   type TimelineExtractionWindow,
   type VideoMetadata,
-} from "@hyperframes/engine";
-import { fpsToFfmpegArg, fpsToNumber } from "@hyperframes/core";
+} from "@tagreel/engine";
+import { fpsToFfmpegArg, fpsToNumber } from "@tagreel/core";
 import type { ProducerLogger } from "../../../logger.js";
 import {
   closeHdrVideoFrameSource,

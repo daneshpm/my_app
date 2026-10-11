@@ -82,8 +82,8 @@ function rect({ left, top, width, height }: RectInput): DOMRect {
 }
 
 interface SignatureWindow {
-  __hyperframesLayoutGeometry: () => string;
-  __hyperframesMotionSignature: {
+  __tagreelLayoutGeometry: () => string;
+  __tagreelMotionSignature: {
     compositionRoot(): Element;
     compositionSignature(root: Element | null, options?: { quantize?: boolean }): string;
   };
@@ -95,7 +95,7 @@ function signatureWindow(): SignatureWindow {
 
 function installScript(): () => string {
   window.eval(script);
-  return signatureWindow().__hyperframesLayoutGeometry;
+  return signatureWindow().__tagreelLayoutGeometry;
 }
 
 function mockMediaPixels(read: () => number): void {
@@ -118,8 +118,8 @@ const COUNTER_CONSUMER = { after: { content: "counter(countdown)" } };
 afterEach(() => {
   vi.restoreAllMocks();
   document.body.innerHTML = "";
-  Reflect.deleteProperty(window, "__hyperframesLayoutGeometry");
-  Reflect.deleteProperty(window, "__hyperframesMotionSignature");
+  Reflect.deleteProperty(window, "__tagreelLayoutGeometry");
+  Reflect.deleteProperty(window, "__tagreelMotionSignature");
 });
 
 describe("motion-signature.browser media and geometry channels", () => {
@@ -313,7 +313,7 @@ describe("motion-signature.browser media and geometry channels", () => {
       rect({ left: glowLeft, top: 40, width: 50, height: 50 }),
     );
     installScript();
-    const { compositionSignature } = signatureWindow().__hyperframesMotionSignature;
+    const { compositionSignature } = signatureWindow().__tagreelMotionSignature;
     const scene = document.getElementById("scene")!;
 
     const before = compositionSignature(scene);
@@ -336,8 +336,7 @@ describe("motion-signature.browser media and geometry channels", () => {
       rect({ left, top: 100, width: 50, height: 50 }),
     );
     installScript();
-    const { compositionSignature, compositionRoot } =
-      signatureWindow().__hyperframesMotionSignature;
+    const { compositionSignature, compositionRoot } = signatureWindow().__tagreelMotionSignature;
     const root = compositionRoot();
 
     const exactBefore = compositionSignature(root);

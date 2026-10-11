@@ -20,8 +20,8 @@ import {
   resolveAutomationRange,
   type HfAutomation,
   type HfAutomationLane,
-} from "@hyperframes/core/audio-automation";
-import { parseAudioFxChain, type HfAudioFxChain } from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-automation";
+import { parseAudioFxChain, type HfAudioFxChain } from "@tagreel/core/audio-fx";
 import { isAudioOrVideoTimelineElement } from "../../utils/timelineInspector";
 import type { TimelineElement } from "../store/playerStore";
 

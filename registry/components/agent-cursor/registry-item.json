@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "agent-cursor",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Agent Cursor",
   "description": "An AI agent operating a UI: a cursor with an accent name label that types out each step, clicks each target with a small ring, and ends on a check.",
   "tags": ["cursor", "motion-primitive", "agent", "ai", "status", "click"],
@@ -9,7 +9,7 @@
     {
       "path": "agent-cursor.html",
       "target": "compositions/components/agent-cursor.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "jobs": ["demonstrate"],

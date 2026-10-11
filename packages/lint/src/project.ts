@@ -2,8 +2,8 @@ export { shouldBlockRender } from "./shouldBlockRender.js";
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, extname, join, relative, resolve } from "node:path";
-import { rewriteAssetPath } from "@hyperframes/parsers/asset-paths";
-import { checkSubCompositionUsability } from "@hyperframes/parsers/sub-composition-validity";
+import { rewriteAssetPath } from "@tagreel/parsers/asset-paths";
+import { checkSubCompositionUsability } from "@tagreel/parsers/sub-composition-validity";
 import { parseHTML } from "linkedom";
 import {
   cleanAssetUrl,
@@ -16,19 +16,15 @@ import {
   resolveExistingLocalAsset,
   resolveLocalAssetCandidates,
   resolveProjectRelativeSrc,
-} from "@hyperframes/parsers/asset-resolution";
+} from "@tagreel/parsers/asset-resolution";
 import {
   collectLocalVideoCandidates,
   lintHevcPreviewCodec,
   lintVideoMediaStartPastEof,
 } from "./hevcPreviewLint.js";
-import { lintHyperframeHtml } from "./hyperframeLinter.js";
-import type {
-  HyperframeLintFinding,
-  HyperframeLintResult,
-  HyperframeLinterOptions,
-} from "./types.js";
-import type { ParsableDocumentLike } from "@hyperframes/parsers/sub-composition-validity";
+import { lintTagreelHtml } from "./tagreelLinter.js";
+import type { TagreelLintFinding, TagreelLintResult, TagreelLinterOptions } from "./types.js";
+import type { ParsableDocumentLike } from "@tagreel/parsers/sub-composition-validity";
 import { isAudibleVideoTag, mediaSrcTagRe } from "./utils";
 
 /** Adapts linkedom's `parseHTML` to the `checkSubCompositionUsability` contract. */
@@ -64,7 +60,7 @@ function querySelectorAllIncludingTemplates(root: ParentNode, selector: string):
 }
 
 export interface ProjectLintResult {
-  results: Array<{ file: string; result: HyperframeLintResult; contentHash: string }>;
+  results: Array<{ file: string; result: TagreelLintResult; contentHash: string }>;
   totalErrors: number;
   totalWarnings: number;
   totalInfos: number;
@@ -176,7 +172,7 @@ function resolveCssAssetCandidates(
 export async function lintProject(
   projectDir: string,
   entryFile?: string,
-  hostOptions: Pick<HyperframeLinterOptions, "host"> = {},
+  hostOptions: Pick<TagreelLinterOptions, "host"> = {},
 ): Promise<ProjectLintResult> {
   const indexPath = entryFile ? resolve(entryFile) : resolve(projectDir, "index.html");
   if (entryFile && !isWithinProjectRoot(projectDir, indexPath)) {
@@ -190,7 +186,7 @@ export async function lintProject(
   let totalInfos = 0;
 
   const rootHtml = readFileSync(indexPath, "utf-8");
-  const rootResult = await lintHyperframeHtml(rootHtml, {
+  const rootResult = await lintTagreelHtml(rootHtml, {
     ...hostOptions,
     filePath: indexPath,
     externalStyles: collectExternalStyles(projectDir, rootHtml, rootCompSrcPath),
@@ -230,7 +226,7 @@ export async function lintProject(
       // Anchored to the file's ROOT element so a real composition that merely
       // inlines snippet markup (or mentions the token in text) is still linted.
       if (isSnippetFragment(html)) continue;
-      const result = await lintHyperframeHtml(html, {
+      const result = await lintTagreelHtml(html, {
         ...hostOptions,
         filePath,
         isSubComposition: true,
@@ -283,7 +279,7 @@ export async function lintProject(
 function lintBlankRootWithStandaloneComposition(
   rootHtml: string,
   htmlSources: HtmlSource[],
-): HyperframeLintFinding[] {
+): TagreelLintFinding[] {
   const { document: rootDocument } = parseHTML(rootHtml);
   const root = rootDocument.querySelector("body [data-composition-id]");
   // A no-media scaffold has no rendered descendants and can silently mask an authored file below.
@@ -324,8 +320,8 @@ function lintBlankRootWithStandaloneComposition(
 function lintProjectAudioFiles(
   projectDir: string,
   htmlSources: HtmlSource[],
-): HyperframeLintFinding[] {
-  const findings: HyperframeLintFinding[] = [];
+): TagreelLintFinding[] {
+  const findings: TagreelLintFinding[] = [];
 
   let audioFiles: string[];
   try {
@@ -358,11 +354,8 @@ function lintProjectAudioFiles(
   return findings;
 }
 
-function lintAudioSrcNotFound(
-  projectDir: string,
-  htmlSources: HtmlSource[],
-): HyperframeLintFinding[] {
-  const findings: HyperframeLintFinding[] = [];
+function lintAudioSrcNotFound(projectDir: string, htmlSources: HtmlSource[]): TagreelLintFinding[] {
+  const findings: TagreelLintFinding[] = [];
 
   const audioSrcRe = mediaSrcTagRe("audio");
 
@@ -404,8 +397,8 @@ function lintAudioSrcNotFound(
 function lintMissingLocalAsset(
   projectDir: string,
   htmlSources: HtmlSource[],
-): HyperframeLintFinding[] {
-  const findings: HyperframeLintFinding[] = [];
+): TagreelLintFinding[] {
+  const findings: TagreelLintFinding[] = [];
 
   const localAssetSrcRe = mediaSrcTagRe("video|img|source");
 
@@ -469,7 +462,7 @@ function lintMissingLocalAsset(
 function lintTextureMaskAssetNotFound(
   projectDir: string,
   htmlSources: HtmlSource[],
-): HyperframeLintFinding[] {
+): TagreelLintFinding[] {
   const missingByFile = new Map<string, Set<string>>();
 
   for (const { html, compSrcPath } of htmlSources) {
@@ -496,7 +489,7 @@ function lintTextureMaskAssetNotFound(
     }
   }
 
-  return [...missingByFile].map(([file, found]): HyperframeLintFinding => {
+  return [...missingByFile].map(([file, found]): TagreelLintFinding => {
     const urls = [...found];
     return {
       code: "texture_mask_asset_not_found",
@@ -511,8 +504,8 @@ function lintTextureMaskAssetNotFound(
   });
 }
 
-function lintMultipleRootCompositions(projectDir: string): HyperframeLintFinding[] {
-  const findings: HyperframeLintFinding[] = [];
+function lintMultipleRootCompositions(projectDir: string): TagreelLintFinding[] {
+  const findings: TagreelLintFinding[] = [];
   try {
     const rootHtmlFiles = readdirSync(projectDir).filter(
       (file) => file.endsWith(".html") && !file.startsWith("._"),
@@ -540,8 +533,8 @@ function lintMultipleRootCompositions(projectDir: string): HyperframeLintFinding
   return findings;
 }
 
-function lintDuplicateAudioTracks(htmlSources: HtmlSource[]): HyperframeLintFinding[] {
-  const findings: HyperframeLintFinding[] = [];
+function lintDuplicateAudioTracks(htmlSources: HtmlSource[]): TagreelLintFinding[] {
+  const findings: TagreelLintFinding[] = [];
   function extractAttr(tag: string, name: string): string | null {
     const re = new RegExp(`\\b${name}\\s*=\\s*["']([^"']+)["']`, "i");
     const m = tag.match(re);
@@ -618,7 +611,7 @@ function lintDuplicateAudioTracks(htmlSources: HtmlSource[]): HyperframeLintFind
 function lintMissingOrEmptySubComposition(
   projectDir: string,
   rootHtml: string,
-): HyperframeLintFinding[] {
+): TagreelLintFinding[] {
   // Dedup by src path — the same reference can appear from nested sub-comps.
   const checked = new Map<string, { srcPath: string; problem: string; folder?: true }>();
   const visited = new Set<string>();
@@ -679,7 +672,7 @@ function lintMissingOrEmptySubComposition(
 
   walk(rootHtml);
 
-  const findings: HyperframeLintFinding[] = [];
+  const findings: TagreelLintFinding[] = [];
   for (const { srcPath, problem, folder } of checked.values()) {
     findings.push({
       code: "missing_or_empty_sub_composition",

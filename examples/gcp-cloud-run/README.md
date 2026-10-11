@@ -1,8 +1,8 @@
 # Google Cloud Run example
 
 End-to-end deployment and parity testing for
-[`@hyperframes/gcp-cloud-run`](../../packages/gcp-cloud-run), the Cloud Run +
-Cloud Workflows adapter for HyperFrames distributed rendering.
+[`@tagreel/gcp-cloud-run`](../../packages/gcp-cloud-run), the Cloud Run +
+Cloud Workflows adapter for Tagreel distributed rendering.
 
 ## Layout
 
@@ -84,7 +84,7 @@ nonce into a unique resource prefix such as `hf-smoke-a1b2c3d4e5`. Reusing an
 owner label does not reuse old Terraform state or cloud resources. This prefix
 stays within GCP service account naming limits. The smoke:
 
-- never uses the static `hyperframes` prefix
+- never uses the static `tagreel` prefix
 - copies the Terraform module into an owner-scoped work directory and uses an
   isolated Terraform data directory and state file
 - scopes GCS keys, render outputs, the image package/tag, and the default

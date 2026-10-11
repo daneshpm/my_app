@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  trust-strip: HyperFrames video primitive (proof & stats / trust)
+  trust-strip: Tagreel video primitive (proof & stats / trust)
 
   A monochrome trust row: N text wordmarks set in wide-tracked uppercase mono,
   a single centered row with wide gaps, no boxes, no borders. Marks fade in
@@ -119,8 +119,8 @@
             var root = document.getElementById("root");
             var strip = root.querySelector(".ts-strip");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var marks = String(vars.marks == null ? "" : vars.marks)

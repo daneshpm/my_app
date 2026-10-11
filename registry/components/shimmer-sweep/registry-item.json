@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "shimmer-sweep",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Shimmer Sweep",
   "description": "Animated light sweep across text or elements using a CSS gradient mask — ideal for AI accents and premium reveals",
   "tags": ["text", "shimmer", "highlight", "effect"],
@@ -9,7 +9,7 @@
     {
       "path": "shimmer-sweep.html",
       "target": "compositions/components/shimmer-sweep.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

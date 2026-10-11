@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":176}}
   attribution={{"path":"registry/components/card-resize","tags":["video-primitive","transition-primitive","transitions-dev-port","card","layout"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/card-resize/card-resize.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/card-resize/card-resize.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html card-resize.html
 <!--
-  Card Resize - transitions.dev-inspired primitive for HyperFrames.
+  Card Resize - transitions.dev-inspired primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Use the timeline
   integration note at the bottom as the starting point for deterministic GSAP
@@ -130,8 +130,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -205,7 +205,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add card-resize" item="card-resize" />
+<InstallCommand command="npx tagreel add card-resize" item="card-resize" />
 
 That writes one file: `compositions/components/card-resize.html`.
 

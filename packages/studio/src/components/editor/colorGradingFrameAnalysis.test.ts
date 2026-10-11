@@ -1,8 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  normalizeHfColorGrading,
-  type HfColorGradingSecondary,
-} from "@hyperframes/core/color-grading";
+import { normalizeHfColorGrading, type HfColorGradingSecondary } from "@tagreel/core/color-grading";
 import {
   analyzeColorGradingFrame,
   buildColorGradingSecondaryMatte,

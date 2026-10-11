@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":830}}
   attribution={{"path":"registry/components/shutter-slam","tags":["effect","motion-blur","shutter","after-effects","slam","animation"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/shutter-slam/shutter-slam.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/shutter-slam/shutter-slam.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html shutter-slam.html
 <!doctype html>
 <!--
-  shutter-slam: HyperFrames video primitive
+  shutter-slam: Tagreel video primitive
 
   One word thrown through six single-property beats, every frame integrated
   over the camera shutter: two hard translate slams, a scale punch, then a
@@ -478,7 +478,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
                 });
               }
 
-              // tl.eventCallback("onUpdate") is unavailable under the HyperFrames runtime proxy, so a
+              // tl.eventCallback("onUpdate") is unavailable under the Tagreel runtime proxy, so a
               // tracker tween's onUpdate fires on every seek. Sampling is deferred to a microtask:
               // seeking GSAP from inside its own render reads stale tween state, while the microtask
               // runs after the seek returns and before the frame is captured or painted.
@@ -731,8 +731,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var word = root.querySelector(".ss-word");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "MOTION" : String(vars.text);
@@ -859,7 +859,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add shutter-slam" item="shutter-slam" />
+<InstallCommand command="npx tagreel add shutter-slam" item="shutter-slam" />
 
 That writes one file: `compositions/components/shutter-slam.html`.
 

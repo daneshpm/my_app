@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "grain-overlay",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Grain Overlay",
   "description": "Animated film grain texture overlay using CSS keyframes — adds warmth and analog character to any composition",
   "tags": ["texture", "grain", "overlay", "film"],
@@ -9,7 +9,7 @@
     {
       "path": "grain-overlay.html",
       "target": "compositions/components/grain-overlay.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

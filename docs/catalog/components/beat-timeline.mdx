@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":288}}
   attribution={{"path":"registry/components/beat-timeline","tags":["orchestration","transitions","sequencing","bridge","timeline"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/beat-timeline/beat-timeline.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/beat-timeline/beat-timeline.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html beat-timeline.html
 <!doctype html>
 <!--
-  beat-timeline -- HyperFrames video primitive (transitions / sequencing / bridge)
+  beat-timeline -- Tagreel video primitive (transitions / sequencing / bridge)
 
   Concept: a visible orchestration spine made from a paused master GSAP
   timeline. Each beat row is pinned to an evenly spaced named label, then
@@ -64,7 +64,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   only <template> contents, so all live styles, markup, and scripts are inside
   the template. #root fills the host-owned box with no data-width/data-height,
   and all internal geometry is based on its own cqw/cqh container. Variables
-  come from window.__hyperframes.getVariables(), because document.documentElement
+  come from window.__tagreel.getVariables(), because document.documentElement
   belongs to the host after mounting.
 -->
 <html
@@ -206,8 +206,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             // EDIT ZONE: declarations live on <html>; this runtime call is the
             // single owner of declared defaults plus per-instance overrides.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var parsedBeatCount = Number(vars.beatCount);
@@ -317,7 +317,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add beat-timeline" item="beat-timeline" />
+<InstallCommand command="npx tagreel add beat-timeline" item="beat-timeline" />
 
 That writes one file: `compositions/components/beat-timeline.html`.
 

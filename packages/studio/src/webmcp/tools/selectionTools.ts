@@ -144,7 +144,7 @@ export const STUDIO_SELECT_INPUT_SCHEMA = {
 } as const;
 
 export const STUDIO_SELECT_DESCRIPTION = [
-  "Select an element in HyperFrames Studio, exactly as clicking it would:",
+  "Select an element in Tagreel Studio, exactly as clicking it would:",
   "the human sees the same selection box and inspector.",
   "Call this before the first write to a target so the human sees the agent's intent.",
   "Takes a handle from studio_look. Selection is visual context for the human;",

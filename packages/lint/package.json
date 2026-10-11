@@ -1,9 +1,9 @@
 {
-  "name": "@hyperframes/lint",
+  "name": "@tagreel/lint",
   "version": "0.8.137",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heygen-com/hyperframes",
+    "url": "https://github.com/daneshpm/my_app",
     "directory": "packages/lint"
   },
   "files": [
@@ -53,7 +53,7 @@
     "prepublishOnly": "echo skip"
   },
   "dependencies": {
-    "@hyperframes/parsers": "workspace:*",
+    "@tagreel/parsers": "workspace:*",
     "acorn": "^8.17.0",
     "acorn-walk": "^8.3.5",
     "htmlparser2": "^10.1.0",

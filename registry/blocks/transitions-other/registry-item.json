@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "transitions-other",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Other Transitions",
   "description": "Showcase of miscellaneous creative transitions",
   "tags": ["transition", "showcase"],
@@ -14,7 +14,7 @@
     {
       "path": "transitions-other.html",
       "target": "compositions/transitions-other.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

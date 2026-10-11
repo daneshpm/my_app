@@ -15,7 +15,7 @@ import {
   MAX_PLAYBACK_RATE,
   MIN_PLAYBACK_RATE,
   readMediaOffsetSeconds,
-} from "@hyperframes/parsers/media-duration";
+} from "@tagreel/parsers/media-duration";
 
 function el(id: string, extra: Partial<TimelineElement> = {}): TimelineElement {
   return { id, tag: "img", start: 0, duration: 5, track: 0, ...extra };
@@ -227,7 +227,7 @@ describe("parseTimelineFromDOM — hfId from data-hf-id", () => {
         <canvas
           class="__hf_color_grading_canvas__"
           data-hf-color-grading-canvas="true"
-          data-hyperframes-ignore
+          data-tagreel-ignore
           data-start="0"
           data-duration="5"
         ></canvas>

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "radial-surround",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Radial Surround",
   "description": "Labeled hairline chips assemble around a centered subject on an elliptical ring, then optionally converge inward with a subtle edge dim. The center never moves: surrounded, not zoomed.",
   "tags": ["motion-primitive", "problem-setup", "radial", "ring", "surround", "converge"],
@@ -17,7 +17,7 @@
     {
       "path": "radial-surround.html",
       "target": "compositions/components/radial-surround.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

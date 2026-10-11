@@ -112,9 +112,9 @@ Search results are candidates, not an ownership guarantee. Unlabeled intake must
 
 ## Examples for estimating difficulty
 
-- **Easy:** [deduplicating linter transform text (#3761)](https://github.com/heygen-com/hyperframes/pull/3761), a localized expression change and a regression test; [fixing an empty player loading label (#4327)](https://github.com/heygen-com/hyperframes/pull/4327), with initial/reset/populated-state coverage.
-- **Medium:** [reading extensible WAV headers (#4267)](https://github.com/heygen-com/hyperframes/pull/4267), which needs binary-format fixtures and rejection cases; [resolving provenance versions (#3695)](https://github.com/heygen-com/hyperframes/pull/3695), which spans source and bundled package layouts.
-- **Hard:** [Linux file watching after atomic saves (#4346)](https://github.com/heygen-com/hyperframes/pull/4346), with platform lifecycle and race cases; [safe capture file writes (#4298)](https://github.com/heygen-com/hyperframes/pull/4298), with adversarial filesystem boundaries.
+- **Easy:** [deduplicating linter transform text (#3761)](https://github.com/daneshpm/my_app/pull/3761), a localized expression change and a regression test; [fixing an empty player loading label (#4327)](https://github.com/daneshpm/my_app/pull/4327), with initial/reset/populated-state coverage.
+- **Medium:** [reading extensible WAV headers (#4267)](https://github.com/daneshpm/my_app/pull/4267), which needs binary-format fixtures and rejection cases; [resolving provenance versions (#3695)](https://github.com/daneshpm/my_app/pull/3695), which spans source and bundled package layouts.
+- **Hard:** [Linux file watching after atomic saves (#4346)](https://github.com/daneshpm/my_app/pull/4346), with platform lifecycle and race cases; [safe capture file writes (#4298)](https://github.com/daneshpm/my_app/pull/4298), with adversarial filesystem boundaries.
 
 These examples illustrate the rubric; they are not available assignments or a substitute for checking current source.
 

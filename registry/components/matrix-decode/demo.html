@@ -74,9 +74,9 @@
         <div class="demo-label">Matrix Decode</div>
         <div
           class="hf-catalog-matrix-decode"
-          data-final="HYPERFRAMES"
+          data-final="TAGREEL"
           data-composition-variables='[
-    { "id": "text", "type": "string", "role": "content", "label": "Target text", "description": "Word the scramble resolves into. One scrambling cell per character, up to 32.", "default": "HYPERFRAMES" },
+    { "id": "text", "type": "string", "role": "content", "label": "Target text", "description": "Word the scramble resolves into. One scrambling cell per character, up to 32.", "default": "TAGREEL" },
     { "id": "accent", "type": "enum", "role": "style", "label": "Accent", "description": "Colour family of the cells and their glow.", "default": "green", "options": [{ "value": "green", "label": "Green" }, { "value": "blue", "label": "Blue" }, { "value": "violet", "label": "Violet" }] },
     { "id": "size", "type": "number", "role": "style", "label": "Size", "description": "Type size of the cells in pixels. Cell width follows it.", "default": 64, "min": 24, "max": 160, "step": 4, "unit": "px" },
     { "id": "glow", "type": "enum", "role": "style", "label": "Glow", "description": "Strength of the halo behind the cells, from none to a heavy bloom.", "default": "standard", "options": [{ "value": "none", "label": "None" }, { "value": "standard", "label": "Standard" }, { "value": "strong", "label": "Strong" }] }
@@ -91,8 +91,8 @@
           "use strict";
 
           var vars =
-            window.__hyperframes && window.__hyperframes.getVariables
-              ? window.__hyperframes.getVariables()
+            window.__tagreel && window.__tagreel.getVariables
+              ? window.__tagreel.getVariables()
               : {};
 
           // Anything missing or invalid returns to its declared default.
@@ -113,7 +113,7 @@
 
           var text = typeof vars.text === "string" ? vars.text.trim().slice(0, 32) : "";
           if (!text) {
-            text = "HYPERFRAMES";
+            text = "TAGREEL";
           }
 
           var size =

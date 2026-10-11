@@ -6,7 +6,7 @@ import test from "node:test";
 import { stageAssets } from "./lib/assets.mjs";
 
 // ── captured SVGs are stageable ──────────────────────────────────────────────
-// Regression: `hyperframes capture` extracts inline SVGs into capture/assets/svgs/
+// Regression: `tagreel capture` extracts inline SVGs into capture/assets/svgs/
 // (assetDownloader.ts), and the capture manifest advertises them to the agent as
 // `assets/svgs/<name>.svg`, so a frame names one in `asset_candidates` exactly as
 // it names a screenshot. stageAssets only searched capture/{assets,assets/videos,
@@ -29,7 +29,7 @@ const frames = [
 test("stages an SVG that capture wrote into capture/assets/svgs/", () => {
   const dir = projectWithCapturedSvg();
 
-  const { staged, wanted, anomalies } = stageAssets({ hyperframesDir: dir, frames });
+  const { staged, wanted, anomalies } = stageAssets({ tagreelDir: dir, frames });
 
   assert.equal(wanted.size, 2);
   assert.equal(staged, 2, `expected both assets staged, got anomalies: ${anomalies.join("; ")}`);
@@ -42,7 +42,7 @@ test("still reports an asset that exists nowhere under capture/", () => {
   const dir = projectWithCapturedSvg();
 
   const { staged, anomalies } = stageAssets({
-    hyperframesDir: dir,
+    tagreelDir: dir,
     frames: [{ extra: { asset_candidates: "assets/svgs/absent.svg — never captured" } }],
   });
 

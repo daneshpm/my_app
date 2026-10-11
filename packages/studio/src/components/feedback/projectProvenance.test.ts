@@ -7,7 +7,7 @@ import {
   resetProjectProvenance,
 } from "./projectProvenance";
 
-const CONFIG = "hyperframes.json";
+const CONFIG = "tagreel.json";
 
 /**
  * The real `/files/*` route answers with an envelope, not the file. Mocking the

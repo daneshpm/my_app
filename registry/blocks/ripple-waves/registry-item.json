@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "ripple-waves",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Ripple Waves",
   "description": "Shader transition with concentric ripple wave distortion",
   "tags": ["transition", "shader"],
@@ -14,7 +14,7 @@
     {
       "path": "ripple-waves.html",
       "target": "compositions/ripple-waves.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

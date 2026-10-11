@@ -1124,7 +1124,7 @@ export const ALLOWED_DELETIONS = new Map([
   ["docs/images/preview-reload-evidence/before.webm", "evidence video no page referenced"],
   [
     "packages/studio-server/src/helpers/atomicFile.ts",
-    "moved to @hyperframes/core/atomic-file (packages/core/src/atomicFile.ts) as the single atomic writer for core, sdk, cli and studio-server",
+    "moved to @tagreel/core/atomic-file (packages/core/src/atomicFile.ts) as the single atomic writer for core, sdk, cli and studio-server",
   ],
   [
     "packages/studio-server/src/helpers/atomicFile.test.ts",

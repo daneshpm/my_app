@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "marker-highlight",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Marker Highlight",
   "description": "Display text settles in, then one hand-drawn marker stroke (highlight, circle, underline, or scribble) draws over the emphasized word on cue.",
   "tags": ["motion-primitive", "typography", "emphasis", "marker", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "marker-highlight.html",
       "target": "compositions/components/marker-highlight.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

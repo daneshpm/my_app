@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  segmentation-flood: HyperFrames video primitive (product demo / AI)
+  segmentation-flood: Tagreel video primitive (product demo / AI)
 
   A machine-vision read of a slotted subject. Translucent accent
   segmentation masks FLOOD onto 2-4 regions in scanline steps: rows arrive
@@ -246,8 +246,8 @@
             var canvas = root.querySelector(".sgf-canvas");
             var overlay = root.querySelector(".sgf-overlay");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var labels = String(vars.regions == null ? "" : vars.regions)

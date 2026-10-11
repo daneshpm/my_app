@@ -3,16 +3,16 @@ import {
   parseAudioFxChain,
   serializeAudioFxChain,
   type HfAudioFxChain,
-} from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-fx";
 import {
   clipsOverlap,
   DEFAULT_CARVE,
   HF_AUDIO_CARVE_ATTR,
   normalizeCarveSettings,
   type HfCarveSettings,
-} from "@hyperframes/core/audio-carve";
-import { resolveCarveSourceIds } from "@hyperframes/core/audio-groups";
-import { parseAutomation, type HfAutomation } from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-carve";
+import { resolveCarveSourceIds } from "@tagreel/core/audio-groups";
+import { parseAutomation, type HfAutomation } from "@tagreel/core/audio-automation";
 import {
   carveBedRoles,
   carverAgainst,

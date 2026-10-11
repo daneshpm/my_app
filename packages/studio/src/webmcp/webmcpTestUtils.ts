@@ -5,7 +5,7 @@
  * existing `hooks/domSelectionTestHarness.ts` convention.
  */
 
-import { isHtmlElement } from "@hyperframes/core/runtime/dom-realm";
+import { isHtmlElement } from "@tagreel/core/runtime/dom-realm";
 import { expect } from "vitest";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import type { ToolFailure, ToolResult } from "./toolResult";

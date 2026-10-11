@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":484}}
   attribution={{"path":"registry/components/velocity-throw-snap","tags":["motion-primitive","feature-tour","rail","velocity","throw","snap","physics"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/velocity-throw-snap/velocity-throw-snap.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/velocity-throw-snap/velocity-throw-snap.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html velocity-throw-snap.html
 <!doctype html>
 <!--
-  velocity-throw-snap: HyperFrames video primitive (feature-tour / exhibit)
+  velocity-throw-snap: Tagreel video primitive (feature-tour / exhibit)
 
   Concept: a five-shot rail whips in on an authored velocity curve, loses
   speed quickly, then snaps past and back onto the selected hero shot. The
@@ -362,8 +362,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var cards = Array.from(root.querySelectorAll(".vts-card"));
             var labels = Array.from(root.querySelectorAll(".vts-label"));
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var heroValue = Number(vars.hero_index);
@@ -513,7 +513,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add velocity-throw-snap" item="velocity-throw-snap" />
+<InstallCommand command="npx tagreel add velocity-throw-snap" item="velocity-throw-snap" />
 
 That writes one file: `compositions/components/velocity-throw-snap.html`.
 

@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":264}}
   attribution={{"path":"registry/components/micro-transitions","tags":["transition-primitive","motion-primitive","transitions-dev-port","ui","transition","microinteraction"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/micro-transitions/micro-transitions.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/micro-transitions/micro-transitions.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html micro-transitions.html
 <!--
-  Micro Transitions - transitions.dev-inspired UI motion pack for HyperFrames.
+  Micro Transitions - transitions.dev-inspired UI motion pack for Tagreel.
 
   Includes six app-transition patterns in one copy-paste snippet:
     badge pop, dropdown reveal, modal open, tab indicator, tooltip appear,
@@ -245,8 +245,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -293,7 +293,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add micro-transitions" item="micro-transitions" />
+<InstallCommand command="npx tagreel add micro-transitions" item="micro-transitions" />
 
 That writes one file: `compositions/components/micro-transitions.html`.
 

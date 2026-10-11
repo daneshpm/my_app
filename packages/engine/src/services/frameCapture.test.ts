@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import type { Protocol } from "puppeteer-core";
-import { COMPOSITION_SOURCE_URL } from "@hyperframes/core";
+import { COMPOSITION_SOURCE_URL } from "@tagreel/core";
 import type { CaptureSession } from "./frameCapture.js";
 import {
   buildZeroDurationDiagnostic,
@@ -47,7 +47,7 @@ describe("classifyConsoleScriptFailure", () => {
 
   // A thrown composition script may still register its timeline, so it is a page error, not a load failure.
   it("leaves a composition script's logged throw to classifyConsoleScriptError", () => {
-    const logged = "[HyperFrames] composition script error: scene TypeError: x";
+    const logged = "[Tagreel] composition script error: scene TypeError: x";
     expect(classifyConsoleScriptFailure("error", logged)).toBeNull();
     expect(classifyConsoleScriptError("error", `${logged}\r\n    at scene.js:1`)).toBe(
       "runtime-error:scene TypeError: x",
@@ -136,7 +136,7 @@ describe("classifyPageError", () => {
   it("ignores an error whose frames are all named off the page: an inlined CDN script and the runtime", () => {
     const cdn = "http://127.0.0.1:4200/sync.js";
     expect(
-      classifyPageError(thrown("Error: w", cdn, [cdn, "hyperframes://injected/0"]), served),
+      classifyPageError(thrown("Error: w", cdn, [cdn, "tagreel://injected/0"]), served),
     ).toBeNull();
   });
 
@@ -206,7 +206,7 @@ describe("classifyPageError", () => {
     const logged = (detail: string) =>
       pageListeners.get("console")?.({
         type: () => "error",
-        text: () => `[HyperFrames] composition script error: ${detail}`,
+        text: () => `[Tagreel] composition script error: ${detail}`,
         location: () => ({}),
       });
     logged("vfx: #host: unknown effect");
@@ -347,11 +347,11 @@ describe("isFontResourceError", () => {
 });
 
 describe("formatConsoleDiagnostic", () => {
-  it("surfaces HyperFrames page logs with a dedicated host prefix", () => {
+  it("surfaces Tagreel page logs with a dedicated host prefix", () => {
     expect(
-      formatConsoleDiagnostic("info", '[hyperframes] render runtime fps {"canonicalFps":30}', ""),
+      formatConsoleDiagnostic("info", '[tagreel] render runtime fps {"canonicalFps":30}', ""),
     ).toEqual({
-      text: '[HyperFrames] render runtime fps {"canonicalFps":30}',
+      text: '[Tagreel] render runtime fps {"canonicalFps":30}',
       suppressHostLog: false,
     });
   });

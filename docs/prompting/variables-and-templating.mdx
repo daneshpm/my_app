@@ -99,7 +99,7 @@ cleanly through both the local renderer and distributed
 [Lambda renders](/deploy/templates-on-lambda).
 
 Wiring this behind your own product UI or an agent instead of the CLI? The
-[`@hyperframes/sdk`](/packages/sdk) opens a base template and layers a sparse
+[`@tagreel/sdk`](/packages/sdk) opens a base template and layers a sparse
 override set per instance. The host then stores only each record's delta.
 
 ## Declare up front — don't bake values in
@@ -132,8 +132,8 @@ The failure looks like success. The render completes, exits clean, and is
 So test it differentially. Render twice and compare:
 
 ```bash
-hyperframes render --output default.mp4
-hyperframes render --variables '{"ground":"#0d1420","ink":"#c8ff3d"}' --strict-variables --output reskin.mp4
+tagreel render --output default.mp4
+tagreel render --variables '{"ground":"#0d1420","ink":"#c8ff3d"}' --strict-variables --output reskin.mp4
 ```
 
 Two identical files mean the override never reached the property you expected.
@@ -191,7 +191,7 @@ full list and the compile-time-vs-live-DOM rule behind it.
   <Card title="Variables (concept)" icon="sliders" href="/concepts/variables">
     The mechanics: declaring types, per-instance overrides, batch renders, precedence.
   </Card>
-  <Card title="@hyperframes/sdk" icon="code" href="/packages/sdk">
+  <Card title="@tagreel/sdk" icon="code" href="/packages/sdk">
     Template + sparse-override editing behind your own product UI or agent.
   </Card>
   <Card title="The specification dial" icon="gauge" href="/prompting/specification-dial">

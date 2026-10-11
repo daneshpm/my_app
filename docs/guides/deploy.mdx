@@ -7,7 +7,7 @@ description: "Start from an official Vercel, Cloudflare, or Modal template when 
 import { DocsVideo } from "/snippets/docs-video.jsx";
 
 my_app has three official hosting templates. Each one previews a bundled
-composition in `<hyperframes-player>` and renders it to MP4 on server-side
+composition in `<tagreel-player>` and renders it to MP4 on server-side
 Chrome and FFmpeg.
 
 Use these templates for a small hosted application. For managed rendering,
@@ -16,9 +16,9 @@ distributed infrastructure, or a Node backend, start with
 
 | Template | Rendering runtime | Output storage | Best fit |
 | --- | --- | --- | --- |
-| [Vercel](https://github.com/heygen-com/hyperframes-vercel-template) | Vercel Sandbox | Vercel Blob | A Next.js application already deployed on Vercel |
-| [Cloudflare](https://github.com/heygen-com/hyperframes-cloudflare-template) | Cloudflare Container | R2 | A Workers application that needs a containerized renderer |
-| [Modal](https://github.com/heygen-com/hyperframes-modal-template) | Spawned Modal Function | Modal Volume | A Python service with render jobs that run outside the web request |
+| [Vercel](https://github.com/daneshpm/my_app) | Vercel Sandbox | Vercel Blob | A Next.js application already deployed on Vercel |
+| [Cloudflare](https://github.com/daneshpm/my_app) | Cloudflare Container | R2 | A Workers application that needs a containerized renderer |
+| [Modal](https://github.com/daneshpm/my_app) | Spawned Modal Function | Modal Volume | A Python service with render jobs that run outside the web request |
 
 <DocsVideo
   title="The four places a render can run, and what each one changes"
@@ -32,10 +32,10 @@ what you trade. Anything not executed live is labelled on screen.
 ## Vercel
 
 The Vercel template is a Next.js application. Its `/api/render` route restores
-a prepared Sandbox, runs `hyperframes render`, uploads the MP4 to Blob, and
+a prepared Sandbox, runs `tagreel render`, uploads the MP4 to Blob, and
 returns a public URL.
 
-[Deploy the Vercel template](https://vercel.com/new/clone?demo-title=HyperFrames+on+Vercel&demo-description=Preview+HTML+video+compositions+in+the+browser+and+render+MP4s+server-side+on+Vercel+Sandbox.&demo-image=https%3A%2F%2Fraw.githubusercontent.com%2Fheygen-com%2Fhyperframes-vercel-template%2Fmain%2Fdocs%2Fpreview.png&demo-url=https%3A%2F%2Fhyperframes-on-vercel.vercel.app&from=templates&project-name=hyperframes-on-vercel&repository-name=hyperframes-on-vercel&repository-url=https%3A%2F%2Fgithub.com%2Fheygen-com%2Fhyperframes-vercel-template&stores=%5B%7B%22type%22%3A%22blob%22%2C%22access%22%3A%22public%22%7D%5D)
+[Deploy the Vercel template](https://vercel.com/new/clone?demo-title=Tagreel+on+Vercel&demo-description=Preview+HTML+video+compositions+in+the+browser+and+render+MP4s+server-side+on+Vercel+Sandbox.&demo-image=https%3A%2F%2Fraw.githubusercontent.com%2Fheygen-com%2Ftagreel-vercel-template%2Fmain%2Fdocs%2Fpreview.png&demo-url=https%3A%2F%2Ftagreel-on-vercel.vercel.app&from=templates&project-name=tagreel-on-vercel&repository-name=tagreel-on-vercel&repository-url=https%3A%2F%2Fgithub.com%2Fheygen-com%2Ftagreel-vercel-template&stores=%5B%7B%22type%22%3A%22blob%22%2C%22access%22%3A%22public%22%7D%5D)
 
 Deployment provisions the Blob store. Sandbox access uses Vercel's runtime
 identity. Follow the repository README for current account requirements and
@@ -48,7 +48,7 @@ The Cloudflare template is a TanStack Start application on Workers. A
 R2. The template also includes optional prompt-based generation with a user's
 own OpenRouter credential.
 
-[Deploy the Cloudflare template](https://deploy.workers.cloudflare.com/?url=https://github.com/heygen-com/hyperframes-cloudflare-template)
+[Deploy the Cloudflare template](https://deploy.workers.cloudflare.com/?url=https://github.com/daneshpm/my_app)
 
 Cloudflare Containers require a Workers Paid plan. Disable the optional AI
 generation surface before hosting a public demo unless you intend visitors to
@@ -72,10 +72,10 @@ modal deploy src/app.py
 Author and check the project locally first:
 
 ```bash
-npx hyperframes init my-video
+npx tagreel init my-video
 cd my-video
-npx hyperframes preview
-npx hyperframes check
+npx tagreel preview
+npx tagreel check
 ```
 
 Then replace the bundled composition in the selected template:
@@ -102,13 +102,13 @@ For infrastructure designed around distributed jobs, use
 ## Source
 
 <CardGroup cols={2}>
-  <Card title="Vercel" icon="github" href="https://github.com/heygen-com/hyperframes-vercel-template">
+  <Card title="Vercel" icon="github" href="https://github.com/daneshpm/my_app">
     Next.js, Sandbox, and Blob
   </Card>
-  <Card title="Cloudflare" icon="github" href="https://github.com/heygen-com/hyperframes-cloudflare-template">
+  <Card title="Cloudflare" icon="github" href="https://github.com/daneshpm/my_app">
     TanStack Start, Containers, and R2
   </Card>
-  <Card title="Modal" icon="github" href="https://github.com/heygen-com/hyperframes-modal-template">
+  <Card title="Modal" icon="github" href="https://github.com/daneshpm/my_app">
     FastAPI, spawned functions, and Volume storage
   </Card>
 </CardGroup>

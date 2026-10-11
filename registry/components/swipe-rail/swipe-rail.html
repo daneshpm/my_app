@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  swipe-rail: HyperFrames video primitive (interaction / gesture / demonstrate)
+  swipe-rail: Tagreel video primitive (interaction / gesture / demonstrate)
 
   Concept: a contact circle leads a horizontal card rail through one swipe.
   The rail follows the drag, carries momentum after release, then snaps the
@@ -174,8 +174,8 @@
             var rail = root.querySelector(".sr-rail");
             var contact = root.querySelector(".sr-contact");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var countValue = Number(vars.card_count);

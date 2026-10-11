@@ -1,5 +1,5 @@
 import type { SelectElementOptions, TimelineElement } from "../player";
-import { HF_AUDIO_GROUP_TAG } from "@hyperframes/core/audio-groups";
+import { HF_AUDIO_GROUP_TAG } from "@tagreel/core/audio-groups";
 import { findMatchingTimelineElementId, findTimelineIdByAncestor } from "../utils/studioHelpers";
 import type { DomEditSelection } from "../components/editor/domEditing";
 import { logSelect } from "../utils/selectDebug";

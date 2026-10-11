@@ -1,4 +1,4 @@
-import type { LintContext, HyperframeLintFinding, ExtractedBlock, OpenTag } from "../context";
+import type { LintContext, TagreelLintFinding, ExtractedBlock, OpenTag } from "../context";
 import {
   findHtmlTag,
   extractTimelineRegistryKeys,
@@ -11,19 +11,19 @@ import {
   truncateSnippet,
   WINDOW_TIMELINE_ASSIGN_PATTERN,
 } from "../utils";
-import { COMPOSITION_VARIABLE_TYPES, isSafeMediaUrl } from "@hyperframes/parsers/composition";
-import { COMPOSITION_ATTRIBUTES, readClipTiming } from "@hyperframes/parsers/composition-contract";
-import { resolveCompositionDuration } from "@hyperframes/parsers/composition-duration";
+import { COMPOSITION_VARIABLE_TYPES, isSafeMediaUrl } from "@tagreel/parsers/composition";
+import { COMPOSITION_ATTRIBUTES, readClipTiming } from "@tagreel/parsers/composition-contract";
+import { resolveCompositionDuration } from "@tagreel/parsers/composition-duration";
 import {
   readAuthoredDurationSeconds,
   resolveMediaDuration,
   type MediaTag,
-} from "@hyperframes/parsers/media-duration";
+} from "@tagreel/parsers/media-duration";
 
 // Agent guidance thresholds: warning-only nudges for files/tracks that become hard
 // to inspect and revise reliably in a single composition.
 // packages/cli/src/utils/compositionViewport.ts MAX_VIEWPORT_DIMENSION. Kept as a
-// literal rather than imported: @hyperframes/lint must not depend on the CLI, and
+// literal rather than imported: @tagreel/lint must not depend on the CLI, and
 // the number is a property of the capture path we are warning about, not of lint.
 const INSPECTION_VIEWPORT_CAP = 4096;
 
@@ -35,14 +35,14 @@ const CAPTION_CUE_TOKEN =
 
 // composition_heavy_overlay_count_high — warn when a composition carries this
 // many or more elements whose CSS uses filter:blur, clip-path (non-none), or
-// radial-gradient. Field signal ts=1784040753 (#hyperframes-cli-feedback):
+// radial-gradient. Field signal ts=1784040753 (#tagreel-cli-feedback):
 // a composition with ~40 such elements captures solid-black for the first
 // ~half of the render, recovering near the end. Presence alone matters —
 // opacity:0 and visibility:hidden overlays still contribute — so the rule
 // counts every one that isn't display:none-hidden. Threshold sits below the
 // observed 40-element repro (25) so authors get lead time; adjust here if
 // noise/signal shifts, since a per-rule config option would also require
-// plumbing through HyperframeLinterOptions across every embedder.
+// plumbing through TagreelLinterOptions across every embedder.
 const HEAVY_OVERLAY_ELEMENT_COUNT_WARN = 25;
 const HEAVY_OVERLAY_EXEMPT_TAGS = new Set([
   "audio",
@@ -108,7 +108,7 @@ export function isRegistrySourceFile(filePath?: string): boolean {
 }
 
 export function isRegistryInstalledFile(rawSource: string): boolean {
-  return /^\s*<!--\s*hyperframes-registry-item:[^>]*-->/i.test(rawSource.slice(0, 512));
+  return /^\s*<!--\s*tagreel-registry-item:[^>]*-->/i.test(rawSource.slice(0, 512));
 }
 
 function isCompositionRootOrMount(rawTag: string): boolean {
@@ -391,7 +391,7 @@ function collectDeclaredVariableIds(htmlTagRaw: string): Set<string> | null {
 function variablesDeclarationFindings(
   tag: OpenTag,
   tags: readonly OpenTag[],
-): HyperframeLintFinding[] {
+): TagreelLintFinding[] {
   const raw = readJsonAttr(tag.raw, "data-composition-variables");
   if (!raw) return [];
 
@@ -425,7 +425,7 @@ function variablesDeclarationFindings(
     ];
   }
 
-  const findings: HyperframeLintFinding[] = [];
+  const findings: TagreelLintFinding[] = [];
   const knownTypes = new Set<string>(COMPOSITION_VARIABLE_TYPES);
   // Ids whose value the runtime pushes through isSafeMediaUrl: every
   // data-var-src binding, plus image-typed variables (always consumed as a
@@ -541,7 +541,7 @@ function elementSelector(tag: OpenTag): string | undefined {
 function negativeZIndexFinding(
   match: RegExpExecArray,
   selector: string | undefined,
-): HyperframeLintFinding {
+): TagreelLintFinding {
   const level = match[1] ?? "";
   return {
     code: "negative_z_index",
@@ -579,7 +579,7 @@ function missingTimelineFinding(
   tag: OpenTag,
   compositionId: string,
   isRoot: boolean,
-): HyperframeLintFinding {
+): TagreelLintFinding {
   return {
     code: "missing_data_no_timeline",
     severity: "warning",
@@ -594,7 +594,7 @@ function missingTimelineFinding(
   };
 }
 
-export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding[]> = [
+export const compositionRules: Array<(ctx: LintContext) => TagreelLintFinding[]> = [
   // duplicate_composition_id catches meta-tag/root collisions that create duplicate composition entries.
   ({ tags }) => {
     const tagsByCompositionId = new Map<string, string[]>();
@@ -618,7 +618,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
       tagsByCompositionId.set(compositionId, matchingTags);
     }
 
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     for (const [compositionId, matchingTags] of tagsByCompositionId) {
       if (matchingTags.length < 2) continue;
 
@@ -740,7 +740,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
       trackCounts.set(track, (trackCounts.get(track) ?? 0) + 1);
     }
 
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     for (const [track, count] of trackCounts) {
       if (count <= MAX_TIMED_ELEMENTS_PER_TRACK) continue;
       const splitTarget = options.isSubComposition
@@ -760,7 +760,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
   // deprecated_data_layer + deprecated_data_end
   // fallow-ignore-next-line complexity
   ({ tags }) => {
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     for (const tag of tags) {
       const timing = readTagTiming(tag.raw);
       if (timing.diagnostics.some(({ code }) => code === "deprecated-layer")) {
@@ -803,7 +803,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
 
   // split_data_attribute_selector
   ({ scripts, styles }) => {
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     const splitDataAttrSelectorPattern =
       /\[data-composition-id=(["'])([^"'\]]+)\1\s+(data-[\w:-]+)=(["'])([^"'\]]*)\4\]/g;
     const scan = (content: string) => {
@@ -832,7 +832,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
 
   // template_literal_selector
   ({ scripts }) => {
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     for (const script of scripts) {
       const templateLiteralSelectorPattern =
         /(?:querySelector|querySelectorAll)\s*\(\s*`[^`]*\$\{[^}]+\}[^`]*`\s*\)/g;
@@ -859,7 +859,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
   // timed_element_missing_clip_class
   // fallow-ignore-next-line complexity
   ({ tags }) => {
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     // `img` sits here for the same reason `video` and `audio` already did: the
     // three media primitives are authored without `class="clip"` in the
     // canonical clip block (packages/core/docs/core.md), so requiring it on the
@@ -904,7 +904,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
 
   // standalone_composition_wrapped_in_template
   ({ rawSource, options }) => {
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     if (options.isSubComposition) return findings;
     const trimmed = rawSource.trimStart().toLowerCase();
     if (trimmed.startsWith("<template")) {
@@ -924,7 +924,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
 
   // root_composition_missing_html_wrapper
   ({ rawSource, rootTag, options }) => {
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     if (options.isSubComposition) return findings;
     const trimmed = rawSource.trimStart().toLowerCase();
     // Compositions inside <template> are caught by standalone_composition_wrapped_in_template
@@ -978,7 +978,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
   // negative_z_index
   // An element at a negative z-index is silently absent from both `snapshot`
   // and `render`, while siblings differing only in the sign of z-index render
-  // exactly (heygen-com/hyperframes#4366). lint, validate and render all exit 0
+  // exactly (daneshpm/my_app#4366). lint, validate and render all exit 0
   // and report nothing, so the first suspicion falls on the author's own CSS.
   // NOT A RENDERER DEFECT -- ORDINARY CSS PAINTING ORDER, measured at 0.8.72.
   // The element is PAINTED; it is simply painted beneath something opaque. Remove
@@ -1010,7 +1010,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
   // unconditional "silently dropped" is false for every isolated case, and a lint
   // message that overclaims is how authors learn to disregard the rule.
   ({ tags, styles }) => {
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     for (const style of styles) {
       const content = stripCssComments(style.content);
       NEGATIVE_Z_INDEX.lastIndex = 0;
@@ -1032,7 +1032,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
   // requestanimationframe_in_composition
   ({ scripts, rawSource, options }) => {
     if (isRegistrySourceFile(options.filePath) || isRegistryInstalledFile(rawSource)) return [];
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     for (const script of scripts) {
       const stripped = stripJsCode(script.content);
       if (/requestAnimationFrame\s*\(/.test(stripped)) {
@@ -1057,7 +1057,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
   // the parse failure so authors notice before render time.
   // fallow-ignore-next-line complexity
   ({ tags }) => {
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     for (const tag of tags) {
       const raw = readJsonAttr(tag.raw, "data-variable-values");
       if (!raw) continue;
@@ -1107,7 +1107,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
     // and returns null for files this rule should skip.
     const declared = declaredIdsForBindingCheck(tags);
     if (!declared) return [];
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     for (const tag of tags) {
       for (const attr of ["data-var-src", "data-var-text"]) {
         const id = readAttr(tag.raw, attr)?.trim();
@@ -1209,7 +1209,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
     const tailCovered = (exceptIndex: number) =>
       timed.some((t) => t.tag.index !== exceptIndex && t.end >= rootDuration - EPSILON);
 
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     for (const t of timed) {
       if (readAttr(t.tag.raw, "data-composition-src") === null) continue; // external slot only
       if (t.start > START_TOLERANCE) continue; // must start at the composition start
@@ -1306,7 +1306,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
     if (options.isSubComposition) return [];
     if (!rootTag) return [];
     // Not every file linted as a "root" HTML document is a video composition
-    // — e.g. a slideshow demo.html mounts <hyperframes-player src="index.html">
+    // — e.g. a slideshow demo.html mounts <tagreel-player src="index.html">
     // with no data-composition-id of its own. Nothing to capture there, so
     // there's no duration contract to enforce.
     if (readDecodedAttr(rootTag.raw, "data-composition-id") === null) return [];
@@ -1437,7 +1437,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
   },
 
   // composition_heavy_overlay_count_high
-  // Field signal ts=1784040753 (#hyperframes-cli-feedback): a composition
+  // Field signal ts=1784040753 (#tagreel-cli-feedback): a composition
   // with ~40 heavy overlay DOM elements — `filter:blur`, oversized
   // `radial-gradient`, and `clip-path` animations — captures solid-black for
   // the first ~half of the render, recovering near the end. Reproduces
@@ -1514,7 +1514,7 @@ export const compositionRules: Array<(ctx: LintContext) => HyperframeLintFinding
           `(opacity:0 / visibility:hidden) contribute — either remove truly unused ones from ` +
           `the source or scope them into their own per-transition sub-composition. If an ` +
           `overlay is genuinely inert for the whole clip, use display:none so it never enters ` +
-          `the render tree. Field ref ts=1784040753 (#hyperframes-cli-feedback).`,
+          `the render tree. Field ref ts=1784040753 (#tagreel-cli-feedback).`,
       },
     ];
   },

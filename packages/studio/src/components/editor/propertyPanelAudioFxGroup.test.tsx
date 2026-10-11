@@ -4,7 +4,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { createRoot } from "react-dom/client";
 import { AudioFxGroup } from "./propertyPanelAudioFxGroup.js";
 import type { DomEditSelection } from "./domEditingTypes";
-import { EFFECT_COPY } from "@hyperframes/core/audio-fx-copy";
+import { EFFECT_COPY } from "@tagreel/core/audio-fx-copy";
 import { liveTime, usePlayerStore } from "../../player";
 
 /**

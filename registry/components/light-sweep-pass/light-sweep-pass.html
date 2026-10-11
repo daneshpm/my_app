@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  light-sweep-pass: HyperFrames video primitive (overlays / light)
+  light-sweep-pass: Tagreel video primitive (overlays / light)
 
   Concept: a traveling key light re-shades a slotted scene. A soft diagonal
   gradient band crosses the frame once while every per-element highlight and
@@ -51,7 +51,7 @@
   <template> contents; #root fills the host box (inset:0, container-type:
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "light-sweep-pass" key. Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -323,8 +323,8 @@
             var band = root.querySelector(".lsp-band");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function clampNumber(raw, fallback, min, max) {

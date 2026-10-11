@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  rubber-band-bumper: HyperFrames video primitive
+  rubber-band-bumper: Tagreel video primitive
 
   The outgoing panel is pulled opposite its exit direction in progressively
   smaller steps, visibly loading two accent bands. After a still threshold
@@ -208,8 +208,8 @@
             var incoming = root.querySelector(".rbb-incoming");
             var bands = root.querySelectorAll(".rbb-band");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var direction = vars.direction === "left" ? "left" : "up";

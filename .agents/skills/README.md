@@ -1,7 +1,7 @@
 # Project-local Codex CLI skills
 
 Skills in this directory are auto-discovered by Codex CLI (verified against
-Codex 0.144.3) when the `hyperframes` repo is opened as the working
+Codex 0.144.3) when the `tagreel` repo is opened as the working
 directory. They are NOT part of the marketplace-distributed plugin (that
 set lives under `skills/` and is manifested by `.codex-plugin/`). Two
 separate namespaces, on purpose:
@@ -10,8 +10,8 @@ separate namespaces, on purpose:
   (weekly changelog videos, doctrine-heavy authoring flows). Codex CLI's
   project-local skill dir.
 - `skills/` — **marketplace-distributable**, installed into other
-  projects via `npx hyperframes skills` or `npx skills add
-heygen-com/hyperframes`.
+  projects via `npx tagreel skills` or `npx skills add
+daneshpm/my_app`.
 
 ## Weekly changelog video
 
@@ -33,15 +33,15 @@ Weekly usage:
    generated markdown. The agent will present its script +
    visualization plan for review before rendering.
 3. Accept, and the agent produces `weekly-changelog-<range>.mp4` gated
-   by `hyperframes check` (0 errors) + `seam-gate verify` (0 fail/warn).
+   by `tagreel check` (0 errors) + `seam-gate verify` (0 fail/warn).
 
-TTS uses the tracked `skills/hyperframes-media/scripts/heygen-tts.mjs`
+TTS uses the tracked `skills/tagreel-media/scripts/heygen-tts.mjs`
 (no extra install needed). Runtime dependencies you need on PATH:
 
 - Node ≥ 22
 - HeyGen CLI ≥ 0.3.0, authenticated via `heygen auth login --oauth`
 - `ffmpeg` (for VO wav conversion + frame QA)
-- A headless Chrome for HyperFrames rendering (`hyperframes doctor`
+- A headless Chrome for Tagreel rendering (`tagreel doctor`
   will point out the exact ask if it's missing)
 
 The parallel set at `.claude/skills/` is a byte-identical copy so

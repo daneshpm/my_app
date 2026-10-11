@@ -10,7 +10,7 @@ const child = Bun.spawn(
   ],
   {
     cwd: fileURLToPath(new URL("..", import.meta.url)),
-    env: { ...process.env, HYPERFRAMES_GSAP_WRITER: "acorn" },
+    env: { ...process.env, TAGREEL_GSAP_WRITER: "acorn" },
     stdout: "inherit",
     stderr: "inherit",
   },

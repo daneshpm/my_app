@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 import { brandFontFaces, buildFromSkin } from "./captions.mjs";
 
 const presetsDir = fileURLToPath(
-  new URL("../../hyperframes-creative/frame-presets/", import.meta.url),
+  new URL("../../tagreel-creative/frame-presets/", import.meta.url),
 );
 const skins = readdirSync(presetsDir, { withFileTypes: true })
   .filter((entry) => entry.isDirectory())
@@ -16,7 +16,7 @@ const skins = readdirSync(presetsDir, { withFileTypes: true })
     name: entry.name,
     source: readFileSync(
       new URL(
-        `../../hyperframes-creative/frame-presets/${entry.name}/caption-skin.html`,
+        `../../tagreel-creative/frame-presets/${entry.name}/caption-skin.html`,
         import.meta.url,
       ),
       "utf8",
@@ -239,7 +239,7 @@ for (const workflow of ["pr-to-video", "faceless-explainer", "product-launch-vid
         const script = fileURLToPath(
           new URL(`../../${workflow}/scripts/captions.mjs`, import.meta.url),
         );
-        execFileSync(process.execPath, [script, "build", "--hyperframes", project]);
+        execFileSync(process.execPath, [script, "build", "--tagreel", project]);
         const html = readFileSync(join(project, "compositions/captions.html"), "utf8");
         const start = html.indexOf("var GROUPS =");
         assert.ok(start >= 0, "generated caption data exists");

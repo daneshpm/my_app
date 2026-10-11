@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  slit-scan-reveal: HyperFrames video primitive (time)
+  slit-scan-reveal: Tagreel video primitive (time)
 
   The frame's rows sample the subject at offset times. The subject is an
   authored token mark (an accent-ringed disc with an orbit dot) whose
@@ -125,8 +125,8 @@
             var stage = root.querySelector(".ssr-stage");
             var canvas = root.querySelector(".ssr-canvas");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var axis = vars.axis === "cols" ? "cols" : "rows";

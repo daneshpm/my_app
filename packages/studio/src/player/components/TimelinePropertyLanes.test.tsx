@@ -2,7 +2,7 @@
 
 import React, { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
-import type { GsapAnimation, PropertyGroupName } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation, PropertyGroupName } from "@tagreel/core/gsap-parser";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { TimelineClipDiamonds } from "./TimelineClipDiamonds";
 import {
@@ -156,7 +156,7 @@ function ungroupedAnimation(
 }
 
 describe("TimelinePropertyLanes", () => {
-  // `{ x, opacity }` is the canonical HyperFrames entrance tween. The parser
+  // `{ x, opacity }` is the canonical Tagreel entrance tween. The parser
   // classifies it to `undefined` (two groups), which used to erase it from the
   // lanes entirely — no caret, no reserved row, nothing to edit.
   it("lanes a mixed-group tween once per group it animates", () => {

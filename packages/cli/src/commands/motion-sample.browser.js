@@ -1,4 +1,4 @@
-// In-page motion sampler for `hyperframes inspect` motion verification (#1437).
+// In-page motion sampler for `tagreel inspect` motion verification (#1437).
 // Runs inside the seeked, paused page (via page.evaluate). For each asserted
 // selector it returns this frame's { rect, opacity, visible }; for each liveness
 // scope it returns a bucketed signature of all visible elements, so the Node-side
@@ -7,8 +7,8 @@
   // Visibility, opacity and the liveness signature come from the shared classifier
   // (motion-signature.browser.js), so this sampler and the frozen-sweep guard agree on what moves.
   // Resolved at install, checked at call: an install-time throw would only surface as an opaque
-  // "__hyperframesMotionSample is not a function" from the driver's evaluate.
-  const shared = window.__hyperframesMotionSignature;
+  // "__tagreelMotionSample is not a function" from the driver's evaluate.
+  const shared = window.__tagreelMotionSignature;
 
   function toRect(rect) {
     return {
@@ -62,7 +62,7 @@
     return liveness;
   }
 
-  window.__hyperframesMotionSample = function motionSample(options) {
+  window.__tagreelMotionSample = function motionSample(options) {
     if (!shared) {
       throw new Error(
         "motion-signature.browser.js must be injected before motion-sample.browser.js",

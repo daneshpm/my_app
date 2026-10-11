@@ -1,14 +1,14 @@
-# Hyperframe Runtime Engine
+# Tagreel Runtime Engine
 
 This folder owns the runtime that powers preview and producer parity.
 
 ## Current Direction
 
-- Runtime source of truth is converging on `hyperframe.ts`.
+- Runtime source of truth is converging on `tagreel.ts`.
 - Build produces:
-  - `dist/hyperframe.runtime.iife.js` (browser bootstrap)
-  - `dist/hyperframe.runtime.mjs` (tooling/tests)
-  - `dist/hyperframe.manifest.json` (version + sha256 + artifact map)
+  - `dist/tagreel.runtime.iife.js` (browser bootstrap)
+  - `dist/tagreel.runtime.mjs` (tooling/tests)
+  - `dist/tagreel.manifest.json` (version + sha256 + artifact map)
 - FE owns iframe runtime injection.
 - BE persists raw generated HTML without injecting runtime scripts.
 - Producer validates pinned runtime checksum from manifest before render.
@@ -51,7 +51,7 @@ Determinism baseline:
 ## Build
 
 ```bash
-bun run --filter @hyperframes/core build:hyperframes-runtime
+bun run --filter @tagreel/core build:tagreel-runtime
 ```
 
 ## Security Expectations

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "yt-prism-title",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Chromatic Fringe Title",
   "description": "Display title on a transparent root: blur-focus entrance, red/blue fringe that settles then breathes, perspective bow, slow scale drift",
   "tags": ["typography", "title-card", "creator"],
@@ -14,7 +14,7 @@
     {
       "path": "yt-prism-title.html",
       "target": "compositions/yt-prism-title.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

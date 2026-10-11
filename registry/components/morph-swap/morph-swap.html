@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  morph-swap: HyperFrames video primitive (transitions / holdable / bridge)
+  morph-swap: Tagreel video primitive (transitions / holdable / bridge)
 
   Concept: two slotted siblings sit absolutely stacked at one shared center.
   A holds alone, then at swap_at it hands the stage to B through one of two
@@ -47,7 +47,7 @@
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "morph-swap" key (mount flattening strips
   data-composition-id from the live root). Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -248,8 +248,8 @@
             var panelB = root.querySelector(".msw-b");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var rawSwapAt = vars.swap_at == null ? 1.4 : Number(vars.swap_at);

@@ -45,7 +45,7 @@ renders.
 
 ```bash
 # From the repo root.
-docker build -t hyperframes-producer:test -f Dockerfile.test .
+docker build -t tagreel-producer:test -f Dockerfile.test .
 
 # Generate a baseline (single fixture):
 bun run --cwd packages/producer docker:test:update <fixture-name>
@@ -77,8 +77,8 @@ bun run --cwd packages/producer docker:test -- --sequential
 
 | Mode | What it calls | Use for |
 |---|---|---|
-| `in-process` (default) | `executeRenderJob` | Day-to-day baselines. This is the same path the `hyperframes render` CLI takes, and it is what produced every existing `output/output.mp4`. |
-| `distributed-simulated` | `plan()` → `renderChunk()` × N → `assemble()` from `@hyperframes/producer/distributed` | Validates the distributed pipeline against the in-process baseline. No Temporal or Lambda involvement — the controller and chunk worker are both this process. |
+| `in-process` (default) | `executeRenderJob` | Day-to-day baselines. This is the same path the `tagreel render` CLI takes, and it is what produced every existing `output/output.mp4`. |
+| `distributed-simulated` | `plan()` → `renderChunk()` × N → `assemble()` from `@tagreel/producer/distributed` | Validates the distributed pipeline against the in-process baseline. No Temporal or Lambda involvement — the controller and chunk worker are both this process. |
 
 ### `--mode=distributed-simulated`
 
@@ -120,7 +120,7 @@ The smallest fixtures (`font-variant-numeric`, `many-cuts`) are sufficient
 to verify the mode plumbing end to end:
 
 ```bash
-docker build -t hyperframes-producer:test -f Dockerfile.test .
+docker build -t tagreel-producer:test -f Dockerfile.test .
 
 # In-process: existing behavior, unchanged.
 bun run --cwd packages/producer docker:test font-variant-numeric

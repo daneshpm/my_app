@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "app-showcase",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "App Showcase",
   "description": "Fitness app product showcase with three floating smartphone screens",
   "tags": ["showcase", "app", "3d"],
@@ -14,7 +14,7 @@
     {
       "path": "app-showcase.html",
       "target": "compositions/app-showcase.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

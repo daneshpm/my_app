@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "pan-stations",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Pan Stations",
   "description": "A lateral camera move across a continuous row of labeled feature stations, with a steady dwell at each stop before the next pan.",
   "tags": ["camera", "pan", "stations", "features", "exhibit", "agitate", "cross-shelved"],
@@ -13,7 +13,7 @@
     {
       "path": "pan-stations.html",
       "target": "compositions/components/pan-stations.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

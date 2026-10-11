@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  ascii-trail-reveal: HyperFrames video primitive (intros and reveals)
+  ascii-trail-reveal: Tagreel video primitive (intros and reveals)
 
   Concept: a luminous actor follows an authored S-curve across an ASCII
   signal grid. Cells flip away behind the actor to reveal the real panel,
@@ -209,8 +209,8 @@
             var guide = root.querySelector(".atr-path-guide");
             var actor = root.querySelector("#ascii-trail-reveal-actor");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var labelText = vars.label == null ? "The reveal" : String(vars.label);

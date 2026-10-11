@@ -9,7 +9,7 @@ import {
   copyRange,
   readClipboard,
 } from "../player/components/automationClipboard";
-import { VOLUME_RANGE } from "@hyperframes/core/audio-automation";
+import { VOLUME_RANGE } from "@tagreel/core/audio-automation";
 import type {
   AutomationLaneBinding,
   UseAutomationLanesResult,

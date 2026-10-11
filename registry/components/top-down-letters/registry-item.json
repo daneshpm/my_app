@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "top-down-letters",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Top-Down Letters",
   "description": "Letters descend from above in a pronounced staircase with zero blur.",
   "tags": ["video-primitive", "motion-primitive", "typography"],
@@ -9,7 +9,7 @@
     {
       "path": "top-down-letters.html",
       "target": "compositions/components/top-down-letters.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

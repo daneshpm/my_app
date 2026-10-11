@@ -76,8 +76,8 @@ export async function startServer(cli, dir, port, log, home) {
       env: {
         ...process.env,
         HOME: home,
-        HYPERFRAMES_NO_TELEMETRY: "1",
-        HYPERFRAMES_NO_UPDATE_CHECK: "1",
+        TAGREEL_NO_TELEMETRY: "1",
+        TAGREEL_NO_UPDATE_CHECK: "1",
       },
     },
   );

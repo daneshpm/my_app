@@ -9,13 +9,13 @@ export function studioProxyEnv(
 ): NodeJS.ProcessEnv {
   return {
     ...baseEnv,
-    HYPERFRAMES_AUTO_PROXY: autoProxy ? "true" : "false",
+    TAGREEL_AUTO_PROXY: autoProxy ? "true" : "false",
     ...(preview
       ? {
-          HYPERFRAMES_PREVIEW_PROJECT_DIR: preview.projectDir,
-          HYPERFRAMES_PREVIEW_PROJECT_NAME: preview.projectName,
+          TAGREEL_PREVIEW_PROJECT_DIR: preview.projectDir,
+          TAGREEL_PREVIEW_PROJECT_NAME: preview.projectName,
           ...(preview.browserGpuMode
-            ? { HYPERFRAMES_PREVIEW_BROWSER_GPU_MODE: preview.browserGpuMode }
+            ? { TAGREEL_PREVIEW_BROWSER_GPU_MODE: preview.browserGpuMode }
             : {}),
         }
       : {}),

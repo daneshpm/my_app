@@ -42,9 +42,9 @@ import {
   initializeSession,
   isTransientBrowserError,
   probeBeginFrameLiveness,
-} from "@hyperframes/engine";
-import { fpsToNumber } from "@hyperframes/core";
-import { extractMediaSrcMutations } from "@hyperframes/parsers";
+} from "@tagreel/engine";
+import { fpsToNumber } from "@tagreel/core";
+import { extractMediaSrcMutations } from "@tagreel/parsers";
 import type { CompiledComposition } from "../../htmlCompiler.js";
 import {
   discoverMediaFromBrowser,

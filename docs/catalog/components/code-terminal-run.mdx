@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":560}}
   attribution={{"path":"registry/components/code-terminal-run","tags":["motion-primitive","product-demo","terminal","typing","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/code-terminal-run/code-terminal-run.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/code-terminal-run/code-terminal-run.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html code-terminal-run.html
 <!doctype html>
 <!--
-  code-terminal-run: HyperFrames video primitive (product demo / terminal)
+  code-terminal-run: Tagreel video primitive (product demo / terminal)
 
   A token-chrome terminal panel runs one command: the prompt line types itself
   deterministically (the typed-prompt law: one text-at-time row table built
@@ -269,8 +269,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
               : [];
             var tailElement = root.querySelector(".ctr-tail");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var promptGlyph = vars.prompt_glyph == null ? "$" : String(vars.prompt_glyph);
@@ -589,7 +589,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add code-terminal-run" item="code-terminal-run" />
+<InstallCommand command="npx tagreel add code-terminal-run" item="code-terminal-run" />
 
 That writes one file: `compositions/components/code-terminal-run.html`.
 

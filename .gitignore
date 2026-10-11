@@ -41,7 +41,7 @@ coverage/
 # only matched one level deep, so a nested fixture like
 # `tests/hdr-regression/hdr-pq/failures/` could still get committed.
 packages/producer/tests/**/failures/
-packages/producer/tests/parity/fixtures/hyperframe.runtime.iife.js
+packages/producer/tests/parity/fixtures/tagreel.runtime.iife.js
 
 # Player perf test results (generated each run, attached as CI artifact)
 packages/player/tests/perf/results/
@@ -85,9 +85,9 @@ docs/contracts/
 qa-artifacts/
 my-video/
 # Studio project state (hf-id backups, per-file state) — always runtime-generated,
-# never committed. Broadened from .hyperframes/backup/ after preview-generated state
+# never committed. Broadened from .tagreel/backup/ after preview-generated state
 # leaked into a fixture commit.
-.hyperframes/
+.tagreel/
 # Studio authoring proxies are generated locally and can grow to multiple GB.
 .transcode-cache/
 examples/*
@@ -141,8 +141,8 @@ packages/studio/data/
 skills-lock.json
 
 # Skills from other PRs (not managed here)
-skills/hyperframes-animation-map/
-skills/hyperframes-contrast/
+skills/tagreel-animation-map/
+skills/tagreel-contrast/
 
 # Capture outputs
 captures/
@@ -164,7 +164,7 @@ launch-video*/
 ab-test/
 compositions/
 video-6-2-patched/
-claude-design-hyperframes-video/
+claude-design-tagreel-video/
 # Per-site video work at the repo root (huly-*, raycast-*, etc.)
 # Anything under videos/ is already covered above, but agents sometimes write
 # project dirs to the repo root when iterating. Catch the common per-brand
@@ -179,7 +179,7 @@ test-outputs/
 # the blanket .claude/ rule and its re-inclusions)
 docs/superpowers/
 .worktrees
-hyperframes-bench/
+tagreel-bench/
 tmp/
 # Studio-generated preview thumbnails
 .thumbnails/

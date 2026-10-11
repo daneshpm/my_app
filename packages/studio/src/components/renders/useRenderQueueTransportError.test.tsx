@@ -44,6 +44,6 @@ describe("useRenderQueue transport failure", () => {
     expect(job?.status).toBe("failed");
     expect(job?.error).toContain("Failed to fetch");
     // The CLI guidance still earns its place; it just no longer stands alone.
-    expect(job?.error).toContain("hyperframes render");
+    expect(job?.error).toContain("tagreel render");
   });
 });

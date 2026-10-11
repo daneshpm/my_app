@@ -17,18 +17,18 @@ describe("repoRoot", () => {
     for (const dir of dirs.splice(0)) rmSync(dir, { recursive: true, force: true });
   });
 
-  it("returns HYPERFRAMES_REPO_ROOT when it is a hyperframes checkout", () => {
+  it("returns TAGREEL_REPO_ROOT when it is a tagreel checkout", () => {
     const root = tempDir();
     mkdirSync(join(root, "packages", "aws-lambda"), { recursive: true });
     writeFileSync(join(root, "packages", "aws-lambda", "package.json"), "{}");
-    vi.stubEnv("HYPERFRAMES_REPO_ROOT", root);
+    vi.stubEnv("TAGREEL_REPO_ROOT", root);
     expect(repoRoot()).toBe(root);
   });
 
-  it("throws on a HYPERFRAMES_REPO_ROOT that is not a checkout instead of ignoring it", () => {
+  it("throws on a TAGREEL_REPO_ROOT that is not a checkout instead of ignoring it", () => {
     const root = tempDir();
-    vi.stubEnv("HYPERFRAMES_REPO_ROOT", root);
-    expect(() => repoRoot()).toThrow("HYPERFRAMES_REPO_ROOT is not a hyperframes checkout");
+    vi.stubEnv("TAGREEL_REPO_ROOT", root);
+    expect(() => repoRoot()).toThrow("TAGREEL_REPO_ROOT is not a tagreel checkout");
     expect(() => repoRoot()).not.toThrow(root);
   });
 });

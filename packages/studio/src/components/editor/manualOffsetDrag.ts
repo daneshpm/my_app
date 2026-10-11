@@ -1,4 +1,4 @@
-import { isHtmlElement } from "@hyperframes/core/runtime/dom-realm";
+import { isHtmlElement } from "@tagreel/core/runtime/dom-realm";
 import type { DomEditSelection } from "./domEditing";
 import {
   applyStudioPathOffset,

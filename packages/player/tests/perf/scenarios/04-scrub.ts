@@ -17,7 +17,7 @@
  *   - Both modes are measured in the same page load. Inline runs first so
  *     the isolated mode's monkey-patch (forcing `_trySyncSeek` to return
  *     false) doesn't bleed into the inline samples.
- *   - "Inline" mode is the default behavior of `<hyperframes-player>` when the
+ *   - "Inline" mode is the default behavior of `<tagreel-player>` when the
  *     iframe is same-origin and exposes `__player.seek()` synchronously.
  *     `seek()` lands the new frame in the same task as the input event.
  *   - "Isolated" mode is forced by replacing the player element's

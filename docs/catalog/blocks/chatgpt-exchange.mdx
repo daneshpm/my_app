@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":14.9,"width":1080,"height":1920,"category":"Showcases","badge":"Stable","codeLines":1444}}
   attribution={{"author":"Jake Moran","path":"registry/blocks/chatgpt-exchange","tags":["showcase","mock-ui","ai","chat","vertical","ad-template"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/chatgpt-exchange/chatgpt-exchange.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/chatgpt-exchange/chatgpt-exchange.html"
 >
 
 <CatalogSlot slot="code">
@@ -679,8 +679,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
     <script>
       const variables =
-        window.__hyperframes && typeof window.__hyperframes.getVariables === "function"
-          ? window.__hyperframes.getVariables()
+        window.__tagreel && typeof window.__tagreel.getVariables === "function"
+          ? window.__tagreel.getVariables()
           : {};
       const content = (id, fallback) =>
         typeof variables[id] === "string" && variables[id].trim() ? variables[id] : fallback;
@@ -1473,7 +1473,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add chatgpt-exchange" item="chatgpt-exchange" />
+<InstallCommand command="npx tagreel add chatgpt-exchange" item="chatgpt-exchange" />
 
 That writes `compositions/chatgpt-exchange.html`, plus 5 supporting files under `assets/fonts/`.
 

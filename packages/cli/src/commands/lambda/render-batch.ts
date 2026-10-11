@@ -1,6 +1,6 @@
 import { failCommand, setCommandExitCode } from "../../utils/commandResult.js";
 /**
- * `hyperframes lambda render-batch <projectDir> --batch <path.jsonl>` —
+ * `tagreel lambda render-batch <projectDir> --batch <path.jsonl>` —
  * fan out N personalised renders of the same project, one per JSONL line.
  *
  * The headline ergonomic for automated template-rendering pipelines on
@@ -28,8 +28,8 @@ import type {
   DistributedFormat,
   SerializableDistributedRenderConfig,
   SiteHandle,
-} from "@hyperframes/aws-lambda/sdk";
-import type { CanvasResolution } from "@hyperframes/core";
+} from "@tagreel/aws-lambda/sdk";
+import type { CanvasResolution } from "@tagreel/core";
 import { c } from "../../ui/colors.js";
 import { errorBox } from "../../ui/format.js";
 import {
@@ -43,11 +43,11 @@ import { requireStack } from "./state.js";
 
 // Dynamic-import the SDK so tsup keeps it out of the static-import head of
 // the CLI bundle. See sites.ts loadSDK() for the full rationale.
-async function loadSDK(): Promise<typeof import("@hyperframes/aws-lambda/sdk")> {
-  return import("@hyperframes/aws-lambda/sdk");
+async function loadSDK(): Promise<typeof import("@tagreel/aws-lambda/sdk")> {
+  return import("@tagreel/aws-lambda/sdk");
 }
 
-/** Arguments accepted by `hyperframes lambda render-batch`. */
+/** Arguments accepted by `tagreel lambda render-batch`. */
 export interface RenderBatchArgs {
   projectDir: string;
   stackName: string;
@@ -348,7 +348,7 @@ function makePlaceholderSiteHandle(siteId: string, bucketName: string): SiteHand
 
 /**
  * Build the shared wire {@link SerializableDistributedRenderConfig} used
- * for every entry in a `hyperframes lambda render-batch` run. Extracted for
+ * for every entry in a `tagreel lambda render-batch` run. Extracted for
  * boundary-test coverage of the aspect-agnostic flag threading (per-entry
  * `variables` are still overlayed at dispatch time inside {@link runRenderBatch}).
  */

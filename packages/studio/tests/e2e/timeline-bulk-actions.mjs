@@ -5,7 +5,7 @@ const USAGE = `
 BULK_PROJECT_DIR=<project> node packages/studio/tests/e2e/timeline-bulk-actions.mjs
 
 Runs the built CLI's preview server, so build first:
-  bun run --filter @hyperframes/studio build && bun run --filter @hyperframes/cli build
+  bun run --filter @tagreel/studio build && bun run --filter @tagreel/cli build
 BULK_PROJECT_DIR is copied, never modified. Optional: BULK_RUNS (default 5), BULK_PORT,
 BULK_ONLY (action name substring), BULK_THROTTLE (CPU slowdown rate for drag actions), BULK_PROFILE=1 (CPU profile and request summary; "drag" profiles the pointer moves of the drag actions).
 An action is done when no foreground request is in flight and no long task ran for 500 ms.
@@ -415,7 +415,7 @@ async function startFreshServer() {
       "--foreground",
       "--force-new",
     ],
-    { env: { ...process.env, HYPERFRAMES_AUTO_PROXY: "false" }, stdio: "ignore" },
+    { env: { ...process.env, TAGREEL_AUTO_PROXY: "false" }, stdio: "ignore" },
   );
   await waitForServer();
 }

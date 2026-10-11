@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":407}}
   attribution={{"path":"registry/components/type-match-cut","tags":["motion-primitive","transition","typography","match-cut","continuity"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/type-match-cut/type-match-cut.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/type-match-cut/type-match-cut.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html type-match-cut.html
 <!doctype html>
 <!--
-  type-match-cut: HyperFrames video primitive
+  type-match-cut: Tagreel video primitive
 
   A headline splits into upper and lower word groups. An incoming editor
   panel appears in the negative space between them, holds there as a visible
@@ -286,8 +286,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var topWords = root.querySelector(".tmc-top");
             var bottomWords = root.querySelector(".tmc-bottom");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Meet the new editor" : String(vars.text);
@@ -436,7 +436,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add type-match-cut" item="type-match-cut" />
+<InstallCommand command="npx tagreel add type-match-cut" item="type-match-cut" />
 
 That writes one file: `compositions/components/type-match-cut.html`.
 

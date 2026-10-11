@@ -83,7 +83,7 @@ export async function studioFrame(
     return toolFailure(
       "failed",
       `the renderer returned ${probe.status} for this frame`,
-      "The composition may not build. Try `hyperframes check`.",
+      "The composition may not build. Try `tagreel check`.",
     );
   }
 

@@ -27,5 +27,5 @@ it("no studio source checks a DOM node against a window's own constructor", () =
       .filter(({ line }) => WINDOW_BOUND.some((re) => re.test(line)))
       .map(({ at, line }) => `${at}  ${line.trim()}`),
   );
-  expect(hits, "use @hyperframes/core/runtime/dom-realm instead").toEqual([]);
+  expect(hits, "use @tagreel/core/runtime/dom-realm instead").toEqual([]);
 });

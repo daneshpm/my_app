@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":679}}
   attribution={{"path":"registry/components/pull-to-refresh","tags":["pointer","pointers","mobile","gesture","interaction","refresh","demonstrate"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/pull-to-refresh/pull-to-refresh.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/pull-to-refresh/pull-to-refresh.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html pull-to-refresh.html
 <!doctype html>
 <!--
-  pull-to-refresh: HyperFrames video primitive (pointers / interaction / demonstrate)
+  pull-to-refresh: Tagreel video primitive (pointers / interaction / demonstrate)
 
   Concept: a mobile list yields under a scripted pull, arms at a visible
   threshold, commits into a bounded loading state, then snaps exactly back
@@ -69,7 +69,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   container-type:size. It has no data-width or data-height. All internal
   geometry uses cqw/cqh, and the hardcoded composition id is required because
   FLATTENED_INNER_ROOT_STRIP_ATTRS removes the mounted root id attribute.
-  Variables come from window.__hyperframes.getVariables(), which owns merged
+  Variables come from window.__tagreel.getVariables(), which owns merged
   declared defaults and per-instance overrides after mounting.
 -->
 <html
@@ -455,8 +455,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var dots = Array.prototype.slice.call(root.querySelectorAll(".ptr-dot"));
             var updated = root.querySelector(".ptr-updated");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: only finite 60–220 input reaches the physics owner.
@@ -708,7 +708,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add pull-to-refresh" item="pull-to-refresh" />
+<InstallCommand command="npx tagreel add pull-to-refresh" item="pull-to-refresh" />
 
 That writes one file: `compositions/components/pull-to-refresh.html`.
 

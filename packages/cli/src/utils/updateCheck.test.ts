@@ -50,7 +50,7 @@ async function noticeWith(opts: {
     else process.env[k] = v;
   }
   // Default to a non-CI interactive terminal unless the test overrides env.
-  for (const name of ["CI", "HYPERFRAMES_NO_UPDATE_CHECK"]) {
+  for (const name of ["CI", "TAGREEL_NO_UPDATE_CHECK"]) {
     if (!(name in (opts.env ?? {}))) delete process.env[name];
   }
 
@@ -86,34 +86,34 @@ describe("printUpdateNotice — install-method-aware command", () => {
   });
 
   it("shows the detected manager's command for an owned global install", async () => {
-    const out = await noticeWith({ installerCommand: "brew upgrade hyperframes" });
+    const out = await noticeWith({ installerCommand: "brew upgrade tagreel" });
     expect(out).toContain("Update available");
-    expect(out).toContain("brew upgrade hyperframes");
-    expect(out).not.toContain("npx hyperframes@latest");
+    expect(out).toContain("brew upgrade tagreel");
+    expect(out).not.toContain("npx tagreel@latest");
   });
 
-  it("falls back to npx hyperframes@latest when the install method is skip/unknown", async () => {
+  it("falls back to npx tagreel@latest when the install method is skip/unknown", async () => {
     const out = await noticeWith({ installerCommand: null });
-    expect(out).toContain("npx hyperframes@latest");
+    expect(out).toContain("npx tagreel@latest");
   });
 
   it("is suppressed on a non-TTY stderr", async () => {
-    const out = await noticeWith({ installerCommand: "brew upgrade hyperframes", isTTY: false });
+    const out = await noticeWith({ installerCommand: "brew upgrade tagreel", isTTY: false });
     expect(out).toBe("");
   });
 
   it("is suppressed in CI", async () => {
     const out = await noticeWith({
-      installerCommand: "brew upgrade hyperframes",
+      installerCommand: "brew upgrade tagreel",
       env: { CI: "true" },
     });
     expect(out).toBe("");
   });
 
-  it("is suppressed by the HYPERFRAMES_NO_UPDATE_CHECK opt-out", async () => {
+  it("is suppressed by the TAGREEL_NO_UPDATE_CHECK opt-out", async () => {
     const out = await noticeWith({
-      installerCommand: "brew upgrade hyperframes",
-      env: { HYPERFRAMES_NO_UPDATE_CHECK: "1" },
+      installerCommand: "brew upgrade tagreel",
+      env: { TAGREEL_NO_UPDATE_CHECK: "1" },
     });
     expect(out).toBe("");
   });
@@ -176,8 +176,8 @@ describe("printDeprecationNotice", () => {
 
     expect(stdoutWrites).toEqual([]);
     expect(stderrWrites).toHaveLength(1);
-    expect(stderrWrites[0]).toContain("hyperframes validate");
-    expect(stderrWrites[0]).toContain("hyperframes check");
+    expect(stderrWrites[0]).toContain("tagreel validate");
+    expect(stderrWrites[0]).toContain("tagreel check");
   });
 });
 
@@ -225,7 +225,7 @@ describe("cachedUpdateCheck — what the parent reads without fetching", () => {
   async function load(config: Record<string, unknown>) {
     vi.resetModules();
     vi.stubEnv("CI", "");
-    vi.stubEnv("HYPERFRAMES_NO_UPDATE_CHECK", "");
+    vi.stubEnv("TAGREEL_NO_UPDATE_CHECK", "");
     vi.doMock("./env.js", () => ({ isDevMode: () => false }));
     vi.doMock("../telemetry/config.js", () => ({
       readConfig: () => ({ ...config }),

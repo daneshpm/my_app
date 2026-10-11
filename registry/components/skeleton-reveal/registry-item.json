@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "skeleton-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Skeleton Reveal",
   "description": "A skeleton loader transition that pulses, then cross-fades into content",
   "tags": ["video-primitive", "transition-primitive", "transitions-dev-port", "skeleton", "reveal"],
@@ -9,7 +9,7 @@
     {
       "path": "skeleton-reveal.html",
       "target": "compositions/components/skeleton-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

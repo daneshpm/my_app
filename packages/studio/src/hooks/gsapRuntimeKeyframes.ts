@@ -8,7 +8,7 @@
  * `toAbsoluteTime` + the element's clip start/duration. `scanAllRuntimeKeyframes`
  * does that conversion itself when given a `clipById` map.
  */
-import type { ArcPathConfig } from "@hyperframes/core/gsap-parser-acorn";
+import type { ArcPathConfig } from "@tagreel/core/gsap-parser-acorn";
 import { parsePercentageKeyframes, toAbsoluteTime } from "./gsapShared";
 import { timeAtProgress } from "../utils/gsapKeyframeEases";
 import { readMotionPathTween } from "./gsapRuntimeMotionPath";

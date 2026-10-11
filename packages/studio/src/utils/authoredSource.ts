@@ -1,8 +1,8 @@
-import { ensureHfIds, isCompositionTemplate } from "@hyperframes/parsers/hf-ids";
+import { ensureHfIds, isCompositionTemplate } from "@tagreel/parsers/hf-ids";
 import {
   STUDIO_PREVIEW_LAZY_ATTR,
   STUDIO_PREVIEW_UPCOMING_ATTR,
-} from "@hyperframes/core/studio-preview-mark";
+} from "@tagreel/core/studio-preview-mark";
 
 // Stamped as the preview stamps the files it serves, so a live element's hf-id finds its source.
 export function parseSavedSource(html: string): Document {
@@ -64,7 +64,7 @@ function livePathsOf(live: Element): Set<string> {
 }
 
 // The preview inlines a sub-composition with its relative asset paths rebased to the project
-// root (rewriteAssetPath in @hyperframes/parsers, which is not browser-safe); copy does the same.
+// root (rewriteAssetPath in @tagreel/parsers, which is not browser-safe); copy does the same.
 export function authoredMarkup(authored: Element, live: Element, sourceFile: string): string {
   if (!sourceFile.includes("/")) return authored.outerHTML;
   const livePaths = livePathsOf(live);

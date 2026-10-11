@@ -27,7 +27,7 @@ export interface FxPresetStyle {
    * Tailwind ships three generic families, and a set of presets styled only
    * with those ends up variations of the same two faces. These are system
    * faces with a documented fallback chain: the studio has no webfont
-   * pipeline, and the Google Fonts cache under `~/.cache/hyperframes` belongs
+   * pipeline, and the Google Fonts cache under `~/.cache/tagreel` belongs
    * to the CLI's composition build — reaching into it from the panel would be
    * inventing a second one.
    *

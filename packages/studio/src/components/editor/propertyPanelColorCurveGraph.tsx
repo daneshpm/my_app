@@ -9,7 +9,7 @@ import {
   type HfHueCurvePoint,
   type NormalizedHfColorGradingCurves,
   type NormalizedHfColorGradingHueCurves,
-} from "@hyperframes/core/color-grading";
+} from "@tagreel/core/color-grading";
 import { clampNumber } from "../../utils/studioHelpers";
 
 const GRAPH_SIZE = 160;

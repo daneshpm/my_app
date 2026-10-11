@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Data","badge":"Stable","codeLines":298}}
   attribution={{"path":"registry/components/star-rating-fill","tags":["data","rating","stars","fractional","fill","prove"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/star-rating-fill/star-rating-fill.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/star-rating-fill/star-rating-fill.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html star-rating-fill.html
 <!doctype html>
 <!--
-  star-rating-fill: HyperFrames video primitive (data / holdable / prove)
+  star-rating-fill: Tagreel video primitive (data / holdable / prove)
 
   Concept: one token-colored star layer is clipped over a muted copy. A
   single left-to-right clip-path sweep resolves at the target rating, so a
@@ -208,8 +208,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var valueElement = root.querySelector(".srf-value");
             var starTemplate = root.querySelector("#star-rating-fill-star-template");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             /* INVARIANT: zero is a valid rating. Missing values and zero are
@@ -327,7 +327,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add star-rating-fill" item="star-rating-fill" />
+<InstallCommand command="npx tagreel add star-rating-fill" item="star-rating-fill" />
 
 That writes one file: `compositions/components/star-rating-fill.html`.
 

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "inline-highlight",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Inline Highlight",
   "description": "A clean marker-style inline highlight that animates behind text using a CSS scale variable",
   "tags": ["motion-primitive", "text", "highlight", "caption"],
@@ -9,7 +9,7 @@
     {
       "path": "inline-highlight.html",
       "target": "compositions/components/inline-highlight.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -3,7 +3,7 @@
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { DesignPanelInputProvider } from "../../contexts/DesignPanelInputContext";
 import { usePlayerStore } from "../../player/store/playerStore";
 import { GsapAnimationSection } from "./GsapAnimationSection";

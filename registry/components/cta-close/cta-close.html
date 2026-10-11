@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  cta-close: HyperFrames video primitive (call to action / close)
+  cta-close: Tagreel video primitive (call to action / close)
 
   The action-only close. A display-scale action line lands per word, sized by
   a character-aware fit so it fills 70 to 85 percent of the frame width with
@@ -137,8 +137,8 @@
             var actionLine = root.querySelector(".cc-action");
             var button = root.querySelector(".cc-button");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var actionText =

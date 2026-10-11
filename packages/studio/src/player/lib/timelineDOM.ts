@@ -10,10 +10,10 @@
 
 import type { TimelineElement } from "../store/playerStore";
 import type { ClipManifestClip, IframeWindow, TimelineLike } from "./playbackTypes";
-import { resolveCssStackingContextId } from "@hyperframes/core/runtime/stacking-context";
-import { readClipTiming } from "@hyperframes/core/composition-contract";
-import { linkScopeOf } from "@hyperframes/core/media-link";
-import { createRuntimeStartTimeResolver } from "@hyperframes/core/runtime/start-resolver";
+import { resolveCssStackingContextId } from "@tagreel/core/runtime/stacking-context";
+import { readClipTiming } from "@tagreel/core/composition-contract";
+import { linkScopeOf } from "@tagreel/core/media-link";
+import { createRuntimeStartTimeResolver } from "@tagreel/core/runtime/start-resolver";
 import { groupInfoFor } from "./timelineGroupInfo";
 import { transitionLabelsForDocument } from "./timelineTransitionMetadata";
 import {

@@ -1,8 +1,4 @@
-import {
-  type BlockCategory,
-  BLOCK_CATEGORIES,
-  resolveBlockCategory,
-} from "@hyperframes/core/registry";
+import { type BlockCategory, BLOCK_CATEGORIES, resolveBlockCategory } from "@tagreel/core/registry";
 
 export type { BlockCategory };
 export { BLOCK_CATEGORIES, resolveBlockCategory };

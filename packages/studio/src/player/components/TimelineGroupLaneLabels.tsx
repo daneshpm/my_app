@@ -12,7 +12,7 @@
  * showed the seed would stand still while the curve is audibly working.
  */
 
-import { sampleAutomationLane } from "@hyperframes/core/audio-automation";
+import { sampleAutomationLane } from "@tagreel/core/audio-automation";
 import { groupAutomationLanes } from "./automationLaneData";
 import { AUTOMATION_LANE_H } from "./automationLaneHeight";
 import type { TimelineElement } from "../store/playerStore";

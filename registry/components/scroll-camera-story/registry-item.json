@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "scroll-camera-story",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Scroll Camera Story",
   "description": "A compressed forced-scroll cinematic pass: a tall scene of slotted sections travels past the camera top to bottom, depth layers parallax at different rates, each section rises as the camera reaches it, and the pass decelerates into a held final section.",
   "tags": ["camera", "scroll", "parallax", "story", "sections", "slot", "servo"],
@@ -14,7 +14,7 @@
     {
       "path": "scroll-camera-story.html",
       "target": "compositions/components/scroll-camera-story.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

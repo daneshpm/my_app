@@ -1,5 +1,5 @@
 import { useMemo, useRef } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { animationLaneGroups } from "./TimelinePropertyLanes";
 import { isAudioOrVideoTimelineElement } from "../../utils/timelineInspector";
 import { elementAutomationLanes, groupAutomationLanes } from "./automationLaneData";

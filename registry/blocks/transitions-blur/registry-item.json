@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "transitions-blur",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Blur Transitions",
   "description": "Showcase of blur-based transitions between scenes",
   "tags": ["transition", "showcase"],
@@ -14,7 +14,7 @@
     {
       "path": "transitions-blur.html",
       "target": "compositions/transitions-blur.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

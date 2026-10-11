@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "curtain-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Curtain Reveal",
   "description": "Two pleated stage curtains gather outward from center, the way real velvet bunches at the tieback, revealing the stage underneath. A static pelmet frames the top; a soft spotlight can bloom in as they part.",
   "tags": ["curtain", "stage reveal", "transition", "motion-primitive"],
@@ -9,7 +9,7 @@
     {
       "path": "curtain-reveal.html",
       "target": "compositions/components/curtain-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

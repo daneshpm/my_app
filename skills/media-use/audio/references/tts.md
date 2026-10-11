@@ -1,12 +1,12 @@
 # Text To Speech
 
-`npx hyperframes tts` synthesizes locally with Kokoro. It does not accept a
+`npx tagreel tts` synthesizes locally with Kokoro. It does not accept a
 `--provider` or `--words` flag; word timestamps come from a local
-`npx hyperframes transcribe` pass over the generated audio. No account is needed.
+`npx tagreel transcribe` pass over the generated audio. No account is needed.
 
-## Narrating a HyperFrames docs video
+## Narrating a Tagreel docs video
 
-Anything that will sit on hyperframes.heygen.com uses one narrator, so the site
+Anything that will sit on github.com/daneshpm/my_app/tree/main/docs uses one narrator, so the site
 does not sound like two products.
 
 |                |                                                |
@@ -44,7 +44,7 @@ request to use Gemini already chooses the provider. Read the Gemini section for 
 
 ```bash
 # Local Kokoro CLI
-npx hyperframes tts "Welcome to HyperFrames" -o narration.wav
+npx tagreel tts "Welcome to Tagreel" -o narration.wav
 ```
 
 ## When to use which provider
@@ -58,7 +58,7 @@ npx hyperframes tts "Welcome to HyperFrames" -o narration.wav
 
 ## Gemini narration
 
-Use the shared audio engine, not `hyperframes tts`. Authenticate with either:
+Use the shared audio engine, not `tagreel tts`. Authenticate with either:
 
 - `GEMINI_API_KEY` or `GOOGLE_API_KEY` (first set key wins).
 - A service-account JSON file at `GOOGLE_APPLICATION_CREDENTIALS`, or injected
@@ -93,7 +93,7 @@ Save this as `audio_request.json` in the project:
 
 ```bash
 node <SKILL_DIR>/audio/scripts/audio.mjs \
-  --request ./audio_request.json --hyperframes . --out ./audio_meta.json --only tts
+  --request ./audio_request.json --tagreel . --out ./audio_meta.json --only tts
 ```
 
 The engine saves `assets/voice/intro.wav` (or `intro-2.wav` when a file of yours already has that name; `voices[].path` says which), measures its duration, and transcribes
@@ -146,7 +146,7 @@ Default `af_heart`. Curated picks:
 | Documentation     | `bf_emma`, `bm_george` |
 | Casual / social   | `af_heart`, `af_sky`   |
 
-Run `npx hyperframes tts --list` for the bundled set.
+Run `npx tagreel tts --list` for the bundled set.
 
 ## Multilingual (Kokoro voice prefix → language)
 
@@ -165,8 +165,8 @@ The first letter of a Kokoro voice ID picks the phonemizer language; `--lang` ov
 | `z`    | Mandarin             |
 
 ```bash
-npx hyperframes tts "La reunión empieza a las nueve" --voice ef_dora
-npx hyperframes tts "Today is a nice day" --voice af_heart
+npx tagreel tts "La reunión empieza a las nueve" --voice ef_dora
+npx tagreel tts "Today is a nice day" --voice af_heart
 ```
 
 Valid `--lang` codes (only needed to override the voice's auto-detected language): `en-us`, `en-gb`, `es`, `fr-fr`, `hi`, `it`, `pt-br`, `ja`, `zh`.
@@ -180,7 +180,7 @@ Non-English phonemization requires `espeak-ng` system-wide (`brew install espeak
 - `1.1-1.2` — intros, transitions, upbeat content
 - `1.5+` — rarely appropriate, test carefully
 
-The `hyperframes tts` command honors `--speed` for Kokoro. Provider-specific
+The `tagreel tts` command honors `--speed` for Kokoro. Provider-specific
 helpers document their own pacing controls.
 
 ## Long scripts
@@ -198,4 +198,4 @@ Past a few paragraphs, write the text to a `.txt` file and pass the path. Inputs
 ]
 ```
 
-For any provider, run `npx hyperframes transcribe narration.wav --model small.en` to get the same shape.
+For any provider, run `npx tagreel transcribe narration.wav --model small.en` to get the same shape.

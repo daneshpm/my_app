@@ -1,1 +1,1 @@
-export { MIN_PLAYBACK_RATE, MAX_PLAYBACK_RATE } from "@hyperframes/parsers/media-duration";
+export { MIN_PLAYBACK_RATE, MAX_PLAYBACK_RATE } from "@tagreel/parsers/media-duration";

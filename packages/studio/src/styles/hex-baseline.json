@@ -37,7 +37,7 @@
     "packages/studio/src/components/panels/VariablesBindElement.tsx": 2,
     "packages/studio/src/components/panels/VariablesValueControls.tsx": 2,
     "packages/studio/src/components/sidebar/AudioRow.tsx": 2,
-    "packages/studio/src/components/ui/HyperframesMark.tsx": 4,
+    "packages/studio/src/components/ui/TagreelMark.tsx": 4,
     "packages/studio/src/hooks/useInlineTextEdit.ts": 1,
     "packages/studio/src/player/components/AudioWaveform.tsx": 2,
     "packages/studio/src/player/components/BeatStrip.tsx": 6,

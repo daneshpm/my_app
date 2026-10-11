@@ -1,9 +1,9 @@
 ---
 title: "How catalog search works"
-description: "What `hyperframes catalog --query` does, the on-device model behind meaning search, what it downloads, and how its index is built."
+description: "What `tagreel catalog --query` does, the on-device model behind meaning search, what it downloads, and how its index is built."
 ---
 
-`hyperframes catalog --query "<what you want>"` finds catalog blocks and components by what they do,
+`tagreel catalog --query "<what you want>"` finds catalog blocks and components by what they do,
 not only by name. It runs on your machine in one of two ways, and neither sends your query anywhere.
 
 | Search | When it runs | Needs |
@@ -68,10 +68,10 @@ from the same file.
 
 | What | From | Stored in |
 | --- | --- | --- |
-| `model_quantized.onnx` (34,014,426 bytes) | huggingface.co, at the pinned revision | `~/.hyperframes/models/bge-small-en-v1.5.onnx` |
-| `tokenizer.json` (711,396 bytes) | huggingface.co, at the pinned revision | `~/.hyperframes/models/bge-small-en-v1.5.tokenizer.json` |
-| `onnxruntime-node` 1.21.1 | npm, on first use | `~/.cache/hyperframes/optional` |
-| `local-vectors.json` and `local-vectors.bin` | the catalog registry, `catalog-artifact/` | `~/.hyperframes/catalog` |
+| `model_quantized.onnx` (34,014,426 bytes) | huggingface.co, at the pinned revision | `~/.tagreel/models/bge-small-en-v1.5.onnx` |
+| `tokenizer.json` (711,396 bytes) | huggingface.co, at the pinned revision | `~/.tagreel/models/bge-small-en-v1.5.tokenizer.json` |
+| `onnxruntime-node` 1.21.1 | npm, on first use | `~/.cache/tagreel/optional` |
+| `local-vectors.json` and `local-vectors.bin` | the catalog registry, `catalog-artifact/` | `~/.tagreel/catalog` |
 
 Both model files are checked against pinned SHA-256 hashes. A file that does not match is deleted and
 the search falls back to word match, so a partial or altered download is never used. The runtime is
@@ -79,7 +79,7 @@ installed before the model, so a machine that cannot run it does not spend the 3
 
 The catalog vectors carry a `revision`. When the registry publishes a new one, the CLI fetches the new
 pair before the next meaning search, so newly published items become findable without a CLI update.
-For development, `HYPERFRAMES_CATALOG_ARTIFACT_DIR` replaces `~/.hyperframes/catalog` as the folder
+For development, `TAGREEL_CATALOG_ARTIFACT_DIR` replaces `~/.tagreel/catalog` as the folder
 the vectors are kept in.
 
 ### What is compared
@@ -97,7 +97,7 @@ Meaning search runs entirely on your machine: your query is turned into a vector
 with vectors already on disk. The only network traffic is the one-time downloads above and the refresh
 of the catalog vectors, none of which carries your query.
 
-When a search finds nothing useful, the CLI prints a `hyperframes feedback --search-miss` command you
+When a search finds nothing useful, the CLI prints a `tagreel feedback --search-miss` command you
 can run to report the gap. That command sends the query, and only if you run it.
 
 ## How the index is built
@@ -125,5 +125,5 @@ with the rest of the generated catalog, downloading the pinned model first if ne
 publication pull request does the same after source changes merge. Without the model, the build script
 stops and says so rather than failing midway, and the "Catalog: search index covers the registry" CI
 check fails if any searchable item is missing from the index. See
-[`registry/catalog-artifact/README.md`](https://github.com/heygen-com/hyperframes/blob/main/registry/catalog-artifact/README.md)
+[`registry/catalog-artifact/README.md`](https://github.com/daneshpm/my_app/blob/main/registry/catalog-artifact/README.md)
 for the file format.

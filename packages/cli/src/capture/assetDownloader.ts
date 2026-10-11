@@ -5,7 +5,7 @@
  * resolution) as the single source of truth for images. Favicon links are passed separately.
  */
 
-import { isBlockedNetworkHost } from "@hyperframes/engine";
+import { isBlockedNetworkHost } from "@tagreel/engine";
 import { ensureCaptureDirSync, writeCaptureFileSync } from "./captureFile.js";
 import { join, extname } from "node:path";
 import { createHash } from "node:crypto";
@@ -122,7 +122,7 @@ export interface IconRecord {
  * failure mode that let a silent 403 substitute a worse icon without anything recording it.
  */
 export interface IconManifest {
-  schema: "hyperframes.capture.icons.v1";
+  schema: "tagreel.capture.icons.v1";
   headline: {
     /** The backwards-compatible stem, e.g. `assets/favicon.png`. */
     file: string;
@@ -136,7 +136,7 @@ export interface IconManifest {
 }
 
 function emptyIconManifest(): IconManifest {
-  return { schema: "hyperframes.capture.icons.v1", headline: null, icons: [] };
+  return { schema: "tagreel.capture.icons.v1", headline: null, icons: [] };
 }
 
 /** Icons downloaded per capture. Pages declare up to a dozen apple-touch sizes; a few is plenty. */

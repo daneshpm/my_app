@@ -75,7 +75,7 @@ declare global {
     __perfPlaySamples?: Array<{ wall: number; comp: number }>;
     /** setInterval handle used by the sampler; cleared at the end of the window. */
     __perfPlaySamplerHandle?: number;
-    /** Hyperframes runtime player API exposed inside the composition iframe. */
+    /** Tagreel runtime player API exposed inside the composition iframe. */
     __player?: {
       play: () => void;
       pause: () => void;
@@ -96,7 +96,7 @@ type RunResult = {
 
 /**
  * Find the iframe Puppeteer Frame that hosts the fixture composition. The
- * `<hyperframes-player>` shell wraps an iframe whose URL is derived from the
+ * `<tagreel-player>` shell wraps an iframe whose URL is derived from the
  * player's `src` attribute, so we match by path substring rather than full URL.
  */
 async function getFixtureFrame(page: Page, fixture: string): Promise<Frame> {

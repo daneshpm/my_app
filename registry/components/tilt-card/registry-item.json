@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "tilt-card",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Tilt Card",
   "description": "A transitions.dev-inspired tilt card primitive with depth layers and hover-style parallax",
   "tags": ["video-primitive", "transition-primitive", "transitions-dev-port", "card", "tilt"],
@@ -9,7 +9,7 @@
     {
       "path": "tilt-card.html",
       "target": "compositions/components/tilt-card.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

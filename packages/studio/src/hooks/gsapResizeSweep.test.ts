@@ -19,8 +19,8 @@
  * a person noticing weeks later.
  */
 import { afterEach, expect, it, vi } from "vitest";
-import { classifyTweenPropertyGroup } from "@hyperframes/core/gsap-parser";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import { classifyTweenPropertyGroup } from "@tagreel/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import { usePlayerStore } from "../player/store/playerStore";
 import { elTween, resetGsapEditState } from "./gsapParsedTween.test-helpers";

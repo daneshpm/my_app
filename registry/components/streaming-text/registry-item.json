@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "streaming-text",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Streaming Text",
   "description": "Words arrive the way an AI answer streams - in uneven bursts on a measured token rhythm, each word landing grey and inking to full colour - rather than the even tick of a typewriter",
   "tags": ["video-primitive", "text-effect", "ai", "chat"],
@@ -36,7 +36,7 @@
     {
       "path": "streaming-text.html",
       "target": "compositions/components/streaming-text.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

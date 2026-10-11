@@ -28,17 +28,17 @@ Use this when you will test several commands or projects:
 cd packages/cli
 bun link
 
-hyperframes --version
-which hyperframes
+tagreel --version
+which tagreel
 ```
 
 The resolved binary should point into the local my_app checkout. Run it from a separate project:
 
 ```bash
 cd /path/to/a/video-project
-hyperframes lint
-hyperframes check
-hyperframes preview
+tagreel lint
+tagreel check
+tagreel preview
 ```
 
 Remove the link when finished. `bun unlink` takes no package name — it
@@ -47,7 +47,7 @@ your my_app checkout first (an absolute path, since you are now inside the
 video project):
 
 ```bash
-cd /path/to/hyperframes/packages/cli
+cd /path/to/tagreel/packages/cli
 bun unlink
 ```
 
@@ -56,7 +56,7 @@ bun unlink
 Use this when you do not want to change your `PATH`:
 
 ```bash
-node /path/to/hyperframes/packages/cli/dist/cli.js preview /path/to/a/video-project
+node /path/to/tagreel/packages/cli/dist/cli.js preview /path/to/a/video-project
 ```
 
 ### Test the package archive
@@ -66,7 +66,7 @@ Use this before a release to check the files that would actually be published:
 ```bash
 cd packages/cli
 npm pack
-npx ./hyperframes-<version>.tgz --help
+npx ./tagreel-<version>.tgz --help
 ```
 
 Run the archive against an isolated project as well as the command you changed.
@@ -86,4 +86,4 @@ For Studio changes, exercise the exact interaction in Preview. For rendering cha
 
 ## Common problems
 
-If a globally installed CLI shadows the link, inspect `which hyperframes`, remove the global package, and link again. Preview starts at port `3002` and automatically tries a free port; pass `--port` only when a fixed port is required.
+If a globally installed CLI shadows the link, inspect `which tagreel`, remove the global package, and link again. Preview starts at port `3002` and automatically tries a free port; pass `--port` only when a fixed port is required.

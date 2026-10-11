@@ -90,7 +90,7 @@ and must not be filled with invented copy:
 ```html compositions/card.html
 {"id":"appName","type":"string","label":"App name",
  "description":"Name of the brand this video promotes, credited in the corner of every banner.",
- "portrays":["subject_name"],"default":"HyperFrames"}
+ "portrays":["subject_name"],"default":"Tagreel"}
 ```
 
 | Value                  | The slot stands for                                                        |
@@ -129,11 +129,11 @@ Use direct bindings for the normal cases:
 - Scalar variables are available as CSS custom properties such as
   `var(--accent)`.
 
-Use `window.__hyperframes.getVariables()` only when the result needs conditions,
+Use `window.__tagreel.getVariables()` only when the result needs conditions,
 loops, or derived values:
 
 ```js
-const { featured = false } = window.__hyperframes.getVariables();
+const { featured = false } = window.__tagreel.getVariables();
 document.querySelector(".badge").hidden = !featured;
 ```
 
@@ -168,7 +168,7 @@ Both instances keep the same source and receive different content.
 Override top-level values from the CLI:
 
 ```bash
-npx hyperframes render \
+npx tagreel render \
   --variables '{"title":"Enterprise","accent":"#22c55e"}' \
   --strict-variables \
   --output enterprise.mp4
@@ -191,7 +191,7 @@ row to name each output:
 ```
 
 ```bash
-npx hyperframes render \
+npx tagreel render \
   --batch rows.json \
   --strict-variables \
   --output "renders/{name}.mp4"
@@ -219,7 +219,7 @@ runs.
 Run:
 
 ```bash
-npx hyperframes lint
+npx tagreel lint
 ```
 
 The linter catches malformed declarations, missing fields, wrong default types,

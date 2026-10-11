@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { parseAudioFxChain, serializeAudioFxChain } from "@hyperframes/core/audio-fx";
-import { normalizeHfColorGrading } from "@hyperframes/core/color-grading";
+import { parseAudioFxChain, serializeAudioFxChain } from "@tagreel/core/audio-fx";
+import { normalizeHfColorGrading } from "@tagreel/core/color-grading";
 import {
   activeLook,
   activeVoicePreset,

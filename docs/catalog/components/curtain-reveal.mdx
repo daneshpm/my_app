@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":377}}
   attribution={{"path":"registry/components/curtain-reveal","tags":["curtain","stage reveal","transition","motion-primitive"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/curtain-reveal/curtain-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/curtain-reveal/curtain-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html curtain-reveal.html
 <!doctype html>
 <!--
-  curtain-reveal: HyperFrames video primitive (transitions / stage reveal).
+  curtain-reveal: Tagreel video primitive (transitions / stage reveal).
 
   Two velvet stage curtains meet at center, covering the frame. On cue they
   gather outward: each fold narrows, hardest at the outer edge, and the hem
@@ -250,8 +250,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var pelmet = document.getElementById("cvr-pelmet");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // fold: [dark, mid, light, sheen]
@@ -406,7 +406,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add curtain-reveal" item="curtain-reveal" />
+<InstallCommand command="npx tagreel add curtain-reveal" item="curtain-reveal" />
 
 That writes one file: `compositions/components/curtain-reveal.html`.
 

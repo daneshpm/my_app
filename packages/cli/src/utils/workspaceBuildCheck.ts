@@ -1,5 +1,5 @@
 // Detects a missing or stale workspace build before anything else imports it.
-// Zero `@hyperframes/*` imports: must stay importable when nothing is built.
+// Zero `@tagreel/*` imports: must stay importable when nothing is built.
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -20,7 +20,7 @@ const CORE_REQUIRED_GENERATED_FILES = [
   "src/generated/audio-fx-runtime-inline.ts",
 ];
 
-export const SKIP_STALE_CHECK_ENV = "HYPERFRAMES_SKIP_BUILD_STALE_CHECK";
+export const SKIP_STALE_CHECK_ENV = "TAGREEL_SKIP_BUILD_STALE_CHECK";
 
 export interface WorkspaceBuildProblem {
   package: string;
@@ -30,7 +30,7 @@ export interface WorkspaceBuildProblem {
 }
 
 function buildCommand(pkg: string): string {
-  return `bun run --filter @hyperframes/${pkg} build`;
+  return `bun run --filter @tagreel/${pkg} build`;
 }
 
 function isTestFile(name: string): boolean {
@@ -97,7 +97,7 @@ function exportProblemsFor(packageDir: string, pkg: string, fix: string): Worksp
 }
 
 // Checks parsers/lint/studio-server/core/player in build order. Missing
-// files always report; a stale src skips via HYPERFRAMES_SKIP_BUILD_STALE_CHECK=1.
+// files always report; a stale src skips via TAGREEL_SKIP_BUILD_STALE_CHECK=1.
 export function checkStudioWorkspaceBuild(repoRoot: string): WorkspaceBuildProblem[] {
   const problems: WorkspaceBuildProblem[] = [];
 
@@ -159,8 +159,8 @@ export function formatWorkspaceBuildProblems(problems: WorkspaceBuildProblem[]):
   lines.push(
     "  Or build every package in order (core depends on the first three, player on core):",
   );
-  lines.push("    bun run --filter '@hyperframes/{parsers,lint,studio-server}' build \\");
-  lines.push("      && bun run --filter @hyperframes/core build \\");
-  lines.push("      && bun run --filter @hyperframes/player build");
+  lines.push("    bun run --filter '@tagreel/{parsers,lint,studio-server}' build \\");
+  lines.push("      && bun run --filter @tagreel/core build \\");
+  lines.push("      && bun run --filter @tagreel/player build");
   return lines.join("\n");
 }

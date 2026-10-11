@@ -22,7 +22,7 @@
  */
 
 import { trackStudioEvent } from "../../utils/studioTelemetry";
-import type { HfAudioFxChain, HfAudioFxNode } from "@hyperframes/core/audio-fx";
+import type { HfAudioFxChain, HfAudioFxNode } from "@tagreel/core/audio-fx";
 
 /** Kept narrow deliberately — see the "nothing user-authored" rule above. */
 type FxEventProperties = Record<string, string | number | boolean | null | undefined>;

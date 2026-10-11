@@ -1,11 +1,11 @@
 // @vitest-environment happy-dom
 
 import { describe, it, expect, vi } from "vitest";
-import { ensureHfIds } from "@hyperframes/parsers/hf-ids";
+import { ensureHfIds } from "@tagreel/parsers/hf-ids";
 
 const stamping = vi.hoisted(() => ({ calls: 0 }));
-vi.mock("@hyperframes/parsers/hf-ids", async (importOriginal) => {
-  const real = await importOriginal<typeof import("@hyperframes/parsers/hf-ids")>();
+vi.mock("@tagreel/parsers/hf-ids", async (importOriginal) => {
+  const real = await importOriginal<typeof import("@tagreel/parsers/hf-ids")>();
   return {
     ...real,
     ensureHfIds: (html: string) => {

@@ -38,7 +38,7 @@ for (const skill of workflows) {
             fileURLToPath(new URL("build-frame.mjs", scripts)),
             "--preset",
             "capsule",
-            "--hyperframes",
+            "--tagreel",
             project,
           ],
           { stdio: "pipe" },

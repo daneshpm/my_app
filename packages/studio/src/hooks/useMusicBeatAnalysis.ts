@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from "react";
 import { usePlayerStore } from "../player/store/playerStore";
 import { resolveBeatSourceTrack } from "../utils/timelineInspector";
-import { analyzeMusicFromUrl } from "@hyperframes/core/beats";
+import { analyzeMusicFromUrl } from "@tagreel/core/beats";
 import { useFileManagerContextOptional } from "../contexts/FileManagerContext";
 import { mergeUserBeats } from "../utils/beatEditing";
 import { getTimelineElementIndexes } from "../player/lib/timelineElementIndexes";
@@ -11,7 +11,7 @@ import {
   beatFilePathForSrc,
   serializeBeats,
   parseBeats,
-} from "@hyperframes/core/beats";
+} from "@tagreel/core/beats";
 
 // Module-level cache so the same URL isn't re-decoded/analyzed on re-mount.
 // Capped so decoded PCM buffers don't accumulate unbounded across a session.

@@ -69,7 +69,7 @@ export const WorkflowChooser = () => {
     {
       title: "Port a Remotion composition",
       bring: "Bring an existing Remotion project. One-way migration, not a new build.",
-      href: "/guides/hyperframes-vs-remotion",
+      href: "/guides/tagreel-vs-remotion",
     },
   ];
 

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":467}}
   attribution={{"path":"registry/components/stop-motion-cadence","tags":["motion-primitive","time-law","stop-motion","stepped","boil","deterministic","experiment"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/stop-motion-cadence/stop-motion-cadence.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/stop-motion-cadence/stop-motion-cadence.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html stop-motion-cadence.html
 <!doctype html>
 <!--
-  stop-motion-cadence: HyperFrames video primitive (time law, Wave M10 experiment)
+  stop-motion-cadence: Tagreel video primitive (time law, Wave M10 experiment)
 
   The stepped-time law as a demo primitive. ONE driver: every frame the
   timeline time is quantized FIRST,
@@ -248,8 +248,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var shadows = root.querySelectorAll(".smc-shadow");
             var sparkles = root.querySelectorAll(".smc-sparkle");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var fps =
@@ -496,7 +496,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add stop-motion-cadence" item="stop-motion-cadence" />
+<InstallCommand command="npx tagreel add stop-motion-cadence" item="stop-motion-cadence" />
 
 That writes one file: `compositions/components/stop-motion-cadence.html`.
 

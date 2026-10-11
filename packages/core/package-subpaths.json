@@ -1,5 +1,5 @@
 {
-  "package": "@hyperframes/core",
+  "package": "@tagreel/core",
   "localNodeRuntime": true,
   "subpaths": {
     ".": {
@@ -123,9 +123,9 @@
       "environments": ["browser", "bun", "node"]
     },
     "./generators": {
-      "source": "./src/generators/hyperframes.ts",
-      "runtime": "./dist/generators/hyperframes.js",
-      "types": "./dist/generators/hyperframes.d.ts",
+      "source": "./src/generators/tagreel.ts",
+      "runtime": "./dist/generators/tagreel.js",
+      "types": "./dist/generators/tagreel.d.ts",
       "environments": ["browser", "bun", "node"]
     },
     "./lint": {
@@ -279,8 +279,8 @@
       "environments": ["browser", "bun", "node"]
     },
     "./runtime": {
-      "source": "./dist/hyperframe.runtime.iife.js",
-      "runtime": "./dist/hyperframe.runtime.iife.js",
+      "source": "./dist/tagreel.runtime.iife.js",
+      "runtime": "./dist/tagreel.runtime.iife.js",
       "types": null,
       "environments": ["browser"]
     },

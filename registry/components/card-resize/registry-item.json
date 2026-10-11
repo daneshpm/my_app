@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "card-resize",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Card Resize",
   "description": "A transitions.dev-inspired card resize primitive that expands a compact card into a detail panel",
   "tags": ["video-primitive", "transition-primitive", "transitions-dev-port", "card", "layout"],
@@ -9,7 +9,7 @@
     {
       "path": "card-resize.html",
       "target": "compositions/components/card-resize.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

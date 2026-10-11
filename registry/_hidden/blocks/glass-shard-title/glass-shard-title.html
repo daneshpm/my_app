@@ -182,8 +182,8 @@
           fog: 36,
         };
         try {
-          if (window.__hyperframes && window.__hyperframes.getVariables) {
-            var v = window.__hyperframes.getVariables() || {};
+          if (window.__tagreel && window.__tagreel.getVariables) {
+            var v = window.__tagreel.getVariables() || {};
             if (v.headline) vars.headline = String(v.headline);
             if (v.title) vars.headline = String(v.title); /* legacy id */
             if (v.tileCount !== undefined && isFinite(Number(v.tileCount)))

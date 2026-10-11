@@ -190,7 +190,7 @@ export const ReplicaCompare = ({
             preload="none"
           />
           <div className="p-3">
-            <span className={`${cap} text-zinc-700 dark:text-zinc-300`}>HyperFrames replica</span>
+            <span className={`${cap} text-zinc-700 dark:text-zinc-300`}>Tagreel replica</span>
           </div>
         </div>
       </div>

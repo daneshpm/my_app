@@ -2,7 +2,7 @@
 
 Everything under `registry/_hidden/` is **not** part of the live registry. It is not
 listed in `registry/registry.json`, is not indexed for catalog search, has no docs
-page, and cannot be installed with `hyperframes add`.
+page, and cannot be installed with `tagreel add`.
 
 ## Why these items are hidden
 
@@ -35,7 +35,7 @@ except the hosted bytes.
    `assets/` folder) and update the `url` of each `files[]` entry, or drop the
    `url` and keep the file in the tree.
 3. Move the folder back to `registry/blocks/<name>/`.
-4. Add `{ "name": "<name>", "type": "hyperframes:block" }` to `registry/registry.json`
+4. Add `{ "name": "<name>", "type": "tagreel:block" }` to `registry/registry.json`
    (`bun scripts/generate-registry-items.ts` indexes every directory), then
    rebuild the on-device catalog vectors (`scripts/catalog/build-local-vectors.ts`)
    and the docs catalog.

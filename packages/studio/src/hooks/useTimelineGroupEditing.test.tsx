@@ -4,11 +4,7 @@ import { act } from "react";
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import {
-  createStudioApi,
-  openProjectHistory,
-  type StudioApiAdapter,
-} from "@hyperframes/studio-server";
+import { createStudioApi, openProjectHistory, type StudioApiAdapter } from "@tagreel/studio-server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { Root } from "react-dom/client";
 import type { TimelineElement } from "../player";

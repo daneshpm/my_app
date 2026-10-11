@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "product-promo",
-  "type": "hyperframes:example",
+  "type": "tagreel:example",
   "title": "Product Promo",
   "description": "Multi-scene product showcase with SVG assets",
   "dimensions": {
@@ -13,37 +13,37 @@
     {
       "path": "assets/figma-cursors.svg",
       "target": "assets/figma-cursors.svg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/figma-logo-pieces.svg",
       "target": "assets/figma-logo-pieces.svg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/figma-logo-pills.svg",
       "target": "assets/figma-logo-pills.svg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "compositions/scene1-logo-intro.html",
       "target": "compositions/scene1-logo-intro.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "compositions/scene2-4-canvas.html",
       "target": "compositions/scene2-4-canvas.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "compositions/scene5-logo-outro.html",
       "target": "compositions/scene5-logo-outro.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "index.html",
       "target": "index.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

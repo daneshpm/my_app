@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":441}}
   attribution={{"path":"registry/components/paper-collage-reveal","tags":["collage","scrapbook","torn paper","reveal","transition","motion-primitive"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/paper-collage-reveal/paper-collage-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/paper-collage-reveal/paper-collage-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html paper-collage-reveal.html
 <!doctype html>
 <!--
-  paper-collage-reveal: HyperFrames video primitive (transitions / texture).
+  paper-collage-reveal: Tagreel video primitive (transitions / texture).
 
   A patchwork of torn paper scraps covers the frame. Each scrap has its own
   torn silhouette with a deckled edge, visible grain and a crisp cast shadow.
@@ -247,8 +247,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var scrapsHost = document.getElementById("pcr-scraps");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var panelsValue = parseInt(vars.panels, 10);
@@ -470,7 +470,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add paper-collage-reveal" item="paper-collage-reveal" />
+<InstallCommand command="npx tagreel add paper-collage-reveal" item="paper-collage-reveal" />
 
 That writes one file: `compositions/components/paper-collage-reveal.html`.
 

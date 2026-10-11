@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-// Semantic pin for the Claude Design "Send to HyperFrames" authoring guide. The guide is
+// Semantic pin for the Claude Design "Send to Tagreel" authoring guide. The guide is
 // LLM-facing prompt text, so a wording regression silently reintroduces a real failure mode.
 // A live Send-to import genericized a source design's concrete figures ("2.4M signals/sec" ->
 // "streaming now") because the guide both called the rebuild "lossy by nature" AND demanded
@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 // contradictory phrases cannot silently return. validate-docs proves syntax, not intent.
 const REPO_ROOT = join(fileURLToPath(new URL(".", import.meta.url)), "..", "..", "..", "..", "..");
 const GUIDE = readFileSync(
-  join(REPO_ROOT, "docs", "guides", "claude-design-send-to-hyperframes.md"),
+  join(REPO_ROOT, "docs", "guides", "claude-design-send-to-tagreel.md"),
   "utf8",
 );
 

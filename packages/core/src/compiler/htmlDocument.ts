@@ -1,11 +1,11 @@
 import { parseHTML } from "linkedom";
 
-export const RUNTIME_BOOTSTRAP_ATTR = "data-hyperframes-preview-runtime";
+export const RUNTIME_BOOTSTRAP_ATTR = "data-tagreel-preview-runtime";
 
 const RUNTIME_FILES = [
-  "hyperframe.runtime.iife.js",
-  "hyperframes-runtime.modular.inline.js",
-  "hyperframe-runtime.modular-runtime.inline.js",
+  "tagreel.runtime.iife.js",
+  "tagreel-runtime.modular.inline.js",
+  "tagreel-runtime.modular-runtime.inline.js",
 ];
 
 const SIMPLE_RUNTIME_FLAG_ASSIGNMENTS = [
@@ -204,7 +204,7 @@ function escapeCaseInsensitiveToken(
 
 function inlineScriptTags(scripts: readonly string[]): string {
   return scripts
-    .map((source, index) => `${source}\n//# sourceURL=hyperframes://injected/${index}`)
+    .map((source, index) => `${source}\n//# sourceURL=tagreel://injected/${index}`)
     .map((source) => `<script>${escapeInlineScriptSource(source)}</script>`)
     .join("\n");
 }

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":412}}
   attribution={{"path":"registry/components/torn-paper-rip","tags":["torn paper","paper rip","paper tear","transition","texture","motion-primitive"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/torn-paper-rip/torn-paper-rip.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/torn-paper-rip/torn-paper-rip.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html torn-paper-rip.html
 <!doctype html>
 <!--
-  torn-paper-rip: HyperFrames video primitive (transitions / texture).
+  torn-paper-rip: Tagreel video primitive (transitions / texture).
 
   A jagged, fibrous paper tear travels across the frame and splits one scene
   into the next. The "from" sheet sits on top, its torn edge showing a
@@ -268,8 +268,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var rimLayer = document.getElementById("tpr-rim");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var direction = vars.direction === "right-to-left" ? "right-to-left" : "left-to-right";
@@ -441,7 +441,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add torn-paper-rip" item="torn-paper-rip" />
+<InstallCommand command="npx tagreel add torn-paper-rip" item="torn-paper-rip" />
 
 That writes one file: `compositions/components/torn-paper-rip.html`.
 

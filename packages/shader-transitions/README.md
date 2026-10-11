@@ -1,23 +1,23 @@
-# @hyperframes/shader-transitions
+# @tagreel/shader-transitions
 
-WebGL shader transitions for HyperFrames compositions. Renders GPU-accelerated scene-to-scene transitions using fragment shaders, driven by GSAP timelines.
+WebGL shader transitions for Tagreel compositions. Renders GPU-accelerated scene-to-scene transitions using fragment shaders, driven by GSAP timelines.
 
 ## Install
 
 ```bash
-npm install @hyperframes/shader-transitions
+npm install @tagreel/shader-transitions
 ```
 
 Or load directly via CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@hyperframes/shader-transitions/dist/index.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tagreel/shader-transitions/dist/index.global.js"></script>
 ```
 
 ## Usage
 
 ```typescript
-import { init } from "@hyperframes/shader-transitions";
+import { init } from "@tagreel/shader-transitions";
 
 const tl = init({
   bgColor: "#0a0a0a",
@@ -89,7 +89,7 @@ init({
 | `compositionId`     | `string`             | no       | Override the `data-composition-id` for timeline registration                                                                                                  |
 | `previewCaptureFps` | `number`             | no       | Browser preview pre-capture samples per transition second. Defaults to `30`; rendering uses deterministic per-frame compositing instead.                      |
 
-Browser preview capture scale and transition-prep loading UI ownership are controlled by `<hyperframes-player>` (`shader-capture-scale`, `shader-loading`) instead of composition code. Direct non-player previews keep the built-in full-fidelity loading fallback.
+Browser preview capture scale and transition-prep loading UI ownership are controlled by `<tagreel-player>` (`shader-capture-scale`, `shader-loading`) instead of composition code. Direct non-player previews keep the built-in full-fidelity loading fallback.
 
 Browser previews store captured transition snapshots in IndexedDB using a key derived from composition ID, scene DOM/style signatures, transition timing, capture FPS, scale, and dimensions. On refresh, matching snapshots are reloaded into WebGL textures instead of being captured again. Runtime scene or stylesheet edits mark only adjacent transition caches dirty; recapture is deferred until playback so editing stays responsive.
 
@@ -107,7 +107,7 @@ Browser previews store captured transition snapshots in IndexedDB using a key de
 Array of all available shader name strings, useful for validation or building UIs.
 
 ```typescript
-import { SHADER_NAMES } from "@hyperframes/shader-transitions";
+import { SHADER_NAMES } from "@tagreel/shader-transitions";
 // ["domain-warp", "ridged-burn", "whip-pan", ...]
 ```
 
@@ -123,9 +123,9 @@ All formats include source maps. TypeScript definitions included.
 
 ## Related packages
 
-- [`@hyperframes/core`](../core) -- types, parsers, runtime
-- [`@hyperframes/engine`](../engine) -- rendering engine
-- [`hyperframes`](../cli) -- CLI
+- [`@tagreel/core`](../core) -- types, parsers, runtime
+- [`@tagreel/engine`](../engine) -- rendering engine
+- [`tagreel`](../cli) -- CLI
 
 ## License
 

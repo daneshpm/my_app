@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { redactTelemetryString } from "@hyperframes/core";
+import { redactTelemetryString } from "@tagreel/core";
 import type { ProducerLogger } from "../../logger.js";
 import { normalizeErrorMessage } from "../../utils/errorMessage.js";
 

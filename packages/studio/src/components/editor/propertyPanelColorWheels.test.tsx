@@ -3,7 +3,7 @@
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { NormalizedHfColorGradingWheels } from "@hyperframes/core/color-grading";
+import type { NormalizedHfColorGradingWheels } from "@tagreel/core/color-grading";
 import { ColorWheels } from "./propertyPanelColorWheels";
 
 (globalThis as unknown as { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;

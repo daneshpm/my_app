@@ -1,6 +1,6 @@
 ---
 title: "Grade Split Reveal"
-description: "The same picture twice, one flat and one finished, with a hard edge sweeping between them. It stops in the middle long enough to compare, then commits and the graded look takes the frame. Both looks are real HyperFrames color grading run through the WebGL shader, so the preview and the render match."
+description: "The same picture twice, one flat and one finished, with a hard edge sweeping between them. It stops in the middle long enough to compare, then commits and the graded look takes the frame. Both looks are real Tagreel color grading run through the WebGL shader, so the preview and the render match."
 mode: "frame"
 ---
 
@@ -12,12 +12,12 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   compositionId="grade-split-reveal"
   compositionSrc="compositions/components/grade-split-reveal.html"
   title="Grade Split Reveal"
-  description="The same picture twice, one flat and one finished, with a hard edge sweeping between them. It stops in the middle long enough to compare, then commits and the graded look takes the frame. Both looks are real HyperFrames color grading run through the WebGL shader, so the preview and the render match."
+  description="The same picture twice, one flat and one finished, with a hard edge sweeping between them. It stops in the middle long enough to compare, then commits and the graded look takes the frame. Both looks are real Tagreel color grading run through the WebGL shader, so the preview and the render match."
   variables={[{"id":"look","type":"enum","role":"style","label":"Look","description":"Grade carried by the upper copy, and the label printed over it. All three are real grading blocks handed to the shader, not CSS filters.","default":"warm-cinematic","options":[{"value":"warm-cinematic","label":"Warm Cinematic"},{"value":"cool-teal","label":"Cool Teal"},{"value":"bleach-bypass","label":"Bleach Bypass"}]},{"id":"split","type":"number","role":"motion","label":"Split point","description":"How far across the plate the edge stops to hold the comparison, before it commits and takes the rest.","default":62,"min":25,"max":85,"step":1,"unit":"%"},{"id":"edge","type":"enum","role":"style","label":"Edge","description":"The divider line riding the wipe. Hidden drops it entirely so the grade arrives with no seam.","default":"hairline","options":[{"value":"hairline","label":"Hairline"},{"value":"bold","label":"Bold"},{"value":"hidden","label":"Hidden"}]},{"id":"labels","type":"enum","role":"style","label":"Labels","description":"Show or hide the two captions naming each half of the plate.","default":"on","options":[{"value":"on","label":"Show"},{"value":"off","label":"Hide"}]}]}
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":446}}
   attribution={{"path":"registry/components/grade-split-reveal","tags":["color-grading","media","compare","reveal","motion-primitive","grade"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/grade-split-reveal/grade-split-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/grade-split-reveal/grade-split-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -34,7 +34,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   at the same time. It pauses in the middle long enough for the eye to compare, then commits
   and takes the whole frame.
 
-  Both looks are real HyperFrames color grading, not a CSS filter. The runtime hands each
+  Both looks are real Tagreel color grading, not a CSS filter. The runtime hands each
   image to a WebGL shader and swaps in a graded canvas, and the render pipeline redraws the
   same shader, so what you preview is what encodes. Color grading is media only: it applies
   to <video> and <img>, never to text, SVG or ordinary DOM.
@@ -292,8 +292,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
             /* ---- variables. Unrecognised overrides return to their declared defaults. ---- */
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function pick(table, value, fallback) {
@@ -475,7 +475,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add grade-split-reveal" item="grade-split-reveal" />
+<InstallCommand command="npx tagreel add grade-split-reveal" item="grade-split-reveal" />
 
 That writes one file: `compositions/components/grade-split-reveal.html`.
 

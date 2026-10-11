@@ -1,17 +1,17 @@
 ---
-title: "@hyperframes/sdk"
+title: "@tagreel/sdk"
 description: "Headless, framework-neutral composition editing engine for agents and custom editors."
 ---
 
 The SDK package provides a programmatic editing layer for my_app compositions. It opens composition HTML, exposes query and mutation APIs, emits JSON patches, supports undo/redo, and can persist changes through pluggable adapters without requiring React, Studio, or a browser UI.
 
 ```bash
-npm install @hyperframes/sdk
+npm install @tagreel/sdk
 ```
 
 ## When to Use
 
-**Use `@hyperframes/sdk` when you need to:**
+**Use `@tagreel/sdk` when you need to:**
 
 - Build a custom composition editor in your own application
 - Let an agent inspect and edit composition HTML without driving a browser UI
@@ -23,7 +23,7 @@ npm install @hyperframes/sdk
 **Use a different package if you want to:**
 
 - Render compositions to MP4 or WebM - use the [CLI](/packages/cli) or [producer](/packages/producer)
-- Preview and edit visually out of the box - use the [CLI](/packages/cli) (`npx hyperframes preview`) or [studio](/packages/studio)
+- Preview and edit visually out of the box - use the [CLI](/packages/cli) (`npx tagreel preview`) or [studio](/packages/studio)
 - Parse composition HTML - use [parsers](/packages/parsers)
 - Lint composition HTML or projects - use [lint](/packages/lint)
 - Compile or generate low-level composition HTML - use [core](/packages/core)
@@ -44,17 +44,17 @@ npm install @hyperframes/sdk
 
 | Import                               | Description                                                               |
 | ------------------------------------ | ------------------------------------------------------------------------- |
-| `@hyperframes/sdk`                   | Main editing API, types, memory/headless adapters, iframe preview adapter |
-| `@hyperframes/sdk/adapters/memory`   | In-memory persistence adapter for tests, demos, and ephemeral sessions    |
-| `@hyperframes/sdk/adapters/fs`       | Node.js filesystem persistence adapter with version history               |
-| `@hyperframes/sdk/adapters/headless` | No-op preview adapter for agents, CI, and server-side editing             |
+| `@tagreel/sdk`                   | Main editing API, types, memory/headless adapters, iframe preview adapter |
+| `@tagreel/sdk/adapters/memory`   | In-memory persistence adapter for tests, demos, and ephemeral sessions    |
+| `@tagreel/sdk/adapters/fs`       | Node.js filesystem persistence adapter with version history               |
+| `@tagreel/sdk/adapters/headless` | No-op preview adapter for agents, CI, and server-side editing             |
 
 ## Quick Start
 
 Open HTML, edit explicit element IDs, then serialize the updated composition:
 
 ```typescript
-import { openComposition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
 
 const comp = await openComposition(html);
 
@@ -142,8 +142,8 @@ if (result.ok) {
 Pass a persistence adapter to autosave edits. The SDK ships memory and filesystem adapters, and host applications can implement the same `PersistAdapter` interface for S3, HTTP, IndexedDB, or app-specific storage.
 
 ```typescript
-import { openComposition } from "@hyperframes/sdk";
-import { createFsAdapter } from "@hyperframes/sdk/adapters/fs";
+import { openComposition } from "@tagreel/sdk";
+import { createFsAdapter } from "@tagreel/sdk/adapters/fs";
 
 const comp = await openComposition(html, {
   persist: createFsAdapter({ root: "./project" }),
@@ -207,7 +207,7 @@ Use `applyPatches()` when the host owns undo/redo and needs to replay inverse pa
 The SDK can run headlessly, or it can connect to a preview surface:
 
 ```typescript
-import { openComposition, createHeadlessAdapter } from "@hyperframes/sdk";
+import { openComposition, createHeadlessAdapter } from "@tagreel/sdk";
 
 const comp = await openComposition(html, {
   preview: createHeadlessAdapter(),
@@ -219,13 +219,13 @@ For browser integrations, `createIframePreviewAdapter()` bridges the SDK to a sa
 ## Related topics
 
 <CardGroup cols={2}>
-  <Card title="@hyperframes/core" icon="cube" href="/packages/core">
+  <Card title="@tagreel/core" icon="cube" href="/packages/core">
     Low-level types, HTML utilities, runtime helpers, and linter APIs.
   </Card>
-  <Card title="@hyperframes/studio" icon="palette" href="/packages/studio">
+  <Card title="@tagreel/studio" icon="palette" href="/packages/studio">
     Ready-made visual editor UI that can embed SDK-driven editing flows.
   </Card>
-  <Card title="@hyperframes/producer" icon="video" href="/packages/producer">
+  <Card title="@tagreel/producer" icon="video" href="/packages/producer">
     Programmatic rendering pipeline for turning edited HTML into video.
   </Card>
   <Card title="CLI" icon="terminal" href="/packages/cli">

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Camera","badge":"Stable","codeLines":336}}
   attribution={{"path":"registry/components/pull-back-reveal","tags":["motion-primitive","camera","pull-back","reveal","recontextualize"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/pull-back-reveal/pull-back-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/pull-back-reveal/pull-back-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html pull-back-reveal.html
 <!doctype html>
 <!--
-  pull-back-reveal: HyperFrames video primitive (camera / reveal / recontextualize)
+  pull-back-reveal: Tagreel video primitive (camera / reveal / recontextualize)
 
   Concept: the frame starts tight on one stat chip, pauses long enough to
   establish it as the subject, then pulls back to reveal the headline and two
@@ -286,8 +286,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var detail = root.querySelector(".pbr-detail-chip");
             var ground = root.querySelector(".pbr-ground");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var detailText = vars.detail_text == null ? "+312%" : String(vars.detail_text);
@@ -365,7 +365,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add pull-back-reveal" item="pull-back-reveal" />
+<InstallCommand command="npx tagreel add pull-back-reveal" item="pull-back-reveal" />
 
 That writes one file: `compositions/components/pull-back-reveal.html`.
 

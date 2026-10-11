@@ -1,5 +1,5 @@
 {
-  "package": "@hyperframes/engine",
+  "package": "@tagreel/engine",
   "subpaths": {
     ".": {
       "source": "./src/index.ts",

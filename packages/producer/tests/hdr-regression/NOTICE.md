@@ -2,7 +2,7 @@
 
 `src/hdr-clip.mp4` is a 5-second excerpt re-encoded from a publicly available
 HDR demonstration video on YouTube, used here solely as a test fixture to
-exercise the HyperFrames HDR rendering pipeline.
+exercise the Tagreel HDR rendering pipeline.
 
 - **Source URL**: https://youtu.be/56hEFqjKG0s
 - **Excerpt**: 0:01:18 – 0:01:23 (5 seconds, no audio)

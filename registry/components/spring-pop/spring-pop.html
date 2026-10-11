@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  spring-pop: HyperFrames video primitive (effects / burst / reveal)
+  spring-pop: Tagreel video primitive (effects / burst / reveal)
 
   Concept: one badge arrives from scale 0.9 and opacity 0, passes slightly
   beyond full size, then settles exactly at scale 1. One mechanic, one job:
@@ -8,7 +8,7 @@
 
   Compiled-from evidence: Video Primitives v1 build contract, Easing
   vocabulary (--ease-overshoot = GSAP back.out(1.7), taste rules 4 and 5),
-  plus hyperframes-animation rules/spring-pop-entrance.md's playful
+  plus tagreel-animation rules/spring-pop-entrance.md's playful
   overshoot variation. This fills the gap left by spring-scale-in, whose
   power3.out curve never overshoots.
 
@@ -141,8 +141,8 @@
             var badge = root.querySelector(".sp-badge");
             var label = root.querySelector(".sp-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: invalid numeric overrides return to declared

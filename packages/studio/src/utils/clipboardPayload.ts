@@ -1,6 +1,6 @@
 import { COMPOSITION_ROOT_OPEN_TAG_RE } from "./compositionPatterns";
 
-const CLIPBOARD_MARKER = "hyperframes-clipboard:v1";
+const CLIPBOARD_MARKER = "tagreel-clipboard:v1";
 
 /** One clip's copied markup plus the original placement needed to preserve
  *  relative offsets and tracks across a group paste. */

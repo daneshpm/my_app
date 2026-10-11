@@ -1,5 +1,5 @@
 // Which elements a GSAP soft reload resets, what their tweens wrote, and which file writes each.
-import { parseGsapScript } from "@hyperframes/parsers/gsap-parser";
+import { parseGsapScript } from "@tagreel/parsers/gsap-parser";
 import { parseSavedSource } from "./authoredSource";
 import { elementTargets } from "./elementGsap";
 

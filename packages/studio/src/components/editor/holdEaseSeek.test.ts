@@ -1,7 +1,7 @@
 // Real gsap, not a parseEase stub: this pins the seek behaviour of the `hold`
 // ease against the engine that actually runs it, and gsap is a studio
 // dependency. core's own customEase.test.ts covers the resolver in isolation.
-import { installStudioCustomEase } from "@hyperframes/core/runtime/custom-ease";
+import { installStudioCustomEase } from "@tagreel/core/runtime/custom-ease";
 import { gsap } from "gsap";
 import { describe, expect, it } from "vitest";
 

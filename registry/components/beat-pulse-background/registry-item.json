@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "beat-pulse-background",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Beat Pulse Background",
   "description": "An accent-derived backdrop pulses its glow intensity and saturation on a deterministic, supplied beat grid.",
   "tags": ["motion-primitive", "background", "beat", "pulse", "rhythmic", "reactive"],
@@ -13,7 +13,7 @@
     {
       "path": "beat-pulse-background.html",
       "target": "compositions/components/beat-pulse-background.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

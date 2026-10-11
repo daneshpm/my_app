@@ -14,12 +14,12 @@ import {
   couldBeCarveBed,
   isNamedCarveBed,
   type HfCarveSettings,
-} from "@hyperframes/core/audio-carve";
+} from "@tagreel/core/audio-carve";
 import {
   HF_AUDIO_GROUP_TAG,
   resolveAudioGroups,
   resolveCarveSourceIds,
-} from "@hyperframes/core/audio-groups";
+} from "@tagreel/core/audio-groups";
 import { isAudibleVideoNode } from "../../player/lib/timelineElementHelpers";
 
 export function isCarveVoiceElement(el: Element | null): el is Element {

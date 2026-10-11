@@ -6,7 +6,7 @@ import { execFileSync } from "node:child_process";
 import test from "node:test";
 import { pathToFileURL } from "node:url";
 
-process.env.HYPERFRAMES_MEDIA_HOME = mkdtempSync(join(tmpdir(), "media-use-compat-home-"));
+process.env.TAGREEL_MEDIA_HOME = mkdtempSync(join(tmpdir(), "media-use-compat-home-"));
 
 function run(scriptsDir, script, args) {
   return execFileSync(process.execPath, [join(scriptsDir, script), ...args], {
@@ -22,8 +22,8 @@ test("published memory scripts run without reaching outside the skill", () => {
   const scriptsDir = join(skillDir, "scripts");
   const projectDir = join(scratchDir, "project");
   try {
-    run(scriptsDir, "prefs.mjs", ["get", "--hyperframes", projectDir, "--json"]);
-    run(scriptsDir, "recipe.mjs", ["list", "--hyperframes", projectDir, "--json"]);
+    run(scriptsDir, "prefs.mjs", ["get", "--tagreel", projectDir, "--json"]);
+    run(scriptsDir, "recipe.mjs", ["list", "--tagreel", projectDir, "--json"]);
     run(scriptsDir, "transcribe.mjs", ["--help"]);
   } finally {
     rmSync(scratchDir, { recursive: true, force: true });
@@ -58,7 +58,7 @@ for (const name of ["faceless-explainer", "pr-to-video", "product-launch-video"]
         '<template><div data-composition-id="01-a" data-duration="3" data-width="1920" data-height="1080"><section class="clip" data-start="0" data-duration="3"></section></div></template>',
       );
       run(join(skill, "scripts"), "assemble-index.mjs", [
-        "--hyperframes",
+        "--tagreel",
         project,
         "--storyboard",
         join(project, "STORYBOARD.md"),

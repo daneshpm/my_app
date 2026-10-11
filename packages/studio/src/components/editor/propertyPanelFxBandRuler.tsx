@@ -16,7 +16,7 @@
  * 2–20 kHz, and a linear ruler would crush six of the seven bands into a corner.
  */
 
-import { audioBandAt, BANDS } from "@hyperframes/core/audio-fx-copy";
+import { audioBandAt, BANDS } from "@tagreel/core/audio-fx-copy";
 
 const LOW = BANDS[0]?.from ?? 20;
 const HIGH = BANDS.at(-1)?.to ?? 20000;

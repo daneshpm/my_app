@@ -4,7 +4,7 @@
  * sdkCutover.ts (which hit the packages/studio 600-line filesize cap) — this
  * block has no dependency on the persist/dispatch functions there.
  */
-import type { Composition } from "@hyperframes/sdk";
+import type { Composition } from "@tagreel/sdk";
 import type { PatchOperation } from "./sourcePatcher";
 import { isAllowedHtmlAttribute, isSafeAttributeValue } from "./htmlAttrSafety";
 import { resolveSnapshot } from "./sdkResolverShadow";

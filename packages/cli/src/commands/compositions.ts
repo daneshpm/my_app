@@ -1,17 +1,17 @@
 import { defineCommand } from "citty";
 import type { Example } from "./_examples.js";
 import { readFileSync } from "node:fs";
-import { readProjectFile } from "@hyperframes/parsers/asset-resolution";
+import { readProjectFile } from "@tagreel/parsers/asset-resolution";
 import { resolve, dirname } from "node:path";
 
 export const examples: Example[] = [
-  ["List compositions in the current project", "hyperframes compositions"],
-  ["Output as JSON", "hyperframes compositions --json"],
+  ["List compositions in the current project", "tagreel compositions"],
+  ["Output as JSON", "tagreel compositions --json"],
 ];
 import { c } from "../ui/colors.js";
 import { ensureDOMParser } from "../utils/dom.js";
 import { resolveProject } from "../utils/project.js";
-import { resolveReferencedStart } from "@hyperframes/engine";
+import { resolveReferencedStart } from "@tagreel/engine";
 import { withMeta } from "../utils/updateCheck.js";
 
 interface CompositionInfo {

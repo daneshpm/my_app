@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "frost-sequence-camera-orbit",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Frost Sequence Camera Orbit",
   "description": "An orbiting camera follows an ice logo as it breaks apart, reforms into two text moments, and fades.",
   "tags": [
@@ -23,99 +23,99 @@
     {
       "path": "frost-sequence-camera-orbit.html",
       "target": "compositions/frost-sequence-camera-orbit/frost-sequence-camera-orbit.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "assets/example-logo.svg",
       "target": "compositions/frost-sequence-camera-orbit/assets/example-logo.svg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/Geist-Bold.ttf",
       "target": "compositions/frost-sequence-camera-orbit/assets/fonts/Geist-Bold.ttf",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/Geist-OFL.txt",
       "target": "compositions/frost-sequence-camera-orbit/assets/fonts/Geist-OFL.txt",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/Geist-Regular.ttf",
       "target": "compositions/frost-sequence-camera-orbit/assets/fonts/Geist-Regular.ttf",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/Geist-SemiBold.ttf",
       "target": "compositions/frost-sequence-camera-orbit/assets/fonts/Geist-SemiBold.ttf",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/frost.js",
       "target": "compositions/frost-sequence-camera-orbit/assets/frost.js",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/Three-LICENSE.txt",
       "target": "compositions/frost-sequence-camera-orbit/assets/Three-LICENSE.txt",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/ThreeMeshBVH-LICENSE.txt",
       "target": "compositions/frost-sequence-camera-orbit/assets/ThreeMeshBVH-LICENSE.txt",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/OpentypeJS-LICENSE.txt",
       "target": "compositions/frost-sequence-camera-orbit/assets/OpentypeJS-LICENSE.txt",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/Clipper-LICENSE.txt",
       "target": "compositions/frost-sequence-camera-orbit/assets/Clipper-LICENSE.txt",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/gsap-3.14.2.min.js",
       "target": "compositions/frost-sequence-camera-orbit/assets/gsap-3.14.2.min.js",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/GSAP-NOTICE.txt",
       "target": "compositions/frost-sequence-camera-orbit/assets/GSAP-NOTICE.txt",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/logo.svg",
       "target": "compositions/frost-sequence-camera-orbit/assets/logo.svg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/shards-atlas.png",
       "target": "compositions/frost-sequence-camera-orbit/assets/shards-atlas.png",
-      "type": "hyperframes:asset",
+      "type": "tagreel:asset",
       "url": "https://static.heygen.ai/hyperframes-oss/registry-assets/122961c82d240e47.png"
     },
     {
       "path": "assets/test-mark.svg",
       "target": "compositions/frost-sequence-camera-orbit/assets/test-mark.svg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/textures/bluenoise64.png",
       "target": "compositions/frost-sequence-camera-orbit/assets/textures/bluenoise64.png",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/textures/ice-inclusions-generated.png",
       "target": "compositions/frost-sequence-camera-orbit/assets/textures/ice-inclusions-generated.png",
-      "type": "hyperframes:asset",
+      "type": "tagreel:asset",
       "url": "https://static.heygen.ai/hyperframes-oss/registry-assets/4bea3a8ab90c9527.png"
     },
     {
       "path": "SKILL.md",
       "target": "compositions/frost-sequence-camera-orbit/SKILL.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
   ],
   "preview": {

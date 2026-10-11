@@ -39,9 +39,9 @@ export function generateRegistryManifest(root: string): void {
     join(root, "registry/registry.json"),
     JSON.stringify(
       {
-        $schema: "https://hyperframes.heygen.com/schema/registry.json",
-        name: "hyperframes",
-        homepage: "https://hyperframes.heygen.com",
+        $schema: "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry.json",
+        name: "tagreel",
+        homepage: "https://github.com/daneshpm/my_app/tree/main/docs",
         items,
       },
       null,

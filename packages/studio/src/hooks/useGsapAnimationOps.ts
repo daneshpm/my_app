@@ -3,7 +3,7 @@ import {
   serializeStudioFileMutation,
   type StudioProjectFileWriter,
 } from "../utils/studioFileMutationCoordinator";
-import type { Composition } from "@hyperframes/sdk";
+import type { Composition } from "@tagreel/sdk";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import { roundTo3 } from "../utils/rounding";
 import {

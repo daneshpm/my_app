@@ -10,9 +10,9 @@
  * click doing nothing.
  */
 
-import { parseAutomationTarget } from "@hyperframes/core/audio-automation";
+import { parseAutomationTarget } from "@tagreel/core/audio-automation";
 import { escapeCssString } from "./domEditingDom";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
 
 export type AudioFxRevealTarget =
   /** A hand-built effect, addressed by its index in the chain. */

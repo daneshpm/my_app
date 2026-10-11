@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  multiplayer-cursors, HyperFrames video primitive (pointers / loop / prove)
+  multiplayer-cursors, Tagreel video primitive (pointers / loop / prove)
 
   Concept: labeled collaborator cursors, each with an SVG pointer, matching
   name chip, and soft color glow, reveal from spread positions and glide into
@@ -42,7 +42,7 @@
   stay container-relative. The root is styled by #root, never by a class. The
   hardcoded timeline key remains "multiplayer-cursors" after mount flattening
   strips data-composition-id from the mounted root. Variables come only from
-  window.__hyperframes.getVariables(), which owns merged defaults and host
+  window.__tagreel.getVariables(), which owns merged defaults and host
   overrides inside a mounted composition.
 -->
 <html
@@ -272,8 +272,8 @@
             // EDIT ZONE: variable defaults mirror the outer declaration.
             // getVariables owns the declared-defaults-plus-host-overrides merge.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: count is always an integer in the declared 2 to 6 range.

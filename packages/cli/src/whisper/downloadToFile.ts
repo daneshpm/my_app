@@ -18,7 +18,7 @@ import {
   statSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
-import { resolveWritePath } from "@hyperframes/core/atomic-file";
+import { resolveWritePath } from "@tagreel/core/atomic-file";
 import { pipeline } from "node:stream/promises";
 
 export interface DownloadOptions {

@@ -6,13 +6,13 @@
  */
 
 import { parseHTML } from "linkedom";
-import { findTimelineScript } from "@hyperframes/core/gsap-parser-acorn";
+import { findTimelineScript } from "@tagreel/core/gsap-parser-acorn";
 import { findVariableDeclaration } from "./variableModel.js";
 import {
   ensureHfIds,
   isCompositionTemplate,
   walkCompositionDescendants,
-} from "@hyperframes/core/hf-ids";
+} from "@tagreel/core/hf-ids";
 
 export interface ParsedDocument {
   document: Document;

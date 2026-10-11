@@ -1,7 +1,7 @@
 # Design Panel QA Matrix
 
 Campaign artifact for `docs/plans/2026-07-02-001-fix-studio-design-panel-inputs-plan.md`.
-Environment: published CLI `hyperframes@0.7.26`, embedded mode (`npx hyperframes preview`
+Environment: published CLI `tagreel@0.7.26`, embedded mode (`npx tagreel preview`
 in a scaffolded `warm-grain` project outside the repo), Chrome via agent-browser.
 
 ## Step 0: demo-failure reproduction (baseline, pre-fix)
@@ -11,7 +11,7 @@ root cause is the **selection layer**, not the persist pipeline.
 
 ### S0.1 Master view: click on visible text selects the invisible top overlay
 
-- Action: click the "Hyperframes" H1 (from `compositions/intro.html`, embedded in `index.html`).
+- Action: click the "Tagreel" H1 (from `compositions/intro.html`, embedded in `index.html`).
 - Selected instead: `.grain-texture` (`hf-0qtj`, label "Grain Texture"), the full-canvas grain
   overlay on `data-track-index="100"`, even though its parent `#grain-overlay-comp` has
   `pointer-events: none`.

@@ -1,5 +1,5 @@
-import { audioDbToGain, clampAudioGain } from "@hyperframes/core/audio-gain";
-import { RATE_RANGE } from "@hyperframes/core/audio-automation";
+import { audioDbToGain, clampAudioGain } from "@tagreel/core/audio-gain";
+import { RATE_RANGE } from "@tagreel/core/audio-automation";
 
 const NUMBER = String.raw`[-+]?(?:\d+\.?\d*|\.\d+)`;
 

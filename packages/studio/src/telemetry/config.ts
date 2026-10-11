@@ -2,14 +2,14 @@
 // LocalStorage-backed config for studio telemetry.
 // Anonymous ID + opt-out flag are stored per-browser-profile.
 // Users opt out via DevTools:
-//   localStorage.setItem('hyperframes-studio:telemetryDisabled','1')
+//   localStorage.setItem('tagreel-studio:telemetryDisabled','1')
 // ---------------------------------------------------------------------------
 
 import { resolveStudioDistinctId } from "./distinctId";
 import { safeLocalStorage, safeSessionStorage } from "../utils/safeStorage";
 
-const OPT_OUT_KEY = "hyperframes-studio:telemetryDisabled";
-const NOTICE_KEY = "hyperframes-studio:telemetryNoticeShown";
+const OPT_OUT_KEY = "tagreel-studio:telemetryDisabled";
+const NOTICE_KEY = "tagreel-studio:telemetryNoticeShown";
 
 /**
  * Anonymous telemetry id for `studio_*` and render events.
@@ -55,7 +55,7 @@ export function markNoticeShown(): void {
 // Session-scoped (cleared when the tab closes) so HMR remounts and
 // route-level remounts within one tab don't refire `studio_session_start`.
 // Uses sessionStorage directly because the dedupe is per-tab, not per-browser.
-const SESSION_FIRED_KEY = "hyperframes-studio:sessionStartFired";
+const SESSION_FIRED_KEY = "tagreel-studio:sessionStartFired";
 
 export function hasFiredSessionStart(): boolean {
   return safeSessionStorage()?.getItem(SESSION_FIRED_KEY) === "1";

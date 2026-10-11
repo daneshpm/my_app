@@ -79,9 +79,9 @@
     </script>
     <script type="module">
       import { createOrbitScene } from "orbit-card/scene";
-      // Bare __hyperframes is this composition's own in a module.
+      // Bare __tagreel is this composition's own in a module.
       const renderAt = createOrbitScene(
-        (typeof __hyperframes !== "undefined" && __hyperframes.getVariables?.()) || {},
+        (typeof __tagreel !== "undefined" && __tagreel.getVariables?.()) || {},
       );
       const state = { time: 0 };
       const timeline = gsap.timeline({ paused: true });

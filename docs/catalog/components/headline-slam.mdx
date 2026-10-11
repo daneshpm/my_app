@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":237}}
   attribution={{"path":"registry/components/headline-slam","tags":["motion-primitive","typography","headline","slam","impact","exit"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/headline-slam/headline-slam.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/headline-slam/headline-slam.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html headline-slam.html
 <!doctype html>
 <!--
-  headline-slam: HyperFrames video primitive
+  headline-slam: Tagreel video primitive
 
   One headline scales down from 1.6 to rest with expo.out weight. Its landing
   drives a deterministic three-frame stage shake, followed by a quiet drift
@@ -156,8 +156,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var stage = root.querySelector(".hs-stage");
             var headline = root.querySelector(".hs-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Ship it today" : String(vars.text);
@@ -266,7 +266,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add headline-slam" item="headline-slam" />
+<InstallCommand command="npx tagreel add headline-slam" item="headline-slam" />
 
 That writes one file: `compositions/components/headline-slam.html`.
 

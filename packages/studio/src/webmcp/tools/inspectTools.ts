@@ -12,7 +12,7 @@
  * learning that from a read is cheaper than learning it from a failed write.
  */
 
-import type { GsapAnimation } from "@hyperframes/parsers/gsap-parser";
+import type { GsapAnimation } from "@tagreel/parsers/gsap-parser";
 import type { DomEditSelection } from "../../components/editor/domEditingTypes";
 import {
   elementHandleMatchesProject,

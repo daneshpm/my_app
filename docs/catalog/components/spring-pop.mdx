@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":195}}
   attribution={{"path":"registry/components/spring-pop","tags":["motion-primitive","effects","spring","overshoot","pop","reveal"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/spring-pop/spring-pop.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/spring-pop/spring-pop.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html spring-pop.html
 <!doctype html>
 <!--
-  spring-pop: HyperFrames video primitive (effects / burst / reveal)
+  spring-pop: Tagreel video primitive (effects / burst / reveal)
 
   Concept: one badge arrives from scale 0.9 and opacity 0, passes slightly
   beyond full size, then settles exactly at scale 1. One mechanic, one job:
@@ -33,7 +33,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
   Compiled-from evidence: Video Primitives v1 build contract, Easing
   vocabulary (--ease-overshoot = GSAP back.out(1.7), taste rules 4 and 5),
-  plus hyperframes-animation rules/spring-pop-entrance.md's playful
+  plus tagreel-animation rules/spring-pop-entrance.md's playful
   overshoot variation. This fills the gap left by spring-scale-in, whose
   power3.out curve never overshoots.
 
@@ -166,8 +166,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var badge = root.querySelector(".sp-badge");
             var label = root.querySelector(".sp-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: invalid numeric overrides return to declared
@@ -224,7 +224,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add spring-pop" item="spring-pop" />
+<InstallCommand command="npx tagreel add spring-pop" item="spring-pop" />
 
 That writes one file: `compositions/components/spring-pop.html`.
 

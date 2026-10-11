@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  drift-hold: HyperFrames video primitive (camera / ambient / hold)
+  drift-hold: Tagreel video primitive (camera / ambient / hold)
 
   Concept: a centered content card never becomes fully static. Sub-degree
   rotation, restrained scale breathing, and a soft light sweep each follow
@@ -140,8 +140,8 @@
             var sweep = root.querySelector(".dh-sweep");
             var label = root.querySelector(".dh-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Always alive" : String(vars.text);

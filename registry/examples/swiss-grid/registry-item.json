@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "swiss-grid",
-  "type": "hyperframes:example",
+  "type": "tagreel:example",
   "title": "Swiss Grid",
   "description": "Structured grid layout",
   "dimensions": {
@@ -13,27 +13,27 @@
     {
       "path": "assets/swiss-grid.svg",
       "target": "assets/swiss-grid.svg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "compositions/captions.html",
       "target": "compositions/captions.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "compositions/graphics.html",
       "target": "compositions/graphics.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "compositions/intro.html",
       "target": "compositions/intro.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "index.html",
       "target": "index.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

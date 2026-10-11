@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "glass-hero",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Glass Hero",
   "description": "A solid glass object rises in front of a giant headline and keeps turning, so the type bends and splits into colour through it.",
   "tags": ["3d-object", "three-js", "webgl", "glass", "refraction", "hero", "title-card"],
@@ -14,7 +14,7 @@
     {
       "path": "glass-hero.html",
       "target": "compositions/glass-hero.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

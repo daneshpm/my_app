@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Camera","badge":"Stable","codeLines":330}}
   attribution={{"path":"registry/components/focus-rack","tags":["motion-primitive","camera","focus","focus-rack","depth","parallax","emphasize"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/focus-rack/focus-rack.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/focus-rack/focus-rack.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html focus-rack.html
 <!doctype html>
 <!--
-  focus-rack: HyperFrames video primitive (camera / holdable / emphasize)
+  focus-rack: Tagreel video primitive (camera / holdable / emphasize)
 
   Concept: two cards sit at different apparent depths. Card A begins sharp
   and near while card B is blurred and dim. Focus moves to card B exactly
@@ -250,8 +250,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var labelA = root.querySelector(".fr-label-a");
             var labelB = root.querySelector(".fr-label-b");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accent = vars.accent === "green" || vars.accent === "violet" ? vars.accent : "blue";
@@ -359,7 +359,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add focus-rack" item="focus-rack" />
+<InstallCommand command="npx tagreel add focus-rack" item="focus-rack" />
 
 That writes one file: `compositions/components/focus-rack.html`.
 

@@ -654,8 +654,8 @@
 
     <script>
       const variables =
-        window.__hyperframes && typeof window.__hyperframes.getVariables === "function"
-          ? window.__hyperframes.getVariables()
+        window.__tagreel && typeof window.__tagreel.getVariables === "function"
+          ? window.__tagreel.getVariables()
           : {};
       const content = (id, fallback) =>
         typeof variables[id] === "string" && variables[id].trim() ? variables[id] : fallback;

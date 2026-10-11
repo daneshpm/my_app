@@ -14,17 +14,17 @@ import {
   type HfAudioFxChain,
   type HfAudioFxNode,
   type HfAudioFxParamValues,
-} from "@hyperframes/core/audio-fx";
-import { applyAudioFxPreset, getAudioFxPreset } from "@hyperframes/core/audio-fx-presets";
+} from "@tagreel/core/audio-fx";
+import { applyAudioFxPreset, getAudioFxPreset } from "@tagreel/core/audio-fx-presets";
 import { applyPresetToChain } from "./useApplyAudioFxPreset.js";
 import {
   addAudioEq,
   audioEqIds,
   removeAudioEq,
   setAudioEqBandGain,
-} from "@hyperframes/core/audio-fx-eq";
-import { applyAudioFxProfile, getAudioFxProfile } from "@hyperframes/core/audio-fx-profiles";
-import { audioFxJobNode, type HfAudioFxJob } from "@hyperframes/core/audio-fx-jobs";
+} from "@tagreel/core/audio-fx-eq";
+import { applyAudioFxProfile, getAudioFxProfile } from "@tagreel/core/audio-fx-profiles";
+import { audioFxJobNode, type HfAudioFxJob } from "@tagreel/core/audio-fx-jobs";
 import { FxPresetMenu } from "./propertyPanelFxPresetMenu.js";
 import { FxRackChain } from "./propertyPanelFxRackChain.js";
 import { CLIP_SIGNAL_PATH } from "./audioFxSignalPath.js";

@@ -27,7 +27,7 @@ Verified, from the [examples](/prompting/examples) page — a 30-second feature 
 
 A code-change explainer built from a GitHub pull request. The [`/pr-to-video`](/prompting/overview) workflow reads the PR through `gh` — the diff, commits, files, and contributors — reshapes it into a story, and builds it frame by frame, rendering code beats on a purpose-built diff surface.
 
-The input is a **code change**, not a website or a product page. A PR link (`https://github.com/owner/repo/pull/N`), an `owner/repo#N` ref, or "this PR" in a checked-out repo all work. A product to sell → [`/product-launch-video`](/prompting/product-launch); a topic with no PR → [`/faceless-explainer`](/prompting/explainers). Unsure → start at `/hyperframes`.
+The input is a **code change**, not a website or a product page. A PR link (`https://github.com/owner/repo/pull/N`), an `owner/repo#N` ref, or "this PR" in a checked-out repo all work. A product to sell → [`/product-launch-video`](/prompting/product-launch); a topic with no PR → [`/faceless-explainer`](/prompting/explainers). Unsure → start at `/tagreel`.
 
 ## The knobs that matter
 
@@ -59,7 +59,7 @@ What you can already steer from the prompt, before you've learned any technique.
       src="https://static.heygen.ai/hyperframes-oss/docs/images/prompting/variant-pr-changelog.mp4#t=0.1"
       loop
     />
-    *Rendered from this prompt with [PR URL] = heygen-com/hyperframes#2092, unedited.*
+    *Rendered from this prompt with [PR URL] = daneshpm/my_app#2092, unedited.*
 
     A changelog trades depth for breadth — many small changes, each a beat, rather than one change explored deeply. Keep code beats sparse so the pace stays fast. A PR doesn't carry its shipping version — the agent finds it from the release tag or the package manifest on main.
   </Accordion>

@@ -10,7 +10,7 @@ import {
 import {
   normalizeHfColorGrading,
   type NormalizedHfColorGrading,
-} from "@hyperframes/core/color-grading";
+} from "@tagreel/core/color-grading";
 
 (globalThis as unknown as { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 

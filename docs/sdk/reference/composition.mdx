@@ -6,8 +6,8 @@ description: "The main editing surface returned by openComposition — query, mu
 `Composition` is the object returned by [`openComposition`](/sdk/reference/open-composition). Every SDK edit goes through this interface. Typed methods are convenience wrappers over `dispatch()`; all validation runs in `dispatch()` regardless of which entry point you use.
 
 ```typescript
-import { openComposition } from "@hyperframes/sdk";
-import type { Composition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
+import type { Composition } from "@tagreel/sdk";
 
 const comp: Composition = await openComposition(html);
 ```
@@ -628,7 +628,7 @@ comp.on("selectionchange", (ids) => {
 Fires after every committed change with a `PatchEvent` containing RFC 6902 forward and inverse patches, the `origin`, and semantic `opTypes`. Use this to mirror edits into a host history stack, collaboration layer, or audit log.
 
 ```typescript
-import { ORIGIN_APPLY_PATCHES } from "@hyperframes/sdk";
+import { ORIGIN_APPLY_PATCHES } from "@tagreel/sdk";
 
 comp.on("patch", ({ patches, inversePatches, origin, opTypes }) => {
   if (origin !== ORIGIN_APPLY_PATCHES) {

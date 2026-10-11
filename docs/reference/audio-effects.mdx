@@ -184,7 +184,7 @@ dangles.
 
 Sixteen effects. Values outside a range are clamped on read. **AUTO** marks a
 parameter an automation lane can drive; anything unmarked cannot move over time.
-`HF_AUDIO_FX` in `@hyperframes/core/audio-fx` is the source of truth.
+`HF_AUDIO_FX` in `@tagreel/core/audio-fx` is the source of truth.
 
 ### Filter — which frequencies a track may occupy
 
@@ -420,7 +420,7 @@ point of naming the group.
 Track choice is by name first, using the same classifier Studio's picker uses, so
 the two cannot disagree: an id or filename that looks like music (`music`, `bgm`,
 `bed`, `score`…) is the bed, and everything else playing over it that is not
-SFX-shaped is a voice. Needs `ffmpeg` on `PATH` and `@hyperframes/core`
+SFX-shaped is a voice. Needs `ffmpeg` on `PATH` and `@tagreel/core`
 installed in the project.
 
 ## Groups, mute, and solo

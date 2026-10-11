@@ -7,7 +7,7 @@
  * and callbacks to promote or to edit the bound variable's default in place.
  */
 
-import type { Composition, CompositionVariable } from "@hyperframes/sdk";
+import type { Composition, CompositionVariable } from "@tagreel/sdk";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import {
   applyBind,

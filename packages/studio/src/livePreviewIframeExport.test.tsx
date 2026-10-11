@@ -3,7 +3,7 @@
 import { act } from "react";
 import { createRoot } from "react-dom/client";
 import { expect, expectTypeOf, it } from "vitest";
-import { useLivePreviewIframe, type PreviewPromotion } from "@hyperframes/studio";
+import { useLivePreviewIframe, type PreviewPromotion } from "@tagreel/studio";
 import {
   makePreview,
   mountPlayerWithPreview,

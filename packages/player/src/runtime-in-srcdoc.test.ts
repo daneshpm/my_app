@@ -2,13 +2,13 @@ import { describe, expect, it } from "vitest";
 
 import { ensureRuntimeBeforeBodyScripts } from "./runtime-in-srcdoc.js";
 
-const URL = "https://cdn.example/hyperframe.runtime.iife.js";
+const URL = "https://cdn.example/tagreel.runtime.iife.js";
 
 /** What a pasted component looks like: it reads its variables during parse. */
 const COMPONENT_PAGE = `<!doctype html><html><head><title>t</title></head><body>
 <div data-hf-ui-root data-composition-variables='[{"id":"count","default":"3"}]'></div>
-<script>var vars = window.__hyperframes && window.__hyperframes.getVariables
-  ? window.__hyperframes.getVariables() : {};</script>
+<script>var vars = window.__tagreel && window.__tagreel.getVariables
+  ? window.__tagreel.getVariables() : {};</script>
 </body></html>`;
 
 describe("ensureRuntimeBeforeBodyScripts", () => {
@@ -39,7 +39,7 @@ describe("ensureRuntimeBeforeBodyScripts", () => {
   it("leaves a CLI-rendered page alone, which inlines the runtime already", () => {
     // The engine inlines it and defines the global on the way in. A second
     // copy would re-initialise the runtime underneath a live composition.
-    const rendered = `<html><head><script>window.__hyperframes = {};</script></head><body></body></html>`;
+    const rendered = `<html><head><script>window.__tagreel = {};</script></head><body></body></html>`;
 
     expect(ensureRuntimeBeforeBodyScripts(rendered, URL)).toBe(rendered);
   });

@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 
 // GSAP 3.15 defaults: a percentage keyframe eases its segment power1.inOut; an array step is linear.
 export const PERCENTAGE_SEGMENT_EASE = "power1.inOut";

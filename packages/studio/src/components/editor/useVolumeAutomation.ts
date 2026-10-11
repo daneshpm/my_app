@@ -12,7 +12,7 @@ import {
   resolveAutomationRange,
   sampleAutomationLane,
   VOLUME_TARGET,
-} from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-automation";
 import type { DomEditSelection } from "./domEditingTypes";
 import {
   automationAttrValue,
@@ -24,9 +24,9 @@ import {
   withSeededLane,
 } from "./propertyPanelAutomation";
 import { deriveElementTiming } from "./propertyPanelFlatTimingDerivation";
-import { SPEED_PRESETS, speedPresetLane, type SpeedPresetId } from "@hyperframes/core/speed-ramp";
+import { SPEED_PRESETS, speedPresetLane, type SpeedPresetId } from "@tagreel/core/speed-ramp";
 import { clampNumber } from "../../utils/studioHelpers";
-import type { HfAutomation } from "@hyperframes/core/audio-automation";
+import type { HfAutomation } from "@tagreel/core/audio-automation";
 import type { LinkedSpeedCommit } from "./linkedSpeedEdits";
 
 export interface LaneBinding {

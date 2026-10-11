@@ -21,10 +21,10 @@ const r3 = (x) => Number(x.toFixed(3));
 
 // cues: [{ id, name }] (id = the line/frame/scene the cue fires in). Returns
 // { sfx: [{ id, name, file, source, offset_s, duration_s, volume }], anomalies }.
-export async function resolveSfx({ cues, hyperframesDir, sfxLibDir }) {
+export async function resolveSfx({ cues, tagreelDir, sfxLibDir }) {
   const sfx = [];
   const anomalies = [];
-  const destDir = join(hyperframesDir, "assets", "sfx");
+  const destDir = join(tagreelDir, "assets", "sfx");
   // Each effect's file this run: one effect named twice gets one file, and two effects never share one.
   const fileFor = new Map();
 
@@ -76,17 +76,17 @@ export async function resolveSfx({ cues, hyperframesDir, sfxLibDir }) {
     const library = existsSync(src) ? readFileSync(src) : null;
     const isLibraryCopy = (rel) =>
       library &&
-      existsSync(join(hyperframesDir, rel)) &&
-      readFileSync(join(hyperframesDir, rel)).equals(library);
+      existsSync(join(tagreelDir, rel)) &&
+      readFileSync(join(tagreelDir, rel)).equals(library);
     const destRel =
       fileFor.get(hit.file) ??
-      agentWritePath(hyperframesDir, `assets/sfx/${hit.file}`, {
+      agentWritePath(tagreelDir, `assets/sfx/${hit.file}`, {
         anomalies,
         taken: new Set(fileFor.values()),
         // An unrecorded copy of the library file is one an engine run made before the manifest had it.
-        reusable: (rel) => !latestRecordFor(hyperframesDir, rel) && isLibraryCopy(rel),
+        reusable: (rel) => !latestRecordFor(tagreelDir, rel) && isLibraryCopy(rel),
       });
-    const dest = join(hyperframesDir, destRel);
+    const dest = join(tagreelDir, destRel);
     // The bundled library may be incomplete: some installs of the skill ship
     // manifest.json without the actual mp3s. Pushing an sfx entry that points at
     // a file we never copied produces a dangling reference that silently drops

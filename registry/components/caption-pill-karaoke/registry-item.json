@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "caption-pill-karaoke",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Pill Karaoke",
   "description": "Pill-shaped container with per-word karaoke color highlight",
   "tags": ["captions", "caption-style", "karaoke", "pill"],
@@ -9,7 +9,7 @@
     {
       "path": "caption-pill-karaoke.html",
       "target": "compositions/components/caption-pill-karaoke.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

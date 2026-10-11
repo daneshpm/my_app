@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  split-tilt-cards: HyperFrames video primitive (layout / compare / holdable)
+  split-tilt-cards: Tagreel video primitive (layout / compare / holdable)
 
   Concept: two equal-weight cards arrive from opposite wings, each carrying a
   mirrored 3D rotateY book-open tilt (+18deg left, -18deg right) under one
@@ -56,7 +56,7 @@
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "split-tilt-cards" key (mount flattening strips
   data-composition-id from the live root). Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -414,8 +414,8 @@
             var badgePosB = root.querySelector(".stc-badge-pos-b");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var labelAText = vars.label_a == null ? "Before" : String(vars.label_a);

@@ -11,9 +11,9 @@ const skillTextFiles = (dir: string): string[] =>
     .filter((entry) => entry.isFile() && /\.(md|mjs|cjs|js|ts|json|html)$/.test(entry.name))
     .map((entry) => join(entry.parentPath, entry.name));
 
-describe("hyperframes-core contract docs", () => {
+describe("tagreel-core contract docs", () => {
   it("keeps a runnable root in the minimal composition skeleton", () => {
-    const minimal = read("skills", "hyperframes-core", "references", "minimal-composition.md");
+    const minimal = read("skills", "tagreel-core", "references", "minimal-composition.md");
 
     // Structural pin: the skeleton must still declare a root the runtime can find
     // and size. The prose around it is deliberately not pinned: asserting exact
@@ -26,11 +26,11 @@ describe("hyperframes-core contract docs", () => {
   });
 
   it("teaches check as the canonical quality gate", () => {
-    const skill = read("skills", "hyperframes-core", "SKILL.md");
-    const brief = read("skills", "hyperframes", "references", "brief-contract.md");
+    const skill = read("skills", "tagreel-core", "SKILL.md");
+    const brief = read("skills", "tagreel", "references", "brief-contract.md");
 
-    expect(skill).toContain("`npx hyperframes check`");
-    expect(brief).toContain("`hyperframes check`");
+    expect(skill).toContain("`npx tagreel check`");
+    expect(brief).toContain("`tagreel check`");
     expect(brief).not.toContain("`lint` / `validate` / `inspect`");
   });
 });
@@ -40,24 +40,24 @@ describe("media-use TTS documentation", () => {
     const tts = read("skills", "media-use", "audio", "references", "tts.md");
     const captions = read("skills", "media-use", "audio", "references", "tts-to-captions.md");
 
-    expect(tts).not.toMatch(/hyperframes tts[^\n]*--provider/);
-    expect(tts).not.toMatch(/hyperframes tts[^\n]*--words/);
-    expect(captions).not.toMatch(/hyperframes tts[^\n]*--provider/);
-    expect(captions).toContain("npx hyperframes tts");
+    expect(tts).not.toMatch(/tagreel tts[^\n]*--provider/);
+    expect(tts).not.toMatch(/tagreel tts[^\n]*--words/);
+    expect(captions).not.toMatch(/tagreel tts[^\n]*--provider/);
+    expect(captions).toContain("npx tagreel tts");
   });
 });
 
 describe("media treatment routing documentation", () => {
   it("routes vague composition-media feedback to the canonical workflow", () => {
-    const router = read("skills", "hyperframes", "SKILL.md");
+    const router = read("skills", "tagreel", "SKILL.md");
     const mediaUse = read("skills", "media-use", "SKILL.md");
     const treatments = read("skills", "media-use", "references", "media-treatments.md");
 
     expect(router).toContain("dark/flat/boring footage");
     expect(router).toContain("`/media-use`");
     expect(mediaUse).toContain("references/media-treatments.md");
-    expect(mediaUse).toContain("`hyperframes media-treatment`");
-    expect(treatments).toContain("Persist pixel settings with `hyperframes media-treatment`");
+    expect(mediaUse).toContain("`tagreel media-treatment`");
+    expect(treatments).toContain("Persist pixel settings with `tagreel media-treatment`");
     expect(treatments).toContain("apply to the entire selected real `<img>` or");
     expect(treatments).toContain("external segmentation/tracking tool");
   });
@@ -66,11 +66,11 @@ describe("media treatment routing documentation", () => {
     const treatments = read("skills", "media-use", "references", "media-treatments.md");
     const recipes = read("skills", "media-use", "references", "media-treatment-recipes.md");
 
-    expect(treatments).toContain("hyperframes media-treatment --capabilities --json");
+    expect(treatments).toContain("tagreel media-treatment --capabilities --json");
     expect(treatments).toContain("--capability <id>");
     expect(treatments).toContain("Recipes are optional macros");
     expect(recipes).toContain("optional tested seeds");
-    expect(treatments).toContain("hyperframes add <name> --dir <project>");
+    expect(treatments).toContain("tagreel add <name> --dir <project>");
     expect(treatments).toContain("snapshots/treatment-before/contact-sheet.jpg");
     expect(treatments).toMatch(/Do not report visual\s+quality from command success alone/);
   });
@@ -111,7 +111,7 @@ describe("media treatment routing documentation", () => {
       ["skills", "motion-graphics", "agents", "director.md"],
       ["skills", "motion-graphics", "agents", "builder.md"],
     ]) {
-      expect(read(...file)).toContain("npx hyperframes catalog --query");
+      expect(read(...file)).toContain("npx tagreel catalog --query");
     }
     // And it must say the search stands alone, or the next reader re-derives the
     // creator's wrong diagnosis: that a catalog you have not installed cannot be searched.
@@ -122,9 +122,9 @@ describe("media treatment routing documentation", () => {
 
   it("routes every authoring workflow through the live catalog search, or documents why not", () => {
     // The same failure one layer up. The search instruction lived only in
-    // hyperframes-cli and hyperframes-registry, both loaded on demand, and the
+    // tagreel-cli and tagreel-registry, both loaded on demand, and the
     // registry skill's own trigger named the command ("use when running
-    // hyperframes catalog") — circular, because the agent that never thought to
+    // tagreel catalog") — circular, because the agent that never thought to
     // search could not reach the doc telling it to search. All ten workflow
     // skills carried zero mentions of the command.
     for (const file of [
@@ -135,10 +135,10 @@ describe("media treatment routing documentation", () => {
       ["skills", "music-to-video", "SKILL.md"],
       ["skills", "general-video", "SKILL.md"],
       ["skills", "slideshow", "SKILL.md"],
-      ["skills", "remotion-to-hyperframes", "SKILL.md"],
+      ["skills", "remotion-to-tagreel", "SKILL.md"],
     ]) {
       const doc = read(...file);
-      expect(doc, file.join("/")).toContain("npx hyperframes catalog --query");
+      expect(doc, file.join("/")).toContain("npx tagreel catalog --query");
       // "I forgot to install the components" was the wrong self-diagnosis that
       // hid this bug. Every copy of the instruction has to kill it on the spot.
       expect(doc, file.join("/")).toContain("nothing installed");
@@ -152,7 +152,7 @@ describe("media treatment routing documentation", () => {
     // the gap with an instruction that would be false there.
     for (const skill of ["embedded-captions", "talking-head-recut"]) {
       expect(read("skills", skill, "SKILL.md"), skill).toContain(
-        "does not search the HyperFrames component registry",
+        "does not search the Tagreel component registry",
       );
       // The exemption is a capability claim, so pin the capability and not only
       // the sentence: the day either skill gains a way to install a registry item,
@@ -161,14 +161,14 @@ describe("media treatment routing documentation", () => {
       // with it, which is not a registry item.
       for (const file of skillTextFiles(join(REPO_ROOT, "skills", skill))) {
         expect(readFileSync(file, "utf8"), file).not.toMatch(
-          /hyperframes add\b|registry\/(blocks|components)\//,
+          /tagreel add\b|registry\/(blocks|components)\//,
         );
       }
     }
 
     // The symptom-triggered description is the other half of the fix: the skill
     // has to be reachable from the user naming an effect, not from the command.
-    const registrySkill = read("skills", "hyperframes-registry", "SKILL.md");
+    const registrySkill = read("skills", "tagreel-registry", "SKILL.md");
     expect(registrySkill).toContain("Use BEFORE hand-building any named visual");
     expect(registrySkill).toContain("CRT scanlines");
   });
@@ -176,9 +176,9 @@ describe("media treatment routing documentation", () => {
   it("gives agents a process-owned preview lifecycle in new project instructions", () => {
     for (const file of ["AGENTS.md", "CLAUDE.md"]) {
       const template = read("packages", "cli", "src", "templates", "_shared", file);
-      expect(template).toContain("npx hyperframes preview --background");
-      expect(template).toContain("npx hyperframes preview --status");
-      expect(template).toContain("npx hyperframes preview --stop");
+      expect(template).toContain("npx tagreel preview --background");
+      expect(template).toContain("npx tagreel preview --status");
+      expect(template).toContain("npx tagreel preview --stop");
       expect(template).toContain("leaving refreshes at `ERR_CONNECTION_TIMED_OUT`");
       expect(template).not.toContain("run_in_background: true");
     }

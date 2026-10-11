@@ -17,7 +17,7 @@ import type { Composition, GsapTweenSpec } from "../src/index.js";
 
 export async function initEditor(html: string): Promise<Composition> {
   // Use createFsAdapter({ root: projectDir }) in production:
-  //   import { createFsAdapter } from '@hyperframes/sdk/adapters/fs'
+  //   import { createFsAdapter } from '@tagreel/sdk/adapters/fs'
   const persist = createMemoryAdapter();
 
   const comp = await openComposition(html, {

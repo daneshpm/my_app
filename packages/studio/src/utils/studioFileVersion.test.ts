@@ -52,7 +52,7 @@ describe("studio write-token echo identity", () => {
     resetStudioWriteTokens();
 
     expect(studioWriteHeaders()).toEqual({
-      "X-Hyperframes-Write-Token": "11111111-2222-4333-8444-555555555555",
+      "X-Tagreel-Write-Token": "11111111-2222-4333-8444-555555555555",
     });
     expect(randomUUID).toHaveBeenCalledOnce();
     expect(consumeStudioWriteToken("11111111-2222-4333-8444-555555555555")).toBe(true);

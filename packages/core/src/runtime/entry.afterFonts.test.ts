@@ -67,8 +67,7 @@ describe("runtime entry: composition scripts after web fonts", () => {
     window.__timelines = {};
     claims(true);
     delete window.__player;
-    delete (window as { __hyperframeRuntimeBootstrapped?: boolean })
-      .__hyperframeRuntimeBootstrapped;
+    delete (window as { __tagreelRuntimeBootstrapped?: boolean }).__tagreelRuntimeBootstrapped;
     delete (document as { fonts?: unknown }).fonts;
     delete (document as { addEventListener?: unknown }).addEventListener;
   });

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":12,"width":1920,"height":1080,"category":"Showcases","badge":"Experimental","codeLines":454}}
   attribution={{"path":"registry/blocks/gallery-tunnel","tags":["webgl","3d","background","showcase","depth","loop"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/gallery-tunnel/gallery-tunnel.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/gallery-tunnel/gallery-tunnel.html"
 >
 
 <CatalogSlot slot="code">
@@ -125,7 +125,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
       <canvas id="gt-canvas" width="1920" height="1080"></canvas>
       <div id="gt-assets" aria-hidden="true" data-layout-allow-overflow></div>
 
-      <!-- Driver clip: gives HyperFrames a timed element to own on track 0. -->
+      <!-- Driver clip: gives Tagreel a timed element to own on track 0. -->
       <div
         id="gt-drv"
         class="clip"
@@ -157,7 +157,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
         // `data-composition-variables` is the single owner of every declared
         // default — parse it rather than repeating each default a second time
-        // in JS. `window.__hyperframes` is NOT guaranteed to exist yet when this
+        // in JS. `window.__tagreel` is NOT guaranteed to exist yet when this
         // inline script runs, so it can only ever be an override, never the
         // source. Precedence: host CSS custom property, runtime variable bag,
         // declared default.
@@ -165,7 +165,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         JSON.parse(ROOT.getAttribute("data-composition-variables") || "[]").forEach(function (v) {
           DECL[v.id] = v.default;
         });
-        var HF = window.__hyperframes;
+        var HF = window.__tagreel;
         var V = (HF && HF.getVariables && HF.getVariables()) || {};
 
         function raw(id) {
@@ -483,7 +483,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add gallery-tunnel" item="gallery-tunnel" />
+<InstallCommand command="npx tagreel add gallery-tunnel" item="gallery-tunnel" />
 
 That writes one file: `compositions/gallery-tunnel.html`.
 

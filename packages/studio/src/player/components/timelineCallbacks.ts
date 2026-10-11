@@ -6,7 +6,7 @@ import type {
   TimelineAtomicMoveUpdates,
 } from "../../hooks/timelineMoveAdapter";
 import type { BlockedTimelineEditIntent } from "./timelineEditing";
-import type { PropertyGroupName } from "@hyperframes/core/gsap-parser";
+import type { PropertyGroupName } from "@tagreel/core/gsap-parser";
 import type { TimelineKeyframeTarget } from "./timelineKeyframeIdentity";
 
 export interface TimelinePropertyGroupKeyframeToggle {

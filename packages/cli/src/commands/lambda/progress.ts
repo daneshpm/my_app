@@ -1,6 +1,6 @@
 import { setCommandExitCode } from "../../utils/commandResult.js";
 /**
- * `hyperframes lambda progress <executionArn>` — print a single progress
+ * `tagreel lambda progress <executionArn>` — print a single progress
  * snapshot for a render. Wraps {@link getRenderProgress}. Accepts a
  * full executionArn or a renderId (in which case we resolve the arn
  * from the stack's region + state-machine name).
@@ -28,7 +28,7 @@ export async function runProgress(args: ProgressArgs): Promise<void> {
 
   // Dynamic-import the SDK so tsup keeps it out of the static-import head
   // of the CLI bundle. See sites.ts loadSDK() for the full rationale.
-  const { getRenderProgress } = await import("@hyperframes/aws-lambda/sdk");
+  const { getRenderProgress } = await import("@tagreel/aws-lambda/sdk");
   const progress = await getRenderProgress({
     executionArn,
     region: stack.region,

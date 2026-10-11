@@ -6,13 +6,13 @@ import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, writeFileSync, renameSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { c } from "../ui/colors.js";
-import { rewritePinnedHyperframesText, rewriteProjectPinnedScripts } from "../utils/projectPin.js";
+import { rewritePinnedTagreelText, rewriteProjectPinnedScripts } from "../utils/projectPin.js";
 
 export const examples: Example[] = [
-  ["Check for updates interactively", "hyperframes upgrade"],
-  ["Check for updates without prompting", "hyperframes upgrade --check"],
-  ["Upgrade non-interactively", "hyperframes upgrade --yes"],
-  ["Bump a project's pinned CLI scripts", "hyperframes upgrade --project"],
+  ["Check for updates interactively", "tagreel upgrade"],
+  ["Check for updates without prompting", "tagreel upgrade --check"],
+  ["Upgrade non-interactively", "tagreel upgrade --yes"],
+  ["Bump a project's pinned CLI scripts", "tagreel upgrade --project"],
 ];
 import { PACKAGE_NAME, VERSION } from "../version.js";
 import {
@@ -32,7 +32,7 @@ export default defineCommand({
     project: {
       type: "string",
       description:
-        "Bump this project's package.json hyperframes@<version> script pins to latest (default: current dir)",
+        "Bump this project's package.json tagreel@<version> script pins to latest (default: current dir)",
     },
   },
   // fallow-ignore-next-line complexity
@@ -59,7 +59,7 @@ export default defineCommand({
     }
 
     const autoYes = args.yes === true;
-    clack.intro(c.bold("hyperframes upgrade"));
+    clack.intro(c.bold("tagreel upgrade"));
 
     const s = clack.spinner();
     s.start("Checking for updates...");
@@ -120,7 +120,7 @@ function applyUpgrade(result: UpdateCheckResult, autoYes: boolean): void {
   const installer = detectInstaller();
   const invocation = installInvocation(installer.kind, result.latest);
   const displayCmd = installer.installCommand(result.latest);
-  const npxFallback = `npx hyperframes@${result.latest}`;
+  const npxFallback = `npx tagreel@${result.latest}`;
 
   // Undetectable / ephemeral (npx, bunx) / project-local / workspace: don't
   // guess a manager command; point at the universal npx fallback instead.
@@ -201,7 +201,7 @@ export async function upgradeProjectPins(
     .filter((entry) => entry.isFile() && entry.name.endsWith(".sh"))
     .map((entry) => {
       const path = resolve(dir, entry.name);
-      return { path, rewrite: rewritePinnedHyperframesText(readFileSync(path, "utf-8"), latest) };
+      return { path, rewrite: rewritePinnedTagreelText(readFileSync(path, "utf-8"), latest) };
     });
   if (rewrite.changed && !opts.check) {
     raw.scripts = rewrite.scripts;
@@ -230,7 +230,7 @@ function printProjectPinResult(
     return;
   }
   if (!res.changed) {
-    console.log(`   ${c.success("◇")}  Project pins already on hyperframes@${res.to}`);
+    console.log(`   ${c.success("◇")}  Project pins already on tagreel@${res.to}`);
     return;
   }
   const verb = checkOnly ? "would bump" : "bumped";

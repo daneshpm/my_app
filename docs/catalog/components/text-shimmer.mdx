@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":178}}
   attribution={{"path":"registry/components/text-shimmer","tags":["motion-primitive","text-effects","shimmer","specular","emphasis"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/text-shimmer/text-shimmer.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/text-shimmer/text-shimmer.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html text-shimmer.html
 <!doctype html>
 <!--
-  text-shimmer: HyperFrames video primitive (text effects / drift / emphasize)
+  text-shimmer: Tagreel video primitive (text effects / drift / emphasize)
 
   Concept: a headline remains fixed while one narrow specular band crosses
   its glyphs. The text is clean before and after the pass. There is no
@@ -147,8 +147,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var headline = root.querySelector(".ts-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Effortless" : String(vars.text);
@@ -207,7 +207,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add text-shimmer" item="text-shimmer" />
+<InstallCommand command="npx tagreel add text-shimmer" item="text-shimmer" />
 
 That writes one file: `compositions/components/text-shimmer.html`.
 

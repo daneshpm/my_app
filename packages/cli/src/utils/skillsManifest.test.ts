@@ -107,10 +107,10 @@ describe("buildManifest", () => {
 });
 
 describe("isCoreSkill", () => {
-  it("classifies the entry router, hyperframes-* domain skills, and media-use as core", () => {
-    expect(isCoreSkill("hyperframes")).toBe(true);
-    expect(isCoreSkill("hyperframes-core")).toBe(true);
-    expect(isCoreSkill("hyperframes-animation")).toBe(true);
+  it("classifies the entry router, tagreel-* domain skills, and media-use as core", () => {
+    expect(isCoreSkill("tagreel")).toBe(true);
+    expect(isCoreSkill("tagreel-core")).toBe(true);
+    expect(isCoreSkill("tagreel-animation")).toBe(true);
     expect(isCoreSkill("media-use")).toBe(true);
     // End-user workflows and optional integrations install on demand.
     expect(isCoreSkill("pr-to-video")).toBe(false);
@@ -148,8 +148,8 @@ describe(".claude-plugin/marketplace.json core-skills pin", () => {
   // enumeration of core membership — pin it to isCoreSkill and the skills/
   // tree so neither surface can silently drift from the tiers `init` /
   // `skills update` actually enforce. It lives on a separate marketplace
-  // entry (not plugin.json, and not the `hyperframes` entry) precisely so
-  // the full `hyperframes` plugin keeps auto-discovering all skills.
+  // entry (not plugin.json, and not the `tagreel` entry) precisely so
+  // the full `tagreel` plugin keeps auto-discovering all skills.
   it("lists exactly the core skills present in the repo's skills/ tree", () => {
     const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..", "..");
     const marketplace = JSON.parse(
@@ -175,13 +175,13 @@ describe(".claude-plugin/marketplace.json core-skills pin", () => {
     }
     // The full plugin must NOT carry a skills allowlist: Claude Code would
     // narrow it to the listed subset instead of auto-discovering all skills.
-    const full = marketplace.plugins?.find((p) => p.name === "hyperframes");
+    const full = marketplace.plugins?.find((p) => p.name === "tagreel");
     expect(full).toBeDefined();
     expect(full?.skills).toBeUndefined();
     // Same for plugin.json (the direct-install manifest for the full plugin) —
     // and upstream lets plugin.json groupings override marketplace ones, so a
     // skills array here would also rename the picker group back to
-    // "Hyperframes".
+    // "Tagreel".
     const plugin = JSON.parse(
       readFileSync(join(repoRoot, ".claude-plugin", "plugin.json"), "utf-8"),
     ) as { skills?: string[] };
@@ -251,13 +251,13 @@ describe("diffSkills", () => {
     const withCore: SkillsManifest = {
       source: "test",
       skills: {
-        hyperframes: { hash: "e1", files: 1 }, // core: entry router
+        tagreel: { hash: "e1", files: 1 }, // core: entry router
         "pr-to-video": { hash: "w1", files: 1 }, // on-demand workflow
       },
     };
 
     // Core current, workflow missing → partial install is fine, no update.
-    const workflowMissing = diffSkills({ hyperframes: { hash: "e1", files: 1 } }, withCore);
+    const workflowMissing = diffSkills({ tagreel: { hash: "e1", files: 1 } }, withCore);
     expect(workflowMissing.updateAvailable).toBe(false);
     expect(workflowMissing.summary).toEqual({
       current: 1,
@@ -279,12 +279,10 @@ describe("presentSkills", () => {
     const project = join(root, "project");
     mkdirSync(project, { recursive: true });
     const skillsDir = join(home, ".claude/skills");
-    mkdirSync(join(skillsDir, "hyperframes"), { recursive: true });
-    writeFileSync(join(skillsDir, "hyperframes", "SKILL.md"), "# hyperframes");
+    mkdirSync(join(skillsDir, "tagreel"), { recursive: true });
+    writeFileSync(join(skillsDir, "tagreel", "SKILL.md"), "# tagreel");
 
-    expect(presentSkills(["hyperframes", "pr-to-video"], { cwd: project, home })).toEqual([
-      "hyperframes",
-    ]);
+    expect(presentSkills(["tagreel", "pr-to-video"], { cwd: project, home })).toEqual(["tagreel"]);
   });
 
   it("returns [] when no install exists at all", () => {
@@ -292,7 +290,7 @@ describe("presentSkills", () => {
     const project = join(root, "project");
     mkdirSync(home, { recursive: true });
     mkdirSync(project, { recursive: true });
-    expect(presentSkills(["hyperframes"], { cwd: project, home })).toEqual([]);
+    expect(presentSkills(["tagreel"], { cwd: project, home })).toEqual([]);
   });
 });
 
@@ -367,7 +365,7 @@ describe("checkSkills install detection", () => {
     installSkill(join(project, ".hermes/skills"), "alpha"); // project — overridden by the global copy
 
     // Claude Code (and most agents) give the personal/global scope priority over
-    // the project scope, and HyperFrames installs globally — so check reports on
+    // the project scope, and Tagreel installs globally — so check reports on
     // the global copy the agent will really use, not a stale project copy.
     const res = await checkSkills({ source, cwd: project, home });
     expect(res.location).toBe(join(home, ".claude/skills"));
@@ -387,7 +385,7 @@ describe("checkSkills install detection", () => {
       source,
       JSON.stringify({
         source: "test",
-        skills: { hyperframes: { hash: "x", files: 1 }, alpha: { hash: "y", files: 1 } },
+        skills: { tagreel: { hash: "x", files: 1 }, alpha: { hash: "y", files: 1 } },
       }),
     );
 

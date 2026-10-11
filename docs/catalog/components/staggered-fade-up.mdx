@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":120}}
   attribution={{"path":"registry/components/staggered-fade-up","tags":["video-primitive","motion-primitive","typography"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/staggered-fade-up/staggered-fade-up.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/staggered-fade-up/staggered-fade-up.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html staggered-fade-up.html
 <!--
-  Staggered Fade Up - typography primitive for HyperFrames.
+  Staggered Fade Up - typography primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Drive the timeline
   integration from a paused GSAP timeline so renders remain deterministic.
@@ -94,8 +94,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -149,7 +149,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add staggered-fade-up" item="staggered-fade-up" />
+<InstallCommand command="npx tagreel add staggered-fade-up" item="staggered-fade-up" />
 
 That writes one file: `compositions/components/staggered-fade-up.html`.
 

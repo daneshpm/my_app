@@ -3,7 +3,7 @@
 //
 //   1. ElevenLabs         — $ELEVENLABS_API_KEY + `pip install elevenlabs`. No
 //        word timings → caller chains transcribeWav().
-//   2. Kokoro-82M (local) — always available, via the published `hyperframes tts`
+//   2. Kokoro-82M (local) — always available, via the published `tagreel tts`
 //        CLI. No word timings → caller chains transcribeWav().
 //   (Gemini is available only by explicit `--provider gemini`.)
 
@@ -215,13 +215,13 @@ export async function synthesizeOne({
   model,
   style,
   wavAbs,
-  hyperframesDir,
+  tagreelDir,
 }) {
   if (provider === "gemini")
     return synthesizeGemini({ text, voiceId, model, style, speed, wavAbs });
   if (provider === "elevenlabs") {
     // The Python helper writes straight to wavAbs; unlike kokoro (the
-    // `hyperframes tts` CLI), it does NOT create the parent dir,
+    // `tagreel tts` CLI), it does NOT create the parent dir,
     // so on a fresh project (no assets/voice/ yet) the save fails and the line is
     // silently dropped as "TTS failed - omitted". Create it first, like the other
     // providers do. Guarded so a mkdir failure (EACCES/EROFS) returns
@@ -243,12 +243,12 @@ export async function synthesizeOne({
     return synthResult(r, wavAbs, "elevenlabs (python)");
   }
   // kokoro — via the published CLI; --output is relative to the project dir.
-  const wavRel = relTo(hyperframesDir, wavAbs);
-  const args = ["hyperframes", "tts", writeTmpText(text), "--voice", voiceId, "--output", wavRel];
+  const wavRel = relTo(tagreelDir, wavAbs);
+  const args = ["tagreel", "tts", writeTmpText(text), "--voice", voiceId, "--output", wavRel];
   if (lang !== "en") args.push("--lang", lang);
   if (speed !== 1) args.push("--speed", String(speed));
-  const r = await spawnP("npx", args, { cwd: hyperframesDir });
-  return synthResult(r, wavAbs, "kokoro (npx hyperframes tts)");
+  const r = await spawnP("npx", args, { cwd: tagreelDir });
+  return synthResult(r, wavAbs, "kokoro (npx tagreel tts)");
 }
 
 // Shape a spawn result into { ok, words, error }, naming why on failure so the
@@ -263,12 +263,12 @@ export function synthResult(r, wavAbs, label) {
 // ElevenLabs/Kokoro have no word timings — run Whisper over the wav. Returns the
 // flat [{id,text,start,end}] word array, or null. Each call uses a throwaway
 // --dir so parallel scenes don't collide on transcript.json.
-export async function transcribeWav({ wavRel, lang = "en", hyperframesDir }) {
+export async function transcribeWav({ wavRel, lang = "en", tagreelDir }) {
   const model = lang === "en" ? "small.en" : "small";
   const td = mkdtempSync(join(tmpdir(), "hf-trans-"));
-  const args = ["hyperframes", "transcribe", wavRel, "--model", model, "--dir", td];
+  const args = ["tagreel", "transcribe", wavRel, "--model", model, "--dir", td];
   if (lang !== "en") args.push("--language", lang);
-  const r = await spawnP("npx", args, { cwd: hyperframesDir });
+  const r = await spawnP("npx", args, { cwd: tagreelDir });
   let words = null;
   if (r.status === 0) {
     const src = join(td, "transcript.json");

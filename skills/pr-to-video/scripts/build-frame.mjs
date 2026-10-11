@@ -5,7 +5,7 @@
 // caption-skin.html, and self-validate. "Strict on brand" is deterministic, so it's
 // a script, not LLM hand-editing (which mis-copies hex / breaks keys).
 //
-//   node build-frame.mjs --preset capsule --hyperframes .
+//   node build-frame.mjs --preset capsule --tagreel .
 //     [--tokens capture/extracted/tokens.json]  [--preset-dir <abs path to frame-presets>]
 //
 // Remix rule — ONLY `colors:` values and `typography:` fontFamily change; keys,
@@ -55,11 +55,11 @@ const die = (m) => {
 };
 
 const presetName = flag("preset", null);
-const hyperframesDir = resolve(flag("hyperframes", "."));
+const tagreelDir = resolve(flag("tagreel", "."));
 const presetDir = resolve(
-  flag("preset-dir", join(__dirname, "../../hyperframes-creative/frame-presets")),
+  flag("preset-dir", join(__dirname, "../../tagreel-creative/frame-presets")),
 );
-const tokensPath = resolve(flag("tokens", join(hyperframesDir, "capture/extracted/tokens.json")));
+const tokensPath = resolve(flag("tokens", join(tagreelDir, "capture/extracted/tokens.json")));
 
 if (!presetName) die("--preset <name> is required");
 const presetFrame = join(presetDir, presetName, "FRAME.md");
@@ -374,7 +374,7 @@ if (existsSync(presetFontsDir)) {
     ["JetBrains Mono", "JetBrainsMono", 400],
     ["JetBrains Mono", "JetBrainsMono", 700],
   ];
-  const outDir = join(hyperframesDir, "assets/fonts");
+  const outDir = join(tagreelDir, "assets/fonts");
   const faces = [];
   for (const [family, stem, weight] of fontSpecs) {
     const file = `${stem}-${weight}.woff2`;
@@ -506,8 +506,8 @@ if (brandFonts.length) {
   const styleOf = (name) => (/italic|oblique/i.test(name) ? "italic" : "normal");
   const fams = [...new Set(brandFonts)];
   const srcDirs = [
-    join(hyperframesDir, "capture/assets/fonts"),
-    join(hyperframesDir, "assets/fonts"),
+    join(tagreelDir, "capture/assets/fonts"),
+    join(tagreelDir, "assets/fonts"),
   ].filter((d) => existsSync(d));
   const files = [];
   for (const d of srcDirs)
@@ -517,8 +517,8 @@ if (brandFonts.length) {
   const ranked = [...fams].sort((a, b) => norm(b).length - norm(a).length);
   const famOf = (f) =>
     fams.length === 1 ? fams[0] : ranked.find((x) => norm(f).includes(norm(x)));
-  const outDir = join(hyperframesDir, "assets/fonts");
-  const captured = stageCapturedFonts(hyperframesDir, fams);
+  const outDir = join(tagreelDir, "assets/fonts");
+  const captured = stageCapturedFonts(tagreelDir, fams);
   const faces = [...captured.faces];
   const stagedNames = new Set(captured.files);
   for (const { d, f } of files) {
@@ -551,14 +551,14 @@ if (brandFonts.length) {
 }
 
 // ── write frame.md ────────────────────────────────────────────────────────────
-const framePath = join(hyperframesDir, "frame.md");
+const framePath = join(tagreelDir, "frame.md");
 writeFileSync(framePath, md);
 
 // ── copy caption-skin.html ────────────────────────────────────────────────────
 const presetSkin = join(presetDir, presetName, "caption-skin.html");
 let skinCopied = false;
 if (existsSync(presetSkin)) {
-  const skinDir = join(hyperframesDir, ".hyperframes");
+  const skinDir = join(tagreelDir, ".tagreel");
   mkdirSync(skinDir, { recursive: true });
   copyFileSync(presetSkin, join(skinDir, "caption-skin.html"));
   skinCopied = true;
@@ -584,6 +584,6 @@ if (li != null && lc != null && Math.abs(li - lc) < 40) {
 console.log(`✓ build-frame: ${presetName} → ${framePath}`);
 for (const s of summary) console.log(`  ${s}`);
 console.log(
-  `  .hyperframes/caption-skin.html: ${skinCopied ? "copied" : "preset ships none — captions will use the default pill"}`,
+  `  .tagreel/caption-skin.html: ${skinCopied ? "copied" : "preset ships none — captions will use the default pill"}`,
 );
 console.log(`  self-check: keys preserved, ink/canvas contrast ok ✓`);

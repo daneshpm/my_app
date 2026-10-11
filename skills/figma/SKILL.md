@@ -1,23 +1,23 @@
 ---
 name: figma
-description: Import Figma content into a HyperFrames composition — rendered assets, brand tokens, components, storyboard sections → reconstructed motion (frames read as states, not slides) (REST/CLI), connector-assisted motion when available, and shaders from a connector or native export. Use when the user pastes a figma.com link or asks to bring a Figma design, frame, logo, brand, or animation into a video/composition.
+description: Import Figma content into a Tagreel composition — rendered assets, brand tokens, components, storyboard sections → reconstructed motion (frames read as states, not slides) (REST/CLI), connector-assisted motion when available, and shaders from a connector or native export. Use when the user pastes a figma.com link or asks to bring a Figma design, frame, logo, brand, or animation into a video/composition.
 ---
 
-**Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../hyperframes/references/plugin-installation.md) when this skill is inside a HyperFrames plugin. Standalone installs keep the update instructions below.
+**Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../tagreel/references/plugin-installation.md) when this skill is inside a Tagreel plugin. Standalone installs keep the update instructions below.
 
-> **First, keep this skill fresh — confirm with the user before running:** `npx hyperframes skills update figma`. A fast no-op when everything is current; otherwise it refreshes this skill plus the core domain skills it depends on before you rely on them.
+> **First, keep this skill fresh — confirm with the user before running:** `npx tagreel skills update figma`. A fast no-op when everything is current; otherwise it refreshes this skill plus the core domain skills it depends on before you rely on them.
 
-# Figma → HyperFrames
+# Figma → Tagreel
 
 Bring the user's Figma work into a composition. **Split by capability** (design spec §2):
 
-| Phase | What                | Transport                 | Surface                       |
-| ----- | ------------------- | ------------------------- | ----------------------------- |
-| 1     | Static assets       | REST                      | `hyperframes figma asset`     |
-| 2     | Brand tokens/styles | REST                      | `hyperframes figma tokens`    |
-| 3     | Components → HTML   | REST                      | `hyperframes figma component` |
-| 4     | Motion → GSAP       | connector when available  | use its motion context        |
-| 5     | Shaders             | connector / manual export | use it or a native export     |
+| Phase | What                | Transport                 | Surface                   |
+| ----- | ------------------- | ------------------------- | ------------------------- |
+| 1     | Static assets       | REST                      | `tagreel figma asset`     |
+| 2     | Brand tokens/styles | REST                      | `tagreel figma tokens`    |
+| 3     | Components → HTML   | REST                      | `tagreel figma component` |
+| 4     | Motion → GSAP       | connector when available  | use its motion context    |
+| 5     | Shaders             | connector / manual export | use it or a native export |
 
 REST is used wherever it can be (usable at volume, headless). A compatible Figma connector is optional for motion and shader data; without one, ask for a native export. Every path freezes assets locally so renders stay deterministic. Storyboard reconstructions compose Phase-1 asset exports (REST) with agent-driven timeline assembly — no connector needed. Existing frozen assets, manifest records, and bindings are unaffected by routing changes — the split only changes which credential the next import uses.
 
@@ -53,31 +53,31 @@ Parse the user's figma link with `parseFigmaRef` (URL, `fileKey:nodeId`, bare `f
 ## Assets (Phase 1 — CLI)
 
 ```bash
-hyperframes figma asset '<url-or-fileKey:nodeId>' [more refs…] [--format svg|png|jpg|pdf] [--scale 2] [--description "..."] [--entity "..."]
+tagreel figma asset '<url-or-fileKey:nodeId>' [more refs…] [--format svg|png|jpg|pdf] [--scale 2] [--description "..."] [--entity "..."]
 ```
 
 Renders over REST, sanitizes SVG, freezes under `.media/images/`, appends the manifest with provenance, regenerates `.media/index.md` (the shared media-use inventory), prints an `<img>` snippet. Idempotent per `fileKey:nodeId:format:scale:version`. Prefer SVG for vectors/logos (scalable, animatable), PNG `--scale 2` for raster fidelity. **Always pass `--description "<what it is>"`** (it becomes the index row + `<img alt>`); add `--entity "<name>"` for named brand marks so media-use `resolve --entity` finds them later (entity hits match across image/icon).
 
-**Batch many nodes in ONE request** — pass several refs (space-separated or comma-joined) of the SAME file: `hyperframes figma asset 'KEY:1-2' 'KEY:3-4' 'KEY:5-6'`. All render in a single `/v1/images` call, which is figma's own answer to the per-minute rate limit — prefer it over N separate commands when pulling a whole frame's worth of assets. `--description`/`--entity` apply to every node in the batch, so batch nodes that share a purpose. 429s also auto-retry with backoff regardless.
+**Batch many nodes in ONE request** — pass several refs (space-separated or comma-joined) of the SAME file: `tagreel figma asset 'KEY:1-2' 'KEY:3-4' 'KEY:5-6'`. All render in a single `/v1/images` call, which is figma's own answer to the per-minute rate limit — prefer it over N separate commands when pulling a whole frame's worth of assets. `--description`/`--entity` apply to every node in the batch, so batch nodes that share a purpose. 429s also auto-retry with backoff regardless.
 
 ## Tokens (Phase 2 — CLI)
 
 ```bash
-hyperframes figma tokens <fileKey>
+tagreel figma tokens <fileKey>
 ```
 
 Imports variables as composition brand-variable entries + `figma-tokens.json` sidecar + binding-index records (`.media/figma-bindings.jsonl`). Variables are Enterprise-gated upstream: on other plans the command degrades to published-style metadata (values resolve at component-import time). Add the printed entries to the composition's `data-composition-variables`.
 
 **Import tokens before components** when both are wanted — that's what lets component colors link to brand variables instead of baking duplicates.
 
-**Non-Enterprise variables path (field-tested):** REST variables are Enterprise-gated, but a compatible connector may provide variable definitions. When `tokens` reports `REQUIRES_ENTERPRISE` and the connector is available, retrieve the parent scene's variables once, cache the raw response to `.media/figma-cache/`, and use it to build the binding index. The REST node tree's `boundVariables` supplies per-property `VariableID`s; join them by node and property, then write `.media/figma-bindings.jsonl` rows (`{kind:"binding", figmaId, sourceFileKey, compositionVariableId: "figma:<name>", version}`) plus the composition-variable entries. Everything downstream (component `var()` resolution, refresh, runtime CSS variables) is the shipped machinery. Label it for the user: "tokens via the Figma connector — Enterprise plans get this from `hyperframes figma tokens` directly."
+**Non-Enterprise variables path (field-tested):** REST variables are Enterprise-gated, but a compatible connector may provide variable definitions. When `tokens` reports `REQUIRES_ENTERPRISE` and the connector is available, retrieve the parent scene's variables once, cache the raw response to `.media/figma-cache/`, and use it to build the binding index. The REST node tree's `boundVariables` supplies per-property `VariableID`s; join them by node and property, then write `.media/figma-bindings.jsonl` rows (`{kind:"binding", figmaId, sourceFileKey, compositionVariableId: "figma:<name>", version}`) plus the composition-variable entries. Everything downstream (component `var()` resolution, refresh, runtime CSS variables) is the shipped machinery. Label it for the user: "tokens via the Figma connector — Enterprise plans get this from `tagreel figma tokens` directly."
 
-The runtime defines every declared composition variable as a CSS custom property (document root + sub-comp hosts), so imported `var(--slug, literal)` fills recolor when the variable default changes — updating one value in `data-composition-variables` re-brands every imported component without re-importing anything. `hyperframes render --variables '<json>'` overrides them at render time.
+The runtime defines every declared composition variable as a CSS custom property (document root + sub-comp hosts), so imported `var(--slug, literal)` fills recolor when the variable default changes — updating one value in `data-composition-variables` re-brands every imported component without re-importing anything. `tagreel render --variables '<json>'` overrides them at render time.
 
 ## Components (Phase 3 — CLI)
 
 ```bash
-hyperframes figma component '<url-or-fileKey:nodeId>'
+tagreel figma component '<url-or-fileKey:nodeId>'
 ```
 
 Node tree → editable HTML at exact figma geometry, packaged as a registry item under `compositions/components/<name>/`. Vectors/boolean-ops auto-rasterize via Phase-1 export. Binding pass (spec §7.1, exact-ID only — never value matching):
@@ -88,14 +88,14 @@ Node tree → editable HTML at exact figma geometry, packaged as a registry item
 
 ## Motion (Phase 4 — connector-assisted)
 
-No REST equivalent exists. When a compatible connector is available, use it and hand its output to the pure helpers in `@hyperframes/core/figma`; otherwise ask for a native export:
+No REST equivalent exists. When a compatible connector is available, use it and hand its output to the pure helpers in `@tagreel/core/figma`; otherwise ask for a native export:
 
 1. Retrieve motion context for the parent frame in one recursive request, not one request per element. Save the raw JSON next to the project (`.media/figma-cache/`) so retranslation is free.
-2. Normalize into `MotionDoc`s with `motionContextToDocs(rawResponse, { selectorFor, repeat })` from `@hyperframes/core/figma` — **never transcribe keyframe numbers by hand**. The helper encodes the field-tested decoding rules mechanically: it parses the motion.dev snippets (the reliable encoding — the CSS snippets stretch durations and can disagree; they are ignored), strips loop-wrap tail keyframes (sub-millisecond segments at times ≈0.9999→1 are the loop's instant reset, not authored motion — the wrap is realized by `repeat` restart), and preserves bezier eases verbatim. `selectorFor` must return the ids from the Phase-3 component import — don't derive selectors from node names.
+2. Normalize into `MotionDoc`s with `motionContextToDocs(rawResponse, { selectorFor, repeat })` from `@tagreel/core/figma` — **never transcribe keyframe numbers by hand**. The helper encodes the field-tested decoding rules mechanically: it parses the motion.dev snippets (the reliable encoding — the CSS snippets stretch durations and can disagree; they are ignored), strips loop-wrap tail keyframes (sub-millisecond segments at times ≈0.9999→1 are the loop's instant reset, not authored motion — the wrap is realized by `repeat` restart), and preserves bezier eases verbatim. `selectorFor` must return the ids from the Phase-3 component import — don't derive selectors from node names.
    2b. **Validate against ground truth before calling it done — mandatory**: export the cohort's root frame through the available connector and run `node <SKILL_DIR>/scripts/verify-motion.mjs --reference <export.mp4> --render <render.mp4> --crop WxH+X+Y` — it compares motion-energy deltas (static import fidelity cancels out) and fails below 15dB min motion-PSNR (calibrated: faithful ≈ 20+, diverging ≈ 5). Measure `--crop` from the render's actual card edges, don't guess. FAIL means re-check the translation, not the threshold.
 3. `motionToGsap(doc)` → `emitTimelineScript(spec)` → inject as a `<script>` after the GSAP + CustomEase CDN tags. Paused, finite, registered on `window.__timelines` with a literal key.
 4. Untranslatable track (shader-driven, unsupported prop, complex masks) → export through the connector, freeze the MP4, then embed it as `<video class="clip">`. Exception: shader-driven tracks — Figma's export path flattens shaders to the base color (see Shaders below), so a bake there silently loses the shader; ask the user for a native Figma export instead. Always say which path you used and why. Named eases outside the mapped set fall back to linear — the mapping table lives in `motionEase.ts`; flag the fallback to the user when it fires.
-5. Run `npx hyperframes check` before calling it done.
+5. Run `npx tagreel check` before calling it done.
 
 ## Shaders (Phase 5 — mostly manual)
 

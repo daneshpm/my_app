@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":358}}
   attribution={{"path":"registry/components/swipe-rail","tags":["motion-primitive","interaction","gesture","swipe","cards","rail"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/swipe-rail/swipe-rail.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/swipe-rail/swipe-rail.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html swipe-rail.html
 <!doctype html>
 <!--
-  swipe-rail: HyperFrames video primitive (interaction / gesture / demonstrate)
+  swipe-rail: Tagreel video primitive (interaction / gesture / demonstrate)
 
   Concept: a contact circle leads a horizontal card rail through one swipe.
   The rail follows the drag, carries momentum after release, then snaps the
@@ -199,8 +199,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var rail = root.querySelector(".sr-rail");
             var contact = root.querySelector(".sr-contact");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var countValue = Number(vars.card_count);
@@ -387,7 +387,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add swipe-rail" item="swipe-rail" />
+<InstallCommand command="npx tagreel add swipe-rail" item="swipe-rail" />
 
 That writes one file: `compositions/components/swipe-rail.html`.
 

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "tiktok-follow",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "TikTok Follow",
   "description": "Animated TikTok follow overlay with profile card and follow button",
   "tags": ["social", "overlay", "tiktok"],
@@ -14,12 +14,12 @@
     {
       "path": "tiktok-follow.html",
       "target": "compositions/tiktok-follow.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "assets/avatar.jpg",
       "target": "assets/avatar.jpg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
   ]
 }

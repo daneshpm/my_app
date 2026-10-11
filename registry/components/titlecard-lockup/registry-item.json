@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "titlecard-lockup",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Titlecard Lockup",
   "description": "The calm breather titlecard: an optional mono kicker fades up, the wordmark settles dead-center with one restrained move, a hairline rule draws left to right, a mono label fades beneath, and the lockup holds truly still.",
   "tags": ["motion-primitive", "typography", "title-card", "lockup", "breather", "orient"],
@@ -14,7 +14,7 @@
     {
       "path": "titlecard-lockup.html",
       "target": "compositions/components/titlecard-lockup.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -24,7 +24,7 @@
       "role": "content",
       "label": "Wordmark",
       "description": "Display wordmark that settles dead-center.",
-      "default": "HYPERFRAMES"
+      "default": "TAGREEL"
     },
     {
       "id": "label",

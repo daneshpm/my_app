@@ -8,15 +8,15 @@ import { regenerateIndex } from "../../../scripts/lib/index-gen.mjs";
  * the person's (not `reusable` and not recorded as agent-made). Then the first free `name-2.ext`, with an anomaly.
  */
 export function agentWritePath(
-  hyperframesDir,
+  tagreelDir,
   rel,
   { anomalies, taken = new Set(), reusable = () => false },
 ) {
   const free = (path) =>
     !taken.has(path) &&
-    (!existsSync(join(hyperframesDir, path)) ||
+    (!existsSync(join(tagreelDir, path)) ||
       reusable(path) ||
-      AGENT_SOURCES.includes(latestRecordFor(hyperframesDir, path)?.source));
+      AGENT_SOURCES.includes(latestRecordFor(tagreelDir, path)?.source));
   if (free(rel)) return rel;
   const ext = extname(rel);
   const stem = rel.slice(0, rel.length - ext.length);
@@ -32,11 +32,11 @@ export function agentWritePath(
 }
 
 /** Each spoken line's file, picked before lines synthesize concurrently so two never land on one free name. */
-export function voicePaths(hyperframesDir, lines, anomalies) {
+export function voicePaths(tagreelDir, lines, anomalies) {
   const taken = new Set();
   const paths = new Map();
   for (const line of lines.filter((l) => String(l.text ?? "").trim())) {
-    const rel = agentWritePath(hyperframesDir, `assets/voice/${line.id}.wav`, { anomalies, taken });
+    const rel = agentWritePath(tagreelDir, `assets/voice/${line.id}.wav`, { anomalies, taken });
     taken.add(rel);
     paths.set(String(line.id), rel);
   }
@@ -88,11 +88,11 @@ export function writtenAssets({ only, lines, voices, ttsProvider, bgm, bgmFields
 }
 
 /** Records each asset where it lies; returns one anomaly per file left unrecorded. */
-export function recordInManifest(hyperframesDir, assets) {
+export function recordInManifest(tagreelDir, assets) {
   const anomalies = [];
   for (const { path, type, source, intent, duration, provider } of assets) {
     try {
-      recordInPlace(hyperframesDir, {
+      recordInPlace(tagreelDir, {
         type,
         path,
         source,
@@ -105,7 +105,7 @@ export function recordInManifest(hyperframesDir, assets) {
     }
   }
   try {
-    if (anomalies.length < assets.length) regenerateIndex(hyperframesDir);
+    if (anomalies.length < assets.length) regenerateIndex(tagreelDir);
   } catch (error) {
     anomalies.push(`.media/index.md: not refreshed (${error.message})`);
   }

@@ -1,7 +1,7 @@
 # Project-local Claude Code skills
 
 Skills in this directory are auto-discovered by Claude Code when the
-`hyperframes` repo is opened as the working directory. They are NOT part of
+`tagreel` repo is opened as the working directory. They are NOT part of
 the marketplace-distributed plugin (that set lives under `skills/` and is
 manifested by `.claude-plugin/`). Two separate namespaces, on purpose:
 
@@ -9,9 +9,9 @@ manifested by `.claude-plugin/`). Two separate namespaces, on purpose:
   changelog videos, doctrine-heavy authoring flows). Claude Code's
   project-local skill dir.
 - `skills/` — **marketplace-distributable**, installed into other projects
-  via `npx hyperframes skills` or `npx skills add heygen-com/hyperframes`.
+  via `npx tagreel skills` or `npx skills add daneshpm/my_app`.
 
-> **Warning:** Never run `npx skills add ... --all` from inside a HyperFrames checkout: it selects the OpenClaw target, whose `skills/` directory is the repo's own `skills/`, and removes each existing `skills/<name>` destination before linking. A fresh clone restores tracked source, but uncommitted work under `skills/` does not recover. Run it from an empty directory or from your own project root. This happens regardless of `metadata.internal`.
+> **Warning:** Never run `npx skills add ... --all` from inside a Tagreel checkout: it selects the OpenClaw target, whose `skills/` directory is the repo's own `skills/`, and removes each existing `skills/<name>` destination before linking. A fresh clone restores tracked source, but uncommitted work under `skills/` does not recover. Run it from an empty directory or from your own project root. This happens regardless of `metadata.internal`.
 
 ## Weekly changelog video
 
@@ -33,15 +33,15 @@ Weekly usage:
    generated markdown. The agent will present its script + visualization
    plan for review before rendering.
 3. Accept, and the agent produces `weekly-changelog-<range>.mp4` gated by
-   `hyperframes check` (0 errors) + `seam-gate verify` (0 fail/warn).
+   `tagreel check` (0 errors) + `seam-gate verify` (0 fail/warn).
 
-TTS uses the tracked `skills/hyperframes-media/scripts/heygen-tts.mjs`
+TTS uses the tracked `skills/tagreel-media/scripts/heygen-tts.mjs`
 (no extra install needed). Runtime dependencies you need on PATH:
 
 - Node ≥ 22
 - HeyGen CLI ≥ 0.3.0, authenticated via `heygen auth login --oauth`
 - `ffmpeg` (for VO wav conversion + frame QA)
-- A headless Chrome for HyperFrames rendering (`hyperframes doctor` will
+- A headless Chrome for Tagreel rendering (`tagreel doctor` will
   point out the exact ask if it's missing)
 
 The parallel set at `.agents/skills/` is a byte-identical copy so Codex

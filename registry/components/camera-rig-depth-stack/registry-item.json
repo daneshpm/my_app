@@ -1,15 +1,15 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "camera-rig-depth-stack",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Camera Rig Depth Stack",
   "description": "A 3D camera-rig-style card stack with depth, parallax, and focus shift.",
-  "tags": ["advanced-motion", "hyperframes-native"],
+  "tags": ["advanced-motion", "tagreel-native"],
   "files": [
     {
       "path": "camera-rig-depth-stack.html",
       "target": "compositions/components/camera-rig-depth-stack.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

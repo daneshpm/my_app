@@ -10,7 +10,7 @@ function read(relativePath) {
 test("product launch capture treats blocked output as a hard gate", () => {
   const skill = read("../SKILL.md");
 
-  assert.match(skill, /hyperframes capture[^\n]+--json/);
+  assert.match(skill, /tagreel capture[^\n]+--json/);
   assert.match(skill, /capture\/BLOCKED\.md[^\n]+hard stop/i);
   assert.match(skill, /do not[\s\S]{0,120}synthetic[\s\S]{0,120}fallback/i);
   assert.match(skill, /very little text[\s\S]{0,180}empty asset/i);
@@ -18,11 +18,11 @@ test("product launch capture treats blocked output as a hard gate", () => {
 });
 
 test("CLI capture reference documents the two budgets and machine diagnostics", () => {
-  const reference = read("../../hyperframes-cli/references/init-and-scaffold.md");
+  const reference = read("../../tagreel-cli/references/init-and-scaffold.md");
 
   assert.match(reference, /--capture-budget/);
   assert.match(reference, /--skip-vision/);
-  assert.match(reference, /HYPERFRAMES_CAPTURE_PHASE/);
+  assert.match(reference, /TAGREEL_CAPTURE_PHASE/);
   assert.match(reference, /BLOCKED\.md[^\n]+hard stop/i);
   assert.match(reference, /--timeout[^\n]+navigation[^\n]+--capture-budget/i);
   assert.match(reference, /fresh output directory/i);

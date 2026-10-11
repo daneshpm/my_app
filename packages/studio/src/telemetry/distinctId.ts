@@ -3,13 +3,13 @@
 //
 // Studio historically minted TWO independent anonymous ids:
 //   - `hf-studio-anon-id`            (utils/studioTelemetry.ts → studio:* events)
-//   - `hyperframes-studio:anonymousId` (telemetry/config.ts → studio_* + render events)
+//   - `tagreel-studio:anonymousId` (telemetry/config.ts → studio_* + render events)
 // so a single browser looked like two different people in analytics. This module
 // resolves ONE id that both clients (and the render→CLI channel) share.
 //
 // CLI→Studio identity stitch (Layer 1, no login / no PII):
 // When the CLI launches Studio it injects its own `config.anonymousId`
-// (a random UUID from ~/.hyperframes/config.json) as `window.__HF_CLI_DISTINCT_ID`
+// (a random UUID from ~/.tagreel/config.json) as `window.__HF_CLI_DISTINCT_ID`
 // (see packages/cli/src/server/studioServer.ts). When present we ADOPT it as the
 // Studio distinct_id and persist it, so CLI `cli_command*` events and the
 // browser's `studio:*` / `studio_*` / render events are attributed to the same
@@ -22,7 +22,7 @@ import { safeLocalStorage } from "../utils/safeStorage";
 
 // Canonical storage key. Both legacy keys are kept in sync (below) so any code
 // still reading them directly, plus older cached values, resolve to one id.
-export const DISTINCT_ID_KEY = "hyperframes-studio:anonymousId";
+export const DISTINCT_ID_KEY = "tagreel-studio:anonymousId";
 // Legacy key used by utils/studioTelemetry.ts for `studio:*` events.
 export const LEGACY_STUDIO_ANON_ID_KEY = "hf-studio-anon-id";
 
@@ -38,7 +38,7 @@ let cachedId: string | null = null;
 
 /**
  * The distinct_id the CLI seeded into the page, if any. A non-empty string
- * means "this Studio was launched by the HyperFrames CLI, adopt its identity".
+ * means "this Studio was launched by the Tagreel CLI, adopt its identity".
  */
 export function getCliDistinctId(): string | null {
   try {

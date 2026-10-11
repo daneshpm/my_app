@@ -40,8 +40,8 @@ const probeTracker = vi.hoisted(() => {
   };
 });
 
-vi.mock("@hyperframes/engine", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@hyperframes/engine")>();
+vi.mock("@tagreel/engine", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@tagreel/engine")>();
   return {
     ...actual,
     analyzeKeyframeIntervals: async () =>

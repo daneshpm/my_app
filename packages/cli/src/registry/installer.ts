@@ -12,7 +12,7 @@ import type { DownloadByteBudget } from "../capture/readBoundedResponse.js";
 import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve, relative, isAbsolute } from "node:path";
-import type { FileTarget, RegistryItem } from "@hyperframes/core";
+import type { FileTarget, RegistryItem } from "@tagreel/core";
 import { fetchItemFile, DEFAULT_REGISTRY_URL } from "./remote.js";
 import {
   applyVariableDefaults,
@@ -54,7 +54,7 @@ export interface InstallResult {
  * the file against the hash we recorded is what tells an untouched file, which
  * is safe to replace, apart from an edited one, which is not.
  */
-const INSTALL_RECORD = "hyperframes.lock.json";
+const INSTALL_RECORD = "tagreel.lock.json";
 
 type InstallRecord = Record<string, string>;
 
@@ -156,23 +156,23 @@ function assertSafeTarget(destDir: string, target: string): void {
 
 /** A component's pasteable markup: the file whose declared defaults `--vars` edits. */
 function isInstalledComponentSnippet(item: RegistryItem, file: FileTarget): boolean {
-  return item.type === "hyperframes:component" && file.target.toLowerCase().endsWith(".html");
+  return item.type === "tagreel:component" && file.target.toLowerCase().endsWith(".html");
 }
 
 function isInstalledRegistryBlockComposition(item: RegistryItem, file: FileTarget): boolean {
   return (
-    item.type === "hyperframes:block" &&
-    file.type === "hyperframes:composition" &&
+    item.type === "tagreel:block" &&
+    file.type === "tagreel:composition" &&
     file.target.toLowerCase().endsWith(".html")
   );
 }
 
 function addRegistryItemMarker(source: string, item: RegistryItem): string {
-  if (/^\s*<!--\s*hyperframes-registry-item:[^>]*-->/i.test(source.slice(0, 512))) {
+  if (/^\s*<!--\s*tagreel-registry-item:[^>]*-->/i.test(source.slice(0, 512))) {
     return source;
   }
 
-  return `<!-- hyperframes-registry-item: ${item.name} -->\n${source}`;
+  return `<!-- tagreel-registry-item: ${item.name} -->\n${source}`;
 }
 
 export interface FileOutcome {

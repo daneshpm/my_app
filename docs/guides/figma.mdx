@@ -23,9 +23,9 @@ the other is a component.
 
 | Capability | What you get | Surface |
 | --- | --- | --- |
-| **Static assets** | A frame/layer rendered to SVG/PNG/JPG/PDF, frozen under `.media/` | `hyperframes figma asset` |
-| **Brand tokens** | Figma variables/styles as composition brand variables | `hyperframes figma tokens` or the `/figma` skill via a Figma connector |
-| **Components** | A frame as editable HTML with brand-linked colors | `hyperframes figma component` |
+| **Static assets** | A frame/layer rendered to SVG/PNG/JPG/PDF, frozen under `.media/` | `tagreel figma asset` |
+| **Brand tokens** | Figma variables/styles as composition brand variables | `tagreel figma tokens` or the `/figma` skill via a Figma connector |
+| **Components** | A frame as editable HTML with brand-linked colors | `tagreel figma component` |
 | **Motion** | A Figma Motion timeline as an editable, paused GSAP timeline | `/figma` skill (agent, MCP) |
 | **Shaders** | A shader fill/effect as a frozen still or clip | `/figma` skill (agent, MCP) |
 | **Storyboards** | Scene frames reconstructed as motion — frames read as states, not slides | `/figma` skill (agent; REST assets are enough) |
@@ -50,7 +50,7 @@ Do both if your project needs everything; each is independent, so it doesn't mat
 
 ### Step A — Figma token (assets, tokens, components)
 
-Needed for anything you run from the `hyperframes figma` CLI.
+Needed for anything you run from the `tagreel figma` CLI.
 
 <Steps>
   <Step title="Mint a token">
@@ -88,7 +88,7 @@ so the agent should batch requests and cache the result.
 ## Import an asset
 
 ```bash
-hyperframes figma asset 'https://www.figma.com/design/KEY/Title?node-id=1-2'
+tagreel figma asset 'https://www.figma.com/design/KEY/Title?node-id=1-2'
 ```
 
 The node renders over REST, lands frozen under `.media/images/`, and the command prints a ready-to-paste `<img>` snippet:
@@ -105,7 +105,7 @@ imported image_007 → .media/images/image_007.svg
 ## Pull your brand
 
 ```bash
-hyperframes figma tokens KEY
+tagreel figma tokens KEY
 ```
 
 Reads the file's variables (or published style metadata), writes a
@@ -120,7 +120,7 @@ Import tokens **before** components. That's what lets an imported component's co
 ## Import a component
 
 ```bash
-hyperframes figma component 'https://www.figma.com/design/KEY/Title?node-id=10-20'
+tagreel figma component 'https://www.figma.com/design/KEY/Title?node-id=10-20'
 ```
 
 The frame's node tree becomes editable HTML at exact Figma geometry, packaged under `compositions/components/<name>/`. Vector and boolean-op nodes that don't map to clean HTML auto-rasterize through the asset path.

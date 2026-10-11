@@ -13,8 +13,8 @@ import { parseHTML } from "linkedom";
 import { extractAudioMetadata } from "../utils/ffprobe.js";
 import { isNotMediaPayload } from "../utils/notMediaPayload.js";
 import { safeIdSegment } from "../utils/safePathSegment.js";
-import { clampAudioGain } from "@hyperframes/core/audio-gain";
-import { clampFadesToDuration, readElementFades } from "@hyperframes/core/audio-fade";
+import { clampAudioGain } from "@tagreel/core/audio-gain";
+import { clampFadesToDuration, readElementFades } from "@tagreel/core/audio-fade";
 import {
   downloadToTemp,
   isHttpUrl,
@@ -35,7 +35,7 @@ import type {
   MixResult,
 } from "./audioMixer.types.js";
 import { applyVolumeEnvelopeToWav } from "./audioVolumeEnvelope.js";
-import { HF_AUDIO_FX_ATTR, parseAudioFxChain } from "@hyperframes/core/audio-fx";
+import { HF_AUDIO_FX_ATTR, parseAudioFxChain } from "@tagreel/core/audio-fx";
 import {
   HF_AUDIO_AUTOMATION_ATTR,
   parseAutomation,
@@ -43,8 +43,8 @@ import {
   sampleAutomationLane,
   VOLUME_TARGET,
   type HfAutomationLane,
-} from "@hyperframes/core/audio-automation";
-import { chainTailSeconds } from "@hyperframes/core/audio-fx-tail";
+} from "@tagreel/core/audio-automation";
+import { chainTailSeconds } from "@tagreel/core/audio-fx-tail";
 import {
   isAudibleVideoElement,
   MEDIA_RENDER_ID_ATTR,
@@ -56,8 +56,8 @@ import {
   sourceTimeAt,
   timeAtSourceTime,
   type RateSpec,
-} from "@hyperframes/core";
-import { resolveAudioGroups } from "@hyperframes/core/audio-groups";
+} from "@tagreel/core";
+import { resolveAudioGroups } from "@tagreel/core/audio-groups";
 import { applyAudioFxChain, AudioFxRenderError } from "./audioFxRender.js";
 import type { AudioVolumeKeyframe } from "./audioMixer.types.js";
 

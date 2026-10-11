@@ -47,13 +47,13 @@ describe("createProjectWatcher on a real directory", () => {
     }
   });
 
-  it("reports Studio's manifest writes inside .hyperframes", async () => {
+  it("reports Studio's manifest writes inside .tagreel", async () => {
     dir = mkdtempSync(join(tmpdir(), "hf-watch-"));
-    mkdirSync(join(dir, ".hyperframes"));
+    mkdirSync(join(dir, ".tagreel"));
     const seen = await watchProject();
 
-    writeFileSync(join(dir, ".hyperframes", "studio-motion.json"), "{}");
-    await expectReported(seen, join(".hyperframes", "studio-motion.json"));
+    writeFileSync(join(dir, ".tagreel", "studio-motion.json"), "{}");
+    await expectReported(seen, join(".tagreel", "studio-motion.json"));
   });
 
   it("keeps watching a sibling whose name starts with a removed directory's", async () => {

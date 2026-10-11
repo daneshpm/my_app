@@ -1,5 +1,5 @@
 {
-  "name": "@hyperframes/sdk-playground",
+  "name": "@tagreel/sdk-playground",
   "version": "0.6.106",
   "private": true,
   "type": "module",
@@ -10,8 +10,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@hyperframes/core": "workspace:*",
-    "@hyperframes/sdk": "workspace:*",
+    "@tagreel/core": "workspace:*",
+    "@tagreel/sdk": "workspace:*",
     "gsap": "^3.15.0"
   },
   "devDependencies": {

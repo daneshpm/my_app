@@ -1,13 +1,13 @@
 <!doctype html>
 <!--
-  scan-band: HyperFrames video primitive
+  scan-band: Tagreel video primitive
 
   A single diagonal distortion band crosses a clean wordmark. Inside the
   band, three clipped clones create red and cyan separation plus a small
   horizontal displacement. Everywhere outside the band remains clean.
 
   Variables:
-    - wordmark (string, default "HYPERFRAMES"): displayed text.
+    - wordmark (string, default "TAGREEL"): displayed text.
     - band_angle (number, default 12): diagonal band angle in degrees.
 
   Envelope:
@@ -26,7 +26,7 @@
   data-composition-id="scan-band"
   data-composition-duration="3.5"
   data-composition-variables='[
-    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Text displayed by the scan effect.", "default": "HYPERFRAMES" },
+    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Text displayed by the scan effect.", "default": "TAGREEL" },
     { "id": "band_angle", "type": "number", "role": "layout", "label": "Band angle", "description": "Diagonal angle of the distortion band in degrees.", "default": 12, "min": -30, "max": 30, "step": 1, "unit": "deg" }
   ]'
 >
@@ -153,11 +153,11 @@
             var band = root.querySelector(".sb-band");
             var clones = root.querySelectorAll(".sb-clone");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
-            var text = vars.wordmark == null ? "HYPERFRAMES" : String(vars.wordmark);
+            var text = vars.wordmark == null ? "TAGREEL" : String(vars.wordmark);
             var angleValue = vars.band_angle;
             var bandAngle = Number.isFinite(angleValue)
               ? Math.max(-30, Math.min(30, angleValue))

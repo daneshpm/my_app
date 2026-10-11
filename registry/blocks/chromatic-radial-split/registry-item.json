@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "chromatic-radial-split",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Chromatic Radial Split",
   "description": "Shader transition with chromatic aberration radial split",
   "tags": ["transition", "shader"],
@@ -14,7 +14,7 @@
     {
       "path": "chromatic-radial-split.html",
       "target": "compositions/chromatic-radial-split.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

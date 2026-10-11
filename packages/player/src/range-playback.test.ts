@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi, type MockInstance } from "vitest";
-import { runtimeProtocolMetadata } from "@hyperframes/core/runtime/protocol";
+import { runtimeProtocolMetadata } from "@tagreel/core/runtime/protocol";
 
 type Player = HTMLElement & {
   play: () => void;
@@ -25,7 +25,7 @@ let player: Player;
 let events: string[];
 
 function createPlayer(attrs: Record<string, string> = {}): Player {
-  const el = document.createElement("hyperframes-player") as Player;
+  const el = document.createElement("tagreel-player") as Player;
   for (const [name, value] of Object.entries(attrs)) el.setAttribute(name, value);
   events = [];
   for (const type of ["ready", "ended", "rangeclamped", "durationchange", "play"]) {
@@ -40,7 +40,7 @@ function createPlayer(attrs: Record<string, string> = {}): Player {
 
 const ranEvents = () => events.filter((e) => !e.startsWith("play@"));
 
-describe("HyperframesPlayer range playback: composition", () => {
+describe("TagreelPlayer range playback: composition", () => {
   let postSpy: MockInstance<typeof window.postMessage>;
   // A runtime that advertises `play-range` (the current one), or an older one that does not.
   let protocol: Record<string, unknown>;
@@ -81,7 +81,7 @@ describe("HyperframesPlayer range playback: composition", () => {
   }
 
   beforeEach(async () => {
-    await import("./hyperframes-player.js");
+    await import("./tagreel-player.js");
     postSpy = vi.spyOn(window, "postMessage").mockImplementation(() => undefined);
     protocol = { ...runtimeProtocolMetadata(30) };
   });
@@ -294,7 +294,7 @@ describe("HyperframesPlayer range playback: composition", () => {
   });
 });
 
-describe("HyperframesPlayer range playback: video and direct timelines", () => {
+describe("TagreelPlayer range playback: video and direct timelines", () => {
   let frames: FrameRequestCallback[];
   let playSpy: MockInstance<HTMLMediaElement["play"]>;
 
@@ -320,7 +320,7 @@ describe("HyperframesPlayer range playback: video and direct timelines", () => {
   }
 
   beforeEach(async () => {
-    await import("./hyperframes-player.js");
+    await import("./tagreel-player.js");
     playSpy = vi
       .spyOn(HTMLMediaElement.prototype, "play")
       .mockImplementation(function (this: HTMLMediaElement) {

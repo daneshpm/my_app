@@ -54,7 +54,7 @@
     >
       <canvas id="af-canvas" width="1920" height="1080"></canvas>
 
-      <!-- Driver clip: gives HyperFrames a timed element to own on track 0. -->
+      <!-- Driver clip: gives Tagreel a timed element to own on track 0. -->
       <div
         id="af-drv"
         class="clip"
@@ -72,7 +72,7 @@
         var H = 1080;
 
         var root = document.getElementById("af-root");
-        var V = (window.__hyperframes && window.__hyperframes.getVariables()) || {};
+        var V = (window.__tagreel && window.__tagreel.getVariables()) || {};
         var CS = getComputedStyle(root);
 
         // A declared variable reaches CSS as a custom property on the root.

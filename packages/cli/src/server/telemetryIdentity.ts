@@ -13,10 +13,10 @@
 // behaves exactly as if opened standalone.
 //
 // Kept out of studioServer.ts so it can be unit-tested without pulling in the
-// server's heavy render dependencies (@hyperframes/producer, engine, …).
+// server's heavy render dependencies (@tagreel/producer, engine, …).
 // ---------------------------------------------------------------------------
 
-import { hostPolicyFromEnv, isAllowedHost } from "@hyperframes/studio-server";
+import { hostPolicyFromEnv, isAllowedHost } from "@tagreel/studio-server";
 import { readConfig, readConfigFresh } from "../telemetry/config.js";
 import {
   resetTelemetryPostureCache,
@@ -134,7 +134,7 @@ export function buildCliIdentityScript(options: { includeIdentity?: boolean } = 
 
   // Identity is the only part gated on a trusted Host. The decisions map below
   // is not identifying, and withholding it would push a LAN/remote Studio
-  // (`HYPERFRAMES_PREVIEW_HOST=0.0.0.0`, an explicitly supported mode) back to
+  // (`TAGREEL_PREVIEW_HOST=0.0.0.0`, an explicitly supported mode) back to
   // re-deriving locally — reopening exactly the CLI/Studio disagreement this
   // whole mechanism exists to close.
   const cliId = includeIdentity ? resolveCliTelemetryDistinctId() : null;
@@ -209,7 +209,7 @@ export function buildStudioHeadScripts(
  * May this request receive the CLI's identity (distinct id + bucket seed)?
  *
  * The server binds loopback by DEFAULT and exposes the LAN only when an
- * operator sets `HYPERFRAMES_PREVIEW_HOST` (portUtils.ts, F-001). A loopback
+ * operator sets `TAGREEL_PREVIEW_HOST` (portUtils.ts, F-001). A loopback
  * `Host` is always fine: whatever reached us came via loopback, and the only
  * interesting attacker is a rebinding browser page — which the Host check
  * catches, because a browser cannot forge `Host`.
@@ -219,7 +219,7 @@ export function buildStudioHeadScripts(
  *  - **Unset, or bound to loopback.** No LAN exposure was requested, so the
  *    Host check is a live rebinding mitigation and a non-loopback Host is
  *    refused. Previously ANY non-empty value disabled the check, so even
- *    `HYPERFRAMES_PREVIEW_HOST=127.0.0.1` — which exposes nothing — turned the
+ *    `TAGREEL_PREVIEW_HOST=127.0.0.1` — which exposes nothing — turned the
  *    loopback service from hostile-Host refusal into accept-everything.
  *  - **Bound to a LAN address.** The operator opted into exposure, so identity
  *    has to reach the LAN name the user browses or the CLI-to-Studio stitch
@@ -239,7 +239,7 @@ export function identityAllowed(host: string | undefined): boolean {
  * and `shouldTrack()` memoizes its own boolean on top of it, so clearing
  * either alone still yields the stale answer: the canary layer asks
  * `readConfig()`, the identity layer asks `shouldTrack()`, and they would
- * disagree mid-refresh. A long-lived `hyperframes preview` otherwise keeps
+ * disagree mid-refresh. A long-lived `tagreel preview` otherwise keeps
  * serving pre-opt-out decisions and injecting the CLI id for hours after
  * a telemetry opt-out runs in another terminal.
  *

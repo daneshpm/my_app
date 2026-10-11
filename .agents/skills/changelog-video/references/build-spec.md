@@ -67,7 +67,7 @@ otherwise) and must stay flat 2D (no 3D ancestors).
 
 ## Scene anatomy
 
-- Chrome (untimed, z 6): kicker chip top-left `HYPERFRAMES WEEKLY · <RANGE>`,
+- Chrome (untimed, z 6): kicker chip top-left `TAGREEL WEEKLY · <RANGE>`,
   progress dots top-right (one per theme; `tl.set` backgroundColor at each
   cut — active #f5f6f4, done .45; never tl.call for state).
 - Title (≤2s): mono kicker date, ABC Solar h1 ~104px, green rule sweep.

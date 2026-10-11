@@ -1,6 +1,6 @@
 ---
 name: code-slice-hero
-description: A tiled headline surface flips cell by cell under a sweeping depth field to reveal the rear headline. HyperFrames block, 1920×1080, 8s, 18 variables.
+description: A tiled headline surface flips cell by cell under a sweeping depth field to reveal the rear headline. Tagreel block, 1920×1080, 8s, 18 variables.
 ---
 
 # Code Slice Hero
@@ -21,7 +21,7 @@ Composition id: `code-slice-hero`. Duration 8 s at 30 fps, 1920×1080.
 
 ## Install
 
-Install with `npx hyperframes add code-slice-hero`; by default the files above land under `compositions/code-slice-hero/`. Then mount the block from the host `index.html`:
+Install with `npx tagreel add code-slice-hero`; by default the files above land under `compositions/code-slice-hero/`. Then mount the block from the host `index.html`:
 
 ```html
 <div
@@ -38,12 +38,12 @@ Install with `npx hyperframes add code-slice-hero`; by default the files above l
 Render with custom values by targeting the composition file directly:
 
 ```sh
-npx --yes hyperframes@0.8.12 render 'compositions/code-slice-hero/code-slice-hero.html' --variables '{"headline":"MAKE IT","reverseHeadline":"MATTER."}'
+npx --yes tagreel@0.8.12 render 'compositions/code-slice-hero/code-slice-hero.html' --variables '{"headline":"MAKE IT","reverseHeadline":"MATTER."}'
 ```
 
 ## Variables
 
-Read at runtime via `window.__hyperframes.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
+Read at runtime via `window.__tagreel.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
 
 | id                  | type   | default           | label / range                                     |
 | ------------------- | ------ | ----------------- | ------------------------------------------------- | -------------- |

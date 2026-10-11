@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "typed-prompt",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Typed Prompt",
   "description": "A prompt line types itself in chunked human cadence behind a deterministic blinking caret, with optional backspace-and-retype correction of the final word.",
   "tags": ["motion-primitive", "product-demo", "typing", "prompt", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "typed-prompt.html",
       "target": "compositions/components/typed-prompt.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

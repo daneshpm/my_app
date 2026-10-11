@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":449}}
   attribution={{"path":"registry/components/comparison-split","tags":["prop","ui-props","compare","holdable","before-after","wipe"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/comparison-split/comparison-split.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/comparison-split/comparison-split.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html comparison-split.html
 <!doctype html>
 <!--
-  comparison-split: HyperFrames video primitive (ui-props / holdable / compare)
+  comparison-split: Tagreel video primitive (ui-props / holdable / compare)
 
   Concept: two full-bleed treatments share one frame. The muted before panel
   stays fully visible as the base, while the vivid after panel wipes over it
@@ -70,7 +70,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   the cqw/cqh container, and has no data-width or data-height. The composition
   id is the hardcoded literal "comparison-split" because mount flattening
   strips data-composition-id from the live root. Variables come from
-  window.__hyperframes.getVariables(), which merges declared defaults with
+  window.__tagreel.getVariables(), which merges declared defaults with
   per-instance host overrides.
 -->
 <html
@@ -393,8 +393,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             // EDIT ZONE: declarations above and registry metadata change
             // together. This API owns defaults plus per-instance overrides.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var rawSplit = vars.split == null ? 50 : Number(vars.split);
@@ -478,7 +478,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add comparison-split" item="comparison-split" />
+<InstallCommand command="npx tagreel add comparison-split" item="comparison-split" />
 
 That writes one file: `compositions/components/comparison-split.html`.
 

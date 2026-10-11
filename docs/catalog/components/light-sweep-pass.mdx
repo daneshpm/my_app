@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":477}}
   attribution={{"path":"registry/components/light-sweep-pass","tags":["motion-primitive","overlay","light","sweep","slots","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/light-sweep-pass/light-sweep-pass.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/light-sweep-pass/light-sweep-pass.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html light-sweep-pass.html
 <!doctype html>
 <!--
-  light-sweep-pass: HyperFrames video primitive (overlays / light)
+  light-sweep-pass: Tagreel video primitive (overlays / light)
 
   Concept: a traveling key light re-shades a slotted scene. A soft diagonal
   gradient band crosses the frame once while every per-element highlight and
@@ -76,7 +76,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   <template> contents; #root fills the host box (inset:0, container-type:
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "light-sweep-pass" key. Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -348,8 +348,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var band = root.querySelector(".lsp-band");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function clampNumber(raw, fallback, min, max) {
@@ -506,7 +506,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add light-sweep-pass" item="light-sweep-pass" />
+<InstallCommand command="npx tagreel add light-sweep-pass" item="light-sweep-pass" />
 
 That writes one file: `compositions/components/light-sweep-pass.html`.
 

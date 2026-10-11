@@ -1,15 +1,15 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "arc-motion-path",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Arc Motion Path",
   "description": "A GSAP MotionPath primitive that flies a callout along a curved arc with autorotation.",
-  "tags": ["video-primitive", "motionpath", "gsap-plugin", "hyperframes-native"],
+  "tags": ["video-primitive", "motionpath", "gsap-plugin", "tagreel-native"],
   "files": [
     {
       "path": "arc-motion-path.html",
       "target": "compositions/components/arc-motion-path.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

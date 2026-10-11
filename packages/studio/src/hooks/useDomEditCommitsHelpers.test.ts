@@ -43,7 +43,7 @@ describe("assignGsapTargetAutoIdIfNeeded", () => {
     await expect(result).resolves.toBe("hf-auto-1-2");
     const [, init] = fetchMock.mock.calls[0]!;
     expect(init?.method).toBe("POST");
-    expect(new Headers(init?.headers).get("X-Hyperframes-Write-Token")).toBeTruthy();
+    expect(new Headers(init?.headers).get("X-Tagreel-Write-Token")).toBeTruthy();
     expect(JSON.parse(String(init?.body))).toEqual({
       target: { hfId: "hf-card", selector: '[data-hf-id="hf-card"]', selectorIndex: 0 },
       operations: [{ type: "ensure-id", property: "id", value: "hf-auto-1" }],

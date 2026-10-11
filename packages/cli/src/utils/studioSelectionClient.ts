@@ -1,11 +1,7 @@
 import { existsSync, realpathSync } from "node:fs";
 import { resolve } from "node:path";
 import { scanActiveServers, type ActiveServer } from "../server/portUtils.js";
-import type {
-  LintResult,
-  ResolvedProject,
-  StudioSelectionResponse,
-} from "@hyperframes/studio-server";
+import type { LintResult, ResolvedProject, StudioSelectionResponse } from "@tagreel/studio-server";
 
 export type StudioLintResponse = LintResult;
 

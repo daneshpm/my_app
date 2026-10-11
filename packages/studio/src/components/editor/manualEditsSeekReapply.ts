@@ -1,5 +1,5 @@
 // Puts Studio's committed edits back after a timeline seek has rendered over them.
-import { isHtmlElement } from "@hyperframes/core/runtime/dom-realm";
+import { isHtmlElement } from "@tagreel/core/runtime/dom-realm";
 import {
   STUDIO_BOX_SIZE_ATTR,
   STUDIO_HEIGHT_PROP,

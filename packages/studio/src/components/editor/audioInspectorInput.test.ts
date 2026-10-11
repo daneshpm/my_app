@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { MAX_AUDIO_GAIN } from "@hyperframes/core/audio-gain";
-import { RATE_RANGE } from "@hyperframes/core/audio-automation";
+import { MAX_AUDIO_GAIN } from "@tagreel/core/audio-gain";
+import { RATE_RANGE } from "@tagreel/core/audio-automation";
 import { parseGainInput, parseRateInput, parseSecondsInput } from "./audioInspectorInput";
 
 describe("parseGainInput", () => {

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "dynamic-grid",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Dynamic Grid",
   "description": "A responsive animated grid background driven by CSS variables for SaaS, code, and data scenes",
   "tags": ["video-primitive", "motion-primitive", "background", "grid", "ui"],
@@ -9,7 +9,7 @@
     {
       "path": "dynamic-grid.html",
       "target": "compositions/components/dynamic-grid.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -1,8 +1,8 @@
 #!/usr/bin/env tsx
 /**
  * Mirror JSON Schemas from `packages/core/schemas/` into `docs/schema/` so
- * Mintlify serves them at `https://hyperframes.heygen.com/schema/*`. The core
- * copies stay authoritative — they're exported from `@hyperframes/core` for
+ * Mintlify serves them at `https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/*`. The core
+ * copies stay authoritative — they're exported from `@tagreel/core` for
  * npm consumers — and this script is the single contract that prevents the
  * docs mirror from drifting.
  *
@@ -10,7 +10,7 @@
  *   bun run sync-schemas         # copy core → docs
  *   bun run sync-schemas --check # exit non-zero if copies are stale (CI)
  *
- * `docs/schema/hyperframes.json` is authored directly in docs (no source in
+ * `docs/schema/tagreel.json` is authored directly in docs (no source in
  * core) so it's skipped by this script.
  */
 

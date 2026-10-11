@@ -16,7 +16,7 @@ Building something with my_app? We would love to understand what you are creatin
 From a my_app project, run:
 
 ```bash
-npx hyperframes feedback --rating 7 --comment "The render finished, but the captions were missing."
+npx tagreel feedback --rating 7 --comment "The render finished, but the captions were missing."
 ```
 
 The rating is from 0 to 10. The comment is optional, but a specific example is usually more useful than a score alone.
@@ -26,7 +26,7 @@ The rating is from 0 to 10. The comment is optional, but a specific example is u
 Use `--file-issue` when the project can be shared publicly:
 
 ```bash
-npx hyperframes feedback \
+npx tagreel feedback \
   --rating 3 \
   --comment "The timeline freezes when this GSAP scene is opened." \
   --file-issue
@@ -41,7 +41,7 @@ npx hyperframes feedback \
 
 my_app then opens a prepared GitHub issue in your browser. Review it before submitting; the issue is not posted automatically.
 
-You can also [open a GitHub issue directly](https://github.com/heygen-com/hyperframes/issues).
+You can also [open a GitHub issue directly](https://github.com/daneshpm/my_app/issues).
 
 ## Include enough evidence
 
@@ -62,12 +62,12 @@ Do not include API keys, access tokens, credentials, private media, or customer 
 
 my_app may occasionally show a short rating prompt after a render or during a Studio session. You can ignore or dismiss it.
 
-Feedback can include the rating, an optional comment, and basic environment information used to understand the problem. It does not include your composition HTML, video files, project names, file paths, or environment-variable values beyond the short agent and app names listed under [`telemetry`](/packages/cli#telemetry), such as `client=example-app/1.2.3/stable` when another app launched the CLI. When an app launches it for a signed-in person, the report can also carry that person's email, set by the app through `HYPERFRAMES_FEEDBACK_EMAIL`, and whether a person or an agent wrote it.
+Feedback can include the rating, an optional comment, and basic environment information used to understand the problem. It does not include your composition HTML, video files, project names, file paths, or environment-variable values beyond the short agent and app names listed under [`telemetry`](/packages/cli#telemetry), such as `client=example-app/1.2.3/stable` when another app launched the CLI. When an app launches it for a signed-in person, the report can also carry that person's email, set by the app through `TAGREEL_FEEDBACK_EMAIL`, and whether a person or an agent wrote it.
 
 To turn off CLI telemetry:
 
 ```bash
-npx hyperframes telemetry disable
+npx tagreel telemetry disable
 ```
 
 That also stops the feedback prompt and takes the install out of any
@@ -80,4 +80,4 @@ Studio feedback is controlled separately from the CLI setting.
 
 - [Get unstuck](/help)
 - [Diagnose common project and render problems](/guides/troubleshooting)
-- [Search or open a GitHub issue](https://github.com/heygen-com/hyperframes/issues)
+- [Search or open a GitHub issue](https://github.com/daneshpm/my_app/issues)

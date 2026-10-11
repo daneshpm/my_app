@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
-# End-to-end: hyperframes render + ffmpeg overlay matte → final.mp4
+# End-to-end: tagreel render + ffmpeg overlay matte → final.mp4
 #
 # Usage:
-#   bash render-and-composite.sh <project-dir> [hyperframes-repo-path]
+#   bash render-and-composite.sh <project-dir> [tagreel-repo-path]
 #
 # Env:
-#   HYPERFRAMES_ROOT  override the hyperframes checkout location
+#   TAGREEL_ROOT  override the tagreel checkout location
 
 set -euo pipefail
 
-PROJECT="${1:?usage: render-and-composite.sh <project-dir> [hyperframes-repo]}"
+PROJECT="${1:?usage: render-and-composite.sh <project-dir> [tagreel-repo]}"
 PROJECT="$(cd "$PROJECT" && pwd)"
 
 SKILL_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 HF_CLI="$(node "$SKILL_SCRIPT_DIR/hf-cli.cjs" "${2:-}")"
 # Retain the explicit dependency-root override for source-checkout users.
-if [[ -n "${2:-}" ]]; then export HYPERFRAMES_ROOT="$2"; fi
+if [[ -n "${2:-}" ]]; then export TAGREEL_ROOT="$2"; fi
 if [[ ! -d "$PROJECT/frames_fg" ]]; then
   echo "[render] missing matte frames at $PROJECT/frames_fg — run matte.cjs first" >&2
   exit 1
@@ -62,7 +62,7 @@ else
   fi
 fi
 
-# Embed template fonts BEFORE the gates + render. hyperframes only auto-supplies
+# Embed template fonts BEFORE the gates + render. tagreel only auto-supplies
 # its ~18 canonical fonts; every other template family (Anton, Bangers, VT323,
 # Press Start 2P, …) silently falls back to a generic font on a clean/offline/CI
 # machine — it only "looks right" locally when that font happens to be installed
@@ -224,7 +224,7 @@ cp "$PROJECT/index.html" "$HISTORY_DIR/index-${STAMP}.html"
 cp "$PROJECT/plan.json"  "$HISTORY_DIR/plan-${STAMP}.json" 2>/dev/null || true
 echo "[render] snapshot → history/index-${STAMP}.html"
 
-echo "[render] hyperframes render @ ${FPS}fps"
+echo "[render] tagreel render @ ${FPS}fps"
 
 # Wait for the renderer's real exit status. File size cannot prove completion,
 # and a portable process snapshot cannot safely recover a timed-out render tree.
@@ -242,7 +242,7 @@ hf_render_dir() {
 # Link a project's assets into a shadow render dir EXCEPT the files we manage
 # (the HTML we override + render outputs/intermediates). Links every other entry by
 # its real name, so the shadow resolves whatever media the HTML references — including
-# the ORIGINAL video filename `hyperframes init` scaffolds (e.g. clip.mp4), not just a
+# the ORIGINAL video filename `tagreel init` scaffolds (e.g. clip.mp4), not just a
 # fixed allow-list. Prevents the shadow-render 404 → silent/frozen output → abort.
 link_assets() {  # <project> <shadow>
   local proj="$1" sh="$2" b
@@ -256,7 +256,7 @@ link_assets() {  # <project> <shadow>
   done
 }
 
-# Hybrid renders need 2 independent hyperframes passes. They share no state, so
+# Hybrid renders need 2 independent tagreel passes. They share no state, so
 # we run them in parallel (one in the main PROJECT, one in a shadow dir with
 # index_fg.html renamed to index.html). Saves ~half of the Chromium cost.
 FG_SHADOW=""
@@ -280,7 +280,7 @@ if [[ -f "$PROJECT/index_fg.html" ]]; then
   if (( BG_RC != 0 )); then echo "[render] bg render failed" >&2; exit 1; fi
   if (( FG_RC != 0 )); then echo "[render] fg render failed" >&2; exit 1; fi
 elif [[ -f "$PROJECT/rail.html" ]]; then
-  # Standard mode: TWO independent hyperframes passes (base = index.html with the
+  # Standard mode: TWO independent tagreel passes (base = index.html with the
   # embed; rail = rail.html transparent). Each renders from its own shadow dir (the
   # multiple-root ambiguity), and they share no state — run them IN PARALLEL like
   # the fg-hybrid above (~halves the Chromium wall time). The rail webm is consumed

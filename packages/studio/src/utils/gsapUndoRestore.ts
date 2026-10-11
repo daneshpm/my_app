@@ -9,7 +9,7 @@ import {
   findGsapScriptElements,
   readNestedFiles,
 } from "./gsapSoftReload";
-import { ensureHfIds, isCompositionTemplate } from "@hyperframes/parsers/hf-ids";
+import { ensureHfIds, isCompositionTemplate } from "@tagreel/parsers/hf-ids";
 import { findAuthoredElement, parseSavedSource } from "./authoredSource";
 import { STUDIO_EDIT_ATTRS } from "../components/editor/manualEditsSeekReapply";
 import { markScenesStale } from "../player/sceneSwap";

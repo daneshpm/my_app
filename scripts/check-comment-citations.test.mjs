@@ -229,7 +229,7 @@ test("a sentence that names another repo is not this repo's to resolve", (t) => 
 
 test("a sentence that names this repo is still resolved", (t) => {
   const { failures } = checkSubject(t, {
-    "src/subject.ts": oneLiner("// Mirrors `publish.yml` in heygen-com/hyperframes."),
+    "src/subject.ts": oneLiner("// Mirrors `publish.yml` in daneshpm/my_app."),
   });
   assert.equal(failures.length, 1);
   assert.match(failures[0].why, /no such file/);
@@ -852,14 +852,14 @@ test("a TODO whose parentheses name nobody fails", (t) => {
     failsWith(t, `// ${marker}: cache this`, /TODO/);
 });
 test("a TODO linking its issue passes", (t) =>
-  passes(t, "// TODO: cache this, https://github.com/heygen-com/hyperframes/issues/4012"));
+  passes(t, "// TODO: cache this, https://github.com/daneshpm/my_app/issues/4012"));
 test("a TODO's issue link ending a sentence passes", (t) =>
-  passes(t, "// TODO: cache this, see https://github.com/heygen-com/hyperframes/issues/4012."));
+  passes(t, "// TODO: cache this, see https://github.com/daneshpm/my_app/issues/4012."));
 test("an issue path on another host does not stand in for the issue", (t) => {
   for (const url of [
-    "https://evil.example/github.com/heygen-com/hyperframes/issues/4012",
-    "https://evil.example/?next=github.com/heygen-com/hyperframes/issues/4012",
-    "https://github.com.evil.example/heygen-com/hyperframes/issues/4012",
+    "https://evil.example/github.com/daneshpm/my_app/issues/4012",
+    "https://evil.example/?next=github.com/daneshpm/my_app/issues/4012",
+    "https://github.com.evil.example/daneshpm/my_app/issues/4012",
   ])
     failsWith(t, `// TODO: cache this, ${url}`, /TODO/);
 });

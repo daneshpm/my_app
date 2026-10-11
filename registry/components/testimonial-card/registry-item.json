@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "testimonial-card",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Testimonial Card",
   "description": "Reveals a customer quote at reading pace, then settles its avatar, author name, and handle beneath as a clean proof beat.",
   "tags": ["prop", "ui-props", "testimonial", "social-proof", "quote", "prove"],
@@ -17,7 +17,7 @@
     {
       "path": "testimonial-card.html",
       "target": "compositions/components/testimonial-card.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":414}}
   attribution={{"path":"registry/components/particle-text-dissolve","tags":["motion-primitive","text-effects","particles","canvas","deterministic","experiment"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/particle-text-dissolve/particle-text-dissolve.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/particle-text-dissolve/particle-text-dissolve.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html particle-text-dissolve.html
 <!doctype html>
 <!--
-  particle-text-dissolve: HyperFrames video primitive (type / particles).
+  particle-text-dissolve: Tagreel video primitive (type / particles).
   Wave M8. Direct donor: particle-image-reveal (canvas determinism law).
 
   Text assembles FROM a seeded particle cloud, or dissolves TO it (direction
@@ -178,8 +178,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var line = root.querySelector(".ptd-line");
             var canvas = root.querySelector(".ptd-canvas");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text =
@@ -443,7 +443,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add particle-text-dissolve" item="particle-text-dissolve" />
+<InstallCommand command="npx tagreel add particle-text-dissolve" item="particle-text-dissolve" />
 
 That writes one file: `compositions/components/particle-text-dissolve.html`.
 

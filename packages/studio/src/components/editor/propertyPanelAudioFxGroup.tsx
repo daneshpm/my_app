@@ -14,20 +14,20 @@ import {
   parseAudioFxChain,
   serializeAudioFxChain,
   type HfAudioFxChain,
-} from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-fx";
 import {
   classifyAudioName,
   HF_AUDIO_CARVE_ATTR,
   normalizeCarveSettings,
   type HfCarveSettings,
-} from "@hyperframes/core/audio-carve";
+} from "@tagreel/core/audio-carve";
 import {
   fxAutomationTarget,
   parseAutomationTarget,
   presetAutomationTarget,
   sampleAutomationLane,
   type HfAutomation,
-} from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-automation";
 import {
   automatedTargetsOf,
   automationAttrValue,
@@ -52,7 +52,7 @@ import {
   HF_AUDIO_GROUP_ATTR,
   HF_AUDIO_GROUP_TAG,
   resolveAudioGroups,
-} from "@hyperframes/core/audio-groups";
+} from "@tagreel/core/audio-groups";
 import { useFxLevelling } from "./useFxLevelling.js";
 import { isCarveVoiceElement } from "./useFxCarveGrouping.js";
 

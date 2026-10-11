@@ -1,5 +1,5 @@
 import { buildProjectApiPath } from "./projectRouting";
-import type { RegistryItem } from "@hyperframes/core/registry";
+import type { RegistryItem } from "@tagreel/core/registry";
 import type { TimelineElement } from "../player";
 import {
   insertTimelineAssetIntoSource,
@@ -94,7 +94,7 @@ async function makeComponentBackgroundTransparent(
   readProjectFile: AddBlockOptions["readProjectFile"],
   writeProjectFile: AddBlockOptions["writeProjectFile"],
 ): Promise<void> {
-  if (block.type !== "hyperframes:component") return;
+  if (block.type !== "tagreel:component") return;
   await serializeStudioFileMutation(writeProjectFile, compositionFile, async () => {
     const content = await readProjectFile(compositionFile);
     const transparentContent = content.replace(
@@ -116,7 +116,7 @@ function resolveBlockPlacement({
   timelineElements: TimelineElement[];
   currentTime: number;
 }) {
-  const isBlock = block.type === "hyperframes:block";
+  const isBlock = block.type === "tagreel:block";
   const {
     start: placementStart = currentTime,
     duration: placementDuration,

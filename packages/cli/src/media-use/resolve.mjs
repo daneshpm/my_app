@@ -426,7 +426,7 @@ async function run() {
       });
       if (!searchResult && !localOnly) {
         const registry =
-          process.env.HYPERFRAMES_REGISTRY ||
+          process.env.TAGREEL_REGISTRY ||
           "https://raw.githubusercontent.com/daneshpm/my_app/main/registry";
         try {
           await fetchMediaVectors(registry);
@@ -493,14 +493,14 @@ async function run() {
       provider_override: !!args.provider,
       local_only: !!args["local-only"],
     });
-    // brand stays local: no frame.md/design.md -> upsell the HyperFrames design
+    // brand stays local: no frame.md/design.md -> upsell the Tagreel design
     // flow rather than reporting a generic miss (B5).
     const msg =
       providerFailure instanceof BundledSfxAssetsError ||
       providerFailure instanceof FfBinarySettingError
         ? providerFailure.message
         : type === "brand"
-          ? "no brand spec found — add a frame.md or design.md (colors/font/logo) to this project. Run the HyperFrames design flow to create one; brand tokens are read locally for deterministic rendering."
+          ? "no brand spec found — add a frame.md or design.md (colors/font/logo) to this project. Run the Tagreel design flow to create one; brand tokens are read locally for deterministic rendering."
           : type === "bgm" || type === "icon"
             ? `no catalog provider for ${type} (there is no hosted ${type} library). ${
                 type === "bgm"

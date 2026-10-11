@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":97}}
   attribution={{"path":"registry/components/shared-axis-z","tags":["motion-primitive","typography"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/shared-axis-z/shared-axis-z.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/shared-axis-z/shared-axis-z.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html shared-axis-z.html
 <!--
-  Shared Axis Z - typography primitive for HyperFrames.
+  Shared Axis Z - typography primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Drive the timeline
   integration from a paused GSAP timeline so renders remain deterministic.
@@ -87,8 +87,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -126,7 +126,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add shared-axis-z" item="shared-axis-z" />
+<InstallCommand command="npx tagreel add shared-axis-z" item="shared-axis-z" />
 
 That writes one file: `compositions/components/shared-axis-z.html`.
 

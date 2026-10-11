@@ -1,6 +1,6 @@
 /* Build assets/glass-main.js from assets/glass-main.mjs.
    The source uses top-level await (HDR + matcap + font loads), which esbuild
-   cannot emit in the classic-IIFE format that HyperFrames sub-compositions
+   cannot emit in the classic-IIFE format that Tagreel sub-compositions
    require, so the body is wrapped in an async IIFE with the imports hoisted
    before bundling. Run `npm install esbuild three` first (three 0.185.1 or
    later — HDRLoader is not in older three.js releases). */

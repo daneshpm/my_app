@@ -1,23 +1,23 @@
 ---
-title: "@hyperframes/studio"
+title: "@tagreel/studio"
 description: "React components and hooks used to build the my_app Studio editing interface."
 ---
 
-`@hyperframes/studio` contains the React application, editor components, player,
+`@tagreel/studio` contains the React application, editor components, player,
 timeline, and hooks that power my_app Studio.
 
 Most people should not install this package directly. To open a project in the
 complete Studio application, run:
 
 ```bash
-npx hyperframes preview
+npx tagreel preview
 ```
 
 Install the package only when you are extending Studio or building an editor that
 uses its lower-level parts:
 
 ```bash
-npm install @hyperframes/studio react react-dom zustand
+npm install @tagreel/studio react react-dom zustand
 ```
 
 <Warning>
@@ -33,10 +33,10 @@ When you run Studio from the monorepo, its dev server listens on `http://localho
 
 | Import                                | Contains                                                            |
 | ------------------------------------- | ------------------------------------------------------------------- |
-| `@hyperframes/studio`                 | React components, hooks, utilities, and their public types          |
-| `@hyperframes/studio/ui`              | UI primitives (buttons, menus, popovers, fields) without the editor |
-| `@hyperframes/studio/player`          | The `Player` component alone, without the timeline                  |
-| `@hyperframes/studio/tailwind-preset` | Tailwind preset used by Studio                                      |
+| `@tagreel/studio`                 | React components, hooks, utilities, and their public types          |
+| `@tagreel/studio/ui`              | UI primitives (buttons, menus, popovers, fields) without the editor |
+| `@tagreel/studio/player`          | The `Player` component alone, without the timeline                  |
+| `@tagreel/studio/tailwind-preset` | Tailwind preset used by Studio                                      |
 
 Peer dependencies are React 19, React DOM 19, and Zustand 4 or 5.
 
@@ -100,7 +100,7 @@ frame.
 ## Tailwind preset
 
 ```typescript
-import studioPreset from "@hyperframes/studio/tailwind-preset";
+import studioPreset from "@tagreel/studio/tailwind-preset";
 
 export default {
   presets: [studioPreset],

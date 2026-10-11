@@ -34,7 +34,7 @@ import {
   promote,
 } from "./cache.mjs";
 
-process.env.HYPERFRAMES_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-media-home-"));
+process.env.TAGREEL_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-media-home-"));
 
 let tmp;
 

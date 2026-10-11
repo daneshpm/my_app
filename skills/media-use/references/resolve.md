@@ -1,53 +1,53 @@
 # Resolve — command, flags, reuse, adopt, inventory
 
 ```bash
-npx hyperframes media-use resolve --type <type> --intent "<description>" --project <dir>
+npx tagreel media-use resolve --type <type> --intent "<description>" --project <dir>
 ```
 
 Returns one line: `resolved <id> → <path> (<type>, <metadata>)`
 
 ## Types
 
-| Type    | What it finds                    | Provider / cascade                                           |
-| ------- | -------------------------------- | ------------------------------------------------------------ |
-| `bgm`   | Background music                 | HeyGen audio catalog (10k+ tracks)                           |
-| `sfx`   | Sound effects                    | Bundled 19-file library + HeyGen catalog                     |
-| `image` | Photos, backgrounds              | HeyGen asset search (75k+ vectors)                           |
-| `icon`  | Icons, symbols                   | HeyGen asset search (type=icon)                              |
-| `logo`  | Official brand marks             | theSVG → GitHub org avatar → domain favicon                  |
-| `voice` | TTS voiceover                    | HeyGen TTS free-usage path; optional local Kokoro            |
-| `grade` | HyperFrames color-grading blocks | Core preset → look index params/CDN LUT → deterministic cube |
-| `lut`   | Reusable `.cube` LUT files       | Look index params/CDN LUT → deterministic cube               |
+| Type    | What it finds                | Provider / cascade                                           |
+| ------- | ---------------------------- | ------------------------------------------------------------ |
+| `bgm`   | Background music             | HeyGen audio catalog (10k+ tracks)                           |
+| `sfx`   | Sound effects                | Bundled 19-file library + HeyGen catalog                     |
+| `image` | Photos, backgrounds          | HeyGen asset search (75k+ vectors)                           |
+| `icon`  | Icons, symbols               | HeyGen asset search (type=icon)                              |
+| `logo`  | Official brand marks         | theSVG → GitHub org avatar → domain favicon                  |
+| `voice` | TTS voiceover                | HeyGen TTS free-usage path; optional local Kokoro            |
+| `grade` | Tagreel color-grading blocks | Core preset → look index params/CDN LUT → deterministic cube |
+| `lut`   | Reusable `.cube` LUT files   | Look index params/CDN LUT → deterministic cube               |
 
 ## Examples
 
 ```bash
 # Background music
-npx hyperframes media-use resolve --type bgm --intent "upbeat tech launch" --project .
+npx tagreel media-use resolve --type bgm --intent "upbeat tech launch" --project .
 # → resolved bgm_001 → .media/audio/bgm/bgm_001.mp3 (bgm, 25s)
 
 # Sound effect
-npx hyperframes media-use resolve --type sfx --intent "whoosh" --project .
+npx tagreel media-use resolve --type sfx --intent "whoosh" --project .
 # → resolved sfx_001 → .media/audio/sfx/sfx_001.mp3 (sfx, 0.57s)
 
 # Image
-npx hyperframes media-use resolve --type image --intent "gradient tech background" --project .
+npx tagreel media-use resolve --type image --intent "gradient tech background" --project .
 # → resolved image_001 → .media/images/image_001.jpg (image)
 
 # Icon
-npx hyperframes media-use resolve --type icon --intent "rocket" --project .
+npx tagreel media-use resolve --type icon --intent "rocket" --project .
 # → resolved icon_001 → .media/images/icon_001.png (icon, transparent)
 
 # Brand logo (official mark — never redrawn by hand)
-npx hyperframes media-use resolve --type logo --entity linkedin --intent "LinkedIn logo" --project .
+npx tagreel media-use resolve --type logo --entity linkedin --intent "LinkedIn logo" --project .
 # → resolved logo_001 → .media/images/logo_001.svg (logo, official mark)
 
 # Color grade block
-npx hyperframes media-use resolve --type grade --intent "warm daylight" --project . --json
+npx tagreel media-use resolve --type grade --intent "warm daylight" --project . --json
 # → {"ok":true,"preset":"warm-daylight","grading":{"preset":"warm-daylight","intensity":1},...}
 
 # LUT file
-npx hyperframes media-use resolve --type lut --intent "teal orange blockbuster" --project .
+npx tagreel media-use resolve --type lut --intent "teal orange blockbuster" --project .
 # → resolved lut_001 → .media/luts/lut_001.cube (lut)
 ```
 
@@ -76,7 +76,7 @@ npx hyperframes media-use resolve --type lut --intent "teal orange blockbuster" 
 Before resolving bgm/sfx/image/icon/logo/grade/lut, **check what already exists and reuse it when it fits.** media-use does not semantically match for you — you are the judge. It surfaces candidates; you decide.
 
 ```bash
-npx hyperframes media-use resolve --type bgm --intent "upbeat tech launch" --candidates --project .
+npx tagreel media-use resolve --type bgm --intent "upbeat tech launch" --candidates --project .
 #   [project] upbeat tech launch (25s, heygen.audio.sounds)
 #           .media/audio/bgm/bgm_001.wav
 #   [global]  energetic tech intro (22s, heygen.audio.sounds)
@@ -118,10 +118,10 @@ tracks today.
 
 ## Adopt existing projects
 
-Most HyperFrames projects already have assets in `assets/`. media-use adopts them:
+Most Tagreel projects already have assets in `assets/`. media-use adopts them:
 
 ```bash
-npx hyperframes media-use resolve --adopt --project .
+npx tagreel media-use resolve --adopt --project .
 # → adopted 9 assets from assets/
 #   bgm_001 → assets/bgm/mango-fizz.mp3 (bgm, 146.6s)
 #   image_001 → assets/images/avatar.jpg (image, 400×400)

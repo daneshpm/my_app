@@ -21,7 +21,7 @@ test("bundled SFX library resolves from the relocated path", async () => {
   try {
     const { sfx, anomalies } = await resolveSfx({
       cues: [{ id: "1", name: "whoosh" }],
-      hyperframesDir: dir,
+      tagreelDir: dir,
       sfxLibDir,
     });
     assert.equal(sfx.length, 1, `expected 1 resolved cue, got anomalies: ${anomalies.join("; ")}`);
@@ -38,7 +38,7 @@ test("an unknown cue is reported, not fatal", async () => {
   try {
     const { sfx, anomalies } = await resolveSfx({
       cues: [{ id: "1", name: "definitely-not-a-real-sfx" }],
-      hyperframesDir: dir,
+      tagreelDir: dir,
       sfxLibDir,
     });
     assert.equal(sfx.length, 0);
@@ -57,7 +57,7 @@ test("a person's own file under a bundled name survives, and the cue gets the ne
     const resolve = () =>
       resolveSfx({
         cues: [{ id: "1", name: "whoosh" }],
-        hyperframesDir: dir,
+        tagreelDir: dir,
         sfxLibDir,
       });
 
@@ -89,7 +89,7 @@ test("a bundled effect never overwrites the person's own file of the same name, 
     const run = async (names) => {
       const { sfx } = await resolveSfx({
         cues: names.map((name, index) => ({ id: String(index), name })),
-        hyperframesDir: dir,
+        tagreelDir: dir,
         sfxLibDir,
       });
       const files = sfx.map(({ file }) => file);
@@ -118,7 +118,7 @@ function runEngineWith(request, ...args) {
   const dir = mkdtempSync(join(tmpdir(), "audio-speed-range-"));
   try {
     writeFileSync(join(dir, "audio_request.json"), JSON.stringify({ lines: [], ...request }));
-    return spawnSync(process.execPath, [join(HERE, "audio.mjs"), "--hyperframes", dir, ...args], {
+    return spawnSync(process.execPath, [join(HERE, "audio.mjs"), "--tagreel", dir, ...args], {
       encoding: "utf8",
     });
   } finally {

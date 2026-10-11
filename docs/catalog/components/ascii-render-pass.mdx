@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Data","badge":"Stable","codeLines":485}}
   attribution={{"path":"registry/components/ascii-render-pass","tags":["motion-primitive","experiment","texture","ascii","quantize"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/ascii-render-pass/ascii-render-pass.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/ascii-render-pass/ascii-render-pass.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html ascii-render-pass.html
 <!doctype html>
 <!--
-  ascii-render-pass: HyperFrames video primitive (Wave M experiment, texture)
+  ascii-render-pass: Tagreel video primitive (Wave M experiment, texture)
 
   A slotted scene renders as live ASCII: the source is rasterized ONCE at
   mount to an offscreen canvas, its luminance grid is sampled per cell, and
@@ -156,8 +156,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var stage = root.querySelector(".arp-stage");
             var canvas = root.querySelector(".arp-canvas");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {
@@ -514,7 +514,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add ascii-render-pass" item="ascii-render-pass" />
+<InstallCommand command="npx tagreel add ascii-render-pass" item="ascii-render-pass" />
 
 That writes one file: `compositions/components/ascii-render-pass.html`.
 

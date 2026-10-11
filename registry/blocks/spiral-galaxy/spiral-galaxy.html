@@ -115,8 +115,8 @@
         // ── Variables ─────────────────────────────────────────────────────
         // Read ONCE at init. Variables never change mid-render.
         var vars =
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && window.__tagreel.getVariables
+            ? window.__tagreel.getVariables()
             : {};
         function clampNum(value, lo, hi, fallback) {
           var n = Number(value);

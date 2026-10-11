@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":648}}
   attribution={{"path":"registry/components/browser-device-stage","tags":["stage","product-demo","device","browser","phone","slot","chrome"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/browser-device-stage/browser-device-stage.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/browser-device-stage/browser-device-stage.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html browser-device-stage.html
 <!doctype html>
 <!--
-  browser-device-stage -- HyperFrames video primitive (product demo / stage)
+  browser-device-stage -- Tagreel video primitive (product demo / stage)
 
   A generic app surface presented in token-native device chrome. One settle
   entrance (rise + soft scale), then a slow readable hold; optionally the
@@ -538,8 +538,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var screen = root.querySelector(".bds-screen");
             var screenA = root.querySelector(".bds-screen-a");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var chromeKind =
@@ -677,7 +677,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add browser-device-stage" item="browser-device-stage" />
+<InstallCommand command="npx tagreel add browser-device-stage" item="browser-device-stage" />
 
 That writes one file: `compositions/components/browser-device-stage.html`.
 

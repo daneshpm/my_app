@@ -1,7 +1,7 @@
-# HyperFrames distributed renderer — reference Dockerfile for non-Lambda runtimes.
+# Tagreel distributed renderer — reference Dockerfile for non-Lambda runtimes.
 #
 # This image bakes Node 22, chrome-headless-shell, ffmpeg-static, and the
-# `@hyperframes/producer/distributed` primitives. One image runs the
+# `@tagreel/producer/distributed` primitives. One image runs the
 # Plan / RenderChunk / Assemble activities for any non-Lambda orchestrator:
 #
 #   - Kubernetes Jobs (one Job per chunk, Argo Workflows on top)
@@ -17,15 +17,15 @@
 #
 # Build from the repo root:
 #
-#   docker build -t hyperframes-chunk-runner:local -f examples/k8s-jobs/Dockerfile.example .
+#   docker build -t tagreel-chunk-runner:local -f examples/k8s-jobs/Dockerfile.example .
 #
 # Run a chunk worker (an orchestrator script wraps this entry point):
 #
 #   docker run --rm \
 #     -e PRODUCER_HEADLESS_SHELL_PATH=/opt/chrome/chrome-headless-shell \
-#     -v /tmp/hyperframes:/tmp/hyperframes \
-#     hyperframes-chunk-runner:local \
-#     node -e 'import("@hyperframes/producer/distributed").then(({renderChunk})=>renderChunk(...))'
+#     -v /tmp/tagreel:/tmp/tagreel \
+#     tagreel-chunk-runner:local \
+#     node -e 'import("@tagreel/producer/distributed").then(({renderChunk})=>renderChunk(...))'
 #
 # Lambda adopters use `packages/aws-lambda/dist/handler.zip` instead;
 # this Dockerfile is the K8s / Cloud Run / ECS path.
@@ -93,7 +93,7 @@ RUN mkdir -p "$CHROME_DIR" && \
 
 ENV PRODUCER_HEADLESS_SHELL_PATH=${CHROME_DIR}/chrome-headless-shell/linux-${CHROME_HEADLESS_SHELL_VERSION}/chrome-headless-shell-linux64/chrome-headless-shell
 
-# ── HyperFrames ──────────────────────────────────────────────────────────────
+# ── Tagreel ──────────────────────────────────────────────────────────────
 # Copy the workspace bun-locked package set. We use bun in the build
 # (matches the rest of the repo) but the runtime is plain Node — no bun
 # is needed at run time.

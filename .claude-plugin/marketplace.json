@@ -1,37 +1,37 @@
 {
-  "name": "hyperframes",
+  "name": "tagreel",
   "owner": {
     "name": "HeyGen",
-    "email": "hyperframes@heygen.com",
-    "url": "https://hyperframes.heygen.com"
+    "email": "tagreel@heygen.com",
+    "url": "https://github.com/daneshpm/my_app/tree/main/docs"
   },
   "plugins": [
     {
-      "name": "hyperframes",
+      "name": "tagreel",
       "source": "./",
-      "description": "Recommended: all published HyperFrames skills in one versioned bundle. Create and render videos from HTML; load workflows on demand without installing newer standalone skills.",
-      "homepage": "https://hyperframes.heygen.com",
+      "description": "Recommended: all published Tagreel skills in one versioned bundle. Create and render videos from HTML; load workflows on demand without installing newer standalone skills.",
+      "homepage": "https://github.com/daneshpm/my_app/tree/main/docs",
       "license": "Apache-2.0"
     },
     {
       "name": "core-skills",
       "source": "./",
-      "description": "Legacy core-only installation. For release-managed bundled workflows, install hyperframes@hyperframes and then uninstall core-skills@hyperframes.",
-      "homepage": "https://hyperframes.heygen.com",
+      "description": "Legacy core-only installation. For release-managed bundled workflows, install tagreel@tagreel and then uninstall core-skills@tagreel.",
+      "homepage": "https://github.com/daneshpm/my_app/tree/main/docs",
       "license": "Apache-2.0",
       "skills": [
-        "./skills/hyperframes",
-        "./skills/hyperframes-animation",
-        "./skills/hyperframes-audio",
-        "./skills/hyperframes-cli",
-        "./skills/hyperframes-core",
-        "./skills/hyperframes-creative",
-        "./skills/hyperframes-keyframes",
-        "./skills/hyperframes-registry",
-        "./skills/hyperframes-studio",
+        "./skills/tagreel",
+        "./skills/tagreel-animation",
+        "./skills/tagreel-audio",
+        "./skills/tagreel-cli",
+        "./skills/tagreel-core",
+        "./skills/tagreel-creative",
+        "./skills/tagreel-keyframes",
+        "./skills/tagreel-registry",
+        "./skills/tagreel-studio",
         "./skills/media-use"
       ]
     }
   ],
-  "description": "HyperFrames video creation skills, versioned and updated as one plugin."
+  "description": "Tagreel video creation skills, versioned and updated as one plugin."
 }

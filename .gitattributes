@@ -27,7 +27,7 @@ packages/producer/tests/hf2550-video-subcomposition-ghost/src/index.html filter=
 # model was once committed raw into skills/ then deleted — but a raw commit
 # lives in history forever. No path in the repo legitimately ships a raw .onnx.
 # (Audio masters / .wav are intentionally NOT globalized here — registry blocks
-#  ship raw audio so they stay portable when installed via `hyperframes add`.
+#  ship raw audio so they stay portable when installed via `tagreel add`.
 #  The wav-in-LFS question is a coordinated policy decision left for later.)
 *.onnx filter=lfs diff=lfs merge=lfs -text
 

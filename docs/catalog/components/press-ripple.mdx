@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Cursors","badge":"Stable","codeLines":434}}
   attribution={{"path":"registry/components/press-ripple","tags":["cursor","motion-primitive","product-demo","press","ripple","payoff"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/press-ripple/press-ripple.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/press-ripple/press-ripple.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html press-ripple.html
 <!doctype html>
 <!--
-  press-ripple: HyperFrames video primitive (product demo / payoff)
+  press-ripple: Tagreel video primitive (product demo / payoff)
 
   A cursor decel-arrives from off-stage (power3.out, it arrives, never passes
   through), lands a few px off-center on a caller-positioned target zone, the
@@ -258,8 +258,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var cursorPath = root.querySelector(".pr-cursor-path");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {
@@ -463,7 +463,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add press-ripple" item="press-ripple" />
+<InstallCommand command="npx tagreel add press-ripple" item="press-ripple" />
 
 That writes one file: `compositions/components/press-ripple.html`.
 

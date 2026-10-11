@@ -1,4 +1,4 @@
-import { buildArcPath, type ArcPathConfig } from "@hyperframes/core/gsap-parser-acorn";
+import { buildArcPath, type ArcPathConfig } from "@tagreel/core/gsap-parser-acorn";
 import { MOTION_PATH_RUN_EASE } from "../utils/gsapKeyframeEases";
 import type { ReadTween } from "./gsapRuntimeKeyframes";
 

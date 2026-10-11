@@ -311,7 +311,7 @@ function renderDocsUpdate(
     ">",
     WEEKLY_REVIEW_TODO,
     "",
-    "A curated summary of the most important HyperFrames changes this week.",
+    "A curated summary of the most important Tagreel changes this week.",
     "",
     renderHighlights(highlights, renderMdxWeeklyBullet),
     "",
@@ -329,7 +329,7 @@ function renderWeeklyNotes(
   highlights: WeeklyCommit[],
 ) {
   return [
-    `# HyperFrames weekly digest - ${range}`,
+    `# Tagreel weekly digest - ${range}`,
     "",
     WEEKLY_REVIEW_TODO,
     "",
@@ -360,7 +360,7 @@ function renderWeeklyNotes(
 
 function renderDiscordDraft(range: string, highlights: WeeklyCommit[]) {
   return [
-    `# HyperFrames weekly update - ${range}`,
+    `# Tagreel weekly update - ${range}`,
     "",
     WEEKLY_REVIEW_TODO,
     "",
@@ -379,7 +379,7 @@ function renderXDraft(range: string, highlights: WeeklyCommit[]) {
       : ["TODO: add the most important user-facing highlights from this week."];
 
   return [
-    `HyperFrames weekly update - ${range}`,
+    `Tagreel weekly update - ${range}`,
     "",
     WEEKLY_REVIEW_TODO,
     "",

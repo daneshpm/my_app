@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "caret-swap",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Caret Swap",
   "description": "A gradient caret expands over one phrase, collapses to the left, then types its replacement with a blinking caret.",
   "tags": ["motion-primitive", "text-effects", "typography", "swap", "typewriter", "remocn-port"],
@@ -23,17 +23,17 @@
     {
       "path": "caret-swap.html",
       "target": "compositions/components/caret-swap/caret-swap.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     },
     {
       "path": "Geist-Latin.woff2",
       "target": "compositions/components/caret-swap/Geist-Latin.woff2",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "Geist-OFL.txt",
       "target": "compositions/components/caret-swap/Geist-OFL.txt",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
   ],
   "variables": [

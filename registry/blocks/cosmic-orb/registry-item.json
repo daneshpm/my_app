@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cosmic-orb",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Cosmic Orb",
   "description": "An iridescent soap-bubble planet: a slowly spinning sphere of nebula bands, dust lanes and twinkling stars wrapped in a refracting glass limb with chromatic aberration at the edge.",
   "stability": "experimental",
@@ -96,7 +96,7 @@
     {
       "path": "cosmic-orb.html",
       "target": "compositions/cosmic-orb.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ],
   "params": [

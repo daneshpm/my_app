@@ -1,7 +1,7 @@
 import {
   resolveCompositionDuration,
   type CompositionDurationResult,
-} from "@hyperframes/parsers/composition-duration";
+} from "@tagreel/parsers/composition-duration";
 import { findRootCompositionElement, parseCompositionDimension } from "./compositionDimension";
 import { isMediaElement } from "./domRealm";
 import { parseStrictFiniteTimingNumber, resolveMediaElementDurationSeconds } from "./playbackRate";

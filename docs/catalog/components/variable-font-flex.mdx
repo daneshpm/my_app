@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":304}}
   attribution={{"path":"registry/components/variable-font-flex","tags":["motion-primitive","experiment","type","variable-font","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/variable-font-flex/variable-font-flex.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/variable-font-flex/variable-font-flex.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html variable-font-flex.html
 <!doctype html>
 <!--
-  variable-font-flex: HyperFrames video primitive (type / Wave M experiment M5)
+  variable-font-flex: Tagreel video primitive (type / Wave M experiment M5)
 
   A word lands while its variable-font axes flex: each character rises from
   hairline-condensed to black-wide (weight 120 to 840, width 40 to 128) with
@@ -179,8 +179,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var stage = root.querySelector(".vff-stage");
             var word = root.querySelector(".vff-word");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null || vars.text === "" ? "FLEX" : String(vars.text);
@@ -333,7 +333,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add variable-font-flex" item="variable-font-flex" />
+<InstallCommand command="npx tagreel add variable-font-flex" item="variable-font-flex" />
 
 That writes one file: `compositions/components/variable-font-flex.html`.
 

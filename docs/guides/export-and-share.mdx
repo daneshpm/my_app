@@ -23,8 +23,8 @@ before spending time on small visual details.
 Run the checks in Studio, ask your agent to run them, or use:
 
 ```bash
-npx hyperframes lint
-npx hyperframes check
+npx tagreel lint
+npx tagreel check
 ```
 
 `lint` catches composition-structure mistakes. `check` runs lint plus browser,
@@ -40,7 +40,7 @@ All three paths render the same source.
 ### Ask the agent
 
 ```text
-Run the HyperFrames checks, fix any failures, and show me the final preview.
+Run the Tagreel checks, fix any failures, and show me the final preview.
 When I approve it, render an MP4 to renders/final.mp4.
 ```
 
@@ -70,12 +70,12 @@ download.
 ### Use the CLI
 
 ```bash
-npx hyperframes render --output renders/final.mp4
+npx tagreel render --output renders/final.mp4
 ```
 
 Use the CLI for a direct local render, a script, CI, or a repeatable batch. The
 installed version remains authoritative: run
-`npx hyperframes render --help` for every available option.
+`npx tagreel render --help` for every available option.
 
 ## 4. Choose what the destination needs
 
@@ -121,7 +121,7 @@ is correct.
 Publish the project when a browser link is more useful than a file:
 
 ```bash
-npx hyperframes publish
+npx tagreel publish
 ```
 
 The command uploads the project and returns a stable URL. An anonymous first
@@ -137,9 +137,9 @@ timing, facts, or final approval.
 Keep the first exact error and run:
 
 ```bash
-npx hyperframes doctor
-npx hyperframes lint
-npx hyperframes check
+npx tagreel doctor
+npx tagreel lint
+npx tagreel check
 ```
 
 Use [Troubleshooting](/guides/troubleshooting) for project and render failures,

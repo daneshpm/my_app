@@ -14,9 +14,9 @@ import {
   getAudioFxDef,
   type HfAudioFxNode,
   type HfAudioFxParam,
-} from "@hyperframes/core/audio-fx";
-import { DEFAULT_CARVE, type HfCarveSettings } from "@hyperframes/core/audio-carve";
-import { fxAutomationTarget } from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-fx";
+import { DEFAULT_CARVE, type HfCarveSettings } from "@tagreel/core/audio-carve";
+import { fxAutomationTarget } from "@tagreel/core/audio-automation";
 import { FxParamRow } from "./propertyPanelFxControls.js";
 import { FX_FAMILY_TYPE, fxFamilyTint } from "./propertyPanelFxFamily.js";
 import { fxTintWash } from "./propertyPanelFxPresetStyle.js";

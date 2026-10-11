@@ -529,7 +529,7 @@ describe("external file change coordinator", () => {
     expect(onAcceptedPersistedFileChange).toHaveBeenCalledTimes(2);
   });
 
-  // `hyperframes preview` serves file-change over SSE, where the delivery is a
+  // `tagreel preview` serves file-change over SSE, where the delivery is a
   // MessageEvent whose `data` is a JSON STRING. Driven through the test adapter
   // because vitest defines `import.meta.hot`, so the EventSource rung is
   // unreachable here, which is exactly why decoding is shared by all rungs.

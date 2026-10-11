@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":173}}
   attribution={{"path":"registry/components/outline-draw","tags":["motion-primitive","effects","outline","border","mask","proof"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/outline-draw/outline-draw.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/outline-draw/outline-draw.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html outline-draw.html
 <!doctype html>
 <!--
-  outline-draw: HyperFrames video primitive (effects / burst / prove)
+  outline-draw: Tagreel video primitive (effects / burst / prove)
 
   Concept: a conic-gradient sector draws a rounded outline clockwise. Two
   opaque masks, clipped to the padding box and border box, are excluded to
@@ -147,8 +147,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var outline = root.querySelector(".od-outline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: invalid values return to declared defaults. Valid
@@ -202,7 +202,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add outline-draw" item="outline-draw" />
+<InstallCommand command="npx tagreel add outline-draw" item="outline-draw" />
 
 That writes one file: `compositions/components/outline-draw.html`.
 

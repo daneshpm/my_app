@@ -2,25 +2,25 @@
 name: caption-template-anatomy
 description: The shared, reproducible scene engine every caption template is built on — a matted talking-head with a flowing verbatim foreground caption and a single climax word, driven by one paused GSAP timeline. Read it ONCE per session (it is identical for all 54 templates); each per-template file in templates/ only overrides the style tokens + the named climax entrance/exit.
 metadata:
-  tags: caption, talking-head, matte, occlusion, verbatim, climax, gsap, hyperframes
+  tags: caption, talking-head, matte, occlusion, verbatim, climax, gsap, tagreel
 ---
 
 # Caption Template — Anatomy (the shared engine)
 
-A **caption template** = one complete, reproducible HyperFrames scene:
+A **caption template** = one complete, reproducible Tagreel scene:
 
 > **the person (always in frame)** + a **flowing foreground caption** (verbatim, word-by-word, with appear **and** disappear) + a **climax word** (big, behind the speaker, with a designed entrance **and** exit) + a coherent **font / colour / motion** design.
 
 Every file in `templates/` is the SAME engine described here with three things swapped: (1) the **style tokens** (font, fills, accent, optional gradient/stroke), (2) the named **climax entrance** + **exit** (see `_motion.md`), (3) the **copy** (flow lines + climax word) and **scene/person**. So read this once; each template file is short.
 
-HyperFrames-native, so anyone can reproduce it:
+Tagreel-native, so anyone can reproduce it:
 
 - **One paused GSAP timeline per composition**, registered to `window.__timelines[data-composition-id]`.
 - All timing in **seconds**; `data-start` / `data-duration` carry the scene window.
 - **Deterministic + seek-safe** only — no `Math.random()`, no `Date.now()`, no `repeat: -1` without a finite root `data-duration`, no un-seekable CSS animations. Every state is reachable by seeking the timeline to a time `t`.
 - GSAP transform aliases (`x`, `y`, `scale`, `rotation`); animate `opacity`, `filter`, `clipPath`, `textShadow`, `backgroundPosition`, `letterSpacing` — never layout props (width/top/left/margin).
 
-For the composition contract see `hyperframes-core`; eases + the animated-property allowlist see `hyperframes-gsap`; caption grouping/positioning/exit guarantees see `hyperframes-captions`.
+For the composition contract see `tagreel-core`; eases + the animated-property allowlist see `tagreel-gsap`; caption grouping/positioning/exit guarantees see `tagreel-captions`.
 
 ## 1 · Asset prep (two CLI calls)
 
@@ -30,7 +30,7 @@ bash scripts/prepare.sh   <project>      # matte ∥ transcribe ∥ safe-zones (
 #    (a still works too:  remove-background portrait.jpg -o person.png)
 
 # 2) The verbatim word timings that drive the flowing caption
-npx hyperframes transcribe subject.mp4 --model small            # → transcript.json
+npx tagreel transcribe subject.mp4 --model small            # → transcript.json
 #    shape: [{ "id":"w0","text":"Hello","start":0.0,"end":0.5 }, …]
 ```
 
@@ -162,7 +162,7 @@ Caption size is in **`cqh`** (% of frame height) via a size container, so it hon
 
 ## 4 · One paused GSAP timeline (the loop, made seek-safe)
 
-The gallery used a `setInterval` loop; HyperFrames needs the same beats as **absolute-time tweens on one paused timeline**. The cycle is **FLOW line → (FLOW line) → CLIMAX in → hold → out**. Restraint is the rule: flow stays clean; the one big mood move happens only at the climax.
+The gallery used a `setInterval` loop; Tagreel needs the same beats as **absolute-time tweens on one paused timeline**. The cycle is **FLOW line → (FLOW line) → CLIMAX in → hold → out**. Restraint is the rule: flow stays clean; the one big mood move happens only at the climax.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
@@ -203,7 +203,7 @@ The gallery used a `setInterval` loop; HyperFrames needs the same beats as **abs
 </script>
 ```
 
-`FLOW_IN` / `FLOW_OUT` / `CLIMAX_IN` / `CLIMAX_OUT` are the named recipes in **`_motion.md`** — each returns a GSAP tween/timeline so the per-template file just picks four names. A simpler equivalent for the flow active-word _glow_ (rather than discrete reveal) is the single-driver envelope in `hyperframes-animation/rules/asr-keyword-glow.md`.
+`FLOW_IN` / `FLOW_OUT` / `CLIMAX_IN` / `CLIMAX_OUT` are the named recipes in **`_motion.md`** — each returns a GSAP tween/timeline so the per-template file just picks four names. A simpler equivalent for the flow active-word _glow_ (rather than discrete reveal) is the single-driver envelope in `tagreel-animation/rules/asr-keyword-glow.md`.
 
 ## 5 · How to choose values
 
@@ -214,7 +214,7 @@ The gallery used a `setInterval` loop; HyperFrames needs the same beats as **abs
 - **FOUT** — flow exit ≈ 0.5 s. **Exit ≈ 75 % of entry** for every element (arrival deliberate, departure swift; see `_motion.md`).
 - **Climax size** — base 44 cqh; long words bleed off-frame (intended cinematic); 3-char words behind a centred subject need size + an outline so they peek.
 
-## Critical constraints (HyperFrames)
+## Critical constraints (Tagreel)
 
 - Timeline **paused**; registry key = `data-composition-id`.
 - **No CSS keyframe animation** on caption elements — all motion is GSAP tweens at absolute times (seek-safe).
@@ -227,7 +227,7 @@ The gallery used a `setInterval` loop; HyperFrames needs the same beats as **abs
 ## Pairs with HF skills
 
 - `media-use` — `remove-background` (the matte) + `transcribe` (word timings).
-- `hyperframes-captions` — transcript consumption, grouping, positioning, exit guarantees, `fitTextFontSize`.
-- `hyperframes-animation/rules/asr-keyword-glow.md` — the verbatim active-word envelope.
-- `hyperframes-gsap` — single paused timeline, transform aliases, ease palette.
+- `tagreel-captions` — transcript consumption, grouping, positioning, exit guarantees, `fitTextFontSize`.
+- `tagreel-animation/rules/asr-keyword-glow.md` — the verbatim active-word envelope.
+- `tagreel-gsap` — single paused timeline, transform aliases, ease palette.
 - `_motion.md` (this folder) — the named flow/climax entrance + exit recipes.

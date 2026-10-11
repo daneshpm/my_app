@@ -24,8 +24,8 @@ mock.module("./services/renderOrchestrator.js", () => ({
     }),
 }));
 
-const realEngine = await import("@hyperframes/engine");
-mock.module("@hyperframes/engine", () => ({
+const realEngine = await import("@tagreel/engine");
+mock.module("@tagreel/engine", () => ({
   ...realEngine,
   killTrackedProcesses: () => {
     calls.killTrackedProcesses++;

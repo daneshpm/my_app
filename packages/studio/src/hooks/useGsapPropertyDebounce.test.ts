@@ -1,8 +1,8 @@
 // @vitest-environment happy-dom
 import { describe, it, expect } from "vitest";
-import { openComposition } from "@hyperframes/sdk";
-import { createMemoryAdapter } from "@hyperframes/sdk/adapters/memory";
-import { parseGsapScriptAcorn } from "@hyperframes/core/gsap-parser-acorn";
+import { openComposition } from "@tagreel/sdk";
+import { createMemoryAdapter } from "@tagreel/sdk/adapters/memory";
+import { parseGsapScriptAcorn } from "@tagreel/core/gsap-parser-acorn";
 import { mergeTweenProperties } from "./useGsapPropertyDebounce";
 import { extractGsapScriptText } from "../utils/gsapSoftReload";
 

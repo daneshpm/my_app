@@ -3,7 +3,7 @@ import {
   findHdrAutoPromotion,
   resolveProjectRelativeSrc,
   type HdrAutoPromotion,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 import type { ProjectDir } from "./project.js";
 import { loadProducer } from "./producer.js";
 
@@ -17,7 +17,7 @@ interface InspectHdrAutoPromotionDependencies {
 }
 
 async function bundleProjectHtml(projectDir: string): Promise<string> {
-  const { bundleToSingleHtml } = await import("@hyperframes/core/compiler");
+  const { bundleToSingleHtml } = await import("@tagreel/core/compiler");
   return bundleToSingleHtml(projectDir);
 }
 

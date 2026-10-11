@@ -1,6 +1,6 @@
 ---
 name: canopy-part-title
-description: Leaves sweep through the frame and part to reveal the headline. HyperFrames block, 1920×1080, 12s, 11 variables.
+description: Leaves sweep through the frame and part to reveal the headline. Tagreel block, 1920×1080, 12s, 11 variables.
 ---
 
 # Canopy Part Title
@@ -17,7 +17,7 @@ Composition id: `canopy-part-title`. Duration 12 s at 30 fps, 1920×1080.
 
 ## Install
 
-Install with `npx hyperframes add canopy-part-title`; by default the files above land under `compositions/canopy-part-title/`. Then mount the block from the host `index.html`:
+Install with `npx tagreel add canopy-part-title`; by default the files above land under `compositions/canopy-part-title/`. Then mount the block from the host `index.html`:
 
 ```html
 <div
@@ -34,12 +34,12 @@ Install with `npx hyperframes add canopy-part-title`; by default the files above
 Render with custom values by targeting the composition file directly:
 
 ```sh
-npx --yes hyperframes@0.8.12 render 'compositions/canopy-part-title/canopy-part-title.html' --variables '{"headline1":"Understory","headline2":"Move slowly"}'
+npx --yes tagreel@0.8.12 render 'compositions/canopy-part-title/canopy-part-title.html' --variables '{"headline1":"Understory","headline2":"Move slowly"}'
 ```
 
 ## Variables
 
-Read at runtime via `window.__hyperframes.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
+Read at runtime via `window.__tagreel.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
 
 | id               | type   | default         | label / range                            |
 | ---------------- | ------ | --------------- | ---------------------------------------- |

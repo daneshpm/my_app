@@ -376,7 +376,7 @@ function renderReleaseNotes(version: string, date: string, from: string, commits
   const compareUrl = `${REPO_URL}/compare/${from}...v${version}`;
 
   return [
-    `# HyperFrames v${version}`,
+    `# Tagreel v${version}`,
     "",
     `Released on ${date}.`,
     "",
@@ -397,7 +397,7 @@ function renderDocsUpdate(version: string, date: string, from: string, commits: 
 
   return [
     "<Update",
-    `  label="HyperFrames v${version}"`,
+    `  label="Tagreel v${version}"`,
     `  description="Released - ${date}"`,
     `  tags={${renderTagsLiteral(tags)}}`,
     ">",
@@ -537,7 +537,7 @@ function prependDocsUpdate(version: string, docsUpdate: string) {
   const changelogPath = join(ROOT, "docs", "changelog.mdx");
   const changelog = readFileSync(changelogPath, "utf-8");
 
-  if (changelog.includes(`label="HyperFrames v${version}"`)) {
+  if (changelog.includes(`label="Tagreel v${version}"`)) {
     console.log(`docs/changelog.mdx already has a v${version} entry; leaving it unchanged.`);
     return;
   }

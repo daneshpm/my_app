@@ -36,7 +36,7 @@ async function bundle(file: string, name: string): Promise<string> {
 
 beforeAll(async () => {
   const executablePath = findSystemChrome();
-  if (!executablePath) throw new Error("no Chrome found: set HYPERFRAMES_BROWSER_PATH");
+  if (!executablePath) throw new Error("no Chrome found: set TAGREEL_BROWSER_PATH");
   browser = await puppeteer.launch({ executablePath, headless: true, args: ["--no-sandbox"] });
   undoBundle = await bundle("./gsapUndoRestore.ts", "hfUndo");
   softReloadBundle = await bundle("./gsapSoftReload.ts", "hfSoftReload");
@@ -61,7 +61,7 @@ async function openCase(spec: Spec, moduleBundle: string) {
       : request.abort("blockedbyclient"),
   );
   await page.setContent(restored, { waitUntil: "load" });
-  await page.evaluate(readFileSync(require.resolve("@hyperframes/core/runtime"), "utf8"));
+  await page.evaluate(readFileSync(require.resolve("@tagreel/core/runtime"), "utf8"));
   await page.waitForFunction(() => "__player" in window);
   await page.evaluate(moduleBundle);
   await page.evaluate(

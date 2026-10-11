@@ -1,4 +1,4 @@
-import { openComposition, type Composition } from "@hyperframes/sdk";
+import { openComposition, type Composition } from "@tagreel/sdk";
 import { hashContent, markSelfWrite } from "../hooks/sdkSelfWriteRegistry";
 import { trackStudioEvent } from "./studioTelemetry";
 import { serializeStudioFileMutation } from "./studioFileMutationCoordinator";

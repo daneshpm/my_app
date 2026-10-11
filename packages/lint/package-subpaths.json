@@ -1,5 +1,5 @@
 {
-  "package": "@hyperframes/lint",
+  "package": "@tagreel/lint",
   "localNodeRuntime": true,
   "subpaths": {
     ".": {

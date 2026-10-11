@@ -1,6 +1,6 @@
 // Range playback: the `range-start` / `range-end` attributes, in film seconds.
 
-import { playRangeHoldTime } from "@hyperframes/core/runtime/protocol";
+import { playRangeHoldTime } from "@tagreel/core/runtime/protocol";
 
 export interface PlayRange {
   start: number;

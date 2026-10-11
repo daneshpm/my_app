@@ -7,7 +7,7 @@ import { useSlideshowTabState } from "./useSlideshowTabState";
 
 (globalThis as unknown as { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 
-const SLIDESHOW_HTML = `<html><body><script type="application/hyperframes-slideshow+json">{"slides":[]}</script></body></html>`;
+const SLIDESHOW_HTML = `<html><body><script type="application/tagreel-slideshow+json">{"slides":[]}</script></body></html>`;
 const PLAIN_HTML = `<html><body><div id="title">hi</div></body></html>`;
 
 afterEach(() => {
@@ -66,7 +66,7 @@ describe("useSlideshowTabState", () => {
   });
 
   it("still detects a malformed island — presence-only, not full manifest validation", () => {
-    const malformed = `<html><body><script type="application/hyperframes-slideshow+json">{not valid json</script></body></html>`;
+    const malformed = `<html><body><script type="application/tagreel-slideshow+json">{not valid json</script></body></html>`;
     const harness = renderHook({ editingFileContent: malformed });
     expect(harness.getState().isSlideshowComposition).toBe(true);
     harness.unmount();

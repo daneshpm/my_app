@@ -9,9 +9,9 @@
  */
 
 import { useEffect, useRef, type CSSProperties, type KeyboardEvent } from "react";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
-import type { HfAudioNameKind } from "@hyperframes/core/audio-carve";
-import { applyAudioFxPreset, getAudioFxPreset } from "@hyperframes/core/audio-fx-presets";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
+import type { HfAudioNameKind } from "@tagreel/core/audio-carve";
+import { applyAudioFxPreset, getAudioFxPreset } from "@tagreel/core/audio-fx-presets";
 import { FxPresetMenu } from "./propertyPanelFxPresetMenu.js";
 import { applyPresetToChain } from "./useApplyAudioFxPreset.js";
 import { useFxAudition } from "./useFxAudition.js";

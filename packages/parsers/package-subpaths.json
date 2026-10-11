@@ -1,5 +1,5 @@
 {
-  "package": "@hyperframes/parsers",
+  "package": "@tagreel/parsers",
   "localNodeRuntime": true,
   "subpaths": {
     ".": {

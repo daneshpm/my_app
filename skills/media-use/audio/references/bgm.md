@@ -1,6 +1,6 @@
 # Background music (BGM)
 
-One music bed per composition, produced by the shared audio engine (`scripts/audio.mjs` → `scripts/lib/bgm.mjs`). There is no hosted music catalog and no account: music is **generated** locally or with your own key (Lyria → MusicGen). There is **no `npx hyperframes bgm` command**; the engine spawns `scripts/lyria-recipe.py` or an inline MusicGen script directly. To use an existing track instead, ingest it with `resolve --from <file> --type bgm`.
+One music bed per composition, produced by the shared audio engine (`scripts/audio.mjs` → `scripts/lib/bgm.mjs`). There is no hosted music catalog and no account: music is **generated** locally or with your own key (Lyria → MusicGen). There is **no `npx tagreel bgm` command**; the engine spawns `scripts/lyria-recipe.py` or an inline MusicGen script directly. To use an existing track instead, ingest it with `resolve --from <file> --type bgm`.
 
 ## Driving it from the request
 

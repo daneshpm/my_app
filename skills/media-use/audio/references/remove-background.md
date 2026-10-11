@@ -3,13 +3,13 @@
 Make a transparent overlay (typical: a talking head over an arbitrary scene). Uses `u2net_human_seg` (Apache-2.0).
 
 ```bash
-npx hyperframes remove-background subject.mp4 -o transparent.webm          # default: VP9 + alpha
-npx hyperframes remove-background subject.mp4 -o transparent.mov           # ProRes 4444 (editing)
-npx hyperframes remove-background portrait.jpg -o cutout.png               # single-image cutout
-npx hyperframes remove-background subject.mp4 -o subject.webm \
+npx tagreel remove-background subject.mp4 -o transparent.webm          # default: VP9 + alpha
+npx tagreel remove-background subject.mp4 -o transparent.mov           # ProRes 4444 (editing)
+npx tagreel remove-background portrait.jpg -o cutout.png               # single-image cutout
+npx tagreel remove-background subject.mp4 -o subject.webm \
   --background-output plate.webm                                           # both layers, one pass
-npx hyperframes remove-background subject.mp4 -o transparent.webm --device cpu
-npx hyperframes remove-background --info                                   # detected providers
+npx tagreel remove-background subject.mp4 -o transparent.webm --device cpu
+npx tagreel remove-background --info                                   # detected providers
 ```
 
 ## Output Format
@@ -30,7 +30,7 @@ Controls VP9 encoder CRF only — segmentation quality is fixed. Higher quality 
 
 ## Device (`--device`)
 
-`auto` (default) picks CoreML on Apple Silicon, CUDA when available, otherwise CPU. Force with `--device cpu | coreml | cuda`. CUDA requires `HYPERFRAMES_CUDA=1` plus a GPU-enabled `onnxruntime-node` build. Use `--info` to inspect detected providers without rendering.
+`auto` (default) picks CoreML on Apple Silicon, CUDA when available, otherwise CPU. Force with `--device cpu | coreml | cuda`. CUDA requires `TAGREEL_CUDA=1` plus a GPU-enabled `onnxruntime-node` build. Use `--info` to inspect detected providers without rendering.
 
 ## Compositing patterns — pick the right one
 
@@ -57,7 +57,7 @@ Putting a headline behind a presenter cutout:
   playsinline
 ></video>
 
-<h1 id="headline" style="z-index:2; ...">MAKE IT IN HYPERFRAMES</h1>
+<h1 id="headline" style="z-index:2; ...">MAKE IT IN TAGREEL</h1>
 
 <div class="cutout-wrap" style="position:absolute; inset:0; z-index:3; opacity:0">
   <video
@@ -121,7 +121,7 @@ Ship just the two transparent layers and let arbitrary content live between them
 ></video>
 
 <!-- z=2 your content lives between the layers -->
-<h1 id="headline" style="z-index:2; ...">MAKE IT IN HYPERFRAMES</h1>
+<h1 id="headline" style="z-index:2; ...">MAKE IT IN TAGREEL</h1>
 
 <!-- z=3 cutout floats the subject back on top -->
 <div class="cutout-wrap" style="position:absolute; inset:0; z-index:3">

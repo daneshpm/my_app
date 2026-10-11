@@ -16,8 +16,8 @@ import {
   HF_AUDIO_AUTOMATION_ATTR,
   type HfAutomation,
   type HfAutomationLane,
-} from "@hyperframes/core/audio-automation";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-automation";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
 import {
   useDomEditActionsContextOptional,
   useDomEditSelectionContextOptional,

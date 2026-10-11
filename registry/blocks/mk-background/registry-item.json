@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "mk-background",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Minimal Gradient Background",
   "description": "Procedural soft-blob gradient backdrop in a minimalist presentation style: two radial blobs drifting over a base color, with an animatable rounded-card bar mask and optional frosted-glass mode",
   "tags": ["background", "gradient", "minimal", "professional", "presentation"],
@@ -14,7 +14,7 @@
     {
       "path": "mk-background.html",
       "target": "compositions/mk-background.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

@@ -42,7 +42,7 @@ writeFileSync(flag("--out"), JSON.stringify({ voices: [], bgm: null, sfx: [] }))
   );
   const result = spawnSync(
     process.execPath,
-    [script, "--hyperframes", dir, "--storyboard", join(dir, "STORYBOARD.md")],
+    [script, "--tagreel", dir, "--storyboard", join(dir, "STORYBOARD.md")],
     { encoding: "utf8", env: { ...process.env, HF_MEDIA_ENGINE: engine } },
   );
   return { dir, result };
@@ -111,7 +111,7 @@ writeFileSync(flag("--out"), ${JSON.stringify(JSON.stringify(neutralOut))});
   );
   const result = spawnSync(
     process.execPath,
-    [script, "fetch-sfx", "--hyperframes", dir, "--storyboard", join(dir, "STORYBOARD.md")],
+    [script, "fetch-sfx", "--tagreel", dir, "--storyboard", join(dir, "STORYBOARD.md")],
     { encoding: "utf8", env: { ...process.env, HF_MEDIA_ENGINE: engine } },
   );
   return { dir, result };

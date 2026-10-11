@@ -22,7 +22,7 @@ import type {
   AutomationRange,
   HfAutomationLane,
   HfAutomationPoint,
-} from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-automation";
 import { capturePointer } from "./automationLanePointer";
 import { retimeRange } from "./automationLaneSelection";
 

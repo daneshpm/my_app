@@ -9,7 +9,7 @@ import {
   STUDIO_MOTION_PATH,
 } from "../core/src/studio-api/helpers/studioMotionRenderScript";
 
-const STUDIO_MANUAL_EDITS_PATH = ".hyperframes/studio-manual-edits.json";
+const STUDIO_MANUAL_EDITS_PATH = ".tagreel/studio-manual-edits.json";
 
 function readManifestContent(projectDir: string, manifestPath: string): string {
   const resolvedPath = join(projectDir, manifestPath);

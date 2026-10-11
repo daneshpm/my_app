@@ -1,15 +1,15 @@
 #!/usr/bin/env node
-// audio.mjs — the shared HyperFrames audio engine. ONE implementation of TTS +
+// audio.mjs — the shared Tagreel audio engine. ONE implementation of TTS +
 // BGM + SFX for every video workflow (product-launch, general-video, pr-to-video,
 // …). Workflows do NOT vendor a copy: they write a neutral `audio_request.json`
 // (a tiny per-workflow adapter maps their storyboard/scenes into it) and call:
 //
-//   node <MEDIA_DIR>/scripts/audio.mjs --request ./audio_request.json --hyperframes . --out ./audio_meta.json
+//   node <MEDIA_DIR>/scripts/audio.mjs --request ./audio_request.json --tagreel . --out ./audio_meta.json
 //
 // No hosted account is required. The three capabilities run on what is local
 // (or on a key you supply yourself). This mirrors the table in ../SKILL.md:
 //
-//   TTS : ElevenLabs (key + python module) → Kokoro (local, via the hyperframes CLI)
+//   TTS : ElevenLabs (key + python module) → Kokoro (local, via the tagreel CLI)
 //   BGM : Lyria (Gemini/Google key) → MusicGen (local) — generated, never downloaded
 //   SFX : bundled sound-effects library (assets/sfx)
 //
@@ -78,11 +78,11 @@ const r3 = (x) => Number(x.toFixed(3));
 // model per subprocess, so firing every line at once multiplies that cost by
 // the line count. mapWithConcurrency caps how many run at once — still
 // parallel, just bounded.
-const ttsConcurrency = Math.max(1, Number(process.env.HYPERFRAMES_TTS_CONCURRENCY) || 4);
+const ttsConcurrency = Math.max(1, Number(process.env.TAGREEL_TTS_CONCURRENCY) || 4);
 
-const hyperframesDir = resolve(flag("hyperframes", "."));
-const requestPath = resolve(flag("request", join(hyperframesDir, "audio_request.json")));
-const outPath = resolve(flag("out", join(hyperframesDir, "audio_meta.json")));
+const tagreelDir = resolve(flag("tagreel", "."));
+const requestPath = resolve(flag("request", join(tagreelDir, "audio_request.json")));
+const outPath = resolve(flag("out", join(tagreelDir, "audio_meta.json")));
 const sfxLibDir = resolve(flag("sfx-lib", join(HERE, "..", "assets", "sfx")));
 const lyriaRecipe = resolve(flag("lyria-recipe", join(HERE, "lyria-recipe.py")));
 const onlyArg = flag("only", "tts,bgm,sfx");
@@ -115,7 +115,7 @@ if (!(speed > 0 && speed <= 3))
   die(`speed must be above 0 and at most 3, got ${JSON.stringify(speedInput)}`);
 
 // ── env ───────────────────────────────────────────────────────────────────────
-loadEnvFromDir(hyperframesDir);
+loadEnvFromDir(tagreelDir);
 
 // ── merge base: preserve sections not selected by --only ──────────────────────
 const audioMeta = openAudioMeta(outPath);
@@ -140,7 +140,7 @@ if (only.has("tts") && lines.length) {
     lang,
   });
   console.error(`· tts: ${ttsProvider} · voice ${voiceId} · ${lines.length} line(s)`);
-  const paths = voicePaths(hyperframesDir, lines, anomalies);
+  const paths = voicePaths(tagreelDir, lines, anomalies);
   const synthLine = async (line) => {
     const id = String(line.id);
     const text = String(line.text ?? "").trim();
@@ -149,7 +149,7 @@ if (only.has("tts") && lines.length) {
       return null;
     }
     const rel = paths.get(id);
-    const abs = join(hyperframesDir, rel);
+    const abs = join(tagreelDir, rel);
     const { ok, words, error } = await synthesizeOne({
       provider: ttsProvider,
       text,
@@ -159,14 +159,14 @@ if (only.has("tts") && lines.length) {
       model: flag("tts-model", request.tts_model),
       style: flag("style", line.style ?? request.style),
       wavAbs: abs,
-      hyperframesDir,
+      tagreelDir,
     });
     if (!ok) {
       anomalies.push(`line ${id}: TTS failed — omitted${error ? ` (${error})` : ""}`);
       return null;
     }
     let wordArr = words; // providers return no word timings; transcribe locally
-    if (!wordArr) wordArr = await transcribeWav({ wavRel: rel, lang, hyperframesDir });
+    if (!wordArr) wordArr = await transcribeWav({ wavRel: rel, lang, tagreelDir });
     const dur = ffprobeDuration(abs);
     if (!isFinite(dur) || dur <= 0) {
       anomalies.push(`line ${id}: bad voice duration — omitted`);
@@ -225,7 +225,7 @@ if (only.has("bgm")) {
     const gen = generateBgmDetached({
       prompt,
       durationS: totalDuration || 30,
-      hyperframesDir,
+      tagreelDir,
       lyriaRecipe: existsSync(lyriaRecipe) ? lyriaRecipe : null,
       seedSeconds,
       hasVoice,
@@ -256,7 +256,7 @@ if (only.has("sfx")) {
       .map((name) => ({ id: String(l.id), name: String(name).trim() }))
       .filter((c) => c.name),
   );
-  const res = await resolveSfx({ cues, hyperframesDir, sfxLibDir });
+  const res = await resolveSfx({ cues, tagreelDir, sfxLibDir });
   sfx = res.sfx;
   anomalies.push(...res.anomalies);
   console.error(`· sfx: ${sfx.length} cue(s) resolved (bundled library)`);
@@ -275,7 +275,7 @@ const meta = {
 mkdirSync(dirname(outPath), { recursive: true });
 audioMeta.write(meta);
 const written = writtenAssets({ only, lines, voices, ttsProvider, bgm, bgmFields, sfx });
-anomalies.push(...recordInManifest(hyperframesDir, written));
+anomalies.push(...recordInManifest(tagreelDir, written));
 
 console.log(`✓ audio engine → ${outPath}`);
 console.log(`  ran: ${[...only].join(",")}`);

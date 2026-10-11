@@ -6,7 +6,7 @@ import { create } from "zustand";
  * Values here are NEVER persisted to the composition — they ride the preview
  * URL as `?variables=<json>` (see the studio-server preview routes), which the
  * server injects as `window.__hfVariables` exactly like render-time injection,
- * so what the user previews is what `hyperframes render --variables` produces.
+ * so what the user previews is what `tagreel render --variables` produces.
  * `null` means "preview with declared defaults".
  */
 interface PreviewVariablesState {

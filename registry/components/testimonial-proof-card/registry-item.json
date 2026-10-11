@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "testimonial-proof-card",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Testimonial Proof Card",
   "description": "A quote card whose testimonial reveals per-line through a soft mask, with an avatar disc (initials default, image slot), mono name and role, an optional company text mark, and one emphasis substring underlined in accent ink after the quote lands.",
   "tags": ["motion-primitive", "proof", "testimonial", "quote", "social-proof", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "testimonial-proof-card.html",
       "target": "compositions/components/testimonial-proof-card.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

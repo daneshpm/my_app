@@ -1,13 +1,13 @@
 <!doctype html>
 <!--
-  logo-sting: HyperFrames video primitive (brand / impact / reveal)
+  logo-sting: Tagreel video primitive (brand / impact / reveal)
 
   Concept: a wordmark lands from scale 1.15 with the slam ease. Its impact
   triggers one accent ring and exactly one frame of white, then the finished
   lockup holds completely still.
 
   Variables:
-    - wordmark (string, default "HYPERFRAMES"): the brand name.
+    - wordmark (string, default "TAGREEL"): the brand name.
     - accent (green | blue | violet, default green): the ring color.
 
   Envelope (fixed IN, elastic HOLD, no OUT, never timeScale):
@@ -25,7 +25,7 @@
   data-composition-id="logo-sting"
   data-composition-duration="2.2"
   data-composition-variables='[
-    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Brand name displayed in the final lockup.", "default": "HYPERFRAMES" },
+    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Brand name displayed in the final lockup.", "default": "TAGREEL" },
     { "id": "accent", "type": "enum", "role": "style", "label": "Accent", "description": "Color of the single impact ring.", "default": "green", "options": [{ "value": "green", "label": "Green" }, { "value": "blue", "label": "Blue" }, { "value": "violet", "label": "Violet" }] }
   ]'
 >
@@ -119,8 +119,8 @@
             var ring = root.querySelector(".ls-ring");
             var flash = root.querySelector(".ls-flash");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentColors = {
@@ -131,7 +131,7 @@
             var accent = Object.prototype.hasOwnProperty.call(accentColors, vars.accent)
               ? vars.accent
               : "green";
-            var wordmarkText = vars.wordmark == null ? "HYPERFRAMES" : String(vars.wordmark);
+            var wordmarkText = vars.wordmark == null ? "TAGREEL" : String(vars.wordmark);
 
             wordmark.textContent = wordmarkText;
             root.style.setProperty("--ls-accent", accentColors[accent]);

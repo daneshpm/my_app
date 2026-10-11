@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "telemetry-hud",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Telemetry HUD",
   "description": "Quiet mono debug-HUD readouts frame a slotted subject: corner brackets draw on, label:value lines tick their values on cues, one readout emphasized in accent. The subject never moves; the HUD breathes zero.",
   "tags": ["motion-primitive", "product-demo", "hud", "telemetry", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "telemetry-hud.html",
       "target": "compositions/components/telemetry-hud.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

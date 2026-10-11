@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  gesture-tap: HyperFrames video primitive (ui-props / interaction / demonstrate)
+  gesture-tap: Tagreel video primitive (ui-props / interaction / demonstrate)
 
   Concept: a contact circle appears directly over a real pill button, presses
   it, releases it into a new state, then lifts away. One mechanic, one job:
@@ -258,8 +258,8 @@
             var contact = root.querySelector(".gt-contact");
             var pulse = root.querySelector(".gt-response-pulse");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var tapLabel = vars.tap_label == null ? "Follow" : String(vars.tap_label);

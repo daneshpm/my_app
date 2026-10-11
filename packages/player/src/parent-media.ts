@@ -6,13 +6,13 @@
  * activation in the *same* frame — can still produce audible output via proxies
  * the parent controls directly.
  *
- * See the class-level JSDoc on `HyperframesPlayer` for the full ownership model.
+ * See the class-level JSDoc on `TagreelPlayer` for the full ownership model.
  */
 
 import { selectMediaObserverTargets } from "./mediaObserverScope.js";
 import { isRealmElement, isRealmHtmlMediaElement } from "./media-element-guards.js";
-import { isInClipWindow } from "@hyperframes/core/runtime/clip-window";
-import { readClipTiming } from "@hyperframes/core/composition-contract";
+import { isInClipWindow } from "@tagreel/core/runtime/clip-window";
+import { readClipTiming } from "@tagreel/core/composition-contract";
 
 /** Minimum absolute drift before a currentTime correction is attempted. */
 const MIRROR_DRIFT_THRESHOLD_SECONDS = 0.05;

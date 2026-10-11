@@ -84,7 +84,7 @@ const FOLLOW_UPS: readonly FollowUpQuestion[] = [
   {
     // Replaces an earlier "which editor gets this right?". Brand names are a
     // popularity vote, not an instruction: "CapCut" does not say what to build.
-    // What someone had to leave HyperFrames to do names the missing feature
+    // What someone had to leave Tagreel to do names the missing feature
     // exactly, and written feedback is full of these workarounds already.
     //
     // Every option here is a step Studio genuinely cannot do today. Offering
@@ -171,13 +171,13 @@ export interface FeedbackRequest {
 
 const STORAGE_KEYS = {
   /** Epoch ms of the last prompt the user dismissed or ignored. */
-  dismissedAt: "hyperframes-studio:feedbackDismissedAt",
+  dismissedAt: "tagreel-studio:feedbackDismissedAt",
   /** Epoch ms of the last prompt the user actually answered. */
-  answeredAt: "hyperframes-studio:feedbackAnsweredAt",
+  answeredAt: "tagreel-studio:feedbackAnsweredAt",
 } as const;
 
 /** One prompt per tab, so a batch of renders can't turn into a batch of asks. */
-const SESSION_ASKED_KEY = "hyperframes-studio:feedbackAskedThisSession";
+const SESSION_ASKED_KEY = "tagreel-studio:feedbackAskedThisSession";
 
 const DAY_MS = 86_400_000;
 const ANSWERED_COOLDOWN_MS = 30 * DAY_MS;
@@ -189,7 +189,7 @@ let listener: Listener | null = null;
 
 function isDisabled(): boolean {
   try {
-    return import.meta.env.VITE_HYPERFRAMES_NO_FEEDBACK === "1";
+    return import.meta.env.VITE_TAGREEL_NO_FEEDBACK === "1";
   } catch {
     return false;
   }

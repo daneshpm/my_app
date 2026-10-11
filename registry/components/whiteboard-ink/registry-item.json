@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "whiteboard-ink",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Whiteboard Ink",
   "description": "A whiteboard sketch draws one measured stroke at a time while a pen nib follows the active tip. Preset sketches (bulb, flow, rocket) or your own multi-stroke SVG paths via the strokes slot; a path marked data-ink=accent rides the accent token.",
   "tags": ["motion-primitive", "intro", "reveal", "svg", "whiteboard", "line-draw", "slot"],
@@ -14,7 +14,7 @@
     {
       "path": "whiteboard-ink.html",
       "target": "compositions/components/whiteboard-ink.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

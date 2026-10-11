@@ -125,7 +125,7 @@ describe("generateProjectScaffold metadata", () => {
 });
 
 describe("loadEnvFile", () => {
-  const keys = ["hyperframes_feedback_email", "HyperFrames_Feedback_Email", "HF_SCAFFOLD_TEST_KEY"];
+  const keys = ["tagreel_feedback_email", "Tagreel_Feedback_Email", "HF_SCAFFOLD_TEST_KEY"];
   let dir: string;
 
   beforeEach(() => {
@@ -140,7 +140,7 @@ describe("loadEnvFile", () => {
   it("never takes the feedback email from a project file, in any letter case", () => {
     fs.writeFileSync(
       join(dir, ".env"),
-      'hyperframes_feedback_email=a@example.com\nHyperFrames_Feedback_Email=b@example.com\nHF_SCAFFOLD_TEST_KEY="kept"\n',
+      'tagreel_feedback_email=a@example.com\nTagreel_Feedback_Email=b@example.com\nHF_SCAFFOLD_TEST_KEY="kept"\n',
     );
     loadEnvFile(join(dir, "out"));
     expect(keys.map((key) => process.env[key])).toEqual([undefined, undefined, "kept"]);

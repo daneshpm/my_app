@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "kinetic-type-swap",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Kinetic Type Swap",
   "description": "A held sentence keeps its fixed text in place while one widest-word masked slot rolls through alternatives and settles on the final option.",
   "tags": ["motion-primitive", "text-effects", "kinetic-type", "word-swap", "reveal"],
@@ -14,7 +14,7 @@
     {
       "path": "kinetic-type-swap.html",
       "target": "compositions/components/kinetic-type-swap.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

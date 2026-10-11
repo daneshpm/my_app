@@ -13,11 +13,11 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   compositionSrc="compositions/components/logo-sting.html"
   title="Logo Sting"
   description="A wordmark slams into its final scale, fires one accent ring and one white impact frame, then holds completely still."
-  variables={[{"id":"wordmark","type":"string","role":"content","label":"Wordmark","description":"Brand name displayed in the final lockup.","default":"HYPERFRAMES"},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Color of the single impact ring.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]}]}
+  variables={[{"id":"wordmark","type":"string","role":"content","label":"Wordmark","description":"Brand name displayed in the final lockup.","default":"TAGREEL"},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Color of the single impact ring.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]}]}
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":180}}
   attribution={{"path":"registry/components/logo-sting","tags":["motion-primitive","brand","logo","sting","impact","reveal"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/logo-sting/logo-sting.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/logo-sting/logo-sting.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,14 +25,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html logo-sting.html
 <!doctype html>
 <!--
-  logo-sting: HyperFrames video primitive (brand / impact / reveal)
+  logo-sting: Tagreel video primitive (brand / impact / reveal)
 
   Concept: a wordmark lands from scale 1.15 with the slam ease. Its impact
   triggers one accent ring and exactly one frame of white, then the finished
   lockup holds completely still.
 
   Variables:
-    - wordmark (string, default "HYPERFRAMES"): the brand name.
+    - wordmark (string, default "TAGREEL"): the brand name.
     - accent (green | blue | violet, default green): the ring color.
 
   Envelope (fixed IN, elastic HOLD, no OUT, never timeScale):
@@ -50,7 +50,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   data-composition-id="logo-sting"
   data-composition-duration="2.2"
   data-composition-variables='[
-    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Brand name displayed in the final lockup.", "default": "HYPERFRAMES" },
+    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Brand name displayed in the final lockup.", "default": "TAGREEL" },
     { "id": "accent", "type": "enum", "role": "style", "label": "Accent", "description": "Color of the single impact ring.", "default": "green", "options": [{ "value": "green", "label": "Green" }, { "value": "blue", "label": "Blue" }, { "value": "violet", "label": "Violet" }] }
   ]'
 >
@@ -144,8 +144,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var ring = root.querySelector(".ls-ring");
             var flash = root.querySelector(".ls-flash");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentColors = {
@@ -156,7 +156,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var accent = Object.prototype.hasOwnProperty.call(accentColors, vars.accent)
               ? vars.accent
               : "green";
-            var wordmarkText = vars.wordmark == null ? "HYPERFRAMES" : String(vars.wordmark);
+            var wordmarkText = vars.wordmark == null ? "TAGREEL" : String(vars.wordmark);
 
             wordmark.textContent = wordmarkText;
             root.style.setProperty("--ls-accent", accentColors[accent]);
@@ -209,7 +209,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add logo-sting" item="logo-sting" />
+<InstallCommand command="npx tagreel add logo-sting" item="logo-sting" />
 
 That writes one file: `compositions/components/logo-sting.html`.
 
@@ -231,7 +231,7 @@ want to change on the element:
 
 | Variable | Default | Accepts | What it does |
 | --- | --- | --- | --- |
-| `wordmark` | `HYPERFRAMES` | string | Brand name displayed in the final lockup. |
+| `wordmark` | `TAGREEL` | string | Brand name displayed in the final lockup. |
 | `accent` | `green` | `green`, `blue`, `violet` | Color of the single impact ring. |
 
 Set them with `data-variable-values` on the element that mounts it. These are the
@@ -241,7 +241,7 @@ defaults, so this behaves exactly like the preview above until you change one:
 <div
   data-composition-id="logo-sting"
   data-composition-src="compositions/components/logo-sting.html"
-  data-variable-values='{"wordmark":"HYPERFRAMES","accent":"green"}'
+  data-variable-values='{"wordmark":"TAGREEL","accent":"green"}'
 ></div>
 ```
 

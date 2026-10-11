@@ -5,11 +5,7 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, expect, it, vi, type Mock } from "vitest";
-import {
-  createStudioApi,
-  openProjectHistory,
-  type StudioApiAdapter,
-} from "@hyperframes/studio-server";
+import { createStudioApi, openProjectHistory, type StudioApiAdapter } from "@tagreel/studio-server";
 import { useDomEditNudge } from "../components/editor/useDomEditNudge";
 import { DomEditProvider, useDomEditActionsContext } from "../contexts/DomEditContext";
 import { __resetForTests as resetNudgeKeys } from "../utils/canvasNudgeGate";

@@ -5,7 +5,7 @@
  * Lambda-local adapter for the generic v1/v2 parity runner.
  *
  * Kept separate from the protocol-neutral harness because it imports
- * `@hyperframes/aws-lambda`; producer's declaration emit runs before the
+ * `@tagreel/aws-lambda`; producer's declaration emit runs before the
  * Lambda workspace package is built in some CI stages.
  */
 

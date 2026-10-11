@@ -13,18 +13,18 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   compositionSrc="compositions/components/typewriter.html"
   title="Typewriter"
   description="Character-by-character text reveal with a deterministic blinking cursor."
-  variables={[{"id":"text","type":"string","role":"content","label":"Text","description":"Line that types itself out character by character.","default":"hyperframes add typewriter"},{"id":"tone","type":"enum","role":"style","label":"Tone","description":"Colour of the text and the caret: ink for light frames, paper for dark ones, accent rides --brand.","default":"ink","options":[{"value":"ink","label":"Ink"},{"value":"paper","label":"Paper"},{"value":"accent","label":"Accent"}]},{"id":"caret","type":"enum","role":"style","label":"Caret","description":"Caret shape: a thin rule, a terminal-style block, or no caret at all.","default":"line","options":[{"value":"line","label":"Line"},{"value":"block","label":"Block"},{"value":"none","label":"None"}]}]}
+  variables={[{"id":"text","type":"string","role":"content","label":"Text","description":"Line that types itself out character by character.","default":"tagreel add typewriter"},{"id":"tone","type":"enum","role":"style","label":"Tone","description":"Colour of the text and the caret: ink for light frames, paper for dark ones, accent rides --brand.","default":"ink","options":[{"value":"ink","label":"Ink"},{"value":"paper","label":"Paper"},{"value":"accent","label":"Accent"}]},{"id":"caret","type":"enum","role":"style","label":"Caret","description":"Caret shape: a thin rule, a terminal-style block, or no caret at all.","default":"line","options":[{"value":"line","label":"Line"},{"value":"block","label":"Block"},{"value":"none","label":"None"}]}]}
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":121}}
   attribution={{"path":"registry/components/typewriter","tags":["video-primitive","motion-primitive","typography"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/typewriter/typewriter.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/typewriter/typewriter.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html typewriter.html
 <!--
-  Typewriter - typography primitive for HyperFrames.
+  Typewriter - typography primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Drive the timeline
   integration from a paused GSAP timeline so renders remain deterministic.
@@ -36,7 +36,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   opacity, and these decide what is typed, in what colour, and behind which
   caret.
 
-    - text (string, default hyperframes add typewriter): the line that types
+    - text (string, default tagreel add typewriter): the line that types
       itself out. It is written into the existing span, so the reveal keeps
       running character by character over whatever is set. Anything that is
       not a non-empty string keeps the shipped line.
@@ -55,12 +55,12 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 <div
   class="hf-catalog-typewriter"
   data-composition-variables='[
-    { "id": "text", "type": "string", "role": "content", "label": "Text", "description": "Line that types itself out character by character.", "default": "hyperframes add typewriter" },
+    { "id": "text", "type": "string", "role": "content", "label": "Text", "description": "Line that types itself out character by character.", "default": "tagreel add typewriter" },
     { "id": "tone", "type": "enum", "role": "style", "label": "Tone", "description": "Colour of the text and the caret: ink for light frames, paper for dark ones, accent rides --brand.", "default": "ink", "options": [{ "value": "ink", "label": "Ink" }, { "value": "paper", "label": "Paper" }, { "value": "accent", "label": "Accent" }] },
     { "id": "caret", "type": "enum", "role": "style", "label": "Caret", "description": "Caret shape: a thin rule, a terminal-style block, or no caret at all.", "default": "line", "options": [{ "value": "line", "label": "Line" }, { "value": "block", "label": "Block" }, { "value": "none", "label": "None" }] }
   ]'
 >
-  <span>hyperframes add typewriter</span><i></i>
+  <span>tagreel add typewriter</span><i></i>
 </div>
 
 <style>
@@ -101,8 +101,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -150,7 +150,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add typewriter" item="typewriter" />
+<InstallCommand command="npx tagreel add typewriter" item="typewriter" />
 
 That writes one file: `compositions/components/typewriter.html`.
 
@@ -173,7 +173,7 @@ want to change on the element:
 
 | Variable | Default | Accepts | What it does |
 | --- | --- | --- | --- |
-| `text` | `hyperframes add typewriter` | string | Line that types itself out character by character. |
+| `text` | `tagreel add typewriter` | string | Line that types itself out character by character. |
 | `tone` | `ink` | `ink`, `paper`, `accent` | Colour of the text and the caret: ink for light frames, paper for dark ones, accent rides --brand. |
 | `caret` | `line` | `line`, `block`, `none` | Caret shape: a thin rule, a terminal-style block, or no caret at all. |
 
@@ -184,7 +184,7 @@ defaults, so this behaves exactly like the preview above until you change one:
 <div
   data-composition-id="typewriter"
   data-composition-src="compositions/components/typewriter.html"
-  data-variable-values='{"text":"hyperframes add typewriter","tone":"ink","caret":"line"}'
+  data-variable-values='{"text":"tagreel add typewriter","tone":"ink","caret":"line"}'
 ></div>
 ```
 

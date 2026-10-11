@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  constellation-hub: HyperFrames video primitive (feature tour / exhibit)
+  constellation-hub: Tagreel video primitive (feature tour / exhibit)
 
   Feature nodes form an orbit around one fixed hub. Each connector draws
   from the hub to its node in narration order while that node brightens,
@@ -208,8 +208,8 @@
             var nodesLayer = root.querySelector(".ch-nodes");
             var hub = root.querySelector(".ch-hub");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var hubLabel = vars.hub_label == null ? "Product" : String(vars.hub_label).trim();

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  notification-stack: HyperFrames video primitive (product demo)
+  notification-stack: Tagreel video primitive (product demo)
 
   1 to 5 token notification cards (accent icon dot, title, one body line)
   slide-settle into a vertical stack on cues, newest on top: each new card
@@ -170,8 +170,8 @@
             var root = document.getElementById("root");
             var stage = root.querySelector(".ns-stage");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function toList(value, fallback) {

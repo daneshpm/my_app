@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":576}}
   attribution={{"path":"registry/components/screen-flow-carousel","tags":["product-demo","feature-tour","carousel","rail","slot","screens"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/screen-flow-carousel/screen-flow-carousel.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/screen-flow-carousel/screen-flow-carousel.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html screen-flow-carousel.html
 <!doctype html>
 <!--
-  screen-flow-carousel -- HyperFrames video primitive (product demo / feature tour)
+  screen-flow-carousel -- Tagreel video primitive (product demo / feature tour)
 
   Two to five app screens ride a horizontal rail. One screen is primary at
   center while its neighbors recede (smaller and dimmer). On each cue the
@@ -359,8 +359,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var rail = root.querySelector(".sfc-rail");
             var captionsBand = root.querySelector(".sfc-captions");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var screensValue = Number(vars.screens);
@@ -605,7 +605,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add screen-flow-carousel" item="screen-flow-carousel" />
+<InstallCommand command="npx tagreel add screen-flow-carousel" item="screen-flow-carousel" />
 
 That writes one file: `compositions/components/screen-flow-carousel.html`.
 

@@ -1,5 +1,5 @@
-import { evaluateWiggleEase, parseWiggleEase } from "@hyperframes/core/wiggle-ease";
-import { evaluateSpringEase, parseSpringBounce } from "@hyperframes/core/spring-ease";
+import { evaluateWiggleEase, parseWiggleEase } from "@tagreel/core/wiggle-ease";
+import { evaluateSpringEase, parseSpringBounce } from "@tagreel/core/spring-ease";
 import { resolveEaseCurveTuple } from "./gsapAnimationConstants";
 
 export function sampledPath(

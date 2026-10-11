@@ -38,7 +38,7 @@ describe("skillsUpdateCheck", () => {
     mockCheckSkills.mockReset();
     gate.suppressed = false;
     gate.answers = true;
-    vi.stubEnv("HYPERFRAMES_SKIP_SKILLS", "");
+    vi.stubEnv("TAGREEL_SKIP_SKILLS", "");
   });
   afterEach(() => {
     vi.restoreAllMocks();
@@ -46,7 +46,7 @@ describe("skillsUpdateCheck", () => {
   });
 
   it.each([
-    ["HYPERFRAMES_SKIP_SKILLS is set", () => vi.stubEnv("HYPERFRAMES_SKIP_SKILLS", "1")],
+    ["TAGREEL_SKIP_SKILLS is set", () => vi.stubEnv("TAGREEL_SKIP_SKILLS", "1")],
     ["the run shows no notices", () => (gate.suppressed = true)],
   ])("no background check is due when %s", async (_, arrange) => {
     const { skillsCheckDue } = await import("./skillsUpdateCheck.js");
@@ -125,7 +125,7 @@ describe("skillsUpdateCheck", () => {
   }
 
   it("suppresses a cached stale-skills notice in an attended plugin run", async () => {
-    vi.stubEnv("HYPERFRAMES_SKIP_SKILLS", "1");
+    vi.stubEnv("TAGREEL_SKIP_SKILLS", "1");
     // The normal notice gate permits output (the attended TTY case).
     expect(await noticeTextFor({ skillsOutdatedCount: 2, skillsMissingCount: 1 })).toBeNull();
   });

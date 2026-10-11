@@ -10,7 +10,7 @@ import { useEditHistoryActions, type EditHistoryHandle } from "../../hooks/useEd
 import { usePreviewPersistence } from "../../hooks/usePreviewPersistence";
 import { groupInfoFor } from "../lib/timelineGroupInfo";
 import { usePlayerStore, type TimelineElement } from "../store/playerStore";
-import { serializeAutomation, type HfAutomation } from "@hyperframes/core/audio-automation";
+import { serializeAutomation, type HfAutomation } from "@tagreel/core/audio-automation";
 import { groupAutomationElement } from "./groupAutomationElement";
 import { useAutomationLanes, type AutomationLaneBinding } from "./useAutomationLanes";
 

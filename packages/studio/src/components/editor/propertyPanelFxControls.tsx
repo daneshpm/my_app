@@ -14,7 +14,7 @@ import type {
   HfAudioFxNumberParam,
   HfAudioFxParam,
   HfAudioFxParamValues,
-} from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-fx";
 
 /**
  * Frequency and time controls span three or four decades, so a linear slider

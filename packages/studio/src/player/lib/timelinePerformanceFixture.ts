@@ -1,4 +1,4 @@
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { KeyframeCacheEntry, TimelineElement } from "../store/playerStore";
 
 export type TimelinePerformanceFixtureProfile =

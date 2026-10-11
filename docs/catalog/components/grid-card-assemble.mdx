@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":468}}
   attribution={{"path":"registry/components/grid-card-assemble","tags":["motion-primitive","layout","grid","list","stagger","assemble","feature-tour"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/grid-card-assemble/grid-card-assemble.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/grid-card-assemble/grid-card-assemble.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html grid-card-assemble.html
 <!doctype html>
 <!--
-  grid-card-assemble: HyperFrames video primitive (layout / feature tour)
+  grid-card-assemble: Tagreel video primitive (layout / feature tour)
 
   N capability cards stagger-assemble into a grid or a vertical list. Every
   card is a real token card: surface fill with a subtle top light, hairline
@@ -230,8 +230,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var stage = root.querySelector(".gca-stage");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var itemsValue =
@@ -497,7 +497,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add grid-card-assemble" item="grid-card-assemble" />
+<InstallCommand command="npx tagreel add grid-card-assemble" item="grid-card-assemble" />
 
 That writes one file: `compositions/components/grid-card-assemble.html`.
 

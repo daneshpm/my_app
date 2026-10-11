@@ -332,7 +332,7 @@ export const STUDIO_LOOK_INPUT_SCHEMA = {
 } as const;
 
 export const STUDIO_LOOK_DESCRIPTION = [
-  "Read HyperFrames Studio's live state in one call: the open project and composition,",
+  "Read Tagreel Studio's live state in one call: the open project and composition,",
   "the playhead and duration, what the human currently has selected (including what that",
   "element will and will not accept), and the live nested scene in DOM preorder.",
   "Each scene element includes source ownership, hierarchy, and optional timeline timing.",

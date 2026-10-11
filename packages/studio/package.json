@@ -1,10 +1,10 @@
 {
-  "name": "@hyperframes/studio",
+  "name": "@tagreel/studio",
   "version": "0.8.137",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heygen-com/hyperframes",
+    "url": "https://github.com/daneshpm/my_app",
     "directory": "packages/studio"
   },
   "files": [
@@ -99,15 +99,15 @@
     "@codemirror/search": "^6.6.0",
     "@codemirror/state": "^6.6.0",
     "@codemirror/view": "6.40.0",
-    "@hyperframes/core": "workspace:*",
-    "@hyperframes/parsers": "workspace:*",
-    "@hyperframes/player": "workspace:*",
-    "@hyperframes/sdk": "workspace:*",
-    "@hyperframes/shader-transitions": "workspace:*",
-    "@hyperframes/studio-server": "workspace:*",
     "@lezer/highlight": "^1.2.3",
     "@mcp-b/global": "^5.0.1",
     "@phosphor-icons/react": "^2.1.10",
+    "@tagreel/core": "workspace:*",
+    "@tagreel/parsers": "workspace:*",
+    "@tagreel/player": "workspace:*",
+    "@tagreel/sdk": "workspace:*",
+    "@tagreel/shader-transitions": "workspace:*",
+    "@tagreel/studio-server": "workspace:*",
     "@tanstack/react-virtual": "^3.14.13",
     "bpm-detective": "^2.0.5",
     "cn": "0.2.4",
@@ -116,7 +116,7 @@
     "mediabunny": "^1.45.3"
   },
   "devDependencies": {
-    "@hyperframes/producer": "workspace:*",
+    "@tagreel/producer": "workspace:*",
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "19",
     "@types/react-dom": "19",

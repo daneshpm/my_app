@@ -1,7 +1,7 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >-
-  HyperFrames distributed rendering — Step Functions standard workflow with
+  Tagreel distributed rendering — Step Functions standard workflow with
   one Lambda function handling Plan, RenderChunk (fan-out via Map state),
   and Assemble. One S3 bucket, alarms for runaway concurrency, Lambda
   errors, and Step Functions execution failures.
@@ -15,7 +15,7 @@ Description: >-
 Parameters:
   ProjectName:
     Type: String
-    Default: hyperframes
+    Default: tagreel
     Description: Name prefix applied to all created resources.
 
   LambdaMemoryMb:
@@ -52,7 +52,7 @@ Parameters:
     Description: >-
       Which Chrome runtime the bundled ZIP was built with. Must match the
       `--source=` flag passed to `build-zip.ts`. The handler reads this
-      via the HYPERFRAMES_LAMBDA_CHROME_SOURCE env var at boot.
+      via the TAGREEL_LAMBDA_CHROME_SOURCE env var at boot.
 
   ChunkInvocationAlarmThreshold:
     Type: Number
@@ -88,11 +88,11 @@ Globals:
     # locally because Globals only covers functions.
     Tags:
       Project: !Ref ProjectName
-      HyperFramesComponent: lambda-renderer
+      TagreelComponent: lambda-renderer
     Environment:
       Variables:
         NODE_OPTIONS: "--enable-source-maps"
-        HYPERFRAMES_LAMBDA_CHROME_SOURCE: !Ref ChromeSource
+        TAGREEL_LAMBDA_CHROME_SOURCE: !Ref ChromeSource
 
 Resources:
   # ── S3 bucket for plan tarballs, chunk outputs, and final renders ───────
@@ -132,7 +132,7 @@ Resources:
       Tags:
         - Key: Project
           Value: !Ref ProjectName
-        - Key: HyperFramesComponent
+        - Key: TagreelComponent
           Value: lambda-renderer
 
   # ── Single Lambda function handling all three roles ──────────────────────
@@ -141,7 +141,7 @@ Resources:
     Properties:
       FunctionName: !Sub "${ProjectName}-render"
       Description: >-
-        HyperFrames distributed render handler. Dispatches on event.Action.
+        Tagreel distributed render handler. Dispatches on event.Action.
       Handler: handler.handler
       # Local path is resolved by `sam build` + `sam deploy --resolve-s3`
       # (or `--s3-bucket`); the resulting CodeUri rewrites to s3://.
@@ -158,7 +158,7 @@ Resources:
           # Lambda's Node 22 runtime sets these by default; explicit for
           # clarity + so users can override during local SAM invoke.
           TMPDIR: /tmp
-          HYPERFRAMES_RENDER_BUCKET: !Ref RenderBucket
+          TAGREEL_RENDER_BUCKET: !Ref RenderBucket
       Policies:
         - S3CrudPolicy:
             BucketName: !Ref RenderBucket
@@ -199,7 +199,7 @@ Resources:
               LogGroupArn: !GetAtt RenderStateMachineLogGroup.Arn
       Definition:
         Comment: >-
-          HyperFrames distributed render orchestration: Plan → Map(N)
+          Tagreel distributed render orchestration: Plan → Map(N)
           RenderChunk → Assemble.
         # Defensive 1-hour ceiling on the whole choreography. The
         # individual states already have retries + per-task timeouts;

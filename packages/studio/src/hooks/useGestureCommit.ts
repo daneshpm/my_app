@@ -10,12 +10,12 @@ import { smoothGestureKeyframes } from "../utils/gestureSmoother";
 import { usePlayerStore } from "../player";
 import { resolveTweenDuration } from "../utils/globalTimeCompiler";
 import type { DomEditSelection } from "../components/editor/domEditing";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { CommitMutationOptions } from "./gsapScriptCommitTypes";
 import { trackPreviewEditResult } from "../utils/previewFeatureUsage";
 import { observeGsapGesture } from "./gsapGestureOutcome";
 import { roundTo3 } from "../utils/rounding";
-import { classifyPropertyGroup } from "@hyperframes/core/gsap-parser";
+import { classifyPropertyGroup } from "@tagreel/core/gsap-parser";
 import {
   isInstantHold,
   idSelector,

@@ -1,6 +1,6 @@
 ---
 name: frost-sequence-camera-orbit
-description: An orbiting camera follows an ice logo as it breaks apart, reforms into two text moments, and fades. HyperFrames block, 1920×1080, 22.5s, 216 variables.
+description: An orbiting camera follows an ice logo as it breaks apart, reforms into two text moments, and fades. Tagreel block, 1920×1080, 22.5s, 216 variables.
 ---
 
 # Frost Sequence Camera Orbit
@@ -32,7 +32,7 @@ Composition id: `frost-sequence-rig`. Duration 22.5 s at 30 fps, 1920×1080.
 
 ## Install
 
-Install with `npx hyperframes add frost-sequence-camera-orbit`; by default the files above land under `compositions/frost-sequence-camera-orbit/`. Then mount the block from the host `index.html`:
+Install with `npx tagreel add frost-sequence-camera-orbit`; by default the files above land under `compositions/frost-sequence-camera-orbit/`. Then mount the block from the host `index.html`:
 
 ```html
 <div
@@ -49,12 +49,12 @@ Install with `npx hyperframes add frost-sequence-camera-orbit`; by default the f
 Render with custom values by targeting the composition file directly:
 
 ```sh
-npx --yes hyperframes@0.8.12 render 'compositions/frost-sequence-camera-orbit/frost-sequence-camera-orbit.html' --variables '{"headline1":"Hard to|break.","headline2":"Easy to|remember."}'
+npx --yes tagreel@0.8.12 render 'compositions/frost-sequence-camera-orbit/frost-sequence-camera-orbit.html' --variables '{"headline1":"Hard to|break.","headline2":"Easy to|remember."}'
 ```
 
 ## Variables
 
-Read at runtime via `window.__hyperframes.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
+Read at runtime via `window.__tagreel.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
 
 | id                          | type    | default             | label / range                                                                                 |
 | --------------------------- | ------- | ------------------- | --------------------------------------------------------------------------------------------- | ------------- | -------------------------- | ------- | ------- |

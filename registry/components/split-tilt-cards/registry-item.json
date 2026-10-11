@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "split-tilt-cards",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Split Tilt Cards",
   "description": "Two equal-weight cards arrive from opposite wings with mirrored rotateY book-open tilts under one shared perspective, pill badges spring-pop at each inner edge, and the pair holds with a barely-there phase-opposed idle float. Card bodies are content slots with token skeleton defaults.",
   "tags": ["motion-primitive", "layout", "compare", "holdable", "book-open", "tilt", "slots"],
@@ -17,7 +17,7 @@
     {
       "path": "split-tilt-cards.html",
       "target": "compositions/components/split-tilt-cards.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

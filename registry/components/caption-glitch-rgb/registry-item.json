@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "caption-glitch-rgb",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Glitch RGB",
   "description": "RGB chromatic aberration with CRT scanline overlay",
   "tags": ["captions", "caption-style", "glitch", "cyber", "tech"],
@@ -9,7 +9,7 @@
     {
       "path": "caption-glitch-rgb.html",
       "target": "compositions/components/caption-glitch-rgb.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

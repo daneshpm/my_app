@@ -8,8 +8,8 @@
  * absolute positions back into the GSAP script, regardless of tween type,
  * easing, or seek position.
  */
-import type { GsapAnimation, PropertyGroupName } from "@hyperframes/core/gsap-parser";
-import { isXYPositionWrite, PROPERTY_GROUPS } from "@hyperframes/parsers/gsap-constants";
+import type { GsapAnimation, PropertyGroupName } from "@tagreel/core/gsap-parser";
+import { isXYPositionWrite, PROPERTY_GROUPS } from "@tagreel/parsers/gsap-constants";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import { usePlayerStore } from "../player/store/playerStore";
 

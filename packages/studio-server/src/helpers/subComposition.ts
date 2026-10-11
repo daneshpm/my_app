@@ -1,18 +1,14 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { parseHTML } from "linkedom";
-import {
-  rewriteAssetPaths,
-  rewriteCssAssetUrls,
-  rewriteInlineStyleAssetUrls,
-} from "@hyperframes/core";
+import { rewriteAssetPaths, rewriteCssAssetUrls, rewriteInlineStyleAssetUrls } from "@tagreel/core";
 import {
   deferScriptsUntilFonts,
   RUNTIME_BOOTSTRAP_ATTR,
   stripEmbeddedRuntimeScripts,
-} from "@hyperframes/core/compiler";
-import { isFullHtmlDocument } from "@hyperframes/core/compiler/html-document";
-import { gsapCdnDist } from "@hyperframes/core/gsap-cdn";
+} from "@tagreel/core/compiler";
+import { isFullHtmlDocument } from "@tagreel/core/compiler/html-document";
+import { gsapCdnDist } from "@tagreel/core/gsap-cdn";
 
 /**
  * Rewrite relative asset paths in a parsed DOM tree. Shared across all
@@ -309,7 +305,7 @@ export function buildSubCompositionHtml(
   }
 
   // A composition file may ship a baked inline runtime (from a prior export:
-  // data-hyperframes-runtime / __hyperframeRuntime…). The studio injects its own
+  // data-tagreel-runtime / __tagreelRuntime…). The studio injects its own
   // preview runtime below, so strip the baked one from the body — otherwise it's
   // double-loaded AND the baked inline copy can fail to parse inline (the
   // "Unexpected token '<'" SyntaxError seen on comps with a baked runtime).

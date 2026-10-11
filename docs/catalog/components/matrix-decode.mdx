@@ -13,18 +13,18 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   compositionSrc="compositions/components/matrix-decode.html"
   title="Matrix Decode"
   description="Random scramble resolves left-to-right into the target text."
-  variables={[{"id":"text","type":"string","role":"content","label":"Target text","description":"Word the scramble resolves into. One scrambling cell per character, up to 32.","default":"HYPERFRAMES"},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Colour family of the cells and their glow.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]},{"id":"size","type":"number","role":"style","label":"Size","description":"Type size of the cells in pixels. Cell width follows it.","default":64,"min":24,"max":160,"step":4,"unit":"px"},{"id":"glow","type":"enum","role":"style","label":"Glow","description":"Strength of the halo behind the cells, from none to a heavy bloom.","default":"standard","options":[{"value":"none","label":"None"},{"value":"standard","label":"Standard"},{"value":"strong","label":"Strong"}]}]}
+  variables={[{"id":"text","type":"string","role":"content","label":"Target text","description":"Word the scramble resolves into. One scrambling cell per character, up to 32.","default":"TAGREEL"},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Colour family of the cells and their glow.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]},{"id":"size","type":"number","role":"style","label":"Size","description":"Type size of the cells in pixels. Cell width follows it.","default":64,"min":24,"max":160,"step":4,"unit":"px"},{"id":"glow","type":"enum","role":"style","label":"Glow","description":"Strength of the halo behind the cells, from none to a heavy bloom.","default":"standard","options":[{"value":"none","label":"None"},{"value":"standard","label":"Standard"},{"value":"strong","label":"Strong"}]}]}
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":128}}
   attribution={{"path":"registry/components/matrix-decode","tags":["motion-primitive","typography"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/matrix-decode/matrix-decode.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/matrix-decode/matrix-decode.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html matrix-decode.html
 <!--
-  Matrix Decode - typography primitive for HyperFrames.
+  Matrix Decode - typography primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Drive the timeline
   integration from a paused GSAP timeline so renders remain deterministic.
@@ -35,7 +35,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   recipe below is untouched by them: it keeps staggering whatever cells are
   present.
 
-    - text (text, default HYPERFRAMES): the word the scramble resolves into.
+    - text (text, default TAGREEL): the word the scramble resolves into.
       One scrambling cell per character, up to 32. Also written to data-final,
       which a decode routine can read.
     - accent (green | blue | violet, default green): colour family of the cells
@@ -51,9 +51,9 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <div
   class="hf-catalog-matrix-decode"
-  data-final="HYPERFRAMES"
+  data-final="TAGREEL"
   data-composition-variables='[
-    { "id": "text", "type": "string", "role": "content", "label": "Target text", "description": "Word the scramble resolves into. One scrambling cell per character, up to 32.", "default": "HYPERFRAMES" },
+    { "id": "text", "type": "string", "role": "content", "label": "Target text", "description": "Word the scramble resolves into. One scrambling cell per character, up to 32.", "default": "TAGREEL" },
     { "id": "accent", "type": "enum", "role": "style", "label": "Accent", "description": "Colour family of the cells and their glow.", "default": "green", "options": [{ "value": "green", "label": "Green" }, { "value": "blue", "label": "Blue" }, { "value": "violet", "label": "Violet" }] },
     { "id": "size", "type": "number", "role": "style", "label": "Size", "description": "Type size of the cells in pixels. Cell width follows it.", "default": 64, "min": 24, "max": 160, "step": 4, "unit": "px" },
     { "id": "glow", "type": "enum", "role": "style", "label": "Glow", "description": "Strength of the halo behind the cells, from none to a heavy bloom.", "default": "standard", "options": [{ "value": "none", "label": "None" }, { "value": "standard", "label": "Standard" }, { "value": "strong", "label": "Strong" }] }
@@ -95,8 +95,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Anything missing or invalid returns to its declared default.
@@ -117,7 +117,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
     var text = typeof vars.text === "string" ? vars.text.trim().slice(0, 32) : "";
     if (!text) {
-      text = "HYPERFRAMES";
+      text = "TAGREEL";
     }
 
     var size =
@@ -157,7 +157,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add matrix-decode" item="matrix-decode" />
+<InstallCommand command="npx tagreel add matrix-decode" item="matrix-decode" />
 
 That writes one file: `compositions/components/matrix-decode.html`.
 
@@ -180,7 +180,7 @@ want to change on the element:
 
 | Variable | Default | Accepts | What it does |
 | --- | --- | --- | --- |
-| `text` | `HYPERFRAMES` | string | Word the scramble resolves into. One scrambling cell per character, up to 32. |
+| `text` | `TAGREEL` | string | Word the scramble resolves into. One scrambling cell per character, up to 32. |
 | `accent` | `green` | `green`, `blue`, `violet` | Colour family of the cells and their glow. |
 | `size` | `64` | 24px to 160px, step 4px | Type size of the cells in pixels. Cell width follows it. |
 | `glow` | `standard` | `none`, `standard`, `strong` | Strength of the halo behind the cells, from none to a heavy bloom. |
@@ -192,7 +192,7 @@ defaults, so this behaves exactly like the preview above until you change one:
 <div
   data-composition-id="matrix-decode"
   data-composition-src="compositions/components/matrix-decode.html"
-  data-variable-values='{"text":"HYPERFRAMES","accent":"green","size":64,"glow":"standard"}'
+  data-variable-values='{"text":"TAGREEL","accent":"green","size":64,"glow":"standard"}'
 ></div>
 ```
 

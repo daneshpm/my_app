@@ -17,27 +17,27 @@ Signing in is the same OAuth step as creating an account — new users land on t
     The default flow opens your browser for OAuth and captures the token on a loopback port:
 
     ```bash
-    npx hyperframes auth login
+    npx tagreel auth login
     # ✓ Signed in.
     ```
 
     For CI or headless machines, save a long-lived API key instead:
 
     ```bash
-    npx hyperframes auth login --api-key            # hidden-input prompt
-    echo "$HEYGEN_API_KEY" | npx hyperframes auth login --api-key   # from stdin
+    npx tagreel auth login --api-key            # hidden-input prompt
+    echo "$HEYGEN_API_KEY" | npx tagreel auth login --api-key   # from stdin
     ```
   </Step>
   <Step title="Confirm what's configured">
     ```bash
-    npx hyperframes auth status
+    npx tagreel auth status
     ```
 
     Shows the active credential's source and verified identity, and — when you're signed out — which local engines voice and music will use. Add `--json` for `{ configured, recommended_action, offline_engines }` in scripts.
   </Step>
 </Steps>
 
-The credential lives in `~/.heygen/credentials` (mode `0600`) — no per-repo `.env` to manage. Browser OAuth is a `hyperframes auth login` feature. The separate [`heygen` CLI](https://github.com/heygen-com/heygen-cli) (its own install — there's no `npx heygen`) is API-key-only, so `heygen auth login` just stores a key you paste. Both read the same `~/.heygen/credentials`, so signing in with one carries to the other.
+The credential lives in `~/.heygen/credentials` (mode `0600`) — no per-repo `.env` to manage. Browser OAuth is a `tagreel auth login` feature. The separate [`heygen` CLI](https://github.com/heygen-com/heygen-cli) (its own install — there's no `npx heygen`) is API-key-only, so `heygen auth login` just stores a key you paste. Both read the same `~/.heygen/credentials`, so signing in with one carries to the other.
 
 <Tip>
   No account is needed to try my_app locally. With no credential, voice can
@@ -51,8 +51,8 @@ Bundled media workflows use the HeyGen credential for hosted TTS and music /
 sound retrieval. It resolves first-match-wins:
 
 1. `HEYGEN_API_KEY` — environment variable
-2. `HYPERFRAMES_API_KEY` — alias, for parity with other tools
-3. `~/.heygen/credentials` — written by `hyperframes auth login` (or `heygen auth login`)
+2. `TAGREEL_API_KEY` — alias, for parity with other tools
+3. `~/.heygen/credentials` — written by `tagreel auth login` (or `heygen auth login`)
 
 Point at a different config directory with `HEYGEN_CONFIG_DIR`, or a different backend with `HEYGEN_API_URL`.
 
@@ -65,13 +65,13 @@ vision key is available.
 
 | Capability | Provider order | Key(s) — first match wins | Local dependency |
 |------------|----------------|---------------------------|------------------|
-| **Voice (TTS)** | HeyGen → ElevenLabs → Kokoro | `HEYGEN_API_KEY` → `HYPERFRAMES_API_KEY` → `~/.heygen` · then `ELEVENLABS_API_KEY` | Kokoro: `pip install kokoro-onnx soundfile` |
+| **Voice (TTS)** | HeyGen → ElevenLabs → Kokoro | `HEYGEN_API_KEY` → `TAGREEL_API_KEY` → `~/.heygen` · then `ELEVENLABS_API_KEY` | Kokoro: `pip install kokoro-onnx soundfile` |
 | **Music (BGM)** | HeyGen library → Lyria → MusicGen | HeyGen credential (above) · then `GEMINI_API_KEY` → `GOOGLE_API_KEY` | MusicGen: `pip install transformers torch soundfile numpy` |
 | **Sound effects** | HeyGen library → bundled library | HeyGen credential (above) | bundled — no deps |
 | **Capture descriptions** | OpenRouter → Gemini | `OPENROUTER_API_KEY` → `GEMINI_API_KEY` | None; optional for [website capture](/guides/product-launch-video) |
 
-Run `npx hyperframes doctor` to check which local dependencies are installed.
-The media workflows run `hyperframes auth status` before generation and tell
+Run `npx tagreel doctor` to check which local dependencies are installed.
+The media workflows run `tagreel auth status` before generation and tell
 you which path they will use.
 
 For Gemini narration, explicitly ask your agent to use Gemini TTS. The shared
@@ -103,7 +103,7 @@ not user ADC files or metadata-server credentials.
 See [Gemini voiceover](/prompting/media-and-audio#gemini-voiceover).
 
 <Note>
-  `npx hyperframes tts` itself is the local Kokoro CLI. Hosted HeyGen and
+  `npx tagreel tts` itself is the local Kokoro CLI. Hosted HeyGen and
   ElevenLabs and Gemini voices are selected by the bundled media workflow helpers, not by
   that command.
 </Note>
@@ -123,11 +123,11 @@ library; sign in when you want those services or cloud rendering.
 
 ## Publishing without an account
 
-`npx hyperframes publish` works while signed out. It uploads the project and
+`npx tagreel publish` works while signed out. It uploads the project and
 prints a URL containing a claim token. Open that URL and authenticate in the web
 app to claim the project.
 
-Sign in with `npx hyperframes auth login` before publishing when you want the CLI
+Sign in with `npx tagreel auth login` before publishing when you want the CLI
 to own the project immediately, update the same URL with `--update`, or publish
 to a shared space with `--space`.
 
@@ -136,7 +136,7 @@ to a shared space with `--space`.
 | Variable | Used for |
 |----------|----------|
 | `HEYGEN_API_KEY` | HeyGen credential — voice + music/SFX retrieval. Highest priority. |
-| `HYPERFRAMES_API_KEY` | Alias for `HEYGEN_API_KEY`. |
+| `TAGREEL_API_KEY` | Alias for `HEYGEN_API_KEY`. |
 | `HEYGEN_API_URL` | API base URL (default `https://api.heygen.com`). |
 | `HEYGEN_CONFIG_DIR` | Credentials directory (default `~/.heygen`). |
 | `ELEVENLABS_API_KEY` | ElevenLabs TTS, used when no HeyGen credential is present. |
@@ -147,6 +147,6 @@ to a shared space with `--space`.
 
 ## Related topics
 
-- [Open the authentication command reference](/packages/cli#hyperframes-auth)
+- [Open the authentication command reference](/packages/cli#tagreel-auth)
 - [Render with my_app Cloud](/deploy/cloud)
 - [Choose where to create](/guides/choose-creation-path)

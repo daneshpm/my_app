@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "avatar-cloud",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Avatar Cloud",
   "description": "Lettermark avatars populate a loose elliptical cloud while fine SVG links draw between the community and its central proof label.",
   "tags": ["effects", "avatars", "community", "network", "social-proof", "prove"],
@@ -14,7 +14,7 @@
     {
       "path": "avatar-cloud.html",
       "target": "compositions/components/avatar-cloud.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

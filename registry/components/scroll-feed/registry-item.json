@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "scroll-feed",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Scroll Feed",
   "description": "A loop-friendly column of varied skeleton post cards scrolls upward with subtle motion trails and an agitated pace.",
   "tags": ["motion-primitive", "effects", "scroll", "feed", "loop", "agitation"],
@@ -13,7 +13,7 @@
     {
       "path": "scroll-feed.html",
       "target": "compositions/components/scroll-feed.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

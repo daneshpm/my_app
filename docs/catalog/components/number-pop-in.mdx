@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":120}}
   attribution={{"path":"registry/components/number-pop-in","tags":["video-primitive","transition-primitive","transitions-dev-port","number","pop"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/number-pop-in/number-pop-in.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/number-pop-in/number-pop-in.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html number-pop-in.html
 <!--
-  Number Pop In - transitions.dev-inspired primitive for HyperFrames.
+  Number Pop In - transitions.dev-inspired primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Use the timeline
   integration note at the bottom as the starting point for deterministic GSAP
@@ -94,8 +94,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -149,7 +149,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add number-pop-in" item="number-pop-in" />
+<InstallCommand command="npx tagreel add number-pop-in" item="number-pop-in" />
 
 That writes one file: `compositions/components/number-pop-in.html`.
 

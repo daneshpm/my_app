@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { frameFileExtension } from "@hyperframes/engine";
+import { frameFileExtension } from "@tagreel/engine";
 import { resolveCaptureImageFormat } from "./captureImageFormat.js";
 
 describe("resolveCaptureImageFormat", () => {

@@ -15,7 +15,7 @@
 // Frame-level checks use the vendored storyboard parser. Group-level checks re-scan
 // the RAW source (the parser's META_RE consumes indented `- params:`/`- asset:` lines).
 //
-// Reads: --storyboard, --audiomap, --hyperframes <root> (for templates/).
+// Reads: --storyboard, --audiomap, --tagreel <root> (for templates/).
 
 import { existsSync, readFileSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -26,10 +26,10 @@ const flag = (n, d) => {
   const i = argv.indexOf(`--${n}`);
   return i >= 0 && i + 1 < argv.length ? argv[i + 1] : d;
 };
-const hyperframesDir = resolve(flag("hyperframes", "."));
-const storyboardPath = resolve(flag("storyboard", join(hyperframesDir, "STORYBOARD.md")));
-const audiomapPath = resolve(flag("audiomap", join(hyperframesDir, "audiomap.json")));
-const templatesDir = resolve(flag("templates", join(hyperframesDir, "templates")));
+const tagreelDir = resolve(flag("tagreel", "."));
+const storyboardPath = resolve(flag("storyboard", join(tagreelDir, "STORYBOARD.md")));
+const audiomapPath = resolve(flag("audiomap", join(tagreelDir, "audiomap.json")));
+const templatesDir = resolve(flag("templates", join(tagreelDir, "templates")));
 
 const errors = [];
 const warns = [];

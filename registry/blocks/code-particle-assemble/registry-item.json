@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "code-particle-assemble",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Code Particle Assemble",
   "description": "Thousands of GPU points scatter through space and fly to the exact glyph pixels of the code, resolving into readable syntax-highlighted text — a particle system, not a token tween.",
   "dimensions": {
@@ -14,7 +14,7 @@
     {
       "path": "code-particle-assemble.html",
       "target": "compositions/code-particle-assemble.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

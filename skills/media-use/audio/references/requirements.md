@@ -2,7 +2,7 @@
 
 ## Providers and keys
 
-No account is required: voice and music run locally by default. `npx hyperframes doctor` reports whether the local deps (Kokoro / MusicGen) are installed. Optional providers use keys **you** supply; the first usable provider wins:
+No account is required: voice and music run locally by default. `npx tagreel doctor` reports whether the local deps (Kokoro / MusicGen) are installed. Optional providers use keys **you** supply; the first usable provider wins:
 
 | Provider                      | Resolution order (first non-empty wins) | Local deps when used                             |
 | ----------------------------- | --------------------------------------- | ------------------------------------------------ |
@@ -11,17 +11,17 @@ No account is required: voice and music run locally by default. `npx hyperframes
 | **Kokoro** (TTS, no key)      | always — final voice fallback           | `pip install kokoro-onnx soundfile`              |
 | **MusicGen** (BGM, no key)    | always — final music fallback           | `pip install transformers torch soundfile numpy` |
 
-Put keys in your shell environment rather than a per-repo `.env`. With no key set, voice/BGM run fully locally (Kokoro / MusicGen); `hyperframes doctor` reports whether those local deps are installed.
+Put keys in your shell environment rather than a per-repo `.env`. With no key set, voice/BGM run fully locally (Kokoro / MusicGen); `tagreel doctor` reports whether those local deps are installed.
 
 ## Model caches & system dependencies
 
-Each command downloads its own model on first run and caches it under `~/.cache/hyperframes/`:
+Each command downloads its own model on first run and caches it under `~/.cache/tagreel/`:
 
 - **TTS (ElevenLabs)** — API key + `pip install elevenlabs` + `ffmpeg`.
 - **TTS (Kokoro)** — Kokoro-82M (~311 MB) + voices (~27 MB) in `tts/`. Requires Python 3.8+ with `kokoro-onnx` and `soundfile` (`pip install kokoro-onnx soundfile`). Non-English text also needs `espeak-ng` system-wide.
 - **BGM (Lyria)** — needs `$GEMINI_API_KEY` or `$GOOGLE_API_KEY` + `pip install google-genai`. No local model cache.
 - **BGM (MusicGen)** — `pip install transformers torch soundfile`. `facebook/musicgen-small` (~300 MB) cached under `~/.cache/huggingface/` on first run.
-- **Transcribe** — Whisper model size depending on choice (75 MB – 3.1 GB) in `whisper/`, downloaded from HuggingFace on first use. `whisper.cpp` itself is NOT bundled: the CLI resolves it from PATH, installs via Homebrew (macOS), or builds it from source with git+cmake on first use (`$HYPERFRAMES_WHISPER_PATH` overrides).
+- **Transcribe** — Whisper model size depending on choice (75 MB – 3.1 GB) in `whisper/`, downloaded from HuggingFace on first use. `whisper.cpp` itself is NOT bundled: the CLI resolves it from PATH, installs via Homebrew (macOS), or builds it from source with git+cmake on first use (`$TAGREEL_WHISPER_PATH` overrides).
 - **Remove-background** — `u2net_human_seg` (~168 MB ONNX) in `background-removal/models/`. Peak inference RAM ~1.5 GB.
 
-Run `npx hyperframes doctor` if a command fails because of a missing dependency.
+Run `npx tagreel doctor` if a command fails because of a missing dependency.

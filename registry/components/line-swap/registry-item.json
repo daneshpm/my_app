@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "line-swap",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Line Swap",
   "description": "A masked full-line beat replacement: line A holds center then exits up through an overflow-hidden mask as line B enters bottom-up on the same beat, with an optional accent underline drawing beneath one word of line B.",
   "tags": ["motion-primitive", "text-effects", "swap", "beat", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "line-swap.html",
       "target": "compositions/components/line-swap.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

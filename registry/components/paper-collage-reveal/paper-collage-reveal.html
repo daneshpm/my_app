@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  paper-collage-reveal: HyperFrames video primitive (transitions / texture).
+  paper-collage-reveal: Tagreel video primitive (transitions / texture).
 
   A patchwork of torn paper scraps covers the frame. Each scrap has its own
   torn silhouette with a deckled edge, visible grain and a crisp cast shadow.
@@ -222,8 +222,8 @@
             var scrapsHost = document.getElementById("pcr-scraps");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var panelsValue = parseInt(vars.panels, 10);

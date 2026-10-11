@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import React, { act, useState } from "react";
 import { createRoot, type Root } from "react-dom/client";
-import { ensureHfIds } from "@hyperframes/parsers/hf-ids";
-import { runtimeProtocolMetadata } from "@hyperframes/core/runtime/protocol";
+import { ensureHfIds } from "@tagreel/parsers/hf-ids";
+import { runtimeProtocolMetadata } from "@tagreel/core/runtime/protocol";
 import { afterEach, describe, expect, it } from "vitest";
 import { useElementPicker } from "./useElementPicker";
 

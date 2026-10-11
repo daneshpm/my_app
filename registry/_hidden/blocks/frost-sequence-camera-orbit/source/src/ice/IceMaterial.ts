@@ -87,7 +87,7 @@ export interface IceMaterialBundle {
 }
 
 let frameCounter = 0;
-// HyperFrames adapter: keep the original deterministic frame clock.
+// Tagreel adapter: keep the original deterministic frame clock.
 let frameIndexOverride = -1;
 export function setIceFrameIndex(index: number) {
   frameIndexOverride = index;

@@ -363,8 +363,8 @@
         "use strict";
         var compositionId = "notes-typing-demo";
         var vars =
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && window.__tagreel.getVariables
+            ? window.__tagreel.getVariables()
             : {};
         function text(v, fb, mx) {
           if (typeof v !== "string") return fb;

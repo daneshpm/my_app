@@ -3,9 +3,9 @@
  * Centralises duplicated interfaces, constants, and small utilities
  * to reduce drift risk.
  */
-import { isHtmlElement } from "@hyperframes/core/runtime/dom-realm";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
-import { getObjectArrayKeyframeTiming } from "@hyperframes/parsers/gsap-parser";
+import { isHtmlElement } from "@tagreel/core/runtime/dom-realm";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
+import { getObjectArrayKeyframeTiming } from "@tagreel/parsers/gsap-parser";
 import { progressAtTime, runEaseOf, timeAtProgress } from "../utils/gsapKeyframeEases";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import {

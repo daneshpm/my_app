@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":6,"width":1920,"height":1080,"category":"Blocks","badge":"Stable","codeLines":187}}
   attribution={{"path":"registry/blocks/starfield","tags":["starfield","night-sky","stars","twinkle","sky","weather","overlay","ambient","particles","media-treatment-overlay","loopable"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/starfield/starfield.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/starfield/starfield.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html starfield.html
 <!doctype html>
 <!--
-  starfield: HyperFrames video primitive (backgrounds / ambient overlay)
+  starfield: Tagreel video primitive (backgrounds / ambient overlay)
 
   Concept: a night sky of seeded stars in three size tiers, twinkling and drifting sideways
   in two parallax layers over a transparent field, meant to sit
@@ -117,8 +117,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         // Mounted, the runtime strips data-duration off this file's root; the host clip carries it.
         var host = field.closest("[data-composition-id]");
         var vars =
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && window.__tagreel.getVariables
+            ? window.__tagreel.getVariables()
             : {};
 
         var TONES = {
@@ -216,7 +216,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add starfield" item="starfield" />
+<InstallCommand command="npx tagreel add starfield" item="starfield" />
 
 That writes one file: `compositions/starfield.html`.
 

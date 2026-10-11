@@ -1,5 +1,5 @@
 {
-  "package": "@hyperframes/gcp-cloud-run",
+  "package": "@tagreel/gcp-cloud-run",
   "subpaths": {
     ".": {
       "source": "./src/index.ts",

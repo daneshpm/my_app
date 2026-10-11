@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  typed-prompt: HyperFrames video primitive (product demo / typing)
+  typed-prompt: Tagreel video primitive (product demo / typing)
 
   A prompt line types itself in chunked human cadence behind a deterministic
   blinking caret. Every visible frame is read from one lookup table of
@@ -167,8 +167,8 @@
             var textElement = root.querySelector(".tp-text");
             var caretElement = root.querySelector(".tp-caret");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Generate a product launch video" : String(vars.text);

@@ -1,6 +1,6 @@
 ---
 name: cuboid-carousel
-description: A chain of bevelled cuboids rides a travelling wave as a content carousel. HyperFrames block, 1920×1080, 6.666666666666667s, 40 variables.
+description: A chain of bevelled cuboids rides a travelling wave as a content carousel. Tagreel block, 1920×1080, 6.666666666666667s, 40 variables.
 ---
 
 # Cuboid Carousel
@@ -23,7 +23,7 @@ Composition id: `cuboid-carousel`. Duration 6.666666666666667 s at 30 fps, 1920�
 
 ## Install
 
-Install with `npx hyperframes add cuboid-carousel`; by default the files above land under `compositions/cuboid-carousel/`. Then mount the block from the host `index.html`:
+Install with `npx tagreel add cuboid-carousel`; by default the files above land under `compositions/cuboid-carousel/`. Then mount the block from the host `index.html`:
 
 ```html
 <div
@@ -40,12 +40,12 @@ Install with `npx hyperframes add cuboid-carousel`; by default the files above l
 Render with custom values by targeting the composition file directly:
 
 ```sh
-npx --yes hyperframes@0.8.12 render 'compositions/cuboid-carousel/cuboid-carousel.html' --variables '{"cardsJson":"","heroCard":4}'
+npx --yes tagreel@0.8.12 render 'compositions/cuboid-carousel/cuboid-carousel.html' --variables '{"cardsJson":"","heroCard":4}'
 ```
 
 ## Variables
 
-Read at runtime via `window.__hyperframes.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
+Read at runtime via `window.__tagreel.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
 
 | id                  | type   | default     | label / range                                        |
 | ------------------- | ------ | ----------- | ---------------------------------------------------- |

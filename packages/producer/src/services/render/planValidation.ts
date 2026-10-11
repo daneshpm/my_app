@@ -5,27 +5,27 @@
  * and only surfacing on the chunk worker.
  */
 
-import { BROWSER_GPU_NOT_SOFTWARE } from "@hyperframes/engine";
+import { BROWSER_GPU_NOT_SOFTWARE } from "@tagreel/engine";
 import {
   collectFontFamilyCustomProperties,
   GENERIC_FAMILIES,
   iterateFontFamilyDeclarations,
   resolveFontFamilyDeclarationFamilies,
-} from "@hyperframes/core/fonts/embed";
+} from "@tagreel/core/fonts/embed";
 
 /**
  * Re-export the BROWSER_GPU_NOT_SOFTWARE code so distributed adapters and
  * Step Functions / Temporal retry policies can match it without a
  * cross-package import.
  */
-export { BROWSER_GPU_NOT_SOFTWARE } from "@hyperframes/engine";
+export { BROWSER_GPU_NOT_SOFTWARE } from "@tagreel/engine";
 
 /**
  * Re-export the shared font-family parser. The plan-time validator and the
  * @font-face injector consume the same surface, so the parser lives next to
  * the data.
  */
-export { parseFontFamilyValue } from "@hyperframes/core/fonts/embed";
+export { parseFontFamilyValue } from "@tagreel/core/fonts/embed";
 
 /**
  * Typed plan-validation error. Workflow adapters key retry policies off the

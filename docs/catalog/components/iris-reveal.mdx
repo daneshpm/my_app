@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":478}}
   attribution={{"path":"registry/components/iris-reveal","tags":["transition","iris","circle-reveal","clip-path","bridge","slots"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/iris-reveal/iris-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/iris-reveal/iris-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html iris-reveal.html
 <!doctype html>
 <!--
-  iris-reveal: HyperFrames video primitive (transitions / bridge)
+  iris-reveal: Tagreel video primitive (transitions / bridge)
 
   Concept: a circle clip-path opens from an authored origin (iris_x/iris_y
   percent) revealing state B over state A. Classic register: A grayscale and
@@ -85,7 +85,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "iris-reveal" key (mount flattening strips
   data-composition-id from the live root). Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -336,8 +336,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var rimCircle = root.querySelector(".ir-rim-circle");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function clampNumber(raw, fallback, min, max) {
@@ -507,7 +507,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add iris-reveal" item="iris-reveal" />
+<InstallCommand command="npx tagreel add iris-reveal" item="iris-reveal" />
 
 That writes one file: `compositions/components/iris-reveal.html`.
 

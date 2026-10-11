@@ -1,13 +1,13 @@
 <!doctype html>
 <!--
-  conic-progress-ring: HyperFrames video primitive (data / prove / demonstrate)
+  conic-progress-ring: Tagreel video primitive (data / prove / demonstrate)
 
   Concept: one registered percentage moves the hard frontier of a conic
   gradient while a radial mask cuts out the center. The center value is
   derived from that same percentage on every GSAP update, so fill and count
   cannot drift apart.
 
-  Compiled-from evidence: hyperframes-research-css-gems.md, section 10,
+  Compiled-from evidence: tagreel-research-css-gems.md, section 10,
   "Registered conic progress ring". The finding specifies a typed percentage
   as the seek handle for a conic-gradient frontier and a radial mask for the
   ring cutout.
@@ -163,8 +163,8 @@
             var ring = root.querySelector(".ring");
             var label = root.querySelector(".ring-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             /* INVARIANT: zero is a valid progress value, so missing and zero

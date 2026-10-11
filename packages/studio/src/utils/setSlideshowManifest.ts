@@ -1,7 +1,7 @@
 /**
  * setSlideshowManifest — Studio persist helper for the slideshow JSON island.
  *
- * The island is a `<script type="application/hyperframes-slideshow+json">` node
+ * The island is a `<script type="application/tagreel-slideshow+json">` node
  * embedded in the composition HTML.  Because <script> nodes are not tracked by
  * the SDK element tree (they have no hf-id), we cannot use a `setText` dispatch
  * op.  Instead we:
@@ -16,17 +16,17 @@
  * can call persistSlideshowManifest on a fresh composition.
  */
 
-import type { SlideshowManifest } from "@hyperframes/core/slideshow";
+import type { SlideshowManifest } from "@tagreel/core/slideshow";
 import {
   SLIDESHOW_ISLAND_TYPE,
   SLIDESHOW_MANIFEST_VERSION,
   parseSlideshowManifest,
   slideshowIslandRegex,
-} from "@hyperframes/core/slideshow";
+} from "@tagreel/core/slideshow";
 import type { CutoverDeps } from "./sdkCutover";
 import { persistSdkSerialize } from "./sdkCutover";
 
-// Matches ALL <script type="application/hyperframes-slideshow+json"> ... </script>
+// Matches ALL <script type="application/tagreel-slideshow+json"> ... </script>
 // blocks (global + case-insensitive) so we can strip every stale island in one pass.
 const ISLAND_RE = slideshowIslandRegex("gi");
 

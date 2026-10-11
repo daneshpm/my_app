@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "share-sheet-carousel",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Share-Sheet Carousel",
   "description": "A share sheet springs up from the bottom of the phone and cycles previews inside its card on a fast cut rhythm while the blurred ground swaps behind it, ending on an accept tap",
   "tags": ["showcase", "mock-ui", "share-sheet", "vertical", "ad-template"],
@@ -27,7 +27,7 @@
       "label": "Sender",
       "description": "Name of the brand this video promotes, shown as the sender offering the item. Use the real name of that brand.",
       "portrays": ["subject_name"],
-      "default": "HyperFrames"
+      "default": "Tagreel"
     },
     {
       "id": "itemLabel",
@@ -101,44 +101,44 @@
       "label": "Brand logo",
       "description": "Transparent horizontal wordmark of the brand this video promotes, in the preview strip.",
       "portrays": ["subject_logo"],
-      "default": "assets/hyperframes-logo-black.svg"
+      "default": "assets/tagreel-logo-black.svg"
     }
   ],
   "files": [
     {
       "path": "share-sheet-carousel.html",
       "target": "compositions/share-sheet-carousel.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "assets/slide-01.jpg",
       "target": "assets/slide-01.jpg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/slide-02.jpg",
       "target": "assets/slide-02.jpg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/slide-03.jpg",
       "target": "assets/slide-03.jpg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/slide-04.jpg",
       "target": "assets/slide-04.jpg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
-      "path": "assets/hyperframes-logo-black.svg",
-      "target": "assets/hyperframes-logo-black.svg",
-      "type": "hyperframes:asset"
+      "path": "assets/tagreel-logo-black.svg",
+      "target": "assets/tagreel-logo-black.svg",
+      "type": "tagreel:asset"
     },
     {
       "path": "TEMPLATE.md",
       "target": "TEMPLATE.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
   ]
 }

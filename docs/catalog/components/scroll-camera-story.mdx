@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Camera","badge":"Stable","codeLines":805}}
   attribution={{"path":"registry/components/scroll-camera-story","tags":["camera","scroll","parallax","story","sections","slot","servo"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/scroll-camera-story/scroll-camera-story.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/scroll-camera-story/scroll-camera-story.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html scroll-camera-story.html
 <!doctype html>
 <!--
-  scroll-camera-story -- HyperFrames video primitive (camera)
+  scroll-camera-story -- Tagreel video primitive (camera)
 
   A compressed forced-scroll cinematic pass: a tall authored scene travels
   past the camera top to bottom. Four depth layers move at different rates
@@ -604,8 +604,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var layerFore = root.querySelector(".scs-fore");
             var sectionElements = Array.prototype.slice.call(root.querySelectorAll(".scs-section"));
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {
@@ -834,7 +834,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add scroll-camera-story" item="scroll-camera-story" />
+<InstallCommand command="npx tagreel add scroll-camera-story" item="scroll-camera-story" />
 
 That writes one file: `compositions/components/scroll-camera-story.html`.
 

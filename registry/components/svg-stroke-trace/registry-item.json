@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "svg-stroke-trace",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "SVG Stroke Trace",
   "description": "An authored SVG path draws from its measured length, holds with subtle drift, and optionally fills when the path is closed.",
   "tags": ["motion-primitive", "intro", "reveal", "svg", "stroke", "line-draw"],
@@ -14,7 +14,7 @@
     {
       "path": "svg-stroke-trace.html",
       "target": "compositions/components/svg-stroke-trace.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

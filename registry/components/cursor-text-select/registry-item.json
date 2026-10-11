@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cursor-text-select",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Text Select Cursor",
   "description": "An arrow turns into an I-beam over a document, drags a selection across a phrase character by character, raises a format toolbar, turns back into an arrow and clicks Bold.",
   "tags": ["cursor", "motion-primitive", "text", "selection", "editor", "toolbar"],
@@ -9,7 +9,7 @@
     {
       "path": "cursor-text-select.html",
       "target": "compositions/components/cursor-text-select.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "jobs": ["demonstrate"],

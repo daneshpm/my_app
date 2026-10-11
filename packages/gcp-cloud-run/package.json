@@ -1,10 +1,10 @@
 {
-  "name": "@hyperframes/gcp-cloud-run",
+  "name": "@tagreel/gcp-cloud-run",
   "version": "0.8.137",
-  "description": "Google Cloud Run + Workflows adapter for HyperFrames distributed rendering — request handler, client-side SDK, and Terraform module.",
+  "description": "Google Cloud Run + Workflows adapter for Tagreel distributed rendering — request handler, client-side SDK, and Terraform module.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heygen-com/hyperframes",
+    "url": "https://github.com/daneshpm/my_app",
     "directory": "packages/gcp-cloud-run"
   },
   "files": [
@@ -71,7 +71,7 @@
     "@google-cloud/storage": "^7.14.0",
     "@google-cloud/workflows": "^4.2.0",
     "@hono/node-server": "^2.0.5",
-    "@hyperframes/producer": "workspace:^",
+    "@tagreel/producer": "workspace:^",
     "hono": "^4.6.0",
     "puppeteer-core": "^25.10.0",
     "tar": "^7.4.3"

@@ -9,15 +9,15 @@ const { subpaths } = JSON.parse(readFileSync(resolve(packageDir, "package-subpat
 function refuse(name: string): never {
   throw new Error(`a light entry loaded ${name}`);
 }
-vi.mock("@hyperframes/core", () => refuse("@hyperframes/core"));
-vi.mock("@hyperframes/shader-transitions", () => refuse("@hyperframes/shader-transitions"));
+vi.mock("@tagreel/core", () => refuse("@tagreel/core"));
+vi.mock("@tagreel/shader-transitions", () => refuse("@tagreel/shader-transitions"));
 vi.mock("@codemirror/view", () => refuse("@codemirror/view"));
 vi.mock("@codemirror/state", () => refuse("@codemirror/state"));
 vi.mock("mediabunny", () => refuse("mediabunny"));
 vi.mock("gsap", () => refuse("gsap"));
-vi.mock("@hyperframes/parsers", () => refuse("@hyperframes/parsers"));
-vi.mock("@hyperframes/parsers/hf-ids", () => refuse("@hyperframes/parsers/hf-ids"));
-vi.mock("@hyperframes/sdk", () => refuse("@hyperframes/sdk"));
+vi.mock("@tagreel/parsers", () => refuse("@tagreel/parsers"));
+vi.mock("@tagreel/parsers/hf-ids", () => refuse("@tagreel/parsers/hf-ids"));
+vi.mock("@tagreel/sdk", () => refuse("@tagreel/sdk"));
 vi.mock("dockview-react", () => refuse("dockview-react"));
 
 describe("entries a host imports for its first screen", () => {

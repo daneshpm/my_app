@@ -1,11 +1,11 @@
 <!doctype html>
 <!--
-  variable-axis-type -- HyperFrames video primitive (typography / burst / emphasize)
+  variable-axis-type -- Tagreel video primitive (typography / burst / emphasize)
 
   Concept: one headline gains emphasis by morphing a single variable-font axis.
   The glyphs change shape while the text element itself stays fixed.
 
-  Compiled-from evidence: hyperframes-research-type-svg.md, VariableAxisType.
+  Compiled-from evidence: tagreel-research-type-svg.md, VariableAxisType.
   The research identifies variable axes as deterministic numeric seek handles and
   requires a complete, stable axis list, a font-ready gate, and midpoint checks.
 
@@ -126,8 +126,8 @@
             var root = document.getElementById("root");
             var headline = root.querySelector(".vat-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "IMPACT" : String(vars.text);

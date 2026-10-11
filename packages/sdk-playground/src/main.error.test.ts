@@ -2,8 +2,8 @@
 import pageHtml from "../index.html?raw";
 import { expect, it, vi } from "vitest";
 
-vi.mock("@hyperframes/sdk", () => ({ openComposition: vi.fn() }));
-vi.mock("@hyperframes/core/gsap-parser-acorn", () => ({ parseGsapScriptAcorn: vi.fn() }));
+vi.mock("@tagreel/sdk", () => ({ openComposition: vi.fn() }));
+vi.mock("@tagreel/core/gsap-parser-acorn", () => ({ parseGsapScriptAcorn: vi.fn() }));
 vi.mock("gsap/dist/gsap.min.js?raw", () => ({ default: "" }));
 vi.mock("./fileAdapter.js", () => ({
   createFileAdapter: () => Promise.reject(new Error('<img src=x onerror="alert(1)"> & failed')),

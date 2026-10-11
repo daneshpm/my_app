@@ -1,7 +1,7 @@
 // fallow-ignore-file code-duplication
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import type { RegistryItem } from "@hyperframes/core";
+import type { RegistryItem } from "@tagreel/core";
 import { catalogRow, countUnindexed, pickByName } from "./catalog.js";
 
 /** The whole registry, which is what "in this registry" has to be measured against. */
@@ -188,12 +188,12 @@ vi.mock("../registry/localSemantic.js", () => ({
 
 const block = (name: string, tags?: string[]): { name: string; type: string; tags?: string[] } => ({
   name,
-  type: "hyperframes:block",
+  type: "tagreel:block",
   tags,
 });
 const component = (name: string): { name: string; type: string } => ({
   name,
-  type: "hyperframes:component",
+  type: "tagreel:component",
 });
 
 interface Envelope {
@@ -671,7 +671,7 @@ describe("the on-device download offer", () => {
 
     const { err } = await asATerminal(() => runForExit({ query: "count up" }));
 
-    expect(err).toContain("Could not save the answer in settings; `hyperframes doctor` says why.");
+    expect(err).toContain("Could not save the answer in settings; `tagreel doctor` says why.");
   });
 
   it.each([
@@ -817,7 +817,7 @@ describe("the on-device download offer", () => {
 describe("catalogRow", () => {
   const block = {
     name: "app-showcase",
-    type: "hyperframes:block",
+    type: "tagreel:block",
     title: "App Showcase",
     description: "Three phones",
     tags: ["showcase"],

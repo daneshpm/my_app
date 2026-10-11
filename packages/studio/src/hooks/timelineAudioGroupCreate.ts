@@ -9,7 +9,7 @@
 import { useCallback } from "react";
 import { usePlayerStore, type TimelineElement } from "../player";
 import { saveProjectFilesWithHistory } from "../utils/studioFileHistory";
-import { HF_AUDIO_GROUP_ATTR, HF_AUDIO_GROUP_TAG } from "@hyperframes/core/audio-groups";
+import { HF_AUDIO_GROUP_ATTR, HF_AUDIO_GROUP_TAG } from "@tagreel/core/audio-groups";
 import { runtimeAudioId } from "../player/lib/timelineElementHelpers";
 import { invalidateGroupInfoCache } from "../player/lib/timelineGroupInfo";
 import { readTagSnippetByTarget, type PatchOperation } from "../utils/sourcePatcher";

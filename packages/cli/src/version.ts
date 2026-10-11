@@ -5,4 +5,4 @@ export const VERSION = typeof __CLI_VERSION__ !== "undefined" ? __CLI_VERSION__ 
 export const PRODUCER_VERSION =
   typeof __PRODUCER_VERSION__ !== "undefined" ? __PRODUCER_VERSION__ : "0.0.0-dev";
 /** npm package name, injected from package.json at build time. */
-export const PACKAGE_NAME = typeof __CLI_NAME__ !== "undefined" ? __CLI_NAME__ : "hyperframes";
+export const PACKAGE_NAME = typeof __CLI_NAME__ !== "undefined" ? __CLI_NAME__ : "tagreel";

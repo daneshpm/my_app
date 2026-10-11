@@ -8,10 +8,7 @@ import { createRenderCancellationScope } from "../utils/renderCancellation.js";
 import { PARAKEET_MODEL_LABEL } from "../whisper/parakeet.js";
 
 export const examples: Example[] = [
-  [
-    "Download the Parakeet speech model that transcribe uses",
-    "hyperframes models install parakeet",
-  ],
+  ["Download the Parakeet speech model that transcribe uses", "tagreel models install parakeet"],
 ];
 
 function fail(message: string, json: boolean): never {
@@ -105,7 +102,7 @@ export default defineCommand({
   async run({ args }) {
     if (args.action !== "install" || args.name !== "parakeet") {
       fail(
-        `Unknown: models ${args.action} ${args.name}. Try: hyperframes models install parakeet`,
+        `Unknown: models ${args.action} ${args.name}. Try: tagreel models install parakeet`,
         args.json,
       );
     }

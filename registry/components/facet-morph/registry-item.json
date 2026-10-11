@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "facet-morph",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Facet Morph",
   "description": "A faceted low-poly mass of 36 triangles continuously reshapes between three authored silhouettes (blob, mark, badge) with per-facet flat shading that recomputes as the vertices move. Light reads from the upper left; lit facets lift toward a pale accent-tinted tone while turned-away facets fall toward near-black. One calm continuous morph, then a settled hold.",
   "tags": ["motion-primitive", "intro", "morph", "low-poly", "svg", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "facet-morph.html",
       "target": "compositions/components/facet-morph.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

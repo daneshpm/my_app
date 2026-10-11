@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Cursors","badge":"Stable","codeLines":720}}
   attribution={{"path":"registry/components/cursor-zoom-follow","tags":["cursor","camera","zoom","screen-recording","click","product-demo"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/cursor-zoom-follow/cursor-zoom-follow.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/cursor-zoom-follow/cursor-zoom-follow.html"
 >
 
 <CatalogSlot slot="code">
@@ -404,8 +404,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
           }
           var scopedVariables = {};
           try {
-            if (window.__hyperframes && typeof window.__hyperframes.getVariables === "function") {
-              scopedVariables = window.__hyperframes.getVariables() || {};
+            if (window.__tagreel && typeof window.__tagreel.getVariables === "function") {
+              scopedVariables = window.__tagreel.getVariables() || {};
             }
           } catch (error) {
             /* no scoped variables API in this context */
@@ -445,7 +445,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
           var ZOOM = num(vars.zoom, 1.8, 1, 3);
           var accent = color(vars.accent, "rgb(10,132,255)");
           var u = W / 1920;
-          // Mirrors @hyperframes/parsers' isSafeMediaUrl allowlist: this
+          // Mirrors @tagreel/parsers' isSafeMediaUrl allowlist: this
           // composition has no build step to import it from, so the same
           // scheme rule (relative or http/https/blob/data:image only) is
           // inlined rather than trusting the raw variable into img.src.
@@ -749,7 +749,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add cursor-zoom-follow" item="cursor-zoom-follow" />
+<InstallCommand command="npx tagreel add cursor-zoom-follow" item="cursor-zoom-follow" />
 
 That writes one file: `compositions/components/cursor-zoom-follow.html`.
 

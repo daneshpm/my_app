@@ -1,7 +1,7 @@
 import type { PersistAdapter, PersistVersionEntry } from "./types.js";
 import type { PersistErrorEvent } from "../types.js";
 import { readFile, writeFile, mkdir, readdir, unlink, stat } from "node:fs/promises";
-import { replaceFileAtomically, resolveWritePath } from "@hyperframes/core/atomic-file";
+import { replaceFileAtomically, resolveWritePath } from "@tagreel/core/atomic-file";
 import { join, dirname } from "node:path";
 
 export interface FsAdapterOptions {

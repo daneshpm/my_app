@@ -1,7 +1,7 @@
 /**
  * Lambda-local render path for the regression harness.
  *
- * Drives the OSS `@hyperframes/aws-lambda` handler through the exact
+ * Drives the OSS `@tagreel/aws-lambda` handler through the exact
  * sequence Step Functions invokes in production:
  *
  *     handler({ Action: "plan" })              → planDir tarball on S3
@@ -34,8 +34,8 @@ import {
 import { dirname, join } from "node:path";
 import { pipeline } from "node:stream/promises";
 import { Readable } from "node:stream";
-import { downloadS3ObjectToFile, tarDirectory, untarDirectory } from "@hyperframes/aws-lambda";
-import { handler } from "@hyperframes/aws-lambda/handler";
+import { downloadS3ObjectToFile, tarDirectory, untarDirectory } from "@tagreel/aws-lambda";
+import { handler } from "@tagreel/aws-lambda/handler";
 import type {
   AssembleEvent,
   HandlerDeps,
@@ -44,7 +44,7 @@ import type {
   RenderChunkEvent,
   RenderChunkLambdaResult,
   SerializableDistributedRenderConfig,
-} from "@hyperframes/aws-lambda";
+} from "@tagreel/aws-lambda";
 
 export type {
   LambdaLocalRenderResult,

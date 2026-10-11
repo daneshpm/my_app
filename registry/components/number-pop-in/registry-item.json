@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "number-pop-in",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Number Pop In",
   "description": "A transitions.dev-inspired digit pop-in with blur, lift, and staggered value reveal",
   "tags": ["video-primitive", "transition-primitive", "transitions-dev-port", "number", "pop"],
@@ -9,7 +9,7 @@
     {
       "path": "number-pop-in.html",
       "target": "compositions/components/number-pop-in.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

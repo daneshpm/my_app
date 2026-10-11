@@ -19,7 +19,7 @@ const images = elements.filter((el) => el.tag === "img");
 const timed = elements.filter((el) => el.start !== null);
 ```
 
-Each `ElementSnapshot` (aliased from `HyperFramesElement`) carries:
+Each `ElementSnapshot` (aliased from `TagreelElement`) carries:
 
 | Field | Type | Notes |
 |-------|------|-------|
@@ -53,7 +53,7 @@ Both bare ids (top-level elements) and scoped ids (sub-composition elements) are
 Returns an array of `scopedId` strings for every element that matches all supplied `FindQuery` fields. All fields are optional; an empty query matches everything (equivalent to `getElements().map(el => el.scopedId)`).
 
 ```typescript
-import type { FindQuery } from "@hyperframes/sdk";
+import type { FindQuery } from "@tagreel/sdk";
 
 // By tag
 const imgIds = comp.find({ tag: "img" });
@@ -247,7 +247,7 @@ comp.setSelection([]); // clear
     Full method signatures for every Composition method.
   </Card>
   <Card title="Types reference" icon="brackets-curly" href="/sdk/reference/types">
-    HyperFramesElement, FindQuery, ElementHandle, SelectionProxy, and more.
+    TagreelElement, FindQuery, ElementHandle, SelectionProxy, and more.
   </Card>
   <Card title="Edit Operations reference" icon="pen-to-square" href="/sdk/reference/edit-operations">
     Every EditOp variant — for the dispatch() and can() layers.

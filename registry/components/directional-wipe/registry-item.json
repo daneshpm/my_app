@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "directional-wipe",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Directional Wipe",
   "description": "A directional scene push that slides one panel over another.",
   "tags": ["transition-primitive"],
@@ -55,7 +55,7 @@
     {
       "path": "directional-wipe.html",
       "target": "compositions/components/directional-wipe.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

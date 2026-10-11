@@ -25,7 +25,7 @@ endpoint, use a [hosted template](/guides/deploy).
 - `gcloud` authenticated for that project
 - Terraform 1.5 or newer
 - Cloud Build access, or an existing compatible container image
-- `@hyperframes/gcp-cloud-run` installed alongside the CLI
+- `@tagreel/gcp-cloud-run` installed alongside the CLI
 
 The CLI can build the renderer automatically when it runs from a my_app
 repository checkout. Outside the repository, pass an image built from
@@ -34,12 +34,12 @@ repository checkout. Outside the repository, pass an image built from
 ## Deploy
 
 ```bash
-hyperframes cloudrun deploy --project my-gcp-project
+tagreel cloudrun deploy --project my-gcp-project
 ```
 
 The command enables the required Google Cloud APIs, builds and pushes the
 renderer when needed, applies the bundled Terraform module, and stores the
-resulting bucket, service URL, and workflow name in `~/.hyperframes/`.
+resulting bucket, service URL, and workflow name in `~/.tagreel/`.
 
 The default region is `us-central1`. Machine and scaling controls include
 `--region`, `--cpu`, `--memory`, `--max-instances`, and `--timeout`.
@@ -50,7 +50,7 @@ Width and height describe the authored canvas. Use `--output-resolution` when
 the encoded result should be supersampled without changing the layout.
 
 ```bash
-hyperframes cloudrun render ./my-project \
+tagreel cloudrun render ./my-project \
   --width 1920 \
   --height 1080 \
   --wait
@@ -59,7 +59,7 @@ hyperframes cloudrun render ./my-project \
 The command accepts the same template variables used by local and AWS renders:
 
 ```bash
-hyperframes cloudrun render ./card-template \
+tagreel cloudrun render ./card-template \
   --width 1920 \
   --height 1080 \
   --variables '{"name":"Ada"}' \
@@ -75,14 +75,14 @@ Projects are content-addressed. Upload an unchanged project once, then reuse
 its site ID for later renders:
 
 ```bash
-hyperframes cloudrun sites create ./my-project
+tagreel cloudrun sites create ./my-project
 ```
 
 Use `render-batch` with a JSONL file when one template needs many sets of
 variables:
 
 ```bash
-hyperframes cloudrun render-batch ./card-template \
+tagreel cloudrun render-batch ./card-template \
   --batch ./recipients.jsonl \
   --width 1920 \
   --height 1080 \
@@ -100,8 +100,8 @@ Each JSONL row contains an output key and optional variables:
 Without `--wait`, a render returns its workflow execution name immediately.
 
 ```bash
-hyperframes cloudrun progress <execution-name>
-hyperframes cloudrun destroy --project my-gcp-project
+tagreel cloudrun progress <execution-name>
+tagreel cloudrun destroy --project my-gcp-project
 ```
 
 `destroy` removes the Terraform-managed stack and its render bucket. Download
@@ -109,7 +109,7 @@ anything that must be retained before running it.
 
 ## Programmatic use
 
-`@hyperframes/gcp-cloud-run/sdk` exposes `deploySite`, `renderToCloudRun`, and
+`@tagreel/gcp-cloud-run/sdk` exposes `deploySite`, `renderToCloudRun`, and
 `getRenderProgress` for Node backends. The package also exports the Terraform
 module and HTTP handler used by the deployed service.
 

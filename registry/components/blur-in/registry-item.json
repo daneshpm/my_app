@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "blur-in",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Blur In",
   "description": "An Operator Black word-level content reveal that resolves its own text from controlled blur",
   "tags": ["video-primitive", "blur-in", "text-effect"],
@@ -9,7 +9,7 @@
     {
       "path": "blur-in.html",
       "target": "compositions/components/blur-in.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

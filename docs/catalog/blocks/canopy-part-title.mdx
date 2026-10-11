@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":12,"width":1920,"height":1080,"category":"3D motion","badge":"Stable","codeLines":1389}}
   attribution={{"path":"registry/blocks/canopy-part-title","tags":["3d-motion","title-card","leaves","organic","depth-of-field","two-headlines","sweep"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/canopy-part-title/canopy-part-title.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/canopy-part-title/canopy-part-title.html"
 >
 
 <CatalogSlot slot="code">
@@ -134,8 +134,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         // getVariables carries the declared defaults, standalone and mounted.
         var V = {};
         try {
-          if (window.__hyperframes && window.__hyperframes.getVariables)
-            V = window.__hyperframes.getVariables() || {};
+          if (window.__tagreel && window.__tagreel.getVariables)
+            V = window.__tagreel.getVariables() || {};
         } catch (e) {
           /* corrupt declarations must not blank the composition */
         }
@@ -367,11 +367,11 @@ import { InstallCommand } from "/snippets/install-command.jsx";
       const W = 1920,
         H = 1080,
         DUR = 12;
-      // Bare __hyperframes is this composition's own in a module; getVariables carries the defaults.
+      // Bare __tagreel is this composition's own in a module; getVariables carries the defaults.
       let V = {};
       try {
-        if (typeof __hyperframes !== "undefined" && __hyperframes.getVariables)
-          V = __hyperframes.getVariables() || {};
+        if (typeof __tagreel !== "undefined" && __tagreel.getVariables)
+          V = __tagreel.getVariables() || {};
       } catch (e) {
         /* corrupt declarations must not blank the composition */
       }
@@ -667,8 +667,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
       // Beside this file when mounted; a runtime without assetUrl keeps the plain path.
       const assetUrl = (path) =>
-        typeof __hyperframes !== "undefined" && __hyperframes.assetUrl
-          ? __hyperframes.assetUrl(path)
+        typeof __tagreel !== "undefined" && __tagreel.assetUrl
+          ? __tagreel.assetUrl(path)
           : path;
       const textureLoader = new THREE.TextureLoader();
       const [photoSurface, photoNormal] = await Promise.all([
@@ -1418,7 +1418,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add canopy-part-title" item="canopy-part-title" />
+<InstallCommand command="npx tagreel add canopy-part-title" item="canopy-part-title" />
 
 That writes `compositions/canopy-part-title/canopy-part-title.html`, plus 3 supporting files under `compositions/canopy-part-title/assets/` and `compositions/canopy-part-title/`.
 

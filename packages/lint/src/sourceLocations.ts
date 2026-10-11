@@ -1,8 +1,8 @@
 import { Parser } from "htmlparser2";
-import type { HyperframeLintFinding } from "./types";
+import type { TagreelLintFinding } from "./types";
 import { parseHtmlStructure, readDecodedAttr } from "./utils";
 
-type Location = Pick<HyperframeLintFinding, "line" | "column">;
+type Location = Pick<TagreelLintFinding, "line" | "column">;
 
 function normalized(source: string): { text: string; offsets: number[] } {
   // An array, not +=: V8 flattens a += string on every endsWith, which made this quadratic.
@@ -21,7 +21,7 @@ function normalized(source: string): { text: string; offsets: number[] } {
 
 /** Resolve against original bytes, not the comment-stripped/template-unwrapped rule input.
  * Ambiguous snippets/IDs deliberately have no coordinates rather than pointing at the wrong copy. */
-export function createSourceLocator(source: string): (finding: HyperframeLintFinding) => Location {
+export function createSourceLocator(source: string): (finding: TagreelLintFinding) => Location {
   const tags = parseHtmlStructure(source).tags;
   const searchable = source.split("");
   const parser = new Parser({
@@ -52,7 +52,7 @@ export function createSourceLocator(source: string): (finding: HyperframeLintFin
   };
 }
 
-export function sourceLocationFor(source: string, finding: HyperframeLintFinding): Location {
+export function sourceLocationFor(source: string, finding: TagreelLintFinding): Location {
   return createSourceLocator(source)(finding);
 }
 

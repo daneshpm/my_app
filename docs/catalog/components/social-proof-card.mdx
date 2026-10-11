@@ -13,11 +13,11 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   compositionSrc="compositions/components/social-proof-card.html"
   title="Social Proof Card"
   description="The app-store close as one mountable scene: wordmark, five stars, a proof line, three feature icons and a CTA capsule build in a quiet stagger and hold - measured from reference ad footage. For an animated star sweep use star-rating-fill; for a quote card use testimonial-proof-card; for a bare lockup use cta-lockup"
-  variables={[{"id":"brand","type":"string","role":"content","label":"Brand","description":"Wordmark at the top of the card.","default":"HyperFrames"},{"id":"proof","type":"string","role":"content","label":"Proof line","description":"Social-proof line under the stars.","default":"12,000+ creators"},{"id":"cta","type":"string","role":"content","label":"CTA","description":"Label on the closing capsule.","default":"Start rendering free"},{"id":"f1","type":"string","role":"content","label":"Feature 1","description":"First feature, | breaks the line.","default":"Write|plain HTML"},{"id":"f2","type":"string","role":"content","label":"Feature 2","description":"Second feature, | breaks the line.","default":"Render|pixel-perfect"},{"id":"f3","type":"string","role":"content","label":"Feature 3","description":"Third feature, | breaks the line.","default":"Own|every line"}]}
+  variables={[{"id":"brand","type":"string","role":"content","label":"Brand","description":"Wordmark at the top of the card.","default":"Tagreel"},{"id":"proof","type":"string","role":"content","label":"Proof line","description":"Social-proof line under the stars.","default":"12,000+ creators"},{"id":"cta","type":"string","role":"content","label":"CTA","description":"Label on the closing capsule.","default":"Start rendering free"},{"id":"f1","type":"string","role":"content","label":"Feature 1","description":"First feature, | breaks the line.","default":"Write|plain HTML"},{"id":"f2","type":"string","role":"content","label":"Feature 2","description":"Second feature, | breaks the line.","default":"Render|pixel-perfect"},{"id":"f3","type":"string","role":"content","label":"Feature 3","description":"Third feature, | breaks the line.","default":"Own|every line"}]}
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":230}}
   attribution={{"author":"Miao Yang","path":"registry/components/social-proof-card","tags":["motion-primitive","social-proof","end-card","cta","vertical"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/social-proof-card/social-proof-card.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/social-proof-card/social-proof-card.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html social-proof-card.html
 <!doctype html>
 <!--
-  social-proof-card: HyperFrames motion primitive (scene)
+  social-proof-card: Tagreel motion primitive (scene)
 
   The app-store close, measured from reference ad footage: wordmark, five
   stars, a proof line, three feature icons, a CTA capsule - built in a quiet
@@ -41,7 +41,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   lang="en"
   data-composition-id="social-proof-card"
   data-composition-duration="4"
-  data-composition-variables='[{"id": "brand", "type": "string", "role": "content", "label": "Brand", "description": "Wordmark at the top of the card.", "default": "HyperFrames"}, {"id": "proof", "type": "string", "role": "content", "label": "Proof line", "description": "Social-proof line under the stars.", "default": "12,000+ creators"}, {"id": "cta", "type": "string", "role": "content", "label": "CTA", "description": "Label on the closing capsule.", "default": "Start rendering free"}, {"id": "f1", "type": "string", "role": "content", "label": "Feature 1", "description": "First feature, | breaks the line.", "default": "Write|plain HTML"}, {"id": "f2", "type": "string", "role": "content", "label": "Feature 2", "description": "Second feature, | breaks the line.", "default": "Render|pixel-perfect"}, {"id": "f3", "type": "string", "role": "content", "label": "Feature 3", "description": "Third feature, | breaks the line.", "default": "Own|every line"}]'
+  data-composition-variables='[{"id": "brand", "type": "string", "role": "content", "label": "Brand", "description": "Wordmark at the top of the card.", "default": "Tagreel"}, {"id": "proof", "type": "string", "role": "content", "label": "Proof line", "description": "Social-proof line under the stars.", "default": "12,000+ creators"}, {"id": "cta", "type": "string", "role": "content", "label": "CTA", "description": "Label on the closing capsule.", "default": "Start rendering free"}, {"id": "f1", "type": "string", "role": "content", "label": "Feature 1", "description": "First feature, | breaks the line.", "default": "Write|plain HTML"}, {"id": "f2", "type": "string", "role": "content", "label": "Feature 2", "description": "Second feature, | breaks the line.", "default": "Render|pixel-perfect"}, {"id": "f3", "type": "string", "role": "content", "label": "Feature 3", "description": "Third feature, | breaks the line.", "default": "Own|every line"}]'
 >
   <head>
     <meta charset="UTF-8" />
@@ -141,7 +141,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
           }
         </style>
         <div class="spc-stage">
-          <div class="spc-brand" id="spc-brand">HyperFrames</div>
+          <div class="spc-brand" id="spc-brand">Tagreel</div>
           <div class="spc-stars" id="spc-stars"></div>
           <div class="spc-proof" id="spc-proof">12,000+ creators</div>
           <div class="spc-feats" id="spc-feats"></div>
@@ -153,8 +153,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             "use strict";
             var compositionId = "social-proof-card";
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             function text(v, fb, mx) {
               if (typeof v !== "string") return fb;
@@ -162,7 +162,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
               if (!t) return fb;
               return t.length > mx ? t.slice(0, mx) : t;
             }
-            document.getElementById("spc-brand").textContent = text(vars.brand, "HyperFrames", 26);
+            document.getElementById("spc-brand").textContent = text(vars.brand, "Tagreel", 26);
             document.getElementById("spc-proof").textContent = text(
               vars.proof,
               "12,000+ creators",
@@ -259,7 +259,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add social-proof-card" item="social-proof-card" />
+<InstallCommand command="npx tagreel add social-proof-card" item="social-proof-card" />
 
 That writes one file: `compositions/components/social-proof-card.html`.
 
@@ -281,7 +281,7 @@ want to change on the element:
 
 | Variable | Default | Accepts | What it does |
 | --- | --- | --- | --- |
-| `brand` | `HyperFrames` | string | Wordmark at the top of the card. |
+| `brand` | `Tagreel` | string | Wordmark at the top of the card. |
 | `proof` | `12,000+ creators` | string | Social-proof line under the stars. |
 | `cta` | `Start rendering free` | string | Label on the closing capsule. |
 | `f1` | `Write|plain HTML` | string | First feature, | breaks the line. |
@@ -295,7 +295,7 @@ defaults, so this behaves exactly like the preview above until you change one:
 <div
   data-composition-id="social-proof-card"
   data-composition-src="compositions/components/social-proof-card.html"
-  data-variable-values='{"brand":"HyperFrames","proof":"12,000+ creators","cta":"Start rendering free","f1":"Write|plain HTML","f2":"Render|pixel-perfect","f3":"Own|every line"}'
+  data-variable-values='{"brand":"Tagreel","proof":"12,000+ creators","cta":"Start rendering free","f1":"Write|plain HTML","f2":"Render|pixel-perfect","f3":"Own|every line"}'
 ></div>
 ```
 

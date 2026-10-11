@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  marker-checklist-card: HyperFrames motion primitive (scene)
+  marker-checklist-card: Tagreel motion primitive (scene)
 
   A hand-lettered paper card, measured from reference ad footage: a marker
   headline with an underline and a drawn ellipse around one word, then three
@@ -221,8 +221,8 @@
             "use strict";
             var compositionId = "marker-checklist-card";
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             function text(v, fb, mx) {
               if (typeof v !== "string") return fb;

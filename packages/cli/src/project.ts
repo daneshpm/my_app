@@ -9,6 +9,6 @@ export const PROJECT_REPO_SLUG = `${PROJECT_REPO_OWNER}/${PROJECT_REPO_NAME}`;
 export const PROJECT_REPO_URL = `https://github.com/${PROJECT_REPO_SLUG}`;
 export const ISSUES_URL = `${PROJECT_REPO_URL}/issues`;
 
-/** Built-in registry base URL. `HYPERFRAMES_REGISTRY` overrides it. */
+/** Built-in registry base URL. `TAGREEL_REGISTRY` overrides it. */
 export const DEFAULT_RAW_REGISTRY_URL = `https://raw.githubusercontent.com/${PROJECT_REPO_SLUG}/main/registry`;
-export const RAW_REGISTRY_URL = process.env["HYPERFRAMES_REGISTRY"] || DEFAULT_RAW_REGISTRY_URL;
+export const RAW_REGISTRY_URL = process.env["TAGREEL_REGISTRY"] || DEFAULT_RAW_REGISTRY_URL;

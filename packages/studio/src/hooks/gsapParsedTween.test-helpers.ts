@@ -1,6 +1,6 @@
 import { vi } from "vitest";
-import { classifyTweenPropertyGroup } from "@hyperframes/core/gsap-parser";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import { classifyTweenPropertyGroup } from "@tagreel/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { usePlayerStore } from "../player/store/playerStore";
 
 /** A property's `[start, end]` as GSAP parsed it from the file when the tween first rendered. */

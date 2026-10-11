@@ -13,8 +13,8 @@ import {
   type HfAudioFxDef,
   type HfAudioFxNode,
   type HfAudioFxParamValues,
-} from "@hyperframes/core/audio-fx";
-import { fxAutomationTarget } from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-fx";
+import { fxAutomationTarget } from "@tagreel/core/audio-automation";
 import { trackParamCommitted } from "./audioFxTelemetry.js";
 import { FxParams } from "./propertyPanelFxControls.js";
 

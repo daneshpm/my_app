@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "slit-scan-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Slit Scan Reveal",
   "description": "The frame's rows sample an authored subject at offset times: a canvas painter draws row slices of one pure position function evaluated at t minus offset(row), smearing arrival through time until the offsets collapse to zero and the mark holds coherent.",
   "tags": ["motion-primitive", "time", "slit-scan", "canvas", "deterministic", "experiment"],
@@ -14,7 +14,7 @@
     {
       "path": "slit-scan-reveal.html",
       "target": "compositions/components/slit-scan-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -2,14 +2,14 @@
  * Browser integration test for fitTextFontSize.
  *
  * Launches headless Chrome, loads the runtime IIFE into a page,
- * and verifies that window.__hyperframes.fitTextFontSize produces
+ * and verifies that window.__tagreel.fitTextFontSize produces
  * correct results with real canvas measureText.
  *
- * Requires: puppeteer (dep of @hyperframes/engine)
+ * Requires: puppeteer (dep of @tagreel/engine)
  * Run: cd packages/engine && npx tsx scripts/test-fitTextFontSize-browser.ts
  */
 
-import { buildHyperframesRuntimeScript } from "../../core/src/inline-scripts/hyperframesRuntime.engine";
+import { buildTagreelRuntimeScript } from "../../core/src/inline-scripts/tagreelRuntime.engine";
 
 function assert(condition: unknown, message: string): void {
   if (!condition) {
@@ -32,11 +32,8 @@ async function main() {
     return;
   }
 
-  const runtimeSource = buildHyperframesRuntimeScript({ minify: false });
-  assert(
-    runtimeSource !== null,
-    "buildHyperframesRuntimeScript returned null — entry.ts not found",
-  );
+  const runtimeSource = buildTagreelRuntimeScript({ minify: false });
+  assert(runtimeSource !== null, "buildTagreelRuntimeScript returned null — entry.ts not found");
 
   const html = `<!DOCTYPE html>
 <html><head>
@@ -49,25 +46,25 @@ async function main() {
   window.__testResults = {};
 
   // Test 1: Short text should fit at base size
-  var r1 = window.__hyperframes.fitTextFontSize("HI");
+  var r1 = window.__tagreel.fitTextFontSize("HI");
   window.__testResults.shortText = r1;
 
   // Test 2: Wide text should shrink below base size but still fit at 1600px
-  var r2 = window.__hyperframes.fitTextFontSize(
+  var r2 = window.__tagreel.fitTextFontSize(
     "CONGRATULATIONS TO EVERYBODY IN THE WORLD",
     { fontFamily: "sans-serif", fontWeight: 900, maxWidth: 1600 }
   );
   window.__testResults.wideText = r2;
 
   // Test 3: Extremely wide text that can't fit should return minFontSize
-  var r3 = window.__hyperframes.fitTextFontSize(
+  var r3 = window.__tagreel.fitTextFontSize(
     "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
     { fontFamily: "sans-serif", fontWeight: 900, maxWidth: 400 }
   );
   window.__testResults.extremeText = r3;
 
   // Test 4: Function exists and is callable
-  window.__testResults.exists = typeof window.__hyperframes.fitTextFontSize === "function";
+  window.__testResults.exists = typeof window.__tagreel.fitTextFontSize === "function";
 </script>
 </body></html>`;
 
@@ -86,7 +83,7 @@ async function main() {
     const results = await page.evaluate(() => (window as any).__testResults);
 
     // Test 1: Short text fits at base size (78px default)
-    assert(results.exists === true, "fitTextFontSize should exist on window.__hyperframes");
+    assert(results.exists === true, "fitTextFontSize should exist on window.__tagreel");
     assert(
       results.shortText.fits === true,
       `Short text should fit, got fits=${results.shortText.fits}`,

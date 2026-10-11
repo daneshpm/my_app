@@ -12,7 +12,7 @@
   after fonts load, and both phrases shrink together to stay inside the host.
   This is a single-line effect; line breaks in either phrase become spaces.
 
-  Native HyperFrames port prepared through Hyfrme from:
+  Native Tagreel port prepared through Hyfrme from:
   https://github.com/Remocn/remocn/blob/3e03565f5c0001e143c2ed941eea7c3181f13260/registry/remocn/caret-swap/index.tsx
 
   MIT License
@@ -200,8 +200,8 @@
             );
             document.getElementById("cs-clip").dataset.duration = String(duration);
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             var fromText = typeof vars.from_text === "string" ? vars.from_text : "Executing it?";
             var toText =

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "editorial-flash-overlay",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Editorial Flash Overlay",
   "description": "Finite neutral-warm light layers for a seek-safe camera-flash cut or social reveal",
   "tags": [
@@ -22,7 +22,7 @@
     {
       "path": "editorial-flash-overlay.html",
       "target": "compositions/editorial-flash-overlay.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

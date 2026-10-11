@@ -11,10 +11,10 @@
   causal click, or carrying the eye across a scene that would otherwise read as
   static or stale.
 
-  mount contract: this file is a HyperFrames sub-composition, loaded by a host via
+  mount contract: this file is a Tagreel sub-composition, loaded by a host via
   data-composition-src, never opened standalone. The runtime clones ONLY the
   <template> contents into the host slot (see
-  skills/hyperframes-core/references/sub-compositions.md); everything outside
+  skills/tagreel-core/references/sub-compositions.md); everything outside
   <template>, including this <head>, is discarded at render. The root is #root:
   elastic, no data-width/data-height declared here, it fills whatever box the host
   clip gives it (position:absolute; inset:0). See demo.html for the mount usage
@@ -227,14 +227,14 @@
           }
           // Under mount, the runtime resolves this file's own declared
           // variables merged with the host clip's per-instance
-          // data-variable-values through a scoped window.__hyperframes,
+          // data-variable-values through a scoped window.__tagreel,
           // shadowed in just for this file's script. window.__hfVariables
           // stays in the merge too, as a raw fallback for the (non-mount)
           // case where this file is driven by an older render/preview path.
           var scopedVariables = {};
           try {
-            if (window.__hyperframes && typeof window.__hyperframes.getVariables === "function") {
-              scopedVariables = window.__hyperframes.getVariables() || {};
+            if (window.__tagreel && typeof window.__tagreel.getVariables === "function") {
+              scopedVariables = window.__tagreel.getVariables() || {};
             }
           } catch (error) {
             /* no scoped variables API in this context, fall through */

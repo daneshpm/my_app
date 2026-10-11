@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "icon-morph-beat",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Icon Morph Beat",
   "description": "An icon morphs between authored state silhouettes, shifts to an accent color, and marks completion with one restrained pulse.",
   "tags": ["motion-primitive", "product-demo", "icon", "morph", "state-change", "completion"],
@@ -14,7 +14,7 @@
     {
       "path": "icon-morph-beat.html",
       "target": "compositions/components/icon-morph-beat.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

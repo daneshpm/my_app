@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":309}}
   attribution={{"path":"registry/components/line-swap","tags":["motion-primitive","text-effects","swap","beat","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/line-swap/line-swap.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/line-swap/line-swap.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html line-swap.html
 <!doctype html>
 <!--
-  line-swap: HyperFrames video primitive (text effects / beat replacement)
+  line-swap: Tagreel video primitive (text effects / beat replacement)
 
   A masked full-line beat replacement, generalizing flagship frame 01: line_a
   rises into an overflow-hidden mask and holds center, then on the swap beat
@@ -189,8 +189,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var lineAInner = lineAEl.querySelector(".ls-line-inner");
             var lineBInner = lineBEl.querySelector(".ls-line-inner");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function asLine(value, fallback) {
@@ -338,7 +338,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add line-swap" item="line-swap" />
+<InstallCommand command="npx tagreel add line-swap" item="line-swap" />
 
 That writes one file: `compositions/components/line-swap.html`.
 

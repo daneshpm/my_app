@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "caption-neon-glow",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Neon Glow",
   "description": "Cyan and magenta neon glow with keyword accent colors",
   "tags": ["captions", "caption-style", "neon", "glow", "gaming"],
@@ -9,7 +9,7 @@
     {
       "path": "caption-neon-glow.html",
       "target": "compositions/components/caption-neon-glow.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

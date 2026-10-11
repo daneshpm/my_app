@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "vector-editor-rig",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Vector Editor Rig",
   "description": "A dark design-tool app chrome with a live vector pen path, sequential anchor points, bezier handles, a selection frame, and theme-driven blue accents.",
   "tags": [
@@ -22,7 +22,7 @@
     {
       "path": "vector-editor-rig.html",
       "target": "compositions/components/vector-editor-rig.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

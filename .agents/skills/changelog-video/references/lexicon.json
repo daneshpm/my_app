@@ -1,7 +1,7 @@
 {
   "_readme": "display → spoken. Plain-text phonetics for HeyGen TTS (no SSML). Grow this file; never guess a missing term — ask, add, then listen to the generated line. Slash commands: caption /name, speak 'slash <name>'.",
   "/figma": "slash Figma",
-  "/hyperframes": "slash hyper-frames",
+  "/tagreel": "slash hyper-frames",
   "JSON": "jay-sawn",
   "GSAP": "jee-sap",
   "CLI": "C L I",
@@ -45,7 +45,7 @@
   "repo": "repo",
   "HeyGen": "hey-jen",
   "heygen.com": "hey-jen dot com",
-  "hyperframes.heygen.com": "hyperframes dot hey-jen dot com",
+  "github.com/daneshpm/my_app/tree/main/docs": "tagreel dot hey-jen dot com",
   "MusicGen": "music-jen",
   "Kokoro": "koh-koh-roh",
   "Figma": "Figma",

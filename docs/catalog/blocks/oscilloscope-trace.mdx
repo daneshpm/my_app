@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":6,"width":1920,"height":1080,"category":"Showcases","badge":"Stable","codeLines":518}}
   attribution={{"path":"registry/blocks/oscilloscope-trace","tags":["instrument","data","showcase","retro"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/oscilloscope-trace/oscilloscope-trace.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/oscilloscope-trace/oscilloscope-trace.html"
 >
 
 <CatalogSlot slot="code">
@@ -225,7 +225,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         var SQUARE_SHARPNESS = 8;
 
         function readVariables() {
-          var api = window.__hyperframes && window.__hyperframes.getVariables;
+          var api = window.__tagreel && window.__tagreel.getVariables;
           if (typeof api === "function") return api() || {};
           // Standalone fallback (raw file opened without the runtime): read
           // the same declaration the runtime reads, so defaults have exactly
@@ -547,7 +547,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add oscilloscope-trace" item="oscilloscope-trace" />
+<InstallCommand command="npx tagreel add oscilloscope-trace" item="oscilloscope-trace" />
 
 That writes one file: `compositions/oscilloscope-trace.html`.
 

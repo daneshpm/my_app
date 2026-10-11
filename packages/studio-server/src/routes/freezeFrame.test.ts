@@ -11,7 +11,7 @@ import {
 } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, dirname, join } from "node:path";
-import { isAtomicTempPath } from "@hyperframes/core/atomic-file";
+import { isAtomicTempPath } from "@tagreel/core/atomic-file";
 import { registerFreezeFrameRoutes, type FrameExtractor } from "./freezeFrame";
 import { fileContentVersion } from "../helpers/fileVersion";
 import { openProjectHistory, type ProjectHistory } from "../history";

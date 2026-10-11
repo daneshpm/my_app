@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":96}}
   attribution={{"path":"registry/components/fade-through","tags":["motion-primitive","transition","fade","crossfade","scene"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/fade-through/fade-through.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/fade-through/fade-through.html"
 >
 
 <CatalogSlot slot="code">
@@ -78,8 +78,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -125,7 +125,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add fade-through" item="fade-through" />
+<InstallCommand command="npx tagreel add fade-through" item="fade-through" />
 
 That writes one file: `compositions/components/fade-through.html`.
 

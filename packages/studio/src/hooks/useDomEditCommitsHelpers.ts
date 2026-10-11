@@ -8,7 +8,7 @@ import type { DomEditPatchBatch } from "./domEditCommitTypes";
 import { formatFieldsSuffix } from "./gsapScriptCommitHelpers";
 import { studioWriteHeaders } from "../utils/studioFileVersion";
 import { studioApiFetch } from "../utils/studioApiFetch";
-import { findUnsafeDomPatchValues } from "@hyperframes/core/studio-api/finite-mutation";
+import { findUnsafeDomPatchValues } from "@tagreel/core/studio-api/finite-mutation";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 
 export function formatUnsafeFieldList(fields: Array<{ path: string }>): string {

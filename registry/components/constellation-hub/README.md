@@ -21,7 +21,7 @@ Feature nodes orbit one fixed hub. Each connector draws from the hub to its node
   class="clip"
   data-composition-id="constellation-hub"
   data-composition-src="./constellation-hub.html"
-  data-variable-values='{"hub_label":"HyperFrames","nodes":"Author,Check,Render,Publish","cues":"0.6,1.4,2.2,3.0"}'
+  data-variable-values='{"hub_label":"Tagreel","nodes":"Author,Check,Render,Publish","cues":"0.6,1.4,2.2,3.0"}'
   data-start="0"
   data-duration="4.5"
   data-track-index="0"

@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { openComposition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
 import { cutoverCommittedOrThrow, sdkTimingBatchPersist } from "./sdkCutover";
 import { getStudioSaveErrorMessage } from "./studioSaveDiagnostics";
 

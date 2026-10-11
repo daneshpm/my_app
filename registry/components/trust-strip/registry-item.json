@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "trust-strip",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Trust Strip",
   "description": "A monochrome trust row of wide-tracked mono wordmarks that fade in with an opacity-only left-to-right stagger, then hold dead still.",
   "tags": ["motion-primitive", "proof", "trust", "logo-strip", "wordmarks"],
@@ -14,7 +14,7 @@
     {
       "path": "trust-strip.html",
       "target": "compositions/components/trust-strip.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

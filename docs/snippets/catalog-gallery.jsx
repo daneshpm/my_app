@@ -5,7 +5,7 @@ export const CatalogGallery = ({ catalog, initialGroup = "", initialSection = ""
     // sibling top-level const/function declarations in this file are dropped from the
     // deployed build, so these must live inside the component (window.__hfDocsPlayerLoading
     // still dedupes the actual script load across every instance).
-    const PLAYER_SCRIPT_URL = 'https://cdn.jsdelivr.net/npm/@hyperframes/player@latest/dist/hyperframes-player.global.js';
+    const PLAYER_SCRIPT_URL = 'https://cdn.jsdelivr.net/npm/@tagreel/player@latest/dist/tagreel-player.global.js';
     const REST_SECONDS = 3;
     const MAX_DOM_PLAYERS = 6;
     const MAX_WEBGL_PLAYERS = 1;
@@ -20,7 +20,7 @@ export const CatalogGallery = ({ catalog, initialGroup = "", initialSection = ""
     };
     // END revealWhenPainted
     async function ensurePlayerDefined() {
-        if (customElements.get('hyperframes-player'))
+        if (customElements.get('tagreel-player'))
             return;
         if (!window.__hfDocsPlayerLoading) {
             window.__hfDocsPlayerLoading = new Promise((resolve, reject) => {
@@ -32,7 +32,7 @@ export const CatalogGallery = ({ catalog, initialGroup = "", initialSection = ""
             });
         }
         await window.__hfDocsPlayerLoading;
-        await customElements.whenDefined('hyperframes-player');
+        await customElements.whenDefined('tagreel-player');
     }
     // Keep the child component type stable when gallery hover state changes.
     const MotionWord = useMemo(() => function MotionWord() {
@@ -284,7 +284,7 @@ export const CatalogGallery = ({ catalog, initialGroup = "", initialSection = ""
                 const { html } = await response.json();
                 if (mountsRef.current.get(item.href) !== state)
                     return; // unmounted while loading
-                const player = document.createElement('hyperframes-player');
+                const player = document.createElement('tagreel-player');
                 player.setAttribute('muted', '');
                 player.setAttribute('audio-locked', '');
                 player.setAttribute('width', String(item.preview.width));

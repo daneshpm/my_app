@@ -1,4 +1,4 @@
-import { copyAnimationsInScript } from "@hyperframes/parsers/gsap-writer-acorn";
+import { copyAnimationsInScript } from "@tagreel/parsers/gsap-writer-acorn";
 import { ID_ATTR_RE } from "./clipboardPayload";
 import { escapeRegex } from "./sourcePatcher";
 

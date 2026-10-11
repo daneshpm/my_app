@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "state-chip-rail",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "State Chip Rail",
   "description": "A rail of mono status chips advances a seek-safe data-state snap machine on a cue schedule: active chip ink on surface, done chips dim, pending chips hollow, optional badges pop beside one state.",
   "tags": ["motion-primitive", "product-demo", "state-machine", "status", "chips", "rail"],
@@ -14,7 +14,7 @@
     {
       "path": "state-chip-rail.html",
       "target": "compositions/components/state-chip-rail.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

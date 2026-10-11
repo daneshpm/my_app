@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { buildSlideshowIslandHtml } from "./setSlideshowManifest";
-import { parseSlideshowManifest } from "@hyperframes/core/slideshow";
+import { parseSlideshowManifest } from "@tagreel/core/slideshow";
 import type { CutoverDeps } from "./sdkCutover";
 
 // Fix 3: vi.mock must be at module top level so Vitest can hoist them.
@@ -13,7 +13,7 @@ vi.mock("./studioTelemetry", () => ({ trackStudioEvent: vi.fn() }));
 describe("buildSlideshowIslandHtml", () => {
   it("serializes a manifest into a script island", () => {
     const html = buildSlideshowIslandHtml({ slides: [{ sceneId: "a" }] });
-    expect(html).toContain('type="application/hyperframes-slideshow+json"');
+    expect(html).toContain('type="application/tagreel-slideshow+json"');
     expect(html).toContain('"sceneId": "a"');
   });
 
@@ -102,7 +102,7 @@ describe("persistSlideshowManifest — op construction", () => {
     expect(writeProjectFile).toHaveBeenCalledOnce();
     const written: string = writeProjectFile.mock.calls[0]?.[1] as string;
     expect(written).toContain('"sceneId": "new-scene"');
-    expect(written).toContain('type="application/hyperframes-slideshow+json"');
+    expect(written).toContain('type="application/tagreel-slideshow+json"');
   });
 
   // Fix 2: two stale islands should collapse to exactly one after persist
@@ -126,7 +126,7 @@ describe("persistSlideshowManifest — op construction", () => {
     const written: string = writeProjectFile.mock.calls[0]?.[1] as string;
 
     // Count occurrences of the island script open tag
-    const islandCount = (written.match(/type="application\/hyperframes-slideshow\+json"/g) ?? [])
+    const islandCount = (written.match(/type="application\/tagreel-slideshow\+json"/g) ?? [])
       .length;
     expect(islandCount).toBe(1);
     expect(written).toContain('"sceneId": "fresh"');

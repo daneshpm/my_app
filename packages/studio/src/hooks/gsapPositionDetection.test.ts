@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it } from "vitest";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { usePlayerStore } from "../player/store/playerStore";
 import { tween } from "./gsapParsedTween.test-helpers";
 import { findGsapPositionAnimation, pickClosestToPlayhead } from "./gsapPositionDetection";

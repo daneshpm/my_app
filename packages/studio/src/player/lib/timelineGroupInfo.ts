@@ -6,14 +6,14 @@
  * cache, its revision counter, the observer that bumps it, and the one reader.
  */
 
-import { isElementNode } from "@hyperframes/core/runtime/dom-realm";
+import { isElementNode } from "@tagreel/core/runtime/dom-realm";
 import {
   HF_AUDIO_GROUP_ATTR,
   HF_AUDIO_GROUP_TAG,
   resolveAudioGroups,
-} from "@hyperframes/core/audio-groups";
-import { HF_AUDIO_AUTOMATION_ATTR } from "@hyperframes/core/audio-automation";
-import { HF_AUDIO_FX_ATTR } from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-groups";
+import { HF_AUDIO_AUTOMATION_ATTR } from "@tagreel/core/audio-automation";
+import { HF_AUDIO_FX_ATTR } from "@tagreel/core/audio-fx";
 
 // One `<hf-audio-group>` scan per document, not per clip — resolveAudioGroups
 // walks the whole tree, and a parse touches every clip in it.

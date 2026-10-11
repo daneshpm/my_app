@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":208}}
   attribution={{"path":"registry/components/beat-pulse-background","tags":["motion-primitive","background","beat","pulse","rhythmic","reactive"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/beat-pulse-background/beat-pulse-background.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/beat-pulse-background/beat-pulse-background.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html beat-pulse-background.html
 <!doctype html>
 <!--
-  beat-pulse-background: HyperFrames video primitive (backgrounds / rhythmic)
+  beat-pulse-background: Tagreel video primitive (backgrounds / rhythmic)
 
   Concept: a deep accent-derived backdrop pulses its glow intensity and
   saturation on a supplied beat grid. Each retained beat owns one fast attack
@@ -155,8 +155,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var pulse = root.querySelector(".bpb-pulse");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentTokens = {
@@ -237,7 +237,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add beat-pulse-background" item="beat-pulse-background" />
+<InstallCommand command="npx tagreel add beat-pulse-background" item="beat-pulse-background" />
 
 That writes one file: `compositions/components/beat-pulse-background.html`.
 

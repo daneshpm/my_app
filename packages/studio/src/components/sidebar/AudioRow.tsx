@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { classifyWebAudioMediaRoute } from "@hyperframes/core/runtime/web-audio-route";
+import { classifyWebAudioMediaRoute } from "@tagreel/core/runtime/web-audio-route";
 import { ContextMenu } from "./AssetContextMenu";
 import { basename, getAudioSubtype, type CopyFeedback } from "./assetHelpers";
 import { TIMELINE_ASSET_MIME } from "../../utils/timelineAssetDrop";

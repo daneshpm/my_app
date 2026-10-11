@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "us-map",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "US Map",
   "description": "Animated US choropleth map with staggered state reveals, value labels, and gradient legend — pure inline SVG with GSAP",
   "tags": ["data", "map", "geography", "usa", "choropleth"],
@@ -14,7 +14,7 @@
     {
       "path": "us-map.html",
       "target": "compositions/us-map.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

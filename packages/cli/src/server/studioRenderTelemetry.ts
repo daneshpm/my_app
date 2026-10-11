@@ -7,9 +7,9 @@
 // ---------------------------------------------------------------------------
 
 import { freemem } from "node:os";
-import type { CanvasResolution, Fps } from "@hyperframes/core";
-import { fpsToNumber } from "@hyperframes/core";
-import type { RenderJob, RenderPerfSummary } from "@hyperframes/producer";
+import type { CanvasResolution, Fps } from "@tagreel/core";
+import { fpsToNumber } from "@tagreel/core";
+import type { RenderJob, RenderPerfSummary } from "@tagreel/producer";
 import { trackRenderComplete, trackRenderError } from "../telemetry/events.js";
 import {
   renderJobObservabilityTelemetryPayload,

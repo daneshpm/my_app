@@ -1,5 +1,5 @@
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
-import type { MusicBeatAnalysis } from "@hyperframes/core/beats";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
+import type { MusicBeatAnalysis } from "@tagreel/core/beats";
 import type { TimelineElement, KeyframeCacheEntry } from "../store/playerStore";
 import type { TimelineKeyframeTarget } from "./timelineKeyframeIdentity";
 import type { TimelineTheme } from "./timelineTheme";

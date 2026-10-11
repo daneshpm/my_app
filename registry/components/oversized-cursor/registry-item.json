@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "oversized-cursor",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Oversized Cursor",
   "description": "The look-here pointer for a video: the macOS arrow at 3.5x its normal size lands its tip on one control, clicks it on, settles just below it so the result stays in view, then exits off-screen",
   "tags": ["cursor", "motion-primitive", "actor", "pointer", "interaction"],
@@ -9,7 +9,7 @@
     {
       "path": "oversized-cursor.html",
       "target": "compositions/components/oversized-cursor.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "jobs": ["demonstrate"],

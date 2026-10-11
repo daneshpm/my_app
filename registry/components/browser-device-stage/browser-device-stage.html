@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  browser-device-stage -- HyperFrames video primitive (product demo / stage)
+  browser-device-stage -- Tagreel video primitive (product demo / stage)
 
   A generic app surface presented in token-native device chrome. One settle
   entrance (rise + soft scale), then a slow readable hold; optionally the
@@ -513,8 +513,8 @@
             var screen = root.querySelector(".bds-screen");
             var screenA = root.querySelector(".bds-screen-a");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var chromeKind =

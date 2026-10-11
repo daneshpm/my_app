@@ -9,7 +9,7 @@ const { applyFaststartMock, muxVideoWithAudioMock, packageHlsMock, padOrTrimAudi
     padOrTrimAudioMock: vi.fn(),
   }));
 
-vi.mock("@hyperframes/engine", () => ({
+vi.mock("@tagreel/engine", () => ({
   applyFaststart: applyFaststartMock,
   muxVideoWithAudio: muxVideoWithAudioMock,
   packageHls: packageHlsMock,

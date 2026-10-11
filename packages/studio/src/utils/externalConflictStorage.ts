@@ -19,7 +19,7 @@ export interface ExternalConflictStorage {
   delete(projectId: string, filePath: string): Promise<void>;
 }
 
-const DB_NAME = "hyperframes-studio-external-conflicts";
+const DB_NAME = "tagreel-studio-external-conflicts";
 const DB_VERSION = 1;
 const STORE_NAME = "file-conflicts";
 

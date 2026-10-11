@@ -12,9 +12,9 @@
 import { createTimelineDomNodeResolver, findClipElementById } from "../lib/timelineElementHelpers";
 import { usePlayerStore } from "../store/playerStore";
 import type { TimelineElement, DomClipChild, SubCompositionHostState } from "../store/playerStore";
-import { resolveCssStackingContextId } from "@hyperframes/core/runtime/stacking-context";
-import type { ClipTree } from "@hyperframes/core/runtime/clipTree";
-import { HF_AUDIO_GROUP_ATTR } from "@hyperframes/core/audio-groups";
+import { resolveCssStackingContextId } from "@tagreel/core/runtime/stacking-context";
+import type { ClipTree } from "@tagreel/core/runtime/clipTree";
+import { HF_AUDIO_GROUP_ATTR } from "@tagreel/core/audio-groups";
 import { groupInfoFor } from "../lib/timelineGroupInfo";
 import type { PlaybackAdapter, ClipManifestClip, IframeWindow } from "../lib/playbackTypes";
 import {

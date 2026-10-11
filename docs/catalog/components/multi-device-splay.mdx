@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":727}}
   attribution={{"path":"registry/components/multi-device-splay","tags":["motion-primitive","device","phone","tablet","desktop","splay"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/multi-device-splay/multi-device-splay.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/multi-device-splay/multi-device-splay.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html multi-device-splay.html
 <!doctype html>
 <!--
-  multi-device-splay: HyperFrames video primitive (ui-props / devices / reveal)
+  multi-device-splay: Tagreel video primitive (ui-props / devices / reveal)
 
   Concept: phone, tablet, and desktop product mockups begin as one centered
   stack, then fan into a proud three-device arrangement. Each screen uses the
@@ -623,8 +623,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
             var root = document.getElementById("root");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentColors = {
@@ -756,7 +756,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add multi-device-splay" item="multi-device-splay" />
+<InstallCommand command="npx tagreel add multi-device-splay" item="multi-device-splay" />
 
 That writes one file: `compositions/components/multi-device-splay.html`.
 

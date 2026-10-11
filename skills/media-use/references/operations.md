@@ -16,7 +16,7 @@ ffmpeg -i in.mp4 -ss 00:00:12 -to 00:00:20 -c copy out.mp4   # 0:12–0:20, no r
 ```
 
 In-composition trimming usually needs **no new file**: a clip plays a sub-window
-via `data-media-start` + `data-duration` (see hyperframes-core). Only cut a
+via `data-media-start` + `data-duration` (see tagreel-core). Only cut a
 physical file when exporting/assembling outside the composition.
 
 ## Reframe / crop: change aspect ratio
@@ -49,7 +49,7 @@ Local tools only; run them yourself.
 
 | Op                 | Local (free)                                       |
 | ------------------ | -------------------------------------------------- |
-| Background removal | `hyperframes remove-background in.png` (u2net)     |
+| Background removal | `tagreel remove-background in.png` (u2net)         |
 | Upscale            | `realesrgan-ncnn-vulkan -i in.png -o out.png -s 4` |
 
 After any op: `resolve --from out.ext --type <type>` to register the derived
@@ -75,7 +75,7 @@ node <SKILL_DIR>/scripts/dither.mjs \
   --palette '#0f380f,#306230,#8bac0f,#9bbc0f' \
   --point-size 3
 
-npx hyperframes media-use resolve \
+npx tagreel media-use resolve \
   --from source.atkinson.mp4 --type video --project .
 ```
 
@@ -108,14 +108,14 @@ engine directly.
 # install once: uv venv ~/.venvs/parakeet && VIRTUAL_ENV=~/.venvs/parakeet uv pip install parakeet-mlx
 node <SKILL_DIR>/scripts/transcribe.mjs --input talk.mp4 --out talk.transcribe.json
 
-# the hyperframes CLI runs Parakeet on macOS, Linux and Windows once it is installed:
-npx hyperframes models install parakeet                 # once, ~640 MB, ask the user first
-npx hyperframes transcribe talk.mp4 --engine parakeet   # or --engine auto (default)
+# the tagreel CLI runs Parakeet on macOS, Linux and Windows once it is installed:
+npx tagreel models install parakeet                 # once, ~640 MB, ask the user first
+npx tagreel transcribe talk.mp4 --engine parakeet   # or --engine auto (default)
 ```
 
 VERIFIED on 24GB: accurate, ~3s (cached) for 8s audio. Parakeet covers 25
 European languages, English included. For other languages, or when parakeet-mlx is not
-installed, transcribe.mjs falls back to `hyperframes transcribe`, which uses the
+installed, transcribe.mjs falls back to `tagreel transcribe`, which uses the
 CLI's Parakeet when `models install parakeet` has run and whisper.cpp (99
 languages) otherwise. `--engine parakeet|whisper` forces one. (Cohere
 Transcribe tops the leaderboard on paper but its mlx-audio quants produced
@@ -168,7 +168,7 @@ ffmpeg -i bgm.mp3 -i voice.wav \
   -map "[ducked]" bgm.ducked.wav
 ```
 
-Declare inside compositions. Bake only for assets leaving the hyperframes
+Declare inside compositions. Bake only for assets leaving the tagreel
 pipeline.
 
 ## Publish loudness
@@ -241,6 +241,6 @@ installed the provider prints its install command to stderr and resolve exits 1.
 HEVC/H.265 sources need no conversion for **render** (FFmpeg pre-decodes all
 input video) or for **preview** (auto-proxy transcodes and caches an H.264
 copy on first use, disable with `--no-proxy` or `media.autoProxy: false` in
-hyperframes.json). A manual H.264 proxy via `ffmpeg -i in.mp4 -c:v libx264
+tagreel.json). A manual H.264 proxy via `ffmpeg -i in.mp4 -c:v libx264
 -crf 18 proxy.mp4`, registered with `resolve --from`, remains available for
 edge cases (e.g. auto-proxy disabled, or ffmpeg unavailable at preview time).

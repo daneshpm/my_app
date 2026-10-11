@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "line-by-line-slide",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Line-by-Line Slide",
   "description": "Each line enters from the left with staggered slide and exits to the right.",
   "tags": ["motion-primitive", "typography"],
@@ -9,7 +9,7 @@
     {
       "path": "line-by-line-slide.html",
       "target": "compositions/components/line-by-line-slide.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

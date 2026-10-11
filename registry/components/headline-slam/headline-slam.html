@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  headline-slam: HyperFrames video primitive
+  headline-slam: Tagreel video primitive
 
   One headline scales down from 1.6 to rest with expo.out weight. Its landing
   drives a deterministic three-frame stage shake, followed by a quiet drift
@@ -131,8 +131,8 @@
             var stage = root.querySelector(".hs-stage");
             var headline = root.querySelector(".hs-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Ship it today" : String(vars.text);

@@ -1,19 +1,19 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "conic-progress-ring",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Conic Progress Ring",
   "description": "A token-driven conic progress ring whose angular fill and center count settle together from one registered percentage.",
   "tags": ["data", "progress", "ring", "conic-gradient", "prove", "demonstrate"],
   "jobs": ["prove", "demonstrate"],
   "family": "data",
   "profile": "holdable",
-  "evidence": "hyperframes-research-css-gems.md section 10, Registered conic progress ring: a typed percentage moves a hard conic-gradient frontier, and a radial mask removes the center to form the ring.",
+  "evidence": "tagreel-research-css-gems.md section 10, Registered conic progress ring: a typed percentage moves a hard conic-gradient frontier, and a radial mask removes the center to form the ring.",
   "files": [
     {
       "path": "conic-progress-ring.html",
       "target": "compositions/components/conic-progress-ring.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

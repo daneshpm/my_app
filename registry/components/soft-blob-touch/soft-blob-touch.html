@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  soft-blob-touch: HyperFrames video primitive (product demo / material)
+  soft-blob-touch: Tagreel video primitive (product demo / material)
 
   A granular soft blob idles with slow internal drift; a scripted touch dot
   decel-arrives at a caller-positioned point; the blob deforms toward it
@@ -144,8 +144,8 @@
             var canvas = root.querySelector(".sbt-canvas");
             var touchDot = root.querySelector(".sbt-touch");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {

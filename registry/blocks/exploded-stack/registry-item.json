@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "exploded-stack",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Exploded Stack",
   "description": "Isometric layer plates explode apart with a label beside each layer, hold, then collapse back into one stack. Built for architecture and system diagrams.",
   "tags": [
@@ -23,7 +23,7 @@
     {
       "path": "exploded-stack.html",
       "target": "compositions/exploded-stack.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

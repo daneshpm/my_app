@@ -65,7 +65,7 @@ describe("requestStudioFeedback eligibility", () => {
   });
 
   it("asks again once the 30 day answer cooldown has passed", () => {
-    localStorage.setItem("hyperframes-studio:feedbackAnsweredAt", String(Date.now() - 31 * DAY_MS));
+    localStorage.setItem("tagreel-studio:feedbackAnsweredAt", String(Date.now() - 31 * DAY_MS));
     const { seen, unsubscribe } = collect();
     requestStudioFeedback({ reason: "render_complete" });
     expect(seen).toHaveLength(1);
@@ -80,7 +80,7 @@ describe("requestStudioFeedback eligibility", () => {
     first.unsubscribe();
 
     sessionStorage.clear();
-    localStorage.setItem("hyperframes-studio:feedbackDismissedAt", String(Date.now() - 8 * DAY_MS));
+    localStorage.setItem("tagreel-studio:feedbackDismissedAt", String(Date.now() - 8 * DAY_MS));
     const second = collect();
     requestStudioFeedback({ reason: "render_complete" });
     expect(second.seen).toHaveLength(1);

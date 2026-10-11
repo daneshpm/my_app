@@ -1,5 +1,5 @@
 import { useMemo, type MutableRefObject } from "react";
-import { SLIDESHOW_ISLAND_TYPE, slideshowIslandRegex } from "@hyperframes/core/slideshow";
+import { SLIDESHOW_ISLAND_TYPE, slideshowIslandRegex } from "@tagreel/core/slideshow";
 import type { SceneInfo } from "../components/panels/SlideshowPanel";
 import type { IframeWindow } from "../player/lib/playbackTypes";
 

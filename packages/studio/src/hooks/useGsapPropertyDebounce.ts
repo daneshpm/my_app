@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
-import type { Composition } from "@hyperframes/sdk";
-import { parseGsapScriptAcorn } from "@hyperframes/core/gsap-parser-acorn";
+import type { Composition } from "@tagreel/sdk";
+import { parseGsapScriptAcorn } from "@tagreel/core/gsap-parser-acorn";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import {
   sdkGsapTweenPersist,

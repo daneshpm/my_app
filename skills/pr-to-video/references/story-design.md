@@ -2,11 +2,11 @@
 
 Use this reference in Step 3 to write `STORYBOARD.md` and `SCRIPT.md` for a **PR-to-video** — a code change (the diff, commits, files, +/− stats, and the people behind it) turned into an explainer. There is **no website and no captured assets**; the PR was ingested into `capture/extracted/` in Step 1.
 
-This file defines the story: what the video explains, in what order, and why each frame exists. It does not define layout, effects, animation, or file syntax. For exact storyboard syntax follow `../../hyperframes/references/storyboard-format.md` and `../../hyperframes/references/script-format.md`.
+This file defines the story: what the video explains, in what order, and why each frame exists. It does not define layout, effects, animation, or file syntax. For exact storyboard syntax follow `../../tagreel/references/storyboard-format.md` and `../../tagreel/references/script-format.md`.
 
 ## Read first
 
-1. `hyperframes.json` — locked brief: angle (archetype), audience, length, aspect, language.
+1. `tagreel.json` — locked brief: angle (archetype), audience, length, aspect, language.
 2. `frame.md` — tone, type, design system (the shipped preset is **code-editorial**: warm editorial, a serif that thinks, scarce coral, a navy code surface).
 3. `capture/extracted/visible-text.txt` — the assembled PR brief: title, meta (`base ← head · +N/−M across F files`), people, body, commits, changed files, and a budget-bounded set of **representative diff hunks**. This is your source of **information**.
 4. `capture/diff.patch` — the full unified diff, for deeper hunk selection than the brief's excerpt.
@@ -25,7 +25,7 @@ A diff is a list of edits. A video is a guided act of understanding.
 
 Do **not** narrate the diff file-by-file or read the PR description aloud — that is the single most common failure. **Explain the change** — and where the change has a runtime behavior, **show that behavior in motion** (a `mechanism` beat — see "Show the behavior" below), don't just display the lines that changed. Reorder, merge, omit, compress: surface the one change that matters and drop the incidental churn (lockfile bumps, formatting, generated files) unless it _is_ the story. Scene order comes from narrative design, not from the diff's file order or the commit list.
 
-**Value before evidence** (`../../hyperframes-creative/references/story-spine.md`): the viewer-facing payoff — what the change unlocks, fixes, or speeds up — lands by the second beat; the diff and the mechanism are the **evidence** for that claim, never the opening. Implementation is the footnote of the story, not the spine.
+**Value before evidence** (`../../tagreel-creative/references/story-spine.md`): the viewer-facing payoff — what the change unlocks, fixes, or speeds up — lands by the second beat; the diff and the mechanism are the **evidence** for that claim, never the opening. Implementation is the footnote of the story, not the spine.
 
 Default to a **plain, technical, unhurried developer voice** — accurate, specific, no hype, no marketing gloss. You are explaining a real change to engineers; respect their time and intelligence. `frame.md` (code-editorial) tunes the voice toward considered and literary; it does not change the structure.
 

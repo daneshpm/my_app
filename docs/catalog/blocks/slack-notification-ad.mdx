@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":12,"width":1080,"height":1920,"category":"Showcases","badge":"Stable","codeLines":710}}
   attribution={{"author":"HeyGen","path":"registry/blocks/slack-notification-ad","tags":["showcase","mock-ui","notification","vertical","ad-template"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/slack-notification-ad/slack-notification-ad.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/slack-notification-ad/slack-notification-ad.html"
 >
 
 <CatalogSlot slot="code">
@@ -469,8 +469,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
     <script>
       var variables =
-        window.__hyperframes && typeof window.__hyperframes.getVariables === "function"
-          ? window.__hyperframes.getVariables()
+        window.__tagreel && typeof window.__tagreel.getVariables === "function"
+          ? window.__tagreel.getVariables()
           : {};
       function content(id, fallback) {
         return typeof variables[id] === "string" && variables[id].trim() ? variables[id] : fallback;
@@ -739,7 +739,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add slack-notification-ad" item="slack-notification-ad" />
+<InstallCommand command="npx tagreel add slack-notification-ad" item="slack-notification-ad" />
 
 That writes `compositions/slack-notification-ad.html`, plus 7 supporting files under `assets/img/` and `assets/fonts/`.
 

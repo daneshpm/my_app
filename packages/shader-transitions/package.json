@@ -1,10 +1,10 @@
 {
-  "name": "@hyperframes/shader-transitions",
+  "name": "@tagreel/shader-transitions",
   "version": "0.8.137",
-  "description": "WebGL shader transitions for HyperFrames compositions",
+  "description": "WebGL shader transitions for Tagreel compositions",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heygen-com/hyperframes",
+    "url": "https://github.com/daneshpm/my_app",
     "directory": "packages/shader-transitions"
   },
   "files": [

@@ -3,7 +3,7 @@
 import React, { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { openComposition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
 import { VariablesPanel } from "./VariablesPanel";
 
 (globalThis as unknown as { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
@@ -18,7 +18,7 @@ const files: Record<string, string> = {
     '<html><body><div data-hf-id="hf-stage" data-hf-root data-duration="5"></div></body></html>',
   "main.html": withTitle("main", "Main title"),
   "scene.html": withTitle("scene", "Scene title"),
-  ".hyperframes/preview/4884df6e.html": withTitle("root", "Generated title"),
+  ".tagreel/preview/4884df6e.html": withTitle("root", "Generated title"),
 };
 const shell = {
   activeCompPath: "index.html" as string | null,
@@ -75,7 +75,7 @@ describe("VariablesPanel other compositions", () => {
   it("lists the project's compositions, not Studio's generated preview documents", async () => {
     shell.activeCompPath = "index.html";
     shell.compositions = ["index.html", "scene.html"];
-    expect(await renderOtherCompositions("index.html")).not.toContain(".hyperframes/preview");
+    expect(await renderOtherCompositions("index.html")).not.toContain(".tagreel/preview");
   });
 
   it("leaves out the main composition in the master view when it is not index.html", async () => {

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "halftone-dissolve",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Halftone Dissolve",
   "description": "Scene A dissolves into scene B through a growing halftone dot field: accent ink dots pop onto a fixed grid smallest-first, each opens into a window onto B, until the windows merge and B fully replaces A.",
   "tags": ["motion-primitive", "transition", "texture", "halftone", "dissolve"],
@@ -20,7 +20,7 @@
     {
       "path": "halftone-dissolve.html",
       "target": "compositions/components/halftone-dissolve.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

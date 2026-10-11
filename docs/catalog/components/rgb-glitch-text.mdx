@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":110}}
   attribution={{"path":"registry/components/rgb-glitch-text","tags":["motion-primitive","typography"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/rgb-glitch-text/rgb-glitch-text.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/rgb-glitch-text/rgb-glitch-text.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html rgb-glitch-text.html
 <!--
-  RGB Glitch Text - typography primitive for HyperFrames.
+  RGB Glitch Text - typography primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Drive the timeline
   integration from a paused GSAP timeline so renders remain deterministic.
@@ -96,8 +96,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -139,7 +139,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add rgb-glitch-text" item="rgb-glitch-text" />
+<InstallCommand command="npx tagreel add rgb-glitch-text" item="rgb-glitch-text" />
 
 That writes one file: `compositions/components/rgb-glitch-text.html`.
 

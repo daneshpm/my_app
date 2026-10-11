@@ -95,7 +95,7 @@ describe("injectScriptsIntoHtml", () => {
 </html>`;
 
     const injected = injectScriptsAtHeadStart(html, [VIRTUAL_TIME_SHIM]);
-    const injectedShimTag = `<script>${VIRTUAL_TIME_SHIM}\n//# sourceURL=hyperframes://injected/0</script>`;
+    const injectedShimTag = `<script>${VIRTUAL_TIME_SHIM}\n//# sourceURL=tagreel://injected/0</script>`;
     const authoredHeadTag = `<script>window.__order = ["authored-head"];</script>`;
 
     expect(injected.indexOf(injectedShimTag)).toBeGreaterThanOrEqual(0);
@@ -423,7 +423,7 @@ describe("createFileServer", () => {
         }
         expect(html).toContain("fps: __renderFps");
         expect(html).toContain("fpsSource: __renderFpsSource");
-        expect(html).not.toContain("[hyperframes] render fps defaulted");
+        expect(html).not.toContain("[tagreel] render fps defaulted");
       } finally {
         server.close();
       }
@@ -658,7 +658,7 @@ describe("HF_EARLY_STUB + HF_BRIDGE_SCRIPT integration", () => {
    * Simulates the real injection order in a Puppeteer page:
    *   1. HF_EARLY_STUB  (start of <head>, before everything)
    *   2. authored page scripts that write to window.__hf.transitions
-   *      (e.g. @hyperframes/shader-transitions in <body>)
+   *      (e.g. @tagreel/shader-transitions in <body>)
    *   3. HF_BRIDGE_SCRIPT (end of <body>, upgrades __hf with seek/duration)
    *
    * Regression test for the race condition where the bridge used to overwrite

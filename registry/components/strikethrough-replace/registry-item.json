@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "strikethrough-replace",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Strikethrough Replace",
   "description": "Draw a strike line across old text, then reveal the replacement.",
   "tags": ["motion-primitive", "typography"],
@@ -9,7 +9,7 @@
     {
       "path": "strikethrough-replace.html",
       "target": "compositions/components/strikethrough-replace.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -4,13 +4,13 @@
  */
 
 import { arch, cpus, platform, totalmem } from "node:os";
-import { fpsToNumber, type HfVfxCapture } from "@hyperframes/core";
+import { fpsToNumber, type HfVfxCapture } from "@tagreel/core";
 import type {
   CapturePerfSummary,
   StaticVerificationOutcome,
   SubTimelineWaitOutcome,
   WorkerSizing,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 import type { CaptureCalibrationSample, CaptureCostEstimate } from "./captureCost.js";
 import type {
   CaptureAttemptSummary,

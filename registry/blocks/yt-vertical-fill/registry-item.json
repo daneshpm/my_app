@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "yt-vertical-fill",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Vertical Media Filler",
   "description": "Portrait media filling a widescreen frame via blurred-scale, mirror, or copy side fills; grid texture and foreground contrast lift (images inside the block; keep live footage in the host)",
   "tags": ["placeholder", "vertical", "media"],
@@ -14,7 +14,7 @@
     {
       "path": "yt-vertical-fill.html",
       "target": "compositions/yt-vertical-fill.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

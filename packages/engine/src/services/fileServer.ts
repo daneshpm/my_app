@@ -10,8 +10,8 @@ import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { readFileSync, openSync, fstatSync, closeSync, statSync, constants } from "node:fs";
 import { join, extname } from "node:path";
-import { injectScriptsIntoHtml } from "@hyperframes/core/compiler";
-import { isWithinProjectRoot } from "@hyperframes/parsers/asset-resolution";
+import { injectScriptsIntoHtml } from "@tagreel/core/compiler";
+import { isWithinProjectRoot } from "@tagreel/parsers/asset-resolution";
 
 const MIME_TYPES: Record<string, string> = {
   ".html": "text/html; charset=utf-8",

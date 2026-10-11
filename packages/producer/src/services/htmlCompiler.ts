@@ -33,9 +33,9 @@ import {
   type RateSpec,
   type ResolvedDuration,
   type UnresolvedElement,
-} from "@hyperframes/core";
-import { MAX_AUDIO_GAIN } from "@hyperframes/core/audio-gain";
-import { gsapCdnDist } from "@hyperframes/core/gsap-cdn";
+} from "@tagreel/core";
+import { MAX_AUDIO_GAIN } from "@tagreel/core/audio-gain";
+import { gsapCdnDist } from "@tagreel/core/gsap-cdn";
 import {
   assignBundledRuntimeCompositionIds,
   assignMediaRenderIds,
@@ -56,15 +56,12 @@ import {
   styleElementsFor,
   insertBeforeCloseTag,
   isRuntimeFileUrl,
-} from "@hyperframes/core/compiler";
+} from "@tagreel/core/compiler";
 import {
   checkSubCompositionUsability,
   type ParsableDocumentLike,
-} from "@hyperframes/parsers/sub-composition-validity";
-import {
-  isUnresolvedAssetPlaceholder,
-  readProjectFile,
-} from "@hyperframes/parsers/asset-resolution";
+} from "@tagreel/parsers/sub-composition-validity";
+import { isUnresolvedAssetPlaceholder, readProjectFile } from "@tagreel/parsers/asset-resolution";
 import { extractMediaMetadata, extractAudioMetadata } from "../utils/ffprobe.js";
 import { isPathInside, toExternalAssetKey } from "../utils/paths.js";
 import { collectRenderMedia } from "./renderMediaCollector.js";
@@ -78,7 +75,7 @@ import {
   assertMediaPayload,
   NotMediaPayloadError,
   probeMediaProfile,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 import {
   downloadToTemp,
   fetchPublicHttpsText,
@@ -91,10 +88,10 @@ import type { Page } from "puppeteer-core";
 import {
   injectDeterministicFontFaces,
   normalizeSystemFontPrimaryFamilies,
-} from "@hyperframes/core/fonts/embed";
+} from "@tagreel/core/fonts/embed";
 import { prepareAnimatedGifInputs } from "./animatedGifPrep.js";
-import { createStudioPositionSeekReapplyScript } from "@hyperframes/studio-server/manual-edits-render-script";
-import { getPositionEditsRenderScript } from "@hyperframes/core/runtime/position-edits-render";
+import { createStudioPositionSeekReapplyScript } from "@tagreel/studio-server/manual-edits-render-script";
+import { getPositionEditsRenderScript } from "@tagreel/core/runtime/position-edits-render";
 import { defaultLogger, type ProducerLogger } from "../logger.js";
 import { assertAssetMediaTypeProfile } from "./assetMediaType.js";
 import { withMediaProbeSlot } from "../utils/mediaProbeConcurrency.js";
@@ -157,7 +154,7 @@ export function injectSdkPositionEditsRenderScript(html: string): string {
     return html;
   }
   const scriptBody = getPositionEditsRenderScript().replace(/<\/script/gi, "<\\/script");
-  const script = `<script>${scriptBody}\n//# sourceURL=hyperframes://position-edits</script>`;
+  const script = `<script>${scriptBody}\n//# sourceURL=tagreel://position-edits</script>`;
   return insertBeforeCloseTag(html, "body", script) ?? `${html}${script}`;
 }
 
@@ -208,7 +205,7 @@ class EmptyCompositionError extends Error {
  * `html` (including nested sub-compositions) and verify each resolves to a
  * usable file — exists, non-empty, parses to HTML with renderable content.
  * Uses the same `checkSubCompositionUsability` helper the tolerant inliner
- * and `hyperframes lint` use, so all three agree on what counts as usable.
+ * and `tagreel lint` use, so all three agree on what counts as usable.
  *
  * Throws {@link EmptyCompositionError} naming every offending file at once
  * (not just the first one hit) if any reference is unusable. Call this
@@ -230,7 +227,7 @@ function assertSubCompositionsUsable(
   for (const el of hosts) {
     const srcPath = el.getAttribute("data-composition-src");
     if (!srcPath) continue;
-    if (isUnresolvedAssetPlaceholder(srcPath)) continue; // __UPPER__ placeholder or unresolved templating token — not a real reference (shared with lint via @hyperframes/parsers)
+    if (isUnresolvedAssetPlaceholder(srcPath)) continue; // __UPPER__ placeholder or unresolved templating token — not a real reference (shared with lint via @tagreel/parsers)
 
     const filePath = resolve(projectDir, srcPath);
     // Circular reference guard. parseSubCompositions (below) silently
@@ -958,7 +955,7 @@ function coalesceHeadStylesAndBodyScripts(html: string): string {
 
 /**
  * Inline sub-composition HTML into the main document using the shared
- * inlining logic from @hyperframes/core. This wrapper handles the
+ * inlining logic from @tagreel/core. This wrapper handles the
  * producer-specific concerns: parsing HTML via linkedom, resolving
  * compositions from the pre-compiled map or disk, and setting explicit
  * pixel dimensions on host elements for headless rendering.
@@ -1179,12 +1176,12 @@ function injectTextRenderingRule(html: string): string {
   const head = document.querySelector("head");
   if (!head) return html;
 
-  if (document.querySelector("style[data-hyperframes-text-rendering]")) {
+  if (document.querySelector("style[data-tagreel-text-rendering]")) {
     return html;
   }
 
   const styleEl = document.createElement("style");
-  styleEl.setAttribute("data-hyperframes-text-rendering", "true");
+  styleEl.setAttribute("data-tagreel-text-rendering", "true");
   styleEl.textContent = "html,body,*{text-rendering:geometricPrecision}";
   head.insertBefore(styleEl, head.firstChild);
 
@@ -1496,7 +1493,7 @@ export async function localizeRemoteMediaSources(
  *
  * This bites agent-pipeline-generated compositions (astral / daphne /
  * hyperion `multi-v2` outputs) which render directly without going through
- * `hyperframes publish`'s archive-time localize step.
+ * `tagreel publish`'s archive-time localize step.
  */
 /** @internal exported for unit testing only */
 export async function localizeRemoteImageSources(
@@ -1798,7 +1795,7 @@ async function readLocalFont(absPath: string): Promise<LocalFontRead> {
 
 // fallow-ignore-next-line complexity
 async function embedLocalFontFaces(html: string, projectDir: string): Promise<string> {
-  const { fontToDataUri: toDataUri } = await import("@hyperframes/core/fonts/embed");
+  const { fontToDataUri: toDataUri } = await import("@tagreel/core/fonts/embed");
   const styleBlockRe = /<style\b[^>]*>([\s\S]*?)<\/style>/gi;
   const fontFaceRe = /@font-face\s*\{([^}]*)\}/gi;
   let result = html;
@@ -2069,7 +2066,7 @@ export async function compileForRender(
     ? (insertBeforeCloseTag(
         assembledHtml,
         "body",
-        `<script>${createStudioPositionSeekReapplyScript()}\n//# sourceURL=hyperframes://position-seek-reapply</script>`,
+        `<script>${createStudioPositionSeekReapplyScript()}\n//# sourceURL=tagreel://position-seek-reapply</script>`,
       ) ?? assembledHtml)
     : assembledHtml;
   const htmlWithDeferredScripts = prepareCompositionScripts(

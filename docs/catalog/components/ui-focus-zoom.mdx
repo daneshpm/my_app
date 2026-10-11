@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Camera","badge":"Stable","codeLines":564}}
   attribution={{"path":"registry/components/ui-focus-zoom","tags":["camera","product-demo","zoom","focus","pan","slot","servo"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/ui-focus-zoom/ui-focus-zoom.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/ui-focus-zoom/ui-focus-zoom.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html ui-focus-zoom.html
 <!doctype html>
 <!--
-  ui-focus-zoom -- HyperFrames video primitive (product demo / camera)
+  ui-focus-zoom -- Tagreel video primitive (product demo / camera)
 
   A full app surface establishes with one settle, then the camera zooms and
   pans to an anchored region on its cue and holds the zoomed state. An
@@ -403,8 +403,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var surface = root.querySelector(".ufz-surface");
             var halo = root.querySelector(".ufz-halo");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {
@@ -593,7 +593,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add ui-focus-zoom" item="ui-focus-zoom" />
+<InstallCommand command="npx tagreel add ui-focus-zoom" item="ui-focus-zoom" />
 
 That writes one file: `compositions/components/ui-focus-zoom.html`.
 

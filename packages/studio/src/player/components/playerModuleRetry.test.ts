@@ -6,7 +6,7 @@ import { describe, expect, it, vi } from "vitest";
 // so this starts failing; the first test asserts that kick happened.
 const state = vi.hoisted(() => ({ attempts: 0, failing: true }));
 
-vi.mock("@hyperframes/player", () => {
+vi.mock("@tagreel/player", () => {
   state.attempts += 1;
   if (state.failing) throw new Error("chunk load failed");
   return {};

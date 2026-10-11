@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  before-after-wipe: HyperFrames video primitive (ui-props / holdable / compare)
+  before-after-wipe: Tagreel video primitive (ui-props / holdable / compare)
 
   Concept: two full-bleed CONTENT SLOTS share one frame. The before slot stays
   fully visible as the base layer while the after slot wipes over it from the
@@ -54,7 +54,7 @@
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "before-after-wipe" key (mount flattening strips
   data-composition-id from the live root). Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -353,8 +353,8 @@
             var chipB = root.querySelector(".baw-chip-b");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var labelA = vars.label_a == null ? "Before" : String(vars.label_a);

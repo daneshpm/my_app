@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  whip-pan-cut: HyperFrames video primitive (transitions / bridge)
+  whip-pan-cut: Tagreel video primitive (transitions / bridge)
 
   Concept: the louder sibling of cut-the-curve. Scene A whips off laterally
   with directional motion blur while scene B enters in the same direction at
@@ -70,7 +70,7 @@
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "whip-pan-cut" key (mount flattening strips
   data-composition-id from the live root). Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -335,8 +335,8 @@
             var blurNode = root.querySelector(".wpc-blur-node");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var direction = vars.direction === "right" ? "right" : "left";

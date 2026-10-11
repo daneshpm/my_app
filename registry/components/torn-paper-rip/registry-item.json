@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "torn-paper-rip",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Torn Paper Rip",
   "description": "A fibrous paper tear runs across the frame: the torn sheet shows its white paper core along the edge and lifts away on a soft shadow, leaving the next scene standing.",
   "tags": ["torn paper", "paper rip", "paper tear", "transition", "texture", "motion-primitive"],
@@ -9,7 +9,7 @@
     {
       "path": "torn-paper-rip.html",
       "target": "compositions/components/torn-paper-rip.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

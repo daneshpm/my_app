@@ -90,16 +90,16 @@ export function inferBgmPrompt({ blob = "", archetype = "", arc = "", userPrompt
 export function generateBgmDetached({
   prompt,
   durationS,
-  hyperframesDir,
+  tagreelDir,
   lyriaRecipe,
   seedSeconds = 28,
   hasVoice,
   anomalies,
 }) {
-  const rel = agentWritePath(hyperframesDir, "assets/bgm/track.wav", { anomalies });
-  const abs = join(hyperframesDir, rel);
-  mkdirSync(join(hyperframesDir, "assets", "bgm"), { recursive: true });
-  const log = join(hyperframesDir, "assets", "bgm", `bgm-${Date.now()}.log`);
+  const rel = agentWritePath(tagreelDir, "assets/bgm/track.wav", { anomalies });
+  const abs = join(tagreelDir, rel);
+  mkdirSync(join(tagreelDir, "assets", "bgm"), { recursive: true });
+  const log = join(tagreelDir, "assets", "bgm", `bgm-${Date.now()}.log`);
   const targetS = Math.max(1, durationS);
   const baseMeta = { path: rel, mode: null, volume: bgmDefaultVolume(hasVoice), pending: true };
 

@@ -1,4 +1,4 @@
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { describe, expect, it } from "vitest";
 import { progressAtTime, runEaseOf } from "../../utils/gsapKeyframeEases";
 import { valuesAt, valuesBefore } from "./trackHeaderLaneValues";

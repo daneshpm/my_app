@@ -50,7 +50,7 @@ function runWorker(runtimeDir: string, wavPath: string) {
     execFile(
       process.execPath,
       ["--import", "tsx", WORKER],
-      { env: { ...process.env, HYPERFRAMES_PARAKEET_INPUT: input } },
+      { env: { ...process.env, TAGREEL_PARAKEET_INPUT: input } },
       (err, stdout, stderr) => resolve({ code: err ? (err.code as number) : 0, stdout, stderr }),
     );
   });
@@ -119,7 +119,7 @@ describe("sherpaWorker", () => {
         execFile(
           "sh",
           ["-c", shell],
-          { env: { ...process.env, HYPERFRAMES_PARAKEET_INPUT: input, STARTED: started } },
+          { env: { ...process.env, TAGREEL_PARAKEET_INPUT: input, STARTED: started } },
           (_e, out) => resolve(Number(out.trim())),
         ),
       );

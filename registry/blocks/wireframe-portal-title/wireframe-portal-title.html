@@ -1,7 +1,7 @@
 <!doctype html>
 <html
   lang="en"
-  data-composition-variables='[{"id":"title","type":"string","label":"Title","default":"BREAKTHROUGH","maxLength":18},{"id":"replacementPhrase","type":"string","label":"3D replacement phrase (auto layout)","default":"Lets do this sir!","description":"Every word is preserved. Whole-word line wrapping and type size adapt to the 3D frame."},{"id":"phraseDuration","type":"number","label":"Phrase transition duration (s)","default":1.85,"min":0.65,"max":2.9,"step":0.05,"unit":"s","description":"Total time for the letter transition, including the stagger. Lower is faster. The opening and white return keep their original timing."},{"id":"phraseEasing","type":"number","label":"Transition easing (1 gentle – 8 snap)","default":8,"min":1,"max":8,"step":0.25,"description":"Higher values keep the beginning slow and concentrate acceleration at the letter swap, then settle gently. 4 is the default."},{"id":"settleGlitch","type":"number","label":"Letter settle glitch strength","default":0.2,"min":0,"max":4,"step":0.05,"description":"Scales the deterministic block glitch and letter jitter around swap and settling. 0 disables it; 4 makes it strongest."},{"id":"depthFog","type":"boolean","label":"Depth fog (early fade always on)","default":true,"description":"Dims receding outlines into the dark scene. Early opacity fades remain active when fog is off."},{"id":"subtitle","type":"string","label":"Subtitle","default":"HYPERFRAMES PORTAL TITLE","maxLength":48},{"id":"accent","type":"color","label":"Accent","default":"#F5C518"},{"id":"burstChaos","type":"number","label":"Burst chaos (0-2)","default":1,"min":0,"max":2,"step":0.01}]'
+  data-composition-variables='[{"id":"title","type":"string","label":"Title","default":"BREAKTHROUGH","maxLength":18},{"id":"replacementPhrase","type":"string","label":"3D replacement phrase (auto layout)","default":"Lets do this sir!","description":"Every word is preserved. Whole-word line wrapping and type size adapt to the 3D frame."},{"id":"phraseDuration","type":"number","label":"Phrase transition duration (s)","default":1.85,"min":0.65,"max":2.9,"step":0.05,"unit":"s","description":"Total time for the letter transition, including the stagger. Lower is faster. The opening and white return keep their original timing."},{"id":"phraseEasing","type":"number","label":"Transition easing (1 gentle – 8 snap)","default":8,"min":1,"max":8,"step":0.25,"description":"Higher values keep the beginning slow and concentrate acceleration at the letter swap, then settle gently. 4 is the default."},{"id":"settleGlitch","type":"number","label":"Letter settle glitch strength","default":0.2,"min":0,"max":4,"step":0.05,"description":"Scales the deterministic block glitch and letter jitter around swap and settling. 0 disables it; 4 makes it strongest."},{"id":"depthFog","type":"boolean","label":"Depth fog (early fade always on)","default":true,"description":"Dims receding outlines into the dark scene. Early opacity fades remain active when fog is off."},{"id":"subtitle","type":"string","label":"Subtitle","default":"TAGREEL PORTAL TITLE","maxLength":48},{"id":"accent","type":"color","label":"Accent","default":"#F5C518"},{"id":"burstChaos","type":"number","label":"Burst chaos (0-2)","default":1,"min":0,"max":2,"step":0.01}]'
 >
   <head>
     <meta charset="UTF-8" />
@@ -147,7 +147,7 @@
 
         <div data-hf-id="hf-r32l" id="wpt-card" data-layout-allow-occlusion="">
           <div data-hf-id="hf-0bgu" id="wpt-kicker">
-            <span data-hf-id="hf-m027" id="wpt-kicker-text">HYPERFRAMES PRESENTS</span>
+            <span data-hf-id="hf-m027" id="wpt-kicker-text">TAGREEL PRESENTS</span>
           </div>
           <h1 data-hf-id="hf-pwyf" id="wpt-headline"></h1>
           <div data-hf-id="hf-jivp" id="wpt-subtitle"></div>
@@ -162,15 +162,15 @@
       (function () {
         var vars = {};
         try {
-          if (window.__hyperframes && window.__hyperframes.getVariables) {
-            vars = window.__hyperframes.getVariables() || {};
+          if (window.__tagreel && window.__tagreel.getVariables) {
+            vars = window.__tagreel.getVariables() || {};
           }
         } catch (e) {}
         var title =
           String(vars.title || "BREAKTHROUGH")
             .trim()
             .toUpperCase() || "BREAKTHROUGH";
-        var subtitle = String(vars.subtitle || "HYPERFRAMES PORTAL TITLE");
+        var subtitle = String(vars.subtitle || "TAGREEL PORTAL TITLE");
         // Preserve every word. The 3D layout wraps whole words and scales to fit.
         window.__wptPhrase =
           String(vars.replacementPhrase || "BEYOND LIMITS")
@@ -802,8 +802,8 @@
       // ---------- font: local Geist Bold TTF -> three Font (blocks the load event) ----------
       // Beside this file when mounted; a runtime without assetUrl keeps the plain path.
       const assetUrl = (path) =>
-        typeof __hyperframes !== "undefined" && __hyperframes.assetUrl
-          ? __hyperframes.assetUrl(path)
+        typeof __tagreel !== "undefined" && __tagreel.assetUrl
+          ? __tagreel.assetUrl(path)
           : path;
       const ttfBuffer = await fetch(assetUrl("assets/fonts/Geist-Bold.ttf")).then((r) =>
         r.arrayBuffer(),

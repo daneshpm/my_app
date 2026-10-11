@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "scan-band",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Scan Band",
   "description": "A diagonal distortion band sweeps once across a clean wordmark, revealing clipped red and cyan offsets only inside the moving band.",
   "tags": ["motion-primitive", "typography", "scan", "chromatic", "distortion", "wordmark"],
@@ -13,7 +13,7 @@
     {
       "path": "scan-band.html",
       "target": "compositions/components/scan-band.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -23,7 +23,7 @@
       "role": "content",
       "label": "Wordmark",
       "description": "Text displayed by the scan effect.",
-      "default": "HYPERFRAMES"
+      "default": "TAGREEL"
     },
     {
       "id": "band_angle",

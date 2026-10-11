@@ -37,7 +37,7 @@ test("offline: copies and references a present bundled file", async () => {
     writeFileSync(join(libDir, "whoosh.mp3"), "ID3-fake-bytes");
     const { sfx, anomalies } = await resolveSfx({
       cues: [{ id: "s1", name: "whoosh" }],
-      hyperframesDir: projDir,
+      tagreelDir: projDir,
       sfxLibDir: libDir,
     });
     assert.equal(sfx.length, 1);
@@ -57,7 +57,7 @@ test("offline: a matched-but-missing bundled file yields an anomaly and NO dangl
     );
     const { sfx, anomalies } = await resolveSfx({
       cues: [{ id: "s1", name: "whoosh" }],
-      hyperframesDir: projDir,
+      tagreelDir: projDir,
       sfxLibDir: libDir,
     });
     assert.equal(sfx.length, 0, "no dangling entry for a file that was never copied");
@@ -79,7 +79,7 @@ const record = (projDir, source) =>
 const offline = (libDir, projDir) =>
   resolveSfx({
     cues: [{ id: "s1", name: "whoosh" }],
-    hyperframesDir: projDir,
+    tagreelDir: projDir,
     sfxLibDir: libDir,
   });
 

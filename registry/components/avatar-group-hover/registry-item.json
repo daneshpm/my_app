@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "avatar-group-hover",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Avatar Group Hover",
   "description": "A distance-falloff avatar group lift with bouncy hover return",
   "tags": ["video-primitive", "transition-primitive", "transitions-dev-port", "avatar", "hover"],
@@ -9,7 +9,7 @@
     {
       "path": "avatar-group-hover.html",
       "target": "compositions/components/avatar-group-hover.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

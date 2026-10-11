@@ -2,16 +2,16 @@ import { defineCommand } from "citty";
 import type { Example } from "./_examples.js";
 
 export const examples: Example[] = [
-  ["List all blocks and components", "hyperframes catalog"],
-  ["List blocks only", "hyperframes catalog --type block"],
-  ["Filter by tag", "hyperframes catalog --type block --tag social"],
-  ["Machine-readable JSON", "hyperframes catalog --json"],
-  ["Interactive picker (install on select)", "hyperframes catalog --human-friendly"],
-  ["Search (positional, same as --query)", 'hyperframes catalog "crossfade"'],
+  ["List all blocks and components", "tagreel catalog"],
+  ["List blocks only", "tagreel catalog --type block"],
+  ["Filter by tag", "tagreel catalog --type block --tag social"],
+  ["Machine-readable JSON", "tagreel catalog --json"],
+  ["Interactive picker (install on select)", "tagreel catalog --human-friendly"],
+  ["Search (positional, same as --query)", 'tagreel catalog "crossfade"'],
 ];
 
 import * as clack from "@clack/prompts";
-import { realpath, type ItemType, type RegistryItem } from "@hyperframes/core";
+import { realpath, type ItemType, type RegistryItem } from "@tagreel/core";
 import { c } from "../ui/colors.js";
 import { loadAllItems } from "../registry/resolver.js";
 import { fetchRegistryManifest } from "../registry/remote.js";
@@ -89,7 +89,7 @@ async function prepareOnDeviceTier(opts: {
       warn(
         recordLocalModelConsent(false) === false
           ? "on-device search skipped: the download was declined."
-          : "on-device search skipped: the download was declined, but could not save the answer in settings; `hyperframes doctor` says why.",
+          : "on-device search skipped: the download was declined, but could not save the answer in settings; `tagreel doctor` says why.",
       );
       // Return, or the decline is the only thing that does not happen: the
       // runtime check below is skipped precisely because consent is now false,
@@ -111,7 +111,7 @@ async function prepareOnDeviceTier(opts: {
       agreed === false && (unwatchedYes || !asked)
         ? declined
         : asked
-          ? "on-device search skipped: could not save the answer in settings; `hyperframes doctor` says why."
+          ? "on-device search skipped: could not save the answer in settings; `tagreel doctor` says why."
           : nonInteractiveConsentMessage(),
     );
     return warnings;
@@ -213,8 +213,8 @@ export default defineCommand({
     const config = loadProjectConfig(dir) ?? DEFAULT_PROJECT_CONFIG;
 
     let typeFilter: ItemType | undefined;
-    if (args.type === "block") typeFilter = "hyperframes:block";
-    else if (args.type === "component") typeFilter = "hyperframes:component";
+    if (args.type === "block") typeFilter = "tagreel:block";
+    else if (args.type === "component") typeFilter = "tagreel:component";
     else if (args.type) {
       console.error(`Invalid --type: "${args.type}". Use "block" or "component".`);
       finishCommand(1);
@@ -225,7 +225,7 @@ export default defineCommand({
     const manifest = await fetchRegistryManifest(config.registry);
     const entries = manifest?.items ?? [];
     const artifactRevision = manifest?.catalogArtifact?.revision;
-    const catalog = entries.filter((e) => e.type !== "hyperframes:example");
+    const catalog = entries.filter((e) => e.type !== "tagreel:example");
     const registryNames = new Set(catalog.map((e) => e.name));
     const filtered = typeFilter ? catalog.filter((e) => e.type === typeFilter) : catalog;
 
@@ -468,7 +468,7 @@ export default defineCommand({
     console.log("-".repeat(80));
 
     for (const item of matching) {
-      const type = item.type.replace("hyperframes:", "");
+      const type = item.type.replace("tagreel:", "");
       const tags = item.tags?.length ? c.dim(` [${item.tags.join(", ")}]`) : "";
       console.log(
         `${c.cyan(item.name.padEnd(NAME_COL))}${type.padEnd(TYPE_COL)}${item.description}${tags}`,
@@ -476,7 +476,7 @@ export default defineCommand({
     }
 
     console.log("");
-    console.log(c.dim(`${matching.length} items. Run "hyperframes add <name>" to install.`));
+    console.log(c.dim(`${matching.length} items. Run "tagreel add <name>" to install.`));
   },
 });
 
@@ -484,7 +484,7 @@ export default defineCommand({
 export function catalogRow(item: RegistryItem) {
   return {
     name: item.name,
-    type: item.type.replace("hyperframes:", ""),
+    type: item.type.replace("tagreel:", ""),
     title: item.title,
     description: item.description,
     tags: item.tags ?? [],
@@ -686,7 +686,7 @@ async function offerLocalModel(
   });
   if (clack.isCancel(answer)) return;
   if (recordLocalModelConsent(answer === true) !== (answer === true)) {
-    console.error("  Could not save the answer in settings; `hyperframes doctor` says why.");
+    console.error("  Could not save the answer in settings; `tagreel doctor` says why.");
     return;
   }
   if (answer !== true) return;

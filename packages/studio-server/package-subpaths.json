@@ -1,5 +1,5 @@
 {
-  "package": "@hyperframes/studio-server",
+  "package": "@tagreel/studio-server",
   "localNodeRuntime": true,
   "subpaths": {
     ".": {

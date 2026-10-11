@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "logo-brand-close",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Logo Brand Close",
   "description": "A display-scale wordmark cascades letter by letter into a centered lockup, the accent brand period lands last, an optional tagline and wide-tracked mono URL settle beneath, and the finished identity holds dead still to the end of the film.",
   "tags": ["motion-primitive", "typography", "brand", "logo", "end-card", "close"],
@@ -14,7 +14,7 @@
     {
       "path": "logo-brand-close.html",
       "target": "compositions/components/logo-brand-close.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -24,7 +24,7 @@
       "role": "content",
       "label": "Wordmark",
       "description": "Brand name whose letters cascade into the centered lockup.",
-      "default": "HYPERFRAMES"
+      "default": "TAGREEL"
     },
     {
       "id": "tagline",

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  testimonial-proof-card: HyperFrames video primitive (proof-stats / testimonial)
+  testimonial-proof-card: Tagreel video primitive (proof-stats / testimonial)
 
   A quote card: the quote reveals per measured line through a soft overflow
   mask, an avatar disc (initials by default, an image via the avatar slot),
@@ -254,8 +254,8 @@
             var quoteEl = root.querySelector(".tq-quote");
             var bylineEl = root.querySelector(".tq-byline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function str(value, fallback) {

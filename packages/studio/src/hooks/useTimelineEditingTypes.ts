@@ -1,5 +1,5 @@
 import type { MutableRefObject, RefObject } from "react";
-import type { Composition } from "@hyperframes/sdk";
+import type { Composition } from "@tagreel/sdk";
 import type { TimelineElement } from "../player";
 import type { TimelineStackingReorderIntent } from "../player/components/timelineEditing";
 import type { PublishSdkSession } from "../utils/sdkCutover";

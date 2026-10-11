@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  echo-trail: HyperFrames video primitive (trails)
+  echo-trail: Tagreel video primitive (trails)
 
   The generalized onion skin: a moving element renders with N ghosted
   copies of itself, each ghost showing the element where it was at
@@ -174,8 +174,8 @@
             var stage = root.querySelector(".et-stage");
             var lead = root.querySelector(".et-lead");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var echoesRaw = parseFloat(vars.echoes);

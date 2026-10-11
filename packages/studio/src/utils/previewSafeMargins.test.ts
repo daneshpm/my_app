@@ -8,7 +8,7 @@ import {
   safeBoxInsetPercent,
 } from "./previewSafeMargins";
 
-const SKILL_PATH = join(import.meta.dirname, "../../../../skills/hyperframes-studio/SKILL.md");
+const SKILL_PATH = join(import.meta.dirname, "../../../../skills/tagreel-studio/SKILL.md");
 
 describe("safe boxes", () => {
   it("are the 90% and 80% boxes, inset 5% and 10% from every edge", () => {
@@ -17,8 +17,8 @@ describe("safe boxes", () => {
   });
 });
 
-// Skipped until the hyperframes-studio skill exists on this branch.
-describe.runIf(existsSync(SKILL_PATH))("hyperframes-studio skill matches the constants", () => {
+// Skipped until the tagreel-studio skill exists on this branch.
+describe.runIf(existsSync(SKILL_PATH))("tagreel-studio skill matches the constants", () => {
   it("has a safe-margins line naming both percentages", () => {
     const skill = readFileSync(SKILL_PATH, "utf8");
     const line = skill

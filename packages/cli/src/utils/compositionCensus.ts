@@ -1,7 +1,7 @@
 import { parseHTML } from "linkedom";
 
 /**
- * A privacy-preserving structural anatomy of a HyperFrames composition. The
+ * A privacy-preserving structural anatomy of a Tagreel composition. The
  * agent fills this before submitting a non-clean bug report so
  * maintainers can pattern-match the report against known bug families without
  * receiving the composition ZIP.

@@ -4,7 +4,7 @@
  * the sampled values, and the add/remove keyframe target. Pure state, no JSX, so
  * the header component only renders what this returns.
  */
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import {
   clipToTweenPercentage,
   getKeyframeNavigationState,

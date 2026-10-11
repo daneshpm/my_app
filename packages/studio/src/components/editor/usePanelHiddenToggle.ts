@@ -1,4 +1,4 @@
-import { HF_AUDIO_GROUP_TAG } from "@hyperframes/core/audio-groups";
+import { HF_AUDIO_GROUP_TAG } from "@tagreel/core/audio-groups";
 import { useDomEditActionsContextOptional } from "../../contexts/DomEditContext";
 import { useTimelineEditContextOptional } from "../../contexts/TimelineEditContext";
 import { hiddenToggleVerb } from "../../player/components/hiddenToggle";

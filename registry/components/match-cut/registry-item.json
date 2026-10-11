@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "match-cut",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Match Cut",
   "description": "A circle accelerates into a hard single-frame scene swap, matches the incoming circle exactly, and continues into a smaller resting pose.",
   "tags": ["motion-primitive", "transition", "match-cut", "hard-cut", "continuity"],
@@ -14,7 +14,7 @@
     {
       "path": "match-cut.html",
       "target": "compositions/components/match-cut.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

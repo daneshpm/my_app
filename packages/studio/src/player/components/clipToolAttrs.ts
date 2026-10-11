@@ -9,10 +9,10 @@ import {
   serializeAudioFxChain,
   type HfAudioFxChain,
   type HfAudioFxNode,
-} from "@hyperframes/core/audio-fx";
-import { activeAudioFxPresetIds, getAudioFxPreset } from "@hyperframes/core/audio-fx-presets";
-import { normalizeHfColorGrading } from "@hyperframes/core/color-grading";
-import { parseRateLane } from "@hyperframes/core/speed-ramp";
+} from "@tagreel/core/audio-fx";
+import { activeAudioFxPresetIds, getAudioFxPreset } from "@tagreel/core/audio-fx-presets";
+import { normalizeHfColorGrading } from "@tagreel/core/color-grading";
+import { parseRateLane } from "@tagreel/core/speed-ramp";
 import { applyPresetToChain } from "../../components/editor/useApplyAudioFxPreset";
 
 export interface ClipToolChoice {

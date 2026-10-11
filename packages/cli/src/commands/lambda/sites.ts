@@ -1,5 +1,5 @@
 /**
- * `hyperframes lambda sites create <projectDir>` — tar + upload a project
+ * `tagreel lambda sites create <projectDir>` — tar + upload a project
  * to the deployed render bucket at a content-addressed S3 prefix. Used
  * by adopters who want to pre-stage a project so multiple subsequent
  * renders share the upload.
@@ -13,13 +13,13 @@ import { resolve as resolvePath } from "node:path";
 import { c } from "../../ui/colors.js";
 import { DEFAULT_STACK_NAME, requireStack } from "./state.js";
 
-// `@hyperframes/aws-lambda` is a workspace devDependency in `packages/cli`
+// `@tagreel/aws-lambda` is a workspace devDependency in `packages/cli`
 // so the published CLI install stays small for users who don't deploy to
 // Lambda. The lambda subverbs dynamic-import it on call. The dispatcher in
 // `commands/lambda.ts` checks the import resolves before any subverb runs
 // and prints a friendly install hint on `ERR_MODULE_NOT_FOUND`.
-async function loadSDK(): Promise<typeof import("@hyperframes/aws-lambda/sdk")> {
-  return import("@hyperframes/aws-lambda/sdk");
+async function loadSDK(): Promise<typeof import("@tagreel/aws-lambda/sdk")> {
+  return import("@tagreel/aws-lambda/sdk");
 }
 
 export interface SitesCreateArgs {
@@ -57,7 +57,7 @@ export async function runSitesCreate(args: SitesCreateArgs): Promise<void> {
   console.log();
   console.log(
     c.dim(
-      `Render with: hyperframes lambda render ${args.projectDir} --site-id=${handle.siteId}` +
+      `Render with: tagreel lambda render ${args.projectDir} --site-id=${handle.siteId}` +
         (args.stackName === DEFAULT_STACK_NAME ? "" : ` --stack-name=${args.stackName}`),
     ),
   );

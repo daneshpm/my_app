@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "locked-nucleus-orbit",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Locked Nucleus Orbit",
   "description": "A fixed center nucleus anchors deterministic satellite orbits that settle into a composed lockup.",
   "tags": ["motion-primitive", "intro", "reveal", "orbit", "lockup", "deterministic"],
@@ -13,7 +13,7 @@
     {
       "path": "locked-nucleus-orbit.html",
       "target": "compositions/components/locked-nucleus-orbit.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

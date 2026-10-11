@@ -1,10 +1,10 @@
 # Frame worker — PR-to-video delta
 
-> The shared law is the core contract above (the packet builder prepends `../../hyperframes/references/frame-worker-core.md` to this file as `_role.md`) — read the two as one role. This file carries only what's specific to a PR-to-video frame.
+> The shared law is the core contract above (the packet builder prepends `../../tagreel/references/frame-worker-core.md` to this file as `_role.md`) — read the two as one role. This file carries only what's specific to a PR-to-video frame.
 
 ## Batch dispatch — you build a small packet batch
 
-At most three workers run; your dispatch assigns **one or more** bounded packet paths under `.hyperframes/frame-packets/`. Read this role and shared `frame.md` **once**, then process the packets in order — for each, use its exact frame block, inlined blueprint / rule excerpts, and (for a code beat) the selected code-block / source excerpts. Never open the full `STORYBOARD.md`, `capture/diff.patch`, or `capture/extracted/visible-text.txt`; the orchestrator already selected the exact source excerpt and put it in each code frame's packet. After the last assigned file passes the self-check, stop.
+At most three workers run; your dispatch assigns **one or more** bounded packet paths under `.tagreel/frame-packets/`. Read this role and shared `frame.md` **once**, then process the packets in order — for each, use its exact frame block, inlined blueprint / rule excerpts, and (for a code beat) the selected code-block / source excerpts. Never open the full `STORYBOARD.md`, `capture/diff.patch`, or `capture/extracted/visible-text.txt`; the orchestrator already selected the exact source excerpt and put it in each code frame's packet. After the last assigned file passes the self-check, stop.
 
 Extra inputs beyond the core contract:
 

@@ -5,7 +5,7 @@ import { trackPreviewFeatureUsed, type PreviewMethod } from "../../utils/preview
  * GSAP source mutation routed through the (selection-bound) commit facade, which
  * handles the soft reload, undo snapshot, and save-failure feedback.
  */
-import type { GsapAnimation } from "@hyperframes/parsers/gsap-parser";
+import type { GsapAnimation } from "@tagreel/parsers/gsap-parser";
 import { assertGsapEditPersisted } from "../../hooks/gsapEditOutcome";
 import { observeGsapGesture } from "../../hooks/gsapGestureOutcome";
 import { readGsapPositionFromIframe } from "../../hooks/gsapPositionDetection";

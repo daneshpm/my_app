@@ -238,7 +238,7 @@ describe("studio motion manifest", () => {
 
     expect(parsed.motions).toHaveLength(1);
     expect(removeStudioMotionForSelection(parsed, createSelection()).motions).toEqual([]);
-    expect(isStudioMotionManifestPath(".hyperframes/studio-motion.json")).toBe(true);
+    expect(isStudioMotionManifestPath(".tagreel/studio-motion.json")).toBe(true);
     expect(isStudioMotionManifestPath("index.html")).toBe(false);
   });
 

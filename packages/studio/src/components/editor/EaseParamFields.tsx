@@ -1,10 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { parseSpringBounce } from "@hyperframes/core/spring-ease";
-import {
-  parseWiggleEase,
-  type WiggleEaseConfig,
-  type WiggleType,
-} from "@hyperframes/core/wiggle-ease";
+import { parseSpringBounce } from "@tagreel/core/spring-ease";
+import { parseWiggleEase, type WiggleEaseConfig, type WiggleType } from "@tagreel/core/wiggle-ease";
 import { roundToCenti } from "../../utils/rounding";
 import { MiniCurveSvg } from "./easeCurveSvg";
 

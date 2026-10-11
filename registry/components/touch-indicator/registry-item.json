@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "touch-indicator",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Touch Indicator",
   "description": "A translucent contact-circle gesture actor for mobile UI scenes: it touches the glass on the frame the host target responds, then lifts. Tap or swipe, picked by variable.",
   "tags": ["cursor", "motion-primitive", "mobile", "gesture", "touch", "pointer"],
@@ -61,7 +61,7 @@
     {
       "path": "touch-indicator.html",
       "target": "compositions/components/touch-indicator.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "jobs": ["demonstrate"],

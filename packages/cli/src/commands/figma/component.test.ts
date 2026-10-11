@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { runComponentImport } from "./component.js";
-import { FigmaClientError, appendBinding, type FigmaClient } from "@hyperframes/core/figma";
+import { FigmaClientError, appendBinding, type FigmaClient } from "@tagreel/core/figma";
 
 let dir = "";
 beforeEach(() => {
@@ -104,8 +104,8 @@ describe("runComponentImport", () => {
         "utf8",
       ),
     ) as { type: string; files: Array<{ type: string }> };
-    expect(item.type).toBe("hyperframes:component");
-    expect(item.files.some((f) => f.type === "hyperframes:snippet")).toBe(true);
+    expect(item.type).toBe("tagreel:component");
+    expect(item.files.some((f) => f.type === "tagreel:snippet")).toBe(true);
     expect(out.name).toBe("hero-card");
   });
 

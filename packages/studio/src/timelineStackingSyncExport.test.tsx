@@ -2,7 +2,7 @@
 // Mounts the timeline by package name with no Studio shell, as a host app does.
 import { act } from "react";
 import { expect, it, vi } from "vitest";
-import { Timeline, usePlayerStore, type TimelineZIndexReorderCommit } from "@hyperframes/studio";
+import { Timeline, usePlayerStore, type TimelineZIndexReorderCommit } from "@tagreel/studio";
 import { installReactActEnvironment, mountReactHarness } from "./hooks/domSelectionTestHarness";
 
 installReactActEnvironment();

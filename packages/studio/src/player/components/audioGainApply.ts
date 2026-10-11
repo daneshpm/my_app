@@ -1,4 +1,4 @@
-import { formatAudioGain } from "@hyperframes/core/audio-gain";
+import { formatAudioGain } from "@tagreel/core/audio-gain";
 import type { TimelineElement } from "../store/timelineElement";
 import type { TimelineEditCallbacks } from "./timelineCallbacks";
 import {

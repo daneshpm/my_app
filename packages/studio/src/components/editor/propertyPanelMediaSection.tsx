@@ -22,7 +22,7 @@ import {
   formatAudioGain,
   audioGainToFaderPosition,
   audioGainToText,
-} from "@hyperframes/core/audio-gain";
+} from "@tagreel/core/audio-gain";
 import type { CommitDomAttributeBatch } from "../../hooks/domEditCommitTypes";
 import { useLinkedSpeedCommit, withLinkedPlaybackRate } from "./linkedSpeedEdits";
 import { commitCutout, commitHasAudioToggle, commitMutedToggle } from "./mediaAudioEdits";

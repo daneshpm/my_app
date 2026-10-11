@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "swipe-rail",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Swipe Rail",
   "description": "A contact circle leads a horizontal card rail through a fast drag, momentum carry, and settled snap to the next card.",
   "tags": ["motion-primitive", "interaction", "gesture", "swipe", "cards", "rail"],
@@ -13,7 +13,7 @@
     {
       "path": "swipe-rail.html",
       "target": "compositions/components/swipe-rail.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

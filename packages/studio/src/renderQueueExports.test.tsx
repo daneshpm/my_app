@@ -10,7 +10,7 @@ import {
   useRenderQueue,
   type FfmpegStatus,
   type RenderJob,
-} from "@hyperframes/studio";
+} from "@tagreel/studio";
 
 Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
 

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":722}}
   attribution={{"path":"registry/components/motion-blur","tags":["effect","motion-blur","shutter","after-effects","velocity","animation"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/motion-blur/motion-blur.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/motion-blur/motion-blur.html"
 >
 
 <CatalogSlot slot="code">
@@ -98,7 +98,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   - Cost is N + 1 copies of the target's whole subtree, restyled on attach and
     on resize and re-transformed every frame. Point it at the element that
     moves, not at a container holding it.
-  - The host must render the timeline for the blur to update — HyperFrames
+  - The host must render the timeline for the blur to update — Tagreel
     seeks every frame. A fresh paused timeline that is never seeked shows no
     blur on its first frame.
   - A declarative target is attached as soon as its composition's timeline is
@@ -135,7 +135,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     fps              — composition frame rate (default: the data-fps of the
                        target's own composition root, else 30). Pass it
                        explicitly when rendering with an fps override
-                       (`hyperframes render --fps`).
+                       (`tagreel render --fps`).
 
   A key that is none of the four, or a value that is not a finite number, is
   refused by name rather than read as defaults. Both halves matter: a
@@ -476,7 +476,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         });
       }
 
-      // tl.eventCallback("onUpdate") is unavailable under the HyperFrames runtime proxy, so a
+      // tl.eventCallback("onUpdate") is unavailable under the Tagreel runtime proxy, so a
       // tracker tween's onUpdate fires on every seek. Sampling is deferred to a microtask:
       // seeking GSAP from inside its own render reads stale tween state, while the microtask
       // runs after the seek returns and before the frame is captured or painted.
@@ -751,7 +751,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add motion-blur" item="motion-blur" />
+<InstallCommand command="npx tagreel add motion-blur" item="motion-blur" />
 
 That writes one file: `compositions/components/motion-blur.html`.
 
@@ -808,7 +808,7 @@ Copies follow the real trajectory, so eased and curved motion smear correctly, a
 | `shutterAngle` | `720` | Degrees of the frame interval the shutter is open. `720` spans two frames, the width measured off the After Effects reference; `360` spans one; `0` disables the blur |
 | `shutterPhase` | `-360` | Degrees offset of the window start from the frame time. `-360` starts the window one frame back, which with a 720° angle centres it on the frame |
 | `samplesPerFrame` | `16` | Sub-intervals of the shutter window (2–64), so `N + 1` duplicates at `1/N` opacity each. More sub-intervals close the gaps between duplicates at high speed, at the cost of one more copy of the element per frame |
-| `fps` | root `data-fps`, else `30` | Composition frame rate. Pass it explicitly when rendering with an fps override (`hyperframes render --fps`) |
+| `fps` | root `data-fps`, else `30` | Composition frame rate. Pass it explicitly when rendering with an fps override (`tagreel render --fps`) |
 
 {/* hf:generated-footer */}
 

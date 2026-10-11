@@ -1,4 +1,4 @@
-name: "Hyperframes CodeQL config"
+name: "Tagreel CodeQL config"
 
 # Use GitHub's default security-extended suite — it's a strict superset of the
 # default suite (more queries, slightly higher false-positive rate). Pair it with

@@ -31,7 +31,7 @@ function declaredArgs(cmd: CommandDef<ArgsDef>): ArgsDef {
 }
 
 function usageLine(path: string, args: ArgsDef): string {
-  const parts = ["hyperframes", path];
+  const parts = ["tagreel", path];
   let hasOptions = false;
   for (const [name, def] of Object.entries(args)) {
     if (def.type !== "positional") {
@@ -68,14 +68,14 @@ export function resolveExtraPositionals(
 
   const plural = extra.length === 1 ? "" : "s";
   const message =
-    `Unexpected extra argument${plural} for hyperframes ${path}: ${extra.join(", ")}\n` +
+    `Unexpected extra argument${plural} for tagreel ${path}: ${extra.join(", ")}\n` +
     `Usage: ${usageLine(path, args)}` +
     (EXTRA_POSITIONAL_HINTS[path] ? `\n${EXTRA_POSITIONAL_HINTS[path]}` : "");
   if (wantsJson(parsed?.json)) console.log(JSON.stringify({ ok: false, error: message }));
   else console.error(message);
   // Telemetry reads the thrown message: the command path and a count, never the arguments.
   throw new CliUsageError(
-    `${extra.length} unexpected extra argument${plural} for hyperframes ${path}`,
+    `${extra.length} unexpected extra argument${plural} for tagreel ${path}`,
     {
       presented: true,
     },

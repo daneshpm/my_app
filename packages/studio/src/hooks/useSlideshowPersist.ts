@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import type { Composition } from "@hyperframes/sdk";
-import type { SlideshowManifest } from "@hyperframes/core/slideshow";
+import type { Composition } from "@tagreel/sdk";
+import type { SlideshowManifest } from "@tagreel/core/slideshow";
 import type { PublishSdkSession } from "../utils/sdkCutover";
 import { persistSlideshowManifest } from "../utils/setSlideshowManifest";
 

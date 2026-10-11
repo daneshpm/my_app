@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":551}}
   attribution={{"path":"registry/components/facet-morph","tags":["motion-primitive","intro","morph","low-poly","svg","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/facet-morph/facet-morph.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/facet-morph/facet-morph.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html facet-morph.html
 <!doctype html>
 <!--
-  facet-morph: HyperFrames video primitive (intros and reveals / morph)
+  facet-morph: Tagreel video primitive (intros and reveals / morph)
 
   Concept: a faceted low-poly mass (36 triangles, one SVG) continuously
   reshapes between three authored silhouettes (blob, mark, badge) with
@@ -78,7 +78,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   <template> contents; #root fills the host box (inset:0, container-type:
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "facet-morph" key. Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -191,8 +191,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var mesh = root.querySelector(".fm-mesh");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             /* ---------------- variables ---------------- */
@@ -580,7 +580,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add facet-morph" item="facet-morph" />
+<InstallCommand command="npx tagreel add facet-morph" item="facet-morph" />
 
 That writes one file: `compositions/components/facet-morph.html`.
 

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "organic-light-leak-overlay",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Organic Light Leak Overlay",
   "description": "Finite CSS light-leak overlay for memory beats and motivated transitions",
   "tags": ["light-leak", "film", "memory", "transition", "overlay", "media-treatment-overlay"],
@@ -14,7 +14,7 @@
     {
       "path": "organic-light-leak-overlay.html",
       "target": "compositions/organic-light-leak-overlay.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

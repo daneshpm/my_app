@@ -13,11 +13,11 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   compositionSrc="compositions/components/cta-lockup.html"
   title="CTA Lockup"
   description="A canonical closing lockup that reveals an action line, pops in an accent CTA capsule, settles supporting microcopy, and holds with confidence."
-  variables={[{"id":"action_line","type":"string","role":"content","label":"Action line","description":"Primary action statement shown above the CTA.","default":"Start building today"},{"id":"button_label","type":"string","role":"content","label":"Button label","description":"Text displayed inside the CTA capsule.","default":"Get HyperFrames"},{"id":"microcopy","type":"string","role":"content","label":"Microcopy","description":"Supporting detail shown below the CTA capsule.","default":"Free while in beta"},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Fill color used by the CTA capsule.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]}]}
+  variables={[{"id":"action_line","type":"string","role":"content","label":"Action line","description":"Primary action statement shown above the CTA.","default":"Start building today"},{"id":"button_label","type":"string","role":"content","label":"Button label","description":"Text displayed inside the CTA capsule.","default":"Get Tagreel"},{"id":"microcopy","type":"string","role":"content","label":"Microcopy","description":"Supporting detail shown below the CTA capsule.","default":"Free while in beta"},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Fill color used by the CTA capsule.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]}]}
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":258}}
   attribution={{"path":"registry/components/cta-lockup","tags":["motion-primitive","ui-props","cta","end-card","lockup","ask"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/cta-lockup/cta-lockup.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/cta-lockup/cta-lockup.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html cta-lockup.html
 <!doctype html>
 <!--
-  cta-lockup: HyperFrames video primitive (ui-props / holdable / ask)
+  cta-lockup: Tagreel video primitive (ui-props / holdable / ask)
 
   Concept: a canonical closing lockup with one frozen reveal order. The
   action line arrives first, the CTA capsule pops beneath it with a restrained
@@ -37,7 +37,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
   Variables:
     - action_line (string, default "Start building today"): primary close.
-    - button_label (string, default "Get HyperFrames"): CTA capsule label.
+    - button_label (string, default "Get Tagreel"): CTA capsule label.
     - microcopy (string, default "Free while in beta"): supporting detail.
     - accent (green | blue | violet, default green): capsule fill.
 
@@ -59,7 +59,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   data-composition-duration="4"
   data-composition-variables='[
     { "id": "action_line", "type": "string", "role": "content", "label": "Action line", "description": "Primary action statement shown above the CTA.", "default": "Start building today" },
-    { "id": "button_label", "type": "string", "role": "content", "label": "Button label", "description": "Text displayed inside the CTA capsule.", "default": "Get HyperFrames" },
+    { "id": "button_label", "type": "string", "role": "content", "label": "Button label", "description": "Text displayed inside the CTA capsule.", "default": "Get Tagreel" },
     { "id": "microcopy", "type": "string", "role": "content", "label": "Microcopy", "description": "Supporting detail shown below the CTA capsule.", "default": "Free while in beta" },
     { "id": "accent", "type": "enum", "role": "style", "label": "Accent", "description": "Fill color used by the CTA capsule.", "default": "green", "options": [{ "value": "green", "label": "Green" }, { "value": "blue", "label": "Blue" }, { "value": "violet", "label": "Violet" }] }
   ]'
@@ -179,14 +179,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var button = root.querySelector(".cl-button");
             var microcopy = root.querySelector(".cl-microcopy");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var actionText =
               vars.action_line == null ? "Start building today" : String(vars.action_line);
             var buttonText =
-              vars.button_label == null ? "Get HyperFrames" : String(vars.button_label);
+              vars.button_label == null ? "Get Tagreel" : String(vars.button_label);
             var microcopyText =
               vars.microcopy == null ? "Free while in beta" : String(vars.microcopy);
             var accentColors = {
@@ -287,7 +287,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add cta-lockup" item="cta-lockup" />
+<InstallCommand command="npx tagreel add cta-lockup" item="cta-lockup" />
 
 That writes one file: `compositions/components/cta-lockup.html`.
 
@@ -310,7 +310,7 @@ want to change on the element:
 | Variable | Default | Accepts | What it does |
 | --- | --- | --- | --- |
 | `action_line` | `Start building today` | string | Primary action statement shown above the CTA. |
-| `button_label` | `Get HyperFrames` | string | Text displayed inside the CTA capsule. |
+| `button_label` | `Get Tagreel` | string | Text displayed inside the CTA capsule. |
 | `microcopy` | `Free while in beta` | string | Supporting detail shown below the CTA capsule. |
 | `accent` | `green` | `green`, `blue`, `violet` | Fill color used by the CTA capsule. |
 
@@ -321,7 +321,7 @@ defaults, so this behaves exactly like the preview above until you change one:
 <div
   data-composition-id="cta-lockup"
   data-composition-src="compositions/components/cta-lockup.html"
-  data-variable-values='{"action_line":"Start building today","button_label":"Get HyperFrames","microcopy":"Free while in beta","accent":"green"}'
+  data-variable-values='{"action_line":"Start building today","button_label":"Get Tagreel","microcopy":"Free while in beta","accent":"green"}'
 ></div>
 ```
 

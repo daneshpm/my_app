@@ -14,7 +14,7 @@ a VO saying "juh-son" ("JSON" read literally) are both build failures.
 - Numbers with meaning stay ("fifteen releases"); commit hashes, PR numbers,
   and version micro-detail are never spoken.
 - Open with the week + the marquee, close with the digest pointer
-  ("See everything at hyperframes dot heygen dot com").
+  ("See everything at tagreel dot heygen dot com").
 - **Teach the simple command.** When a feature has a one-line invocation (a
   slash command, a CLI one-liner), the script says it verbatim ("start your
   prompt with /figma…") and the mock shows it being typed — the command is
@@ -28,7 +28,7 @@ a VO saying "juh-son" ("JSON" read literally) are both build failures.
   "lines": [
     {
       "id": "l1",
-      "tokens": ["This", "week", "at", "HyperFrames,", { "display": "JSON", "spoken": "jay-sawn" }]
+      "tokens": ["This", "week", "at", "Tagreel,", { "display": "JSON", "spoken": "jay-sawn" }]
     }
   ]
 }
@@ -62,7 +62,7 @@ spelling, hyphens, and spacing:
 4. **Versions/numbers**: expand — `v0.7.36 → "version zero point seven
 point thirty-six"` (usually: don't speak versions at all),
    `1080×1080 → "ten-eighty by ten-eighty"`.
-5. **URLs**: `hyperframes.heygen.com → "hyperframes dot hey-jen dot com"`.
+5. **URLs**: `github.com/daneshpm/my_app/tree/main/docs → "tagreel dot hey-jen dot com"`.
 6. **Filenames/extensions**: `.mp4 → "dot em pee four"` — or rephrase so the
    extension isn't spoken.
 7. **Emphasis/pauses**: commas and em-dashes, never caps. Ellipses are

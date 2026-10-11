@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "comparison-split",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Comparison Split",
   "description": "Two full-bleed panels compare before and after states as a persistent divider wipes the vivid after layer over the muted before layer and rests at a configurable split.",
   "tags": ["prop", "ui-props", "compare", "holdable", "before-after", "wipe"],
@@ -14,7 +14,7 @@
     {
       "path": "comparison-split.html",
       "target": "compositions/components/comparison-split.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

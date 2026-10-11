@@ -12,14 +12,14 @@ import {
   applyAudioFxProfile,
   audioFxProfileStrength,
   getAudioFxProfile,
-} from "@hyperframes/core/audio-fx-profiles";
+} from "@tagreel/core/audio-fx-profiles";
 import type {
   HfAudioFxDef,
   HfAudioFxNode,
   HfAudioFxParam,
   HfAudioFxParamValues,
-} from "@hyperframes/core/audio-fx";
-import type { EFFECT_COPY } from "@hyperframes/core/audio-fx-copy";
+} from "@tagreel/core/audio-fx";
+import type { EFFECT_COPY } from "@tagreel/core/audio-fx-copy";
 import { trackProfileCommitted } from "./audioFxTelemetry.js";
 import { FxParamRow } from "./propertyPanelFxControls.js";
 import { FxBandRuler } from "./propertyPanelFxBandRuler.js";

@@ -118,9 +118,9 @@ function frameSampler() {
       },
       true,
     );
-  // Studio's previews sit in <hyperframes-player> shadow roots, which window.frames does not list.
+  // Studio's previews sit in <tagreel-player> shadow roots, which window.frames does not list.
   const previewWindows = () =>
-    Array.from(document.querySelectorAll("iframe, hyperframes-player"))
+    Array.from(document.querySelectorAll("iframe, tagreel-player"))
       .flatMap((e) => (e.shadowRoot ? Array.from(e.shadowRoot.querySelectorAll("iframe")) : [e]))
       .map((e) => e.contentWindow)
       .filter((f) => {

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "fade-through",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Fade Through",
   "description": "A calm transition primitive that fades one layer out, passes through a wash, and reveals the next layer",
   "tags": ["motion-primitive", "transition", "fade", "crossfade", "scene"],
@@ -9,7 +9,7 @@
     {
       "path": "fade-through.html",
       "target": "compositions/components/fade-through.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

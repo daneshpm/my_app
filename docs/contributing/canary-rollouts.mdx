@@ -74,14 +74,14 @@ stop applying, so nothing takes the new path for the first time at deletion.
 ## Remove one from your machine
 
 Cohorts bucket on a seed in `install-state.json`, which sits beside
-`config.json` in `~/.hyperframes` — not on the telemetry id. So a full reset is
+`config.json` in `~/.tagreel` — not on the telemetry id. So a full reset is
 one command:
 
 ```bash
-rm -rf ~/.hyperframes    # clears telemetry id, canary cohorts, and breaker state
+rm -rf ~/.tagreel    # clears telemetry id, canary cohorts, and breaker state
 ```
 
-`hyperframes telemetry status` prints both paths if you want to inspect or
+`tagreel telemetry status` prints both paths if you want to inspect or
 delete them individually. Nothing canary-related is stored anywhere else.
 
 ## Where it lives

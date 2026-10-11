@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  text-shimmer: HyperFrames video primitive (text effects / drift / emphasize)
+  text-shimmer: Tagreel video primitive (text effects / drift / emphasize)
 
   Concept: a headline remains fixed while one narrow specular band crosses
   its glyphs. The text is clean before and after the pass. There is no
@@ -122,8 +122,8 @@
             var root = document.getElementById("root");
             var headline = root.querySelector(".ts-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Effortless" : String(vars.text);

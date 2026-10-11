@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  starfield: HyperFrames video primitive (backgrounds / ambient overlay)
+  starfield: Tagreel video primitive (backgrounds / ambient overlay)
 
   Concept: a night sky of seeded stars in three size tiers, twinkling and drifting sideways
   in two parallax layers over a transparent field, meant to sit
@@ -92,8 +92,8 @@
         // Mounted, the runtime strips data-duration off this file's root; the host clip carries it.
         var host = field.closest("[data-composition-id]");
         var vars =
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && window.__tagreel.getVariables
+            ? window.__tagreel.getVariables()
             : {};
 
         var TONES = {

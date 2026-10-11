@@ -2,7 +2,7 @@
 import React, { act } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createRoot } from "react-dom/client";
-import { serializeAudioFxChain } from "@hyperframes/core/audio-fx";
+import { serializeAudioFxChain } from "@tagreel/core/audio-fx";
 import { TimelineFxButton } from "./TimelineFxButton.js";
 
 (globalThis as unknown as { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;

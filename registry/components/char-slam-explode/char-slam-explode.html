@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  char-slam-explode: HyperFrames video primitive
+  char-slam-explode: Tagreel video primitive
 
   A headline begins as individually scattered glyphs, holds the explosion,
   then reassembles with an overshooting slam and a deterministic three-frame
@@ -129,8 +129,8 @@
             var stage = root.querySelector(".cse-stage");
             var headline = root.querySelector(".cse-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Impact" : String(vars.text);

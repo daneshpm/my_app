@@ -5,7 +5,7 @@
   Words enter from the right while the existing phrase shifts left, keeping
   every intermediate phrase centered until the final line locks in place.
 
-  Native HyperFrames port prepared through Hyfrme from:
+  Native Tagreel port prepared through Hyfrme from:
   https://github.com/Remocn/remocn/blob/ea730a20b4ab09430ee7292aebc847c002375151/registry/remocn/kinetic-center-build/index.tsx
 
   MIT License
@@ -119,8 +119,8 @@
             var root = document.getElementById("root");
             var stage = document.getElementById("kcb-stage");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function numberBetween(value, fallback, min, max) {

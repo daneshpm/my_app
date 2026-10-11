@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "camera-dolly-zoom",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Dolly Zoom (Vertigo Shot)",
   "description": "Camera tracks toward or away from the subject while the field of view changes the opposite way, so the subject holds its frame size while the background collapses behind it or rushes in. Focal length is solved from dolly distance every frame against d * tan(FOV/2) = const, not keyframed beside it. Requires depth: the subject sits on the z = 0 plane and the content behind it must be layered or genuinely 3D (translateZ at two or more distinct depths) -- a flat element gains nothing from this move.",
   "tags": ["camera", "depth", "3d", "cinematic"],
@@ -58,7 +58,7 @@
     {
       "path": "camera-dolly-zoom.html",
       "target": "compositions/camera-dolly-zoom.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

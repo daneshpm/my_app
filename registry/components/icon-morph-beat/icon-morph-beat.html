@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  icon-morph-beat: HyperFrames video primitive (product-demo / state-change)
+  icon-morph-beat: Tagreel video primitive (product-demo / state-change)
 
   Concept: one icon holds as a readable before state, morphs into its after
   state while shifting to the selected accent, then marks completion with a
@@ -149,8 +149,8 @@
             var icon = root.querySelector(".imb-icon");
             var shape = root.querySelector(".imb-shape");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // Each from/to pair has the same SVG command sequence and point

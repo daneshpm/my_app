@@ -113,7 +113,7 @@ test("CLI partial run retains unselected voices, BGM and SFX", (t) => {
       fileURLToPath(new URL("../audio.mjs", import.meta.url)),
       "--request",
       request,
-      "--hyperframes",
+      "--tagreel",
       dir,
       "--out",
       path,

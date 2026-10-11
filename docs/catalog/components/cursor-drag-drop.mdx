@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Cursors","badge":"Stable","codeLines":464}}
   attribution={{"path":"registry/components/cursor-drag-drop","tags":["cursor","motion-primitive","drag","drop","kanban","product-demo"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/cursor-drag-drop/cursor-drag-drop.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/cursor-drag-drop/cursor-drag-drop.html"
 >
 
 <CatalogSlot slot="code">
@@ -283,8 +283,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
           }
           var scopedVariables = {};
           try {
-            if (window.__hyperframes && typeof window.__hyperframes.getVariables === "function") {
-              scopedVariables = window.__hyperframes.getVariables() || {};
+            if (window.__tagreel && typeof window.__tagreel.getVariables === "function") {
+              scopedVariables = window.__tagreel.getVariables() || {};
             }
           } catch (error) {
             /* no scoped variables API in this context */
@@ -493,7 +493,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add cursor-drag-drop" item="cursor-drag-drop" />
+<InstallCommand command="npx tagreel add cursor-drag-drop" item="cursor-drag-drop" />
 
 That writes one file: `compositions/components/cursor-drag-drop.html`.
 

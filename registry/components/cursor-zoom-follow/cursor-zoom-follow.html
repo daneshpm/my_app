@@ -379,8 +379,8 @@
           }
           var scopedVariables = {};
           try {
-            if (window.__hyperframes && typeof window.__hyperframes.getVariables === "function") {
-              scopedVariables = window.__hyperframes.getVariables() || {};
+            if (window.__tagreel && typeof window.__tagreel.getVariables === "function") {
+              scopedVariables = window.__tagreel.getVariables() || {};
             }
           } catch (error) {
             /* no scoped variables API in this context */
@@ -420,7 +420,7 @@
           var ZOOM = num(vars.zoom, 1.8, 1, 3);
           var accent = color(vars.accent, "rgb(10,132,255)");
           var u = W / 1920;
-          // Mirrors @hyperframes/parsers' isSafeMediaUrl allowlist: this
+          // Mirrors @tagreel/parsers' isSafeMediaUrl allowlist: this
           // composition has no build step to import it from, so the same
           // scheme rule (relative or http/https/blob/data:image only) is
           // inlined rather than trusting the raw variable into img.src.

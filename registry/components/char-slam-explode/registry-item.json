@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "char-slam-explode",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Char Slam Explode",
   "description": "Headline glyphs hold in a deterministic scatter, then reassemble with an overshooting slam and a three-frame landing shake.",
   "tags": ["motion-primitive", "typography", "text-treatment", "scatter", "slam", "impact"],
@@ -14,7 +14,7 @@
     {
       "path": "char-slam-explode.html",
       "target": "compositions/components/char-slam-explode.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

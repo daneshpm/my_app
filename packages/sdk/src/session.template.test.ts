@@ -96,7 +96,7 @@ describe("template-based sub-comp compositions", () => {
   });
 });
 
-// The authored sub-comp form `hyperframes add` scaffolds: the composition id is
+// The authored sub-comp form `tagreel add` scaffolds: the composition id is
 // on the wrapped root div, and the <template> is keyed by `id="X-template"`.
 const AUTHORED_TEMPLATE_HTML = `
 <template id="card-template">

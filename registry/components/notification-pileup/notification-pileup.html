@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  notification-pileup, HyperFrames video primitive (ui-props / loop / agitate)
+  notification-pileup, Tagreel video primitive (ui-props / loop / agitate)
 
   Concept: mobile notification cards arrive faster than they can be read.
   Every new card lands at the top and pushes the existing stack downward,
@@ -37,7 +37,7 @@
   Mount contract: this is a mountable sub-composition. The runtime clones
   only <template> contents. #root fills the host box, owns no width or height
   metadata, and establishes the container query basis. Variables come only
-  from window.__hyperframes.getVariables(). The hardcoded timeline key stays
+  from window.__tagreel.getVariables(). The hardcoded timeline key stays
   "notification-pileup" after mount flattening strips data-composition-id.
 -->
 <html
@@ -240,8 +240,8 @@
             // EDIT ZONE: defaults mirror the outer variable declarations.
             // getVariables owns the declared-defaults-plus-host-overrides merge.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: count is always an integer in the declared 4 to 10 range.

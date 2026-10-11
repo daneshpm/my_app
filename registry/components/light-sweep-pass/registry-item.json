@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "light-sweep-pass",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Light Sweep Pass",
   "description": "A traveling key light re-shades a slotted scene: a soft diagonal gradient band crosses the frame once while every per-element highlight and shadow shifts in lockstep (all driven by one --light-x property), then the light settles into a resting key. Quiet, expensive-feeling; the scene itself never moves. Callers fill the named scene slot; a token hero-and-cards default renders when it is left empty.",
   "tags": ["motion-primitive", "overlay", "light", "sweep", "slots", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "light-sweep-pass.html",
       "target": "compositions/components/light-sweep-pass.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

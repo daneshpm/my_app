@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  velocity-throw-snap: HyperFrames video primitive (feature-tour / exhibit)
+  velocity-throw-snap: Tagreel video primitive (feature-tour / exhibit)
 
   Concept: a five-shot rail whips in on an authored velocity curve, loses
   speed quickly, then snaps past and back onto the selected hero shot. The
@@ -337,8 +337,8 @@
             var cards = Array.from(root.querySelectorAll(".vts-card"));
             var labels = Array.from(root.querySelectorAll(".vts-label"));
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var heroValue = Number(vars.hero_index);

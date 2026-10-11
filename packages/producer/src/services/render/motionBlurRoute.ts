@@ -17,7 +17,7 @@
  * is a feature rather than a fix.
  */
 
-import type { MotionBlurOptions } from "@hyperframes/engine";
+import type { MotionBlurOptions } from "@tagreel/engine";
 import type { CapturePlan } from "./capturePlan.js";
 
 /** Why a capture route cannot honour motion blur, or null when it can. */

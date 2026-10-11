@@ -7,7 +7,7 @@ import {
   type HfColorGradingActiveEffectKey,
   type HfColorGradingEffectKey,
   type NormalizedHfColorGrading,
-} from "@hyperframes/core/color-grading";
+} from "@tagreel/core/color-grading";
 import { Plus, RotateCcw, X } from "../../icons/SystemIcons";
 import { useTrackDesignInput } from "../../contexts/DesignPanelInputContext";
 import { FLAT_PREVIEW_GRID, FlatSlider } from "./propertyPanelFlatPrimitives";

@@ -4,7 +4,7 @@ import {
   type HfColorGradingActiveEffectKey,
   type HfColorGradingEffectKey,
   type HfColorGradingPresetId,
-} from "@hyperframes/core/color-grading";
+} from "@tagreel/core/color-grading";
 
 type SliderControl = {
   kind: "slider";

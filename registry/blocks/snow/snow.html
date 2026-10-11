@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  snow: HyperFrames video primitive (backgrounds / ambient overlay)
+  snow: Tagreel video primitive (backgrounds / ambient overlay)
 
   Concept: snowflakes fall from top to bottom in a continuous seamless loop, drifting
   side to side, meant to sit on a track above real footage rather than as an opaque
@@ -96,8 +96,8 @@
         // Mounted, the runtime strips data-duration off this file's root; the host clip carries it.
         var host = field.closest("[data-composition-id]");
         var vars =
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && window.__tagreel.getVariables
+            ? window.__tagreel.getVariables()
             : {};
 
         // The host's data-width/data-height are authoritative over this file's own root

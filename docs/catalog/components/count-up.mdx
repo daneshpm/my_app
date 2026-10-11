@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":297}}
   attribution={{"path":"registry/components/count-up","tags":["motion-primitive","proof","stats","counter","number","countdown","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/count-up/count-up.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/count-up/count-up.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html count-up.html
 <!doctype html>
 <!--
-  count-up: HyperFrames video primitive (proof and stats / prove)
+  count-up: Tagreel video primitive (proof and stats / prove)
 
   A value accelerates from start to end, decelerates into the exact final
   integer, and lands with one restrained scale pulse. Prefix and suffix stay
@@ -182,8 +182,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var prefixElement = root.querySelector(".cu-prefix");
             var suffixElement = root.querySelector(".cu-suffix");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var startCandidate = vars.start;
@@ -326,7 +326,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add count-up" item="count-up" />
+<InstallCommand command="npx tagreel add count-up" item="count-up" />
 
 That writes one file: `compositions/components/count-up.html`.
 

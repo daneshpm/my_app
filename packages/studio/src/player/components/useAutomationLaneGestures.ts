@@ -12,7 +12,7 @@
  */
 
 import { useCallback, useRef, useState, type PointerEvent as ReactPointerEvent } from "react";
-import type { AutomationRange, HfAutomationLane } from "@hyperframes/core/audio-automation";
+import type { AutomationRange, HfAutomationLane } from "@tagreel/core/audio-automation";
 import { curveForDrag, formatValue, GRAB_PX, mergeInsertPoint } from "./automationLaneGeometry";
 import { pointInSelection } from "./automationLaneSelection";
 import { capturePointer } from "./automationLanePointer";

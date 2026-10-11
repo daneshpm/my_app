@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { listTypes, getProviders } from "./registry.mjs";
 import { CAPABILITIES, listModels } from "./local-models.mjs";
 
-// Capstone: media-use must actually OWN each hyperframes media weakness. This
+// Capstone: media-use must actually OWN each tagreel media weakness. This
 // test enforces the weakness→owner matrix in references/meta.md so a claim can't rot — if
 // a capability's entrypoint disappears, this fails.
 
@@ -40,7 +40,7 @@ test("weakness: no voice/audio gen → media-use exposes voice + the audio engin
   assert.ok(existsSync(join(SKILL, "audio", "scripts", "audio.mjs")), "audio engine missing");
 });
 
-test("weakness: scattered audio engine → consolidated under media-use (hyperframes-media gone)", () => {
+test("weakness: scattered audio engine → consolidated under media-use (tagreel-media gone)", () => {
   assert.ok(existsSync(join(SKILL, "audio", "scripts", "lib", "tts.mjs")), "tts engine missing");
   assert.ok(
     existsSync(join(SKILL, "audio", "assets", "sfx", "manifest.json")),

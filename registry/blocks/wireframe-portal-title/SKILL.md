@@ -1,6 +1,6 @@
 ---
 name: wireframe-portal-title
-description: A wireframe portal bursts open, the title comes through, then its letters swap into a second phrase. HyperFrames block, 1920×1080, 8s, 9 variables.
+description: A wireframe portal bursts open, the title comes through, then its letters swap into a second phrase. Tagreel block, 1920×1080, 8s, 9 variables.
 ---
 
 # Wireframe Portal Title
@@ -19,7 +19,7 @@ Composition id: `wireframe-portal-title`. Duration 8 s at 30 fps, 1920×1080.
 
 ## Install
 
-Install with `npx hyperframes add wireframe-portal-title`; by default the files above land under `compositions/wireframe-portal-title/`. Then mount the block from the host `index.html`:
+Install with `npx tagreel add wireframe-portal-title`; by default the files above land under `compositions/wireframe-portal-title/`. Then mount the block from the host `index.html`:
 
 ```html
 <div
@@ -36,24 +36,24 @@ Install with `npx hyperframes add wireframe-portal-title`; by default the files 
 Render with custom values by targeting the composition file directly:
 
 ```sh
-npx --yes hyperframes@0.8.12 render 'compositions/wireframe-portal-title/wireframe-portal-title.html' --variables '{"title":"BREAKTHROUGH","replacementPhrase":"Lets do this sir!"}'
+npx --yes tagreel@0.8.12 render 'compositions/wireframe-portal-title/wireframe-portal-title.html' --variables '{"title":"BREAKTHROUGH","replacementPhrase":"Lets do this sir!"}'
 ```
 
 ## Variables
 
-Read at runtime via `window.__hyperframes.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
+Read at runtime via `window.__tagreel.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
 
-| id                  | type    | default                      | label / range                                       |
-| ------------------- | ------- | ---------------------------- | --------------------------------------------------- |
-| `title`             | string  | `"BREAKTHROUGH"`             | Title max 18 chars                                  |
-| `replacementPhrase` | string  | `"Lets do this sir!"`        | 3D replacement phrase (auto layout)                 |
-| `phraseDuration`    | number  | `1.85`                       | Phrase transition duration (s) 0.65–2.9 step 0.05   |
-| `phraseEasing`      | number  | `8`                          | Transition easing (1 gentle – 8 snap) 1–8 step 0.25 |
-| `settleGlitch`      | number  | `0.2`                        | Letter settle glitch strength 0–4 step 0.05         |
-| `depthFog`          | boolean | `true`                       | Depth fog (early fade always on)                    |
-| `subtitle`          | string  | `"HYPERFRAMES PORTAL TITLE"` | Subtitle max 48 chars                               |
-| `accent`            | color   | `"#F5C518"`                  | Accent                                              |
-| `burstChaos`        | number  | `1`                          | Burst chaos (0-2) 0–2 step 0.01                     |
+| id                  | type    | default                  | label / range                                       |
+| ------------------- | ------- | ------------------------ | --------------------------------------------------- |
+| `title`             | string  | `"BREAKTHROUGH"`         | Title max 18 chars                                  |
+| `replacementPhrase` | string  | `"Lets do this sir!"`    | 3D replacement phrase (auto layout)                 |
+| `phraseDuration`    | number  | `1.85`                   | Phrase transition duration (s) 0.65–2.9 step 0.05   |
+| `phraseEasing`      | number  | `8`                      | Transition easing (1 gentle – 8 snap) 1–8 step 0.25 |
+| `settleGlitch`      | number  | `0.2`                    | Letter settle glitch strength 0–4 step 0.05         |
+| `depthFog`          | boolean | `true`                   | Depth fog (early fade always on)                    |
+| `subtitle`          | string  | `"TAGREEL PORTAL TITLE"` | Subtitle max 48 chars                               |
+| `accent`            | color   | `"#F5C518"`              | Accent                                              |
+| `burstChaos`        | number  | `1`                      | Burst chaos (0-2) 0–2 step 0.01                     |
 
 ## Runtime contract
 

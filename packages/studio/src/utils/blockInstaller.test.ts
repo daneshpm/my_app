@@ -31,7 +31,7 @@ describe("addBlockToProject", () => {
             name: "camcorder-hud",
             title: "Camcorder HUD",
             description: "HUD",
-            type: "hyperframes:block",
+            type: "tagreel:block",
             files: [],
             dimensions: { width: 1920, height: 1080 },
             duration: 4,

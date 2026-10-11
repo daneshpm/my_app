@@ -478,7 +478,7 @@
 }
 
 /*
- * HyperFrames brand loader. Shared by preview overlays that need a calm,
+ * Tagreel brand loader. Shared by preview overlays that need a calm,
  * branded loading state instead of a generic spinner.
  */
 .hf-loader {

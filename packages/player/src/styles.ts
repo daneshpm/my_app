@@ -209,7 +209,7 @@ export const PLAYER_STYLES = /* css */ `
   /* ── Theming via CSS custom properties ──
    *
    * Override from outside the shadow DOM:
-   *   hyperframes-player {
+   *   tagreel-player {
    *     --hfp-controls-bg: linear-gradient(transparent, rgba(0,0,0,0.9));
    *     --hfp-accent: #ff6b6b;
    *     --hfp-font: "Inter", sans-serif;
@@ -471,7 +471,7 @@ export const PLAYER_STYLES = /* css */ `
   }
 `;
 
-// Play glyph: the right-hand blade from the HyperFrames favicon, framed to its
+// Play glyph: the right-hand blade from the Tagreel favicon, framed to its
 // bounding box so it fills the icon. Points right, like a play triangle.
 export const PLAY_ICON = `<svg width="24" height="24" viewBox="46 21 54 56" fill="currentColor"><path d="M87.5129 57.5141L56.9696 73.5433C52.8371 75.7098 48.7046 73.2553 49.6688 69.2104L58.9483 30.1391C59.9125 26.0942 65.2097 23.6397 68.3154 25.8062L91.2447 41.8354C96.4668 45.4796 94.4631 53.8699 87.5129 57.5141Z"/></svg>`;
 export const PAUSE_ICON = `<svg width="24" height="24" viewBox="0 0 18 18" fill="currentColor"><rect x="3" y="2" width="4" height="14"/><rect x="11" y="2" width="4" height="14"/></svg>`;

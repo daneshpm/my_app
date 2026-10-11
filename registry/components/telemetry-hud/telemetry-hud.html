@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  telemetry-hud: HyperFrames video primitive (product-demo / HUD)
+  telemetry-hud: Tagreel video primitive (product-demo / HUD)
 
   Quiet mono debug-HUD readouts frame a slotted subject. Four corner brackets
   draw on (measured getTotalLength, ATTRIBUTE-driven stroke-dashoffset: a CSS
@@ -47,7 +47,7 @@
   <template> contents; #root fills the host box (inset: 0, container-type:
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "telemetry-hud" key. Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -333,8 +333,8 @@
             ];
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var readoutsRaw =

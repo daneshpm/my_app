@@ -1,2 +1,2 @@
-/** @deprecated Import from @hyperframes/parsers/sub-composition-validity */
-export * from "@hyperframes/parsers/sub-composition-validity";
+/** @deprecated Import from @tagreel/parsers/sub-composition-validity */
+export * from "@tagreel/parsers/sub-composition-validity";

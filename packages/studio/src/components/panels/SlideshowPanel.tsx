@@ -15,8 +15,8 @@
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { parseSlideshowManifest } from "@hyperframes/core/slideshow";
-import type { SlideshowManifest, SlideHotspot } from "@hyperframes/core/slideshow";
+import { parseSlideshowManifest } from "@tagreel/core/slideshow";
+import type { SlideshowManifest, SlideHotspot } from "@tagreel/core/slideshow";
 import { usePlayerStore } from "../../player";
 import { useDomEditSelectionContext } from "../../contexts/DomEditContext";
 import { useFileManagerContext } from "../../contexts/FileManagerContext";

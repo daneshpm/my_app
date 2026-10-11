@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "before-after-wipe",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Before After Wipe",
   "description": "Two full-bleed content slots compare before and after states as a persistent divider wipes the after layer over the before layer and rests at a configurable split. Callers fill the named before/after slot panels; token-styled defaults render when a slot is left empty.",
   "tags": [
@@ -24,7 +24,7 @@
     {
       "path": "before-after-wipe.html",
       "target": "compositions/components/before-after-wipe.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

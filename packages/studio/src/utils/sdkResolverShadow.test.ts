@@ -12,7 +12,7 @@ import {
   type SdkResolverMismatch,
 } from "./sdkResolverShadow";
 import type { PatchOperation } from "./sourcePatcher";
-import { openComposition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
 
 // ─── Telemetry capture ────────────────────────────────────────────────────────
 

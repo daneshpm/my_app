@@ -8,12 +8,8 @@ import { useTrackDesignInput } from "../../contexts/DesignPanelInputContext";
  * preset attached.
  */
 
-import type {
-  HfAudioFxNode,
-  HfAudioFxParam,
-  HfAudioFxParamValues,
-} from "@hyperframes/core/audio-fx";
-import { getAudioFxPreset } from "@hyperframes/core/audio-fx-presets";
+import type { HfAudioFxNode, HfAudioFxParam, HfAudioFxParamValues } from "@tagreel/core/audio-fx";
+import { getAudioFxPreset } from "@tagreel/core/audio-fx-presets";
 import { FxParamRow } from "./propertyPanelFxControls.js";
 import { fxPresetBackground, fxPresetStyle } from "./propertyPanelFxPresetStyle.js";
 import { FxNodeRow } from "./propertyPanelFxNodeRow.js";

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cursor-zoom-follow",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Zoom Follow Cursor",
   "description": "Screen-recording auto-zoom: the camera pushes in toward each upcoming click, trails the cursor on a smooth spring, marks every click with a press and a ring, then eases back out to the full screen as the cursor leaves.",
   "tags": ["cursor", "camera", "zoom", "screen-recording", "click", "product-demo"],
@@ -9,7 +9,7 @@
     {
       "path": "cursor-zoom-follow.html",
       "target": "compositions/components/cursor-zoom-follow.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "jobs": ["demonstrate"],

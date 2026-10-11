@@ -1,13 +1,13 @@
 /**
- * Agent prompt builder for HyperFrames element edit requests.
+ * Agent prompt builder for Tagreel element edit requests.
  */
-import type { HyperframePickerElementInfo } from "@hyperframes/core";
+import type { TagreelPickerElementInfo } from "@tagreel/core";
 import { formatTime } from "../../player/lib/time";
 import type { DomEditSelection, DomEditTextField } from "./domEditingTypes";
 
 /**
  * The subset of an element selection shared by the Studio DOM editor (`DomEditSelection`) and the
- * runtime picker (`HyperframePickerElementInfo`); a field absent from a caller's type is simply omitted.
+ * runtime picker (`TagreelPickerElementInfo`); a field absent from a caller's type is simply omitted.
  */
 export interface AgentPromptElementInfo {
   id: string | null;
@@ -31,7 +31,7 @@ const GUARDRAIL_LINES = [
   "- Make a targeted change to this element only, unless the request is a timeline edit.",
   "- Preserve the rest of the composition and its timing, except what a timeline edit changes.",
   "- Do not modify other elements' data-* attributes or positioning, except where the requested timeline edit requires it (split, retime, reorder, copy a group, swap media).",
-  "- For timeline edits (trim, split, speed, volume, copy, swap), follow the creator-editing-recipes reference of the hyperframes-core skill and use its exact attribute forms.",
+  "- For timeline edits (trim, split, speed, volume, copy, swap), follow the creator-editing-recipes reference of the tagreel-core skill and use its exact attribute forms.",
   "- Prefer existing inline styles or existing CSS rules for this element over adding unrelated selectors.",
 ];
 
@@ -122,10 +122,10 @@ export function buildElementAgentPrompt({
   };
 
   const lines = [
-    "## HyperFrames element edit request v1",
+    "## Tagreel element edit request v1",
     "Schema version: 1",
     "",
-    userInstruction?.trim() || "Edit this selected HyperFrames element.",
+    userInstruction?.trim() || "Edit this selected Tagreel element.",
     "",
     `Composition: ${selection.compositionPath}`,
     `Playback time: ${formatTime(currentTime)}`,
@@ -178,14 +178,14 @@ export function buildPickerAgentPrompt({
   selection,
   userInstruction,
 }: {
-  selection: HyperframePickerElementInfo | null;
+  selection: TagreelPickerElementInfo | null;
   userInstruction?: string;
 }): string {
   const lines = [
-    "## HyperFrames element edit request v1",
+    "## Tagreel element edit request v1",
     "Schema version: 1",
     "",
-    userInstruction?.trim() || "Edit this selected HyperFrames element.",
+    userInstruction?.trim() || "Edit this selected Tagreel element.",
   ];
 
   if (!selection) return lines.join("\n");
@@ -211,9 +211,7 @@ export function buildPickerAgentPrompt({
   return lines.join("\n");
 }
 
-export function buildPickerAgentContextPreview(
-  selection: HyperframePickerElementInfo | null,
-): string {
+export function buildPickerAgentContextPreview(selection: TagreelPickerElementInfo | null): string {
   if (!selection) return "";
   return buildSelectorAndTextLines(selection).filter(Boolean).join("\n");
 }

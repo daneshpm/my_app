@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":466}}
   attribution={{"path":"registry/components/device-frame-stage","tags":["prop","device","mobile","tablet","ui-props","holdable"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/device-frame-stage/device-frame-stage.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/device-frame-stage/device-frame-stage.html"
 >
 
 <CatalogSlot slot="code">
@@ -35,7 +35,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   ]'
 >
   <!--
-    Device Frame Stage, a HyperFrames video primitive.
+    Device Frame Stage, a Tagreel video primitive.
 
     Concept: a phone or tablet mockup treated as a physical scene prop, not a
     screenshot border. It stages arbitrary reconstructed UI in a screen slot,
@@ -43,8 +43,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     frame serves the screen (device-frame-spec's governing law): no spinning
     hardware reveal, glare sweep, or camera-lens tour, ever.
 
-    This file is a mountable HyperFrames sub-composition (see
-    skills/hyperframes-core/references/sub-compositions.md): a host
+    This file is a mountable Tagreel sub-composition (see
+    skills/tagreel-core/references/sub-compositions.md): a host
     composition embeds it via a clip carrying data-composition-src, a
     matching data-composition-id, and its own data-start / data-duration /
     data-track-index / data-width / data-height. Everything the render needs
@@ -56,7 +56,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     the reference mount.
 
     Compiled from: fixture + mobile mechanics inventory #1 + device-frame-spec.md
-    (~/dev/hyperframes-corpus-data/mobile/device-frame-spec.md), the
+    (~/dev/tagreel-corpus-data/mobile/device-frame-spec.md), the
     authoritative geometry / material / entry-law source for this primitive.
 
     Use when: a scene needs to stage mobile or tablet UI as a physical
@@ -495,7 +495,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add device-frame-stage" item="device-frame-stage" />
+<InstallCommand command="npx tagreel add device-frame-stage" item="device-frame-stage" />
 
 That writes one file: `compositions/components/device-frame-stage.html`.
 

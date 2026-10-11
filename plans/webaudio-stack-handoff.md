@@ -1,6 +1,6 @@
 # Web Audio FX stack — session handoff
 
-Written 2026-08-12. Worktree `~/src/wt/hyperframes/webaudio-fx`, branch
+Written 2026-08-12. Worktree `~/src/wt/tagreel/webaudio-fx`, branch
 `wa-20d7-fx-telemetry` (the stack tip). Everything below is pushed; local and
 origin are in sync across all 47 branches.
 
@@ -12,7 +12,7 @@ origin are in sync across all 47 branches.
 grouped as **GitHub stack #3237**. ~32k added lines, of which **15,374 are
 production code** — the rest is tests (14,277, a 0.93:1 ratio) and docs.
 
-The feature: audio effects for HyperFrames compositions. A registry of effects,
+The feature: audio effects for Tagreel compositions. A registry of effects,
 one Web Audio graph shared by preview and offline render, a studio rack panel,
 19 presets / 5 named jobs / 5 one-knob profiles, voiceover carve, a levelling
 script, automation lanes, and telemetry.
@@ -163,7 +163,7 @@ it carries the `is_ci` denominator and clock-boundary traps.
 
 ---
 
-## 6. The `/hyperframes-audio` skill
+## 6. The `/tagreel-audio` skill
 
 Extended this session with `references/presets.md` (the catalogue) and
 `references/diagnosis.md` (how to diagnose a file you cannot hear).
@@ -224,4 +224,4 @@ Untracked scratch; will not land in a PR.
 - Do not push or update PRs unless asked.
 - Signed commits are required; `filter-branch` strips signatures and the push is
   rejected with GH013.
-- Composition changes: `npx hyperframes lint` then `npx hyperframes check`.
+- Composition changes: `npx tagreel lint` then `npx tagreel check`.

@@ -21,14 +21,14 @@
  *      the K8s deploy uses. The fallback raises the ZIP from ~70 MB
  *      Chrome to ~140 MB Chrome — still well under 250 MB.
  *
- * The runtime path is selected by the `HYPERFRAMES_LAMBDA_CHROME_SOURCE`
+ * The runtime path is selected by the `TAGREEL_LAMBDA_CHROME_SOURCE`
  * env var (set by `build-zip.ts`):
  *
  *   "sparticuz"          → use `@sparticuz/chromium.executablePath()`
- *   "chrome-headless-shell" → use `process.env.HYPERFRAMES_LAMBDA_CHROME_PATH`
+ *   "chrome-headless-shell" → use `process.env.TAGREEL_LAMBDA_CHROME_PATH`
  *
  * Adapters that bundle this package can override
- * `HYPERFRAMES_LAMBDA_CHROME_PATH` directly when running outside Lambda
+ * `TAGREEL_LAMBDA_CHROME_PATH` directly when running outside Lambda
  * (e.g. the SAM-local RIE smoke).
  */
 
@@ -40,7 +40,7 @@ export type ChromeSource = "sparticuz" | "chrome-headless-shell";
 /**
  * Thrown when the Chrome binary resolver can't produce a usable path.
  * The class name is the SFN `Retry: { ErrorEquals: [...] }` discriminator —
- * see {@link HyperframesRenderStack}'s NON_RETRYABLE_* lists.
+ * see {@link TagreelRenderStack}'s NON_RETRYABLE_* lists.
  */
 export class ChromeBinaryUnavailableError extends Error {
   // Lambda's runtime serializes the error envelope's `errorType` from
@@ -62,7 +62,7 @@ const SPARTICUZ_WEDGE_HINT =
   "This typically happens after a chunk hits `Sandbox.Timedout` mid-extraction and leaves /tmp in a " +
   "wedged state — subsequent invocations land on the same warm instance and never re-extract. " +
   "Recycle the function (e.g. `aws lambda update-function-configuration ... --environment ...` with a " +
-  "bumped marker var, or redeploy via `hyperframes lambda deploy --skip-build`) to force fresh " +
+  "bumped marker var, or redeploy via `tagreel lambda deploy --skip-build`) to force fresh " +
   "execution environments. Tracking: investigate the upstream wedge so this auto-recovers.";
 
 /**
@@ -71,7 +71,7 @@ const SPARTICUZ_WEDGE_HINT =
  * path.
  */
 export function resolveChromeSource(): ChromeSource {
-  const raw = process.env.HYPERFRAMES_LAMBDA_CHROME_SOURCE?.toLowerCase();
+  const raw = process.env.TAGREEL_LAMBDA_CHROME_SOURCE?.toLowerCase();
   if (raw === "chrome-headless-shell" || raw === "shell") return "chrome-headless-shell";
   return "sparticuz";
 }
@@ -85,7 +85,7 @@ export function resolveChromeSource(): ChromeSource {
  * tree-shake it out.
  *
  * For `"chrome-headless-shell"`: read the path from
- * `HYPERFRAMES_LAMBDA_CHROME_PATH`. Throws if absent or non-existent so a
+ * `TAGREEL_LAMBDA_CHROME_PATH`. Throws if absent or non-existent so a
  * misconfigured deploy fails loudly at boot rather than at first frame.
  */
 // fallow-ignore-next-line complexity
@@ -108,20 +108,20 @@ export async function resolveChromeExecutablePath(): Promise<string> {
     }
     return path;
   }
-  const explicit = process.env.HYPERFRAMES_LAMBDA_CHROME_PATH;
+  const explicit = process.env.TAGREEL_LAMBDA_CHROME_PATH;
   if (!explicit) {
     throw new ChromeBinaryUnavailableError(
       source,
       null,
-      "HYPERFRAMES_LAMBDA_CHROME_SOURCE=chrome-headless-shell requires " +
-        "HYPERFRAMES_LAMBDA_CHROME_PATH to be set to the absolute path of the bundled binary.",
+      "TAGREEL_LAMBDA_CHROME_SOURCE=chrome-headless-shell requires " +
+        "TAGREEL_LAMBDA_CHROME_PATH to be set to the absolute path of the bundled binary.",
     );
   }
   if (!existsSync(explicit)) {
     throw new ChromeBinaryUnavailableError(
       source,
       explicit,
-      `HYPERFRAMES_LAMBDA_CHROME_PATH=${JSON.stringify(explicit)} does not exist on disk.`,
+      `TAGREEL_LAMBDA_CHROME_PATH=${JSON.stringify(explicit)} does not exist on disk.`,
     );
   }
   return explicit;

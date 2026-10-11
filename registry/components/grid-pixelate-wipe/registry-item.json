@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "grid-pixelate-wipe",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Grid Pixelate Wipe",
   "description": "Transition effect where the screen dissolves into a grid of squares that fade out with staggered timing — use between scenes",
   "tags": ["transition", "wipe", "grid", "pixelate"],
@@ -9,7 +9,7 @@
     {
       "path": "grid-pixelate-wipe.html",
       "target": "compositions/components/grid-pixelate-wipe.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

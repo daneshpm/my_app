@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-// Thin wrapper over the shared packet builder in hyperframes — this file pins
+// Thin wrapper over the shared packet builder in tagreel — this file pins
 // this workflow's paths plus its one behavioral difference: design truth resolves
 // frame.md → design.md → DESIGN.md (general-video § 6 order). Everything else has
-// one owner: ../../hyperframes/scripts/lib/frame-packets-core.mjs
+// one owner: ../../tagreel/scripts/lib/frame-packets-core.mjs
 
 import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -21,8 +21,8 @@ function designTruthLine(projectDir) {
 }
 
 const CONFIG = {
-  animationDir: resolve(SKILL_DIR, "../hyperframes-animation"),
-  corePath: resolve(SKILL_DIR, "../hyperframes/references/frame-worker-core.md"),
+  animationDir: resolve(SKILL_DIR, "../tagreel-animation"),
+  corePath: resolve(SKILL_DIR, "../tagreel/references/frame-worker-core.md"),
   deltaPath: resolve(SKILL_DIR, "sub-agents/frame-worker.md"),
   designTruthLine,
 };

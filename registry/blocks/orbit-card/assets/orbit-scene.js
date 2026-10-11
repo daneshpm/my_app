@@ -2,7 +2,7 @@ import * as THREE from "./three.module.min.js";
 import { MOTION } from "./orbit-motion.js";
 
 // Built per call from the variables the mounting module passes in: an imported
-// module only sees the page's __hyperframes, not its composition's.
+// module only sees the page's __tagreel, not its composition's.
 export function createOrbitScene(V) {
   // Blender X/Y/Z -> Three X/Z/-Y. 100 original CSS pixels = one rig unit.
   const number = (v, fallback) => (Number.isFinite(Number(v)) ? Number(v) : fallback);

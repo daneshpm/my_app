@@ -30,30 +30,30 @@ Install on each machine you use; a plugin does not synchronize your machines.
 Run in your terminal:
 
 ```bash
-claude plugin marketplace add heygen-com/hyperframes
-claude plugin install hyperframes@hyperframes
-claude plugin details hyperframes
+claude plugin marketplace add daneshpm/my_app
+claude plugin install tagreel@tagreel
+claude plugin details tagreel
 ```
 
-The inventory should include `hyperframes`, `general-video`, and `media-use`.
+The inventory should include `tagreel`, `general-video`, and `media-use`.
 Start a new session or run `/reload-plugins`, then try:
 
 ```text
-Using /hyperframes:hyperframes, make a 5-second title card that says "Hello world".
+Using /tagreel:tagreel, make a 5-second title card that says "Hello world".
 ```
 
 **Enable automatic updates:** run `/plugin`, open **Marketplaces**, select
-**hyperframes**, and choose **Enable auto-update**. Third-party marketplaces do
+**tagreel**, and choose **Enable auto-update**. Third-party marketplaces do
 not enable this by default. To update manually:
 
 ```bash
-claude plugin update hyperframes@hyperframes
+claude plugin update tagreel@tagreel
 ```
 
 Reload plugins after updating. To remove the plugin:
 
 ```bash
-claude plugin uninstall hyperframes@hyperframes
+claude plugin uninstall tagreel@tagreel
 ```
 
 See [Claude's plugin guide](https://code.claude.com/docs/en/plugins/install)
@@ -62,8 +62,8 @@ for project-wide installation and managed update policies.
 ## GitHub Copilot CLI
 
 ```bash
-copilot plugin marketplace add heygen-com/hyperframes
-copilot plugin install hyperframes@hyperframes
+copilot plugin marketplace add daneshpm/my_app
+copilot plugin install tagreel@tagreel
 copilot plugin list
 ```
 
@@ -71,8 +71,8 @@ Start a fresh session and ask Copilot to use the my_app skill to make the
 same title card. Check `/skills list` if the skill is not visible.
 
 ```bash
-copilot plugin update hyperframes
-copilot plugin uninstall hyperframes
+copilot plugin update tagreel
+copilot plugin uninstall tagreel
 ```
 
 These are explicit updates; do not assume Copilot CLI shares VS Code's update
@@ -81,8 +81,8 @@ schedule. See [Copilot's plugin guide](https://docs.github.com/en/copilot/how-to
 ## VS Code
 
 Open the Extensions view and search `@agentPlugins`. Add
-`heygen-com/hyperframes` as a marketplace using the plugin marketplace command,
-then install **hyperframes** and verify its skills in Agent Customizations.
+`daneshpm/my_app` as a marketplace using the plugin marketplace command,
+then install **tagreel** and verify its skills in Agent Customizations.
 Agent plugins must be enabled in VS Code settings.
 
 VS Code checks for updates every 24 hours when `extensions.autoUpdate` is enabled.
@@ -92,13 +92,13 @@ for the current UI and workspace recommendations.
 
 ## Cursor
 
-For a team marketplace, import `heygen-com/hyperframes` in **Dashboard → Plugins &
+For a team marketplace, import `daneshpm/my_app` in **Dashboard → Plugins &
 MCPs** and add the my_app plugin. Teammates install it from **Customize**.
 GitHub marketplace auto-refresh requires the Cursor GitHub App and the marketplace's
 **Enable Auto Refresh** setting.
 
 For a local install, copy an extracted my_app plugin folder to
-`~/.cursor/plugins/local/hyperframes`, then reload Cursor and check **Customize**.
+`~/.cursor/plugins/local/tagreel`, then reload Cursor and check **Customize**.
 The folder must contain `plugin.json` and `skills/`. Local copies require manual
 replacement to update; they do not subscribe to GitHub changes. Enterprise policy
 may disable local plugin imports. Remove the local folder to uninstall that copy.
@@ -110,7 +110,7 @@ guide](https://cursor.com/docs/plugins) for marketplace and local-install contro
 ## Gemini CLI
 
 ```bash
-gemini extensions install https://github.com/heygen-com/hyperframes --auto-update
+gemini extensions install https://github.com/daneshpm/my_app --auto-update
 gemini extensions list
 ```
 
@@ -118,8 +118,8 @@ Restart Gemini CLI and ask it to use the my_app skill for the title card.
 To manage the extension explicitly:
 
 ```bash
-gemini extensions update hyperframes
-gemini extensions uninstall hyperframes
+gemini extensions update tagreel
+gemini extensions uninstall tagreel
 ```
 
 To stay on a specific release, install with `--ref <release-tag>` instead of
@@ -135,7 +135,7 @@ itself remains read-only and does not include browsers or model weights.
 
 The plugin bundles workflows from one source snapshot and runs the CLI version
 recorded in its manifest. Your agent should use its bundled plugin launcher;
-it should not run `npx hyperframes skills update` during a plugin workflow.
+it should not run `npx tagreel skills update` during a plugin workflow.
 Existing project dependencies, downloaded media, and external services have their
 own versions and are not frozen by the plugin.
 
@@ -147,15 +147,15 @@ For a repeatable installation, keep a release tag or an extracted release archiv
 and disable automatic updates. Install that same release on each machine.
 Git-based installs may download the full source repository. Release ZIPs contain
 only the plugin payload, but loading an extracted ZIP locally requires manual updates.
-Only releases with a `hyperframes-agent-plugin.zip` asset provide that portable ZIP.
+Only releases with a `tagreel-agent-plugin.zip` asset provide that portable ZIP.
 
 ## Move from standalone skills or core-skills
 
 Install the full plugin and verify its inventory first. In Claude, an older
-`core-skills@hyperframes` install can then be removed:
+`core-skills@tagreel` install can then be removed:
 
 ```bash
-claude plugin uninstall core-skills@hyperframes
+claude plugin uninstall core-skills@tagreel
 ```
 
 Use your standalone skill manager to remove only the old my_app skills for

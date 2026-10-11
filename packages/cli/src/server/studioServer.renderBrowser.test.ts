@@ -22,7 +22,7 @@ vi.mock("../utils/env.js", async (importOriginal) => ({
 }));
 
 // Not importOriginal: loading the real producer takes longer than a wait timeout on a cold Windows runner.
-vi.mock("@hyperframes/producer", () => ({
+vi.mock("@tagreel/producer", () => ({
   createRenderJob: mocks.createRenderJob,
   executeRenderJob: mocks.executeRenderJob,
 }));

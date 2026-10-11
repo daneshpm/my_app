@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  modal-morph: HyperFrames video primitive (structure, Wave M9 experiment)
+  modal-morph: Tagreel video primitive (structure, Wave M9 experiment)
 
   The shared-element grow: a small card expands into a full panel with its
   children re-flowing continuously. FLIP-style: BOTH layouts (card and
@@ -284,8 +284,8 @@
             var card = root.querySelector(".mm-card");
             var panel = root.querySelector(".mm-panel");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var fromScaleRaw = parseFloat(vars.from_scale);

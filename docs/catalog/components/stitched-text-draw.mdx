@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":865}}
   attribution={{"path":"registry/components/stitched-text-draw","tags":["motion-primitive","experiment","type","craft","stitch","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/stitched-text-draw/stitched-text-draw.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/stitched-text-draw/stitched-text-draw.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html stitched-text-draw.html
 <!doctype html>
 <!--
-  stitched-text-draw: HyperFrames video primitive (type / craft, Wave M
+  stitched-text-draw: Tagreel video primitive (type / craft, Wave M
   experiment M6)
 
   Text drawn as thread stitches. Letters come from a single-stroke display
@@ -168,8 +168,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var stage = root.querySelector(".std-stage");
             var svg = root.querySelector(".std-svg");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = (vars.text == null || vars.text === "" ? "STITCH" : String(vars.text))
@@ -894,7 +894,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add stitched-text-draw" item="stitched-text-draw" />
+<InstallCommand command="npx tagreel add stitched-text-draw" item="stitched-text-draw" />
 
 That writes one file: `compositions/components/stitched-text-draw.html`.
 

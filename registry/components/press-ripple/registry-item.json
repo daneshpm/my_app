@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "press-ripple",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Press Ripple",
   "description": "A cursor decel-arrives from off-stage, lands slightly off-center on a caller-positioned target, compresses with it in lockstep, releases with two small click rings while the label swaps to a check, then exits off-stage while the confirmed state holds.",
   "tags": ["cursor", "motion-primitive", "product-demo", "press", "ripple", "payoff"],
@@ -14,7 +14,7 @@
     {
       "path": "press-ripple.html",
       "target": "compositions/components/press-ripple.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { getAnimationsForElement, resolveSelectorElementIds } from "./useGsapTweenCache";
 
 // Minimal Document stub: querySelectorAll returns the elements mapped per selector.

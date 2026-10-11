@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":404}}
   attribution={{"path":"registry/components/gesture-tap","tags":["motion-primitive","gesture","tap","interaction","ui-props"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/gesture-tap/gesture-tap.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/gesture-tap/gesture-tap.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html gesture-tap.html
 <!doctype html>
 <!--
-  gesture-tap: HyperFrames video primitive (ui-props / interaction / demonstrate)
+  gesture-tap: Tagreel video primitive (ui-props / interaction / demonstrate)
 
   Concept: a contact circle appears directly over a real pill button, presses
   it, releases it into a new state, then lifts away. One mechanic, one job:
@@ -283,8 +283,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var contact = root.querySelector(".gt-contact");
             var pulse = root.querySelector(".gt-response-pulse");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var tapLabel = vars.tap_label == null ? "Follow" : String(vars.tap_label);
@@ -433,7 +433,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add gesture-tap" item="gesture-tap" />
+<InstallCommand command="npx tagreel add gesture-tap" item="gesture-tap" />
 
 That writes one file: `compositions/components/gesture-tap.html`.
 

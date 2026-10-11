@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  sticky-mock-swap: HyperFrames video primitive (product-demo / demonstrate)
+  sticky-mock-swap: Tagreel video primitive (product-demo / demonstrate)
 
   Concept: a product mock stays pinned while captions advance beside it. Each
   caption rises along a shallow arc, holds, pauses before dismissal, then exits
@@ -300,8 +300,8 @@
             var captionsHost = root.querySelector(".sms-captions");
             var statesHost = root.querySelector(".sms-states");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var DEFAULT_CAPTIONS = ["Instant previews", "Zero config", "Ship on Friday"];

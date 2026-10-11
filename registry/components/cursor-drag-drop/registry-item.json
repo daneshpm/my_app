@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cursor-drag-drop",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Drag and Drop Cursor",
   "description": "A cursor grabs a task card, lifts and tilts it into its motion, carries it in lockstep to an empty column, drops it with a small settle, and the list closes the gap behind it.",
   "tags": ["cursor", "motion-primitive", "drag", "drop", "kanban", "product-demo"],
@@ -9,7 +9,7 @@
     {
       "path": "cursor-drag-drop.html",
       "target": "compositions/components/cursor-drag-drop.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "jobs": ["demonstrate"],

@@ -27,7 +27,7 @@ export async function waitForFonts(): Promise<void> {
     ),
   ];
   console.warn(
-    `[hyperframes] fonts still loading after ${FONT_WAIT_TIMEOUT_MS} ms, composition scripts run without them: ${loadingFamilies.join(", ")}`,
+    `[tagreel] fonts still loading after ${FONT_WAIT_TIMEOUT_MS} ms, composition scripts run without them: ${loadingFamilies.join(", ")}`,
   );
   postRuntimeMessage({
     source: "hf-preview",

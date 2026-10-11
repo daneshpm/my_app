@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "parallax-device-dive",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Parallax Device Dive",
   "description": "A canonical phone rises into view before the camera pushes through its screen and layered app UI expands to fill the frame.",
   "tags": ["motion-primitive", "camera", "device", "phone", "parallax", "transition"],
@@ -13,7 +13,7 @@
     {
       "path": "parallax-device-dive.html",
       "target": "compositions/components/parallax-device-dive.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

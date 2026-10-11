@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "split-flap-board",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Split-Flap Board",
   "description": "Solari-style departure board: every cell walks its drum forward through the intervening characters of a fixed alphabet until it lands on its target, so the text resolves as a mechanical cascade instead of a fade.",
   "dimensions": {
@@ -59,7 +59,7 @@
     {
       "path": "split-flap-board.html",
       "target": "compositions/split-flap-board.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

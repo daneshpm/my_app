@@ -6,7 +6,7 @@ import { validRegistryName, validRegistryManifest, validRegistryItem } from "./v
 /**
  * Remote Registry Fetching
  *
- * Fetches registry manifests and item files from a Hyperframes registry hosted
+ * Fetches registry manifests and item files from a Tagreel registry hosted
  * on GitHub (or any HTTPS endpoint serving the same file layout).
  *
  * Base URL layout:
@@ -14,7 +14,7 @@ import { validRegistryName, validRegistryManifest, validRegistryItem } from "./v
  *   <base>/<type-dir>/<name>/registry-item.json
  *   <base>/<type-dir>/<name>/<file.path>    → individual files referenced by the item
  *
- * `<type-dir>` comes from ITEM_TYPE_DIRS in @hyperframes/core.
+ * `<type-dir>` comes from ITEM_TYPE_DIRS in @tagreel/core.
  */
 
 import { join, basename } from "node:path";
@@ -27,7 +27,7 @@ import {
   type ItemType,
   type RegistryItem,
   type RegistryManifest,
-} from "@hyperframes/core";
+} from "@tagreel/core";
 
 export const DEFAULT_REGISTRY_URL = RAW_REGISTRY_URL;
 
@@ -38,7 +38,7 @@ const MAX_MANIFEST_BYTES = 10 * 1024 * 1024;
 // 24h TTL on manifest fetches so the interactive picker stays snappy offline.
 // Item files aren't cached — they're written straight to destDir on install.
 
-const CACHE_DIR = join(homedir(), ".hyperframes", "cache");
+const CACHE_DIR = join(homedir(), ".tagreel", "cache");
 const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 
 interface CacheEntry<T> {

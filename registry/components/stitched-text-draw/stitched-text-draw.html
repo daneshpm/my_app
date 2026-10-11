@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  stitched-text-draw: HyperFrames video primitive (type / craft, Wave M
+  stitched-text-draw: Tagreel video primitive (type / craft, Wave M
   experiment M6)
 
   Text drawn as thread stitches. Letters come from a single-stroke display
@@ -143,8 +143,8 @@
             var stage = root.querySelector(".std-stage");
             var svg = root.querySelector(".std-svg");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = (vars.text == null || vars.text === "" ? "STITCH" : String(vars.text))

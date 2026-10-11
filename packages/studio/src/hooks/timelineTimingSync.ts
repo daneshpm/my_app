@@ -23,8 +23,8 @@ import {
   type GsapMutationStatus,
 } from "./gsapMutationClient";
 import type { CutoverResult } from "../utils/sdkEditTransaction";
-import { findTimelineScript } from "@hyperframes/core/gsap-parser-acorn";
-import { walkCompositionDescendants } from "@hyperframes/parsers/hf-ids";
+import { findTimelineScript } from "@tagreel/core/gsap-parser-acorn";
+import { walkCompositionDescendants } from "@tagreel/parsers/hf-ids";
 import {
   serializeStudioFileMutations,
   type StudioProjectFileWriter,

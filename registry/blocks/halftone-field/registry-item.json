@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "halftone-field",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Halftone Field",
   "description": "A full-bleed halftone light field: a grid of dots whose size and colour track a slow flowing simplex-noise field, so broad bands of light sweep across a mostly-black frame like a giant LED wall showing a plasma. Built to run under type.",
   "stability": "experimental",
@@ -98,7 +98,7 @@
     {
       "path": "halftone-field.html",
       "target": "compositions/halftone-field.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ],
   "params": [

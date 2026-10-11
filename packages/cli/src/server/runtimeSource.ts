@@ -3,7 +3,7 @@ import { existsSync } from "node:fs";
 import { readBundleFile } from "./readBundleFile.js";
 import { resolve, dirname } from "node:path";
 
-const ARTIFACT_NAMES = ["hyperframe-runtime.js", "hyperframe.runtime.iife.js"];
+const ARTIFACT_NAMES = ["tagreel-runtime.js", "tagreel.runtime.iife.js"];
 
 /**
  * Resolve the runtime JS source for the studio preview server.
@@ -11,7 +11,7 @@ const ARTIFACT_NAMES = ["hyperframe-runtime.js", "hyperframe.runtime.iife.js"];
  * Three resolution strategies, in priority order:
  *
  *   1. esbuild from source (dev only — gated on entry.ts existence)
- *   2. Inlined constant    (production — baked into @hyperframes/core at build time)
+ *   2. Inlined constant    (production — baked into @tagreel/core at build time)
  *   3. Pre-built artifact  (fallback — reads IIFE file from dist/)
  */
 export async function loadRuntimeSource(): Promise<string | null> {
@@ -40,9 +40,9 @@ const ENTRY_TS = resolve(__dirname, "..", "..", "..", "core", "src", "runtime", 
 async function buildFromSource(): Promise<string | null> {
   if (!existsSync(ENTRY_TS)) return null;
   try {
-    const mod = await import("@hyperframes/core");
-    if (typeof mod.loadHyperframeRuntimeSource === "function") {
-      const source = mod.loadHyperframeRuntimeSource();
+    const mod = await import("@tagreel/core");
+    if (typeof mod.loadTagreelRuntimeSource === "function") {
+      const source = mod.loadTagreelRuntimeSource();
       if (source) return source;
     }
   } catch {
@@ -55,9 +55,9 @@ async function buildFromSource(): Promise<string | null> {
 
 async function getInlinedRuntime(): Promise<string | null> {
   try {
-    const mod = await import("@hyperframes/core");
-    if (typeof mod.getHyperframeRuntimeScript === "function") {
-      return mod.getHyperframeRuntimeScript() ?? null;
+    const mod = await import("@tagreel/core");
+    if (typeof mod.getTagreelRuntimeScript === "function") {
+      return mod.getTagreelRuntimeScript() ?? null;
     }
   } catch {
     // Not available — fall through to artifact
@@ -85,7 +85,7 @@ function readFromCoreDistDir(): string | null {
 }
 
 function readFromNodeModules(): string | null {
-  const subPaths = ["node_modules/hyperframes/dist", "node_modules/@hyperframes/core/dist"];
+  const subPaths = ["node_modules/tagreel/dist", "node_modules/@tagreel/core/dist"];
   let dir = __dirname;
   for (;;) {
     for (const sub of subPaths) {

@@ -1,7 +1,7 @@
 import {
   calculateHfColorGradingSecondaryMask,
   type NormalizedHfColorGradingSecondary,
-} from "@hyperframes/core/color-grading";
+} from "@tagreel/core/color-grading";
 import { clampNumber } from "../../utils/studioHelpers";
 
 const BYTE_MAX = 255;

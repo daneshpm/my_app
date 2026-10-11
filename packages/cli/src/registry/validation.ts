@@ -1,7 +1,7 @@
 import { Ajv2020 } from "ajv/dist/2020.js";
-import registrySchema from "@hyperframes/core/schemas/registry.json";
-import itemSchema from "@hyperframes/core/schemas/registry-item.json";
-import type { RegistryManifest, RegistryItem, ItemType } from "@hyperframes/core";
+import registrySchema from "@tagreel/core/schemas/registry.json";
+import itemSchema from "@tagreel/core/schemas/registry-item.json";
+import type { RegistryManifest, RegistryItem, ItemType } from "@tagreel/core";
 
 const ajv = new Ajv2020({ strict: false, validateFormats: false });
 const manifestShape = ajv.compile<RegistryManifest>(registrySchema);

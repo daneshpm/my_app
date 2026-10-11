@@ -1,5 +1,5 @@
 // Generate (or verify) skills-manifest.json (repo root) — the published
-// "latest" fingerprint of the HyperFrames skill bundle.
+// "latest" fingerprint of the Tagreel skill bundle.
 //
 //   bun run --cwd packages/cli gen:skills-manifest          # write/update
 //   bun run --cwd packages/cli gen:skills-manifest --check  # verify only (CI)

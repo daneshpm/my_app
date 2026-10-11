@@ -12,7 +12,7 @@ import {
 } from "./domEditPersistFailure";
 import { bumpDomEditCommitMapVersion, runDomEditCommit } from "./domEditCommitRunner";
 import { syncStoredAutomationFromPreview } from "../player/lib/automationStoreSync";
-import { HF_AUDIO_GROUP_ATTR, HF_AUDIO_GROUP_TAG } from "@hyperframes/core/audio-groups";
+import { HF_AUDIO_GROUP_ATTR, HF_AUDIO_GROUP_TAG } from "@tagreel/core/audio-groups";
 import { invalidateGroupInfoCache } from "../player/lib/timelineGroupInfo";
 
 // ── Types ──

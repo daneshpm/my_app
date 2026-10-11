@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":487}}
   attribution={{"path":"registry/components/whip-pan-cut","tags":["transition","whip-pan","motion-blur","velocity-match","speed-ramp","bridge","slots"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/whip-pan-cut/whip-pan-cut.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/whip-pan-cut/whip-pan-cut.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html whip-pan-cut.html
 <!doctype html>
 <!--
-  whip-pan-cut: HyperFrames video primitive (transitions / bridge)
+  whip-pan-cut: Tagreel video primitive (transitions / bridge)
 
   Concept: the louder sibling of cut-the-curve. Scene A whips off laterally
   with directional motion blur while scene B enters in the same direction at
@@ -95,7 +95,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "whip-pan-cut" key (mount flattening strips
   data-composition-id from the live root). Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -360,8 +360,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var blurNode = root.querySelector(".wpc-blur-node");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var direction = vars.direction === "right" ? "right" : "left";
@@ -516,7 +516,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add whip-pan-cut" item="whip-pan-cut" />
+<InstallCommand command="npx tagreel add whip-pan-cut" item="whip-pan-cut" />
 
 That writes one file: `compositions/components/whip-pan-cut.html`.
 

@@ -3,8 +3,8 @@ import path from "node:path";
 import type { Plugin } from "vite";
 import type { Connect } from "vite";
 import type { ServerResponse } from "node:http";
-import { createFsAdapter } from "@hyperframes/sdk/adapters/fs";
-import type { PersistAdapter } from "@hyperframes/sdk";
+import { createFsAdapter } from "@tagreel/sdk/adapters/fs";
+import type { PersistAdapter } from "@tagreel/sdk";
 
 const COMP_ROOT = path.resolve(import.meta.dirname);
 const COMP_PATH = "composition.html";

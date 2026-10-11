@@ -13,7 +13,7 @@
 //     (free, private, offline once cached)
 //   - codex CLI: image gen on the user's ChatGPT sub — the better-quality upsell
 //     and the fallback when no local model fits
-//   - Kokoro (via the hyperframes CLI): local voiceover
+//   - Kokoro (via the tagreel CLI): local voiceover
 //   - LTX: local video generation
 //   - theSVG / GitHub avatar / favicon: brand logo lookups
 //

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "yt-logo-intro",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Logo Intro Sequence",
   "description": "Logo stamp pops on a lined board, a kicker line gives way to the title with an accent arrow chip; seeded line distortion",
   "tags": ["logo", "intro", "creator"],
@@ -14,7 +14,7 @@
     {
       "path": "yt-logo-intro.html",
       "target": "compositions/yt-logo-intro.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

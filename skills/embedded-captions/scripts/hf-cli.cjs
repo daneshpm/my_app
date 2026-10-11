@@ -4,7 +4,7 @@ const path = require("node:path");
 const os = require("node:os");
 function hfCli(checkout) {
   const root = path.resolve(__dirname, "../../..");
-  for (const dir of [checkout, process.env.HYPERFRAMES_ROOT].filter(Boolean)) {
+  for (const dir of [checkout, process.env.TAGREEL_ROOT].filter(Boolean)) {
     const cli = path.join(dir, "packages/cli/dist/cli.js");
     if (fs.existsSync(cli)) return cli;
   }
@@ -19,14 +19,14 @@ function hfCli(checkout) {
     !fs.existsSync(path.join(root, "packages/cli/dist/cli.js")) &&
     manifests.some((p) => fs.existsSync(path.join(root, p)))
   ) {
-    return path.join(root, "skills/hyperframes/scripts/plugin-cli.mjs");
+    return path.join(root, "skills/tagreel/scripts/plugin-cli.mjs");
   }
-  for (const dir of [root, path.join(os.homedir(), "Downloads/hyperframes")].filter(Boolean)) {
+  for (const dir of [root, path.join(os.homedir(), "Downloads/tagreel")].filter(Boolean)) {
     const cli = path.join(dir, "packages/cli/dist/cli.js");
     if (fs.existsSync(cli)) return cli;
   }
   throw new Error(
-    "HyperFrames CLI unavailable: install the full plugin or set HYPERFRAMES_ROOT to a built checkout.",
+    "Tagreel CLI unavailable: install the full plugin or set TAGREEL_ROOT to a built checkout.",
   );
 }
 module.exports = { hfCli };

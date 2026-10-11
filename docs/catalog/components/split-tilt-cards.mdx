@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":571}}
   attribution={{"path":"registry/components/split-tilt-cards","tags":["motion-primitive","layout","compare","holdable","book-open","tilt","slots"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/split-tilt-cards/split-tilt-cards.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/split-tilt-cards/split-tilt-cards.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html split-tilt-cards.html
 <!doctype html>
 <!--
-  split-tilt-cards: HyperFrames video primitive (layout / compare / holdable)
+  split-tilt-cards: Tagreel video primitive (layout / compare / holdable)
 
   Concept: two equal-weight cards arrive from opposite wings, each carrying a
   mirrored 3D rotateY book-open tilt (+18deg left, -18deg right) under one
@@ -81,7 +81,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "split-tilt-cards" key (mount flattening strips
   data-composition-id from the live root). Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -439,8 +439,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var badgePosB = root.querySelector(".stc-badge-pos-b");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var labelAText = vars.label_a == null ? "Before" : String(vars.label_a);
@@ -600,7 +600,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add split-tilt-cards" item="split-tilt-cards" />
+<InstallCommand command="npx tagreel add split-tilt-cards" item="split-tilt-cards" />
 
 That writes one file: `compositions/components/split-tilt-cards.html`.
 

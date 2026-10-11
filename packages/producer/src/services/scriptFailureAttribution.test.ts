@@ -9,7 +9,7 @@ import {
   createCaptureSession,
   initializeSession,
   VfxFailureError,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 import { createFileServer } from "./fileServer.js";
 import { compileForRender } from "./htmlCompiler.js";
 import { writeCompiledArtifacts } from "./render/shared.js";

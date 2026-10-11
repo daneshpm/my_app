@@ -2,7 +2,7 @@
 
 Named sound effects, produced by the shared audio engine (`scripts/audio.mjs` → `scripts/lib/sfx.mjs`). Cues resolve against the **bundled 21-file library** (`assets/sfx/` + `manifest.json`): match each cue name, copy the matched file into the project. Offline, deterministic, free, no account.
 
-There is no `npx hyperframes sfx` command. SFX is never generated — it is taken from the bundled library.
+There is no `npx tagreel sfx` command. SFX is never generated — it is taken from the bundled library.
 
 ## Cues — request → meta
 

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Cursors","badge":"Stable","codeLines":427}}
   attribution={{"path":"registry/components/magnetic-cursor","tags":["cursor","motion-primitive","pointer","hover","morph","toolbar"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/magnetic-cursor/magnetic-cursor.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/magnetic-cursor/magnetic-cursor.html"
 >
 
 <CatalogSlot slot="code">
@@ -196,8 +196,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
           }
           var scopedVariables = {};
           try {
-            if (window.__hyperframes && typeof window.__hyperframes.getVariables === "function") {
-              scopedVariables = window.__hyperframes.getVariables() || {};
+            if (window.__tagreel && typeof window.__tagreel.getVariables === "function") {
+              scopedVariables = window.__tagreel.getVariables() || {};
             }
           } catch (error) {
             /* no scoped variables API in this context */
@@ -456,7 +456,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add magnetic-cursor" item="magnetic-cursor" />
+<InstallCommand command="npx tagreel add magnetic-cursor" item="magnetic-cursor" />
 
 That writes one file: `compositions/components/magnetic-cursor.html`.
 

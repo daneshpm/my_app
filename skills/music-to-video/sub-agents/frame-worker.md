@@ -1,6 +1,6 @@
 # Frame worker — per-frame composition author (music-to-video)
 
-You build one frame's composition file: `compositions/frames/<frame_id>.html`. Siblings build the other frames in parallel. The generic HyperFrames law — sub-composition shape, timeline registration, determinism, layout — lives in `hyperframes-core` (`references/sub-compositions.md`
+You build one frame's composition file: `compositions/frames/<frame_id>.html`. Siblings build the other frames in parallel. The generic Tagreel law — sub-composition shape, timeline registration, determinism, layout — lives in `tagreel-core` (`references/sub-compositions.md`
 
 - `determinism-rules.md` + `data-attributes.md`); read it first. This file covers the music-specific part.
 
@@ -44,6 +44,6 @@ If your dispatch carries `lint` / `check` feedback from a prior pass, address ea
 - Each group shows across its frame-local span and hides outside it; `t=0` renders; group→group cuts are 0ms; ids / uniforms namespaced.
 - Each group's text / palette match its block's `params` / `copy`, drawn from `frame.md`.
 - `phrase_flow` frames pace by phrase / energy.
-- Seek-safe per `hyperframes-core/determinism-rules.md` (derive variation from indices; swap text / numbers with `tl.set`).
+- Seek-safe per `tagreel-core/determinism-rules.md` (derive variation from indices; swap text / numbers with `tl.set`).
 - Asset clips: muted `<video>`, direct children of `#stage`, with `data-start` / `data-duration` / `data-track-index`. Crossfade outgoing clips to `opacity:0` ending at the next anchor.
 - Final frame is intentional; hero text is readable and clear of the edges.

@@ -590,7 +590,7 @@ describe("studio dev-server spawns", () => {
   it("runLocalStudioMode passes windowsHide to the local Vite spawn", async () => {
     const spawn = mockStudioSpawn();
 
-    // @hyperframes/studio is resolved for real, so the project dir has to sit
+    // @tagreel/studio is resolved for real, so the project dir has to sit
     // inside the monorepo's node_modules tree.
     const thisFile = fileURLToPath(import.meta.url);
     const localStudioProjectDir = resolve(dirname(thisFile), "..", "..");

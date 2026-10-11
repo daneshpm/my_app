@@ -25,7 +25,7 @@ real speaker notes and a running timer.
 Give the agent the material and the decision the presentation should support:
 
 ```text
-Using /hyperframes, turn this product strategy outline into a presentation for
+Using /tagreel, turn this product strategy outline into a presentation for
 our leadership review: [paste outline]
 ```
 
@@ -36,12 +36,12 @@ every slide before seeing the proposed structure.
 If the result should play from beginning to end without a presenter, use a normal [video workflow](/workflows). A slideshow cannot be exported as one linear MP4 yet.
 
 <Warning>
-  Do not run `hyperframes render` on a deck. It does not fail — a deck has no
+  Do not run `tagreel render` on a deck. It does not fail — a deck has no
   master root composition, so the render resolves only the **first** slide and
   writes a silently truncated MP4. You can get six seconds of a forty-second
   deck and no warning that anything is missing.
 
-  Use `hyperframes present` for the live deck, or `hyperframes snapshot` for
+  Use `tagreel present` for the live deck, or `tagreel snapshot` for
   per-slide stills.
 </Warning>
 
@@ -77,7 +77,7 @@ Use [Studio’s Slideshow panel](/studio/slideshows) to adjust order, notes, rev
 ## Present the deck
 
 ```bash
-npx hyperframes present <project-directory>
+npx tagreel present <project-directory>
 ```
 
 Open the local URL, then click **Present** or press **P**. The audience gets a clean full-screen view while the presenter keeps the current slide, next slide, notes, and timer.

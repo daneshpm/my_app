@@ -84,7 +84,7 @@ test("synthesizeOne(elevenlabs) creates the output dir before writing", async ()
       text: "hi",
       voiceId: "v",
       wavAbs,
-      hyperframesDir: dir,
+      tagreelDir: dir,
     });
     assert.ok(existsSync(dirname(wavAbs)), "output directory should be created");
   } finally {
@@ -95,12 +95,12 @@ test("synthesizeOne(elevenlabs) creates the output dir before writing", async ()
 });
 
 test("synthResult names a non-zero subprocess exit", () => {
-  const res = synthResult({ status: 2 }, "/tmp/none.wav", "kokoro (npx hyperframes tts)");
+  const res = synthResult({ status: 2 }, "/tmp/none.wav", "kokoro (npx tagreel tts)");
   assert.equal(res.ok, false);
   assert.match(res.error, /kokoro .* exited with status 2/);
 });
 
-// Kokoro shells out to `npx hyperframes tts`; a fake npx on PATH records the argv
+// Kokoro shells out to `npx tagreel tts`; a fake npx on PATH records the argv
 // synthesizeOne really builds, so a dropped flag fails here. Windows runs npx via
 // node directly, so the stub never resolves there.
 async function kokoroArgv(options) {
@@ -116,7 +116,7 @@ async function kokoroArgv(options) {
       text: "hi",
       voiceId: "am_michael",
       wavAbs: join(dir, "line-0.wav"),
-      hyperframesDir: dir,
+      tagreelDir: dir,
       ...options,
     });
     return readFileSync(argvLog, "utf8").trim().split("\n");

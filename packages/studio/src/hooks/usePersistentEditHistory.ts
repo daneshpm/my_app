@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { HistoryListItem, HistoryResult } from "@hyperframes/studio-server";
+import type { HistoryListItem, HistoryResult } from "@tagreel/studio-server";
 import { studioFileContentVersion, studioWriteHeaders } from "../utils/studioFileVersion";
 import type { RestoreFiles } from "../utils/gsapUndoRestore";
 import { studioApiFetch } from "../utils/studioApiFetch";

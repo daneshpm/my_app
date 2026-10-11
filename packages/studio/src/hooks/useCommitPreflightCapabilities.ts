@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import { dragEditOutcome, preflightGsapRotationIntercept } from "./gsapRuntimeBridge";
 import { preflightGsapResizeIntercept } from "./gsapResizePreflight";

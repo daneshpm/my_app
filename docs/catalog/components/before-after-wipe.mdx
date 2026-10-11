@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":478}}
   attribution={{"path":"registry/components/before-after-wipe","tags":["prop","ui-props","compare","comparison","split-screen","holdable","before-after","wipe","slots"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/before-after-wipe/before-after-wipe.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/before-after-wipe/before-after-wipe.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html before-after-wipe.html
 <!doctype html>
 <!--
-  before-after-wipe: HyperFrames video primitive (ui-props / holdable / compare)
+  before-after-wipe: Tagreel video primitive (ui-props / holdable / compare)
 
   Concept: two full-bleed CONTENT SLOTS share one frame. The before slot stays
   fully visible as the base layer while the after slot wipes over it from the
@@ -79,7 +79,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "before-after-wipe" key (mount flattening strips
   data-composition-id from the live root). Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -378,8 +378,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var chipB = root.querySelector(".baw-chip-b");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var labelA = vars.label_a == null ? "Before" : String(vars.label_a);
@@ -507,7 +507,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add before-after-wipe" item="before-after-wipe" />
+<InstallCommand command="npx tagreel add before-after-wipe" item="before-after-wipe" />
 
 That writes one file: `compositions/components/before-after-wipe.html`.
 

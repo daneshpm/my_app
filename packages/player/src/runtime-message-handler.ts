@@ -12,7 +12,7 @@ import {
 } from "./playback-state.js";
 import type { ShaderLoaderState } from "./shader-loader-state.js";
 import type { ShaderTransitionState } from "./shader-options.js";
-import { inspectRuntimeProtocol } from "@hyperframes/core/runtime/protocol";
+import { inspectRuntimeProtocol } from "@tagreel/core/runtime/protocol";
 
 type SceneRecord = { id: string; start: number; duration: number };
 

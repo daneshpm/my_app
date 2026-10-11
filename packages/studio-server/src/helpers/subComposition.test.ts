@@ -3,9 +3,9 @@ import { mkdtempSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it, onTestFinished } from "vitest";
-import { gsapCdnDist } from "@hyperframes/core/gsap-cdn";
+import { gsapCdnDist } from "@tagreel/core/gsap-cdn";
 import { parseHTML } from "linkedom";
-import { AFTER_FONTS_SCRIPT_TYPE } from "@hyperframes/core/compiler";
+import { AFTER_FONTS_SCRIPT_TYPE } from "@tagreel/core/compiler";
 import { buildSubCompositionHtml, hasBaseElement } from "./subComposition";
 
 function makeTempProject(files: Record<string, string>): string {
@@ -31,14 +31,14 @@ describe("buildSubCompositionHtml", () => {
 
   it("adds the preview runtime even when the project head's script mentions a runtime file", () => {
     const dir = makeTempProject({
-      "index.html": `<!doctype html><html><head><script>console.log("hyperframe.runtime.iife.js");</script></head><body></body></html>`,
+      "index.html": `<!doctype html><html><head><script>console.log("tagreel.runtime.iife.js");</script></head><body></body></html>`,
       "compositions/scene.html": `<div data-composition-id="scene" data-width="320" data-height="180"></div>`,
     });
     const html = buildSubCompositionHtml(dir, "compositions/scene.html", "/api/runtime.js");
     expect(html).toContain(
-      '<script data-hyperframes-preview-runtime="1" src="/api/runtime.js"></script>',
+      '<script data-tagreel-preview-runtime="1" src="/api/runtime.js"></script>',
     );
-    expect(html).toContain('console.log("hyperframe.runtime.iife.js")');
+    expect(html).toContain('console.log("tagreel.runtime.iife.js")');
   });
 
   it("adds the preview base even when the project head's script mentions a <base>", () => {
@@ -119,7 +119,7 @@ describe("buildSubCompositionHtml", () => {
     const dir = makeTempProject({
       "index.html": `<!doctype html>
 <html><head></head><body></body></html>`,
-      "compositions/blk.html": `<!-- hyperframes-registry-item: blk -->
+      "compositions/blk.html": `<!-- tagreel-registry-item: blk -->
 <!doctype html>
 <html lang="en" data-composition-variables='[{"id":"image1","type":"image","default":"assets/blk/one.jpg"}]'>
   <body>

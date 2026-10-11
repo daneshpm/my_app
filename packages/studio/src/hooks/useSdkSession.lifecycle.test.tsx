@@ -6,11 +6,11 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 const openComposition = vi.fn();
 
-vi.mock("@hyperframes/sdk", () => ({
+vi.mock("@tagreel/sdk", () => ({
   openComposition: (...args: unknown[]) => openComposition(...args),
 }));
 
-import type { Composition } from "@hyperframes/sdk";
+import type { Composition } from "@tagreel/sdk";
 import { useSdkSession, type SdkSessionHandle } from "./useSdkSession";
 import { usePlayerStore } from "../player/store/playerStore";
 

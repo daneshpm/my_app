@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "animated-bar-chart",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Animated Bar Chart",
   "description": "A compact data card with deterministic bar growth and value callouts.",
   "tags": ["data"],
@@ -9,7 +9,7 @@
     {
       "path": "animated-bar-chart.html",
       "target": "compositions/components/animated-bar-chart.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

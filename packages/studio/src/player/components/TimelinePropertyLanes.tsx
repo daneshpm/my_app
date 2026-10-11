@@ -8,7 +8,7 @@ import {
   classifyPropertyGroup,
   type GsapAnimation,
   type PropertyGroupName,
-} from "@hyperframes/core/gsap-parser";
+} from "@tagreel/core/gsap-parser";
 import { toClipKeyframes } from "../../hooks/gsapShared";
 import { synthesizeFlatTweenKeyframes } from "../../hooks/gsapTweenSynth";
 import { TimelineDiamondLane, type TimelineDiamondKeyframe } from "./TimelineClipDiamonds";
@@ -74,7 +74,7 @@ function animationKeyframes(animation: GsapAnimation) {
  * Every property group a tween draws a lane for, classified PER PROPERTY.
  * `animation.propertyGroup` is the parser's whole-tween verdict and is
  * `undefined` for anything spanning more than one group — but `{ x, opacity }`
- * is the canonical HyperFrames entrance tween, and reading that verdict gave it
+ * is the canonical Tagreel entrance tween, and reading that verdict gave it
  * no caret, no reserved row and no diamonds. classifyPropertyGroup is total, so
  * an unrecognised property still lands in "other" rather than vanishing.
  *

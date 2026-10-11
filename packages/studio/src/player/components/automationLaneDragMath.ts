@@ -8,7 +8,7 @@
  * apply the result — rather than carrying this branching themselves.
  */
 
-import type { AutomationRange, HfAutomationLane } from "@hyperframes/core/audio-automation";
+import type { AutomationRange, HfAutomationLane } from "@tagreel/core/audio-automation";
 import {
   applyShiftConstraint,
   dominantDragAxis,

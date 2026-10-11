@@ -31,14 +31,14 @@ const CAN_TSX =
   spawnSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", "0"], {
     stdio: "ignore",
   }).status === 0;
-process.env.HYPERFRAMES_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-resolve-home-"));
+process.env.TAGREEL_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-resolve-home-"));
 
 let tmp;
 
 function setup() {
   tmp = mkdtempSync(join(tmpdir(), "mu-resolve-test-"));
   // A fresh global cache per test, apart from the project so the two manifests never coincide.
-  process.env.HYPERFRAMES_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-resolve-home-"));
+  process.env.TAGREEL_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-resolve-home-"));
 }
 
 function cleanup() {
@@ -157,7 +157,7 @@ test("missing bundled SFX install returns a typed recovery command", () => {
       env: {
         HOME: tmp,
         PATH: tmp,
-        HYPERFRAMES_MEDIA_USE_SFX_DIR: missingLibrary,
+        TAGREEL_MEDIA_USE_SFX_DIR: missingLibrary,
       },
     },
   );
@@ -165,7 +165,7 @@ test("missing bundled SFX install returns a typed recovery command", () => {
   const parsed = JSON.parse(result.stdout);
   assert.equal(parsed.ok, false);
   assert.equal(parsed.code, "bundled_sfx_assets_missing");
-  assert.equal(parsed.fix, "npx hyperframes skills update media-use");
+  assert.equal(parsed.fix, "npx tagreel skills update media-use");
   assert.match(parsed.error, /bundled SFX assets are missing or incomplete/);
   assert.match(parsed.error, /manifest not found/);
   cleanup();
@@ -327,18 +327,18 @@ test("--adopt registers existing assets/ files", () => {
   cleanup();
 });
 
-test("--adopt stops, adopting nothing, when HYPERFRAMES_FFPROBE_PATH cannot run", () => {
+test("--adopt stops, adopting nothing, when TAGREEL_FFPROBE_PATH cannot run", () => {
   setup();
   mkdirSync(join(tmp, "assets/bgm"), { recursive: true });
   writeFileSync(join(tmp, "assets/bgm/track.mp3"), "fake mp3");
 
   const result = spawnResolve(["--adopt", "--project", tmp, "--json"], {
-    env: { HYPERFRAMES_FFPROBE_PATH: join(tmp, "no-ffprobe") },
+    env: { TAGREEL_FFPROBE_PATH: join(tmp, "no-ffprobe") },
   });
   assert.equal(result.status, 1);
   const report = JSON.parse(result.stdout.trim());
   assert.equal(report.ok, false);
-  assert.match(report.error, /HYPERFRAMES_FFPROBE_PATH names .*no-ffprobe.*fix it or unset it/);
+  assert.match(report.error, /TAGREEL_FFPROBE_PATH names .*no-ffprobe.*fix it or unset it/);
   assert.equal(readManifest(tmp).length, 0);
   cleanup();
 });
@@ -634,7 +634,7 @@ test("--doctor --json reports dependency checks and top-level ok requires ffmpeg
   assert.equal(result.status, strictOk ? 0 : 1);
 });
 
-test("--doctor checks the ffmpeg and ffprobe that HYPERFRAMES_FFMPEG_PATH and HYPERFRAMES_FFPROBE_PATH name", () => {
+test("--doctor checks the ffmpeg and ffprobe that TAGREEL_FFMPEG_PATH and TAGREEL_FFPROBE_PATH name", () => {
   const dir = mkdtempSync(join(tmpdir(), "mu-doctor-ff-"));
   for (const tool of ["ffmpeg", "ffprobe"]) {
     writeFileSync(join(dir, tool), `#!/bin/sh\necho '${tool} version 9.9-fake'\n`);
@@ -643,8 +643,8 @@ test("--doctor checks the ffmpeg and ffprobe that HYPERFRAMES_FFMPEG_PATH and HY
   try {
     const result = spawnResolve(["--doctor", "--json"], {
       env: {
-        HYPERFRAMES_FFMPEG_PATH: join(dir, "ffmpeg"),
-        HYPERFRAMES_FFPROBE_PATH: join(dir, "ffprobe"),
+        TAGREEL_FFMPEG_PATH: join(dir, "ffmpeg"),
+        TAGREEL_FFPROBE_PATH: join(dir, "ffprobe"),
       },
     });
     const byName = new Map(JSON.parse(result.stdout.trim()).checks.map((c) => [c.name, c]));
@@ -658,10 +658,10 @@ test("--doctor checks the ffmpeg and ffprobe that HYPERFRAMES_FFMPEG_PATH and HY
   }
 });
 
-test("--doctor fails a HYPERFRAMES_FFPROBE_PATH that cannot run and says to fix or unset it", () => {
+test("--doctor fails a TAGREEL_FFPROBE_PATH that cannot run and says to fix or unset it", () => {
   const missing = join(tmpdir(), "mu-doctor-no-ffprobe", "ffprobe");
   const result = spawnResolve(["--doctor", "--json"], {
-    env: { HYPERFRAMES_FFPROBE_PATH: missing },
+    env: { TAGREEL_FFPROBE_PATH: missing },
   });
   const report = JSON.parse(result.stdout.trim());
   const check = report.checks.find((c) => c.name === "ffprobe on PATH");
@@ -670,23 +670,23 @@ test("--doctor fails a HYPERFRAMES_FFPROBE_PATH that cannot run and says to fix 
     [check.ok, check.detail, check.fix],
     [
       false,
-      `HYPERFRAMES_FFPROBE_PATH names "${missing}", which is not a working ffprobe: fix it or unset it.`,
+      `TAGREEL_FFPROBE_PATH names "${missing}", which is not a working ffprobe: fix it or unset it.`,
       "fix or unset that variable",
     ],
   );
 });
 
-test("--analyze refuses a HYPERFRAMES_FFPROBE_PATH that cannot run instead of reporting unknown", () => {
+test("--analyze refuses a TAGREEL_FFPROBE_PATH that cannot run instead of reporting unknown", () => {
   const missing = join(tmpdir(), "mu-analyze-no-ffprobe", "ffprobe");
   const result = spawnResolve(["--analyze", "--type", "grade", "--for", RESOLVE_CLI, "--json"], {
-    env: { HYPERFRAMES_FFPROBE_PATH: missing },
+    env: { TAGREEL_FFPROBE_PATH: missing },
   });
   assert.equal(result.status, 1);
   const report = JSON.parse(result.stdout.trim());
   assert.equal(report.ok, false);
   assert.match(
     report.error,
-    /HYPERFRAMES_FFPROBE_PATH names ".*mu-analyze-no-ffprobe.*fix it or unset it/,
+    /TAGREEL_FFPROBE_PATH names ".*mu-analyze-no-ffprobe.*fix it or unset it/,
   );
 });
 
@@ -697,14 +697,14 @@ test("--doctor fails a configured ffprobe that exists but exits with an error", 
   chmodSync(broken, 0o755);
   try {
     const result = spawnResolve(["--doctor", "--json"], {
-      env: { HYPERFRAMES_FFPROBE_PATH: broken },
+      env: { TAGREEL_FFPROBE_PATH: broken },
     });
     const check = JSON.parse(result.stdout.trim()).checks.find((c) => c.name === "ffprobe on PATH");
     assert.deepEqual(
       [check.ok, check.detail, check.fix],
       [
         false,
-        `HYPERFRAMES_FFPROBE_PATH names "${broken}", which is not a working ffprobe: fix it or unset it.`,
+        `TAGREEL_FFPROBE_PATH names "${broken}", which is not a working ffprobe: fix it or unset it.`,
         "fix or unset that variable",
       ],
     );
@@ -713,7 +713,7 @@ test("--doctor fails a configured ffprobe that exists but exits with an error", 
   }
 });
 
-test("a broken HYPERFRAMES_FFPROBE_PATH is named when local voice cannot run, not a generic miss", () => {
+test("a broken TAGREEL_FFPROBE_PATH is named when local voice cannot run, not a generic miss", () => {
   setup();
   const missing = join(tmp, "no-ffprobe");
   const result = spawnResolve(
@@ -728,12 +728,12 @@ test("a broken HYPERFRAMES_FFPROBE_PATH is named when local voice cannot run, no
       tmp,
       "--json",
     ],
-    { env: { HYPERFRAMES_FFPROBE_PATH: missing } },
+    { env: { TAGREEL_FFPROBE_PATH: missing } },
   );
   assert.equal(result.status, 1);
   assert.equal(
     JSON.parse(result.stdout.trim()).error,
-    `HYPERFRAMES_FFPROBE_PATH names "${missing}", which is not a working ffprobe: fix it or unset it.`,
+    `TAGREEL_FFPROBE_PATH names "${missing}", which is not a working ffprobe: fix it or unset it.`,
   );
   cleanup();
 });

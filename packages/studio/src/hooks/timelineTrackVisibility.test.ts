@@ -2,7 +2,7 @@
 
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { usePlayerStore, type TimelineElement } from "../player";
-import { resolveAudioGroups } from "@hyperframes/core/audio-groups";
+import { resolveAudioGroups } from "@tagreel/core/audio-groups";
 import { readTagSnippetByTarget } from "../utils/sourcePatcher";
 import { createAudioGroupAndAssignMembers } from "./timelineAudioGroupCreate";
 import { toggleTimelineElementHidden, toggleTimelineTrackHidden } from "./timelineTrackVisibility";

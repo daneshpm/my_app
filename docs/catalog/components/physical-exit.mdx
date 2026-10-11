@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":247}}
   attribution={{"path":"registry/components/physical-exit","tags":["motion-primitive","exit","momentum","toss","drop","slide"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/physical-exit/physical-exit.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/physical-exit/physical-exit.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html physical-exit.html
 <!doctype html>
 <!--
-  physical-exit: HyperFrames video primitive (motion / exit / physical)
+  physical-exit: Tagreel video primitive (motion / exit / physical)
 
   Concept: one card leaves the frame with visible momentum. The mode variable
   owns the exit behavior: toss follows an arc, drop accelerates under gravity,
@@ -147,8 +147,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var card = root.querySelector(".pe-card");
             var label = root.querySelector(".pe-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var mode = vars.mode === "drop" || vars.mode === "slide" ? vars.mode : "toss";
@@ -276,7 +276,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add physical-exit" item="physical-exit" />
+<InstallCommand command="npx tagreel add physical-exit" item="physical-exit" />
 
 That writes one file: `compositions/components/physical-exit.html`.
 

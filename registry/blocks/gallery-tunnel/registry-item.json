@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "gallery-tunnel",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Gallery Tunnel",
   "description": "An infinite corridor of panels: a square tunnel receding to a vanishing point, its floor, ceiling and walls tiled with saturated colour slabs and caller-supplied images that swell toward camera and exit past you, the far end dissolving into fog.",
   "stability": "experimental",
@@ -98,7 +98,7 @@
     {
       "path": "gallery-tunnel.html",
       "target": "compositions/gallery-tunnel.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ],
   "params": [

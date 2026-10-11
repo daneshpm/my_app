@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { seekThumbnailPreview } from "./vite.thumbnail";
 
 describe("seekThumbnailPreview", () => {
-  it("prefers the HyperFrames player seek path over raw timelines", async () => {
+  it("prefers the Tagreel player seek path over raw timelines", async () => {
     const evaluate = vi.fn(async (fn: (time: number) => string, time: number) => {
       const playerSeek = vi.fn();
       const timelinePause = vi.fn();

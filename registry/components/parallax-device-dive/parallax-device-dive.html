@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  parallax-device-dive: HyperFrames video primitive (camera / device / transition)
+  parallax-device-dive: Tagreel video primitive (camera / device / transition)
 
   Concept: a canonical phone rises into view, then the camera pushes through
   its screen. The app header, hero card, and supporting cards separate at
@@ -368,8 +368,8 @@
             var stats = root.querySelector(".pdd-stats");
             var title = root.querySelector(".pdd-title");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accent = vars.accent;

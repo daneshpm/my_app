@@ -73,7 +73,7 @@
   - Cost is N + 1 copies of the target's whole subtree, restyled on attach and
     on resize and re-transformed every frame. Point it at the element that
     moves, not at a container holding it.
-  - The host must render the timeline for the blur to update — HyperFrames
+  - The host must render the timeline for the blur to update — Tagreel
     seeks every frame. A fresh paused timeline that is never seeked shows no
     blur on its first frame.
   - A declarative target is attached as soon as its composition's timeline is
@@ -110,7 +110,7 @@
     fps              — composition frame rate (default: the data-fps of the
                        target's own composition root, else 30). Pass it
                        explicitly when rendering with an fps override
-                       (`hyperframes render --fps`).
+                       (`tagreel render --fps`).
 
   A key that is none of the four, or a value that is not a finite number, is
   refused by name rather than read as defaults. Both halves matter: a
@@ -451,7 +451,7 @@
         });
       }
 
-      // tl.eventCallback("onUpdate") is unavailable under the HyperFrames runtime proxy, so a
+      // tl.eventCallback("onUpdate") is unavailable under the Tagreel runtime proxy, so a
       // tracker tween's onUpdate fires on every seek. Sampling is deferred to a microtask:
       // seeking GSAP from inside its own render reads stale tween state, while the microtask
       // runs after the seek returns and before the frame is captured or painted.

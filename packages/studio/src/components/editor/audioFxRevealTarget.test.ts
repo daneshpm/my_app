@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { audioFxRevealTarget } from "./audioFxRevealTarget";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
 
 const chain = (nodes: HfAudioFxChain["nodes"]): HfAudioFxChain => ({ version: 1, nodes });
 

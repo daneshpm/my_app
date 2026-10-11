@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "notes-typing",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Notes Typing",
   "description": "The notes-app confession as a mountable scene: a bold title, then body lines typed character by character on the measured human keystroke rhythm, the caret riding every landed character and jumping down at each paragraph. For a bare prompt line use typed-prompt; for an even mechanical reveal use typewriter",
   "tags": ["motion-primitive", "notes", "typing", "mock-ui", "vertical"],
@@ -39,7 +39,7 @@
     {
       "path": "notes-typing.html",
       "target": "compositions/components/notes-typing.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

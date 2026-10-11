@@ -232,7 +232,7 @@ export {
   type SeamTransitionFrameSource,
   type SeamTransitionLoopHandle,
   type SeamTransitionLoopOptions,
-} from "@hyperframes/shader-transitions";
+} from "@tagreel/shader-transitions";
 
 // Editor gestures for a host's own preview overlay: snapping and the marquee
 export {

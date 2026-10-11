@@ -25,7 +25,7 @@
  * software raster) we should ratchet this baseline back up to 0.95.
  *
  * Why this matters:
- *   `<hyperframes-player>`'s sync-seek path goes through `_trySyncSeek`, which
+ *   `<tagreel-player>`'s sync-seek path goes through `_trySyncSeek`, which
  *   for same-origin embeds calls into the iframe runtime's `seek()` directly.
  *   Live playback advances frames via the runtime's animation loop. If those
  *   two paths drift out of agreement — different rounding, different sub-frame

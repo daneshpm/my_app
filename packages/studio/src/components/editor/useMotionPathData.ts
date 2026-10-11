@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
-import { isHtmlElement } from "@hyperframes/core/runtime/dom-realm";
+import { isHtmlElement } from "@tagreel/core/runtime/dom-realm";
 import { readRuntimeKeyframes } from "../../hooks/gsapRuntimeKeyframes";
 import { readGsapPositionFromIframe } from "../../hooks/gsapPositionDetection";
 import { isElementVisibleForOverlay } from "./domEditOverlayGeometry";

@@ -230,7 +230,7 @@
           <div class="spec-screen">
             <div id="root" style="position: relative; width: 100%; height: 100%; overflow: hidden">
               <div class="spc-stage">
-                <div class="spc-brand" id="spc-brand">HyperFrames</div>
+                <div class="spc-brand" id="spc-brand">Tagreel</div>
                 <div class="spc-stars" id="spc-stars"></div>
                 <div class="spc-proof" id="spc-proof">12,000+ creators</div>
                 <div class="spc-feats" id="spc-feats"></div>
@@ -259,8 +259,8 @@
         "use strict";
         var compositionId = "social-proof-card-demo";
         var vars =
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && window.__tagreel.getVariables
+            ? window.__tagreel.getVariables()
             : {};
         function text(v, fb, mx) {
           if (typeof v !== "string") return fb;
@@ -268,7 +268,7 @@
           if (!t) return fb;
           return t.length > mx ? t.slice(0, mx) : t;
         }
-        document.getElementById("spc-brand").textContent = text(vars.brand, "HyperFrames", 26);
+        document.getElementById("spc-brand").textContent = text(vars.brand, "Tagreel", 26);
         document.getElementById("spc-proof").textContent = text(vars.proof, "12,000+ creators", 34);
         document.getElementById("spc-cta").textContent = text(vars.cta, "Start rendering free", 30);
 

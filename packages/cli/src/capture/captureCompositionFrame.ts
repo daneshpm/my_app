@@ -182,7 +182,7 @@ export async function openSettledCompositionPage(
   const { ensureBrowser, findSystemBrowser } = await import("../browser/manager.js");
   const browser = await ensureBrowser();
   const puppeteer = await import("puppeteer-core");
-  const { buildChromeArgs } = await import("@hyperframes/engine");
+  const { buildChromeArgs } = await import("@tagreel/engine");
   const requestedGpuMode = options.browserGpuMode ?? resolveCliChromeGpuMode();
   const requiresWebGpu = compositionRequiresWebGpu(html);
   const launch = async (executablePath: string): Promise<Browser> => {
@@ -215,7 +215,7 @@ export async function openSettledCompositionPage(
       }
 
       console.warn(
-        `[hyperframes] Managed chrome-headless-shell crashed at launch; retrying once with system Chrome at ${systemBrowser.executablePath}.`,
+        `[tagreel] Managed chrome-headless-shell crashed at launch; retrying once with system Chrome at ${systemBrowser.executablePath}.`,
       );
       try {
         chromeBrowser = await launch(systemBrowser.executablePath);

@@ -68,7 +68,7 @@ by a pixel from one machine to the next. Render in Docker when you need exact
 reproducibility:
 
 ```bash
-npx hyperframes render --docker --output output.mp4
+npx tagreel render --docker --output output.mp4
 ```
 
 Docker pins the Chromium version, the font set, and the FFmpeg encoder, so the
@@ -78,7 +78,7 @@ every other option.
 ## Will the preview match the render?
 
 Every frame looks the same in both, because both run the same
-`hyperframe.runtime`, the [producer's](/packages/producer) seek behavior is the
+`tagreel.runtime`, the [producer's](/packages/producer) seek behavior is the
 single source of truth, and the `__playerReady` and `__renderReady` gates hold
 capture until the composition is fully loaded.
 
@@ -93,5 +93,5 @@ that stutters in preview still renders perfectly — see
 - [Frame adapters](/concepts/frame-adapters)
 - [Render to MP4](/guides/rendering)
 - [Compositions](/concepts/compositions)
-- [@hyperframes/producer](/packages/producer)
+- [@tagreel/producer](/packages/producer)
 - [Common mistakes that break determinism](/guides/troubleshooting)

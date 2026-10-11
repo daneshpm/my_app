@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "mk-clone-wall-transition",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Text Clone Wall Transition",
   "description": "Overlay transition: a tiled word wall covers the frame, inverts via difference blending, and clears \u2014 hard-cut the content beneath while covered",
   "tags": ["transition", "typography", "wipe"],
@@ -14,7 +14,7 @@
     {
       "path": "mk-clone-wall-transition.html",
       "target": "compositions/mk-clone-wall-transition.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Camera","badge":"Stable","codeLines":809}}
   attribution={{"path":"registry/components/camera-shake","tags":["camera","shake","handheld","effect","cinematic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/camera-shake/camera-shake.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/camera-shake/camera-shake.html"
 >
 
 <CatalogSlot slot="code">
@@ -795,8 +795,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
         /* ---- self-preview (not part of the snippet) ----------------------- */
         var vars =
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && window.__tagreel.getVariables
+            ? window.__tagreel.getVariables()
             : {};
         var PROFILE = vars.shakeProfile || "handheld-normal-mild";
         var INTENSITY = vars.shakeIntensity === undefined ? 1 : Number(vars.shakeIntensity);
@@ -838,7 +838,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add camera-shake" item="camera-shake" />
+<InstallCommand command="npx tagreel add camera-shake" item="camera-shake" />
 
 That writes one file: `compositions/components/camera-shake.html`.
 

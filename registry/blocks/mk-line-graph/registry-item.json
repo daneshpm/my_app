@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "mk-line-graph",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Minimal Line Graph",
   "description": "One or two SVG series draw on with dots popping and value labels riding the draw front; dim baseline axis, x-labels, color-dot legend",
   "tags": ["data-viz", "chart", "graph", "minimal"],
@@ -14,7 +14,7 @@
     {
       "path": "mk-line-graph.html",
       "target": "compositions/mk-line-graph.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

@@ -2,7 +2,7 @@ import { LogoRig, type LogoRigOptions } from "./rig/LogoRig";
 export { setRendererProfile } from "./rewrite";
 import { RW, rwMetrics } from "./rewrite";
 import { voxelizeGPU } from "./shape/gpuSdf";
-// Frost: the ice-logo effect as a HyperFrames block driver. All motion is on the object group; the camera never moves.
+// Frost: the ice-logo effect as a Tagreel block driver. All motion is on the object group; the camera never moves.
 // Mark -> break front -> headline 1 -> break -> headline 2 -> break -> empty frame; each headline is a second shape
 // whose distance field is swapped into the live field texture, starts fully eroded and heals in from the shards.
 // Deterministic: frame t = round(t * 60) fixed 1/60 s steps; backward seeks reset and replay. Edits marked `FROST:`.

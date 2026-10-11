@@ -18,7 +18,7 @@ test(
     }
     writeFileSync(
       join(dir, "npx"),
-      `#!${process.execPath}\nconsole.log(JSON.stringify({args:process.argv.slice(2),skip:process.env.HYPERFRAMES_SKIP_SKILLS}));process.exit(7);`,
+      `#!${process.execPath}\nconsole.log(JSON.stringify({args:process.argv.slice(2),skip:process.env.TAGREEL_SKIP_SKILLS}));process.exit(7);`,
       { mode: 0o755 },
     );
     const result = spawnSync(process.execPath, [join(dir, "resolve.mjs"), "--intent", "a & b"], {
@@ -27,13 +27,13 @@ test(
       env: {
         ...process.env,
         PATH: `${dir}${delimiter}${process.env.PATH}`,
-        HYPERFRAMES_PLUGIN_VERSION: "1.2.3",
-        HYPERFRAMES_SKIP_SKILLS: "1",
+        TAGREEL_PLUGIN_VERSION: "1.2.3",
+        TAGREEL_SKIP_SKILLS: "1",
       },
     });
     assert.equal(result.status, 7, result.stderr);
     assert.deepEqual(JSON.parse(result.stdout), {
-      args: ["--yes", "hyperframes@1.2.3", "media-use", "resolve", "--intent", "a & b"],
+      args: ["--yes", "tagreel@1.2.3", "media-use", "resolve", "--intent", "a & b"],
       skip: "1",
     });
   },
@@ -53,8 +53,8 @@ test("helper package override keeps a contributor's local CLI", (t) => {
     encoding: "utf8",
     env: {
       ...process.env,
-      HYPERFRAMES_PLUGIN_VERSION: "",
-      HYPERFRAMES_SKILL_PKG_VERSION: "0.8.79",
+      TAGREEL_PLUGIN_VERSION: "",
+      TAGREEL_SKILL_PKG_VERSION: "0.8.79",
     },
   });
   assert.equal(result.status, 0, result.stderr);

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "transitions-mechanical",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Mechanical Transitions",
   "description": "Showcase of mechanical shutter and iris transitions",
   "tags": ["transition", "showcase"],
@@ -14,7 +14,7 @@
     {
       "path": "transitions-mechanical.html",
       "target": "compositions/transitions-mechanical.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

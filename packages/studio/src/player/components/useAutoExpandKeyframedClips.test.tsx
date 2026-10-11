@@ -2,7 +2,7 @@
 
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { usePlayerStore } from "../store/playerStore";
 import { useAutoExpandKeyframedClips } from "./useAutoExpandKeyframedClips";

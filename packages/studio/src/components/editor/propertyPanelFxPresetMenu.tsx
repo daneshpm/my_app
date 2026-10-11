@@ -11,10 +11,10 @@ import {
   audioFxPresetsByFamily,
   HF_AUDIO_FX_PRESET_FAMILIES,
   type HfAudioFxPresetFamily,
-} from "@hyperframes/core/audio-fx-presets";
-import { PRESET_PROBLEM } from "@hyperframes/core/audio-fx-copy";
+} from "@tagreel/core/audio-fx-presets";
+import { PRESET_PROBLEM } from "@tagreel/core/audio-fx-copy";
 import { useRef } from "react";
-import type { HfAudioNameKind } from "@hyperframes/core/audio-carve";
+import type { HfAudioNameKind } from "@tagreel/core/audio-carve";
 
 /**
  * Shelf names in the author's language, which is deliberately not the effect

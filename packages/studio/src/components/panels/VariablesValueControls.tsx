@@ -11,7 +11,7 @@ import type {
   ColorVariable,
   EnumVariable,
   NumberVariable,
-} from "@hyperframes/sdk";
+} from "@tagreel/sdk";
 
 export const VARIABLES_INPUT_CLASS =
   "w-full bg-neutral-900 border border-neutral-800 rounded-sm px-2 py-1 text-[10px] text-neutral-200 focus:outline-hidden focus:border-neutral-700";

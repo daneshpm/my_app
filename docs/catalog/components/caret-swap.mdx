@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":355}}
   attribution={{"author":"Remocn","authorUrl":"https://github.com/Remocn/remocn","path":"registry/components/caret-swap","tags":["motion-primitive","text-effects","typography","swap","typewriter","remocn-port"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/caret-swap/caret-swap.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/caret-swap/caret-swap.html"
 >
 
 <CatalogSlot slot="code">
@@ -37,7 +37,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   after fonts load, and both phrases shrink together to stay inside the host.
   This is a single-line effect; line breaks in either phrase become spaces.
 
-  Native HyperFrames port prepared through Hyfrme from:
+  Native Tagreel port prepared through Hyfrme from:
   https://github.com/Remocn/remocn/blob/3e03565f5c0001e143c2ed941eea7c3181f13260/registry/remocn/caret-swap/index.tsx
 
   MIT License
@@ -225,8 +225,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             );
             document.getElementById("cs-clip").dataset.duration = String(duration);
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             var fromText = typeof vars.from_text === "string" ? vars.from_text : "Executing it?";
             var toText =
@@ -384,7 +384,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add caret-swap" item="caret-swap" />
+<InstallCommand command="npx tagreel add caret-swap" item="caret-swap" />
 
 That writes `compositions/components/caret-swap/caret-swap.html`, plus 2 supporting files under `compositions/components/caret-swap/`.
 

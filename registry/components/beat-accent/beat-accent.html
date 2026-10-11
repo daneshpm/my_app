@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  beat-accent: HyperFrames video primitive (effects / burst / emphasize)
+  beat-accent: Tagreel video primitive (effects / burst / emphasize)
 
   Concept: a single music-hit sting. A centered word snaps up in scale as a
   radial impact flash erupts behind it, shakes by a small amount, then settles
@@ -50,7 +50,7 @@
   <head>, is discarded on mount. #root has no data-width or data-height. It is
   styled by id, never by class, and fills the host box with position:absolute,
   inset:0, container-type:size. Variables are read through
-  window.__hyperframes.getVariables(), never by parsing document.documentElement,
+  window.__tagreel.getVariables(), never by parsing document.documentElement,
   because the mounted document element belongs to the host composition.
 -->
 <html
@@ -177,8 +177,8 @@
             var flash = root.querySelector(".ba-flash");
             var subject = root.querySelector(".ba-subject");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "BOOM" : String(vars.text);

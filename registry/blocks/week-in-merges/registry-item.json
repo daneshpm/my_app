@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "week-in-merges",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Week in Merges",
   "description": "Each author's avatar bounces across their row at a speed set by how many pull requests they merged",
   "tags": ["data", "chart", "ranking", "leaderboard"],
@@ -75,7 +75,7 @@
     {
       "path": "week-in-merges.html",
       "target": "compositions/week-in-merges.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ],
   "params": [

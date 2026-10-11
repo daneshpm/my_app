@@ -1,7 +1,7 @@
 /**
  * Types and type-guards for the two playback adapter paths the player supports:
  *
- *  - `RuntimeDurationAdapter` — the HyperFrames runtime exposes `window.__player`
+ *  - `RuntimeDurationAdapter` — the Tagreel runtime exposes `window.__player`
  *    with a `getDuration()` method. This is the standard path for compositions
  *    served through the runtime bridge.
  *

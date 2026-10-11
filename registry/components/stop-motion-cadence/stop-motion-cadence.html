@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  stop-motion-cadence: HyperFrames video primitive (time law, Wave M10 experiment)
+  stop-motion-cadence: Tagreel video primitive (time law, Wave M10 experiment)
 
   The stepped-time law as a demo primitive. ONE driver: every frame the
   timeline time is quantized FIRST,
@@ -223,8 +223,8 @@
             var shadows = root.querySelectorAll(".smc-shadow");
             var sparkles = root.querySelectorAll(".smc-sparkle");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var fps =

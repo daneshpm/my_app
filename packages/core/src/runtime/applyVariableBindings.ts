@@ -28,10 +28,7 @@
  */
 
 import { readVariablesForElement } from "./variableScope";
-import {
-  isScalarVariableValue as isScalar,
-  isSafeMediaUrl,
-} from "@hyperframes/parsers/composition";
+import { isScalarVariableValue as isScalar, isSafeMediaUrl } from "@tagreel/parsers/composition";
 import { isHtmlElement } from "./domRealm";
 import { unproxiedSrc } from "./proxySrc";
 
@@ -153,14 +150,14 @@ function variableSrcFor(el: Element, cache: ScopeValuesCache, warn = true): stri
   if (!VAR_SRC_TAGS.has(el.tagName.toLowerCase())) {
     if (warn)
       console.warn(
-        `[hyperframes] Ignoring data-var-src on <${el.tagName.toLowerCase()}>: variable-bound src is only allowed on ${Array.from(VAR_SRC_TAGS).join("/")}.`,
+        `[tagreel] Ignoring data-var-src on <${el.tagName.toLowerCase()}>: variable-bound src is only allowed on ${Array.from(VAR_SRC_TAGS).join("/")}.`,
       );
     return null;
   }
   const url = resolveUrl(valuesForElement(el, cache)[id]);
   if (url === null) return null;
   if (!isSafeMediaUrl(url)) {
-    if (warn) console.warn(`[hyperframes] Ignoring data-var-src="${id}": unsafe URL protocol.`);
+    if (warn) console.warn(`[tagreel] Ignoring data-var-src="${id}": unsafe URL protocol.`);
     return null;
   }
   return url;

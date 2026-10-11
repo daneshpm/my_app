@@ -4,7 +4,7 @@ import { parseHTML } from "linkedom";
 import { STUDIO_SIGNATURE_MANIFEST_PATHS } from "./projectSignature.js";
 import { realFilePath } from "./safePath.js";
 
-const ALWAYS_AFFECTS = ["hyperframes.json", ...STUDIO_SIGNATURE_MANIFEST_PATHS];
+const ALWAYS_AFFECTS = ["tagreel.json", ...STUDIO_SIGNATURE_MANIFEST_PATHS];
 // A malformed inline URL must not turn ancestor tracking into an image-sized path walk.
 const MAX_PREVIEW_PATH_LENGTH = 4096;
 const SHOW_ELEMENT = 1;

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  type-match-cut: HyperFrames video primitive
+  type-match-cut: Tagreel video primitive
 
   A headline splits into upper and lower word groups. An incoming editor
   panel appears in the negative space between them, holds there as a visible
@@ -261,8 +261,8 @@
             var topWords = root.querySelector(".tmc-top");
             var bottomWords = root.querySelector(".tmc-bottom");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Meet the new editor" : String(vars.text);

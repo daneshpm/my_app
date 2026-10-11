@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { TimelineElement } from "../store/playerStore";
 import { GUTTER, LABEL_COL_W, TRACKS_LEFT_PAD } from "./timelineLayout";
 import { timelineNeedsLabelColumn } from "./timelineViewModel";

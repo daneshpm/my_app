@@ -23,9 +23,9 @@ import {
   DEFAULT_HISTORY_ROOT,
   openProjectHistory,
   historyCache,
-} from "@hyperframes/studio-server";
-import type { RegistryItem } from "@hyperframes/core/registry";
-import type { BundleOptions } from "@hyperframes/core/compiler";
+} from "@tagreel/studio-server";
+import type { RegistryItem } from "@tagreel/core/registry";
+import type { BundleOptions } from "@tagreel/core/compiler";
 import { createRetryingModuleLoader, ensureProducerDist } from "./vite.producer";
 import { createStudioDevRenderBodyScripts } from "./vite.studioMotion";
 import { generateThumbnail, findSystemChrome } from "./vite.browser";
@@ -153,7 +153,7 @@ export function createViteAdapter(
   const getBundler = async () => {
     if (!_bundler) {
       try {
-        const mod = await server.ssrLoadModule("@hyperframes/core/compiler");
+        const mod = await server.ssrLoadModule("@tagreel/core/compiler");
         _bundler = (dir, options) => mod.bundleToSingleHtml(dir, options);
       } catch (err) {
         console.warn("[Studio] Failed to load compiler, previews will use raw HTML:", err);
@@ -172,10 +172,10 @@ export function createViteAdapter(
         });
         if (built) {
           console.warn(
-            "[Studio] @hyperframes/producer dist missing; building producer package for local renders...",
+            "[Studio] @tagreel/producer dist missing; building producer package for local renders...",
           );
         }
-        const producerPkg = "@hyperframes/producer";
+        const producerPkg = "@tagreel/producer";
         return await import(/* @vite-ignore */ producerPkg);
       });
     }
@@ -183,10 +183,10 @@ export function createViteAdapter(
   };
 
   return {
-    // The CLI resolves --proxy/--no-proxy against hyperframes.json before it
+    // The CLI resolves --proxy/--no-proxy against tagreel.json before it
     // launches Vite. Direct `bun run dev` keeps the historical default-on
     // behavior when the child environment is absent.
-    autoProxy: resolveViteAutoProxy(process.env.HYPERFRAMES_AUTO_PROXY),
+    autoProxy: resolveViteAutoProxy(process.env.TAGREEL_AUTO_PROXY),
 
     // fallow-ignore-next-line complexity
     listProjects() {
@@ -275,8 +275,8 @@ export function createViteAdapter(
       if (!bundler) return null;
       let html = await bundler(dir, { ...PREVIEW_BUNDLE_OPTIONS, ...options });
       html = html.replace(
-        'data-hyperframes-preview-runtime="1" src=""',
-        `data-hyperframes-preview-runtime="1" src="${this.runtimeUrl}"`,
+        'data-tagreel-preview-runtime="1" src=""',
+        `data-tagreel-preview-runtime="1" src="${this.runtimeUrl}"`,
       );
       return html;
     },
@@ -295,12 +295,12 @@ export function createViteAdapter(
     },
 
     async lint(html: string, opts?: { filePath?: string; isSubComposition?: boolean }) {
-      const mod = await server.ssrLoadModule("@hyperframes/core/lint");
-      return await mod.lintHyperframeHtml(html, { ...opts, host: "studio" });
+      const mod = await server.ssrLoadModule("@tagreel/core/lint");
+      return await mod.lintTagreelHtml(html, { ...opts, host: "studio" });
     },
 
     async lintProject(projectDir: string) {
-      const mod = await server.ssrLoadModule("@hyperframes/core/lint");
+      const mod = await server.ssrLoadModule("@tagreel/core/lint");
       return await mod.lintProject(projectDir, undefined, { host: "studio" });
     },
 
@@ -440,7 +440,7 @@ export function createViteAdapter(
           if (!existsSync(manifestPath)) continue;
           try {
             const manifest = JSON.parse(readFileSync(manifestPath, "utf-8")) as RegistryItem;
-            if (manifest.type === "hyperframes:block" || manifest.type === "hyperframes:component")
+            if (manifest.type === "tagreel:block" || manifest.type === "tagreel:component")
               items.push(manifest);
           } catch {
             /* skip malformed manifests */

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "canopy-part-title",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Canopy Part Title",
   "description": "Leaves sweep through the frame and part to reveal the headline.",
   "tags": [
@@ -22,22 +22,22 @@
     {
       "path": "canopy-part-title.html",
       "target": "compositions/canopy-part-title/canopy-part-title.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "assets/leaf-surface-color.webp",
       "target": "compositions/canopy-part-title/assets/leaf-surface-color.webp",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/leaf-surface-normal.webp",
       "target": "compositions/canopy-part-title/assets/leaf-surface-normal.webp",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "SKILL.md",
       "target": "compositions/canopy-part-title/SKILL.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
   ]
 }

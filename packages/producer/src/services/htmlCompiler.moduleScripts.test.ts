@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { parseHTML } from "linkedom";
 import { afterEach, describe, expect, it } from "vitest";
-import { AFTER_FONTS_SCRIPT_TYPE } from "@hyperframes/core/compiler";
+import { AFTER_FONTS_SCRIPT_TYPE } from "@tagreel/core/compiler";
 import { compileForRender } from "./htmlCompiler.js";
 
 const tempDirs: string[] = [];
@@ -39,7 +39,7 @@ describe("compileForRender mounted module scripts", () => {
       "compositions/blk/blk.html": `<div data-composition-id="blk" data-width="320" data-height="180">
   <script type="module" src="./assets/scene.js"></script>
   <script type="importmap">{ "imports": { "three": "./assets/three.js" } }</script>
-  <script type="module">import * as THREE from "three"; window.__url = __hyperframes.assetUrl("assets/leaf.webp");</script>
+  <script type="module">import * as THREE from "three"; window.__url = __tagreel.assetUrl("assets/leaf.webp");</script>
 </div>`,
     });
     const { html } = await compileForRender(dir, join(dir, "index.html"), join(dir, ".downloads"), {
@@ -63,7 +63,7 @@ describe("compileForRender mounted module scripts", () => {
     ]);
     const inline = modules.filter((m) => !m.hasAttribute("src"));
     expect(inline).toHaveLength(1);
-    expect(inline[0]!.textContent).toMatch(/^const __hyperframes = /);
+    expect(inline[0]!.textContent).toMatch(/^const __tagreel = /);
     expect(inline[0]!.textContent).toContain('"compositions/blk/blk.html"');
     expect(classic.join("")).not.toContain("SCENE");
     expect(classic.join("")).not.toContain('"imports"');

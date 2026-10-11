@@ -307,7 +307,7 @@ module.exports = {
           runtimeDir: cache,
           cliUrl,
         }),
-      ).rejects.toThrow(/hyperframes models install parakeet/);
+      ).rejects.toThrow(/tagreel models install parakeet/);
       expect(log).toHaveBeenCalledTimes(1);
       expect(log.mock.calls[0]?.[0]).toContain(pinnedPath);
       expect(log.mock.calls[0]?.[0]).toContain("libonnxruntime.so: cannot open shared object");

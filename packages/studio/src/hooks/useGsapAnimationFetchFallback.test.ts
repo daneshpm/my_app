@@ -3,7 +3,7 @@
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
 import { describe, expect, it, vi } from "vitest";
-import type { GsapAnimation, ParsedGsap } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation, ParsedGsap } from "@tagreel/core/gsap-parser";
 import {
   gsapSourceFileForSelection,
   selectElementAnimationsOrRetry,

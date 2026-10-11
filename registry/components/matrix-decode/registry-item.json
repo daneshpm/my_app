@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "matrix-decode",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Matrix Decode",
   "description": "Random scramble resolves left-to-right into the target text.",
   "tags": ["motion-primitive", "typography"],
@@ -9,7 +9,7 @@
     {
       "path": "matrix-decode.html",
       "target": "compositions/components/matrix-decode.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -19,7 +19,7 @@
       "role": "content",
       "label": "Target text",
       "description": "Word the scramble resolves into. One scrambling cell per character, up to 32.",
-      "default": "HYPERFRAMES"
+      "default": "TAGREEL"
     },
     {
       "id": "accent",

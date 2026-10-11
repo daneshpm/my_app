@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "push-in",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Push In",
   "description": "A centered headline gains focus through one slow, continuous camera push and a gentle fade out.",
   "tags": ["motion-primitive", "camera", "push-in", "focus", "emphasize", "holdable"],
@@ -13,7 +13,7 @@
     {
       "path": "push-in.html",
       "target": "compositions/components/push-in.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

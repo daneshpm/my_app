@@ -3,7 +3,7 @@
 The CLI fetches these files over HTTP when a user opts into on-device catalog
 search (`catalog --query ... --on-device`), so they are served from the registry
 rather than bundled in the package. How the search uses them is in
-[How catalog search works](https://hyperframes.heygen.com/developers/catalog-search).
+[How catalog search works](https://github.com/daneshpm/my_app/tree/main/docs/developers/catalog-search).
 
 | File                 | What it is                                                                                       |
 | -------------------- | ------------------------------------------------------------------------------------------------ |

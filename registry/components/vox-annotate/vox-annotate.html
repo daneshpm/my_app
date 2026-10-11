@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  vox-annotate: HyperFrames video primitive (text effects / annotation)
+  vox-annotate: Tagreel video primitive (text effects / annotation)
 
   The Vox-style annotate gesture: a keyword inside a held sentence gets a
   hand-drawn marker WHILE a thin connector draws from the marker up to a
@@ -217,8 +217,8 @@
             var stage = root.querySelector(".va-stage");
             var textEl = root.querySelector(".va-text");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text =

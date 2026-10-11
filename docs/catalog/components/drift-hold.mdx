@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Camera","badge":"Stable","codeLines":192}}
   attribution={{"path":"registry/components/drift-hold","tags":["motion-primitive","camera","ambient","drift","hold","loopable"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/drift-hold/drift-hold.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/drift-hold/drift-hold.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html drift-hold.html
 <!doctype html>
 <!--
-  drift-hold: HyperFrames video primitive (camera / ambient / hold)
+  drift-hold: Tagreel video primitive (camera / ambient / hold)
 
   Concept: a centered content card never becomes fully static. Sub-degree
   rotation, restrained scale breathing, and a soft light sweep each follow
@@ -165,8 +165,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var sweep = root.querySelector(".dh-sweep");
             var label = root.querySelector(".dh-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Always alive" : String(vars.text);
@@ -221,7 +221,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add drift-hold" item="drift-hold" />
+<InstallCommand command="npx tagreel add drift-hold" item="drift-hold" />
 
 That writes one file: `compositions/components/drift-hold.html`.
 

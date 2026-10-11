@@ -28,7 +28,7 @@ const producerState = vi.hoisted(() => ({
 // where readConfig/readConfigFresh both read one live object hides exactly
 // the class of bug where production code reads the stale cache when it
 // needed a fresh disk read (review finding). `failWrites` simulates the
-// real writeConfig's silent fs-error swallowing (unwritable ~/.hyperframes):
+// real writeConfig's silent fs-error swallowing (unwritable ~/.tagreel):
 // the next N writes are recorded but never reach `disk`.
 const configState = vi.hoisted(
   (): {
@@ -233,7 +233,7 @@ vi.mock("../browser/preflight.js", () => ({
 // (not the `renderLocal` unit under test above) — that path calls
 // `ensureBrowser` directly instead of going through the mocked preflight.
 // Unmocked, it performs a real network download of chrome-headless-shell into
-// the shared `~/.cache/hyperframes/chrome`, racing other packages' browser
+// the shared `~/.cache/tagreel/chrome`, racing other packages' browser
 // tests in CI.
 vi.mock("../browser/manager.js", () => ({
   ensureBrowser: vi.fn(async (options?: { signal?: AbortSignal }) => {
@@ -461,12 +461,12 @@ describe("renderLocal browser GPU config", () => {
     browserManagerState.onEnsure = undefined;
     resetTrialState();
     savedEnv.clear();
-    savedEnv.set("HYPERFRAMES_FFMPEG_PATH", process.env.HYPERFRAMES_FFMPEG_PATH);
-    savedEnv.set("HYPERFRAMES_FFPROBE_PATH", process.env.HYPERFRAMES_FFPROBE_PATH);
+    savedEnv.set("TAGREEL_FFMPEG_PATH", process.env.TAGREEL_FFMPEG_PATH);
+    savedEnv.set("TAGREEL_FFPROBE_PATH", process.env.TAGREEL_FFPROBE_PATH);
     savedEnv.set("PRODUCER_HEADLESS_SHELL_PATH", process.env.PRODUCER_HEADLESS_SHELL_PATH);
     savedEnv.set("HF_DE_PARALLEL_ROUTER", process.env.HF_DE_PARALLEL_ROUTER);
-    delete process.env.HYPERFRAMES_FFMPEG_PATH;
-    delete process.env.HYPERFRAMES_FFPROBE_PATH;
+    delete process.env.TAGREEL_FFMPEG_PATH;
+    delete process.env.TAGREEL_FFPROBE_PATH;
     delete process.env.PRODUCER_HEADLESS_SHELL_PATH;
     delete process.env.HF_DE_PARALLEL_ROUTER;
   });
@@ -792,8 +792,8 @@ describe("renderLocal browser GPU config", () => {
       quiet: true,
     });
 
-    expect(process.env.HYPERFRAMES_FFMPEG_PATH).toBe("/usr/bin/ffmpeg");
-    expect(process.env.HYPERFRAMES_FFPROBE_PATH).toBe("/usr/bin/ffprobe");
+    expect(process.env.TAGREEL_FFMPEG_PATH).toBe("/usr/bin/ffmpeg");
+    expect(process.env.TAGREEL_FFPROBE_PATH).toBe("/usr/bin/ffprobe");
     expect(process.env.PRODUCER_HEADLESS_SHELL_PATH).toBe("/mock/chrome");
   });
 
@@ -1230,12 +1230,12 @@ describe("renderLocal — DE parallel-router circuit breaker", () => {
     resetTrialState();
     savedEnv.clear();
     savedEnv.set("HF_DE_PARALLEL_ROUTER", process.env.HF_DE_PARALLEL_ROUTER);
-    savedEnv.set("HYPERFRAMES_FFMPEG_PATH", process.env.HYPERFRAMES_FFMPEG_PATH);
-    savedEnv.set("HYPERFRAMES_FFPROBE_PATH", process.env.HYPERFRAMES_FFPROBE_PATH);
+    savedEnv.set("TAGREEL_FFMPEG_PATH", process.env.TAGREEL_FFMPEG_PATH);
+    savedEnv.set("TAGREEL_FFPROBE_PATH", process.env.TAGREEL_FFPROBE_PATH);
     savedEnv.set("PRODUCER_HEADLESS_SHELL_PATH", process.env.PRODUCER_HEADLESS_SHELL_PATH);
     delete process.env.HF_DE_PARALLEL_ROUTER;
-    delete process.env.HYPERFRAMES_FFMPEG_PATH;
-    delete process.env.HYPERFRAMES_FFPROBE_PATH;
+    delete process.env.TAGREEL_FFMPEG_PATH;
+    delete process.env.TAGREEL_FFPROBE_PATH;
     delete process.env.PRODUCER_HEADLESS_SHELL_PATH;
   });
 
@@ -1648,7 +1648,7 @@ describe("renderLocal — DE parallel-router circuit breaker", () => {
       deParallelRouterTrialFired: false,
       telemetryNoticeShown: true,
     };
-    configState.failWrites = Number.MAX_SAFE_INTEGER; // ~/.hyperframes is unwritable
+    configState.failWrites = Number.MAX_SAFE_INTEGER; // ~/.tagreel is unwritable
     producerState.executeImpl = async (job) => {
       job.perfSummary = {
         resolution: { width: 100, height: 100 },
@@ -1839,7 +1839,7 @@ describe("checkRenderResolutionPreflight", () => {
       expect(result?.kind).toBe("aspect-mismatch");
       // No sibling preset to suggest → message falls back to the "pick a preset
       // whose orientation matches" hint (see `buildAspectMismatch` in
-      // `@hyperframes/parsers/outputResolutionCompatibility`).
+      // `@tagreel/parsers/outputResolutionCompatibility`).
       expect(result?.message).toMatch(/preset whose orientation matches|omit --resolution/i);
     });
 

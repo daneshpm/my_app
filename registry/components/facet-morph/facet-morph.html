@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  facet-morph: HyperFrames video primitive (intros and reveals / morph)
+  facet-morph: Tagreel video primitive (intros and reveals / morph)
 
   Concept: a faceted low-poly mass (36 triangles, one SVG) continuously
   reshapes between three authored silhouettes (blob, mark, badge) with
@@ -53,7 +53,7 @@
   <template> contents; #root fills the host box (inset:0, container-type:
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "facet-morph" key. Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -166,8 +166,8 @@
             var mesh = root.querySelector(".fm-mesh");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             /* ---------------- variables ---------------- */

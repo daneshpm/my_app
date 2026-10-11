@@ -15,21 +15,21 @@ describe("createStudioDevRenderBodyScripts", () => {
 
   function createProject(): string {
     projectDir = mkdtempSync(join(tmpdir(), "hf-studio-motion-"));
-    mkdirSync(join(projectDir, ".hyperframes"), { recursive: true });
+    mkdirSync(join(projectDir, ".tagreel"), { recursive: true });
     return projectDir;
   }
 
   it("injects both manual edit and Studio GSAP motion render scripts in dev", () => {
     const dir = createProject();
     writeFileSync(
-      join(dir, ".hyperframes/studio-manual-edits.json"),
+      join(dir, ".tagreel/studio-manual-edits.json"),
       JSON.stringify({
         version: 1,
         edits: [{ kind: "text", target: { sourceFile: "index.html" } }],
       }),
     );
     writeFileSync(
-      join(dir, ".hyperframes/studio-motion.json"),
+      join(dir, ".tagreel/studio-motion.json"),
       JSON.stringify({
         version: 1,
         motions: [

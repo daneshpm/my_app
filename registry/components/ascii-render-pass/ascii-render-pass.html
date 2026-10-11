@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  ascii-render-pass: HyperFrames video primitive (Wave M experiment, texture)
+  ascii-render-pass: Tagreel video primitive (Wave M experiment, texture)
 
   A slotted scene renders as live ASCII: the source is rasterized ONCE at
   mount to an offscreen canvas, its luminance grid is sampled per cell, and
@@ -131,8 +131,8 @@
             var stage = root.querySelector(".arp-stage");
             var canvas = root.querySelector(".arp-canvas");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {

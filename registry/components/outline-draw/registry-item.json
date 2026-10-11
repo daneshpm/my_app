@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "outline-draw",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Outline Draw",
   "description": "A rounded outline that proves a callout by drawing clockwise as a hollow conic-gradient border with a clean closure.",
   "tags": ["motion-primitive", "effects", "outline", "border", "mask", "proof"],
@@ -14,7 +14,7 @@
     {
       "path": "outline-draw.html",
       "target": "compositions/components/outline-draw.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

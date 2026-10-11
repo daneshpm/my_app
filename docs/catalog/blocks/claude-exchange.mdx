@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":21.4,"width":1080,"height":1920,"category":"Showcases","badge":"Stable","codeLines":1643}}
   attribution={{"author":"Jake Moran","path":"registry/blocks/claude-exchange","tags":["showcase","mock-ui","ai","chat","vertical","ad-template"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/claude-exchange/claude-exchange.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/claude-exchange/claude-exchange.html"
 >
 
 <CatalogSlot slot="code">
@@ -701,8 +701,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
     <script>
       const variables =
-        window.__hyperframes && typeof window.__hyperframes.getVariables === "function"
-          ? window.__hyperframes.getVariables()
+        window.__tagreel && typeof window.__tagreel.getVariables === "function"
+          ? window.__tagreel.getVariables()
           : {};
       const content = (id, fallback) =>
         typeof variables[id] === "string" && variables[id].trim() ? variables[id] : fallback;
@@ -1672,7 +1672,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add claude-exchange" item="claude-exchange" />
+<InstallCommand command="npx tagreel add claude-exchange" item="claude-exchange" />
 
 That writes `compositions/claude-exchange.html`, plus 8 supporting files under `assets/fonts/`.
 

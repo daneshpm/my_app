@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":7.5,"width":1920,"height":1080,"category":"Blocks","badge":"Stable","codeLines":142}}
   attribution={{"path":"registry/blocks/lottie-character-walk","tags":["character","character-animation","mascot","walk-cycle","gesture","pointing","puppet","lottie","explainer"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/lottie-character-walk/lottie-character-walk.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/lottie-character-walk/lottie-character-walk.html"
 >
 
 <CatalogSlot slot="code">
@@ -119,16 +119,16 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     <script>
       (function () {
         var vars =
-          window.__hyperframes && typeof window.__hyperframes.getVariables === "function"
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && typeof window.__tagreel.getVariables === "function"
+            ? window.__tagreel.getVariables()
             : {};
         if (vars.title) document.getElementById("lcw-title").textContent = vars.title;
         if (vars.body) document.getElementById("lcw-body").textContent = vars.body;
 
         // Beside this file when mounted; a runtime without assetUrl keeps the plain path.
         const assetUrl = (path) =>
-          typeof __hyperframes !== "undefined" && __hyperframes.assetUrl
-            ? __hyperframes.assetUrl(path)
+          typeof __tagreel !== "undefined" && __tagreel.assetUrl
+            ? __tagreel.assetUrl(path)
             : path;
         // The character's body acting (walk, stop, point, idle) lives in the Lottie file.
         // The runtime seeks every player on window.__hfLottie to composition time.
@@ -171,7 +171,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add lottie-character-walk" item="lottie-character-walk" />
+<InstallCommand command="npx tagreel add lottie-character-walk" item="lottie-character-walk" />
 
 That writes `compositions/lottie-character-walk/lottie-character-walk.html`, plus 1 supporting file under `compositions/lottie-character-walk/assets/`.
 

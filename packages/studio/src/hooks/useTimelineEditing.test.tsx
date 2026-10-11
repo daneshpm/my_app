@@ -3,7 +3,7 @@
 
 import React, { act, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
-import { openComposition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { usePlayerStore, type TimelineElement } from "../player";
 import { jsonResponse, requestUrl } from "./fetchStubTestUtils";
@@ -20,11 +20,8 @@ import {
   buildTimelineGroupResizeMembers,
   resolveTimelineGroupResizeChanges,
 } from "../player/components/timelineGroupEditing";
-import { createRuntimeStartTimeResolver } from "@hyperframes/core/runtime/start-resolver";
-import {
-  scalePositionsInScript,
-  shiftPositionsInScript,
-} from "@hyperframes/core/gsap-writer-acorn";
+import { createRuntimeStartTimeResolver } from "@tagreel/core/runtime/start-resolver";
+import { scalePositionsInScript, shiftPositionsInScript } from "@tagreel/core/gsap-writer-acorn";
 
 vi.mock("../components/editor/manualEditingAvailability", async (importOriginal) => {
   const actual =

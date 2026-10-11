@@ -17,7 +17,7 @@ const CLASS_SELECTOR = /\.((?:\\.|[^\s.,{}()>+~:[\]#'"*/\\])+)/g;
 // compiled selector can vouch for them. Nothing else is exempt.
 const MARKERS = new Set(["group", "peer"]);
 
-// `hf-` is HyperFrames' reserved prefix for semantic hooks, not utilities, so Tailwind is the
+// `hf-` is Tagreel' reserved prefix for semantic hooks, not utilities, so Tailwind is the
 // wrong judge of them.
 const HOOK_PREFIX = /^hf-/;
 

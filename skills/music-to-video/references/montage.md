@@ -51,5 +51,5 @@ bed. Use when the user wants their footage present but the message must stay rea
 
 A clip that should play **its own sound** (interview cut, lyric clip) needs a sibling
 `<audio>` mounted at the **root** by the assembler, with the BGM ducked under it (a
-`data-automation` volume lane on the BGM, see `creator-editing-recipes.md` in `hyperframes-core`). The frame-worker mounts no audio. Keep clips muted in v1; wire clip-audio +
+`data-automation` volume lane on the BGM, see `creator-editing-recipes.md` in `tagreel-core`). The frame-worker mounts no audio. Keep clips muted in v1; wire clip-audio +
 ducking only when the user asks.

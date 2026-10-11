@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":365}}
   attribution={{"path":"registry/components/marker-highlight","tags":["motion-primitive","typography","emphasis","marker","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/marker-highlight/marker-highlight.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/marker-highlight/marker-highlight.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html marker-highlight.html
 <!doctype html>
 <!--
-  marker-highlight: HyperFrames video primitive (typography / emphasis)
+  marker-highlight: Tagreel video primitive (typography / emphasis)
 
   The corpus emphasis unit: a short line of display text settles in, then ONE
   hand-drawn marker stroke draws over the emphasized word on cue. Four marker
@@ -200,8 +200,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var stage = root.querySelector(".mh-stage");
             var textEl = root.querySelector(".mh-text");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text =
@@ -394,7 +394,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add marker-highlight" item="marker-highlight" />
+<InstallCommand command="npx tagreel add marker-highlight" item="marker-highlight" />
 
 That writes one file: `compositions/components/marker-highlight.html`.
 

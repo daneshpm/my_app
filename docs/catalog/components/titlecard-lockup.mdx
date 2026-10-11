@@ -13,11 +13,11 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   compositionSrc="compositions/components/titlecard-lockup.html"
   title="Titlecard Lockup"
   description="The calm breather titlecard: an optional mono kicker fades up, the wordmark settles dead-center with one restrained move, a hairline rule draws left to right, a mono label fades beneath, and the lockup holds truly still."
-  variables={[{"id":"wordmark","type":"string","role":"content","label":"Wordmark","description":"Display wordmark that settles dead-center.","default":"HYPERFRAMES"},{"id":"label","type":"string","role":"content","label":"Label","description":"Mono caption under the rule. Empty hides it.","default":"WRITE HTML. RENDER VIDEO."},{"id":"kicker","type":"string","role":"content","label":"Kicker","description":"Small mono label above the wordmark. Empty hides it.","default":"INTRODUCING"},{"id":"rule","type":"enum","role":"style","label":"Rule","description":"Hairline rule drawn left to right under the wordmark.","default":"show","options":[{"value":"show","label":"Show"},{"value":"hide","label":"Hide"}]},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Contract color carried by the hairline rule.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]},{"id":"exit","type":"enum","role":"style","label":"Exit","description":"Optional departure. Frame roots own transitions, so none is the default.","default":"none","options":[{"value":"none","label":"None"},{"value":"fade","label":"Fade"},{"value":"up","label":"Up"}]}]}
+  variables={[{"id":"wordmark","type":"string","role":"content","label":"Wordmark","description":"Display wordmark that settles dead-center.","default":"TAGREEL"},{"id":"label","type":"string","role":"content","label":"Label","description":"Mono caption under the rule. Empty hides it.","default":"WRITE HTML. RENDER VIDEO."},{"id":"kicker","type":"string","role":"content","label":"Kicker","description":"Small mono label above the wordmark. Empty hides it.","default":"INTRODUCING"},{"id":"rule","type":"enum","role":"style","label":"Rule","description":"Hairline rule drawn left to right under the wordmark.","default":"show","options":[{"value":"show","label":"Show"},{"value":"hide","label":"Hide"}]},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Contract color carried by the hairline rule.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]},{"id":"exit","type":"enum","role":"style","label":"Exit","description":"Optional departure. Frame roots own transitions, so none is the default.","default":"none","options":[{"value":"none","label":"None"},{"value":"fade","label":"Fade"},{"value":"up","label":"Up"}]}]}
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":321}}
   attribution={{"path":"registry/components/titlecard-lockup","tags":["motion-primitive","typography","title-card","lockup","breather","orient"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/titlecard-lockup/titlecard-lockup.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/titlecard-lockup/titlecard-lockup.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html titlecard-lockup.html
 <!doctype html>
 <!--
-  titlecard-lockup: HyperFrames video primitive (intros and reveals / breather)
+  titlecard-lockup: Tagreel video primitive (intros and reveals / breather)
 
   The calm breather titlecard. An optional mono kicker fades up, the wordmark
   settles dead-center with ONE restrained move (scale 0.96 to 1, smooth
@@ -62,7 +62,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   data-composition-id="titlecard-lockup"
   data-composition-duration="4"
   data-composition-variables='[
-    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Display wordmark that settles dead-center.", "default": "HYPERFRAMES" },
+    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Display wordmark that settles dead-center.", "default": "TAGREEL" },
     { "id": "label", "type": "string", "role": "content", "label": "Label", "description": "Mono caption under the rule. Empty hides it.", "default": "WRITE HTML. RENDER VIDEO." },
     { "id": "kicker", "type": "string", "role": "content", "label": "Kicker", "description": "Small mono label above the wordmark. Empty hides it.", "default": "INTRODUCING" },
     { "id": "rule", "type": "enum", "role": "style", "label": "Rule", "description": "Hairline rule drawn left to right under the wordmark.", "default": "show", "options": [{ "value": "show", "label": "Show" }, { "value": "hide", "label": "Hide" }] },
@@ -217,8 +217,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var ruleLine = root.querySelector(".tl-rule");
             var label = root.querySelector(".tl-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function readText(value, fallback) {
@@ -226,7 +226,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
               return String(value).trim().replace(/\s+/g, " ");
             }
 
-            var wordmarkText = readText(vars.wordmark, "HYPERFRAMES");
+            var wordmarkText = readText(vars.wordmark, "TAGREEL");
             var labelText = readText(vars.label, "WRITE HTML. RENDER VIDEO.");
             var kickerText = readText(vars.kicker, "INTRODUCING");
             var ruleShown = vars.rule !== "hide";
@@ -350,7 +350,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add titlecard-lockup" item="titlecard-lockup" />
+<InstallCommand command="npx tagreel add titlecard-lockup" item="titlecard-lockup" />
 
 That writes one file: `compositions/components/titlecard-lockup.html`.
 
@@ -372,7 +372,7 @@ want to change on the element:
 
 | Variable | Default | Accepts | What it does |
 | --- | --- | --- | --- |
-| `wordmark` | `HYPERFRAMES` | string | Display wordmark that settles dead-center. |
+| `wordmark` | `TAGREEL` | string | Display wordmark that settles dead-center. |
 | `label` | `WRITE HTML. RENDER VIDEO.` | string | Mono caption under the rule. Empty hides it. |
 | `kicker` | `INTRODUCING` | string | Small mono label above the wordmark. Empty hides it. |
 | `rule` | `show` | `show`, `hide` | Hairline rule drawn left to right under the wordmark. |
@@ -386,7 +386,7 @@ defaults, so this behaves exactly like the preview above until you change one:
 <div
   data-composition-id="titlecard-lockup"
   data-composition-src="compositions/components/titlecard-lockup.html"
-  data-variable-values='{"wordmark":"HYPERFRAMES","label":"WRITE HTML. RENDER VIDEO.","kicker":"INTRODUCING","rule":"show","accent":"green","exit":"none"}'
+  data-variable-values='{"wordmark":"TAGREEL","label":"WRITE HTML. RENDER VIDEO.","kicker":"INTRODUCING","rule":"show","accent":"green","exit":"none"}'
 ></div>
 ```
 

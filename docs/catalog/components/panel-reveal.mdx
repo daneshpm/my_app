@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":133}}
   attribution={{"path":"registry/components/panel-reveal","tags":["transition-primitive","transitions-dev-port","panel","reveal"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/panel-reveal/panel-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/panel-reveal/panel-reveal.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html panel-reveal.html
 <!--
-  Panel Reveal - transitions.dev-inspired primitive for HyperFrames.
+  Panel Reveal - transitions.dev-inspired primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Use the timeline
   integration note at the bottom as the starting point for deterministic GSAP
@@ -99,8 +99,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -162,7 +162,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add panel-reveal" item="panel-reveal" />
+<InstallCommand command="npx tagreel add panel-reveal" item="panel-reveal" />
 
 That writes one file: `compositions/components/panel-reveal.html`.
 

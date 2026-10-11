@@ -501,7 +501,7 @@ export class World {
           ? 0.5
           : 1,
     );
-    // HyperFrames drives explicit frames outside Three's animation loop. Advance
+    // Tagreel drives explicit frames outside Three's animation loop. Advance
     // the node frame so FRAME-scoped passes cannot reuse the previous image.
     if (render) {
       (this.renderer as any)._nodes.nodeFrame.update();

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  scroll-camera-story -- HyperFrames video primitive (camera)
+  scroll-camera-story -- Tagreel video primitive (camera)
 
   A compressed forced-scroll cinematic pass: a tall authored scene travels
   past the camera top to bottom. Four depth layers move at different rates
@@ -579,8 +579,8 @@
             var layerFore = root.querySelector(".scs-fore");
             var sectionElements = Array.prototype.slice.call(root.querySelectorAll(".scs-section"));
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {

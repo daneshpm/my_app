@@ -22,7 +22,7 @@ afterEach(() => {
 
 describe("writePartialCaptureBundle", () => {
   it("writes tokens collected before the deadline", () => {
-    const outputDir = mkdtempSync(join(tmpdir(), "hyperframes-partial-capture-"));
+    const outputDir = mkdtempSync(join(tmpdir(), "tagreel-partial-capture-"));
     temporaryDirectories.push(outputDir);
     const opts = { url: "https://example.com", outputDir };
     const state = createPartialCaptureState(opts);
@@ -58,7 +58,7 @@ describe("writePartialCaptureBundle", () => {
   it.skipIf(process.platform === "win32")(
     "refuses to write through a planted extracted/ symlink (#4304)",
     () => {
-      const root = mkdtempSync(join(tmpdir(), "hyperframes-partial-capture-"));
+      const root = mkdtempSync(join(tmpdir(), "tagreel-partial-capture-"));
       temporaryDirectories.push(root);
       const outputDir = join(root, "capture");
       const outside = join(root, "outside");

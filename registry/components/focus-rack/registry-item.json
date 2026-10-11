@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "focus-rack",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Focus Rack",
   "description": "Focus shifts once between two cards at different apparent depths through synchronized blur, dimming, scale, and parallax.",
   "tags": ["motion-primitive", "camera", "focus", "focus-rack", "depth", "parallax", "emphasize"],
@@ -13,7 +13,7 @@
     {
       "path": "focus-rack.html",
       "target": "compositions/components/focus-rack.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { HfAudioGroup } from "@hyperframes/core/audio-groups";
+import type { HfAudioGroup } from "@tagreel/core/audio-groups";
 import { audioFxSignalPath } from "./audioFxSignalPath";
 
 const group = (over: Partial<HfAudioGroup> = {}): HfAudioGroup => ({

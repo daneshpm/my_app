@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cta-close",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "CTA Close",
   "description": "A display-scale action line lands per word and fills the frame with air, one generous CTA capsule pops beneath it with a single overshoot, and the finished close holds completely still.",
   "tags": ["motion-primitive", "ui-props", "cta", "end-card", "close", "ask"],
@@ -14,7 +14,7 @@
     {
       "path": "cta-close.html",
       "target": "compositions/components/cta-close.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -1,5 +1,5 @@
 /**
- * Shared dimension-mismatch warning for `hyperframes lambda render` and
+ * Shared dimension-mismatch warning for `tagreel lambda render` and
  * `lambda render-batch`. The runtime lays the page out at the composition's
  * `data-width`/`data-height`, so passing `--width 3840 --height 2160`
  * against a 1920×1080 composition silently produces a 1080p output. Warn
@@ -8,7 +8,7 @@
 
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { CanvasResolution } from "@hyperframes/core";
+import type { CanvasResolution } from "@tagreel/core";
 import { c } from "../../ui/colors.js";
 import { findCompositionDimensions } from "../../utils/compositionViewport.js";
 

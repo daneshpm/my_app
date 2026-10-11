@@ -1,15 +1,15 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "keyframe-scrub-stack",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Keyframe Scrub Stack",
   "description": "A keyframe-sequenced stack of cards with offset timing and easing presets.",
-  "tags": ["advanced-motion", "anime-inspired", "hyperframes-native"],
+  "tags": ["advanced-motion", "anime-inspired", "tagreel-native"],
   "files": [
     {
       "path": "keyframe-scrub-stack.html",
       "target": "compositions/components/keyframe-scrub-stack.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

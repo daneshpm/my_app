@@ -1,17 +1,17 @@
 ---
-title: "@hyperframes/producer"
+title: "@tagreel/producer"
 description: "Render a my_app project from Node.js."
 ---
 
-`@hyperframes/producer` owns the complete render pipeline: compile the project,
+`@tagreel/producer` owns the complete render pipeline: compile the project,
 capture its frames, encode the video, and mix its audio.
 
 Use it when rendering is part of your own Node.js service or job runner. For a
-local script or terminal workflow, use [`npx hyperframes render`](/developers/cli)
+local script or terminal workflow, use [`npx tagreel render`](/developers/cli)
 instead.
 
 ```bash
-npm install @hyperframes/producer
+npm install @tagreel/producer
 ```
 
 ## Render one project
@@ -23,7 +23,7 @@ job, the project directory, and the output path.
 import {
   createRenderJob,
   executeRenderJob,
-} from "@hyperframes/producer";
+} from "@tagreel/producer";
 
 const job = createRenderJob({
   fps: 30,
@@ -33,7 +33,7 @@ const job = createRenderJob({
 
 await executeRenderJob(
   job,
-  "./my-hyperframes-project",
+  "./my-tagreel-project",
   "./renders/video.mp4",
   (currentJob, message) => {
     console.log(
@@ -109,7 +109,7 @@ const controller = new AbortController();
 
 await executeRenderJob(
   job,
-  "./my-hyperframes-project",
+  "./my-tagreel-project",
   "./renders/video.mp4",
   undefined,
   controller.signal,
@@ -126,12 +126,12 @@ block a render when `strictness: "strict"` is enabled.
 The package exports a Hono application and server helpers:
 
 ```ts
-import { startServer } from "@hyperframes/producer";
+import { startServer } from "@tagreel/producer";
 
 await startServer({ port: 8080 });
 ```
 
-For larger workloads, the `@hyperframes/producer/distributed` entry exposes the
+For larger workloads, the `@tagreel/producer/distributed` entry exposes the
 three rendering activities—`plan`, `renderChunk`, and `assemble`. Your
 orchestrator remains responsible for dispatch, retries, storage, and networking.
 
@@ -141,7 +141,7 @@ orchestrator remains responsible for dispatch, retries, storage, and networking.
   <Card title="Choose rendering infrastructure" icon="server" href="/deploy/overview">
     Decide between local, server, Temporal, AWS, or another adapter.
   </Card>
-  <Card title="@hyperframes/engine" icon="gear" href="/packages/engine">
+  <Card title="@tagreel/engine" icon="gear" href="/packages/engine">
     Use the lower-level capture and encoding primitives.
   </Card>
 </CardGroup>

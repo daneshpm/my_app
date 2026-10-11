@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "segmentation-flood",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Segmentation Flood",
   "description": "Machine-vision read of a slotted subject: translucent accent segmentation masks flood on in quantized scanline steps, each region gets a thin bracket and mono label chip, a deterministic 2-frame HUD flicker rides the pass, then the labeled read settles clean.",
   "tags": [
@@ -22,7 +22,7 @@
     {
       "path": "segmentation-flood.html",
       "target": "compositions/components/segmentation-flood.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

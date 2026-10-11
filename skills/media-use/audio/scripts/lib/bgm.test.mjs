@@ -64,7 +64,7 @@ test(
     const gen = generateBgmDetached({
       prompt: "calm",
       durationS: 5,
-      hyperframesDir: dir,
+      tagreelDir: dir,
       anomalies: [],
     });
 

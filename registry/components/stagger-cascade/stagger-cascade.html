@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  stagger-cascade: HyperFrames video primitive (effects / burst / exhibit)
+  stagger-cascade: Tagreel video primitive (effects / burst / exhibit)
 
   Concept: a responsive grid of plain tile cards enters in DOM order with one
   visible, evenly spaced GSAP stagger. Each tile fades from opacity 0 to 1 and
@@ -41,7 +41,7 @@
   #root has position:absolute; inset:0; container-type:size and no data-width or
   data-height, so the host owns the box. The composition id is hardcoded as
   "stagger-cascade" because mount flattening strips it from the live root.
-  Variables come from window.__hyperframes.getVariables(), which supplies the
+  Variables come from window.__tagreel.getVariables(), which supplies the
   declared defaults merged with host data-variable-values overrides.
 -->
 <html
@@ -161,8 +161,8 @@
             // EDIT ZONE: declarations above and clamped reads below are the
             // single source of truth for the primitive's three public knobs.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var rawItemCount = Number(vars.itemCount);

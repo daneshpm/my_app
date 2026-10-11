@@ -1,17 +1,17 @@
 #!/usr/bin/env node
 /**
- * Remembered defaults CLI — the lightweight tier of HyperFrames user memory.
+ * Remembered defaults CLI — the lightweight tier of Tagreel user memory.
  *
- *   node prefs.mjs get --hyperframes . [--json]
+ *   node prefs.mjs get --tagreel . [--json]
  *     Print the merged view (project `.media/preferences.json` over user
  *     `~/.media/preferences.json`), each key with its source and the receipt
  *     material (confirmed_in, updated_at).
  *
- *   node prefs.mjs record --hyperframes . --key destination --value x-feed [--workflow <w>]
+ *   node prefs.mjs record --tagreel . --key destination --value x-feed [--workflow <w>]
  *     Record one confirmed brief answer into the project tier; the same value
  *     confirmed in two different projects promotes the key to the user tier.
  *
- * Consumption rules live in hyperframes/references/brief-contract.md § 2
+ * Consumption rules live in tagreel/references/brief-contract.md § 2
  * (Remembered defaults): a remembered value becomes the recommended option
  * with a receipt — it never skips a question.
  */
@@ -20,7 +20,7 @@ import { mergedPreferences, recordPreference } from "./lib/prefs-store.mjs";
 
 const { values: args, positionals } = parseArgs({
   options: {
-    hyperframes: { type: "string", default: "." },
+    tagreel: { type: "string", default: "." },
     key: { type: "string" },
     value: { type: "string" },
     workflow: { type: "string" },
@@ -37,7 +37,7 @@ function fail(message) {
 }
 
 if (verb === "get") {
-  const merged = mergedPreferences(args.hyperframes);
+  const merged = mergedPreferences(args.tagreel);
   if (args.json) {
     console.log(JSON.stringify(merged, null, 2));
   } else if (Object.keys(merged).length === 0) {
@@ -53,7 +53,7 @@ if (verb === "get") {
   if (!args.key || !args.value) fail("record needs --key and --value");
   try {
     const result = recordPreference({
-      projectDir: args.hyperframes,
+      projectDir: args.tagreel,
       key: args.key,
       value: args.value,
       workflow: args.workflow,
@@ -65,6 +65,6 @@ if (verb === "get") {
   }
 } else {
   fail(
-    "usage: prefs.mjs <get|record> --hyperframes . [--key <k> --value <v> --workflow <w>] [--json]",
+    "usage: prefs.mjs <get|record> --tagreel . [--key <k> --value <v> --workflow <w>] [--json]",
   );
 }

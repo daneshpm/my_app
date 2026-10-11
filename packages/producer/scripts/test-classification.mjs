@@ -25,7 +25,7 @@ const INTEGRATION_TEST_FILES = new Set([
   "src/services/fileServer.file-race.test.ts",
   "src/services/healthWorker.test.ts",
   "src/services/scriptFailureAttribution.test.ts",
-  "src/services/hyperframeLint.file-race.test.ts",
+  "src/services/tagreelLint.file-race.test.ts",
   "src/services/assetMediaType.test.ts",
   "src/services/htmlCompiler.mediaType.test.ts",
   "src/services/htmlCompiler.naturalDuration.test.ts",

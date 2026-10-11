@@ -13,11 +13,11 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   compositionSrc="compositions/components/scramble-reveal.html"
   title="Scramble Reveal"
   description="A deterministic hacker-style text reveal that cycles fixed glyph rows and locks the target string from left to right."
-  variables={[{"id":"text","type":"string","role":"content","label":"Text","description":"Target string that resolves from deterministic wrong glyphs.","default":"HYPERFRAMES"},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Color used by the text, prefix, and optional terminal frame.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]},{"id":"style","type":"enum","role":"style","label":"Style","description":"Terminal frame or clean text-only presentation.","default":"terminal","options":[{"value":"terminal","label":"Terminal"},{"value":"clean","label":"Clean"}]},{"id":"exit","type":"enum","role":"timing","label":"Exit","description":"Optional departure. Default none: the locked string holds until the frame cuts.","default":"none","options":[{"value":"none","label":"None"},{"value":"fade","label":"Fade"},{"value":"up","label":"Up"}]}]}
+  variables={[{"id":"text","type":"string","role":"content","label":"Text","description":"Target string that resolves from deterministic wrong glyphs.","default":"TAGREEL"},{"id":"accent","type":"enum","role":"style","label":"Accent","description":"Color used by the text, prefix, and optional terminal frame.","default":"green","options":[{"value":"green","label":"Green"},{"value":"blue","label":"Blue"},{"value":"violet","label":"Violet"}]},{"id":"style","type":"enum","role":"style","label":"Style","description":"Terminal frame or clean text-only presentation.","default":"terminal","options":[{"value":"terminal","label":"Terminal"},{"value":"clean","label":"Clean"}]},{"id":"exit","type":"enum","role":"timing","label":"Exit","description":"Optional departure. Default none: the locked string holds until the frame cuts.","default":"none","options":[{"value":"none","label":"None"},{"value":"fade","label":"Fade"},{"value":"up","label":"Up"}]}]}
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":289}}
   attribution={{"path":"registry/components/scramble-reveal","tags":["motion-primitive","text-effects","scramble","reveal","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/scramble-reveal/scramble-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/scramble-reveal/scramble-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,14 +25,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html scramble-reveal.html
 <!doctype html>
 <!--
-  scramble-reveal: HyperFrames video primitive (text effects / reveal)
+  scramble-reveal: Tagreel video primitive (text effects / reveal)
 
   A target string begins as deterministic wrong glyphs, then resolves one
   character at a time from left to right. Every visible frame comes from one
   fixed-seed LCG table built before the timeline is registered.
 
   Variables:
-    - text (string, default "HYPERFRAMES"): the target string.
+    - text (string, default "TAGREEL"): the target string.
     - accent (green | blue | violet, default "green"): text and frame color.
     - style (terminal | clean, default "terminal"): optional terminal frame.
     - exit (none | fade | up, default "none"): optional departure.
@@ -59,7 +59,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   data-composition-id="scramble-reveal"
   data-composition-duration="3"
   data-composition-variables='[
-    { "id": "text", "type": "string", "role": "content", "label": "Text", "description": "Target string that resolves from deterministic wrong glyphs.", "default": "HYPERFRAMES" },
+    { "id": "text", "type": "string", "role": "content", "label": "Text", "description": "Target string that resolves from deterministic wrong glyphs.", "default": "TAGREEL" },
     { "id": "accent", "type": "enum", "role": "style", "label": "Accent", "description": "Color used by the text, prefix, and optional terminal frame.", "default": "green", "options": [{ "value": "green", "label": "Green" }, { "value": "blue", "label": "Blue" }, { "value": "violet", "label": "Violet" }] },
     { "id": "style", "type": "enum", "role": "style", "label": "Style", "description": "Terminal frame or clean text-only presentation.", "default": "terminal", "options": [{ "value": "terminal", "label": "Terminal" }, { "value": "clean", "label": "Clean" }] },
     { "id": "exit", "type": "enum", "role": "timing", "label": "Exit", "description": "Optional departure. Default none: the locked string holds until the frame cuts.", "default": "none", "options": [{ "value": "none", "label": "None" }, { "value": "fade", "label": "Fade" }, { "value": "up", "label": "Up" }] }
@@ -183,11 +183,11 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var stage = root.querySelector(".sr-stage");
             var textElement = root.querySelector(".sr-text");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
-            var text = vars.text == null ? "HYPERFRAMES" : String(vars.text);
+            var text = vars.text == null ? "TAGREEL" : String(vars.text);
             // Each enum choice routes to a DIFFERENT contract token so the
             // variable stays meaningful under a theme (green/blue/violet must
             // not collapse into one themed accent).
@@ -318,7 +318,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add scramble-reveal" item="scramble-reveal" />
+<InstallCommand command="npx tagreel add scramble-reveal" item="scramble-reveal" />
 
 That writes one file: `compositions/components/scramble-reveal.html`.
 
@@ -340,7 +340,7 @@ want to change on the element:
 
 | Variable | Default | Accepts | What it does |
 | --- | --- | --- | --- |
-| `text` | `HYPERFRAMES` | string | Target string that resolves from deterministic wrong glyphs. |
+| `text` | `TAGREEL` | string | Target string that resolves from deterministic wrong glyphs. |
 | `accent` | `green` | `green`, `blue`, `violet` | Color used by the text, prefix, and optional terminal frame. |
 | `style` | `terminal` | `terminal`, `clean` | Terminal frame or clean text-only presentation. |
 | `exit` | `none` | `none`, `fade`, `up` | Optional departure. Default none: the locked string holds until the frame cuts. |
@@ -352,7 +352,7 @@ defaults, so this behaves exactly like the preview above until you change one:
 <div
   data-composition-id="scramble-reveal"
   data-composition-src="compositions/components/scramble-reveal.html"
-  data-variable-values='{"text":"HYPERFRAMES","accent":"green","style":"terminal","exit":"none"}'
+  data-variable-values='{"text":"TAGREEL","accent":"green","style":"terminal","exit":"none"}'
 ></div>
 ```
 

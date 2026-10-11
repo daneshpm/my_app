@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import type { DomEditGroupPathOffsetCommit } from "../components/editor/DomEditOverlay";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { CommitMutationCall, CommitMutationOptions } from "./gsapScriptCommitTypes";
 import type { UseGsapAwareEditingParams } from "./useGsapAwareEditing";
 import { observeGsapGesture } from "./gsapGestureOutcome";

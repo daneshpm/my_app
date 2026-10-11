@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":424}}
   attribution={{"path":"registry/components/toggle-flip","tags":["prop","ui-props","toggle","interaction","reference-prop","demonstrate"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/toggle-flip/toggle-flip.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/toggle-flip/toggle-flip.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html toggle-flip.html
 <!doctype html>
 <!--
-  toggle-flip -- HyperFrames video primitive (ui-props / interaction / demonstrate)
+  toggle-flip -- Tagreel video primitive (ui-props / interaction / demonstrate)
 
   Concept: an oversized UI toggle switch that flips with real physicality --
   thumb travel with a slight overshoot, a track color crossfade from
@@ -75,7 +75,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   composition. A host loads it via data-composition-src; the runtime only
   clones <template> contents (everything outside <template>, including the
   entire <head>, is discarded on mount) -- see
-  skills/hyperframes-core/references/sub-compositions.md. The root carries
+  skills/tagreel-core/references/sub-compositions.md. The root carries
   no data-width/data-height: it is elastic, sized off whatever box the host
   clip gives it (position:absolute; inset:0; container-type:size), so the
   toggle reads correctly whether the host mounts it into a 960x540 slot or a
@@ -83,7 +83,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   composited renders scope this file's CSS to
   [data-composition-id="toggle-flip"], and a rule keyed on the root's own
   class would stop matching the root itself (sub-compositions.md, Pitfall
-  3). Variables are read via window.__hyperframes.getVariables() (not by
+  3). Variables are read via window.__tagreel.getVariables() (not by
   parsing this file's own <html> tag at runtime): once mounted,
   document.documentElement is the HOST's <html>, not this one, so the
   loader's declared-defaults-plus-per-instance-overrides table is the only
@@ -274,15 +274,15 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var glowEl = root.querySelector(".tf-glow");
 
             // EDIT ZONE: variable defaults come from data-composition-variables
-            // above (declared on <html>). window.__hyperframes.getVariables()
+            // above (declared on <html>). window.__tagreel.getVariables()
             // returns those defaults already merged with any per-instance
             // data-variable-values a host sets on the mounting clip -- see
             // sub-compositions.md's "Per-Instance Variables" section. Add a
             // variable in both places together (declaration above + fallback
             // below).
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: only "on" | "off" ever reaches the renderer, whatever a
@@ -453,7 +453,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add toggle-flip" item="toggle-flip" />
+<InstallCommand command="npx tagreel add toggle-flip" item="toggle-flip" />
 
 That writes one file: `compositions/components/toggle-flip.html`.
 

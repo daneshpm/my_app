@@ -1,8 +1,8 @@
 import { setCommandExitCode } from "../../utils/commandResult.js";
 /**
- * `hyperframes lambda render <projectDir>` — start a distributed render
+ * `tagreel lambda render <projectDir>` — start a distributed render
  * against the deployed stack. Wraps {@link renderToLambda}. Does NOT
- * poll — use `hyperframes lambda progress` for that.
+ * poll — use `tagreel lambda progress` for that.
  */
 
 import { existsSync } from "node:fs";
@@ -10,8 +10,8 @@ import { join, resolve as resolvePath } from "node:path";
 import type {
   DistributedFormat,
   SerializableDistributedRenderConfig,
-} from "@hyperframes/aws-lambda/sdk";
-import type { CanvasResolution } from "@hyperframes/core";
+} from "@tagreel/aws-lambda/sdk";
+import type { CanvasResolution } from "@tagreel/core";
 import { c } from "../../ui/colors.js";
 import {
   reportVariableIssues,
@@ -23,8 +23,8 @@ import { requireStack, stateFilePath } from "./state.js";
 
 // Dynamic-import the SDK so tsup keeps it out of the static-import head of
 // the CLI bundle. See sites.ts loadSDK() for the full rationale.
-async function loadSDK(): Promise<typeof import("@hyperframes/aws-lambda/sdk")> {
-  return import("@hyperframes/aws-lambda/sdk");
+async function loadSDK(): Promise<typeof import("@tagreel/aws-lambda/sdk")> {
+  return import("@tagreel/aws-lambda/sdk");
 }
 
 export interface RenderArgs {
@@ -67,7 +67,7 @@ export interface RenderArgs {
   /**
    * Fail the command if any `--variables` key is undeclared or has a wrong
    * type vs the composition's `data-composition-variables`. Without this
-   * flag, mismatches are warnings (matches the local `hyperframes render`
+   * flag, mismatches are warnings (matches the local `tagreel render`
    * behavior).
    */
   strictVariables?: boolean;
@@ -93,7 +93,7 @@ export async function runRender(args: RenderArgs): Promise<void> {
   });
 
   // Resolve --variables / --variables-file using the same parser the local
-  // `hyperframes render` uses. `resolveVariablesArg` exits(1) with a friendly
+  // `tagreel render` uses. `resolveVariablesArg` exits(1) with a friendly
   // errorBox on parse errors so callers don't have to.
   const variables = resolveVariablesArg(args.variables, args.variablesFile);
 
@@ -178,7 +178,7 @@ export async function runRender(args: RenderArgs): Promise<void> {
     await waitForCompletion(handle.executionArn, stack, args.waitIntervalMs, args.json);
     return;
   }
-  console.log(c.dim(`Poll with: hyperframes lambda progress ${handle.renderId}`));
+  console.log(c.dim(`Poll with: tagreel lambda progress ${handle.renderId}`));
 }
 
 async function waitForCompletion(
@@ -233,7 +233,7 @@ function sleep(ms: number): Promise<void> {
 
 /**
  * Build the wire {@link SerializableDistributedRenderConfig} for
- * `hyperframes lambda render`. Extracted for boundary-test coverage of the
+ * `tagreel lambda render`. Extracted for boundary-test coverage of the
  * aspect-agnostic flag threading — the field this helper preserves is what
  * lets the Lambda worker's compile stage remap `landscape` → `portrait` on
  * an aspect-agnostic alias (`1080p` / `hd` / `4k` / `uhd`).

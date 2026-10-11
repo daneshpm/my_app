@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "notification-cascade",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Notification Cascade",
   "description": "Phone notifications land one after another and stack up the screen, each banner pushing the pile down as it arrives, before the whole stack lifts away into a closing card",
   "tags": ["showcase", "mock-ui", "notification", "vertical", "ad-template"],
@@ -59,7 +59,7 @@
       "label": "App name",
       "description": "Name of the brand this video promotes, credited in the corner of every banner. Use the real name of that brand.",
       "portrays": ["subject_name"],
-      "default": "HyperFrames"
+      "default": "Tagreel"
     },
     {
       "id": "headlineTop",
@@ -93,29 +93,29 @@
       "label": "Brand logo",
       "description": "Transparent mark of the brand this video promotes, centered on the closing card.",
       "portrays": ["subject_logo"],
-      "default": "assets/hyperframes-logo-white.svg"
+      "default": "assets/tagreel-logo-white.svg"
     }
   ],
   "files": [
     {
       "path": "notification-cascade.html",
       "target": "compositions/notification-cascade.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "assets/desk-backdrop.jpg",
       "target": "assets/desk-backdrop.jpg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
-      "path": "assets/hyperframes-logo-white.svg",
-      "target": "assets/hyperframes-logo-white.svg",
-      "type": "hyperframes:asset"
+      "path": "assets/tagreel-logo-white.svg",
+      "target": "assets/tagreel-logo-white.svg",
+      "type": "tagreel:asset"
     },
     {
       "path": "TEMPLATE.md",
       "target": "TEMPLATE.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
   ]
 }

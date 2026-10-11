@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { openComposition, type Composition, type CompositionVariable } from "@hyperframes/sdk";
+import { openComposition, type Composition, type CompositionVariable } from "@tagreel/sdk";
 import { persistSdkSerialize } from "../utils/sdkCutover";
 
 /** Records an edit into the studio's undo history (label + per-file before/after). */

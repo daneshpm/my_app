@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":363}}
   attribution={{"path":"registry/components/state-chip-rail","tags":["motion-primitive","product-demo","state-machine","status","chips","rail"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/state-chip-rail/state-chip-rail.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/state-chip-rail/state-chip-rail.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html state-chip-rail.html
 <!doctype html>
 <!--
-  state-chip-rail: HyperFrames video primitive (product demo / state machine)
+  state-chip-rail: Tagreel video primitive (product demo / state machine)
 
   A rail of mono status chips advances a data-state snap machine on a cue
   schedule. CSS alone responds to each chip's [data-state]; the timeline only
@@ -210,8 +210,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var rail = root.querySelector(".scr-rail");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function commaList(value, max) {
@@ -392,7 +392,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add state-chip-rail" item="state-chip-rail" />
+<InstallCommand command="npx tagreel add state-chip-rail" item="state-chip-rail" />
 
 That writes one file: `compositions/components/state-chip-rail.html`.
 

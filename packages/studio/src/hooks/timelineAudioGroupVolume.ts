@@ -4,8 +4,8 @@ import {
   projectForTimelineSave,
   type TimelineEditOutcome,
 } from "./timelineEditPermission";
-import { HF_AUDIO_FX_ATTR } from "@hyperframes/core/audio-fx";
-import { HF_AUDIO_AUTOMATION_ATTR } from "@hyperframes/core/audio-automation";
+import { HF_AUDIO_FX_ATTR } from "@tagreel/core/audio-fx";
+import { HF_AUDIO_AUTOMATION_ATTR } from "@tagreel/core/audio-automation";
 import { usePlayerStore } from "../player";
 import type { TimelineElementPatch } from "../player/store/timelineElement";
 import { invalidateGroupInfoCache } from "../player/lib/timelineGroupInfo";

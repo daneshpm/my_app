@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "slot-machine-roll",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Slot Machine Roll",
   "description": "A vertical reel scrolls characters from one value to another.",
   "tags": ["video-primitive", "motion-primitive", "typography"],
@@ -9,7 +9,7 @@
     {
       "path": "slot-machine-roll.html",
       "target": "compositions/components/slot-machine-roll.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

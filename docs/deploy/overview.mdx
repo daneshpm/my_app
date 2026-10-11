@@ -24,8 +24,8 @@ The CLI owns the complete normal pipeline: project loading, checks, browser
 capture, audio mixing, and encoding.
 
 ```bash
-npx hyperframes check
-npx hyperframes render --output video.mp4
+npx tagreel check
+npx tagreel render --output video.mp4
 ```
 
 Start here unless an application—not a person or CI job—must initiate the
@@ -34,12 +34,12 @@ render. See [Rendering](/guides/rendering) for the normal workflow and the
 
 ## A Node application: use Producer
 
-`@hyperframes/producer` is the complete programmable render pipeline. It is the
+`@tagreel/producer` is the complete programmable render pipeline. It is the
 right layer for a backend that needs to provide project input, receive progress,
 cancel work, or control encoding without spawning the CLI.
 
 ```ts
-import { createRenderJob, executeRenderJob } from "@hyperframes/producer";
+import { createRenderJob, executeRenderJob } from "@tagreel/producer";
 
 const job = createRenderJob({ fps: 30, quality: "standard" });
 await executeRenderJob(job, "./project", "./video.mp4");
@@ -50,7 +50,7 @@ API. Use Engine only when Producer performs work your application must replace.
 
 ## Exact frame capture: use Engine
 
-`@hyperframes/engine` opens a seekable composition and captures exact frames.
+`@tagreel/engine` opens a seekable composition and captures exact frames.
 It does not replace the complete Producer pipeline.
 
 Use it when building specialized capture, inspection, or rendering
@@ -63,7 +63,7 @@ Managed cloud rendering accepts a project, runs the render, and returns the
 finished file without requiring local Chrome or FFmpeg.
 
 ```bash
-npx hyperframes cloud render ./project --output video.mp4
+npx tagreel cloud render ./project --output video.mp4
 ```
 
 Authentication, variables, webhooks, and job management are covered in

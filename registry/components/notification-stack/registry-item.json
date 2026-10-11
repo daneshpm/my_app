@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "notification-stack",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Notification Stack",
   "description": "1 to 5 token notification cards slide-settle into a vertical stack on cues, newest on top; one card grows slightly and brightens as the focus while the rest dim by position.",
   "tags": ["motion-primitive", "product-demo", "notification", "stack", "stagger"],
@@ -14,7 +14,7 @@
     {
       "path": "notification-stack.html",
       "target": "compositions/components/notification-stack.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -1,10 +1,10 @@
 export { Button, buttonBase, buttonSizes, buttonVariants } from "./components/ui/Button";
 export type { ButtonSize, ButtonVariant, PreviewState } from "./components/ui/Button";
-export { HyperframesLogo } from "./components/ui/HyperframesLogo";
+export { TagreelLogo } from "./components/ui/TagreelLogo";
 export { IconButton } from "./components/ui/IconButton";
 export { Tab, TabPanel, Tabs, TabsList } from "./components/ui/Tabs";
-export { HyperframesLoader } from "./components/ui/HyperframesLoader";
-export type { HyperframesLoaderProps } from "./components/ui/HyperframesLoader";
+export { TagreelLoader } from "./components/ui/TagreelLoader";
+export type { TagreelLoaderProps } from "./components/ui/TagreelLoader";
 export { Tooltip } from "./components/ui/Tooltip";
 export { cn } from "./components/ui/cn";
 export {

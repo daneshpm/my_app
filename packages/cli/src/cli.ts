@@ -45,7 +45,7 @@ import { existsSync } from "node:fs";
 
 // ── Fast-path exits ─────────────────────────────────────────────────────────
 // Check --version before importing anything heavy. This makes
-// `hyperframes --version` near-instant (~10ms vs ~80ms).
+// `tagreel --version` near-instant (~10ms vs ~80ms).
 import { VERSION } from "./version.js";
 
 const argv = process.argv.slice(2);
@@ -170,7 +170,7 @@ const subCommands = Object.fromEntries(
 
 const main = defineCommand({
   meta: {
-    name: "hyperframes",
+    name: "tagreel",
     version: VERSION,
     description: "Create and render HTML video compositions",
   },
@@ -364,7 +364,7 @@ function reportPostRenderTerminationEvent(
   error: Error,
 ): void {
   process.stderr.write(
-    `  [hyperframes] Post-render ${label} (render already succeeded): ${error.message}\n`,
+    `  [tagreel] Post-render ${label} (render already succeeded): ${error.message}\n`,
   );
   emitCliErrorEvent(kind, error);
 }

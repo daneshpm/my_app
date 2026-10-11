@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":5,"width":1920,"height":1080,"category":"3D objects","badge":"Stable","codeLines":331}}
   attribution={{"path":"registry/blocks/extruded-logo","tags":["3d-object","three-js","webgl","logo","text","extruded","title-card"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/extruded-logo/extruded-logo.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/extruded-logo/extruded-logo.html"
 >
 
 <CatalogSlot slot="code">
@@ -122,9 +122,9 @@ import { InstallCommand } from "/snippets/install-command.jsx";
           /* malformed declaration: the scene module falls back to its own defaults */
         }
         var scoped =
-          (window.__hyperframes &&
-            window.__hyperframes.getVariables &&
-            window.__hyperframes.getVariables()) ||
+          (window.__tagreel &&
+            window.__tagreel.getVariables &&
+            window.__tagreel.getVariables()) ||
           {};
         var vars = Object.assign({}, defaults, window.__hfVariables || {}, scoped);
         var root = document.getElementById("el-root");
@@ -253,8 +253,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
       // Beside this file when mounted; a runtime without assetUrl keeps the plain path.
       const assetUrl = (path) =>
-        typeof __hyperframes !== "undefined" && __hyperframes.assetUrl
-          ? __hyperframes.assetUrl(path)
+        typeof __tagreel !== "undefined" && __tagreel.assetUrl
+          ? __tagreel.assetUrl(path)
           : path;
       // Geist Bold (OFL), basic Latin only, converted to three.js typeface JSON.
       const font = await new FontLoader().loadAsync(
@@ -360,7 +360,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add extruded-logo" item="extruded-logo" />
+<InstallCommand command="npx tagreel add extruded-logo" item="extruded-logo" />
 
 That writes `compositions/extruded-logo.html`, plus 2 supporting files under `compositions/assets/fonts/`.
 

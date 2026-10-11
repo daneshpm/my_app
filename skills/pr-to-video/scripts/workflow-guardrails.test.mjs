@@ -26,7 +26,7 @@ test("default project directory is durable and outside the caller repository", (
     result,
     join(
       cache,
-      "hyperframes",
+      "tagreel",
       "pr-to-video",
       "everyinc",
       "compound-engineering-plugin",
@@ -89,7 +89,7 @@ test("#1092 packets contain selected excerpts but never the full diff", () => {
   const result = buildFramePackets({
     projectDir: project,
     storyboardPath: join(project, "STORYBOARD.md"),
-    outDir: join(project, ".hyperframes", "frame-packets"),
+    outDir: join(project, ".tagreel", "frame-packets"),
     maxPacketBytes: 32_000,
   });
 
@@ -101,14 +101,14 @@ test("#1092 packets contain selected excerpts but never the full diff", () => {
   assert.ok(Buffer.byteLength(codePacket) < 32_000);
   assert.ok(result.every((packet) => packet.path.endsWith(".md")));
 
-  const role = readFileSync(join(project, ".hyperframes", "frame-packets", "_role.md"), "utf8");
+  const role = readFileSync(join(project, ".tagreel", "frame-packets", "_role.md"), "utf8");
   assert.match(role, /# Frame worker — core contract/);
   assert.match(role, /# Frame worker — PR-to-video delta/);
 });
 
 test("packet validation is atomic and leaves no partial output on overflow", () => {
   const project = mkdtempSync(join(tmpdir(), "p2v-packets-atomic-"));
-  const outDir = join(project, ".hyperframes", "frame-packets");
+  const outDir = join(project, ".tagreel", "frame-packets");
   write(join(project, "frame.md"), "# frame\n");
   write(
     join(project, "STORYBOARD.md"),
@@ -135,7 +135,7 @@ test("code frames without an upstream-selected excerpt fail before dispatch", ()
       buildFramePackets({
         projectDir: project,
         storyboardPath: join(project, "STORYBOARD.md"),
-        outDir: join(project, ".hyperframes", "frame-packets"),
+        outDir: join(project, ".tagreel", "frame-packets"),
       }),
     /Source excerpt/i,
   );

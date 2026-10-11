@@ -10,8 +10,7 @@ installs, ramped as the signal holds.
 <Note>
   A canary is a *measured* rollout: a slice is enrolled so it can be compared
   against everyone else. So **opting out of telemetry opts you out of
-  canaries** — an opted-out install is never bucketed at all. See the
-  [`telemetry` command](/packages/cli#telemetry) for the opt-out routes.
+  canaries** — an opted-out install is never bucketed at all.
 </Note>
 
 ## Add one
@@ -81,8 +80,7 @@ one command:
 rm -rf ~/.tagreel    # clears telemetry id, canary cohorts, and breaker state
 ```
 
-`tagreel telemetry status` prints both paths if you want to inspect or
-delete them individually. Nothing canary-related is stored anywhere else.
+Nothing canary-related is stored anywhere else.
 
 ## Where it lives
 
@@ -103,5 +101,3 @@ both surfaces never runs half-enrolled.
 - [Testing local changes](/contributing/testing-local-changes) — exercise your
   canary before anyone else gets it.
 - [Release channels](/contributing/release-channels) — which branch a ramp belongs on.
-- [`telemetry` command](/packages/cli#telemetry) — what is collected, and how a
-  user turns it off.

@@ -848,7 +848,7 @@ export function trackAuthLoginFailed(
   trackEvent("auth_login_failed", { method, reason }, distinctId);
 }
 
-// Associate this install with the signed-in HeyGen account after a completed
+// Associate this install with the signed-in account after a completed
 // sign-in. Emits a analytics `$identify` alias whose `$anon_distinct_id` is the
 // install's anonymousId, so events recorded before sign-in stitch to the same
 // person instead of stranding as a separate anonymous profile. Routed through

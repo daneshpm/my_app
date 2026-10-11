@@ -1403,7 +1403,7 @@ async function constructCaptureSession(
   //     `bun run --filter @tagreel/engine test` Vitest path.
   //   - any tsup/esbuild build that explicitly enables keepNames.
   //
-  // The HeyGen CLI (`packages/cli`) bundles this engine via tsup with
+  // The Tagreel CLI (`packages/cli`) bundles this engine via tsup with
   // keepNames left at its default (false) — verified by grepping
   // `packages/cli/dist/cli.js`, where `__name(...)` call sites are absent.
   // Bun's TS loader also does not currently inject `__name`. Even so,

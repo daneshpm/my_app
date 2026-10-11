@@ -97,7 +97,7 @@ That routes to my_app' AWS Lambda path, which fans the render across many parall
 - ❌ `set up Lambda so I can preview edits faster` — cloud dispatch adds latency to a fast local loop
 - ✅ `render the final 3-minute 4K cut on Lambda` — the workload that actually justifies fanning out
 
-Lambda is not the only remote target. **HeyGen-hosted cloud rendering** ([guide](/deploy/cloud)) takes the infrastructure off your hands entirely — no AWS account to configure — and **Google Cloud Run** ([guide](/deploy/gcp-cloud-run)) is the option when your stack already lives on GCP. Name the one you want ("render this on Cloud Run"); the routing is explicit, never inferred.
+Lambda is not the only remote target. **Google Cloud Run** ([guide](/deploy/gcp-cloud-run)) is the option when your stack already lives on GCP. Name the one you want ("render this on Cloud Run"); the routing is explicit, never inferred.
 
 ## Preview before you commit the slow render
 

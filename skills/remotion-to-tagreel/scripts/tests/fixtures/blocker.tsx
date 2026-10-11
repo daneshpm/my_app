@@ -31,7 +31,7 @@ export const BadComposition: React.FC = () => {
 
   // Expression-bodied useEffect — the form `useEffect(() => fetch(...), [deps])`
   // has no closing `}`, which an earlier regex anchored on. This and the
-  // useLayoutEffect below cover the false-negative cases Miguel surfaced.
+  // useLayoutEffect below cover the false-negative cases reported upstream.
   useEffect(() => fetch("/api/heartbeat"), [frame]);
   useLayoutEffect(() => (document.title = `frame ${frame}`), [frame]);
 

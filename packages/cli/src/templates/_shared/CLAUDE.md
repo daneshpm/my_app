@@ -43,7 +43,6 @@ npx tagreel preview --status      # verify the persistent preview is listening
 npx tagreel preview --stop        # stop it when review is finished
 npm run check        # lint + runtime + layout + motion + contrast (one command)
 npm run render       # render to MP4
-npm run publish      # publish and get a shareable link
 npx tagreel lint --verbose  # include info-level findings
 npx tagreel lint --json     # machine-readable output for CI
 npx tagreel docs <topic> # reference docs in terminal

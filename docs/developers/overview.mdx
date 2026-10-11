@@ -60,7 +60,7 @@ Do not start with the rendering engine when the CLI already performs the complet
 
 ## CLI: operate complete projects
 
-The CLI is the highest-level technical surface. It creates projects, opens Studio, validates compositions, captures review frames, renders files, publishes projects, and drives cloud render backends.
+The CLI is the highest-level technical surface. It creates projects, opens Studio, validates compositions, captures review frames, and renders files.
 
 ```bash
 npx tagreel check
@@ -113,7 +113,6 @@ See the [Player reference](/packages/player).
 - **CLI** — complete local and automated rendering.
 - **Producer** — the Node rendering pipeline: capture, encode, and audio mix.
 - **Engine** — lower-level seekable page capture and exact-frame control.
-- **Managed cloud** — hosted rendering without operating Chrome or FFmpeg.
 - **AWS Lambda or Google Cloud Run** — infrastructure you deploy and control.
 
 Most applications should begin with the CLI or Producer. Reach for Engine only when building a specialized capture or rendering system.

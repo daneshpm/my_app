@@ -1,4 +1,4 @@
-# info, upgrade, compositions, timeline, docs, benchmark, telemetry, asset preprocessing
+# info, upgrade, compositions, timeline, docs, benchmark, asset preprocessing
 
 Catch-all reference for commands that don't fit the main dev loop.
 

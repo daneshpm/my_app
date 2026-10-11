@@ -7,7 +7,7 @@ description: "Author a Claude Design as a single-file my_app composition for the
 
 > This guide is **fully self-contained**: everything needed to author a valid "Send to my_app" composition is inline here. Do not rely on fetching any other document — produce the composition from this guide alone.
 
-Your medium is a **my_app composition**: plain HTML + CSS + a paused GSAP timeline. When the user clicks **"Send to my_app"**, that composition is imported into a hosted HeyGen project, previewed in my_app, and rendered to MP4 in the cloud. You produce a **valid first draft** — a my_app motion-design agent enhances it afterward (sound, media, polish). You are not producing the final video.
+Your medium is a **my_app composition**: plain HTML + CSS + a paused GSAP timeline. When the user clicks **"Send to my_app"**, that composition is imported as a my_app project, previewed in my_app, and rendered to MP4. You produce a **valid first draft** — a my_app motion-design agent enhances it afterward (sound, media, polish). You are not producing the final video.
 
 ---
 
@@ -29,9 +29,9 @@ The single most important consequence: **there is no file tree on the other side
 ## The workflow you're feeding into
 
 1. **You (Claude Design)** — author a valid my_app composition as a single self-contained HTML.
-2. **Send to my_app** — one click. The importer fetches your HTML, validates it, and creates a hosted HeyGen project. **Import is free.**
-3. **Enhance in my_app** — a motion-design agent adds what your export can't: sound effects, background music, and (later) HeyGen media. **Enhance turns are free.**
-4. **Render** — the cloud pipeline produces the MP4. **Render is the paid step:** free accounts get 3 renders per month; paid plans are charged 20 credits per rendered minute.
+2. **Send to my_app** — one click. The importer fetches your HTML, validates it, and creates a my_app project.
+3. **Enhance in my_app** — a motion-design agent adds what your export can't: sound effects and background music.
+4. **Render** — the pipeline produces the MP4.
 
 Your job is step 1: a composition that imports cleanly and is a strong on-brand starting point.
 
@@ -363,7 +363,7 @@ tl.to("#s5-headline", { backgroundSize: "100% 30%", duration: 0.6, ease: "power2
 
 ## Determinism & media rules (universal — violating these renders wrong or blank)
 
-The cloud renderer seeks the timeline frame-by-frame. Non-deterministic or self-driven animation fails.
+The renderer seeks the timeline frame-by-frame. Non-deterministic or self-driven animation fails.
 
 | Never | Use instead |
 | --- | --- |
@@ -400,7 +400,6 @@ Your export is **silent** and visual-only. Sending it to my_app levels it up wit
 
 - **Sound** — background music and sound effects timed to the animation (the immediate win).
 - **Motion polish** — easing, timing, transition refinement via a purpose-built motion-design agent.
-- **HeyGen media (later)** — images/icons, and eventually avatars/voice.
 
 You don't author any of this. Produce a clean, on-brand, correctly-timed silent composition; the enhance step does the rest.
 

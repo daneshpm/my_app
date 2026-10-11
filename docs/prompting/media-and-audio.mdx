@@ -18,9 +18,8 @@ exactly what the words say.
 
 ## Voiceover (TTS)
 
-The agent picks a voice engine in a fixed order. HeyGen Starfish goes first if
-your HeyGen account is configured. ElevenLabs is next if that key is set.
-Otherwise the local Kokoro model runs, and it needs no API key.
+The agent picks a voice engine in a fixed order. ElevenLabs goes first if that
+key is set. Otherwise the local Kokoro model runs, and it needs no API key.
 
 Describe the content and let the agent pick a fitting voice. Or name the voice,
 tone, and speed yourself:
@@ -41,7 +40,7 @@ agent choose.
 ### Gemini voiceover
 
 Choose Gemini when you want to direct a narrator's delivery with a description.
-Configure [Gemini credentials](/guides/authentication#providers-used-by-agent-workflows),
+Configure Gemini credentials,
 then ask your agent:
 
 > Use Gemini 3.8 Flash TTS with the Kore voice to narrate this script. Make the

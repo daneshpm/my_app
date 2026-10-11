@@ -3,8 +3,8 @@ name: tagreel-cli
 description: >
   Use the Tagreel CLI development loop: init, add, catalog, capture, lint, check, snapshot,
   compare, grade-compare, preview, play, present, beats, keyframes, single or batch render,
-  cloudrun, feedback, lambda, doctor, browser, info, upgrade, skills, compositions, timeline, history, clean, docs,
-  benchmark, telemetry, transcribe, tts, and remove-background. Also use when diagnosing build
+  cloudrun, lambda, doctor, browser, info, upgrade, skills, compositions, timeline, history, clean, docs,
+  benchmark, transcribe, tts, and remove-background. Also use when diagnosing build
   or render failures. validate, inspect, and layout are deprecated aliases; use check. Covers local,
   AWS Lambda, and Google Cloud Run rendering.
 ---
@@ -134,17 +134,17 @@ Use Lambda only when AWS ownership is a requirement. Use Cloud Run only when GCP
 
 The following references and owning skills are mandatory command contracts, not optional background reading. Before running a command in the table, read its matching row.
 
-| Need                                                                                               | Reference                             |
-| -------------------------------------------------------------------------------------------------- | ------------------------------------- |
-| `init`, `capture`, `skills`                                                                        | `references/init-and-scaffold.md`     |
-| `lint`, `check`, motion sidecars, `snapshot`                                                       | `references/lint-validate-inspect.md` |
-| `compare`, `grade-compare`, variable-driven `render --batch`                                       | `references/compare-and-batch.md`     |
-| `beats` for an existing project's Studio beat grid                                                 | `references/beats.md`                 |
-| `preview`, `play`, `render`, Studio context, feedback                                              | `references/preview-render.md`        |
-| `doctor`, browser management                                                                       | `references/doctor-browser.md`        |
-| AWS Lambda deployment and rendering                                                                | `references/lambda.md`                |
-| Google Cloud Run deployment and rendering                                                          | `references/cloudrun.md`              |
-| `info`, `upgrade`, `compositions`, `timeline`, `docs`, `benchmark`, telemetry, media preprocessing | `references/upgrade-info-misc.md`     |
+| Need                                                                                    | Reference                             |
+| --------------------------------------------------------------------------------------- | ------------------------------------- |
+| `init`, `capture`, `skills`                                                             | `references/init-and-scaffold.md`     |
+| `lint`, `check`, motion sidecars, `snapshot`                                            | `references/lint-validate-inspect.md` |
+| `compare`, `grade-compare`, variable-driven `render --batch`                            | `references/compare-and-batch.md`     |
+| `beats` for an existing project's Studio beat grid                                      | `references/beats.md`                 |
+| `preview`, `play`, `render`, Studio context                                             | `references/preview-render.md`        |
+| `doctor`, browser management                                                            | `references/doctor-browser.md`        |
+| AWS Lambda deployment and rendering                                                     | `references/lambda.md`                |
+| Google Cloud Run deployment and rendering                                               | `references/cloudrun.md`              |
+| `info`, `upgrade`, `compositions`, `timeline`, `docs`, `benchmark`, media preprocessing | `references/upgrade-info-misc.md`     |
 
 For composition variables, also read `/tagreel-core` → `references/variables-and-media.md`. For `tagreel add` and `tagreel catalog`, use `/tagreel-registry`. Before `tagreel present`, read `/slideshow`; before `tagreel keyframes`, read `/tagreel-keyframes`. For TTS, transcription, captions, or background removal choices, use `/media-use`.
 
@@ -162,9 +162,8 @@ npx tagreel figma asset KEY:10-20
 
 ## Commands you should not run
 
-Two entries in `tagreel --help` are not part of the authoring loop, and reaching for them wastes a turn:
+One entry in `tagreel --help` is not part of the authoring loop, and reaching for it wastes a turn:
 
-- `events` is the telemetry endpoint skills use to report their **own** invocation, ideally from a bundled script. It emits an anonymous event and exits 0 no matter what you pass it. It is not a way to read telemetry back, and an agent has no reason to call it by hand.
 - `validate`, `inspect`, and `layout` are deprecated aliases kept for old scripts. `check` is the one that is maintained, and it is what every reference in this skill assumes.
 
 ## Remaining harness usage

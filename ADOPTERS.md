@@ -12,13 +12,12 @@ Open a pull request that adds a row to the table below. Keep entries short:
 - **Contact** — a GitHub handle or contact person who can answer questions about your usage.
 - **How Tagreel is used** — one sentence on the use case (e.g., "Personalized video at scale," "Agent-authored marketing assets," "Slides-to-video pipeline").
 
-If you'd rather not be listed publicly, that's fine — drop a note in [our Discord](https://discord.gg/EbK98HBPdk) instead. We always like hearing about how the project is being used.
+If you'd rather not be listed publicly, that's fine — open an issue instead. We always like hearing about how the project is being used.
 
 ## Production
 
 | Organization                                             | Contact                                            | How Tagreel is used                                                                                                       |
 | -------------------------------------------------------- | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| [HeyGen](https://www.heygen.com)                         | [@jrusso1020](https://github.com/jrusso1020)       | Powers AI-generated video composition and rendering across HeyGen's video product surface.                                |
 | [tldraw](https://tldraw.com)                             | [@steveruizok](https://github.com/steveruizok)     | Generates automated pull-request walkthrough videos with GSAP-animated code diffs, narration, and captions.               |
 | [TanStack](https://tanstack.com)                         | [@AlemTuzlak](https://github.com/AlemTuzlak)       | Exploring Tagreel for short-form code demo videos and documentation.                                                      |
 | [OptinMonster](https://optinmonster.com)                 | Angie Meeker                                       | Exploring Tagreel for marketing and product video content.                                                                |

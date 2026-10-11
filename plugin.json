@@ -1,11 +1,10 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "tagreel",
-  "description": "Tagreel by HeyGen. Write HTML, render video. Compositions, GSAP and runtime adapter animations, captions, voiceovers, audio-reactive visuals, and website capture for Tagreel.",
+  "description": "Tagreel. Write HTML, render video. Compositions, GSAP and runtime adapter animations, captions, voiceovers, audio-reactive visuals, and website capture for Tagreel.",
   "version": "0.8.137",
   "author": {
-    "name": "HeyGen",
-    "email": "tagreel@heygen.com",
+    "name": "Tagreel contributors",
     "url": "https://github.com/daneshpm/my_app/tree/main/docs"
   },
   "homepage": "https://github.com/daneshpm/my_app/tree/main/docs",

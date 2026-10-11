@@ -875,7 +875,7 @@ Do NOT add a mute button inside the composition. The `#sfx-mute` coral button pa
 </script>
 ```
 
-**Sourcing SFX files:** use the HeyGen MCP `search_audio_sounds` tool with `type=sound_effects` and keywords like "whoosh", "click", "transition". Download the results to a local `sfx/` directory next to `demo.html` and reference them by relative path. Do not fetch SFX at render time — the Tagreel determinism rule forbids runtime network requests; pre-download and commit them.
+**Sourcing SFX files:** use `/media-use` (`resolve --type sfx`) with keywords like "whoosh", "click", "transition", or your own files, saved to a local `sfx/` directory next to `demo.html` and reference them by relative path. Do not fetch SFX at render time — the Tagreel determinism rule forbids runtime network requests; pre-download and commit them.
 
 ---
 

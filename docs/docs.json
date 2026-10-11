@@ -70,7 +70,6 @@
             "group": "Choose where to create",
             "pages": [
               "guides/choose-creation-path",
-              "guides/mcp",
               "guides/design-tools"
             ]
           },
@@ -174,7 +173,6 @@
               "concepts/index",
               "guides/media",
               "guides/video-components",
-              "guides/avatar-presenter",
               "guides/voice-and-audio",
               "guides/remove-background",
               "guides/color-grading",
@@ -186,8 +184,7 @@
             "group": "Help",
             "pages": [
               "help",
-              "guides/troubleshooting",
-              "guides/feedback"
+              "guides/troubleshooting"
             ]
           }
         ]
@@ -240,33 +237,6 @@
             "pages": [
               "studio/source",
               "studio/shortcuts"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Studio app",
-        "icon": "laptop",
-        "groups": [
-          {
-            "group": "Get started",
-            "pages": [
-              "studio-app/index",
-              "studio-app/connect-your-agent"
-            ]
-          },
-          {
-            "group": "Make videos",
-            "pages": [
-              "studio-app/first-video",
-              "studio-app/edit-with-the-agent",
-              "studio-app/export"
-            ]
-          },
-          {
-            "group": "Help",
-            "pages": [
-              "studio-app/troubleshooting"
             ]
           }
         ]
@@ -938,7 +908,6 @@
             "pages": [
               "guides/rendering",
               "deploy/overview",
-              "deploy/cloud",
               "guides/deploy"
             ]
           },
@@ -978,7 +947,6 @@
           {
             "group": "Agent setup",
             "pages": [
-              "guides/authentication",
               "guides/plugins",
               "guides/skills",
               "guides/webmcp"
@@ -1044,14 +1012,6 @@
         "header": "Resources",
         "items": [
           {
-            "label": "Product updates",
-            "href": "/product-updates"
-          },
-          {
-            "label": "Playground",
-            "href": "https://www.tagreel.dev/"
-          },
-          {
             "label": "GitHub",
             "href": "https://github.com/daneshpm/my_app"
           }
@@ -1065,12 +1025,7 @@
         "type": "github",
         "href": "https://github.com/daneshpm/my_app"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Playground",
-      "href": "https://www.tagreel.dev/"
-    }
+    ]
   },
   "redirects": [
     {

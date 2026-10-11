@@ -1,0 +1,13 @@
+Tagreel
+Copyright 2026 the Tagreel contributors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This project is derived from HyperFrames (https://github.com/heygen-com/hyperframes),
+Copyright HeyGen, licensed under the Apache License, Version 2.0. Modifications
+include removal of hosted-service integrations and analytics, relocation of
+hosted catalog assets, and renaming. "HyperFrames" and "HeyGen" are trademarks
+of their respective owners; this project is not affiliated with or endorsed
+by HeyGen.
+
+Prior art acknowledged in CREDITS.md.

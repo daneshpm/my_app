@@ -5,7 +5,7 @@
   "title": "Slack Notification Ad",
   "description": "A portrait lock screen fills with escalating Slack video requests before Acme delivers the payoff",
   "tags": ["showcase", "mock-ui", "notification", "vertical", "ad-template"],
-  "author": "HeyGen",
+  "author": "Tagreel contributors",
   "dimensions": {
     "width": 1080,
     "height": 1920

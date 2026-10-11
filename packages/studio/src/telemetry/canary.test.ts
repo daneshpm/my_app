@@ -293,7 +293,7 @@ describe("CLI-launched Studio adopts the CLI's decisions", () => {
     expect(resolveCanary("on-everywhere").enabled).toBe(true);
   });
 
-  // Miguel's P1: a percentage roll from the CLI must NOT be able to enrol a
+  // P1 review finding: a percentage roll from the CLI must NOT be able to enrol a
   // browser profile that opted out. The two surfaces have independent
   // opt-outs, and CLI telemetry being on says nothing about this profile.
   describe("precedence against Studio's own opt-out", () => {

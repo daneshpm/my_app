@@ -5,10 +5,9 @@
   "description": "Write HTML, render video. Compositions, Tailwind v4 styles, GSAP and runtime adapter animations, captions, voiceovers, audio-reactive visuals, and website capture for Tagreel.",
   "version": "0.8.137",
   "author": {
-    "name": "HeyGen",
-    "email": "tagreel@heygen.com"
+    "name": "Tagreel contributors"
   },
-  "publisher": "HeyGen",
+  "publisher": "Tagreel contributors",
   "homepage": "https://github.com/daneshpm/my_app/tree/main/docs",
   "repository": "https://github.com/daneshpm/my_app",
   "license": "Apache-2.0",

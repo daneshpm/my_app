@@ -4,7 +4,7 @@ import { MEAN, STD, applyMask } from "./inference.js";
 // Regression: the u2net_human_seg model was trained with ImageNet
 // normalization. Drifting away from these exact values changes the input
 // tensor at every pixel and shifts the predicted alpha mask noticeably
-// (Miguel reproduced 8,317 pixel changes with delta up to 78/255 when std
+// (a prior investigation reproduced 8,317 pixel changes with delta up to 78/255 when std
 // was set to (1, 1, 1)). Reference:
 // https://github.com/danielgatis/rembg/blob/main/rembg/sessions/u2net_human_seg.py#L33
 describe("background-removal/inference — rembg u2net_human_seg parity", () => {

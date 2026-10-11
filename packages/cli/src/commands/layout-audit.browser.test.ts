@@ -1193,7 +1193,7 @@ describe("layout-audit.browser coordinate-frame findings", () => {
         "gradient-hero": rect({ left: 1400, top: 300, width: 800, height: 600 }),
       },
       {
-        // Opaque gradient stops read as content — miguel's regression case.
+        // Opaque gradient stops read as content — a reported regression case.
         "gradient-hero": {
           backgroundImage: "linear-gradient(90deg, rgb(16, 24, 40), rgb(52, 64, 84))",
         },

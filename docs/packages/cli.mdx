@@ -24,12 +24,12 @@ npm install -g tagreel
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Start a project          | [`init`](#init), [`add`](#add), [`catalog`](#catalog)                                                                                                                                          |
 | Bring in source material | [`capture`](#capture), [`transcribe`](#transcribe), [`tts`](#tts), [`remove-background`](#remove-background), [`media-treatment`](#media-treatment), [`beats`](#beats), [`normalize-audio`](#normalize-audio) |
-| Look at it, or share it  | [`preview`](#preview), [`present`](#present-and-play), [`play`](#present-and-play), [`publish`](#publish)                                                                                       |
+| Look at it, or share it  | [`preview`](#preview), [`present`](#present-and-play), [`play`](#present-and-play) |
 | Find problems            | [`lint`](#lint), [`check`](#check), [`snapshot`](#snapshot), [`keyframes`](#keyframes), [`compare`](#compare-and-grade-compare), [`grade-compare`](#compare-and-grade-compare)                  |
 | Make a file              | [`render`](#render), [`benchmark`](#benchmark)                                                                                                                                                  |
-| Render somewhere else    | [`cloud`](#tagreel-cloud), [`lambda`](#tagreel-lambda), [`cloudrun`](#tagreel-cloudrun)                                                                                             |
+| Render somewhere else    | [`lambda`](#tagreel-lambda), [`cloudrun`](#tagreel-cloudrun)                                                                                             |
 | Fix your setup           | [`doctor`](#doctor), [`browser`](#browser), [`upgrade`](#upgrade), [`docs`](#docs), [`info`](#info-and-compositions), [`compositions`](#info-and-compositions)                                  |
-| Connect other tools      | [`auth`](#tagreel-auth), [`skills`](#skills), [`figma`](#figma-and-events), [`telemetry`](#telemetry), [`feedback`](#feedback)                                                              |
+| Connect other tools      | [`skills`](#skills), [`figma`](#figma) |
 
 `validate`, `inspect`, and `layout` still work but are
 [deprecated](#deprecated-validate-inspect-and-layout). Use `check` instead.
@@ -40,7 +40,7 @@ Read this once and skip the repetition below.
 
 **The project directory.** Most commands take it as the first argument and
 default to the current directory: `npx tagreel check ./my-video`. A few
-take it as a flag instead — `add`, `transcribe`, `feedback`, and `skills` use
+take it as a flag instead — `add`, `transcribe`, and `skills` use
 `--dir`.
 
 **`--json` for agents and scripts.** Almost every command accepts it. The
@@ -594,36 +594,6 @@ npx tagreel present [dir] --port 3004
 editor, just playback. Same flags, `--port` defaults to 3003, plus `--proxy` /
 `--no-proxy`.
 
-### `publish`
-
-Upload the project and get back a stable `tagreel.dev` URL.
-
-```bash
-npx tagreel publish [dir]
-npx tagreel publish --yes
-npx tagreel publish --update <url-or-id>
-npx tagreel publish --space <space-id>
-```
-
-| Flag                     | Description                                                        |
-| ------------------------ | ------------------------------------------------------------------ |
-| `--yes, -y`              | Skip the confirmation prompt                                       |
-| `--public`               | Make the claimed project visible to anyone                         |
-| `--update <url-or-id>`   | Update an existing project in place. Requires sign-in.             |
-| `--space <space-id>`     | Publish into a shared team space. Requires sign-in.                |
-| `--proxy` / `--no-proxy` | Bake H.264 proxies for browser-hostile codecs, or skip them        |
-
-`publish` zips the project, uploads it, and prints a URL that resolves to stored
-content — so it keeps working after the CLI exits. No local server stays alive,
-and no tunnel is opened.
-
-You can publish while signed out. The printed URL then carries a claim token:
-whoever opens it on `tagreel.dev` can sign in, claim the project, and keep
-editing in the web app.
-
-Sign in with `npx tagreel auth login` first when you want an owned, stable
-link you can publish to again. `--update` and `--space` both need that
-ownership.
 
 ## Check your work
 
@@ -945,7 +915,6 @@ How it uses the machine, and when it gives up:
 | `--batch-concurrency` / `--batch-fail-fast`              | `1` / off                                  | Batch rows at once, and whether the first failure stops the rest                                                   |
 | `--debug`                                                | off                                        | Keep intermediates and write diagnostics under the Producer `.debug` directory                                     |
 | `--quiet`                                                | off                                        | Less output                                                                                                        |
-| `--skill`                                                | —                                          | Record which authoring workflow started this render, in anonymous telemetry                                        |
 
 Low-memory detection reads **host** RAM, not cgroup or container limits, so
 containerised callers — including `--docker` — should set
@@ -1230,78 +1199,6 @@ npx tagreel docs [topic]
 Topics: `data-attributes`, `examples`, `rendering`, `gsap`, `troubleshooting`,
 `compositions`. Run it bare to list them.
 
-### `feedback`
-
-Send feedback about how it went. It is anonymous unless the app that launched
-the CLI attaches your email (below).
-
-```bash
-npx tagreel feedback --rating 10
-npx tagreel feedback --rating 7 --comment "render succeeded but GSAP timeline didn't animate"
-npx tagreel feedback --rating 3 --comment "GSAP timeline froze on seek" --file-issue
-```
-
-`--rating` is required, 0–10. `--comment` adds free text. `--source person`
-or `--source agent` says who wrote a rating report (a `--search-miss` report
-carries neither), so the team can tell a person's feedback from an agent's. `--file-issue`
-also opens a GitHub issue, `--dir` picks the project published as its repro
-(default: current directory), and `--yes, -y` skips the consent prompt for
-scripts.
-
-With `--file-issue`, the CLI publishes a minimal repro to a public URL — with
-your consent — and opens a pre-filled `bug` issue draft that you review and
-submit yourself. No token, no backend. See
-[Share feedback](/guides/feedback#report-a-reproducible-bug).
-
-Agents can call this after a render;
-[About feedback data](/guides/feedback#about-feedback-data) covers what the
-surface includes. An app that launches the CLI can attach its signed-in
-person's email with the `TAGREEL_FEEDBACK_EMAIL` environment variable. It
-is never a flag and never read from a project `.env`, and it goes only into
-the feedback report, not telemetry. It is not verified: treat it as a way to
-reply, not as proof of who sent the report. With
-telemetry disabled it prints
-`Telemetry is disabled. Feedback not sent.` and exits cleanly.
-
-### `telemetry`
-
-```bash
-npx tagreel telemetry enable
-npx tagreel telemetry disable
-npx tagreel telemetry status
-```
-
-Telemetry collects command names, render performance, render checkpoint and
-error names, aggregate browser diagnostic counts, browser initialization
-duration and tween count, aggregate video-extraction workload counts (extracted
-frames, VFR preflights), example choices, the names of registry items `add` or
-Studio installs and which of the two installed them, and system info — including a coarse
-environment fingerprint: OS, kernel string, CPU and memory shape, sandbox
-runtime such as gVisor or Docker, and the _name_ of a coding agent driving the
-CLI when one is detected (`claude_code`, `codex`, `cursor`). That name is
-inferred from which well-known environment variables exist. Local paths and URL query strings are redacted from error and
-checkpoint messages. Project names, video content, and environment variable
-values are never collected, except short self-identifying names: `AGENT`,
-`AI_AGENT` and `TERM_PROGRAM` (filtered to short slugs), and `TAGREEL_CLIENT`,
-the `<app>/<version>/<channel>` tag an app that launches the CLI sets, sent as
-`client` so reports from that app can be told apart.
-
-Nothing personally identifying is collected until you sign in. When you run
-`tagreel auth login`, your HeyGen account email — or username, if the
-account has no email — is linked to your usage, and your prior anonymous usage
-is stitched to it. Nothing else personal, and only once you choose to sign in.
-
-Turn it all off with `TAGREEL_NO_TELEMETRY=1` or the command above.
-[Feedback collection](/guides/feedback) explains the post-render prompt and the
-Studio feedback bar.
-
-One consequence worth knowing: turning telemetry off also opts the install out
-of **canary rollouts**. A staged release enables a change for a stable slice of
-installs, and an install that reports nothing cannot be compared against
-anything. Every route counts — `telemetry disable`,
-`TAGREEL_NO_TELEMETRY=1`, `DO_NOT_TRACK=1`, and dev builds. See
-[Canary rollouts](/contributing/canary-rollouts).
-
 ### `skills`
 
 Install or refresh the my_app skills that AI coding tools read.
@@ -1353,228 +1250,13 @@ If you called the upstream command directly instead, set it yourself:
 GIT_CLONE_PROTECTION_ACTIVE=0 npx skills add daneshpm/my_app
 ```
 
-### `figma` and `events`
+### `figma`
 
 `npx tagreel figma` imports through the Figma REST API, with three
 subcommands: `asset` (export an image or SVG), `tokens` (pull design tokens),
 and `component` (import an editable component). Run it bare for usage. See
 [Figma integration](/guides/figma) for setup and examples.
 
-`npx tagreel events` lets an installed workflow skill emit an anonymous
-usage event (`--skill`, `--event`, `--outcome`). Nothing calls it by hand.
-
-## tagreel auth
-
-Sign in to HeyGen and manage credentials. They live in `~/.heygen/credentials`
-(mode `0600`) and are **shared with the `heygen` CLI** — sign in with one and
-the other picks up the session.
-
-First match wins:
-
-1. `HEYGEN_API_KEY`
-2. `TAGREEL_API_KEY` (a my_app alias for the same thing)
-3. `~/.heygen/credentials`
-
-### `auth login`
-
-Opens a browser for OAuth:
-
-```bash
-tagreel auth login
-```
-
-Pass `--api-key` when you want a long-lived HeyGen API key instead. The key is
-verified against `GET /v3/users/me` before the command reports success, so a
-rejected key is never left on disk.
-
-```bash
-# Hidden-input prompt
-tagreel auth login --api-key
-
-# From stdin, for CI
-echo "$HEYGEN_API_KEY" | tagreel auth login --api-key
-```
-
-### `auth status`
-
-Shows the active credential's source and type, and the verified identity —
-account plus billing snapshot. It exits non-zero when nothing is configured or
-the API rejects the credential, so a script can test sign-in state.
-
-```bash
-tagreel auth status
-tagreel auth status --json
-```
-
-### `auth refresh`
-
-Force-refreshes the stored OAuth access token. Applies to an OAuth session, not
-an API key.
-
-```bash
-tagreel auth refresh
-```
-
-### `auth logout`
-
-Removes the stored credential, with a confirmation on a TTY.
-
-```bash
-tagreel auth logout
-tagreel auth logout --keep-api-key   # clear only the OAuth session
-tagreel auth logout --yes            # no prompt
-```
-
-### Environment variables
-
-| Variable              | Description                                      |
-| --------------------- | ------------------------------------------------ |
-| `HEYGEN_API_KEY`      | Override the stored credential.                  |
-| `TAGREEL_API_KEY` | Alias for `HEYGEN_API_KEY`.                      |
-| `HEYGEN_API_URL`      | API base URL (default `https://api.heygen.com`). |
-| `HEYGEN_CONFIG_DIR`   | Credentials directory (default `~/.heygen`).     |
-
-For the keys other capabilities use — ElevenLabs and Gemini for voice and music
-fallback, OpenRouter and Gemini for capture — and how the skills prioritize
-them, see [Authentication and API keys](/guides/authentication).
-
-## tagreel cloud
-
-Render on HeyGen's hosted cloud. No local Chrome, no local ffmpeg, no AWS to
-manage. Sign in once and the same credential drives every subcommand.
-
-```bash
-tagreel auth login                          # one-time
-tagreel cloud render ./my-video             # zip, upload, poll, download
-tagreel cloud render ./my-video --no-wait   # submit and exit with the render_id
-tagreel cloud list                          # recent renders
-```
-
-### `cloud render [<projectDir>]`
-
-End to end: zips the project, uploads it through the direct-to-S3 asset flow,
-submits `POST /v3/tagreel/renders`, polls
-`GET /v3/tagreel/renders/{id}` until it finishes or fails, and streams the
-video to disk.
-
-The zip excludes root `renders` and `snapshots`, `.git`, `node_modules`, `dist`,
-`.next`, `coverage`, dotfiles, and anything your `.tagreelignore` rules
-match. Those rules use gitignore syntax and apply to `tagreel publish` too.
-Keep them narrow — a dynamically selected asset may have no static reference to
-protect it.
-
-The zip has to come in under 200 MB — the direct-upload cap. Use `--dry-run`
-first to see the compressed size and the largest included files, without
-authenticating, uploading, or starting anything. If you are over, add only
-paths you have verified are unneeded to `.tagreelignore`, or pre-host the
-large media and reference it by URL.
-
-Render parameters mirror local `tagreel render` where they overlap:
-
-| Flag                   | Default                     | Description                                                                                                                                     |
-| ---------------------- | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `--fps`                | `30`                        | Integer, 1–240                                                                                                                                  |
-| `--quality`            | `standard`                  | `draft`, `standard`, or `high`                                                                                                                  |
-| `--format`             | `mp4`                       | `mp4`, `webm`, or `mov`                                                                                                                         |
-| `--resolution`         | `1080p`                     | `1080p` or `4k`. 4k bills at 1.5× and cannot combine with `webm` or `mov`.                                                                       |
-| `--aspect-ratio`       | auto                        | `16:9`, `9:16`, or `1:1`. Auto-detected from a local project's `data-width` and `data-height`, so you rarely need it. The renderer cannot reshape a composition — a value that disagrees with the authored ratio is an error. With `--asset-id` or `--url` the server defaults to `16:9`. |
-| `--composition` / `-c` | `index.html`                | Entry HTML file inside the zip                                                                                                                   |
-| `--variables`          | —                           | Inline JSON overriding `data-composition-variables`                                                                                              |
-| `--variables-file`     | —                           | Read those overrides from a JSON file                                                                                                            |
-| `--strict-variables`   | off                         | Fail when a variable is undeclared or the wrong type                                                                                             |
-| `--title`              | —                           | Free-text label echoed back in detail responses                                                                                                  |
-| `--output` / `-o`      | `renders/<render_id>.<ext>` | Where the downloaded video lands                                                                                                                 |
-| `--dry-run`            | off                         | Build and inspect the zip without authenticating, uploading, or rendering                                                                        |
-
-Lifecycle and control:
-
-| Flag                | Description                                                                                                    |
-| ------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `--no-wait`         | Submit and exit immediately, printing the `render_id` to stdout                                                 |
-| `--callback-url`    | HTTPS webhook fired when the render terminates. It fires whether or not the CLI is still polling — pair with `--no-wait` for true fire-and-forget. |
-| `--callback-id`     | Opaque tracking ID echoed in webhook payloads                                                                   |
-| `--asset-id`        | Skip zip and upload; submit an already-uploaded composition. Mutually exclusive with the project dir and `--url`. |
-| `--url`             | Submit a public HTTPS zip URL. Same mutual exclusion as `--asset-id`.                                            |
-| `--poll-interval`   | Poll cadence in seconds (default 10)                                                                            |
-| `--max-wait`        | Maximum poll duration in minutes (default 60)                                                                   |
-| `--idempotency-key` | `Idempotency-Key` for safe retries. 1–255 characters from `[A-Za-z0-9_:.-]`.                                     |
-| `--json`            | Machine-readable JSON instead of human progress                                                                 |
-
-```bash
-# Pick a composition and an output path.
-tagreel cloud render . \
-  --composition compositions/intro.html \
-  --output ./renders/intro.mp4
-
-# Fire and forget, with a webhook.
-tagreel cloud render --callback-url https://example.com/hf-hook --no-wait
-
-# Re-render something already uploaded, or render straight from a public URL.
-tagreel cloud render --asset-id asst_abc123
-tagreel cloud render --url https://cdn.example.com/site.zip
-```
-
-#### Why you want `--idempotency-key`
-
-On a `401`, the CLI force-refreshes the OAuth token and replays the request. For
-reads that is harmless. But `POST /v3/assets` — the zip upload — is not
-idempotent on its own, so a retry without a key would create a duplicate asset
-and bill the workspace twice.
-
-Pass `--idempotency-key <key>` whenever you want safe retries. It is forwarded
-to both the upload and the submit, and the server scopes idempotency per
-endpoint, so reusing one value across both steps is safe and prevents a
-duplicate at either. Use a UUID per logical render, or any opaque string.
-
-```bash
-tagreel cloud render . --idempotency-key "$(uuidgen)"
-```
-
-### `cloud list`
-
-Pages through recent renders, cursor-based. `--limit` caps one page (1–100,
-default 10), `--token` resumes from a previous `next_token`, and `--all` walks
-until exhausted. `--json` for the machine-readable form.
-
-```bash
-tagreel cloud list
-tagreel cloud list --limit 50 --json
-tagreel cloud list --all
-```
-
-### `cloud get <render_id>`
-
-Fetches one render's full detail record, including the short-lived signed
-`video_url` and `thumbnail_url`. Those are presigned S3 URLs — re-fetch on
-demand rather than caching them.
-
-```bash
-tagreel cloud get hfr_abc123
-tagreel cloud get hfr_abc123 --json
-```
-
-### `cloud delete <render_id>`
-
-Soft-deletes a render. Later `GET` calls return 404 and the signed video URL
-stops working shortly after. It prompts interactively; `--no-confirm` skips
-that, and is required alongside `--json`.
-
-```bash
-tagreel cloud delete hfr_abc123
-tagreel cloud delete hfr_abc123 --no-confirm --json
-```
-
-### Which one should you use?
-
-- **`tagreel render`** — the fastest loop. Use it while authoring.
-- **`tagreel cloud render`** — zero infrastructure. HeyGen runs it, you pay
-  per credit. Use it when you do not want Chrome, ffmpeg, or AWS on your
-  machine.
-- **`tagreel lambda render`** — your own AWS, chunked in parallel. Use it
-  when you have already invested in AWS and want the work on your account.
-
-`cloud` reuses whatever credential `tagreel auth status` resolves. Override
-the API base for staging with `HEYGEN_API_URL`.
 
 ## tagreel lambda
 

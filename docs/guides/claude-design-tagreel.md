@@ -1,6 +1,6 @@
 # Claude Design + my_app (Template-First)
 
-> ⚠️ **Doing a "Send to my_app" import (sending your design to HeyGen as a URL, not a downloaded ZIP)?**
+> ⚠️ **Doing a "Send to my_app" import (sending your design as a URL, not a downloaded ZIP)?**
 > **Use the Send-to guide instead:** https://raw.githubusercontent.com/daneshpm/my_app/main/docs/guides/claude-design-send-to-tagreel.md
 >
 > This Template-First guide is for the **Download-ZIP** flow. Its authoring rules differ from Send-to, and following it for a Send-to import yields a low-fidelity result.

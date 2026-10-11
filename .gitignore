@@ -121,7 +121,6 @@ packages/studio/data/
 !.claude/skills
 .claude/skills/*
 !.claude/skills/README.md
-!.claude/skills/changelog-video
 !.claude/skills/motion-doctrine
 !.claude/skills/cut-the-curve
 !.claude/skills/seam-craft
@@ -132,7 +131,6 @@ packages/studio/data/
 !.agents/skills
 .agents/skills/*
 !.agents/skills/README.md
-!.agents/skills/changelog-video
 !.agents/skills/motion-doctrine
 !.agents/skills/cut-the-curve
 !.agents/skills/seam-craft

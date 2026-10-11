@@ -16,10 +16,8 @@
 <p align="center"><b>Write HTML. Render video. Built for agents.</b></p>
 
 <p align="center">
-  <a href="https://www.tagreel.dev/studio">Studio</a> |
   <a href="https://github.com/daneshpm/my_app/tree/main/docs/quickstart">Quickstart</a> |
   <a href="https://github.com/daneshpm/my_app/tree/main/docs/showcase">Showcase</a> |
-  <a href="https://www.tagreel.dev/">Playground</a> |
   <a href="https://github.com/daneshpm/my_app/tree/main/docs/catalog/blocks/data-chart">Catalog</a> |
   <a href="https://github.com/daneshpm/my_app/tree/main/docs/introduction">Docs</a>
 </p>
@@ -113,7 +111,7 @@ Atomic capabilities the creation workflows compose against — pull one when you
 | `/tagreel-keyframes` | Seek-safe keyframe authoring across runtimes — GSAP timelines, CSS keyframes, Anime.js, WAAPI, FLIP, paths, masks, SVG morph/draw, 3D depth — plus `tagreel keyframes` diagnostics for rendered motion.                                                                                                                                                                                                                                                                              |
 | `/tagreel-creative`  | Non-animation creative direction — `frame.md` / `design.md`, palettes, typography, narration, beat planning, audio-reactive visuals, composition patterns.                                                                                                                                                                                                                                                                                                                           |
 | `/media-use`         | The media OS — resolve any media need (BGM, SFX, image, icon, logo, voice, color grade, LUT) into a frozen local file or paste-ready block + ledger record, generate via TTS/music/image models when the catalog misses, transcribe, caption, remove backgrounds, and reuse assets across projects. One shared audio engine + manifest tracking.                                                                                                                                     |
-| `/tagreel-cli`       | CLI dev loop — `init`, `lint`, `check`, `snapshot`, `preview`, `render`, `publish`, `doctor`, plus HeyGen-hosted cloud rendering (`cloud render`) and AWS Lambda rendering (`lambda deploy / render / progress`).                                                                                                                                                                                                                                                                    |
+| `/tagreel-cli`       | CLI dev loop — `init`, `lint`, `check`, `snapshot`, `preview`, `render`, `doctor`, plus AWS Lambda rendering (`lambda deploy / render / progress`).                                                                                                                                                                                                                                                                                                                                  |
 | `/tagreel-audio`     | Mix the audio already placed in a composition — voiceover carve (dip a music bed only in the bands the voice occupies, static or dynamic, level match included), the effect chain (EQ, compressor, limiter, gate, saturation, delay, reverb, chorus, phaser, bitcrush), automation envelopes on volume or any effect parameter, and submix buses (`<hf-audio-group>`) carrying one chain, fader and automation clock for several tracks at once. Sourcing the audio is `/media-use`. |
 | `/tagreel-registry`  | Search, install and wire registry blocks and components into compositions via `tagreel catalog` / `tagreel add`. Load before hand-building any named look, effect, treatment or transition. Authoring a new block or component to contribute upstream.                                                                                                                                                                                                                               |
 | `/figma`             | Import Figma assets, tokens, components, and storyboard sections → reconstructed motion (frames read as states, not slides) (REST/CLI) plus Motion animations (MCP) and shaders (MCP source / native export) into a composition.                                                                                                                                                                                                                                                     |
@@ -141,69 +139,6 @@ Need ideas? Browse the [Showcase](https://github.com/daneshpm/my_app/tree/main/d
 - Social videos with kinetic captions, overlays, and music
 - Docs-to-video, PDF-to-video, and site-tour explainers
 - Reusable motion graphics for automated content pipelines
-
-## Frame.md
-
-**frame.md — your design system, ready for video.**
-
-Every brand has a `design.md`. None of them were written for a camera. `frame.md` is the missing translation layer: it takes your web-context design spec and inverts it for the frame — the same tokens, the same rules, but rewritten so an AI agent can compose a promo video without guessing at scale or reaching for web chrome.
-
-The output is a `DESIGN.md` superset your whole toolchain can read. Atoms stay sacred. Composition stays free. Numbers come from the script.
-
-<table>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/biennale-yellow"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/biennale-yellow.png" alt="Biennale Yellow" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/biennale-yellow">Biennale Yellow</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/blockframe"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/blockframe.png" alt="BlockFrame" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/blockframe">BlockFrame</a></b>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/blue-professional"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/blue-professional.png" alt="Blue Professional" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/blue-professional">Blue Professional</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/bold-poster"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/bold-poster.png" alt="Bold Poster" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/bold-poster">Bold Poster</a></b>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/broadside"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/broadside.png" alt="Broadside" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/broadside">Broadside</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/capsule"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/capsule.png" alt="Capsule" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/capsule">Capsule</a></b>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/cartesian"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/cartesian.png" alt="Cartesian" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/cartesian">Cartesian</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/cobalt-grid"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/cobalt-grid.png" alt="Cobalt Grid" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/cobalt-grid">Cobalt Grid</a></b>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/coral"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/coral.png" alt="Coral" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/coral">Coral</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.tagreel.dev/design/creative-mode"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/creative-mode.png" alt="Creative Mode" width="100%"></a>
-      <br><b><a href="https://www.tagreel.dev/design/creative-mode">Creative Mode</a></b>
-    </td>
-  </tr>
-</table>
-
-Browse and remix them all at [tagreel.dev/design](https://www.tagreel.dev/design).
 
 ## How It Works
 
@@ -247,16 +182,14 @@ Preview instantly in the browser. Render locally or in Docker. The renderer seek
 
 my_app is the open-source rendering engine, plus a growing set of tools around HTML-native video creation.
 
-| Piece                                      | Status              | What it does                                                                                      |
-| ------------------------------------------ | ------------------- | ------------------------------------------------------------------------------------------------- |
-| CLI                                        | Available           | Scaffold, preview, lint, inspect, and render local video projects                                 |
-| Core / Engine / Producer                   | Available           | Parse compositions, drive headless Chrome, encode video, and mix audio                            |
-| Catalog                                    | Available           | Reusable blocks and components for transitions, overlays, captions, charts, maps, and effects     |
-| Agent skills                               | Available           | Teach coding agents the video-production patterns that generic web docs miss                      |
-| Studio                                     | Available, evolving | Browser surface for previewing and editing compositions                                           |
-| AWS Lambda rendering                       | Available           | Deploy a distributed render stack and drive renders from your laptop or CI                        |
-| [tagreel.dev](https://www.tagreel.dev/)    | Available           | Community playground for previewing, iterating, sharing, and rendering HTML-native video projects |
-| [frame.md](https://www.tagreel.dev/design) | Available           | Invert your design system for the camera — a DESIGN.md superset an agent can compose video from   |
+| Piece                    | Status              | What it does                                                                                  |
+| ------------------------ | ------------------- | --------------------------------------------------------------------------------------------- |
+| CLI                      | Available           | Scaffold, preview, lint, inspect, and render local video projects                             |
+| Core / Engine / Producer | Available           | Parse compositions, drive headless Chrome, encode video, and mix audio                        |
+| Catalog                  | Available           | Reusable blocks and components for transitions, overlays, captions, charts, maps, and effects |
+| Agent skills             | Available           | Teach coding agents the video-production patterns that generic web docs miss                  |
+| Studio                   | Available, evolving | Browser surface for previewing and editing compositions                                       |
+| AWS Lambda rendering     | Available           | Deploy a distributed render stack and drive renders from your laptop or CI                    |
 
 ## Catalog
 
@@ -357,4 +290,4 @@ GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/daneshpm/my_app.git
 
 ---
 
-Based on Tagreel by HeyGen (Apache-2.0). See [LICENSE](LICENSE).
+Derived from HyperFrames by HeyGen (Apache-2.0). See [LICENSE](LICENSE) and [NOTICE](NOTICE).

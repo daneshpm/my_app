@@ -161,7 +161,7 @@ const peopleMap = new Map(); // login -> { login, name, roles:Set, reviewState, 
 const botsFiltered = new Set();
 // Returns the person record for a real (non-bot) login, creating it on first
 // touch; records and drops bots. null means "skip this login". `name` is the
-// GitHub display name (e.g. "Miguel Angel Simon Sierra") — gh only hands this
+// GitHub display name (e.g. "Ada Lovelace") — gh only hands this
 // over for author/commits/mergedBy, not reviewers/commenters/assignees, so it's
 // filled in opportunistically and the first non-empty value wins.
 function consider(login, name) {

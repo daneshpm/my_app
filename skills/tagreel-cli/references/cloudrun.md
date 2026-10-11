@@ -1,6 +1,6 @@
 # Cloud Run rendering on Google Cloud
 
-Use `tagreel cloudrun` only when the user explicitly wants self-managed Google Cloud infrastructure. It deploys Cloud Run, Workflows, and Cloud Storage. For a managed default use `tagreel cloud`; for AWS use `tagreel lambda`.
+Use `tagreel cloudrun` only when the user explicitly wants self-managed Google Cloud infrastructure. It deploys Cloud Run, Workflows, and Cloud Storage. For AWS use `tagreel lambda`.
 
 ## Prerequisites
 

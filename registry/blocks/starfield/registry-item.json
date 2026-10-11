@@ -67,9 +67,5 @@
       "target": "compositions/starfield.html",
       "type": "hyperframes:composition"
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/starfield.png",
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/starfield.mp4"
-  }
+  ]
 }

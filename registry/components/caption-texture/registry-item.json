@@ -48,9 +48,5 @@
       "target": "compositions/components/rock-058.png",
       "type": "hyperframes:asset"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/registry/components/caption-texture-lava/preview.mp4?v=1779051416",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/caption-texture.png"
-  }
+  ]
 }

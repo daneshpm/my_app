@@ -17,10 +17,6 @@
       "type": "hyperframes:composition"
     }
   ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/data-chart.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/data-chart.png"
-  },
   "params": [
     {
       "key": "--bg-color",

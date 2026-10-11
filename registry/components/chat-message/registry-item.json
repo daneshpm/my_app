@@ -59,7 +59,7 @@
       "role": "content",
       "label": "Card domain",
       "description": "Link-card domain line (Link card type only).",
-      "default": "hyperframes.heygen.com"
+      "default": "acme.example"
     },
     {
       "id": "tail",

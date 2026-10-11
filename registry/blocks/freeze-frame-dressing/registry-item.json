@@ -24,9 +24,5 @@
       "target": "compositions/freeze-frame-dressing.html",
       "type": "hyperframes:composition"
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/freeze-frame-dressing.png",
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/freeze-frame-dressing.mp4"
-  }
+  ]
 }

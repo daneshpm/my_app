@@ -33,7 +33,9 @@ const repoRoot = resolve(scriptDir, "..");
 const registryDir = resolve(repoRoot, "registry");
 const docsDir = resolve(repoRoot, "docs");
 const rawSourceBase = DEFAULT_RAW_REGISTRY_URL;
-const catalogImageBase = "https://static.heygen.ai/hyperframes-oss/docs/images/catalog";
+// Docs-relative: this fork does not run a hosted image CDN. Previews are only emitted when a
+// manifest declares one, so this base only names texture-mask samples shipped with the docs.
+const catalogImageBase = "/images/catalog";
 const payloadRoot = resolve(repoRoot, "docs/public/catalog");
 
 /**
@@ -593,13 +595,11 @@ export function variablePreviewWrapper(src: string): string[] {
   ];
 }
 
-function catalogPreviewFor(kind: ItemKind, manifest: RegistryItem): string | undefined {
+function catalogPreviewFor(manifest: RegistryItem): string | undefined {
   // The manifest is the source of truth. Thirteen items declare a preview with
   // a video and no poster, and that omission is deliberate — no .png was ever
   // produced for them.
-  if (manifest.preview) return manifest.preview.poster;
-  const dir = typeDir(kind);
-  return `${catalogImageBase}/${dir}/${manifest.name}.png`;
+  return manifest.preview?.poster;
 }
 
 function yamlString(value: string): string {
@@ -891,8 +891,10 @@ export function stageProps(kind: ItemKind, manifest: RegistryItem): string[] {
 }
 
 function recordedProps(kind: ItemKind, manifest: RegistryItem): string[] {
+  // Nothing hosted to point at: an item with no declared recording gets no video or poster props.
+  if (!manifest.preview?.video) return [];
   const previewPath = `${catalogImageBase}/${typeDir(kind)}/${manifest.name}`;
-  const posterUrl = catalogPreviewFor(kind, manifest);
+  const posterUrl = catalogPreviewFor(manifest);
   return [`  video="${previewPath}.mp4"`, ...(posterUrl ? [`  poster="${posterUrl}"`] : [])];
 }
 
@@ -1201,7 +1203,7 @@ function main(): void {
       description: manifest.description,
       tags: manifest.tags ?? [],
       href: `/catalog/${dir}/${manifest.name}`,
-      preview: catalogPreviewFor(kind, manifest),
+      preview: catalogPreviewFor(manifest),
     });
   }
 

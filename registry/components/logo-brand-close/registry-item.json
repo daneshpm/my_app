@@ -40,7 +40,7 @@
       "role": "content",
       "label": "URL",
       "description": "Optional mono URL line beneath the tagline. Empty hides it.",
-      "default": "hyperframes.heygen.com"
+      "default": "acme.example"
     },
     {
       "id": "accent",

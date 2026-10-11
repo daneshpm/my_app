@@ -43,7 +43,6 @@ import {
 } from "../packages/producer/src/index.js";
 import { compileForRender } from "../packages/producer/src/services/htmlCompiler.js";
 import { resolveContainedCopies } from "./registry-target-paths.mjs";
-import { fetchHostedFiles } from "./catalog-hosted-files.js";
 import { withHostedDefaults } from "./registry-hosted-assets.ts";
 import { withHostedRefs } from "./catalog-script-inlining.ts";
 import type { RegistryItem } from "../packages/core/src/index.js";
@@ -158,8 +157,8 @@ async function materializeHostedAssets(
   projectDir: string,
   mode: PrepareOptions["hostedAssets"],
 ): Promise<void> {
+  // Registry items no longer declare remotely hosted files, so there is nothing to download.
   if (mode === "cdn") return pointHostedAssetsAtCdn(projectDir);
-  await fetchHostedFiles(projectDir);
 }
 
 function pointHostedAssetsAtCdn(projectDir: string): void {

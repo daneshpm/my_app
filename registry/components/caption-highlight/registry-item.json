@@ -11,9 +11,5 @@
       "target": "compositions/components/caption-highlight.html",
       "type": "hyperframes:snippet"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/registry/components/caption-highlight/preview-v2.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/caption-highlight.png"
-  }
+  ]
 }

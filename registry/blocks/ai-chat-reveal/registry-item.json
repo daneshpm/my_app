@@ -110,7 +110,7 @@
       "label": "End-card footer",
       "description": "Domain of the brand this video promotes, letter-spaced at the very bottom. Use the real domain.",
       "portrays": ["subject_domain"],
-      "default": "HYPERFRAMES.HEYGEN.COM"
+      "default": "ACME.EXAMPLE"
     },
     {
       "id": "brandLogo",
@@ -138,9 +138,5 @@
       "target": "TEMPLATE.md",
       "type": "hyperframes:asset"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/ai-chat-reveal/preview.mp4",
-    "poster": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/ai-chat-reveal/poster.jpg"
-  }
+  ]
 }

@@ -4,6 +4,42 @@
   "homepage": "https://hyperframes.heygen.com",
   "items": [
     {
+      "name": "decision-tree",
+      "type": "hyperframes:example"
+    },
+    {
+      "name": "kinetic-type",
+      "type": "hyperframes:example"
+    },
+    {
+      "name": "nyt-graph",
+      "type": "hyperframes:example"
+    },
+    {
+      "name": "play-mode",
+      "type": "hyperframes:example"
+    },
+    {
+      "name": "product-promo",
+      "type": "hyperframes:example"
+    },
+    {
+      "name": "swiss-grid",
+      "type": "hyperframes:example"
+    },
+    {
+      "name": "vignelli",
+      "type": "hyperframes:example"
+    },
+    {
+      "name": "warm-grain",
+      "type": "hyperframes:example"
+    },
+    {
+      "name": "ai-answer-rank",
+      "type": "hyperframes:block"
+    },
+    {
       "name": "ai-chat-reveal",
       "type": "hyperframes:block"
     },
@@ -40,111 +76,15 @@
       "type": "hyperframes:block"
     },
     {
-      "name": "carousel-circle-1",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-circle-2",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-circle-3",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-circle-4",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-circle-5",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-orbit-1",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-orbit-2",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-orbit-3",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-orbit-4",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-orbit-5",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-path-1",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-path-2",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-path-3",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-path-4",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-path-5",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-text-circle-1",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-text-circle-2",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-text-circle-3",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-text-circle-4",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-text-circle-5",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-vision-1",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-vision-2",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-vision-3",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-vision-4",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "carousel-vision-5",
-      "type": "hyperframes:block"
-    },
-    {
       "name": "chatgpt-exchange",
       "type": "hyperframes:block"
     },
     {
       "name": "chromatic-radial-split",
+      "type": "hyperframes:block"
+    },
+    {
+      "name": "cinemagraph",
       "type": "hyperframes:block"
     },
     {
@@ -228,6 +168,14 @@
       "type": "hyperframes:block"
     },
     {
+      "name": "exploded-stack",
+      "type": "hyperframes:block"
+    },
+    {
+      "name": "extruded-logo",
+      "type": "hyperframes:block"
+    },
+    {
       "name": "flash-through-white",
       "type": "hyperframes:block"
     },
@@ -244,15 +192,11 @@
       "type": "hyperframes:block"
     },
     {
-      "name": "frost-sequence-camera-orbit",
-      "type": "hyperframes:block"
-    },
-    {
       "name": "gallery-tunnel",
       "type": "hyperframes:block"
     },
     {
-      "name": "glass-shard-title",
+      "name": "glass-hero",
       "type": "hyperframes:block"
     },
     {
@@ -265,10 +209,6 @@
     },
     {
       "name": "halftone-field",
-      "type": "hyperframes:block"
-    },
-    {
-      "name": "heygen-avatar-promo-card",
       "type": "hyperframes:block"
     },
     {
@@ -448,6 +388,10 @@
       "type": "hyperframes:block"
     },
     {
+      "name": "product-turntable",
+      "type": "hyperframes:block"
+    },
+    {
       "name": "rack-focus",
       "type": "hyperframes:block"
     },
@@ -476,6 +420,10 @@
       "type": "hyperframes:block"
     },
     {
+      "name": "snow",
+      "type": "hyperframes:block"
+    },
+    {
       "name": "spain-map",
       "type": "hyperframes:block"
     },
@@ -489,6 +437,10 @@
     },
     {
       "name": "spotify-card",
+      "type": "hyperframes:block"
+    },
+    {
+      "name": "starfield",
       "type": "hyperframes:block"
     },
     {
@@ -616,6 +568,10 @@
       "type": "hyperframes:block"
     },
     {
+      "name": "week-in-merges",
+      "type": "hyperframes:block"
+    },
+    {
       "name": "weight-wave",
       "type": "hyperframes:block"
     },
@@ -658,6 +614,10 @@
     {
       "name": "yt-vertical-fill",
       "type": "hyperframes:block"
+    },
+    {
+      "name": "agent-cursor",
+      "type": "hyperframes:component"
     },
     {
       "name": "animated-bar-chart",
@@ -808,6 +768,10 @@
       "type": "hyperframes:component"
     },
     {
+      "name": "caret-swap",
+      "type": "hyperframes:component"
+    },
+    {
       "name": "char-slam-explode",
       "type": "hyperframes:component"
     },
@@ -864,11 +828,43 @@
       "type": "hyperframes:component"
     },
     {
+      "name": "cursor-annotate",
+      "type": "hyperframes:component"
+    },
+    {
+      "name": "cursor-context-menu",
+      "type": "hyperframes:component"
+    },
+    {
+      "name": "cursor-drag-drop",
+      "type": "hyperframes:component"
+    },
+    {
       "name": "cursor-glyph-trail",
       "type": "hyperframes:component"
     },
     {
+      "name": "cursor-marquee-select",
+      "type": "hyperframes:component"
+    },
+    {
+      "name": "cursor-text-select",
+      "type": "hyperframes:component"
+    },
+    {
+      "name": "cursor-zoom-follow",
+      "type": "hyperframes:component"
+    },
+    {
+      "name": "curtain-reveal",
+      "type": "hyperframes:component"
+    },
+    {
       "name": "cut-the-curve",
+      "type": "hyperframes:component"
+    },
+    {
+      "name": "dart-cursor",
       "type": "hyperframes:component"
     },
     {
@@ -1040,6 +1036,10 @@
       "type": "hyperframes:component"
     },
     {
+      "name": "magnetic-cursor",
+      "type": "hyperframes:component"
+    },
+    {
       "name": "marker-checklist-card",
       "type": "hyperframes:component"
     },
@@ -1160,6 +1160,10 @@
       "type": "hyperframes:component"
     },
     {
+      "name": "paper-collage-reveal",
+      "type": "hyperframes:component"
+    },
+    {
       "name": "parallax-device-dive",
       "type": "hyperframes:component"
     },
@@ -1177,6 +1181,10 @@
     },
     {
       "name": "particle-text-dissolve",
+      "type": "hyperframes:component"
+    },
+    {
+      "name": "pendulum-swing",
       "type": "hyperframes:component"
     },
     {
@@ -1452,6 +1460,10 @@
       "type": "hyperframes:component"
     },
     {
+      "name": "torn-paper-rip",
+      "type": "hyperframes:component"
+    },
+    {
       "name": "touch-indicator",
       "type": "hyperframes:component"
     },
@@ -1546,41 +1558,9 @@
     {
       "name": "zoom-through-transition",
       "type": "hyperframes:component"
-    },
-    {
-      "name": "decision-tree",
-      "type": "hyperframes:example"
-    },
-    {
-      "name": "kinetic-type",
-      "type": "hyperframes:example"
-    },
-    {
-      "name": "nyt-graph",
-      "type": "hyperframes:example"
-    },
-    {
-      "name": "play-mode",
-      "type": "hyperframes:example"
-    },
-    {
-      "name": "product-promo",
-      "type": "hyperframes:example"
-    },
-    {
-      "name": "swiss-grid",
-      "type": "hyperframes:example"
-    },
-    {
-      "name": "vignelli",
-      "type": "hyperframes:example"
-    },
-    {
-      "name": "warm-grain",
-      "type": "hyperframes:example"
     }
   ],
   "catalogArtifact": {
-    "revision": "973eda0eef98aed0e928080d20a64acacd8054e83611df7ed8b30ea96b25bf5b"
+    "revision": "e37883458ab0dcc57c25dd0993703b2e8768d3afe44730126198868c9266a596"
   }
 }

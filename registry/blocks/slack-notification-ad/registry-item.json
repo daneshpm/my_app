@@ -3,7 +3,7 @@
   "name": "slack-notification-ad",
   "type": "hyperframes:block",
   "title": "Slack Notification Ad",
-  "description": "A portrait lock screen fills with escalating Slack video requests before HeyGen delivers the payoff",
+  "description": "A portrait lock screen fills with escalating Slack video requests before Acme delivers the payoff",
   "tags": ["showcase", "mock-ui", "notification", "vertical", "ad-template"],
   "author": "HeyGen",
   "dimensions": {
@@ -18,8 +18,8 @@
       "type": "hyperframes:composition"
     },
     {
-      "path": "assets/img/heygen-mark.svg",
-      "target": "assets/img/heygen-mark.svg",
+      "path": "assets/img/acme-mark.svg",
+      "target": "assets/img/acme-mark.svg",
       "type": "hyperframes:asset"
     },
     {
@@ -52,9 +52,5 @@
       "target": "TEMPLATE.md",
       "type": "hyperframes:asset"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/slack-notification-ad/preview.mp4",
-    "poster": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/slack-notification-ad/poster.jpg"
-  }
+  ]
 }

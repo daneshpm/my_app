@@ -92,24 +92,11 @@ The registry is served straight out of the repository, so every byte an item
 ships stays in the history forever. Compositions are text and cost nothing;
 images, video, audio and fonts do not.
 
-Commit those assets in your pull request as usual. Before merging, a maintainer
-runs `bun run host:registry-assets <item-name>`, which uploads them to the CDN,
-adds a `url` to each `files[]` entry and removes the bytes from the tree:
-
-```json
-{
-  "path": "assets/carousel-images/one.jpg",
-  "url": "https://static.heygen.ai/hyperframes-oss/registry-assets/deadbeefdeadbeef.jpg",
-  "target": "assets/carousel-images/one.jpg",
-  "type": "hyperframes:asset"
-}
-```
-
-`path` does not change. It is still where the file lands relative to the item,
-so your composition HTML, the Catalog preview renderer and `hyperframes add`
-all behave exactly as they did — only the source of the bytes moves. Keys are
-content-addressed, so an image shared by several items uploads once and a
-changed image gets a new URL rather than a stale cached one.
+Keep binary assets small and commit them with the item. A `files[]` entry may
+instead carry a `url` to bytes you host yourself; the installer fetches them
+from that location, so only point at storage you control and have the rights to
+redistribute. Items whose assets are not hosted anywhere are kept under
+`registry/_hidden/` until they are re-hosted.
 
 ### Installer metadata
 
@@ -200,6 +187,4 @@ Include:
 - a `hyperframes.dev` preview from `npx hyperframes publish`;
 - when to use it, its useful duration range, and any known pitfalls.
 
-External contributors should attach the preview MP4. A maintainer will publish
-the final Catalog media. HeyGen contributors can use
-`scripts/upload-docs-images.sh` after preview review.
+Attach the preview MP4. A maintainer will publish the final Catalog media.

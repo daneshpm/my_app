@@ -24,9 +24,5 @@
       "target": "compositions/editorial-flash-overlay.html",
       "type": "hyperframes:composition"
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/editorial-flash-overlay.png",
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/editorial-flash-overlay.mp4"
-  }
+  ]
 }

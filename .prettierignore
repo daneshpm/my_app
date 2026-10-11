@@ -22,6 +22,7 @@ packages/cli/src/media-use/lib/svg-sanitize.mjs
 # Without this the format hook silently re-pretty-prints a minified bundle,
 # roughly doubling its size. Listed by exact file: these blocks also ship
 # hand-authored source (glass-main.mjs, surface.js, orbit-scene.js, etc) that must stay formattable.
+registry/_hidden/
 registry/blocks/**/lib/*.iife.js
 registry/blocks/frost-sequence-camera-orbit/assets/frost.js
 registry/blocks/frost-sequence-camera-orbit/assets/motion.js

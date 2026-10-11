@@ -17,7 +17,7 @@ it("never installs when the runtime vanishes after discovery and installation is
   const dir = mkdtempSync(join(tmpdir(), "hf-missing-runtime-"));
   const binary = join(dir, "whisper-cli");
   writeFileSync(binary, "runtime");
-  vi.stubEnv("HYPERFRAMES_WHISPER_PATH", binary);
+  vi.stubEnv("TAGREEL_WHISPER_PATH", binary);
   calls.exec.mockImplementation((command: string, args: string[]) => {
     if ((command === "which" || command === "where") && args[0] !== "whisper-cli")
       return `/bin/${args[0]}\n`;

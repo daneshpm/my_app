@@ -1,5 +1,5 @@
-import { COLOR_GRADING_SOURCE_HIDDEN_ATTR } from "@hyperframes/core/color-grading";
-import { motionPathPluginUrl } from "@hyperframes/core/gsap-cdn";
+import { COLOR_GRADING_SOURCE_HIDDEN_ATTR } from "@tagreel/core/color-grading";
+import { motionPathPluginUrl } from "@tagreel/core/gsap-cdn";
 import { findAuthoredElement } from "./authoredSource";
 import { applyAuthoredInlineOpacity, readStampedAuthoredOpacity } from "./authoredOpacity";
 import {

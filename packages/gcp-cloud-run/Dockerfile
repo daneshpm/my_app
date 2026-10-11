@@ -1,21 +1,21 @@
-# HyperFrames distributed render — Cloud Run image.
+# Tagreel distributed render — Cloud Run image.
 #
 # One container image, three roles (plan / renderChunk / assemble). Cloud
 # Workflows POSTs a JSON body with an `Action` field; `dist/server.js`
-# dispatches to the matching `@hyperframes/producer/distributed` primitive.
+# dispatches to the matching `@tagreel/producer/distributed` primitive.
 #
 # Build context is the REPOSITORY ROOT (not this package dir) because the
-# package depends on the `@hyperframes/producer` workspace and renders with
+# package depends on the `@tagreel/producer` workspace and renders with
 # the same chrome-headless-shell + fonts + ffmpeg the production renderer
-# uses. The example smoke script and `hyperframes cloudrun deploy` both
+# uses. The example smoke script and `tagreel cloudrun deploy` both
 # build with the repo root as context:
 #
 #   docker build -f packages/gcp-cloud-run/Dockerfile -t <image> .
 #
-# NOTE: this Dockerfile only builds from a full hyperframes monorepo checkout
+# NOTE: this Dockerfile only builds from a full tagreel monorepo checkout
 # — it COPYs sibling workspace packages (core/engine/producer). It is NOT
 # buildable from the published npm tarball alone; install the repo (or use
-# `hyperframes cloudrun deploy`, which builds from your checkout via Cloud
+# `tagreel cloudrun deploy`, which builds from your checkout via Cloud
 # Build) to produce the image.
 #
 # Unlike the AWS Lambda adapter there is no ZIP-size ceiling and no runtime
@@ -67,7 +67,7 @@ RUN npx --yes @puppeteer/browsers install chrome-headless-shell@148.0.7778.167 \
 
 # The chromium.ts resolver reads this first; pointing the engine straight at
 # the symlinked binary avoids the runtime cache scan.
-ENV HYPERFRAMES_CHROME_PATH=/opt/chrome/chrome-headless-shell
+ENV TAGREEL_CHROME_PATH=/opt/chrome/chrome-headless-shell
 ENV PRODUCER_HEADLESS_SHELL_PATH=/opt/chrome/chrome-headless-shell
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV CONTAINER=true
@@ -148,7 +148,7 @@ RUN bun run --cwd packages/parsers build \
     && bun run --cwd packages/lint build \
     && bun run --cwd packages/studio-server build \
     && bun run --cwd packages/core build \
-    && bun run --cwd packages/core build:hyperframes-runtime:modular \
+    && bun run --cwd packages/core build:tagreel-runtime:modular \
     && bun run --cwd packages/sdk build \
     && bun run --cwd packages/sdk-playground build \
     && bun run --cwd packages/engine build \
@@ -160,7 +160,7 @@ ENV PORT=8080
 EXPOSE 8080
 
 WORKDIR /app/packages/gcp-cloud-run
-# Run under bun, not node. The repo is bun-native and `@hyperframes/producer`'s
+# Run under bun, not node. The repo is bun-native and `@tagreel/producer`'s
 # bundled `distributed.js` relies on a `require` being available at runtime
 # (its esbuild interop shim); bun provides one in ESM, bare `node` does not.
 CMD ["bun", "dist/server.js"]

@@ -926,7 +926,7 @@ describe("runCommit — instantPatch wiring", () => {
       }),
     );
     const [, init] = vi.mocked(fetch).mock.calls[0]!;
-    expect(new Headers(init?.headers).get("X-Hyperframes-Write-Token")).toBeTruthy();
+    expect(new Headers(init?.headers).get("X-Tagreel-Write-Token")).toBeTruthy();
     expect(deps.recordEdit).toHaveBeenCalledTimes(1);
     expect(deps.recordEdit).toHaveBeenCalledWith(
       expect.objectContaining({ label: "Resize", coalesceKey: "tx:resize:1" }),

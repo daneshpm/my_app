@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  focus-rack: HyperFrames video primitive (camera / holdable / emphasize)
+  focus-rack: Tagreel video primitive (camera / holdable / emphasize)
 
   Concept: two cards sit at different apparent depths. Card A begins sharp
   and near while card B is blurred and dim. Focus moves to card B exactly
@@ -225,8 +225,8 @@
             var labelA = root.querySelector(".fr-label-a");
             var labelB = root.querySelector(".fr-label-b");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accent = vars.accent === "green" || vars.accent === "violet" ? vars.accent : "blue";

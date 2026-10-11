@@ -13,7 +13,7 @@
  * clip's pixels to black.
  *
  * Two field signals defined the failure surface this exists to close
- * (both `#hyperframes-cli-feedback`, both `check`/`snapshot` pass /
+ * (both `#tagreel-cli-feedback`, both `check`/`snapshot` pass /
  * final MP4 wrong):
  *
  *   • ts=1784139267 · win32/x64 CLI 0.7.58 156s render, 15 injected
@@ -45,19 +45,13 @@
  */
 
 import { parseHTML } from "linkedom";
-import {
-  fpsToNumber,
-  normalizeRateSpec,
-  sourceTimeAt,
-  toFps,
-  type FpsInput,
-} from "@hyperframes/core";
+import { fpsToNumber, normalizeRateSpec, sourceTimeAt, toFps, type FpsInput } from "@tagreel/core";
 import {
   extractionFrameCountForDuration,
   resolvePlayableVideoDuration,
   type ExtractedFrames,
   type VideoElement,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 
 const SHORT_CLIP_ONE_FRAME_TOLERANCE_MIN_EXPECTED_FRAMES = 14;
 const SHORT_CLIP_ONE_FRAME_TOLERANCE_MAX_EXPECTED_FRAMES = 20;
@@ -79,7 +73,7 @@ export interface VideoFrameCoverageReport {
  * see `DrawElementVerificationError` for the same problem).
  */
 export interface VideoFrameCoverageErrorDetails {
-  readonly hyperframesVideoFrameCoverageError: true;
+  readonly tagreelVideoFrameCoverageError: true;
   readonly threshold: number;
   readonly worst: VideoFrameCoverageReport;
   readonly failedReports: VideoFrameCoverageReport[];
@@ -88,14 +82,14 @@ export interface VideoFrameCoverageErrorDetails {
 export class VideoFrameCoverageError extends Error {
   // Read structurally by isVideoFrameCoverageError and cross-module callers.
   // fallow-ignore-next-line unused-class-member
-  readonly hyperframesVideoFrameCoverageError = true as const;
+  readonly tagreelVideoFrameCoverageError = true as const;
   readonly threshold: number;
   readonly worst: VideoFrameCoverageReport;
   readonly failedReports: VideoFrameCoverageReport[];
 
   constructor(
     message: string,
-    details: Omit<VideoFrameCoverageErrorDetails, "hyperframesVideoFrameCoverageError">,
+    details: Omit<VideoFrameCoverageErrorDetails, "tagreelVideoFrameCoverageError">,
   ) {
     super(message);
     this.name = "VideoFrameCoverageError";
@@ -109,8 +103,7 @@ export function isVideoFrameCoverageError(err: unknown): err is VideoFrameCovera
   return (
     typeof err === "object" &&
     err !== null &&
-    (err as { hyperframesVideoFrameCoverageError?: unknown }).hyperframesVideoFrameCoverageError ===
-      true
+    (err as { tagreelVideoFrameCoverageError?: unknown }).tagreelVideoFrameCoverageError === true
   );
 }
 

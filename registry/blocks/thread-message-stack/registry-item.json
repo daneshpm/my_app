@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "thread-message-stack",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Thread Message Stack",
   "description": "A source-owned editable conversation stack with arbitrary incoming and outgoing messages",
   "tags": ["social", "conversation", "messages"],
@@ -14,7 +14,7 @@
     {
       "path": "thread-message-stack.html",
       "target": "compositions/thread-message-stack.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

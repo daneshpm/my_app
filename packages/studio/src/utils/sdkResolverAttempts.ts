@@ -1,7 +1,7 @@
 /**
  * Attempt counter — the denominator for the resolver-shadow soak gate.
  *
- * The emit functions in sdkResolverShadow.ts only fire a PostHog event on
+ * The emit functions in sdkResolverShadow.ts only fire a analytics event on
  * divergence — parity is silent, by design, to avoid firing on every edit.
  * That leaves no way to compute a rate (divergences / attempts): we can count
  * failures but never attempts. This counter tracks attempts in memory and

@@ -1,4 +1,4 @@
-# HyperFrame Schema Compliance Review
+# Tagreel Schema Compliance Review
 
 ## Executive Summary
 
@@ -77,4 +77,4 @@ None found. All compositions follow the deterministic and finite timeline requir
 
 ## Actionable Fixes
 
-No fixes required. The project structure and implementation are in full accordance with the HyperFrame schema.
+No fixes required. The project structure and implementation are in full accordance with the Tagreel schema.

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  social-proof-card: HyperFrames motion primitive (scene)
+  social-proof-card: Tagreel motion primitive (scene)
 
   The app-store close, measured from reference ad footage: wordmark, five
   stars, a proof line, three feature icons, a CTA capsule - built in a quiet
@@ -16,7 +16,7 @@
   lang="en"
   data-composition-id="social-proof-card"
   data-composition-duration="4"
-  data-composition-variables='[{"id": "brand", "type": "string", "role": "content", "label": "Brand", "description": "Wordmark at the top of the card.", "default": "HyperFrames"}, {"id": "proof", "type": "string", "role": "content", "label": "Proof line", "description": "Social-proof line under the stars.", "default": "12,000+ creators"}, {"id": "cta", "type": "string", "role": "content", "label": "CTA", "description": "Label on the closing capsule.", "default": "Start rendering free"}, {"id": "f1", "type": "string", "role": "content", "label": "Feature 1", "description": "First feature, | breaks the line.", "default": "Write|plain HTML"}, {"id": "f2", "type": "string", "role": "content", "label": "Feature 2", "description": "Second feature, | breaks the line.", "default": "Render|pixel-perfect"}, {"id": "f3", "type": "string", "role": "content", "label": "Feature 3", "description": "Third feature, | breaks the line.", "default": "Own|every line"}]'
+  data-composition-variables='[{"id": "brand", "type": "string", "role": "content", "label": "Brand", "description": "Wordmark at the top of the card.", "default": "Tagreel"}, {"id": "proof", "type": "string", "role": "content", "label": "Proof line", "description": "Social-proof line under the stars.", "default": "12,000+ creators"}, {"id": "cta", "type": "string", "role": "content", "label": "CTA", "description": "Label on the closing capsule.", "default": "Start rendering free"}, {"id": "f1", "type": "string", "role": "content", "label": "Feature 1", "description": "First feature, | breaks the line.", "default": "Write|plain HTML"}, {"id": "f2", "type": "string", "role": "content", "label": "Feature 2", "description": "Second feature, | breaks the line.", "default": "Render|pixel-perfect"}, {"id": "f3", "type": "string", "role": "content", "label": "Feature 3", "description": "Third feature, | breaks the line.", "default": "Own|every line"}]'
 >
   <head>
     <meta charset="UTF-8" />
@@ -116,7 +116,7 @@
           }
         </style>
         <div class="spc-stage">
-          <div class="spc-brand" id="spc-brand">HyperFrames</div>
+          <div class="spc-brand" id="spc-brand">Tagreel</div>
           <div class="spc-stars" id="spc-stars"></div>
           <div class="spc-proof" id="spc-proof">12,000+ creators</div>
           <div class="spc-feats" id="spc-feats"></div>
@@ -128,8 +128,8 @@
             "use strict";
             var compositionId = "social-proof-card";
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             function text(v, fb, mx) {
               if (typeof v !== "string") return fb;
@@ -137,7 +137,7 @@
               if (!t) return fb;
               return t.length > mx ? t.slice(0, mx) : t;
             }
-            document.getElementById("spc-brand").textContent = text(vars.brand, "HyperFrames", 26);
+            document.getElementById("spc-brand").textContent = text(vars.brand, "Tagreel", 26);
             document.getElementById("spc-proof").textContent = text(
               vars.proof,
               "12,000+ creators",

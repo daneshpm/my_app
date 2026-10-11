@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  scroll-feed: HyperFrames video primitive (effects / agitation / loop)
+  scroll-feed: Tagreel video primitive (effects / agitation / loop)
 
   Concept: a self-scrolling column of skeleton post cards recycles without
   a visible seam. The default register is a doomscroll: distinct thumb
@@ -257,8 +257,8 @@
             var blurB = root.querySelector(".sf-blur-b");
             var columns = root.querySelectorAll(".sf-column");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var speed = vars.speed === "frantic" ? "frantic" : "doom";

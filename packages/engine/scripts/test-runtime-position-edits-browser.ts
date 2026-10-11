@@ -23,7 +23,7 @@ import { createRequire } from "node:module";
 import { readFileSync } from "node:fs";
 import { resolve as resolvePath, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildHyperframesRuntimeScript } from "../../core/src/inline-scripts/hyperframesRuntime.engine";
+import { buildTagreelRuntimeScript } from "../../core/src/inline-scripts/tagreelRuntime.engine";
 
 const thisDir = dirname(fileURLToPath(import.meta.url));
 
@@ -84,11 +84,8 @@ async function main(): Promise<void> {
     return;
   }
 
-  const runtimeSource = buildHyperframesRuntimeScript({ minify: false });
-  assert(
-    runtimeSource !== null,
-    "buildHyperframesRuntimeScript returned null — entry.ts not found",
-  );
+  const runtimeSource = buildTagreelRuntimeScript({ minify: false });
+  assert(runtimeSource !== null, "buildTagreelRuntimeScript returned null — entry.ts not found");
 
   // Committed moveElement state: every element moved by (50, -70). data-x/y
   // hold the post-edit values; data-hf-edit-base-x/y hold the pre-edit ones

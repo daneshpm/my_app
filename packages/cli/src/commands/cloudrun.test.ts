@@ -1,5 +1,5 @@
 /**
- * Boundary test for the `hyperframes cloudrun render{,-batch}` wire config.
+ * Boundary test for the `tagreel cloudrun render{,-batch}` wire config.
  * Pins that the aspect-agnostic flag reaches `SerializableDistributedRenderConfig`
  * so the Cloud Run worker's compile stage can remap `landscape` → `portrait`.
  *
@@ -72,7 +72,7 @@ describe("cloudrun wire config — aspect-agnostic threading", () => {
 describe("Cloud Run adapter preflight", () => {
   it("identifies only the missing adapter, not a missing transitive dependency", () => {
     const adapterError = Object.assign(
-      new Error("Cannot find package '@hyperframes/gcp-cloud-run' imported from cli.js"),
+      new Error("Cannot find package '@tagreel/gcp-cloud-run' imported from cli.js"),
       { code: "ERR_MODULE_NOT_FOUND" },
     );
     const transitiveError = Object.assign(new Error("Cannot find package 'google-auth-library'"), {
@@ -85,8 +85,8 @@ describe("Cloud Run adapter preflight", () => {
 
   it("provides global and project-local install recovery commands", () => {
     const message = missingCloudRunAdapterMessage("deploy");
-    expect(message).toContain("hyperframes cloudrun deploy");
-    expect(message).toContain("npm install -g @hyperframes/gcp-cloud-run");
-    expect(message).toContain("npm install @hyperframes/gcp-cloud-run");
+    expect(message).toContain("tagreel cloudrun deploy");
+    expect(message).toContain("npm install -g @tagreel/gcp-cloud-run");
+    expect(message).toContain("npm install @tagreel/gcp-cloud-run");
   });
 });

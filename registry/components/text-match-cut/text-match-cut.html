@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  text-match-cut: HyperFrames video primitive (transitions / match-cut / connect)
+  text-match-cut: Tagreel video primitive (transitions / match-cut / connect)
 
   Concept: one line of text becomes another in the middle of a move. Both texts
   ride ONE value curve — the After Effects recipe is a single keyframe pair,
@@ -177,8 +177,8 @@
             var shell = root.querySelector(".tmx-shell");
             var texts = [root.querySelector(".tmx-text-a"), root.querySelector(".tmx-text-b")];
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var MODES = {

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "pull-back-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Pull Back Reveal",
   "description": "A tight stat detail holds, then one decelerating camera pull-back reveals the headline and supporting cards that recontextualize it.",
   "tags": ["motion-primitive", "camera", "pull-back", "reveal", "recontextualize"],
@@ -13,7 +13,7 @@
     {
       "path": "pull-back-reveal.html",
       "target": "compositions/components/pull-back-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

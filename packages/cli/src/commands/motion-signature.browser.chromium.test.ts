@@ -1,7 +1,7 @@
 // fallow-ignore-file code-duplication
 // Real-Chromium pins for motion-signature.browser.js: the happy-dom suite fakes getComputedStyle, this one
-// asserts the same branches against Blink, using the exact scripts `hyperframes check` injects.
-// Skipped without a local Chrome; opt-in on Windows (HYPERFRAMES_BROWSER_TESTS=1), where its launch timed out.
+// asserts the same branches against Blink, using the exact scripts `tagreel check` injects.
+// Skipped without a local Chrome; opt-in on Windows (TAGREEL_BROWSER_TESTS=1), where its launch timed out.
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,7 +14,7 @@ const signatureScript = readFileSync(join(__dirname, "motion-signature.browser.j
 const motionSampleScript = readFileSync(join(__dirname, "motion-sample.browser.js"), "utf-8");
 
 function resolveExecutable(): string | undefined {
-  for (const name of ["HYPERFRAMES_BROWSER_PATH", "PUPPETEER_EXECUTABLE_PATH"]) {
+  for (const name of ["TAGREEL_BROWSER_PATH", "PUPPETEER_EXECUTABLE_PATH"]) {
     const candidate = process.env[name];
     if (candidate && existsSync(candidate)) return candidate;
   }
@@ -23,8 +23,7 @@ function resolveExecutable(): string | undefined {
 
 const executablePath = resolveExecutable();
 const RUNS_CHROMIUM =
-  !!executablePath &&
-  (process.platform !== "win32" || process.env.HYPERFRAMES_BROWSER_TESTS === "1");
+  !!executablePath && (process.platform !== "win32" || process.env.TAGREEL_BROWSER_TESTS === "1");
 // The package hookTimeout is sized for cold module imports, not for launching
 // a browser; give the launch its own ceiling.
 const BROWSER_LAUNCH_TIMEOUT_MS = 120_000;
@@ -36,8 +35,8 @@ interface Samples {
 
 declare global {
   interface Window {
-    __hyperframesLayoutGeometry: () => string;
-    __hyperframesMotionSample: (options: { selectors?: string[]; livenessScopes?: string[] }) => {
+    __tagreelLayoutGeometry: () => string;
+    __tagreelMotionSample: (options: { selectors?: string[]; livenessScopes?: string[] }) => {
       data: Record<string, { visible: boolean } | null>;
       liveness: Record<string, string>;
     };
@@ -83,9 +82,9 @@ describe.skipIf(!RUNS_CHROMIUM)("motion-signature.browser in Chromium", () => {
   async function sample(scope = "*"): Promise<Samples> {
     return page.evaluate(
       (livenessScope) => ({
-        sweep: window.__hyperframesLayoutGeometry(),
+        sweep: window.__tagreelLayoutGeometry(),
         liveness:
-          window.__hyperframesMotionSample({ livenessScopes: [livenessScope] }).liveness[
+          window.__tagreelMotionSample({ livenessScopes: [livenessScope] }).liveness[
             livenessScope
           ] ?? "",
       }),
@@ -101,7 +100,7 @@ describe.skipIf(!RUNS_CHROMIUM)("motion-signature.browser in Chromium", () => {
   // explicitly asserted element).
   async function visible(selector: string): Promise<boolean | undefined> {
     return page.evaluate(
-      (sel) => window.__hyperframesMotionSample({ selectors: [sel] }).data[sel]?.visible,
+      (sel) => window.__tagreelMotionSample({ selectors: [sel] }).data[sel]?.visible,
       selector,
     );
   }

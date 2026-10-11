@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { sanitizeRichTextChildren } from "@hyperframes/core/rich-text-sanitize";
+import { sanitizeRichTextChildren } from "@tagreel/core/rich-text-sanitize";
 import { usePreviewReadOnly } from "../components/editor/previewReadOnlyContext";
 import { trackStudioPendingEdit } from "../utils/studioPendingEdits";
 import {

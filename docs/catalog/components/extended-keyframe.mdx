@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":563}}
   attribution={{"path":"registry/components/extended-keyframe","tags":["motion","ease","arrival","kinetic-type","text","motion-blur","after-effects","slide-in","scale-in"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/extended-keyframe/extended-keyframe.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/extended-keyframe/extended-keyframe.html"
 >
 
 <CatalogSlot slot="code">
@@ -561,7 +561,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         });
       }
 
-      // tl.eventCallback("onUpdate") is unavailable under the HyperFrames runtime proxy, so a
+      // tl.eventCallback("onUpdate") is unavailable under the Tagreel runtime proxy, so a
       // tracker tween's onUpdate fires on every seek. Sampling is deferred to a microtask:
       // seeking GSAP from inside its own render reads stale tween state, while the microtask
       // runs after the seek returns and before the frame is captured or painted.
@@ -592,7 +592,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add extended-keyframe" item="extended-keyframe" />
+<InstallCommand command="npx tagreel add extended-keyframe" item="extended-keyframe" />
 
 That writes one file: `compositions/components/extended-keyframe.html`.
 

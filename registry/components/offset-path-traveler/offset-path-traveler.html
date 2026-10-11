@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  offset-path-traveler: HyperFrames video primitive (product demo / path travel)
+  offset-path-traveler: Tagreel video primitive (product demo / path travel)
 
   One traveler follows an authored SVG path and rotates to its tangent. The
   traveler wrapper is the content slot; the default slot content is a chip.
@@ -170,8 +170,8 @@
             var traveler = root.querySelector(".opt-traveler-slot");
             var label = root.querySelector(".opt-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var DEFAULT_PATH =

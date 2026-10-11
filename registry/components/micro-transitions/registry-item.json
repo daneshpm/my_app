@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "micro-transitions",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Micro Transitions",
   "description": "A transitions.dev-inspired pack of badge, dropdown, modal, tabs, tooltip, and success-check micro transitions",
   "tags": [
@@ -16,7 +16,7 @@
     {
       "path": "micro-transitions.html",
       "target": "compositions/components/micro-transitions.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -80,8 +80,5 @@
         }
       ]
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/micro-transitions.png"
-  }
+  ]
 }

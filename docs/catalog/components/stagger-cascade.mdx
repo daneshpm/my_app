@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":258}}
   attribution={{"path":"registry/components/stagger-cascade","tags":["effects","grid","stagger","entrance","exhibit"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/stagger-cascade/stagger-cascade.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/stagger-cascade/stagger-cascade.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html stagger-cascade.html
 <!doctype html>
 <!--
-  stagger-cascade: HyperFrames video primitive (effects / burst / exhibit)
+  stagger-cascade: Tagreel video primitive (effects / burst / exhibit)
 
   Concept: a responsive grid of plain tile cards enters in DOM order with one
   visible, evenly spaced GSAP stagger. Each tile fades from opacity 0 to 1 and
@@ -66,7 +66,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   #root has position:absolute; inset:0; container-type:size and no data-width or
   data-height, so the host owns the box. The composition id is hardcoded as
   "stagger-cascade" because mount flattening strips it from the live root.
-  Variables come from window.__hyperframes.getVariables(), which supplies the
+  Variables come from window.__tagreel.getVariables(), which supplies the
   declared defaults merged with host data-variable-values overrides.
 -->
 <html
@@ -186,8 +186,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             // EDIT ZONE: declarations above and clamped reads below are the
             // single source of truth for the primitive's three public knobs.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var rawItemCount = Number(vars.itemCount);
@@ -287,7 +287,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add stagger-cascade" item="stagger-cascade" />
+<InstallCommand command="npx tagreel add stagger-cascade" item="stagger-cascade" />
 
 That writes one file: `compositions/components/stagger-cascade.html`.
 

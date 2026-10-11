@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":309}}
   attribution={{"path":"registry/components/match-cut","tags":["motion-primitive","transition","match-cut","hard-cut","continuity"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/match-cut/match-cut.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/match-cut/match-cut.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html match-cut.html
 <!doctype html>
 <!--
-  match-cut: HyperFrames video primitive (transitions / match-cut / connect)
+  match-cut: Tagreel video primitive (transitions / match-cut / connect)
 
   Concept: scene A drives a circle into a known center-frame geometry, then a
   hard single-frame swap reveals scene B with a different circle in the exact
@@ -231,8 +231,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var labelB = root.querySelector(".mc-label-b");
             var revealB = root.querySelectorAll(".mc-kicker, .mc-label-b");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentName =
@@ -338,7 +338,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add match-cut" item="match-cut" />
+<InstallCommand command="npx tagreel add match-cut" item="match-cut" />
 
 That writes one file: `compositions/components/match-cut.html`.
 

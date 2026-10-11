@@ -27,7 +27,7 @@ export function createShaderLoader(): ShaderLoaderElements {
   root.setAttribute("role", "status");
   root.setAttribute("aria-live", "polite");
   root.setAttribute("aria-label", "Preparing scene transitions");
-  root.setAttribute("data-hyperframes-ignore", "");
+  root.setAttribute("data-tagreel-ignore", "");
   root.draggable = false;
 
   const blockOverlayInteraction = (event: Event) => {

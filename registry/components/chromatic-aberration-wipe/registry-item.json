@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "chromatic-aberration-wipe",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Chromatic Aberration Wipe",
   "description": "A fast slide wipe with RGB channel split on peak frames.",
   "tags": ["video-primitive", "transition-primitive"],
@@ -9,7 +9,7 @@
     {
       "path": "chromatic-aberration-wipe.html",
       "target": "compositions/components/chromatic-aberration-wipe.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -73,8 +73,5 @@
       "step": 0.1,
       "unit": "x"
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/chromatic-aberration-wipe.png"
-  }
+  ]
 }

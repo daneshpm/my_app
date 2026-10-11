@@ -37,7 +37,7 @@ sequenceDiagram
 ## Interface
 
 ```ts
-import type { FrameAdapter, FrameAdapterContext } from "@hyperframes/core";
+import type { FrameAdapter, FrameAdapterContext } from "@tagreel/core";
 
 type FrameAdapter = {
   id: string;
@@ -52,10 +52,10 @@ The context contains the composition ID, frame rate, dimensions, and optional ro
 
 ## Adapt a GSAP timeline
 
-`@hyperframes/core` includes a helper for a GSAP-like timeline:
+`@tagreel/core` includes a helper for a GSAP-like timeline:
 
 ```ts
-import { createGSAPFrameAdapter } from "@hyperframes/core";
+import { createGSAPFrameAdapter } from "@tagreel/core";
 
 const adapter = createGSAPFrameAdapter({
   id: "intro",
@@ -90,4 +90,4 @@ The host still owns the capture and encoding pipeline. The adapter owns only the
 
 ## Continue
 
-Read [Deterministic rendering](/concepts/determinism) for the timing rules or [`@hyperframes/core`](/packages/core) for the package exports.
+Read [Deterministic rendering](/concepts/determinism) for the timing rules or [`@tagreel/core`](/packages/core) for the package exports.

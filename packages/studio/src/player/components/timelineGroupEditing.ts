@@ -1,4 +1,4 @@
-import { clampPlaybackRate } from "@hyperframes/parsers/media-duration";
+import { clampPlaybackRate } from "@tagreel/parsers/media-duration";
 import { roundToCenti } from "../../utils/rounding";
 import type { TimelineElement } from "../store/playerStore";
 import { clampToHostStart } from "../store/timelineElement";

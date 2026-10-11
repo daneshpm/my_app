@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "store-badge-lockup",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Store Badge Lockup",
   "description": "Settles a short headline above equal-size App Store and Google Play badges as a token-driven mobile end-card call to action.",
   "tags": ["prop", "ui-props", "mobile", "store-badges", "cta", "ask"],
@@ -20,7 +20,7 @@
     {
       "path": "store-badge-lockup.html",
       "target": "compositions/components/store-badge-lockup.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

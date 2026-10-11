@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  push-in: HyperFrames video primitive (camera / holdable / emphasize)
+  push-in: Tagreel video primitive (camera / holdable / emphasize)
 
   Concept: a centered headline stays composed while the full stage makes one
   slow camera push. The intensity variable owns the final scale, and a soft
@@ -129,8 +129,8 @@
             var camera = root.querySelector(".pi-camera");
             var headline = root.querySelector(".pi-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Focus" : String(vars.text);

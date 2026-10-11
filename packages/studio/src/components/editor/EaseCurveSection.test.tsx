@@ -3,8 +3,8 @@
 import React, { act, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { parseSpringBounce } from "@hyperframes/core/spring-ease";
-import { parseWiggleEase } from "@hyperframes/core/wiggle-ease";
+import { parseSpringBounce } from "@tagreel/core/spring-ease";
+import { parseWiggleEase } from "@tagreel/core/wiggle-ease";
 import { EaseCurveSection, MiniCurveSvg } from "./EaseCurveSection";
 import { resolveEaseCurveTuple } from "./gsapAnimationConstants";
 import type { AnimationKeyframeTarget } from "../../hooks/gsapTweenSynth";

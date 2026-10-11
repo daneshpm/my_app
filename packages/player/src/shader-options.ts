@@ -115,7 +115,7 @@ function injectShaderOptionsIntoSrcdoc(
   if (loadingMode !== "composition") {
     lines.push(`window.__HF_SHADER_LOADING=${JSON.stringify(loadingMode)};`);
   }
-  const script = `<script data-hyperframes-player-shader-options>${lines.join("")}</script>`;
+  const script = `<script data-tagreel-player-shader-options>${lines.join("")}</script>`;
   if (/<head\b[^>]*>/i.test(html))
     return html.replace(/<head\b[^>]*>/i, (match) => `${match}${script}`);
   if (/<html\b[^>]*>/i.test(html))

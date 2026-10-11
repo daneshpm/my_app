@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":165}}
   attribution={{"path":"registry/components/chromatic-aberration-wipe","tags":["video-primitive","transition-primitive"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/chromatic-aberration-wipe/chromatic-aberration-wipe.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/chromatic-aberration-wipe/chromatic-aberration-wipe.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html chromatic-aberration-wipe.html
 <!--
-  Chromatic Aberration Wipe - catalog component for HyperFrames.
+  Chromatic Aberration Wipe - catalog component for Tagreel.
 
   Paste the markup and CSS into a composition. Drive the timeline integration
   from a paused GSAP timeline so renders remain deterministic.
@@ -142,8 +142,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -194,7 +194,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add chromatic-aberration-wipe" item="chromatic-aberration-wipe" />
+<InstallCommand command="npx tagreel add chromatic-aberration-wipe" item="chromatic-aberration-wipe" />
 
 That writes one file: `compositions/components/chromatic-aberration-wipe.html`.
 

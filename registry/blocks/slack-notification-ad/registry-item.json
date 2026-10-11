@@ -1,11 +1,11 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "slack-notification-ad",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Slack Notification Ad",
-  "description": "A portrait lock screen fills with escalating Slack video requests before HeyGen delivers the payoff",
+  "description": "A portrait lock screen fills with escalating Slack video requests before Acme delivers the payoff",
   "tags": ["showcase", "mock-ui", "notification", "vertical", "ad-template"],
-  "author": "HeyGen",
+  "author": "Tagreel contributors",
   "dimensions": {
     "width": 1080,
     "height": 1920
@@ -15,46 +15,42 @@
     {
       "path": "slack-notification-ad.html",
       "target": "compositions/slack-notification-ad.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
-      "path": "assets/img/heygen-mark.svg",
-      "target": "assets/img/heygen-mark.svg",
-      "type": "hyperframes:asset"
+      "path": "assets/img/acme-mark.svg",
+      "target": "assets/img/acme-mark.svg",
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/img/slack-mark.svg",
       "target": "assets/img/slack-mark.svg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/inter-latin-400-normal.woff2",
       "target": "assets/fonts/inter-latin-400-normal.woff2",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/inter-latin-500-normal.woff2",
       "target": "assets/fonts/inter-latin-500-normal.woff2",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/inter-latin-600-normal.woff2",
       "target": "assets/fonts/inter-latin-600-normal.woff2",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/inter-LICENSE.txt",
       "target": "assets/fonts/inter-LICENSE.txt",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "TEMPLATE.md",
       "target": "TEMPLATE.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/slack-notification-ad/preview.mp4",
-    "poster": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/slack-notification-ad/poster.jpg"
-  }
+  ]
 }

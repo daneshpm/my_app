@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  code-terminal-run: HyperFrames video primitive (product demo / terminal)
+  code-terminal-run: Tagreel video primitive (product demo / terminal)
 
   A token-chrome terminal panel runs one command: the prompt line types itself
   deterministically (the typed-prompt law: one text-at-time row table built
@@ -244,8 +244,8 @@
               : [];
             var tailElement = root.querySelector(".ctr-tail");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var promptGlyph = vars.prompt_glyph == null ? "$" : String(vars.prompt_glyph);

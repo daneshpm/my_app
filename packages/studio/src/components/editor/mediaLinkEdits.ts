@@ -1,10 +1,10 @@
-import { HF_AUDIO_AUTOMATION_ATTR } from "@hyperframes/core/audio-automation";
+import { HF_AUDIO_AUTOMATION_ATTR } from "@tagreel/core/audio-automation";
 import {
   MEDIA_LINK_ATTR,
   SYNC_ORIGIN_ATTR,
   mintLinkId,
   sourceZeroTime,
-} from "@hyperframes/core/media-link";
+} from "@tagreel/core/media-link";
 import { sameCompositionScope, type TimelineElement } from "../../player/store/timelineElement";
 import { mediaAssetIdentity, sharesLinkGroup } from "../../player/components/audioClipLink";
 import {

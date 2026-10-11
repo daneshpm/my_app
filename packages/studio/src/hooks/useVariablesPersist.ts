@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import type { Composition } from "@hyperframes/sdk";
+import type { Composition } from "@tagreel/sdk";
 import { cutoverCommittedOrThrow, persistSdkCandidateMutation } from "../utils/sdkCutover";
 import type { UseSlideshowPersistParams } from "./useSlideshowPersist";
 

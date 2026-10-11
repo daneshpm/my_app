@@ -7,10 +7,10 @@ import { resolveNpxInvocation } from "./lib/npx-sync.mjs";
 
 // Installed plugins have no monorepo packages/ tree. The plugin launcher passes
 // the release version and suppression environment through to this legacy shim.
-const pluginVersion = process.env.HYPERFRAMES_PLUGIN_VERSION;
+const pluginVersion = process.env.TAGREEL_PLUGIN_VERSION;
 if (pluginVersion) {
   const invocation = resolveNpxInvocation(
-    ["--yes", `hyperframes@${pluginVersion}`, "media-use", "resolve", ...process.argv.slice(2)],
+    ["--yes", `tagreel@${pluginVersion}`, "media-use", "resolve", ...process.argv.slice(2)],
     { stdio: "inherit" },
   );
   const result = spawnSync(invocation.cmd, invocation.args, invocation.opts);

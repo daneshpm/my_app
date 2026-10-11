@@ -1,5 +1,5 @@
 // Caption Designer — Core Types
-// Foundation types for the caption designer feature in HyperFrames Studio.
+// Foundation types for the caption designer feature in Tagreel Studio.
 
 // ---------------------------------------------------------------------------
 // Primitive visual style types

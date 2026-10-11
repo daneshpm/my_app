@@ -27,7 +27,7 @@ import { RippleEditIcon } from "./icons/RippleEditIcon";
 import { flatActive, flatBtn, flatDisabled, flatIdle } from "./timelineToolbarStyles";
 import { TimelineHistoryButtons, type TimelineHistoryButtonsProps } from "./TimelineHistoryButtons";
 import { TimelineToolPicker } from "./TimelineToolPicker";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "./editor/domEditingTypes";
 import { canSplitElement } from "../utils/timelineElementSplit";
 import { useAudioMetersVisible } from "../utils/audioMeterVisibility";

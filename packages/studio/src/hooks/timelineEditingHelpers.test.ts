@@ -13,7 +13,7 @@ import {
   type PersistTimelineBatchChange,
 } from "./timelineEditingHelpers";
 import type { TimelineElement } from "../player/store/playerStore";
-import { readMediaOffsetSeconds } from "@hyperframes/parsers/media-duration";
+import { readMediaOffsetSeconds } from "@tagreel/parsers/media-duration";
 import { usePlayerStore } from "../player/store/playerStore";
 import type { CommitMutationOptions } from "./gsapScriptCommitTypes";
 import { timelineKeyframeSelectionKey } from "../player/components/timelineKeyframeIdentity";

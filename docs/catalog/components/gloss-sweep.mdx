@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":213}}
   attribution={{"path":"registry/components/gloss-sweep","tags":["motion-primitive","celebration","gloss","card","badge","payoff"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/gloss-sweep/gloss-sweep.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/gloss-sweep/gloss-sweep.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html gloss-sweep.html
 <!doctype html>
 <!--
-  gloss-sweep: HyperFrames video primitive (celebrations / payoff)
+  gloss-sweep: Tagreel video primitive (celebrations / payoff)
 
   Concept: a compact card lands with a restrained slam, receives one
   diagonal specular sweep, then holds perfectly still. The gloss is the
@@ -166,8 +166,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var label = root.querySelector(".gs-label");
             var gloss = root.querySelector(".gs-gloss");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accents = {
@@ -242,7 +242,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add gloss-sweep" item="gloss-sweep" />
+<InstallCommand command="npx tagreel add gloss-sweep" item="gloss-sweep" />
 
 That writes one file: `compositions/components/gloss-sweep.html`.
 

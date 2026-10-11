@@ -7,8 +7,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/hyperframes"><img src="https://img.shields.io/npm/v/hyperframes.svg?style=flat" alt="npm version"></a>
-  <a href="https://www.npmjs.com/package/hyperframes"><img src="https://img.shields.io/npm/dm/hyperframes.svg?style=flat" alt="npm downloads"></a>
+  <a href="https://www.npmjs.com/package/tagreel"><img src="https://img.shields.io/npm/v/tagreel.svg?style=flat" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/tagreel"><img src="https://img.shields.io/npm/dm/tagreel.svg?style=flat" alt="npm downloads"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License"></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D22-brightgreen" alt="Node.js"></a>
 </p>
@@ -16,12 +16,10 @@
 <p align="center"><b>Write HTML. Render video. Built for agents.</b></p>
 
 <p align="center">
-  <a href="https://www.hyperframes.dev/studio">Studio</a> |
-  <a href="https://hyperframes.heygen.com/quickstart">Quickstart</a> |
-  <a href="https://hyperframes.heygen.com/showcase">Showcase</a> |
-  <a href="https://www.hyperframes.dev/">Playground</a> |
-  <a href="https://hyperframes.heygen.com/catalog/blocks/data-chart">Catalog</a> |
-  <a href="https://hyperframes.heygen.com/introduction">Docs</a>
+  <a href="https://github.com/daneshpm/my_app/tree/main/docs/quickstart">Quickstart</a> |
+  <a href="https://github.com/daneshpm/my_app/tree/main/docs/showcase">Showcase</a> |
+  <a href="https://github.com/daneshpm/my_app/tree/main/docs/catalog/blocks/data-chart">Catalog</a> |
+  <a href="https://github.com/daneshpm/my_app/tree/main/docs/introduction">Docs</a>
 </p>
 
 my_app is an open-source framework for turning HTML, CSS, media, and seekable animations into deterministic MP4 videos. Use it locally with the CLI, from AI coding agents with skills, or as the rendering core behind hosted authoring workflows.
@@ -33,37 +31,37 @@ my_app is an open-source framework for turning HTML, CSS, media, and seekable an
 For Claude Code, install the versioned plugin:
 
 ```bash
-claude plugin marketplace add heygen-com/hyperframes
-claude plugin install hyperframes@hyperframes
+claude plugin marketplace add daneshpm/my_app
+claude plugin install tagreel@tagreel
 ```
 
-Enable auto-update for the **hyperframes** marketplace in `/plugin` → **Marketplaces**,
-then use `/hyperframes:hyperframes`. See the [plugin guide](docs/guides/plugins.mdx)
+Enable auto-update for the **tagreel** marketplace in `/plugin` → **Marketplaces**,
+then use `/tagreel:tagreel`. See the [plugin guide](docs/guides/plugins.mdx)
 for Copilot, VS Code, Cursor, Gemini CLI, updates, and migration.
 
 For standalone skills (including OpenCode), use:
 
 ```bash
-npx skills add heygen-com/hyperframes
+npx skills add daneshpm/my_app
 ```
 
-> The picker opens with nothing pre-selected — the **Core Skills** group is all you need: the `/hyperframes` router installs each creation workflow on demand. Agents and non-interactive runs should use `npx hyperframes skills update` instead — it installs exactly the core set, whereas `skills add --all` installs all 21 published skills. The six repo-internal skills under `.claude/skills` / `.agents/skills` are excluded by default. For the full published set use `npx hyperframes skills`.
+> The picker opens with nothing pre-selected — the **Core Skills** group is all you need: the `/tagreel` router installs each creation workflow on demand. Agents and non-interactive runs should use `npx tagreel skills update` instead — it installs exactly the core set, whereas `skills add --all` installs all 21 published skills. The six repo-internal skills under `.claude/skills` / `.agents/skills` are excluded by default. For the full published set use `npx tagreel skills`.
 >
-> `skills add` resolves the skills.sh registry blob, which can lag `main` by hours. `npx hyperframes skills update` installs from the current `main`, so reach for it when you need the newest copy of a skill.
+> `skills add` resolves the skills.sh registry blob, which can lag `main` by hours. `npx tagreel skills update` installs from the current `main`, so reach for it when you need the newest copy of a skill.
 
 Try a prompt like:
 
-> Using `/hyperframes`, create a 10-second product intro with a fade-in title, a background video, and subtle background music.
+> Using `/tagreel`, create a 10-second product intro with a fade-in title, a background video, and subtle background music.
 
 The skills teach agents the my_app production loop: plan the video, write valid HTML, wire seekable animations, add media, lint, preview, and render. They work with Claude Code, Codex, Cursor, Gemini CLI, IBM Bob, and other coding agents that support skills.
 
 ## Skills
 
-my_app ships 21 skills agents load on demand. Read `/hyperframes` first — it's the router and capability map; it picks a workflow for any "make me a…" request — video, deck, or composition port — and points to the domain skills below.
+my_app ships 21 skills agents load on demand. Read `/tagreel` first — it's the router and capability map; it picks a workflow for any "make me a…" request — video, deck, or composition port — and points to the domain skills below.
 
-For standalone installation, default to the **core set** — the router installs each creation workflow on demand. `npx hyperframes skills update` installs exactly that from anywhere; the interactive picker (`npx skills add heygen-com/hyperframes`) lists it as the "Core Skills" group, nothing pre-selected. The picker is interactive-only — a non-interactive or agent run without `--skill` installs all 21. Use `npx skills add heygen-com/hyperframes --all` to install the complete published set deliberately (skips the picker), or `npx skills add heygen-com/hyperframes --skill <name>` for just one (bare name, no leading `/`).
+For standalone installation, default to the **core set** — the router installs each creation workflow on demand. `npx tagreel skills update` installs exactly that from anywhere; the interactive picker (`npx skills add daneshpm/my_app`) lists it as the "Core Skills" group, nothing pre-selected. The picker is interactive-only — a non-interactive or agent run without `--skill` installs all 21. Use `npx skills add daneshpm/my_app --all` to install the complete published set deliberately (skips the picker), or `npx skills add daneshpm/my_app --skill <name>` for just one (bare name, no leading `/`).
 
-Standalone installs stay lean after that: `npx hyperframes init` keeps the **core set** fresh (the router, the `hyperframes-*` domain skills, and `media-use` — plus whatever is already installed; `/figma` stays on demand) and never expands a partial install; the creation workflows install **on demand** — the router runs `npx hyperframes skills update <workflow>` before entering one. Nothing re-pulls the full set behind your back.
+Standalone installs stay lean after that: `npx tagreel init` keeps the **core set** fresh (the router, the `tagreel-*` domain skills, and `media-use` — plus whatever is already installed; `/figma` stays on demand) and never expands a partial install; the creation workflows install **on demand** — the router runs `npx tagreel skills update <workflow>` before entering one. Nothing re-pulls the full set behind your back.
 
 ### Plugin packages
 
@@ -79,61 +77,61 @@ Build the upload-ready Codex plugin archive from the committed `HEAD` version of
 bun run package:codex-plugin
 ```
 
-This writes `dist/hyperframes-plugin.zip` with a `hyperframes/` root folder and fails if the archive exceeds Codex's 100 MB upload limit.
+This writes `dist/tagreel-plugin.zip` with a `tagreel/` root folder and fails if the archive exceeds Codex's 100 MB upload limit.
 
 ### Router
 
-| Skill          | Use when                                                                                                                                                                                                                                                                 |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `/hyperframes` | **Read first** for any request to make / create / edit / animate / render a video, animation, or motion graphic. Capability map for the domain skills, the intent layer that confirms every creation brief up front, and intent router for the creation workflows below. |
+| Skill      | Use when                                                                                                                                                                                                                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/tagreel` | **Read first** for any request to make / create / edit / animate / render a video, animation, or motion graphic. Capability map for the domain skills, the intent layer that confirms every creation brief up front, and intent router for the creation workflows below. |
 
 ### Creation workflows
 
-| Skill                      | Use when                                                                                                                                                                                                                     |
-| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/product-launch-video`    | Any **website** — marketing / launching / promoting a product (from its URL, a brief, or a script), or a site tour / showcase / social clip featuring the site's own visuals. Up to ~3 min (sweet spot 30-90s).              |
-| `/faceless-explainer`      | **Explaining a topic / concept** from arbitrary text — no product, no URL, no website capture; every visual is LLM-invented (typography / abstract / diagram / data-viz).                                                    |
-| `/pr-to-video`             | A **GitHub pull request** (PR URL, `owner/repo#N` ref, or "this PR") → changelog / feature-reveal / fix / refactor explainer, read via the `gh` CLI.                                                                         |
-| `/embedded-captions`       | Adding **captions / subtitles** to an existing talking-head video (footage untouched) — verbatim rail, embedded climax behind the subject, or pure-cinematic embed.                                                          |
-| `/talking-head-recut`      | Packaging an existing talking-head / interview / podcast video with **designed graphic overlays** — lower-thirds, data callouts, kinetic titles, pull-quotes, side panels, PiP.                                              |
-| `/motion-graphics`         | A short, **unnarrated, design-led motion graphic** (~under 10s) — kinetic type, stat / chart hit, logo sting, lower-third, animated tweet / headline. MP4 or transparent overlay.                                            |
-| `/music-to-video`          | A **music track** (audio file, video to pull audio from, or one generated from a mood brief) → a **beat-synced** video — lyric, slideshow, or kinetic promo; music drives pacing.                                            |
-| `/slideshow`               | A **presentation / pitch deck / interactive deck** — discrete slides, fragment reveals, branching, hotspot navigation, presenter mode. Output is a navigable deck, not a rendered video.                                     |
-| `/general-video`           | **Anything else** — longer or multi-scene pieces, brand / sizzle reel, title card, static loop, freeform composition. Input- and length-agnostic fallback, and the home of companion mode (co-create with the full toolbox). |
-| `/remotion-to-hyperframes` | **Porting an existing Remotion** (React) composition's source to my_app HTML. One-way migration, not creation.                                                                                                               |
+| Skill                   | Use when                                                                                                                                                                                                                     |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/product-launch-video` | Any **website** — marketing / launching / promoting a product (from its URL, a brief, or a script), or a site tour / showcase / social clip featuring the site's own visuals. Up to ~3 min (sweet spot 30-90s).              |
+| `/faceless-explainer`   | **Explaining a topic / concept** from arbitrary text — no product, no URL, no website capture; every visual is LLM-invented (typography / abstract / diagram / data-viz).                                                    |
+| `/pr-to-video`          | A **GitHub pull request** (PR URL, `owner/repo#N` ref, or "this PR") → changelog / feature-reveal / fix / refactor explainer, read via the `gh` CLI.                                                                         |
+| `/embedded-captions`    | Adding **captions / subtitles** to an existing talking-head video (footage untouched) — verbatim rail, embedded climax behind the subject, or pure-cinematic embed.                                                          |
+| `/talking-head-recut`   | Packaging an existing talking-head / interview / podcast video with **designed graphic overlays** — lower-thirds, data callouts, kinetic titles, pull-quotes, side panels, PiP.                                              |
+| `/motion-graphics`      | A short, **unnarrated, design-led motion graphic** (~under 10s) — kinetic type, stat / chart hit, logo sting, lower-third, animated tweet / headline. MP4 or transparent overlay.                                            |
+| `/music-to-video`       | A **music track** (audio file, video to pull audio from, or one generated from a mood brief) → a **beat-synced** video — lyric, slideshow, or kinetic promo; music drives pacing.                                            |
+| `/slideshow`            | A **presentation / pitch deck / interactive deck** — discrete slides, fragment reveals, branching, hotspot navigation, presenter mode. Output is a navigable deck, not a rendered video.                                     |
+| `/general-video`        | **Anything else** — longer or multi-scene pieces, brand / sizzle reel, title card, static loop, freeform composition. Input- and length-agnostic fallback, and the home of companion mode (co-create with the full toolbox). |
+| `/remotion-to-tagreel`  | **Porting an existing Remotion** (React) composition's source to my_app HTML. One-way migration, not creation.                                                                                                               |
 
 ### Domain skills (loaded on demand)
 
 Atomic capabilities the creation workflows compose against — pull one when you need that specific layer.
 
-| Skill                    | Covers                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `/hyperframes-core`      | The composition contract — `data-*` timing attributes, `class="clip"`, tracks, sub-compositions, variables, framework-owned media playback, determinism rules.                                                                                                                                                                                                                                                                                                                       |
-| `/hyperframes-animation` | All animation knowledge — atomic motion rules, scene blueprints, transitions, runtime adapters (GSAP / Lottie / Three.js / Anime.js / CSS / WAAPI / TypeGPU).                                                                                                                                                                                                                                                                                                                        |
-| `/hyperframes-keyframes` | Seek-safe keyframe authoring across runtimes — GSAP timelines, CSS keyframes, Anime.js, WAAPI, FLIP, paths, masks, SVG morph/draw, 3D depth — plus `hyperframes keyframes` diagnostics for rendered motion.                                                                                                                                                                                                                                                                          |
-| `/hyperframes-creative`  | Non-animation creative direction — `frame.md` / `design.md`, palettes, typography, narration, beat planning, audio-reactive visuals, composition patterns.                                                                                                                                                                                                                                                                                                                           |
-| `/media-use`             | The media OS — resolve any media need (BGM, SFX, image, icon, logo, voice, color grade, LUT) into a frozen local file or paste-ready block + ledger record, generate via TTS/music/image models when the catalog misses, transcribe, caption, remove backgrounds, and reuse assets across projects. One shared audio engine + manifest tracking.                                                                                                                                     |
-| `/hyperframes-cli`       | CLI dev loop — `init`, `lint`, `check`, `snapshot`, `preview`, `render`, `publish`, `doctor`, plus HeyGen-hosted cloud rendering (`cloud render`) and AWS Lambda rendering (`lambda deploy / render / progress`).                                                                                                                                                                                                                                                                    |
-| `/hyperframes-audio`     | Mix the audio already placed in a composition — voiceover carve (dip a music bed only in the bands the voice occupies, static or dynamic, level match included), the effect chain (EQ, compressor, limiter, gate, saturation, delay, reverb, chorus, phaser, bitcrush), automation envelopes on volume or any effect parameter, and submix buses (`<hf-audio-group>`) carrying one chain, fader and automation clock for several tracks at once. Sourcing the audio is `/media-use`. |
-| `/hyperframes-registry`  | Search, install and wire registry blocks and components into compositions via `hyperframes catalog` / `hyperframes add`. Load before hand-building any named look, effect, treatment or transition. Authoring a new block or component to contribute upstream.                                                                                                                                                                                                                       |
-| `/figma`                 | Import Figma assets, tokens, components, and storyboard sections → reconstructed motion (frames read as states, not slides) (REST/CLI) plus Motion animations (MCP) and shaders (MCP source / native export) into a composition.                                                                                                                                                                                                                                                     |
+| Skill                | Covers                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/tagreel-core`      | The composition contract — `data-*` timing attributes, `class="clip"`, tracks, sub-compositions, variables, framework-owned media playback, determinism rules.                                                                                                                                                                                                                                                                                                                       |
+| `/tagreel-animation` | All animation knowledge — atomic motion rules, scene blueprints, transitions, runtime adapters (GSAP / Lottie / Three.js / Anime.js / CSS / WAAPI / TypeGPU).                                                                                                                                                                                                                                                                                                                        |
+| `/tagreel-keyframes` | Seek-safe keyframe authoring across runtimes — GSAP timelines, CSS keyframes, Anime.js, WAAPI, FLIP, paths, masks, SVG morph/draw, 3D depth — plus `tagreel keyframes` diagnostics for rendered motion.                                                                                                                                                                                                                                                                              |
+| `/tagreel-creative`  | Non-animation creative direction — `frame.md` / `design.md`, palettes, typography, narration, beat planning, audio-reactive visuals, composition patterns.                                                                                                                                                                                                                                                                                                                           |
+| `/media-use`         | The media OS — resolve any media need (BGM, SFX, image, icon, logo, voice, color grade, LUT) into a frozen local file or paste-ready block + ledger record, generate via TTS/music/image models when the catalog misses, transcribe, caption, remove backgrounds, and reuse assets across projects. One shared audio engine + manifest tracking.                                                                                                                                     |
+| `/tagreel-cli`       | CLI dev loop — `init`, `lint`, `check`, `snapshot`, `preview`, `render`, `doctor`, plus AWS Lambda rendering (`lambda deploy / render / progress`).                                                                                                                                                                                                                                                                                                                                  |
+| `/tagreel-audio`     | Mix the audio already placed in a composition — voiceover carve (dip a music bed only in the bands the voice occupies, static or dynamic, level match included), the effect chain (EQ, compressor, limiter, gate, saturation, delay, reverb, chorus, phaser, bitcrush), automation envelopes on volume or any effect parameter, and submix buses (`<hf-audio-group>`) carrying one chain, fader and automation clock for several tracks at once. Sourcing the audio is `/media-use`. |
+| `/tagreel-registry`  | Search, install and wire registry blocks and components into compositions via `tagreel catalog` / `tagreel add`. Load before hand-building any named look, effect, treatment or transition. Authoring a new block or component to contribute upstream.                                                                                                                                                                                                                               |
+| `/figma`             | Import Figma assets, tokens, components, and storyboard sections → reconstructed motion (frames read as states, not slides) (REST/CLI) plus Motion animations (MCP) and shaders (MCP source / native export) into a composition.                                                                                                                                                                                                                                                     |
 
-For visual design handoff workflows, see the [Claude Design guide](https://hyperframes.heygen.com/guides/claude-design) and [Open Design guide](https://hyperframes.heygen.com/guides/open-design).
+For visual design handoff workflows, see the [Claude Design guide](https://github.com/daneshpm/my_app/tree/main/docs/guides/claude-design) and [Open Design guide](https://github.com/daneshpm/my_app/tree/main/docs/guides/open-design).
 
 ### Manually with the CLI
 
 ```bash
-npx hyperframes init my-video
+npx tagreel init my-video
 cd my-video
-npx hyperframes preview      # preview in browser with live reload
-npx hyperframes render       # render to MP4
+npx tagreel preview      # preview in browser with live reload
+npx tagreel render       # render to MP4
 ```
 
 **Requirements:** Node.js 22+, FFmpeg
 
 ## What You Can Build
 
-Need ideas? Browse the [Showcase](https://hyperframes.heygen.com/showcase) for finished videos you can watch, read, run, and remix.
+Need ideas? Browse the [Showcase](https://github.com/daneshpm/my_app/tree/main/docs/showcase) for finished videos you can watch, read, run, and remix.
 
 - Product launch videos and feature announcements
 - PR walkthroughs with animated code diffs, narration, and captions
@@ -141,69 +139,6 @@ Need ideas? Browse the [Showcase](https://hyperframes.heygen.com/showcase) for f
 - Social videos with kinetic captions, overlays, and music
 - Docs-to-video, PDF-to-video, and site-tour explainers
 - Reusable motion graphics for automated content pipelines
-
-## Frame.md
-
-**frame.md — your design system, ready for video.**
-
-Every brand has a `design.md`. None of them were written for a camera. `frame.md` is the missing translation layer: it takes your web-context design spec and inverts it for the frame — the same tokens, the same rules, but rewritten so an AI agent can compose a promo video without guessing at scale or reaching for web chrome.
-
-The output is a `DESIGN.md` superset your whole toolchain can read. Atoms stay sacred. Composition stays free. Numbers come from the script.
-
-<table>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/biennale-yellow"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/biennale-yellow.png" alt="Biennale Yellow" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/biennale-yellow">Biennale Yellow</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/blockframe"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/blockframe.png" alt="BlockFrame" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/blockframe">BlockFrame</a></b>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/blue-professional"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/blue-professional.png" alt="Blue Professional" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/blue-professional">Blue Professional</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/bold-poster"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/bold-poster.png" alt="Bold Poster" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/bold-poster">Bold Poster</a></b>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/broadside"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/broadside.png" alt="Broadside" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/broadside">Broadside</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/capsule"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/capsule.png" alt="Capsule" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/capsule">Capsule</a></b>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/cartesian"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/cartesian.png" alt="Cartesian" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/cartesian">Cartesian</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/cobalt-grid"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/cobalt-grid.png" alt="Cobalt Grid" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/cobalt-grid">Cobalt Grid</a></b>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/coral"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/coral.png" alt="Coral" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/coral">Coral</a></b>
-    </td>
-    <td width="50%" align="center">
-      <a href="https://www.hyperframes.dev/design/creative-mode"><img src="https://static.heygen.ai/hyperframes-oss/docs/images/design-templates/creative-mode.png" alt="Creative Mode" width="100%"></a>
-      <br><b><a href="https://www.hyperframes.dev/design/creative-mode">Creative Mode</a></b>
-    </td>
-  </tr>
-</table>
-
-Browse and remix them all at [hyperframes.dev/design](https://www.hyperframes.dev/design).
 
 ## How It Works
 
@@ -247,28 +182,26 @@ Preview instantly in the browser. Render locally or in Docker. The renderer seek
 
 my_app is the open-source rendering engine, plus a growing set of tools around HTML-native video creation.
 
-| Piece                                           | Status              | What it does                                                                                      |
-| ----------------------------------------------- | ------------------- | ------------------------------------------------------------------------------------------------- |
-| CLI                                             | Available           | Scaffold, preview, lint, inspect, and render local video projects                                 |
-| Core / Engine / Producer                        | Available           | Parse compositions, drive headless Chrome, encode video, and mix audio                            |
-| Catalog                                         | Available           | Reusable blocks and components for transitions, overlays, captions, charts, maps, and effects     |
-| Agent skills                                    | Available           | Teach coding agents the video-production patterns that generic web docs miss                      |
-| Studio                                          | Available, evolving | Browser surface for previewing and editing compositions                                           |
-| AWS Lambda rendering                            | Available           | Deploy a distributed render stack and drive renders from your laptop or CI                        |
-| [hyperframes.dev](https://www.hyperframes.dev/) | Available           | Community playground for previewing, iterating, sharing, and rendering HTML-native video projects |
-| [frame.md](https://www.hyperframes.dev/design)  | Available           | Invert your design system for the camera — a DESIGN.md superset an agent can compose video from   |
+| Piece                    | Status              | What it does                                                                                  |
+| ------------------------ | ------------------- | --------------------------------------------------------------------------------------------- |
+| CLI                      | Available           | Scaffold, preview, lint, inspect, and render local video projects                             |
+| Core / Engine / Producer | Available           | Parse compositions, drive headless Chrome, encode video, and mix audio                        |
+| Catalog                  | Available           | Reusable blocks and components for transitions, overlays, captions, charts, maps, and effects |
+| Agent skills             | Available           | Teach coding agents the video-production patterns that generic web docs miss                  |
+| Studio                   | Available, evolving | Browser surface for previewing and editing compositions                                       |
+| AWS Lambda rendering     | Available           | Deploy a distributed render stack and drive renders from your laptop or CI                    |
 
 ## Catalog
 
 Install ready-to-use blocks and components:
 
 ```bash
-npx hyperframes add flash-through-white   # shader transition
-npx hyperframes add instagram-follow      # social overlay
-npx hyperframes add data-chart            # animated chart
+npx tagreel add flash-through-white   # shader transition
+npx tagreel add instagram-follow      # social overlay
+npx tagreel add data-chart            # animated chart
 ```
 
-Browse the catalog at [hyperframes.heygen.com/catalog](https://hyperframes.heygen.com/catalog/blocks/data-chart).
+Browse the catalog at [github.com/daneshpm/my_app/tree/main/docs/catalog](https://github.com/daneshpm/my_app/tree/main/docs/catalog/blocks/data-chart).
 
 ## Why my_app?
 
@@ -292,32 +225,32 @@ my_app is inspired by [Remotion](https://www.remotion.dev). Both tools render vi
 | Distributed rendering    | Local and AWS Lambda render paths     | Remotion Lambda, mature cloud renderer  |
 | License                  | Apache 2.0                            | Source-available Remotion License       |
 
-Read the full comparison in the [my_app vs Remotion guide](https://hyperframes.heygen.com/guides/hyperframes-vs-remotion).
+Read the full comparison in the [my_app vs Remotion guide](https://github.com/daneshpm/my_app/tree/main/docs/guides/tagreel-vs-remotion).
 
 ## Documentation
 
-Full documentation: [hyperframes.heygen.com/introduction](https://hyperframes.heygen.com/introduction)
+Full documentation: [github.com/daneshpm/my_app/tree/main/docs/introduction](https://github.com/daneshpm/my_app/tree/main/docs/introduction)
 
-- [Quickstart](https://hyperframes.heygen.com/quickstart)
-- [Showcase](https://hyperframes.heygen.com/showcase)
-- [Guides](https://hyperframes.heygen.com/guides/gsap-animation)
-- [API Reference](https://hyperframes.heygen.com/packages/core)
-- [Catalog](https://hyperframes.heygen.com/catalog/blocks/data-chart)
-- [Examples](https://hyperframes.heygen.com/examples)
-- [AWS Lambda rendering](https://hyperframes.heygen.com/deploy/aws-lambda)
+- [Quickstart](https://github.com/daneshpm/my_app/tree/main/docs/quickstart)
+- [Showcase](https://github.com/daneshpm/my_app/tree/main/docs/showcase)
+- [Guides](https://github.com/daneshpm/my_app/tree/main/docs/guides/gsap-animation)
+- [API Reference](https://github.com/daneshpm/my_app/tree/main/docs/packages/core)
+- [Catalog](https://github.com/daneshpm/my_app/tree/main/docs/catalog/blocks/data-chart)
+- [Examples](https://github.com/daneshpm/my_app/tree/main/docs/examples)
+- [AWS Lambda rendering](https://github.com/daneshpm/my_app/tree/main/docs/deploy/aws-lambda)
 
 ## Packages
 
-| Package                                                          | Description                                                       |
-| ---------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [`hyperframes`](packages/cli)                                    | CLI for creating, previewing, linting, and rendering compositions |
-| [`@hyperframes/core`](packages/core)                             | Types, parsers, generators, linter, runtime, and frame adapters   |
-| [`@hyperframes/engine`](packages/engine)                         | Seekable page-to-video capture engine using Puppeteer and FFmpeg  |
-| [`@hyperframes/producer`](packages/producer)                     | Full rendering pipeline for capture, encode, and audio mix        |
-| [`@hyperframes/studio`](packages/studio)                         | Browser-based composition editor UI                               |
-| [`@hyperframes/player`](packages/player)                         | Embeddable `<hyperframes-player>` web component                   |
-| [`@hyperframes/shader-transitions`](packages/shader-transitions) | WebGL shader transitions for compositions                         |
-| [`@hyperframes/aws-lambda`](packages/aws-lambda)                 | AWS Lambda SDK and deployment surface for distributed renders     |
+| Package                                                      | Description                                                       |
+| ------------------------------------------------------------ | ----------------------------------------------------------------- |
+| [`tagreel`](packages/cli)                                    | CLI for creating, previewing, linting, and rendering compositions |
+| [`@tagreel/core`](packages/core)                             | Types, parsers, generators, linter, runtime, and frame adapters   |
+| [`@tagreel/engine`](packages/engine)                         | Seekable page-to-video capture engine using Puppeteer and FFmpeg  |
+| [`@tagreel/producer`](packages/producer)                     | Full rendering pipeline for capture, encode, and audio mix        |
+| [`@tagreel/studio`](packages/studio)                         | Browser-based composition editor UI                               |
+| [`@tagreel/player`](packages/player)                         | Embeddable `<tagreel-player>` web component                       |
+| [`@tagreel/shader-transitions`](packages/shader-transitions) | WebGL shader transitions for compositions                         |
+| [`@tagreel/aws-lambda`](packages/aws-lambda)                 | AWS Lambda SDK and deployment surface for distributed renders     |
 
 ## Community
 
@@ -348,7 +281,7 @@ git lfs install
 If you only need source files, you can skip LFS content:
 
 ```bash
-GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/heygen-com/hyperframes.git
+GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/daneshpm/my_app.git
 ```
 
 ## License
@@ -357,4 +290,4 @@ GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/heygen-com/hyperframes.git
 
 ---
 
-Based on Hyperframes by HeyGen (Apache-2.0). See [LICENSE](LICENSE).
+Derived from HyperFrames by HeyGen (Apache-2.0). See [LICENSE](LICENSE) and [NOTICE](NOTICE).

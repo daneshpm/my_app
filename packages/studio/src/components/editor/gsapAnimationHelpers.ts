@@ -1,4 +1,4 @@
-import type { GsapAnimation } from "@hyperframes/parsers/gsap-parser";
+import type { GsapAnimation } from "@tagreel/parsers/gsap-parser";
 import { EASE_LABELS, PERCENT_PROPS, PROP_LABELS, PROP_UNITS } from "./gsapAnimationConstants";
 import { keyframedTweenEases } from "../../utils/gsapKeyframeEases";
 

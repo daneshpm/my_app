@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cta-lockup",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "CTA Lockup",
   "description": "A canonical closing lockup that reveals an action line, pops in an accent CTA capsule, settles supporting microcopy, and holds with confidence.",
   "tags": ["motion-primitive", "ui-props", "cta", "end-card", "lockup", "ask"],
@@ -14,7 +14,7 @@
     {
       "path": "cta-lockup.html",
       "target": "compositions/components/cta-lockup.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -32,7 +32,7 @@
       "role": "content",
       "label": "Button label",
       "description": "Text displayed inside the CTA capsule.",
-      "default": "Get HyperFrames"
+      "default": "Get Tagreel"
     },
     {
       "id": "microcopy",

@@ -26,7 +26,7 @@ describe("locateSamTemplate", () => {
   it("does not point users at the nonexistent --sam-template flag when the template is missing", () => {
     dir = mkdtempSync(join(tmpdir(), "hf-lambda-sam-missing-"));
 
-    expect(() => locateSamTemplate(dir!)).toThrow(/HYPERFRAMES_REPO_ROOT/);
+    expect(() => locateSamTemplate(dir!)).toThrow(/TAGREEL_REPO_ROOT/);
     expect(() => locateSamTemplate(dir!)).not.toThrow(/--sam-template/);
   });
 });

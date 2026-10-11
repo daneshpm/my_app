@@ -1,11 +1,11 @@
-# @hyperframes/studio
+# @tagreel/studio
 
-Browser-based composition editor UI for Hyperframes. Provides a visual timeline, code editor, and live preview for building video compositions.
+Browser-based composition editor UI for Tagreel. Provides a visual timeline, code editor, and live preview for building video compositions.
 
 ## Install
 
 ```bash
-npm install @hyperframes/studio
+npm install @tagreel/studio
 ```
 
 ## What it does
@@ -19,7 +19,7 @@ The studio is a React application with:
 
 ## Development
 
-The studio is embedded in the `hyperframes preview` command. To develop the studio UI itself:
+The studio is embedded in the `tagreel preview` command. To develop the studio UI itself:
 
 ```bash
 cd packages/studio
@@ -38,9 +38,9 @@ bun run typecheck  # Type-check
 
 ## Documentation
 
-Full documentation: [hyperframes.heygen.com/packages/studio](https://hyperframes.heygen.com/packages/studio)
+Full documentation: [github.com/daneshpm/my_app/tree/main/docs/packages/studio](https://github.com/daneshpm/my_app/tree/main/docs/packages/studio)
 
 ## Related packages
 
-- [`@hyperframes/core`](../core) — types and parsers used by the editor
-- [`hyperframes`](../cli) — CLI that serves the studio via `hyperframes preview`
+- [`@tagreel/core`](../core) — types and parsers used by the editor
+- [`tagreel`](../cli) — CLI that serves the studio via `tagreel preview`

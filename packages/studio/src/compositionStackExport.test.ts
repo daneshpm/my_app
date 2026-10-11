@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { CompositionBreadcrumb, useCompositionStack } from "@hyperframes/studio";
+import { CompositionBreadcrumb, useCompositionStack } from "@tagreel/studio";
 
 it("exports the composition stack hook beside the breadcrumb it feeds", () => {
   expect(typeof useCompositionStack).toBe("function");

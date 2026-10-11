@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "stagger-cascade",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Stagger Cascade",
   "description": "A responsive grid of tile cards that fades and travels into place with an evenly spaced per-item GSAP stagger. The ordered cascade is the only visual mechanic.",
   "tags": ["effects", "grid", "stagger", "entrance", "exhibit"],
@@ -13,7 +13,7 @@
     {
       "path": "stagger-cascade.html",
       "target": "compositions/components/stagger-cascade.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -19,7 +19,7 @@ import {
   type AutomationRange,
   type HfAutomationLane,
   type HfAutomationPoint,
-} from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-automation";
 import { POINT_MERGE_SEC } from "./automationLaneGeometry";
 
 /** Points inside [t0, t1], endpoints inclusive. */

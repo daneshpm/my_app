@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  touch-indicator -- HyperFrames video primitive (pointers / interaction / demonstrate)
+  touch-indicator -- Tagreel video primitive (pointers / interaction / demonstrate)
 
   CONCEPT: a translucent contact-circle that represents a fingertip touching
   glass. It never hovers: every appearance resolves into a touch-down, every
@@ -11,7 +11,7 @@
 
   MOUNTABLE SUB-COMPOSITION: this file is loaded by a host via
   data-composition-src, not pasted inline. The runtime only clones
-  <template> contents (see skills/hyperframes-core/references/sub-compositions.md),
+  <template> contents (see skills/tagreel-core/references/sub-compositions.md),
   so every style, the markup, and the script that builds and registers the
   timeline all live inside <template> below. The file is self-driving: it
   builds its own paused GSAP timeline and registers it under
@@ -19,7 +19,7 @@
   data-composition-id. A host mounts it with a matching
   data-composition-id="touch-indicator" data-composition-src="./touch-indicator.html".
 
-  COMPILED FROM: hyperframes-corpus-data/mobile/gesture-actor-spec.md (the
+  COMPILED FROM: tagreel-corpus-data/mobile/gesture-actor-spec.md (the
   contact-never-hover law, contact-circle sizing, tap anatomy, swipe law,
   lift/exit law, same-frame target-reaction contract) with supporting
   constants cross-checked against gesture-physics-recipes.md. Evidence
@@ -160,12 +160,12 @@
             // Per-instance overrides (a host's data-variable-values) land in
             // window.__hfVariablesByComp, scoped by composition id. Reading
             // window.__hfVariables directly here would silently ignore every
-            // host override -- window.__hyperframes.getVariables() is the
+            // host override -- window.__tagreel.getVariables() is the
             // scoped accessor, per the registry convention (see
             // lower-third-bild.html, caption-texture.html).
             const resolved =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : window.__hfVariables || {};
             const vars = Object.assign({}, defaults, resolved);
             const actor = root.querySelector(".hf-touch-indicator__actor");

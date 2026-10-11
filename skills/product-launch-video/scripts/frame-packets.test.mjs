@@ -42,7 +42,7 @@ test("_role.md is the core contract + this workflow's delta, verbatim", () => {
   );
 
   buildFramePackets({ projectDir: project });
-  const rolePath = join(project, ".hyperframes", "frame-packets", "_role.md");
+  const rolePath = join(project, ".tagreel", "frame-packets", "_role.md");
   assert.ok(existsSync(rolePath));
   const role = readFileSync(rolePath, "utf8");
   assert.match(role, /# Frame worker — core contract/);
@@ -51,7 +51,7 @@ test("_role.md is the core contract + this workflow's delta, verbatim", () => {
 
 test("packet validation is atomic and leaves no partial output on overflow", () => {
   const project = mkdtempSync(join(tmpdir(), "plv-atomic-"));
-  const outDir = join(project, ".hyperframes", "frame-packets");
+  const outDir = join(project, ".tagreel", "frame-packets");
   write(join(project, "frame.md"), "# tokens\n");
   write(
     join(project, "STORYBOARD.md"),
@@ -110,7 +110,7 @@ test("a qualified `compose` still selects no blueprint", () => {
 
 test("a blueprint with no file fails the run instead of shipping an empty section", () => {
   const project = mkdtempSync(join(tmpdir(), "plv-blueprint-missing-"));
-  const outDir = join(project, ".hyperframes", "frame-packets");
+  const outDir = join(project, ".tagreel", "frame-packets");
   write(join(project, "frame.md"), "# tokens\n");
   write(
     join(project, "STORYBOARD.md"),
@@ -125,7 +125,7 @@ test("a blueprint with no file fails the run instead of shipping an empty sectio
 });
 
 test("an uninstalled animation skill degrades with a warning, it does not fail the run", () => {
-  // hyperframes-animation installs on demand, so an absent blueprints/ means the
+  // tagreel-animation installs on demand, so an absent blueprints/ means the
   // library isn't there yet — not that the frame named a bad id. Matches how an
   // absent rules/ already behaves.
   const project = mkdtempSync(join(tmpdir(), "plv-blueprint-uninstalled-"));

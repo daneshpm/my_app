@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":353}}
   attribution={{"path":"registry/components/locked-nucleus-orbit","tags":["motion-primitive","intro","reveal","orbit","lockup","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/locked-nucleus-orbit/locked-nucleus-orbit.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/locked-nucleus-orbit/locked-nucleus-orbit.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html locked-nucleus-orbit.html
 <!doctype html>
 <!--
-  locked-nucleus-orbit: HyperFrames video primitive (intros / reveals / orbit)
+  locked-nucleus-orbit: Tagreel video primitive (intros / reveals / orbit)
 
   One nucleus stays dead center for the full composition. Satellite rings and
   copy chips fade in while orbiting on deterministic index-based phases, then
@@ -248,8 +248,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var satelliteLayer = root.querySelector(".lno-satellites");
             var rings = root.querySelectorAll(".lno-ring");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentColors = {
@@ -382,7 +382,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add locked-nucleus-orbit" item="locked-nucleus-orbit" />
+<InstallCommand command="npx tagreel add locked-nucleus-orbit" item="locked-nucleus-orbit" />
 
 That writes one file: `compositions/components/locked-nucleus-orbit.html`.
 

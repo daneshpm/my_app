@@ -1,5 +1,5 @@
 // Real gsap: the ease the parser reports for keyframes must be the one GSAP plays.
-import { parseGsapScriptAcorn } from "@hyperframes/core/gsap-parser-acorn";
+import { parseGsapScriptAcorn } from "@tagreel/core/gsap-parser-acorn";
 import { gsap } from "gsap";
 import { describe, expect, it } from "vitest";
 

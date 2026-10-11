@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "logo-sting",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Logo Sting",
   "description": "A wordmark slams into its final scale, fires one accent ring and one white impact frame, then holds completely still.",
   "tags": ["motion-primitive", "brand", "logo", "sting", "impact", "reveal"],
@@ -14,7 +14,7 @@
     {
       "path": "logo-sting.html",
       "target": "compositions/components/logo-sting.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -24,7 +24,7 @@
       "role": "content",
       "label": "Wordmark",
       "description": "Brand name displayed in the final lockup.",
-      "default": "HYPERFRAMES"
+      "default": "TAGREEL"
     },
     {
       "id": "accent",

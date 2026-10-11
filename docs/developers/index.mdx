@@ -23,9 +23,9 @@ video, start with the [first-video guide](/quickstart).
 Create a blank project and open it in Studio:
 
 ```bash
-npx hyperframes init my-video --example blank
+npx tagreel init my-video --example blank
 cd my-video
-npx hyperframes preview
+npx tagreel preview
 ```
 
 The project is ordinary HTML. A composition starts with this root:
@@ -50,8 +50,8 @@ HTML and CSS control what appears; `data-*` attributes control when it appears.
 When the project is ready:
 
 ```bash
-npx hyperframes check
-npx hyperframes render --output video.mp4
+npx tagreel check
+npx tagreel render --output video.mp4
 ```
 
 ## Add my_app to an application
@@ -69,7 +69,7 @@ Choose the smallest surface that completes the job:
     Embed a composition and control playback.
   </Card>
   <Card title="Rendering infrastructure" icon="cloud" href="/deploy/overview">
-    Render from a Node service, managed cloud, or infrastructure you operate.
+    Render from a Node service or infrastructure you operate.
   </Card>
 </CardGroup>
 

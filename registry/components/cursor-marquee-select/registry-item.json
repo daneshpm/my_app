@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cursor-marquee-select",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Marquee Select Cursor",
   "description": "A cursor drags a selection rectangle across a photo grid; each tile rings and pops a check the frame the rectangle touches it, while a pill counts the selection up.",
   "tags": ["cursor", "motion-primitive", "select", "marquee", "grid", "product-demo"],
@@ -9,7 +9,7 @@
     {
       "path": "cursor-marquee-select.html",
       "target": "compositions/components/cursor-marquee-select.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "jobs": ["demonstrate"],

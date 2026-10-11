@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "drift-hold",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Drift Hold",
   "description": "A centered content card stays subtly alive through loop-exact rotation, scale breathing, and a slow light sweep.",
   "tags": ["motion-primitive", "camera", "ambient", "drift", "hold", "loopable"],
@@ -13,7 +13,7 @@
     {
       "path": "drift-hold.html",
       "target": "compositions/components/drift-hold.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -17,7 +17,7 @@ import {
   type AutomationRange,
   type HfAutomationLane,
   type HfAutomationPoint,
-} from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-automation";
 import { fromUnit, toUnit } from "./automationLaneGeometry";
 import { pointsIn } from "./automationLaneSelection";
 

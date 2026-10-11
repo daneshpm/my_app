@@ -26,7 +26,7 @@ snaps to zero velocity mid-flight).
 | ----------- | ------ | ------------------------------------ | ------------------------------------------------------------------------- |
 | `title`     | string | `Render complete`                    | the notification title line                                               |
 | `body`      | string | `launch-cut.mp4 is ready to preview` | one body line; long lines truncate with an ellipsis                       |
-| `app_label` | string | `HyperFrames`                        | small-caps app name row; empty string hides the row                       |
+| `app_label` | string | `Tagreel`                            | small-caps app name row; empty string hides the row                       |
 | `os`        | enum   | `ios`                                | `ios` = wide centered banner, `macos` = compact top-right banner          |
 | `at`        | number | `0.3`                                | seconds after mount start when the drop begins (clamped before any exit)  |
 | `accent`    | enum   | `green`                              | `green` maps to `--brand`, `blue` to `--accent`, `violet` to `--accent-2` |
@@ -70,7 +70,7 @@ Rules:
 Install, then fill the slot with a product screenshot:
 
 ```bash
-npx hyperframes add native-notification-pop
+npx tagreel add native-notification-pop
 ```
 
 In `compositions/components/native-notification-pop.html`, replace the

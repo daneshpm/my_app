@@ -1,4 +1,4 @@
-export const TIMELINE_COMPOSITION_MIME = "application/x-hyperframes-composition";
+export const TIMELINE_COMPOSITION_MIME = "application/x-tagreel-composition";
 
 export interface TimelineCompositionPayload {
   sourcePath: string;

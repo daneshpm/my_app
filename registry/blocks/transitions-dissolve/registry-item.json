@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "transitions-dissolve",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Dissolve Transitions",
   "description": "Showcase of dissolve and fade transitions",
   "tags": ["transition", "showcase", "crossfade"],
@@ -14,11 +14,7 @@
     {
       "path": "transitions-dissolve.html",
       "target": "compositions/transitions-dissolve.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/transitions-dissolve.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/transitions-dissolve.png"
-  }
+  ]
 }

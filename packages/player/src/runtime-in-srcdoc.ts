@@ -8,8 +8,8 @@
  * A component is markup pasted into a composition, and it reads its values in
  * an inline IIFE that runs while the body is being parsed:
  *
- *     var vars = window.__hyperframes && window.__hyperframes.getVariables
- *       ? window.__hyperframes.getVariables()
+ *     var vars = window.__tagreel && window.__tagreel.getVariables
+ *       ? window.__tagreel.getVariables()
  *       : {};
  *
  * With the runtime arriving afterwards, that guard always took the empty
@@ -29,7 +29,7 @@ function alreadyHasRuntime(html: string, runtimeUrl: string): boolean {
   if (html.includes(runtimeUrl)) return true;
   // The engine inlines the runtime rather than linking it, and it defines this
   // global on the way in. Matching the source avoids a second, redundant copy.
-  return /hyperframe\.runtime\.iife\.js|__hyperframes\s*=/.test(html);
+  return /tagreel\.runtime\.iife\.js|__tagreel\s*=/.test(html);
 }
 
 type OpeningTag = { index: number; end: number };

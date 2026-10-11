@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":188}}
   attribution={{"path":"registry/components/titlecard-calm","tags":["motion-primitive","typography","title-card","calm","orient"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/titlecard-calm/titlecard-calm.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/titlecard-calm/titlecard-calm.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html titlecard-calm.html
 <!doctype html>
 <!--
-  titlecard-calm: HyperFrames video primitive (typography / calm / orient)
+  titlecard-calm: Tagreel video primitive (typography / calm / orient)
 
   Concept: a restrained title card led by a small mono kicker and a large
   grotesque headline. The kicker fades and rises first, then the headline
@@ -150,8 +150,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var kicker = root.querySelector(".tc-kicker");
             var headline = root.querySelector(".tc-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var headlineText = vars.headline == null ? "Less, but better" : String(vars.headline);
@@ -217,7 +217,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add titlecard-calm" item="titlecard-calm" />
+<InstallCommand command="npx tagreel add titlecard-calm" item="titlecard-calm" />
 
 That writes one file: `compositions/components/titlecard-calm.html`.
 

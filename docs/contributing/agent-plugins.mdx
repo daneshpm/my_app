@@ -20,11 +20,11 @@ bun run package:codex-plugin
 
 The portable builder writes these files under `dist/`:
 
-- `hyperframes-agent-plugin.zip`: a `hyperframes/` root with manifests, skills,
+- `tagreel-agent-plugin.zip`: a `tagreel/` root with manifests, skills,
   the skill catalog, brand assets, and license.
-- `hyperframes-agent-plugin.json`: source commit, version, skill inventory,
+- `tagreel-agent-plugin.json`: source commit, version, skill inventory,
   archive size, and SHA-256.
-- `hyperframes-agent-plugin.sha256`: the archive checksum.
+- `tagreel-agent-plugin.sha256`: the archive checksum.
 
 The publish workflow attaches the portable files to the GitHub release after npm
 publication. The Codex ZIP remains a separate submission artifact. Building it
@@ -49,7 +49,7 @@ does not update the OpenAI directory listing.
    in the PR/release notes. Mark unavailable clients as unverified.
 
 The Claude marketplace keeps the old `core-skills` install identity for migration;
-new users should install `hyperframes@hyperframes`. Do not remove the old entry
+new users should install `tagreel@tagreel`. Do not remove the old entry
 without testing migration on supported Claude versions.
 
 ## Distribution status and rollback

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":316}}
   attribution={{"path":"registry/components/per-word-rise","tags":["motion-primitive","text-effects","typography","stagger","reveal"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/per-word-rise/per-word-rise.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/per-word-rise/per-word-rise.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html per-word-rise.html
 <!doctype html>
 <!--
-  per-word-rise: HyperFrames video primitive (text effects / reveal)
+  per-word-rise: Tagreel video primitive (text effects / reveal)
 
   Words, or characters through the split variable, rise into place with a
   controlled cascade and a small blur-to-sharp settle. Each unit lands with
@@ -153,8 +153,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var stage = root.querySelector(".pwr-stage");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "WORDS IN MOTION" : String(vars.text);
@@ -345,7 +345,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add per-word-rise" item="per-word-rise" />
+<InstallCommand command="npx tagreel add per-word-rise" item="per-word-rise" />
 
 That writes one file: `compositions/components/per-word-rise.html`.
 

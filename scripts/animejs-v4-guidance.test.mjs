@@ -12,11 +12,11 @@ const guidance = [
     required: ["anime.animate", "anime.createTimeline"],
   },
   {
-    path: "skills/hyperframes-animation/adapters/animejs.md",
+    path: "skills/tagreel-animation/adapters/animejs.md",
     required: ["anime.animate", "anime.createTimeline"],
   },
   {
-    path: "skills/hyperframes-keyframes/references/keyframe-patterns.md",
+    path: "skills/tagreel-keyframes/references/keyframe-patterns.md",
     required: ["anime.createTimeline"],
   },
 ];

@@ -8,9 +8,9 @@ import {
   snapLaneTime,
   toUnit,
 } from "./automationLaneGeometry";
-import { applyCurve, sampleAutomationLane } from "@hyperframes/core/audio-automation";
-import { resolveAutomationRange, VOLUME_RANGE } from "@hyperframes/core/audio-automation";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
+import { applyCurve, sampleAutomationLane } from "@tagreel/core/audio-automation";
+import { resolveAutomationRange, VOLUME_RANGE } from "@tagreel/core/audio-automation";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
 
 const chain: HfAudioFxChain = {
   version: 1,

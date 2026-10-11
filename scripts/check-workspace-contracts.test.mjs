@@ -17,7 +17,7 @@ describe("workspace contract checker", () => {
       REQUIRED_WORKSPACE_SCRIPTS.map(
         (script) =>
           `packages/example: missing executable \`${script}\` script or ` +
-          `hyperframesWorkspaceContract.${script} opt-out with a specific reason`,
+          `tagreelWorkspaceContract.${script} opt-out with a specific reason`,
       ),
     );
   });
@@ -25,7 +25,7 @@ describe("workspace contract checker", () => {
   it("accepts an explicit opt-out only when it has a specific reason", () => {
     const pkg = {
       scripts: { build: "build", typecheck: "typecheck" },
-      hyperframesWorkspaceContract: {
+      tagreelWorkspaceContract: {
         test: {
           optOut: true,
           reason: "Generated fixture validated by the owning package integration suite.",
@@ -34,7 +34,7 @@ describe("workspace contract checker", () => {
     };
     assert.deepEqual(listWorkspaceContractIssues("packages/example", pkg), []);
 
-    pkg.hyperframesWorkspaceContract.test.reason = "no tests";
+    pkg.tagreelWorkspaceContract.test.reason = "no tests";
     assert.equal(listWorkspaceContractIssues("packages/example", pkg).length, 1);
   });
 });

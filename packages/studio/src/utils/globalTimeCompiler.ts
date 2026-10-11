@@ -1,5 +1,5 @@
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
-import { GSAP_DEFAULT_DURATION } from "@hyperframes/parsers/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
+import { GSAP_DEFAULT_DURATION } from "@tagreel/parsers/gsap-parser";
 import { progressAtTime, runEaseOf, timeAtProgress } from "./gsapKeyframeEases";
 
 export function absoluteToPercentage(

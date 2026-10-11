@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * transcribe.cjs — word-level transcription via hyperframes' native Whisper
+ * transcribe.cjs — word-level transcription via tagreel' native Whisper
  * (replaces the Python ElevenLabs Scribe path; no Python, no API key).
  *
  *   node transcribe.cjs <project-dir> [model] [language]
@@ -109,7 +109,7 @@ function main() {
   const out = path.join(project, "transcript.json");
 
   // already in our schema? skip — but validate the SHAPE, not just the keys:
-  // `hyperframes init` drops a whisper.cpp segment/token-format transcript.json
+  // `tagreel init` drops a whisper.cpp segment/token-format transcript.json
   // (offsets-in-ms, nested tokens) that can carry a `words` key yet poison the
   // compilers. Only a word-level {text,start,end} array counts as normalized.
   try {
@@ -154,7 +154,7 @@ function main() {
 
   // ── engine: WhisperX (preferred — wav2vec2 forced alignment gives word timings far
   // tighter than whisper.cpp's segment-interpolated ones; our gates are 80ms-strict) →
-  // fallback hyperframes whisper.cpp. Force with TRANSCRIBE_ENGINE=whisper|whisperx.
+  // fallback tagreel whisper.cpp. Force with TRANSCRIBE_ENGINE=whisper|whisperx.
   let words = null,
     engine = null;
   const wantWx = (process.env.TRANSCRIBE_ENGINE || "whisperx") === "whisperx";
@@ -238,7 +238,7 @@ function main() {
   }
 
   if (!words) {
-    // run hyperframes Whisper → writes a flat word array to <dir>/transcript.json
+    // run tagreel Whisper → writes a flat word array to <dir>/transcript.json
     const cli = hfCli();
     const args = ["transcribe", audio, "-d", project, "--json", "--model", model];
     if (language) args.push("--language", language);
@@ -248,7 +248,7 @@ function main() {
       const line = so.trim().split("\n").filter(Boolean).pop();
       info = JSON.parse(line);
     } catch (e) {
-      console.error("[transcribe] hyperframes whisper failed:", e.message);
+      console.error("[transcribe] tagreel whisper failed:", e.message);
       process.exit(1);
     }
     const flatPath = info.transcriptPath || out;

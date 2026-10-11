@@ -15,7 +15,7 @@ import {
   clampFadesToDuration,
   formatFadeSeconds,
   type AudioFades,
-} from "@hyperframes/core/audio-fade";
+} from "@tagreel/core/audio-fade";
 import { usePlayerStore, type TimelineElement } from "../store/playerStore";
 import { Tooltip } from "../../components/ui";
 import { useTimelineEditContextOptional } from "../../contexts/TimelineEditContext";

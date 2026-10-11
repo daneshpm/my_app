@@ -1,5 +1,5 @@
 {
-  "package": "@hyperframes/aws-lambda",
+  "package": "@tagreel/aws-lambda",
   "subpaths": {
     ".": {
       "source": "./src/index.ts",

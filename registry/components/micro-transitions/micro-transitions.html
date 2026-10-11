@@ -1,5 +1,5 @@
 <!--
-  Micro Transitions - transitions.dev-inspired UI motion pack for HyperFrames.
+  Micro Transitions - transitions.dev-inspired UI motion pack for Tagreel.
 
   Includes six app-transition patterns in one copy-paste snippet:
     badge pop, dropdown reveal, modal open, tab indicator, tooltip appear,
@@ -220,9 +220,7 @@
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
-        : {};
+      window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
     // Unrecognised overrides return to their declared defaults.
     function pick(table, value, fallback) {

@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 import { act } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { audioGainToDb } from "@hyperframes/core/audio-gain";
+import { audioGainToDb } from "@tagreel/core/audio-gain";
 import { createHappyDomRootHarness } from "./testRootHarness";
 import { AudioGainDialog } from "./AudioGainDialog";
 import { usePlayerStore } from "../store/playerStore";

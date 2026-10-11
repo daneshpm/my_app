@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":399}}
   attribution={{"path":"registry/components/tracing-beam","tags":["motion-primitive","product-demo","attention","beam","path","spotlight"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/tracing-beam/tracing-beam.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/tracing-beam/tracing-beam.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html tracing-beam.html
 <!doctype html>
 <!--
-  tracing-beam: HyperFrames video primitive (product-demo / attention)
+  tracing-beam: Tagreel video primitive (product-demo / attention)
 
   Concept: one glowing dash follows one authored SVG path through three UI
   elements. Each element brightens and lifts on arrival, then settles as the
@@ -297,8 +297,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var nodes = root.querySelectorAll(".tb-node");
             var labels = root.querySelectorAll(".tb-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var defaultLabels = ["Search", "Preview", "Export"];
@@ -428,7 +428,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add tracing-beam" item="tracing-beam" />
+<InstallCommand command="npx tagreel add tracing-beam" item="tracing-beam" />
 
 That writes one file: `compositions/components/tracing-beam.html`.
 

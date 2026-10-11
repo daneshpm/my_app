@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "code-snippet-apple-terminal-pro",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Code Snippet - Apple Terminal Pro",
   "description": "Apple Terminal Pro profile: black background with grey text and lime green cursor, per-character typing animation of a shell session.",
   "tags": ["code", "developer", "showcase", "terminal", "apple", "apple-terminal"],
@@ -14,11 +14,7 @@
     {
       "path": "code-snippet-apple-terminal-pro.html",
       "target": "compositions/code-snippet-apple-terminal-pro.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/code-snippet-apple-terminal-pro.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/code-snippet-apple-terminal-pro.png"
-  }
+  ]
 }

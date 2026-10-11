@@ -54,7 +54,7 @@ import {
   parseAuthoredTrack,
 } from "./timeline";
 import { findRootCompositionElement, parseLayoutDimension } from "./compositionDimension";
-import { resolveCompositionDuration } from "@hyperframes/parsers/composition-duration";
+import { resolveCompositionDuration } from "@tagreel/parsers/composition-duration";
 import {
   MIN_VALID_TIMELINE_DURATION_SECONDS,
   readCompositionSize,
@@ -451,7 +451,7 @@ export function initSandboxRuntimeModular(): void {
       rawFps: exportRenderFps.rawFps,
       fallbackReason: exportRenderFps.fallbackReason,
     });
-    console.info(`[hyperframes] render runtime fps ${fpsDetail}`);
+    console.info(`[tagreel] render runtime fps ${fpsDetail}`);
   }
   let colorGradingRuntime: RuntimeColorGradingApi | null = null;
   let runtimeErrorListener: ((event: ErrorEvent) => void) | null = null;
@@ -741,7 +741,7 @@ export function initSandboxRuntimeModular(): void {
     if (forcedHeight) rootEl.style.setProperty("--comp-height", forcedHeight);
     // A scaffolded project's `html, body` CSS is fixed at init time to whatever
     // resolution the template shipped with. An agent that edits ONLY the root's
-    // data-width/data-height (without `hyperframes init --resolution`, which
+    // data-width/data-height (without `tagreel init --resolution`, which
     // rewrites html/body together with the root) leaves body at the stale
     // size, so its `overflow: hidden` (set unconditionally above, to keep
     // browser-default margins from bleeding into renders as white bars)
@@ -2434,7 +2434,7 @@ export function initSandboxRuntimeModular(): void {
       mediaEl.addEventListener("loadedmetadata", scheduleMetadataDurationHydration);
       mediaEl.addEventListener("durationchange", scheduleMetadataDurationHydration);
       // Web Audio eligibility, reported at DISCOVERY rather than only at
-      // schedule time. `hyperframes check` seeks, it never calls play(), so a
+      // schedule time. `tagreel check` seeks, it never calls play(), so a
       // diagnostic raised from the transport would be invisible to the one
       // gate whose job is to surface exactly this class of silent failure.
       // Bound twice on purpose: now, for a `src`/committed-`currentSrc`
@@ -4075,7 +4075,7 @@ export function initSandboxRuntimeModular(): void {
         );
         // eslint-disable-next-line no-console -- loud author-facing warning; this render would otherwise freeze at t=0
         console.warn(
-          `[hyperframes] Root timeline not bound — render will freeze at t=0. ` +
+          `[tagreel] Root timeline not bound — render will freeze at t=0. ` +
             (rootCompositionId
               ? `Root data-composition-id is "${rootCompositionId}" but window.__timelines has no such key. `
               : `Root composition element has no data-composition-id. `) +

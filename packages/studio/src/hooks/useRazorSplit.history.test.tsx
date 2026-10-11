@@ -2,8 +2,8 @@
 
 import { act } from "react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { ensureHfIds } from "@hyperframes/parsers/hf-ids";
-import { splitElementInHtml } from "@hyperframes/studio-server/source-mutation";
+import { ensureHfIds } from "@tagreel/parsers/hf-ids";
+import { splitElementInHtml } from "@tagreel/studio-server/source-mutation";
 import type { TimelineElement } from "../player";
 import { usePlayerStore } from "../player";
 import { useRazorSplit } from "./useRazorSplit";

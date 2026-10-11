@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "ai-answer-rank",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "AI Answer Rank",
   "description": "Is your brand in the AI answer? A question types into a chat card, the assistant answers with a ranked list of three picks, then re-ranks: the promoted brand slides into its slot, the picks below step down, and the brand row lands with the one accent highlight and a check. For answer-engine and AI-visibility marketing",
   "tags": ["mock-ui", "ai", "chat", "ranking", "list", "marketing", "ad-template", "square"],
@@ -116,12 +116,12 @@
     {
       "path": "ai-answer-rank.html",
       "target": "compositions/ai-answer-rank.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "TEMPLATE.md",
       "target": "TEMPLATE.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
   ]
 }

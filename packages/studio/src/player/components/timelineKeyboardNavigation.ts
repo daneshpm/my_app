@@ -1,4 +1,4 @@
-import type { GsapAnimation, PropertyGroupName } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation, PropertyGroupName } from "@tagreel/core/gsap-parser";
 import type { TimelineElement } from "../store/playerStore";
 import { getTimelinePropertyLanes } from "./TimelinePropertyLanes";
 import { groupAutomationLanes } from "./automationLaneData";

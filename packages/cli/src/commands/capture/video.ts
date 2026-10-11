@@ -197,7 +197,7 @@ export async function runVideoMode(args: VideoModeArgs): Promise<void> {
   if (!existsSync(manifestPath)) {
     console.error(
       `${c.error("✗")} no video-manifest.json at ${directPath} or ${w2hPath}\n` +
-        `  Was this directory produced by \`hyperframes capture\`?`,
+        `  Was this directory produced by \`tagreel capture\`?`,
     );
     setCommandExitCode(1);
     return;

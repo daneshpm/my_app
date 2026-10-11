@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":136}}
   attribution={{"path":"registry/components/perspective-marquee","tags":["motion-primitive","typography"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/perspective-marquee/perspective-marquee.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/perspective-marquee/perspective-marquee.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html perspective-marquee.html
 <!--
-  Perspective Marquee - typography primitive for HyperFrames.
+  Perspective Marquee - typography primitive for Tagreel.
 
   Paste the markup and CSS into a composition. Drive the timeline integration
   from a paused GSAP timeline so renders remain deterministic.
@@ -101,8 +101,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -165,7 +165,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add perspective-marquee" item="perspective-marquee" />
+<InstallCommand command="npx tagreel add perspective-marquee" item="perspective-marquee" />
 
 That writes one file: `compositions/components/perspective-marquee.html`.
 

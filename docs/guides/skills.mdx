@@ -27,19 +27,19 @@ through their agent's plugin manager instead of running the commands below.
 Run the interactive installer:
 
 ```bash
-npx skills add heygen-com/hyperframes
+npx skills add daneshpm/my_app
 ```
 
-Select **Core Skills**. The `/hyperframes` router installs a specialized creation workflow when the request needs one, so you do not need the full catalog up front.
+Select **Core Skills**. The `/tagreel` router installs a specialized creation workflow when the request needs one, so you do not need the full catalog up front.
 
-Start a fresh agent chat after installation, then ask it to use `/hyperframes`.
+Start a fresh agent chat after installation, then ask it to use `/tagreel`.
 
 ## Install or refresh from an agent
 
 For a non-interactive agent or CI environment, use:
 
 ```bash
-npx hyperframes skills update
+npx tagreel skills update
 ```
 
 This installs or refreshes the core set and any my_app skills already present in the global install, then links those bundles into compatible installed agents. It does not add every optional workflow.
@@ -47,43 +47,42 @@ This installs or refreshes the core set and any my_app skills already present in
 Check freshness without changing anything:
 
 ```bash
-npx hyperframes skills check
+npx tagreel skills check
 ```
 
 Install or refresh one workflow explicitly:
 
 ```bash
-npx hyperframes skills update pr-to-video
+npx tagreel skills update pr-to-video
 ```
 
 ## Use the skills in GitHub Copilot CLI
 
-Run `npx hyperframes skills update`, open the project, and start Copilot:
+Run `npx tagreel skills update`, open the project, and start Copilot:
 
 ```bash
 copilot
 ```
 
 If Copilot was already running, use `/skills reload`. Use `/skills list` or
-`/skills info hyperframes` to confirm discovery. GitHub's [current skills
+`/skills info tagreel` to confirm discovery. GitHub's [current skills
 guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills)
 lists its project and personal skill locations.
 
 Both agents can use the same first request:
 
 ```text
-Using /hyperframes, make a 10-second product intro for https://example.com.
+Using /tagreel, make a 10-second product intro for https://example.com.
 ```
 
-Continue in the same conversation for revisions. For hosted creation instead
-of a local project, use the [my_app MCP guide](/guides/mcp).
+Continue in the same conversation for revisions.
 
 ## Use the skills in Google Antigravity
 
 Install the skills from the root of the project you open in Antigravity:
 
 ```bash
-npx skills add heygen-com/hyperframes
+npx skills add daneshpm/my_app
 ```
 
 Select **Core Skills** and **Antigravity**. This uses Antigravity's supported
@@ -96,19 +95,19 @@ before managing that directory by hand.
 
 ## Use the skills in IBM Bob
 
-Run `npx hyperframes skills update`, then open or restart Bob Shell in the
+Run `npx tagreel skills update`, then open or restart Bob Shell in the
 project folder so it discovers the skills linked under `~/.bob/skills`:
 
 ```bash
 bob
 ```
 
-Ask Bob to use `/hyperframes` for the first request. Running the update again
+Ask Bob to use `/tagreel` for the first request. Running the update again
 refreshes the same global skill bundles without changing the project format.
 
 ## Let the router choose
 
-The normal entry point is `/hyperframes`. It confirms the important intent, then selects a workflow from the input:
+The normal entry point is `/tagreel`. It confirms the important intent, then selects a workflow from the input:
 
 | You provide | Workflow |
 | --- | --- |
@@ -129,15 +128,15 @@ You can invoke a workflow directly when you already know it is the right one, bu
 Install the complete published set deliberately with:
 
 ```bash
-npx hyperframes skills
+npx tagreel skills
 ```
 
-`npx skills add heygen-com/hyperframes --all` also installs the complete published set. Repo-internal skills are excluded by default.
+`npx skills add daneshpm/my_app --all` also installs the complete published set. Repo-internal skills are excluded by default.
 
 Or install one named skill:
 
 ```bash
-npx skills add heygen-com/hyperframes --skill hyperframes-animation
+npx skills add daneshpm/my_app --skill tagreel-animation
 ```
 
 Use the full set for an environment that must work across many my_app tasks without fetching later. For a normal project, the core set is smaller and easier to keep current.
@@ -146,14 +145,13 @@ Use the full set for an environment that must work across many my_app tasks with
 
 1. Start a new agent session.
 2. Confirm that the project or global skill directory belongs to the agent you are using.
-3. Run `npx hyperframes skills check`.
-4. Run `npx hyperframes skills update` when the check reports a missing or stale core skill.
+3. Run `npx tagreel skills check`.
+4. Run `npx tagreel skills update` when the check reports a missing or stale core skill.
 
 The individual skill definitions remain the source of truth for agents and are
-available in the [my_app repository](https://github.com/heygen-com/hyperframes/tree/main/skills).
+available in the [my_app repository](https://github.com/daneshpm/my_app/tree/main/skills).
 
 ## Related topics
 
 - [Make your first video](/quickstart)
 - [Choose a specific creation workflow](/workflows)
-- [Use authentication and hosted services](/guides/authentication)

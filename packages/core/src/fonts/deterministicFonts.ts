@@ -1058,7 +1058,7 @@ function warnUnresolvedFonts(unresolved: string[], log: FontLogger): void {
       `    2. Add a @font-face block in your HTML with a local or hosted font file\n` +
       `    3. Install the font locally on the render machine (Docker: add to Dockerfile)\n` +
       `    4. Add an alias to FONT_ALIAS_MAP in packages/core/src/fonts/aliases.ts (for contributors)\n` +
-      `  Docs: https://hyperframes.heygen.com/docs/fonts`,
+      `  Docs: https://github.com/daneshpm/my_app/tree/main/docs/docs/fonts`,
   );
 }
 
@@ -1070,17 +1070,17 @@ let lambdaFontCacheRoot: string | undefined;
 
 // On AWS Lambda `$HOME` resolves to a `/home/sbx_*` tree that's read-only;
 // only `/tmp` is writable. Create one private, unguessable cache directory per
-// warm process and reuse it across invocations. Honor HYPERFRAMES_FONT_CACHE_DIR
+// warm process and reuse it across invocations. Honor TAGREEL_FONT_CACHE_DIR
 // as an explicit override for any environment.
 function resolveFontCacheRoot(): string {
-  if (process.env.HYPERFRAMES_FONT_CACHE_DIR) {
-    return process.env.HYPERFRAMES_FONT_CACHE_DIR;
+  if (process.env.TAGREEL_FONT_CACHE_DIR) {
+    return process.env.TAGREEL_FONT_CACHE_DIR;
   }
   if (process.env.AWS_LAMBDA_FUNCTION_NAME) {
-    lambdaFontCacheRoot ??= mkdtempSync(join(tmpdir(), "hyperframes-fonts-"));
+    lambdaFontCacheRoot ??= mkdtempSync(join(tmpdir(), "tagreel-fonts-"));
     return lambdaFontCacheRoot;
   }
-  return join(homedir(), ".cache", "hyperframes", "fonts");
+  return join(homedir(), ".cache", "tagreel", "fonts");
 }
 
 // Chrome UA triggers woff2 responses from Google Fonts CSS API
@@ -1103,7 +1103,7 @@ function fontCacheDir(slug: string): string {
       mkdirSync(dir, { recursive: true });
     } catch {
       const firstFallback = ephemeralFontCacheRoot === undefined;
-      ephemeralFontCacheRoot ??= mkdtempSync(join(tmpdir(), "hyperframes-fonts-"));
+      ephemeralFontCacheRoot ??= mkdtempSync(join(tmpdir(), "tagreel-fonts-"));
       const fallback = join(ephemeralFontCacheRoot, slug);
       mkdirSync(fallback, { recursive: true });
       if (firstFallback) {
@@ -1933,7 +1933,7 @@ export async function injectDeterministicFontFaces(
   }
 
   const styleEl = document.createElement("style");
-  styleEl.setAttribute("data-hyperframes-deterministic-fonts", "true");
+  styleEl.setAttribute("data-tagreel-deterministic-fonts", "true");
   styleEl.textContent = css;
   placeAfterEveryStylesheet(document, head, styleEl);
 

@@ -1,4 +1,4 @@
-import type { GsapAnimation, GsapPercentageKeyframe } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation, GsapPercentageKeyframe } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import { usePlayerStore } from "../player/store/playerStore";
 import {

@@ -3,7 +3,7 @@
  * Shared by the overlay and its diagnostics (kept here to avoid a circular
  * import between the two).
  */
-import type { GsapAnimation } from "@hyperframes/parsers/gsap-parser";
+import type { GsapAnimation } from "@tagreel/parsers/gsap-parser";
 import type { DomEditSelection } from "./domEditing";
 import { tweenTargetsElement, writeTargetSelector } from "../../hooks/gsapShared";
 

@@ -115,9 +115,7 @@
         var vars = Object.assign(
           {},
           defaults,
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
-            : {},
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {},
         );
 
         // ── 2. FONT PRESET LIBRARY (preset many — the keyword cycles these) ─

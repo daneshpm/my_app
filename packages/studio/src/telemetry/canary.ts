@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 // Studio (browser) binding for the shared canary registry.
 //
-// `@hyperframes/core` owns the decision and is deliberately pure — the caller
+// `@tagreel/core` owns the decision and is deliberately pure — the caller
 // supplies the unit id, the override and the exclusion. This file supplies
 // those three from the browser, mirroring `packages/cli/src/telemetry/canary.ts`
 // for the CLI. The public API is deliberately identical on both surfaces:
@@ -29,7 +29,7 @@
 //    signal, and nothing learned about real users.
 // ---------------------------------------------------------------------------
 
-// Deep subpath imports, NOT the "@hyperframes/core" barrel. Studio is a
+// Deep subpath imports, NOT the "@tagreel/core" barrel. Studio is a
 // browser bundle, and the barrel re-exports the whole core surface (parsers,
 // lint, studio-server); pulling that in here drags a Node-oriented dependency
 // graph into the bundle. These two modules are pure and leaf.
@@ -38,8 +38,8 @@ import {
   evaluateCanary,
   parseCanaryOverride,
   type CanaryDecision,
-} from "@hyperframes/core/canary";
-import { CANARIES, findCanary } from "@hyperframes/core/canary-registry";
+} from "@tagreel/core/canary";
+import { CANARIES, findCanary } from "@tagreel/core/canary-registry";
 import { resolveStudioDistinctId } from "./distinctId";
 import { browserTelemetryAllowed } from "./policy";
 import { safeSessionStorage } from "../utils/safeStorage";
@@ -106,7 +106,7 @@ function resolveBucketUnit(): string {
   return resolveStudioDistinctId();
 }
 
-const STORAGE_PREFIX = "hyperframes-studio:canary:";
+const STORAGE_PREFIX = "tagreel-studio:canary:";
 
 /**
  * Resolve a manual override for one canary.
@@ -215,7 +215,7 @@ function decideStudioCanary(name: string): CanaryDecision {
     if (!browserTelemetryAllowed()) return { enabled: false, reason: "telemetry_opt_out" };
     // Studio's exclusion is its own to apply: the CLI cannot see
     // navigator.webdriver, so adopting its cohort decision verbatim enrolled
-    // Playwright/Puppeteer sessions driving a local `hyperframes preview` —
+    // Playwright/Puppeteer sessions driving a local `tagreel preview` —
     // each minting a fresh localStorage id, precisely the ephemeral-id noise
     // the exclusion exists to keep out of the rollout signal.
     if (isAutomatedBrowser()) return { enabled: false, reason: "excluded" };
@@ -257,7 +257,7 @@ export function isCanaryEnabled(name: string): boolean {
 }
 
 /**
- * Canary assignments as PostHog flag properties (`$feature/canary-<name>`)
+ * Canary assignments as analytics flag properties (`$feature/canary-<name>`)
  * plus their `canary_reason_<name>`, attached to every Studio event so any
  * metric can be split by cohort — identical shape to the CLI, so a rollout
  * spanning both reads as one flag.

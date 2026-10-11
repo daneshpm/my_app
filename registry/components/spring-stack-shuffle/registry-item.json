@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "spring-stack-shuffle",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Spring Stack Shuffle",
   "description": "A stack of 3 to 5 slotted cards reshuffles on cues: the back card throws over the top and lands at the front with real mass, the rest compress and resettle; cues that land mid-flight redirect the moving cards with velocity preserved.",
   "tags": ["motion-primitive", "product-demo", "physics", "stack", "interruptible-spring"],
@@ -14,7 +14,7 @@
     {
       "path": "spring-stack-shuffle.html",
       "target": "compositions/components/spring-stack-shuffle.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

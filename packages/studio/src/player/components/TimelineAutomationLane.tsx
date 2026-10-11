@@ -26,7 +26,7 @@ import {
   type HfAutomation,
   type HfAutomationLane,
   type HfAutomationPoint,
-} from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-automation";
 import type { TimelineEditOutcome } from "../../hooks/timelineEditPermission";
 import { envelopePath, fromUnit, laneFor, PAD_X, toUnit, withLane } from "./automationLaneGeometry";
 import { useAutomationLaneGestures } from "./useAutomationLaneGestures";

@@ -12,7 +12,7 @@ import {
   mintAudioFxNodeId,
   type HfAudioFxChain,
   type HfAudioFxNode,
-} from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-fx";
 import {
   analyseCarveBands,
   analyseCarveDuck,
@@ -20,8 +20,8 @@ import {
   carveBandsToChain,
   carveProfile,
   mixCarveSources,
-} from "@hyperframes/core/audio-carve";
-import { fxAutomationTarget, type HfAutomationLane } from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-carve";
+import { fxAutomationTarget, type HfAutomationLane } from "@tagreel/core/audio-automation";
 import { clipStart } from "./propertyPanelAudioFxGroupUtils.js";
 import { clipAudioOnItsClock, type ClipClock } from "./clipAudioClock.js";
 import { studioApiFetch } from "../../utils/studioApiFetch";

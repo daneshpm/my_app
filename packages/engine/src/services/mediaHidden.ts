@@ -1,5 +1,5 @@
-import { HF_AUDIO_GROUP_ATTR, resolveAudioGroups } from "@hyperframes/core/audio-groups";
-import { AUDIO_GROUP_RENDER_ID_ATTR } from "@hyperframes/core";
+import { HF_AUDIO_GROUP_ATTR, resolveAudioGroups } from "@tagreel/core/audio-groups";
+import { AUDIO_GROUP_RENDER_ID_ATTR } from "@tagreel/core";
 
 interface HiddenCheckEl {
   hasAttribute(name: string): boolean;

@@ -1,24 +1,24 @@
 ---
-title: "@hyperframes/parsers"
-description: "The GSAP + HTML parser/writer suite — standalone, zero @hyperframes/* dependencies."
+title: "@tagreel/parsers"
+description: "The GSAP + HTML parser/writer suite — standalone, zero @tagreel/* dependencies."
 ---
 
 The parsers package owns the GSAP animation parser/writer, HTML composition
 parser, hf-id stamping, and spring-ease generation. It has no
-`@hyperframes/*` runtime dependencies, so it can be used without the rest of
+`@tagreel/*` runtime dependencies, so it can be used without the rest of
 the framework.
 
 ```bash
-npm install @hyperframes/parsers
+npm install @tagreel/parsers
 ```
 
 ## When to Use
 
 <Tip>
-  **Most users do not need to install `@hyperframes/parsers` directly.** [`@hyperframes/core`](/packages/core) re-exports the parser API it needs, and the [CLI](/packages/cli) / [studio](/packages/studio) depend on it transitively. Reach for it directly only when you want the parsing layer **without** pulling in the rest of core.
+  **Most users do not need to install `@tagreel/parsers` directly.** [`@tagreel/core`](/packages/core) re-exports the parser API it needs, and the [CLI](/packages/cli) / [studio](/packages/studio) depend on it transitively. Reach for it directly only when you want the parsing layer **without** pulling in the rest of core.
 </Tip>
 
-**Use `@hyperframes/parsers` when you need to:**
+**Use `@tagreel/parsers` when you need to:**
 - Parse HTML compositions into structured TypeScript objects
 - Parse, edit, and re-serialize GSAP timeline scripts (AST round-trip)
 - Stamp deterministic `hf-id` attributes onto a document
@@ -28,22 +28,22 @@ npm install @hyperframes/parsers
 
 | Import | Description |
 |--------|-------------|
-| `@hyperframes/parsers` | HTML parser, GSAP serialize/validate helpers, hf-ids, shared types |
-| `@hyperframes/parsers/gsap-parser` | GSAP parser exports, `parseGsapScript`, `SUPPORTED_PROPS`, `SUPPORTED_EASES` |
-| `@hyperframes/parsers/gsap-parser-acorn` | Acorn-based GSAP parser (browser-safe, read path) |
-| `@hyperframes/parsers/gsap-writer-acorn` | Acorn-based GSAP writer (mutation helpers) |
-| `@hyperframes/parsers/gsap-parser-recast` | Recast-based GSAP parser/writer (legacy implementation) |
-| `@hyperframes/parsers/gsap-constants` | `SUPPORTED_PROPS`, `SUPPORTED_EASES`, property groups |
-| `@hyperframes/parsers/spring-ease` | Spring-ease curve generation |
-| `@hyperframes/parsers/hf-ids` | Deterministic element id stamping |
-| `@hyperframes/parsers/slideshow` | Slideshow manifest parser (`parseSlideshowManifest`, `resolveSlideshow`) |
-| `@hyperframes/parsers/composition` | Pure, browser-safe composition primitives (data types, font aliases, URL helper) |
-| `@hyperframes/parsers/asset-paths` | Node-only asset-path rewriting helpers (`rewriteAssetPath`, …) |
-| `@hyperframes/parsers/sub-composition-validity` | Sub-composition validation utilities |
+| `@tagreel/parsers` | HTML parser, GSAP serialize/validate helpers, hf-ids, shared types |
+| `@tagreel/parsers/gsap-parser` | GSAP parser exports, `parseGsapScript`, `SUPPORTED_PROPS`, `SUPPORTED_EASES` |
+| `@tagreel/parsers/gsap-parser-acorn` | Acorn-based GSAP parser (browser-safe, read path) |
+| `@tagreel/parsers/gsap-writer-acorn` | Acorn-based GSAP writer (mutation helpers) |
+| `@tagreel/parsers/gsap-parser-recast` | Recast-based GSAP parser/writer (legacy implementation) |
+| `@tagreel/parsers/gsap-constants` | `SUPPORTED_PROPS`, `SUPPORTED_EASES`, property groups |
+| `@tagreel/parsers/spring-ease` | Spring-ease curve generation |
+| `@tagreel/parsers/hf-ids` | Deterministic element id stamping |
+| `@tagreel/parsers/slideshow` | Slideshow manifest parser (`parseSlideshowManifest`, `resolveSlideshow`) |
+| `@tagreel/parsers/composition` | Pure, browser-safe composition primitives (data types, font aliases, URL helper) |
+| `@tagreel/parsers/asset-paths` | Node-only asset-path rewriting helpers (`rewriteAssetPath`, …) |
+| `@tagreel/parsers/sub-composition-validity` | Sub-composition validation utilities |
 
 <Info>
   The package ships focused subpath entries. Import
-  `@hyperframes/parsers/hf-ids` when you do not need the GSAP AST machinery.
+  `@tagreel/parsers/hf-ids` when you do not need the GSAP AST machinery.
 </Info>
 
 ## HTML Parsing
@@ -55,8 +55,8 @@ import {
   parseHtml,
   extractCompositionMetadata,
   validateCompositionHtml,
-} from '@hyperframes/parsers';
-import type { ParsedHtml, CompositionMetadata } from '@hyperframes/parsers';
+} from '@tagreel/parsers';
+import type { ParsedHtml, CompositionMetadata } from '@tagreel/parsers';
 
 // Parse HTML into structured data
 const parsed: ParsedHtml = parseHtml(htmlString);
@@ -77,7 +77,7 @@ import {
   updateElementInHtml,
   addElementToHtml,
   removeElementFromHtml,
-} from '@hyperframes/parsers';
+} from '@tagreel/parsers';
 
 const updated = updateElementInHtml(html, 'el-1', { start: 5 });
 const added = addElementToHtml(html, newElement);
@@ -89,7 +89,7 @@ const cleaned = removeElementFromHtml(html, 'el-1');
 The acorn parser/writer is the primary path (browser-safe). Parse a timeline script, mutate it, and serialize it back without losing surrounding code:
 
 ```typescript
-import { parseGsapScriptAcorn, extractGsapLabels } from '@hyperframes/parsers/gsap-parser-acorn';
+import { parseGsapScriptAcorn, extractGsapLabels } from '@tagreel/parsers/gsap-parser-acorn';
 import {
   updateAnimationInScript,
   addAnimationToScript,
@@ -98,8 +98,8 @@ import {
   addKeyframeToScript,
   shiftPositionsInScript,
   scalePositionsInScript,
-} from '@hyperframes/parsers/gsap-writer-acorn';
-import type { GsapAnimation, GsapMethod, ParsedGsap } from '@hyperframes/parsers';
+} from '@tagreel/parsers/gsap-writer-acorn';
+import type { GsapAnimation, GsapMethod, ParsedGsap } from '@tagreel/parsers';
 
 const parsed: ParsedGsap = parseGsapScriptAcorn(scriptContent);
 // parsed.animations, parsed.timelineVar, parsed.preamble, parsed.postamble
@@ -117,7 +117,7 @@ import {
   validateCompositionGsap,
   keyframesToGsapAnimations,
   gsapAnimationsToKeyframes,
-} from '@hyperframes/parsers';
+} from '@tagreel/parsers';
 ```
 
 ### GSAP Constants
@@ -127,8 +127,8 @@ import {
   SUPPORTED_PROPS,    // animatable properties
   SUPPORTED_EASES,    // available easing functions
   PROPERTY_GROUPS,
-} from '@hyperframes/parsers/gsap-constants';
-import type { PropertyGroupName } from '@hyperframes/parsers/gsap-constants';
+} from '@tagreel/parsers/gsap-constants';
+import type { PropertyGroupName } from '@tagreel/parsers/gsap-constants';
 ```
 
 ## hf-ids
@@ -136,7 +136,7 @@ import type { PropertyGroupName } from '@hyperframes/parsers/gsap-constants';
 Deterministic element identity for stable diffing and editing:
 
 ```typescript
-import { ensureHfIds, mintHfId } from '@hyperframes/parsers/hf-ids';
+import { ensureHfIds, mintHfId } from '@tagreel/parsers/hf-ids';
 
 // Stamp hf-id attributes onto every editable element in a document
 const withIds = ensureHfIds(htmlString);
@@ -145,19 +145,19 @@ const withIds = ensureHfIds(htmlString);
 ## Spring Ease
 
 ```typescript
-import { generateSpringEaseData, SPRING_PRESETS } from '@hyperframes/parsers/spring-ease';
+import { generateSpringEaseData, SPRING_PRESETS } from '@tagreel/parsers/spring-ease';
 ```
 
 ## Related topics
 
 <CardGroup cols={2}>
-  <Card title="@hyperframes/core" icon="cube" href="/packages/core">
+  <Card title="@tagreel/core" icon="cube" href="/packages/core">
     Types, generators, runtime, and compiler — re-exports the parser API it needs.
   </Card>
-  <Card title="@hyperframes/lint" icon="circle-check" href="/packages/lint">
+  <Card title="@tagreel/lint" icon="circle-check" href="/packages/lint">
     The composition linter, built on the parsers.
   </Card>
-  <Card title="@hyperframes/studio-server" icon="server" href="/packages/studio-server">
+  <Card title="@tagreel/studio-server" icon="server" href="/packages/studio-server">
     The studio preview server, built on the parsers.
   </Card>
   <Card title="CLI" icon="terminal" href="/packages/cli">

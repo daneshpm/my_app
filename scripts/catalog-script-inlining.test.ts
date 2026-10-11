@@ -112,12 +112,7 @@ const vendorUrls = Object.fromEntries(
 );
 /** How a loader turns fetched code into a script URL; library code may build blob URLs for its own data. */
 const BLOB_SCRIPT = /\{type:"text\/javascript"\}/;
-const INLINED_BLOCKS = [
-  "code-slice-hero",
-  "cuboid-carousel",
-  "frost-sequence-camera-orbit",
-  "orbit-card",
-];
+const INLINED_BLOCKS = ["code-slice-hero", "cuboid-carousel", "orbit-card"];
 
 function inlinedBlock(name: string): string {
   const dir = join("registry/blocks", name);
@@ -154,21 +149,6 @@ describe("catalog payloads under the docs host's script policy", () => {
 });
 
 describe("module blocks' shared catalog bundle", () => {
-  it("frost: runs the script that drives frost after frost.js, not an earlier inline script", () => {
-    const name = "frost-sequence-camera-orbit";
-    const dir = join("registry/blocks", name);
-    const out = inlineCatalogScripts(
-      name,
-      readFileSync(join(dir, `${name}.html`), "utf-8"),
-      dir,
-      vendorUrls,
-    );
-    const start = out.indexOf("<script>(function(){");
-    const bootstrap = out.slice(start, out.indexOf("})();</script>", start));
-    assert.match(bootstrap, /setRendererProfile/);
-    assert.doesNotMatch(out.replace(bootstrap, ""), /setRendererProfile/);
-  });
-
   for (const name of ["cuboid-carousel", "orbit-card"]) {
     it(`${name}: bundles its own modules and takes only three.js from the shared bundle`, () => {
       const out = inlinedBlock(name);

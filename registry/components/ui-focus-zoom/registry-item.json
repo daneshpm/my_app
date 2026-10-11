@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "ui-focus-zoom",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "UI Focus Zoom",
   "description": "A full app surface establishes with one settle, then the camera zooms and pans to an anchored region on its cue and holds the zoomed state, with an optional soft focus halo at the anchor. The surface is a slot with a token-styled skeleton default.",
   "tags": ["camera", "product-demo", "zoom", "focus", "pan", "slot", "servo"],
@@ -14,7 +14,7 @@
     {
       "path": "ui-focus-zoom.html",
       "target": "compositions/components/ui-focus-zoom.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

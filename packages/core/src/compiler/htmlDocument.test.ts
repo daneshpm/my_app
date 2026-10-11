@@ -76,7 +76,7 @@ describe("htmlDocument helpers", () => {
           import { strict as assert } from "node:assert";
           import { stripEmbeddedRuntimeScripts } from ${JSON.stringify(moduleUrl)};
           const media = '<img src="data:image/png;base64,' + 'Aa0/'.repeat(8 * 1024 * 1024) + '">';
-          const runtime = '<SCRIPT src="HYPERFRAME.RUNTIME.IIFE.JS"></SCRIPT>';
+          const runtime = '<SCRIPT src="TAGREEL.RUNTIME.IIFE.JS"></SCRIPT>';
           assert.equal(stripEmbeddedRuntimeScripts(media + runtime), media);
           console.log("large HTML preserved; runtime removed");
         `,
@@ -124,7 +124,7 @@ describe("htmlDocument helpers", () => {
 
   it("keeps a document's <html> attributes when a comment comes before the doctype", () => {
     const doc = parseHTMLContent(
-      '<!-- hyperframes-registry-item: blk -->\n<!doctype html>\n<html lang="en" data-composition-variables="[]"><body></body></html>',
+      '<!-- tagreel-registry-item: blk -->\n<!doctype html>\n<html lang="en" data-composition-variables="[]"><body></body></html>',
     );
     expect(doc.documentElement.getAttribute("lang")).toBe("en");
     expect(doc.documentElement.hasAttribute("data-composition-variables")).toBe(true);
@@ -144,22 +144,22 @@ describe("htmlDocument helpers", () => {
     expect(doc.body.querySelector("template")?.innerHTML).toContain("<span>hello</span>");
   });
 
-  it("strips every known embedded HyperFrames runtime marker", () => {
+  it("strips every known embedded Tagreel runtime marker", () => {
     const html = `
-<script src="hyperframe.runtime.iife.js"></script>
-<script src="hyperframes-runtime.modular.inline.js"></script >
-<script src="hyperframe-runtime.modular-runtime.inline.js"></script>
-<script data-hyperframes-preview-runtime="1"></script>
+<script src="tagreel.runtime.iife.js"></script>
+<script src="tagreel-runtime.modular.inline.js"></script >
+<script src="tagreel-runtime.modular-runtime.inline.js"></script>
+<script data-tagreel-preview-runtime="1"></script>
 <script>window.__playerReady = true;</script >
 <script>window.__renderReady = false;</script>
 <script>window.authored = true;</script>`;
 
     const stripped = stripEmbeddedRuntimeScripts(html);
 
-    expect(stripped).not.toContain("hyperframe.runtime.iife.js");
-    expect(stripped).not.toContain("hyperframes-runtime.modular.inline.js");
-    expect(stripped).not.toContain("hyperframe-runtime.modular-runtime.inline.js");
-    expect(stripped).not.toContain("data-hyperframes-preview-runtime");
+    expect(stripped).not.toContain("tagreel.runtime.iife.js");
+    expect(stripped).not.toContain("tagreel-runtime.modular.inline.js");
+    expect(stripped).not.toContain("tagreel-runtime.modular-runtime.inline.js");
+    expect(stripped).not.toContain("data-tagreel-preview-runtime");
     expect(stripped).not.toContain("window.__playerReady");
     expect(stripped).not.toContain("window.__renderReady");
     expect(stripped).toContain("window.authored = true");
@@ -180,12 +180,12 @@ describe("htmlDocument helpers", () => {
   });
 
   it.each([
-    ["reads the runtime global", "if (window.__hyperframeRuntime) window.seen = 1;"],
+    ["reads the runtime global", "if (window.__tagreelRuntime) window.seen = 1;"],
     [
       "queries the bootstrap attribute",
-      'document.querySelector("[data-hyperframes-preview-runtime]");',
+      'document.querySelector("[data-tagreel-preview-runtime]");',
     ],
-    ["names a runtime file", 'console.log("hyperframe.runtime.iife.js");'],
+    ["names a runtime file", 'console.log("tagreel.runtime.iife.js");'],
     ["sets up window.__player", "window.__player = window.__player || {};"],
   ])("keeps an authored script that %s", (_, source) => {
     const html = `<script>${source}</script>`;
@@ -193,7 +193,7 @@ describe("htmlDocument helpers", () => {
   });
 
   it("strips a runtime file linked with a query string or uppercase name", () => {
-    const html = '<script src="/static/HYPERFRAME.RUNTIME.IIFE.JS?v=2"></script><p>kept</p>';
+    const html = '<script src="/static/TAGREEL.RUNTIME.IIFE.JS?v=2"></script><p>kept</p>';
     expect(stripEmbeddedRuntimeScripts(html)).toBe("<p>kept</p>");
   });
 
@@ -204,7 +204,7 @@ describe("htmlDocument helpers", () => {
   });
 
   const injectedTag = (code: string) =>
-    `<script>${code}\n//# sourceURL=hyperframes://injected/0</script>`;
+    `<script>${code}\n//# sourceURL=tagreel://injected/0</script>`;
 
   it("injects head and body scripts without replacement-token interpolation", () => {
     const html = "<html><head></head><body></body></html>";
@@ -274,7 +274,7 @@ describe("htmlDocument helpers", () => {
     expect(injected).toContain(`${injectedTag("b=2")}\n</body></html>`);
 
     const stripped = stripEmbeddedRuntimeScripts(
-      '<p>İİ</p><script src="hyperframe.runtime.iife.js"></script><p>kept</p>',
+      '<p>İİ</p><script src="tagreel.runtime.iife.js"></script><p>kept</p>',
     );
     expect(stripped).toBe("<p>İİ</p><p>kept</p>");
 
@@ -368,7 +368,7 @@ describe("findStartTags", () => {
     const html = prefix + "<ImG src=x>" + "A".repeat(65_524) + "<IMG src=y>";
     expect(findStartTags(html, "iMg")).toEqual([65_538, 131_073]);
     expect(
-      stripEmbeddedRuntimeScripts(prefix + '<SCRIPT src="HYPERFRAME.RUNTIME.IIFE.JS"></SCRIPT>'),
+      stripEmbeddedRuntimeScripts(prefix + '<SCRIPT src="TAGREEL.RUNTIME.IIFE.JS"></SCRIPT>'),
     ).toBe(prefix);
   });
 

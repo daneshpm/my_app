@@ -44,7 +44,7 @@ export function resolvePrToVideoProjectDir({
     : join(env.HOME?.trim() ? resolve(env.HOME) : homedir(), ".cache");
   return join(
     cacheRoot,
-    "hyperframes",
+    "tagreel",
     "pr-to-video",
     ref.owner,
     ref.repo,

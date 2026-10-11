@@ -18,7 +18,7 @@ import {
   type TransitionFn,
   TRANSITIONS,
   crossfade,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 import type { ProducerLogger } from "../../../logger.js";
 import {
   type HdrCompositeContext,

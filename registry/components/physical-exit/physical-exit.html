@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  physical-exit: HyperFrames video primitive (motion / exit / physical)
+  physical-exit: Tagreel video primitive (motion / exit / physical)
 
   Concept: one card leaves the frame with visible momentum. The mode variable
   owns the exit behavior: toss follows an arc, drop accelerates under gravity,
@@ -122,8 +122,8 @@
             var card = root.querySelector(".pe-card");
             var label = root.querySelector(".pe-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var mode = vars.mode === "drop" || vars.mode === "slide" ? vars.mode : "toss";

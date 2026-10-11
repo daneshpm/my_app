@@ -36,8 +36,8 @@
  */
 
 import { join } from "node:path";
-import type { EngineConfig } from "@hyperframes/engine";
-import { suggestMatchingPreset, type CanvasResolution } from "@hyperframes/core";
+import type { EngineConfig } from "@tagreel/engine";
+import { suggestMatchingPreset, type CanvasResolution } from "@tagreel/core";
 import type { CompiledComposition } from "../../htmlCompiler.js";
 import { compileForRender } from "../../htmlCompiler.js";
 import type { ProducerLogger } from "../../../logger.js";

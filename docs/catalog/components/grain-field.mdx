@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Texture","badge":"Stable","codeLines":170}}
   attribution={{"path":"registry/components/grain-field","tags":["motion-primitive","background","grain","dots","texture","ambient","loopable"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/grain-field/grain-field.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/grain-field/grain-field.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html grain-field.html
 <!doctype html>
 <!--
-  grain-field: HyperFrames video primitive (backgrounds / ambient)
+  grain-field: Tagreel video primitive (backgrounds / ambient)
 
   Concept: a fixed repeated dot field drifts slowly across a deep,
   accent-tinted luminance wash. The dots stay intentionally legible at
@@ -142,8 +142,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var field = root.querySelector(".gf-field");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // Invalid enum overrides return to their declared defaults.
@@ -199,7 +199,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add grain-field" item="grain-field" />
+<InstallCommand command="npx tagreel add grain-field" item="grain-field" />
 
 That writes one file: `compositions/components/grain-field.html`.
 

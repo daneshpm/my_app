@@ -17,7 +17,7 @@
  * style) and apply the returned `StackingPatch[]` however they persist styles.
  */
 
-import { spansOverlap } from "@hyperframes/core/clip-facts";
+import { spansOverlap } from "@tagreel/core/clip-facts";
 
 /** Minimal element view this module reasons over. */
 export interface StackingElement {

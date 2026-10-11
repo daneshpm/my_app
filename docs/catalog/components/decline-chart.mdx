@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Data","badge":"Stable","codeLines":276}}
   attribution={{"path":"registry/components/decline-chart","tags":["motion-primitive","data","chart","decline","metric","problem"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/decline-chart/decline-chart.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/decline-chart/decline-chart.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html decline-chart.html
 <!doctype html>
 <!--
-  decline-chart: HyperFrames video primitive
+  decline-chart: Tagreel video primitive
 
   One metric line draws downward while its numeric value counts down and the
   ambient background dims and desaturates from the same progress value.
@@ -223,8 +223,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var endpoint = root.querySelector(".dc-endpoint");
             var lineLength = line.getTotalLength();
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             line.style.strokeDasharray = lineLength + " " + lineLength;
@@ -305,7 +305,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add decline-chart" item="decline-chart" />
+<InstallCommand command="npx tagreel add decline-chart" item="decline-chart" />
 
 That writes one file: `compositions/components/decline-chart.html`.
 

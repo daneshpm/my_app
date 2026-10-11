@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Data","badge":"Stable","codeLines":299}}
   attribution={{"path":"registry/components/logo-wall","tags":["data","logos","social-proof","stagger","prove"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/logo-wall/logo-wall.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/logo-wall/logo-wall.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html logo-wall.html
 <!doctype html>
 <!--
-  logo-wall: HyperFrames video primitive (data / holdable / prove)
+  logo-wall: Tagreel video primitive (data / holdable / prove)
 
   Concept: a trusted-by wall of placeholder lettermark logos assembles in DOM
   order. Each cell fades and scales directly into its final grid slot with a
@@ -66,7 +66,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   the host with inset:0 and container-type:size and has no data-width or
   data-height. The hardcoded id "logo-wall" matches the host id and timeline
   key after mount flattening. Variables come from
-  window.__hyperframes.getVariables(), which merges declarations with host
+  window.__tagreel.getVariables(), which merges declarations with host
   data-variable-values overrides.
 -->
 <html
@@ -210,8 +210,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             // EDIT ZONE: the runtime variable table is read once. These
             // clamped values own DOM count, grid tracks, and stagger timing.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var rawRows = Number(vars.rows);
@@ -328,7 +328,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add logo-wall" item="logo-wall" />
+<InstallCommand command="npx tagreel add logo-wall" item="logo-wall" />
 
 That writes one file: `compositions/components/logo-wall.html`.
 

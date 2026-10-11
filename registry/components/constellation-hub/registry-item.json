@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "constellation-hub",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Constellation Hub",
   "description": "Feature nodes brighten in narration order as real-length SVG connectors draw outward from a fixed central hub, then settle into one lockup.",
   "tags": ["motion-primitive", "feature-tour", "hub", "nodes", "connector", "reveal"],
@@ -14,7 +14,7 @@
     {
       "path": "constellation-hub.html",
       "target": "compositions/components/constellation-hub.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

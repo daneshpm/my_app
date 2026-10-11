@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cursor-glyph-trail",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Cursor Glyph Trail",
   "description": "A tutorial cursor path: on a settings screen the arrow clicks through three steps, leaving a dotted trail spaced evenly by distance and a numbered marker at each click; each step's trail fades as the next move begins.",
   "tags": [
@@ -22,7 +22,7 @@
     {
       "path": "cursor-glyph-trail.html",
       "target": "compositions/components/cursor-glyph-trail.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -113,7 +113,7 @@ test("CLI partial run retains unselected voices, BGM and SFX", (t) => {
       fileURLToPath(new URL("../audio.mjs", import.meta.url)),
       "--request",
       request,
-      "--hyperframes",
+      "--tagreel",
       dir,
       "--out",
       path,
@@ -124,9 +124,6 @@ test("CLI partial run retains unselected voices, BGM and SFX", (t) => {
       encoding: "utf8",
       env: {
         ...process.env,
-        HEYGEN_CONFIG_DIR: dir,
-        HEYGEN_API_KEY: "",
-        HYPERFRAMES_API_KEY: "",
       },
     },
   );

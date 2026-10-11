@@ -1,7 +1,7 @@
 import type { GeometryCommitResult } from "../utils/previewFeatureUsage";
 import type { RotationCommit } from "../components/editor/rotationDraft";
 import { useCallback, useMemo, useRef, useState } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "../components/editor/domEditing";
 import type {
   DomEditGroupPathOffsetCommit,

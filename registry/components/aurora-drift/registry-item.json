@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "aurora-drift",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Aurora Drift",
   "description": "Three soft accent-derived aurora fields drift in an exact ambient loop over a deep base and faint vignette.",
   "tags": ["motion-primitive", "background", "aurora", "gradient", "ambient", "loopable"],
@@ -13,7 +13,7 @@
     {
       "path": "aurora-drift.html",
       "target": "compositions/components/aurora-drift.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

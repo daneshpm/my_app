@@ -200,7 +200,7 @@
         var SQUARE_SHARPNESS = 8;
 
         function readVariables() {
-          var api = window.__hyperframes && window.__hyperframes.getVariables;
+          var api = window.__tagreel && window.__tagreel.getVariables;
           if (typeof api === "function") return api() || {};
           // Standalone fallback (raw file opened without the runtime): read
           // the same declaration the runtime reads, so defaults have exactly

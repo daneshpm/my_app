@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  logo-wall: HyperFrames video primitive (data / holdable / prove)
+  logo-wall: Tagreel video primitive (data / holdable / prove)
 
   Concept: a trusted-by wall of placeholder lettermark logos assembles in DOM
   order. Each cell fades and scales directly into its final grid slot with a
@@ -41,7 +41,7 @@
   the host with inset:0 and container-type:size and has no data-width or
   data-height. The hardcoded id "logo-wall" matches the host id and timeline
   key after mount flattening. Variables come from
-  window.__hyperframes.getVariables(), which merges declarations with host
+  window.__tagreel.getVariables(), which merges declarations with host
   data-variable-values overrides.
 -->
 <html
@@ -185,8 +185,8 @@
             // EDIT ZONE: the runtime variable table is read once. These
             // clamped values own DOM count, grid tracks, and stagger timing.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var rawRows = Number(vars.rows);

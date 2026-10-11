@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "vfx-anamorphic-flare",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Anamorphic Streak Flare",
   "description": "A drifting field of bright points, each one throwing the long horizontal blue-violet streak a real anamorphic cinema lens produces. Built from the measured filter constants: a 0.3 high-pass, 80 horizontal taps at quarter resolution, a samples/3 gain and a 0x7a8aff tint.",
   "stability": "experimental",
@@ -84,7 +84,7 @@
     {
       "path": "vfx-anamorphic-flare.html",
       "target": "compositions/vfx-anamorphic-flare.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ],
   "params": [

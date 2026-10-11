@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "caption-blend-difference",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Blend Difference",
   "description": "Auto-inverting text using mix-blend-mode: difference — flips between white and black per-pixel against the background",
   "tags": ["text", "text-effect", "effect", "blend-mode", "contrast", "inversion"],
@@ -9,7 +9,7 @@
     {
       "path": "caption-blend-difference.html",
       "target": "compositions/components/caption-blend-difference.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

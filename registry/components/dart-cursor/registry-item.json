@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "dart-cursor",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Dart Cursor",
   "description": "A bold outlined arrowhead that dives in from camera depth, flies nose-first with motion blur along its path, squashes on two clicks, and whips out of frame.",
   "tags": ["cursor", "motion-primitive", "pointer", "click", "motion-blur", "depth"],
@@ -9,7 +9,7 @@
     {
       "path": "dart-cursor.html",
       "target": "compositions/components/dart-cursor.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "jobs": ["demonstrate"],

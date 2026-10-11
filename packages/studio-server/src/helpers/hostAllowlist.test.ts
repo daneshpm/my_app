@@ -48,8 +48,8 @@ describe("isAllowedHost", () => {
 
   it("reads the policy from env", () => {
     const policy = hostPolicyFromEnv({
-      HYPERFRAMES_PREVIEW_HOST: "0.0.0.0",
-      HYPERFRAMES_PREVIEW_ALLOWED_HOSTS: "a.test, b.test",
+      TAGREEL_PREVIEW_HOST: "0.0.0.0",
+      TAGREEL_PREVIEW_ALLOWED_HOSTS: "a.test, b.test",
     });
     expect(policy.bindHost).toBe("0.0.0.0");
     expect(isAllowedHost("b.test", policy)).toBe(true);

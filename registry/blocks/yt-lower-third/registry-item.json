@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "yt-lower-third",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "YouTube Lower Third",
   "description": "Animated YouTube subscribe lower third with avatar and channel info",
   "tags": ["social", "overlay", "youtube"],
@@ -14,16 +14,12 @@
     {
       "path": "yt-lower-third.html",
       "target": "compositions/yt-lower-third.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "assets/avatar.jpg",
       "target": "assets/avatar.jpg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/yt-lower-third.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/yt-lower-third.png"
-  }
+  ]
 }

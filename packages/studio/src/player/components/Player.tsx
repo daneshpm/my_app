@@ -1,11 +1,11 @@
 import { buildProjectApiPath } from "../../utils/projectRouting";
 import { forwardRef, useEffect, useRef, useState } from "react";
-import { isLottieAnimationLoaded } from "@hyperframes/core/runtime/lottie-readiness";
+import { isLottieAnimationLoaded } from "@tagreel/core/runtime/lottie-readiness";
 import { useMountEffect } from "../../hooks/useMountEffect";
 import { applyPreviewVariablesToUrl } from "../../hooks/previewVariablesStore";
-import { HyperframesLoader } from "../../components/ui";
+import { TagreelLoader } from "../../components/ui";
 import { usePlayerStore } from "../store/playerStore";
-// Importing "@hyperframes/player" registers a class extending HTMLElement at
+// Importing "@tagreel/player" registers a class extending HTMLElement at
 // module load, which throws under SSR, hence the dynamic import behind a
 // `typeof window` guard. Kicking it here rather than in the mount effect puts
 // the chunk request in flight before the shell's first layout. Clearing the memo
@@ -14,7 +14,7 @@ import { usePlayerStore } from "../store/playerStore";
 let playerModule: Promise<unknown> | null = null;
 
 export function loadPlayerModule(): Promise<unknown> {
-  playerModule ??= import("@hyperframes/player").catch((err: unknown) => {
+  playerModule ??= import("@tagreel/player").catch((err: unknown) => {
     playerModule = null;
     throw err;
   });
@@ -37,7 +37,7 @@ interface PlayerProps {
   suppressLoadingOverlay?: boolean;
 }
 
-interface HyperframesPlayerElement extends HTMLElement {
+interface TagreelPlayerElement extends HTMLElement {
   iframeElement: HTMLIFrameElement;
   ready?: boolean;
   painted?: boolean;
@@ -74,7 +74,7 @@ export function readPreviewErrorMessage(event: Event): string {
     : DEFAULT_PREVIEW_ERROR;
 }
 
-function enableInteractiveIframe(player: HyperframesPlayerElement): void {
+function enableInteractiveIframe(player: TagreelPlayerElement): void {
   const root = player.shadowRoot;
   if (!root) return;
 
@@ -129,7 +129,7 @@ export function hasUnloadedAssets(iframe: HTMLIFrameElement, lastResult: boolean
 }
 
 /**
- * Renders a composition preview using the <hyperframes-player> web component.
+ * Renders a composition preview using the <tagreel-player> web component.
  *
  * The web component handles iframe scaling, dimension detection, and
  * ResizeObserver internally. This wrapper bridges its inner iframe to the
@@ -207,7 +207,7 @@ export const Player = forwardRef<HTMLIFrameElement, PlayerProps>(
         if (canceled) return;
 
         // Create the web component imperatively to avoid JSX custom-element typing.
-        const player = document.createElement("hyperframes-player") as HyperframesPlayerElement;
+        const player = document.createElement("tagreel-player") as TagreelPlayerElement;
         const srcUrl = new URL(previewSource, window.location.origin);
         applyPreviewVariablesToUrl(srcUrl);
         const src = srcUrl.pathname + srcUrl.search;
@@ -487,14 +487,14 @@ export const Player = forwardRef<HTMLIFrameElement, PlayerProps>(
         {showCompositionOverlay && (
           <div
             className="absolute inset-0 bg-black flex items-center justify-center z-30 select-none"
-            data-hyperframes-ignore=""
+            data-tagreel-ignore=""
             data-testid="composition-loading-overlay"
             draggable={false}
             onDragStart={(event) => event.preventDefault()}
             onMouseDown={(event) => event.preventDefault()}
             onPointerDown={(event) => event.preventDefault()}
           >
-            <HyperframesLoader
+            <TagreelLoader
               title="Loading composition"
               detail="Preparing the Studio preview."
               size={56}
@@ -504,7 +504,7 @@ export const Player = forwardRef<HTMLIFrameElement, PlayerProps>(
         {showAssetOverlay && (
           <div
             className="absolute inset-0 bg-black flex items-center justify-center z-20 select-none"
-            data-hyperframes-ignore=""
+            data-tagreel-ignore=""
             draggable={false}
             style={{
               opacity: assetOverlayFading ? 0 : 1,
@@ -515,7 +515,7 @@ export const Player = forwardRef<HTMLIFrameElement, PlayerProps>(
             onMouseDown={(event) => event.preventDefault()}
           >
             <div className="flex flex-col items-center gap-3">
-              <HyperframesLoader
+              <TagreelLoader
                 title="Preparing preview assets"
                 detail="Waiting for media and motion assets before playback starts."
                 size={56}
@@ -535,7 +535,7 @@ export const Player = forwardRef<HTMLIFrameElement, PlayerProps>(
         {previewError && (
           <div
             className="absolute inset-0 z-40 flex items-center justify-center bg-black/90 px-6 text-center"
-            data-hyperframes-ignore=""
+            data-tagreel-ignore=""
             data-testid="composition-preview-error"
           >
             <div className="max-w-sm">

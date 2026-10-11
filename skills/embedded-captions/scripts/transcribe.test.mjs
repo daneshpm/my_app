@@ -30,7 +30,7 @@ test("the CLI fallback labels the transcript with the engine the CLI ran", () =>
       [fileURLToPath(new URL("./transcribe.cjs", import.meta.url)), project],
       {
         stdio: "ignore",
-        env: { ...process.env, HYPERFRAMES_ROOT: join(root, "hf"), TRANSCRIBE_ENGINE: "whisper" },
+        env: { ...process.env, TAGREEL_ROOT: join(root, "hf"), TRANSCRIBE_ENGINE: "whisper" },
       },
     );
     const transcript = JSON.parse(readFileSync(join(project, "transcript.json"), "utf8"));
@@ -58,7 +58,7 @@ test("the extracted audio scratch file does not outlive the run", () => {
       [fileURLToPath(new URL("./transcribe.cjs", import.meta.url)), project],
       {
         stdio: "ignore",
-        env: { ...process.env, HYPERFRAMES_ROOT: join(root, "hf"), TRANSCRIBE_ENGINE: "whisper" },
+        env: { ...process.env, TAGREEL_ROOT: join(root, "hf"), TRANSCRIBE_ENGINE: "whisper" },
       },
     );
     assert.equal(existsSync(join(project, "audio.mp3")), false);

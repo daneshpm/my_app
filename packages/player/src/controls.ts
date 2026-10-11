@@ -28,8 +28,8 @@ export interface ControlsOptions {
   /**
    * When true, the volume controls (mute button + volume slider) are hidden so
    * the viewer cannot change the audio state. Backs the `audio-locked`
-   * attribute on `<hyperframes-player>`, which enforces host-mandated silent
-   * playback (e.g. a HyperFrames project embedded in a chat host). Toggleable
+   * attribute on `<tagreel-player>`, which enforces host-mandated silent
+   * playback (e.g. a Tagreel project embedded in a chat host). Toggleable
    * at runtime via the returned `setVolumeControlsHidden`.
    */
   audioLocked?: boolean;

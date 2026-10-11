@@ -357,7 +357,7 @@
     return parts.join("|");
   }
 
-  window.__hyperframesMotionSignature = {
+  window.__tagreelMotionSignature = {
     compositionRoot,
     isVisibleElement,
     opacityChain,
@@ -368,7 +368,7 @@
   // Frozen-sweep guard entry point (checkBrowser.ts collectLayoutGeometry).
   // The name predates the textual/media channels and is kept for driver
   // compatibility.
-  window.__hyperframesLayoutGeometry = function collectLayoutGeometry() {
+  window.__tagreelLayoutGeometry = function collectLayoutGeometry() {
     return compositionSignature(compositionRoot(), { quantize: false });
   };
 })();

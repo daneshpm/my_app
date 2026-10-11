@@ -31,7 +31,7 @@ to keep clearing.
 
 ### What already exists, so this does not duplicate it
 
-- **`skills/hyperframes-audio`** teaches the effect _families_ and when to
+- **`skills/tagreel-audio`** teaches the effect _families_ and when to
   reach for each ("Reach for a family by the problem, not the name"), and
   documents carve. It contains **no recipes and no named looks** — it explains
   the why, and stops short of the one-click. This catalog is the complement,
@@ -40,10 +40,8 @@ to keep clearing.
   last."_
 - **`carveBandsToChain()`** already proves the mechanism: an analysis produces
   an ordinary `HfAudioFxChain`, which the rack then owns like any other.
-- **Demand is real and internal.** Cortex carries user asks for
-  [audio reprocessing for studio acoustics](https://heygen.slack.com/archives/C0A9ZHLSQFN/p1781063751377189),
-  [voice loudness and gain boosting](https://heygen.slack.com/archives/C07BR8QRE4T/p1769062551169729),
-  and auto-enhance across scenes. Nobody has built a preset catalog for it.
+- **Demand is real.** Users ask for audio reprocessing for studio acoustics,
+  voice loudness and gain boosting, and auto-enhance across scenes. Nobody has built a preset catalog for it.
 
 ---
 
@@ -442,7 +440,7 @@ Four notes:
    filter/saturation data, instantly recognisable, nothing to measure, and the
    category consumer tools get the most use out of.
 2. **Voice presets** (§5a/b) — the practical value, and the answer to the
-   internal asks already in cortex.
+   user asks for voice cleanup and loudness.
 3. **`level-out`** — the most-wanted adaptive one, and the smallest script.
 4. **`de-ess`**, then **`tone-match`** — both reuse carve's analysis directly.
 
@@ -454,7 +452,7 @@ need one.
 ### If this ships
 
 `CLAUDE.md`'s skill-catalog rules apply: a preset catalog changes what
-`/hyperframes-audio` covers, so the skill's `description:` and the surfaces
+`/tagreel-audio` covers, so the skill's `description:` and the surfaces
 listed under "Skill catalog maintenance" have to move in lockstep.
 
 ---
@@ -462,11 +460,9 @@ listed under "Skill catalog maintenance" have to move in lockstep.
 ## Sources
 
 Internal: `wiki/decisions/vst-studio-integration-cancelled.md`;
-`skills/hyperframes-audio/SKILL.md`; `packages/core/src/audioFx.ts` (ranges);
+`skills/tagreel-audio/SKILL.md`; `packages/core/src/audioFx.ts` (ranges);
 `packages/core/src/audioCarve.ts` (the script pattern);
-`packages/core/src/colorGrading.ts` (the preset pattern). Cortex:
-[studio acoustics reprocessing](https://heygen.slack.com/archives/C0A9ZHLSQFN/p1781063751377189),
-[voice loudness and gain boosting](https://heygen.slack.com/archives/C07BR8QRE4T/p1769062551169729).
+`packages/core/src/colorGrading.ts` (the preset pattern).
 
 External:
 

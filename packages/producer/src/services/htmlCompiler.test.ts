@@ -6,10 +6,10 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { runInThisContext } from "node:vm";
 import { parseHTML } from "linkedom";
-import { interpolateVolumeGain } from "@hyperframes/core/media-volume-envelope";
-import { redactTelemetryString } from "@hyperframes/core";
+import { interpolateVolumeGain } from "@tagreel/core/media-volume-envelope";
+import { redactTelemetryString } from "@tagreel/core";
 import { defaultLogger } from "../logger.js";
-import { NotMediaPayloadError } from "@hyperframes/engine";
+import { NotMediaPayloadError } from "@tagreel/engine";
 import {
   collectExternalAssets,
   compileForRender,
@@ -369,10 +369,10 @@ describe("inlineExternalScripts", () => {
 
   it("leaves a CDN runtime link for the file server to strip", async () => {
     const originalFetch = globalThis.fetch;
-    const fetchMock = mock(async () => new Response("window.__hyperframeRuntime = {};"));
+    const fetchMock = mock(async () => new Response("window.__tagreelRuntime = {};"));
     globalThis.fetch = fetchMock as any;
     try {
-      const html = `<html><head><script src="https://cdn.example.com/hyperframe.runtime.iife.js"></script></head><body></body></html>`;
+      const html = `<html><head><script src="https://cdn.example.com/tagreel.runtime.iife.js"></script></head><body></body></html>`;
       expect(await inlineExternalScripts(html)).toBe(html);
       expect(fetchMock).not.toHaveBeenCalled();
     } finally {
@@ -859,7 +859,7 @@ describe("detectRenderModeHints", () => {
     // broken video with no visible error — worse than refusing to render.
     // compileForRender (render-only) runs a pre-flight check
     // (assertSubCompositionsUsable, using the same checkSubCompositionUsability
-    // helper the inliner and hyperframes lint use) before any compilation
+    // helper the inliner and tagreel lint use) before any compilation
     // work starts, and aborts immediately instead of silently producing a
     // broken render 45+ seconds later.
     const projectDir = makeSubCompProject(
@@ -1101,7 +1101,7 @@ describe("detectShaderTransitionUsage", () => {
   it("detects authored HyperShader initialization", () => {
     const html = `<!doctype html>
 <html><body>
-  <script src="https://cdn.jsdelivr.net/npm/@hyperframes/shader-transitions/dist/index.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tagreel/shader-transitions/dist/index.global.js"></script>
   <script>
     window.HyperShader.init({
       scenes: ["s1", "s2"],
@@ -1116,7 +1116,7 @@ describe("detectShaderTransitionUsage", () => {
   it("ignores comments and external scripts by themselves", () => {
     const html = `<!doctype html>
 <html><body>
-  <script src="https://cdn.jsdelivr.net/npm/@hyperframes/shader-transitions/dist/index.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tagreel/shader-transitions/dist/index.global.js"></script>
   <script>
     // window.HyperShader.init({ scenes: ["s1", "s2"], transitions: [] });
     const label = "safe";
@@ -1168,7 +1168,7 @@ describe("system-primary font normalization", () => {
     expect(compact).toContain("font-family:var(--system-font),sans-serif");
     expect(compact).toContain('font-family:"Montserrat",system-ui,sans-serif');
     expect(compact).toContain('data-font-family="Inter,ui-monospace,monospace"');
-    expect(compact).toContain('data-hyperframes-deterministic-fonts="true"');
+    expect(compact).toContain('data-tagreel-deterministic-fonts="true"');
 
     const { document } = parseHTML(compiled.html);
     const rootStyle = document.querySelector('[data-composition-id="root"]')?.getAttribute("style");
@@ -1649,7 +1649,7 @@ describe("text-rendering rule injection", () => {
     const compiled = await compileForRender(projectDir, join(projectDir, "index.html"), projectDir);
 
     const { document } = parseHTML(compiled.html);
-    const styleEls = document.querySelectorAll("style[data-hyperframes-text-rendering]");
+    const styleEls = document.querySelectorAll("style[data-tagreel-text-rendering]");
     expect(styleEls.length).toBe(1);
     expect((styleEls[0]?.textContent || "").replace(/\s+/g, "")).toContain(
       "html,body,*{text-rendering:geometricPrecision}",
@@ -2582,7 +2582,7 @@ describe("sub-composition variable injection (render path, #2064)", () => {
     <div data-composition-id="card" data-width="320" data-height="240">
       <div class="card-bg"></div>
       <script>
-        var color = __hyperframes.getVariables().color || "#000000";
+        var color = __tagreel.getVariables().color || "#000000";
         document.querySelector('[data-composition-id="card"] .card-bg').style.background = color;
       </script>
     </div>
@@ -2605,7 +2605,7 @@ describe("sub-composition variable injection (render path, #2064)", () => {
 
   it("injects the __hfVariablesByComp writer so JS getVariables() sees per-instance values", async () => {
     // Regression for #2064: render inlined the sub-comp reader scripts but never
-    // emitted the writer, so window.__hyperframes.getVariables() returned {} and
+    // emitted the writer, so window.__tagreel.getVariables() returned {} and
     // parametrized sub-comps shipped blank/default text in the final MP4 while
     // snapshot QA passed.
     const projectDir = writeSubCompVarProject(`data-variable-values='{"color":"#00ff00"}'`);
@@ -2638,7 +2638,7 @@ describe("sub-composition variable injection (render path, #2064)", () => {
     <div data-composition-id="card" data-width="320" data-height="240">
       <div class="lbl"></div>
       <script>
-        document.querySelector('.lbl').textContent = __hyperframes.getVariables().label || "DEFAULT";
+        document.querySelector('.lbl').textContent = __tagreel.getVariables().label || "DEFAULT";
       </script>
     </div>
   </body>
@@ -2683,7 +2683,7 @@ describe("sub-composition variable injection (render path, #2064)", () => {
     <div data-composition-id="card" data-width="320" data-height="240">
       <div class="lbl"></div>
       <script>
-        document.querySelector('.lbl').textContent = __hyperframes.getVariables().label || "DEFAULT";
+        document.querySelector('.lbl').textContent = __tagreel.getVariables().label || "DEFAULT";
       </script>
     </div>
   </body>
@@ -2796,7 +2796,7 @@ describe("sub-composition variable injection (render path, #2064)", () => {
     <div data-composition-id="${id}" data-width="320" data-height="240">
       <div class="lbl"></div>
       <script>
-        document.querySelector('.lbl').textContent = __hyperframes.getVariables().label || "DEFAULT";
+        document.querySelector('.lbl').textContent = __tagreel.getVariables().label || "DEFAULT";
       </script>
     </div>
   </body>
@@ -3140,7 +3140,7 @@ describe("STUDIO-5433 — ffprobe failure includes src URL for attribution", () 
     // no host to attribute and the redactor is right to drop it.
     expect(message).toContain("[src=[path]]");
     // Original ffprobe diagnostic must still be present so failure classifiers
-    // downstream (e.g. hyperframes_render_metrics.py) continue to match.
+    // downstream (e.g. tagreel_render_metrics.py) continue to match.
     expect(message).toMatch(/ffprobe|Invalid data|No video stream/i);
   });
 

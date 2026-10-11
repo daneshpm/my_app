@@ -7,7 +7,7 @@
  * grouping exists to prevent — that they are seven things to manage.
  */
 
-import { HF_AUDIO_FX_DATA_KEY, parseAudioFxChain } from "@hyperframes/core/audio-fx";
+import { HF_AUDIO_FX_DATA_KEY, parseAudioFxChain } from "@tagreel/core/audio-fx";
 import type { DomEditSelection } from "./domEditingTypes";
 
 /** Enabled nodes split by who authored them, or null when the chain won't parse. */

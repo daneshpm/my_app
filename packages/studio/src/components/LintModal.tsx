@@ -14,8 +14,8 @@ export function LintModal({
   findings,
   projectId,
   projectDir,
-  title = "HyperFrame Lint Results",
-  promptIntro = "Fix these HyperFrames lint issues",
+  title = "Tagreel Lint Results",
+  promptIntro = "Fix these Tagreel lint issues",
   onClose,
 }: {
   findings: LintFinding[];

@@ -184,9 +184,7 @@
         var vars = Object.assign(
           {},
           defaults,
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
-            : {},
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {},
         );
 
         var root = document.getElementById("root");

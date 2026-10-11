@@ -1,10 +1,10 @@
 /**
- * Cloud Run request handler for HyperFrames distributed rendering.
+ * Cloud Run request handler for Tagreel distributed rendering.
  *
  * One container image, three roles. Cloud Workflows POSTs a JSON body with
  * an `Action` field; the handler unwraps any `Payload`/`Input` envelope,
  * primes the runtime (Chrome path), and forwards to the matching OSS
- * primitive from `@hyperframes/producer/distributed`.
+ * primitive from `@tagreel/producer/distributed`.
  *
  * Everything heavy — capture, encode, audio mix — happens inside the OSS
  * primitives. The handler is thin glue: parse body → GCS download → call
@@ -12,7 +12,7 @@
  *
  * `dispatch()` is the testable core (inject `storage` + `primitives`); the
  * Hono app at the bottom is the HTTP shell the Dockerfile runs. The shape
- * deliberately tracks `@hyperframes/aws-lambda`'s `handler.ts` so the two
+ * deliberately tracks `@tagreel/aws-lambda`'s `handler.ts` so the two
  * adapters stay easy to diff.
  */
 
@@ -42,7 +42,7 @@ import {
   type PlanV2MaterializationTarget,
   readPlanV2Manifest,
   renderChunk,
-} from "@hyperframes/producer/distributed";
+} from "@tagreel/producer/distributed";
 import { resolveChromeExecutablePath } from "./chromium.js";
 import type {
   AssembleEvent,
@@ -809,7 +809,7 @@ let warnedAllowlistDisabled = false;
  * different bucket, preventing request injection from reading or writing
  * arbitrary GCS data.
  *
- * Opt-out is explicit: set `HYPERFRAMES_RENDER_BUCKET="*"` to disable the
+ * Opt-out is explicit: set `TAGREEL_RENDER_BUCKET="*"` to disable the
  * guard intentionally. If the env var is simply unset (or empty), the guard
  * is disabled but a warning is logged once so the gap is visible in Cloud
  * Logging — it shouldn't silently fail open. The Terraform module always
@@ -817,7 +817,7 @@ let warnedAllowlistDisabled = false;
  */
 // fallow-ignore-next-line complexity
 function validateEventGcsUris(event: PlanEvent | RenderChunkEvent | AssembleEvent): void {
-  const allowedBucket = process.env.HYPERFRAMES_RENDER_BUCKET?.trim();
+  const allowedBucket = process.env.TAGREEL_RENDER_BUCKET?.trim();
   if (allowedBucket === "*") return; // explicit, intentional opt-out
   if (!allowedBucket) {
     if (!warnedAllowlistDisabled) {
@@ -826,7 +826,7 @@ function validateEventGcsUris(event: PlanEvent | RenderChunkEvent | AssembleEven
         event: "bucket_allowlist_disabled",
         level: "WARNING",
         message:
-          "HYPERFRAMES_RENDER_BUCKET is unset — the GCS bucket-allowlist guard is DISABLED. " +
+          "TAGREEL_RENDER_BUCKET is unset — the GCS bucket-allowlist guard is DISABLED. " +
           'Set it to the render bucket name to enforce, or to "*" to opt out intentionally.',
       });
     }

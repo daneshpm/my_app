@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  store-badge-lockup: HyperFrames video primitive (ui-props / holdable / ask)
+  store-badge-lockup: Tagreel video primitive (ui-props / holdable / ask)
 
   Concept: a short headline settles first, followed by equal-size App Store
   and Google Play download badges that rise and fade into a standard mobile
@@ -224,8 +224,8 @@
             var appleBadge = root.querySelector(".sbl-apple");
             var googleBadge = root.querySelector(".sbl-google");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             /* INVARIANT: getVariables() owns all three public decisions.

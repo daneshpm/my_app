@@ -12,7 +12,7 @@ import {
   identifyFileWrite,
   openProjectHistory,
   type StudioApiAdapter,
-} from "@hyperframes/studio-server";
+} from "@tagreel/studio-server";
 import { consumeStudioWriteToken } from "../utils/studioFileVersion";
 import {
   beginStudioPendingEdit,

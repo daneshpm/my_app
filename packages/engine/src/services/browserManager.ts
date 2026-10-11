@@ -190,7 +190,7 @@ function findCachedHeadlessShell(baseDir: string): string | undefined {
 /**
  * Resolve chrome-headless-shell binary for deterministic BeginFrame rendering.
  * Checks config.chromePath, then PRODUCER_HEADLESS_SHELL_PATH env var,
- * then the CLI browser override, HyperFrames' managed cache, and Puppeteer's cache.
+ * then the CLI browser override, Tagreel' managed cache, and Puppeteer's cache.
  */
 export function resolveHeadlessShellPath(
   config?: Partial<Pick<EngineConfig, "chromePath">>,
@@ -203,26 +203,25 @@ export function resolveHeadlessShellPath(
     if (!existsSync(envPath)) {
       throw new Error(
         `[BrowserManager] Chrome binary not found at PRODUCER_HEADLESS_SHELL_PATH="${envPath}". ` +
-          "Run `hyperframes browser ensure` to re-download.",
+          "Run `tagreel browser ensure` to re-download.",
       );
     }
     return envPath;
   }
-  if (process.env.HYPERFRAMES_BROWSER_PATH) {
-    const envPath = process.env.HYPERFRAMES_BROWSER_PATH;
+  if (process.env.TAGREEL_BROWSER_PATH) {
+    const envPath = process.env.TAGREEL_BROWSER_PATH;
     if (!existsSync(envPath)) {
       throw new Error(
-        `[BrowserManager] Chrome binary not found at HYPERFRAMES_BROWSER_PATH="${envPath}". ` +
-          "Run `hyperframes browser ensure` to re-download.",
+        `[BrowserManager] Chrome binary not found at TAGREEL_BROWSER_PATH="${envPath}". ` +
+          "Run `tagreel browser ensure` to re-download.",
       );
     }
     return envPath;
   }
   const home = homedir();
   return (
-    findCachedHeadlessShell(
-      join(home, ".cache", "hyperframes", "chrome", "chrome-headless-shell"),
-    ) ?? findCachedHeadlessShell(join(home, ".cache", "puppeteer", "chrome-headless-shell"))
+    findCachedHeadlessShell(join(home, ".cache", "tagreel", "chrome", "chrome-headless-shell")) ??
+    findCachedHeadlessShell(join(home, ".cache", "puppeteer", "chrome-headless-shell"))
   );
 }
 
@@ -552,7 +551,7 @@ async function probeAutoBrowserGpuMode(options: {
  * runtime, missing EGL/driver libraries) Chrome silently falls back to
  * software WebGL and the render just runs at CPU speed. Without this check
  * the only trace is a buried `Automatic fallback to software WebGL` browser
- * warning — heygen-com/hyperframes#2967 rendered 19186 frames on CPU while
+ * warning — daneshpm/my_app#2967 rendered 19186 frames on CPU while
  * `--browser-gpu` was set and nothing said so. The probe result never
  * changes the returned mode; it only makes the fallback loud.
  *
@@ -610,14 +609,14 @@ function buildUnverifiedHardwareGpuWarning(
 ): string {
   if (cause === "probe-error") {
     return (
-      "[hyperframes] browserGpuMode=hardware was requested, but the GPU probe could not run, " +
+      "[tagreel] browserGpuMode=hardware was requested, but the GPU probe could not run, " +
       "so hardware acceleration is UNVERIFIED — if Chrome falls back to software WebGL the " +
       "capture will run at CPU speed. Honouring the explicit request anyway.\n" +
       "  This is a probe failure, not evidence of a missing GPU: see the " +
       "`browserGpuMode probe → software (probe failed ...)` line above for the underlying " +
-      "error, which usually means Chrome could not launch (bad HYPERFRAMES_BROWSER_PATH, " +
+      "error, which usually means Chrome could not launch (bad TAGREEL_BROWSER_PATH, " +
       "missing shared libraries, or a denied sandbox) rather than a GPU problem.\n" +
-      "  Run `hyperframes doctor` to check the Chrome install."
+      "  Run `tagreel doctor` to check the Chrome install."
     );
   }
   const remediation =
@@ -625,11 +624,11 @@ function buildUnverifiedHardwareGpuWarning(
       ? "Inside Docker, the container needs GPU passthrough: `--gpus all` with the NVIDIA " +
         "Container Toolkit installed, or `--device /dev/dri` for Mesa/AMD/Intel. The image " +
         "also needs the matching userspace driver + libEGL. Verify with " +
-        "`hyperframes render --browser-gpu` and watch for this warning disappearing."
+        "`tagreel render --browser-gpu` and watch for this warning disappearing."
       : "Check that the host exposes a GPU to this process and that the graphics drivers are " +
         "installed.";
   return (
-    "[hyperframes] browserGpuMode=hardware was requested, but the WebGL probe found no " +
+    "[tagreel] browserGpuMode=hardware was requested, but the WebGL probe found no " +
     "hardware GPU — Chrome will silently fall back to software WebGL and the capture will " +
     "run at CPU speed. Honouring the explicit request anyway.\n" +
     `  ${remediation}\n` +
@@ -647,7 +646,7 @@ function buildUnverifiedHardwareGpuWarning(
  * same probe to verify itself.
  */
 function logResolvedBrowserGpuMode(resolved: "hardware" | "software", reason: string): void {
-  console.error(`[hyperframes] browserGpuMode probe → ${resolved} (${reason})`);
+  console.error(`[tagreel] browserGpuMode probe → ${resolved} (${reason})`);
 }
 
 function createBrowserLaunchFingerprint(

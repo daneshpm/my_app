@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "focus-swap",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Focus Swap",
   "description": "Moves attention between two side-by-side cards as one recedes with scale, blur, and dimming while the other advances to full focus.",
   "tags": ["effect", "ui-props", "focus", "blur", "attention", "demonstrate"],
@@ -14,7 +14,7 @@
     {
       "path": "focus-swap.html",
       "target": "compositions/components/focus-swap.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

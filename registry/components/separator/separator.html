@@ -1,5 +1,5 @@
 <!--
-  Separator - Operator Black structural rule primitive for HyperFrames.
+  Separator - Operator Black structural rule primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Animate the CSS
   variables from a paused GSAP timeline for deterministic video renders.
@@ -201,9 +201,7 @@
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
-        : {};
+      window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
     // Unrecognised overrides return to their declared defaults.
     var orientations = { horizontal: true, vertical: true };

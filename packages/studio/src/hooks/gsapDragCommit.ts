@@ -2,7 +2,7 @@
  * Low-level drag commit helpers for GSAP position mutations.
  * Extracted from gsapRuntimeBridge.ts to keep file sizes under the 600-line limit.
  */
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import { usePlayerStore } from "../player/store/playerStore";
 import {
@@ -22,7 +22,7 @@ import type { CommitMutation } from "./gsapScriptCommitTypes";
 import { isGestureTransactionCommit, runGestureTransaction } from "./gestureTransaction";
 import { setPatchFromUpdateProperty } from "./gsapDragStaticSetHelpers";
 import { GsapEditBlockedError, type PlayheadEditRefusal } from "./gsapEditOutcome";
-import { isTweenConfigKey } from "@hyperframes/parsers/gsap-constants";
+import { isTweenConfigKey } from "@tagreel/parsers/gsap-constants";
 export {
   findExistingPositionWrite,
   findRotationSetAnimation,

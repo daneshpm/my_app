@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  camera-scan-gate -- HyperFrames video primitive (ui-props / interaction / demonstrate)
+  camera-scan-gate -- Tagreel video primitive (ui-props / interaction / demonstrate)
 
   Concept: a camera viewfinder scans once, tightens its four L-shaped corner
   brackets onto a detected target, then confirms recognition with a pulse,
@@ -49,7 +49,7 @@
   matching the root itself. The hardcoded "camera-scan-gate" composition id
   is required because the mounted flattening step strips data-composition-id
   before this script registers its timeline. Variables are read through
-  window.__hyperframes.getVariables(), which owns declared defaults merged
+  window.__tagreel.getVariables(), which owns declared defaults merged
   with per-instance host overrides after mounting.
 -->
 <html
@@ -362,10 +362,10 @@
             var label = root.querySelector(".csg-label");
 
             // EDIT ZONE: declared defaults and per-instance overrides have one
-            // owner after mount, window.__hyperframes.getVariables().
+            // owner after mount, window.__tagreel.getVariables().
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             var scanColor =
               vars.scanColor == null || String(vars.scanColor).trim() === ""

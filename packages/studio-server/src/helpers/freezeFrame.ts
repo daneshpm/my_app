@@ -1,8 +1,8 @@
 import { createHash, randomBytes } from "node:crypto";
-import { ensureHfIds } from "@hyperframes/parsers/hf-ids";
-import { readMediaOffsetSeconds } from "@hyperframes/parsers/media-duration";
-import { resolveRateSpec, sourceTimeAt } from "@hyperframes/core/speed-ramp";
-import { MEDIA_LINK_ATTR as LINK_ATTR, relinkSplitHalves } from "@hyperframes/core/media-link";
+import { ensureHfIds } from "@tagreel/parsers/hf-ids";
+import { readMediaOffsetSeconds } from "@tagreel/parsers/media-duration";
+import { resolveRateSpec, sourceTimeAt } from "@tagreel/core/speed-ramp";
+import { MEDIA_LINK_ATTR as LINK_ATTR, relinkSplitHalves } from "@tagreel/core/media-link";
 import {
   findTargetElement,
   isHTMLElement,

@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 
 import React, { act } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { TimelineElement } from "../../player";
 import type { TimelineEditCallbacks } from "../../player/components/timelineCallbacks";

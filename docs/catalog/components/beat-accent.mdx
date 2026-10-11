@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":324}}
   attribution={{"path":"registry/components/beat-accent","tags":["motion-primitive","effects","burst","sting","emphasize","impact"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/beat-accent/beat-accent.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/beat-accent/beat-accent.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html beat-accent.html
 <!doctype html>
 <!--
-  beat-accent: HyperFrames video primitive (effects / burst / emphasize)
+  beat-accent: Tagreel video primitive (effects / burst / emphasize)
 
   Concept: a single music-hit sting. A centered word snaps up in scale as a
   radial impact flash erupts behind it, shakes by a small amount, then settles
@@ -75,7 +75,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   <head>, is discarded on mount. #root has no data-width or data-height. It is
   styled by id, never by class, and fills the host box with position:absolute,
   inset:0, container-type:size. Variables are read through
-  window.__hyperframes.getVariables(), never by parsing document.documentElement,
+  window.__tagreel.getVariables(), never by parsing document.documentElement,
   because the mounted document element belongs to the host composition.
 -->
 <html
@@ -202,8 +202,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var flash = root.querySelector(".ba-flash");
             var subject = root.querySelector(".ba-subject");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "BOOM" : String(vars.text);
@@ -353,7 +353,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add beat-accent" item="beat-accent" />
+<InstallCommand command="npx tagreel add beat-accent" item="beat-accent" />
 
 That writes one file: `compositions/components/beat-accent.html`.
 

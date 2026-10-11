@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "spiral-galaxy",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Spiral Galaxy",
   "description": "A spiral galaxy seen from outside, turning with real differential rotation: inner stars orbit faster than outer ones, so the arms wind up over the shot instead of spinning rigidly. 20,000 additive GPU sprites, seeded once and solved directly from time, so any frame can be rendered on its own.",
   "stability": "experimental",
@@ -76,7 +76,7 @@
     {
       "path": "spiral-galaxy.html",
       "target": "compositions/spiral-galaxy.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ],
   "params": [

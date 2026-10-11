@@ -2,7 +2,7 @@ import {
   HF_AUDIO_FX_ATTR,
   serializeAudioFxChain,
   type HfAudioFxChain,
-} from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-fx";
 import type { TimelineTheme } from "./timelineTheme";
 import type { TimelineTrackGroupInfo } from "./useTimelineTrackDerivations";
 import type { TimelineLogicalRow } from "./timelineKeyboardNavigation";

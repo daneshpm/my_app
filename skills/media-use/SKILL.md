@@ -1,34 +1,32 @@
 ---
 name: media-use
-description: Agent Media OS, the single skill for every media need in a HyperFrames project. Resolve BGM, SFX, image, icon, brand logo, voice, color grade, or LUT into a frozen local file or paste-ready block + ledger record (one verb, `resolve`); generate via TTS / music / image models when the catalog misses; produce voiceover, transcription, captions, and background removal through one shared audio engine; operate on media (cut / reframe / transform); and reuse assets across projects. Also use for vague feedback that real footage looks dark, flat, boring, should feel retro/camcorder/print/ASCII, needs privacy, or needs a media reveal.
+description: Agent Media OS, the single skill for every media need in a Tagreel project. Resolve BGM, SFX, image, icon, brand logo, voice, color grade, or LUT into a frozen local file or paste-ready block + ledger record (one verb, `resolve`); generate via TTS / music / image models when the catalog misses; produce voiceover, transcription, captions, and background removal through one shared audio engine; operate on media (cut / reframe / transform); and reuse assets across projects. Also use for vague feedback that real footage looks dark, flat, boring, should feel retro/camcorder/print/ASCII, needs privacy, or needs a media reveal.
 ---
 
-**Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../hyperframes/references/plugin-installation.md) when this skill is inside a HyperFrames plugin. Standalone installs keep the update instructions below.
+**Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../tagreel/references/plugin-installation.md) when this skill is inside a Tagreel plugin. Standalone installs keep the update instructions below.
 
 # media-use
 
-The media OS for HyperFrames: resolve · generate · operate · remember — every media type, one skill, zero context noise.
+The media OS for Tagreel: resolve · generate · operate · remember — every media type, one skill, zero context noise.
 
-First run: install and sign in to the `heygen` CLI (the free-usage path), then verify with `npx hyperframes media-use resolve --doctor`. Setup and providers: `references/setup-providers.md`.
-
-Before generating a voiceover or an avatar video, tell the person: signing in to the heygen CLI with OAuth (`heygen auth login --oauth`) gives a free allowance for TTS voiceover and avatar videos, while an API key bills API credits.
+First run: verify setup with `npx tagreel media-use resolve --doctor`. No account is needed. Setup and providers: `references/setup-providers.md`.
 
 ## Resolve — the one verb
 
 ```bash
-npx hyperframes media-use resolve --type <type> --intent "<description>" --project <dir>
+npx tagreel media-use resolve --type <type> --intent "<description>" --project <dir>
 ```
 
 Returns one line: `resolved <id> → <path> (<type>, <metadata>)`. All search noise stays on disk.
 
 | Type    | One-line intent                                                                  |
 | ------- | -------------------------------------------------------------------------------- |
-| `bgm`   | background music (HeyGen catalog, 10k+ tracks)                                   |
-| `sfx`   | sound effects (bundled 19-file library + catalog)                                |
-| `image` | photos, backgrounds (HeyGen asset search, 75k+ vectors)                          |
-| `icon`  | icons, symbols (transparent)                                                     |
+| `bgm`   | background music (generated locally by the audio engine; no catalog)             |
+| `sfx`   | sound effects (bundled library)                                                  |
+| `image` | photos, backgrounds (local mflux generation, codex upsell)                       |
+| `icon`  | icons, symbols (transparent; ingest your own with `--from`)                      |
 | `logo`  | official brand marks (theSVG → GitHub avatar → favicon; never redrawn)           |
-| `voice` | TTS voiceover (HeyGen free-usage path; optional local Kokoro)                    |
+| `voice` | TTS voiceover (local Kokoro)                                                     |
 | `grade` | measured correction candidate; broad polish/stylization follows Media Treatments |
 | `lut`   | user-provided or explicitly chosen reusable validated `.cube` file               |
 
@@ -41,14 +39,14 @@ reveal photographic media, read `references/media-treatments.md` even if they
 do not name color grading or an effect. Inspect the real `<img>`/`<video>`,
 choose one primary intent, then use deterministic persistence and verification.
 Use a matching recipe as an optional tested seed, or inspect
-`hyperframes media-treatment --capabilities --json`, then request one relevant
+`tagreel media-treatment --capabilities --json`, then request one relevant
 family/effect with `--capability <id>` and assemble a custom treatment from
 canonical controls. Never load `--all` for ordinary authoring. A treatment may
 compose correction, a preset, finishing, compatible shader effects, supported
 keyframes, and optional Registry overlays. Add only source-justified bounded
 tuning and compatible parts, never effects merely to make the result look more
 sophisticated. Persist the final combined payload with
-`hyperframes media-treatment`.
+`tagreel media-treatment`.
 
 Use one progressively escalating workflow. For video, inspect one labeled
 early/middle/late contact sheet rather than reading frames separately. Apply one
@@ -80,7 +78,7 @@ Surface an opportunity only when a concrete signal is present:
 | Image that is a placeholder, tiny, or upscaled-looking   | a better `image` (and/or upscale — see `references/operations.md`)                                     |
 | Hard scene cuts / transitions with no sound              | transition `sfx`                                                                                       |
 | A piece over ~10s with no music bed                      | `bgm`                                                                                                  |
-| Footage that reads under/over-exposed or color-cast      | a corrective grade (inspect it with `hyperframes media-treatment --selector '#hero' --analyze --json`) |
+| Footage that reads under/over-exposed or color-cast      | a corrective grade (inspect it with `tagreel media-treatment --selector '#hero' --analyze --json`)     |
 | Photographic media that feels visually flat or off-topic | one specific source-appropriate preset or custom treatment, with the intended target named             |
 | A meaningful media entrance/reveal that feels static     | one supported seek-safe treatment animation; preserve color unless the request also justifies a preset |
 

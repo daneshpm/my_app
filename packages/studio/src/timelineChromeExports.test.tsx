@@ -11,7 +11,7 @@ import {
   useClipboard,
   usePlayerStore,
   type UseClipboardOptions,
-} from "@hyperframes/studio";
+} from "@tagreel/studio";
 import { installReactActEnvironment, mountReactHarness } from "./hooks/domSelectionTestHarness";
 import { useAudioMetersVisible } from "./utils/audioMeterVisibility";
 import { dispatchLinkShortcut as localDispatchLinkShortcut } from "./hooks/linkShortcuts";

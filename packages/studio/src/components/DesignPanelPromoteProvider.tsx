@@ -10,7 +10,7 @@
  */
 
 import { useCallback, type ReactNode } from "react";
-import type { Composition } from "@hyperframes/sdk";
+import type { Composition } from "@tagreel/sdk";
 import type { DomEditSelection } from "./editor/domEditingTypes";
 import { useSdkSession } from "../hooks/useSdkSession";
 import { useVariablesPersist, type UseVariablesPersistParams } from "../hooks/useVariablesPersist";

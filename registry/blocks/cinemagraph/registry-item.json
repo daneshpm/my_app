@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cinemagraph",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Cinemagraph",
   "description": "A still photograph with one living region: the frame is frozen while a single feathered window keeps moving - here, steam rising over a cup - drawn from the seek time alone with a period that divides the duration, so the render loops seamlessly. Swap the placeholder scene for a freeze-frame still masked over a looping video to cinemagraph real footage.",
   "dimensions": { "width": 1920, "height": 1080 },
@@ -11,7 +11,7 @@
     {
       "path": "cinemagraph.html",
       "target": "compositions/cinemagraph.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

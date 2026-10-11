@@ -12,7 +12,7 @@ import {
   audioEqSummary,
   HF_AUDIO_EQ_RANGE_DB,
   type HfAudioEqBand,
-} from "@hyperframes/core/audio-fx-eq";
+} from "@tagreel/core/audio-fx-eq";
 import { FX_FAMILY_TYPE, fxFamilyTint } from "./propertyPanelFxFamily.js";
 
 export interface FxEqModuleProps {

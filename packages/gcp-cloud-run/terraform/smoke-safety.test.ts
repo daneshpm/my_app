@@ -26,7 +26,7 @@ describe("GCP smoke ownership and protocol safety", () => {
     expect(smoke).toContain('TF_DATA_DIR="$ARTIFACT_DIR/terraform-data"');
     expect(smoke).toContain("export TF_DATA_DIR");
     expect(smoke).toContain('-var "project_name=$STACK_NAME"');
-    expect(smoke).toContain('[ "$STACK_NAME" != "hyperframes" ]');
+    expect(smoke).toContain('[ "$STACK_NAME" != "tagreel" ]');
   });
 
   it("tracks owned registry resources and verifies stack deletion", () => {

@@ -93,20 +93,18 @@ test("music and sound effects are marked by where they came from", () => {
     lines: [],
     voices: [{ id: "01", path: "assets/voice/01.wav" }],
     bgm: { path: "assets/bgm/track.mp3", query: "calm" },
-    bgmFields: { bgm_pending: false, bgm_mode: "retrieve" },
+    bgmFields: { bgm_pending: false, bgm_mode: "generate" },
     sfx: [
       { file: "assets/sfx/whoosh.mp3", name: "whoosh", source: "local" },
       { file: "assets/sfx/whoosh.mp3", name: "whoosh", source: "local" },
-      { file: "assets/sfx/glass.mp3", name: "glass", source: "heygen" },
     ],
   });
 
   assert.deepEqual(
     assets.map(({ path, source, provider }) => [path, source, provider]),
     [
-      ["assets/bgm/track.mp3", "search", undefined],
+      ["assets/bgm/track.mp3", "generated", undefined],
       ["assets/sfx/whoosh.mp3", "bundled", "bundled.sfx"],
-      ["assets/sfx/glass.mp3", "search", "heygen"],
     ],
   );
 });

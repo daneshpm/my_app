@@ -13,7 +13,7 @@ import { tmpdir } from "node:os";
 import { basename, dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { DownloadOptions } from "../cloud/download.js";
+import type { DownloadOptions } from "./downloadToFile.js";
 import {
   ensureParakeetModel,
   installSherpaRuntime,
@@ -307,7 +307,7 @@ module.exports = {
           runtimeDir: cache,
           cliUrl,
         }),
-      ).rejects.toThrow(/hyperframes models install parakeet/);
+      ).rejects.toThrow(/tagreel models install parakeet/);
       expect(log).toHaveBeenCalledTimes(1);
       expect(log.mock.calls[0]?.[0]).toContain(pinnedPath);
       expect(log.mock.calls[0]?.[0]).toContain("libonnxruntime.so: cannot open shared object");

@@ -8,7 +8,7 @@ import {
   getElementScreenshotClip,
   thumbnailDeviceScaleFactor,
   type ScreenshotClip,
-} from "@hyperframes/studio-server";
+} from "@tagreel/studio-server";
 import { createStudioDevRenderBodyScripts } from "./vite.studioMotion";
 import { seekThumbnailPreview } from "./vite.thumbnail";
 
@@ -114,7 +114,7 @@ export function findSystemChrome(
   readDirectories: (path: string) => string[] = readdirSync,
 ): string | undefined {
   const override = [
-    env["HYPERFRAMES_BROWSER_PATH"],
+    env["TAGREEL_BROWSER_PATH"],
     env["PRODUCER_HEADLESS_SHELL_PATH"],
     env["PUPPETEER_EXECUTABLE_PATH"],
     env["CHROME_PATH"],

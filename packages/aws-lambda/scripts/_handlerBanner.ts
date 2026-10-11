@@ -20,7 +20,7 @@
  * with it, and assert the globals actually resolve.
  */
 export const HANDLER_BANNER = [
-  "// hyperframes-aws-lambda handler bundle",
+  "// tagreel-aws-lambda handler bundle",
   'import { createRequire as __hf_createRequire } from "module";',
   'import { fileURLToPath as __hf_fileURLToPath } from "url";',
   'import { dirname as __hf_dirname } from "path";',

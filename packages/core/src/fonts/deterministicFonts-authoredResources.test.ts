@@ -14,9 +14,9 @@ const requests: string[] = [];
 let restoreFetch: () => void;
 
 beforeEach(() => {
-  previousCacheDir = process.env.HYPERFRAMES_FONT_CACHE_DIR;
+  previousCacheDir = process.env.TAGREEL_FONT_CACHE_DIR;
   cacheDir = mkdtempSync(join(tmpdir(), "hf-authored-resources-"));
-  process.env.HYPERFRAMES_FONT_CACHE_DIR = cacheDir;
+  process.env.TAGREEL_FONT_CACHE_DIR = cacheDir;
   requests.length = 0;
   _clearGoogleFontCssCacheForTests();
   const mock = vi.spyOn(globalThis, "fetch").mockImplementation(async (input) => {
@@ -37,8 +37,8 @@ beforeEach(() => {
 afterEach(() => {
   restoreFetch();
   _clearGoogleFontCssCacheForTests();
-  if (previousCacheDir === undefined) delete process.env.HYPERFRAMES_FONT_CACHE_DIR;
-  else process.env.HYPERFRAMES_FONT_CACHE_DIR = previousCacheDir;
+  if (previousCacheDir === undefined) delete process.env.TAGREEL_FONT_CACHE_DIR;
+  else process.env.TAGREEL_FONT_CACHE_DIR = previousCacheDir;
   rmSync(cacheDir, { recursive: true, force: true });
 });
 

@@ -8,7 +8,7 @@ import { MediaSection } from "./propertyPanelMediaSection";
 import type { DomEditSelection } from "./domEditing";
 import type { PatchOperation } from "../../utils/sourcePatcher";
 import { formatTimingValue } from "./propertyPanelHelpers";
-import { readMediaOffsetSeconds } from "@hyperframes/parsers/media-duration";
+import { readMediaOffsetSeconds } from "@tagreel/parsers/media-duration";
 
 (globalThis as unknown as { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 

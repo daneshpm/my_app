@@ -18,7 +18,7 @@ import {
   makeSlideshowNotesController,
   isPanelUndoKey,
 } from "./SlideshowPanel";
-import type { SlideshowManifest } from "@hyperframes/core/slideshow";
+import type { SlideshowManifest } from "@tagreel/core/slideshow";
 
 // ── toggleMainLineSlide ────────────────────────────────────────────────────
 
@@ -378,14 +378,14 @@ describe("removeHotspot", () => {
 describe("safeParseManifest", () => {
   it("parses a valid slideshow island", () => {
     const manifest = { slides: [{ sceneId: "a" }] };
-    const island = `<script type="application/hyperframes-slideshow+json">${JSON.stringify(manifest)}</script>`;
+    const island = `<script type="application/tagreel-slideshow+json">${JSON.stringify(manifest)}</script>`;
     const html = `<html><body>${island}</body></html>`;
     const result = safeParseManifest(html);
     expect(result.slides[0]?.sceneId).toBe("a");
   });
 
   it("returns {slides:[]} for malformed JSON in the island", () => {
-    const html = `<html><body><script type="application/hyperframes-slideshow+json">NOT_JSON</script></body></html>`;
+    const html = `<html><body><script type="application/tagreel-slideshow+json">NOT_JSON</script></body></html>`;
     const result = safeParseManifest(html);
     expect(result).toEqual({ slides: [] });
   });

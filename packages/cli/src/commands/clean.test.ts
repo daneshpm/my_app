@@ -16,13 +16,13 @@ import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 import { runCommand } from "citty";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createOwnedRenderDir } from "@hyperframes/producer";
+import { createOwnedRenderDir } from "@tagreel/producer";
 import { consumeCommandResult } from "../utils/commandResult.js";
 import cleanCommand, { cleanLeftovers } from "./clean.js";
 
 const history = vi.hoisted(() => ({ unreadable: false }));
-vi.mock("@hyperframes/studio-server", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@hyperframes/studio-server")>();
+vi.mock("@tagreel/studio-server", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@tagreel/studio-server")>();
   return {
     ...actual,
     listProjectHistories: (root: string) => {
@@ -75,7 +75,7 @@ describe("cleanLeftovers", () => {
     const own = createOwnedRenderDir(join(scratch, "self-"));
     stamp = JSON.parse(readFileSync(join(own, "owner.json"), "utf-8"));
     rmSync(own, { recursive: true });
-    vi.stubEnv("HYPERFRAMES_EXTRACT_CACHE_DIR", join(scratch, "extract-cache"));
+    vi.stubEnv("TAGREEL_EXTRACT_CACHE_DIR", join(scratch, "extract-cache"));
     // Stands in for a render in progress: a running process that owns its work dir.
     liveRender = spawn(process.execPath, ["-e", "setInterval(() => {}, 1000)"], {
       stdio: "ignore",
@@ -137,7 +137,7 @@ describe("cleanLeftovers", () => {
     },
   );
 
-  it("leaves snapshots alone in a folder that is not a HyperFrames project", async () => {
+  it("leaves snapshots alone in a folder that is not a Tagreel project", async () => {
     writeFileSync(join(project, "index.html"), "<title>my website</title>");
     const snapshots = plant(project, "snapshots");
 

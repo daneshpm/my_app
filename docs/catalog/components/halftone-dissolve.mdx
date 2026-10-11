@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":420}}
   attribution={{"path":"registry/components/halftone-dissolve","tags":["motion-primitive","transition","texture","halftone","dissolve"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/halftone-dissolve/halftone-dissolve.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/halftone-dissolve/halftone-dissolve.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html halftone-dissolve.html
 <!doctype html>
 <!--
-  halftone-dissolve: HyperFrames video primitive (transitions / texture)
+  halftone-dissolve: Tagreel video primitive (transitions / texture)
 
   Scene A dissolves into scene B through a growing halftone dot field:
   accent ink dots pop onto a fixed grid smallest-first, each dot then
@@ -205,8 +205,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var sceneB = root.querySelector(".htd-scene-b");
             var canvas = root.querySelector(".htd-ink");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {
@@ -449,7 +449,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add halftone-dissolve" item="halftone-dissolve" />
+<InstallCommand command="npx tagreel add halftone-dissolve" item="halftone-dissolve" />
 
 That writes one file: `compositions/components/halftone-dissolve.html`.
 

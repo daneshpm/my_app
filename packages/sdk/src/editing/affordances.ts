@@ -5,8 +5,8 @@
  * touches getComputedStyle and only resolves meaningfully against a laid-out DOM.
  */
 
-import { resolveEditingAffordances, type EditingAffordances } from "@hyperframes/core/editing";
-import type { HyperFramesElement } from "../types.js";
+import { resolveEditingAffordances, type EditingAffordances } from "@tagreel/core/editing";
+import type { TagreelElement } from "../types.js";
 
 export interface AffordanceContext {
   /** Studio-app concepts; default false for a generic consumer with no such notion. */
@@ -16,7 +16,7 @@ export interface AffordanceContext {
   isMasterView?: boolean;
 }
 
-type ModelFacts = Pick<HyperFramesElement, "text" | "animationIds" | "start">;
+type ModelFacts = Pick<TagreelElement, "text" | "animationIds" | "start">;
 
 export function resolveElementAffordances(
   liveEl: HTMLElement,

@@ -10,7 +10,7 @@
 // voice/captions/SFX render. Structural invocation errors still exit 1.
 //
 // Usage:
-//   node wait-bgm.mjs --audio-meta ./audio_meta.json --hyperframes . \
+//   node wait-bgm.mjs --audio-meta ./audio_meta.json --tagreel . \
 //     [--timeout-ms 120000] [--interval-ms 2000] [--out ./bgm_status.json]
 
 import { existsSync, readFileSync, statSync, writeFileSync } from "node:fs";
@@ -29,8 +29,8 @@ function die(msg) {
 }
 
 const audioMetaPath = resolve(flag("audio-meta", "./audio_meta.json"));
-const hyperframesDir = resolve(flag("hyperframes", "."));
-const outPath = resolve(flag("out", join(hyperframesDir, "bgm_status.json")));
+const tagreelDir = resolve(flag("tagreel", "."));
+const outPath = resolve(flag("out", join(tagreelDir, "bgm_status.json")));
 const timeoutMs = Math.max(0, Number(flag("timeout-ms", "120000")) || 0);
 const intervalMs = Math.max(250, Number(flag("interval-ms", "2000")) || 2000);
 
@@ -88,7 +88,7 @@ if (!existsSync(audioMetaPath)) die(`audio_meta.json missing at ${audioMetaPath}
 
 const audioMeta = JSON.parse(readFileSync(audioMetaPath, "utf8"));
 const bgmPath = audioMeta.bgm?.path || "";
-const bgmAbsPath = bgmPath ? join(hyperframesDir, bgmPath) : "";
+const bgmAbsPath = bgmPath ? join(tagreelDir, bgmPath) : "";
 const logPath = audioMeta.bgm_log || "";
 const pid = audioMeta.bgm_pid || null;
 
@@ -134,8 +134,7 @@ while (Date.now() - started <= timeoutMs) {
     });
     console.log(`✓ bgm: ready (${bgmPath}, ${size}B)`);
     const generated = { path: bgmPath, type: "bgm", source: "generated", provider: base.provider };
-    for (const anomaly of recordInManifest(hyperframesDir, [generated]))
-      console.error(`  ${anomaly}`);
+    for (const anomaly of recordInManifest(tagreelDir, [generated])) console.error(`  ${anomaly}`);
     process.exit(0);
   }
 

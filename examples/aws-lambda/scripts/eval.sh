@@ -25,7 +25,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
 SAM_DIR="$SCRIPT_DIR/.."
 
-FIXTURES="${FIXTURES:-mp4-h264-sdr,many-cuts,gsap-letters-render-compat,heygen-promo-preview-assets}"
+FIXTURES="${FIXTURES:-mp4-h264-sdr,many-cuts,gsap-letters-render-compat}"
 CHUNK_COUNT="${CHUNK_COUNT:-4}"
 # Pin chunkSize across all fixtures so wall-clock comparisons are
 # meaningful — without a fixed value, each fixture's plan() picks
@@ -34,7 +34,7 @@ CHUNK_COUNT="${CHUNK_COUNT:-4}"
 # the table chunked.
 CHUNK_SIZE="${CHUNK_SIZE:-60}"
 PSNR_THRESHOLD="${PSNR_THRESHOLD:-40}"
-STACK_NAME="${STACK_NAME:-hyperframes-lambda-eval-$(date +%s)}"
+STACK_NAME="${STACK_NAME:-tagreel-lambda-eval-$(date +%s)}"
 AWS_REGION="${AWS_REGION:-us-east-1}"
 AWS_PROFILE="${AWS_PROFILE:-}"
 KEEP_STACK="false"
@@ -59,12 +59,12 @@ stack, renders each fixture twice (locally + via Step Functions), and
 tears the stack down.
 
 Flags:
-  --fixtures <comma-sep>        fixture names (default: mp4-h264-sdr,many-cuts,gsap-letters-render-compat,heygen-promo-preview-assets)
+  --fixtures <comma-sep>        fixture names (default: mp4-h264-sdr,many-cuts,gsap-letters-render-compat)
   --chunk-count <N>             chunk fan-out per Lambda render (default: 4)
   --chunk-size <frames>         frames per chunk; pinned across fixtures (default: 60)
   --psnr-threshold <db>         PSNR floor in dB for visual equivalence (default: 40)
   --iterations <N>              Lambda renders per fixture; report median (default: 1)
-  --stack-name <name>           SAM stack name (default: hyperframes-lambda-eval-<timestamp>)
+  --stack-name <name>           SAM stack name (default: tagreel-lambda-eval-<timestamp>)
   --region <region>             AWS region (default: $AWS_REGION or us-east-1)
   --profile <name>              AWS profile (default: $AWS_PROFILE)
   --reserved-concurrency <N>    Lambda Map MaxConcurrency cap (default: 16)

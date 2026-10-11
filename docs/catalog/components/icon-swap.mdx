@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":112}}
   attribution={{"path":"registry/components/icon-swap","tags":["video-primitive","transition-primitive","transitions-dev-port","icon","swap"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/icon-swap/icon-swap.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/icon-swap/icon-swap.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html icon-swap.html
 <!--
-  Icon Swap - transitions.dev-inspired primitive for HyperFrames.
+  Icon Swap - transitions.dev-inspired primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Use the timeline integration
   note at the bottom as the starting point for deterministic GSAP animation.
@@ -92,8 +92,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -141,7 +141,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add icon-swap" item="icon-swap" />
+<InstallCommand command="npx tagreel add icon-swap" item="icon-swap" />
 
 That writes one file: `compositions/components/icon-swap.html`.
 

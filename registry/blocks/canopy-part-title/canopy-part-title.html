@@ -109,8 +109,8 @@
         // getVariables carries the declared defaults, standalone and mounted.
         var V = {};
         try {
-          if (window.__hyperframes && window.__hyperframes.getVariables)
-            V = window.__hyperframes.getVariables() || {};
+          if (window.__tagreel && window.__tagreel.getVariables)
+            V = window.__tagreel.getVariables() || {};
         } catch (e) {
           /* corrupt declarations must not blank the composition */
         }
@@ -342,11 +342,11 @@
       const W = 1920,
         H = 1080,
         DUR = 12;
-      // Bare __hyperframes is this composition's own in a module; getVariables carries the defaults.
+      // Bare __tagreel is this composition's own in a module; getVariables carries the defaults.
       let V = {};
       try {
-        if (typeof __hyperframes !== "undefined" && __hyperframes.getVariables)
-          V = __hyperframes.getVariables() || {};
+        if (typeof __tagreel !== "undefined" && __tagreel.getVariables)
+          V = __tagreel.getVariables() || {};
       } catch (e) {
         /* corrupt declarations must not blank the composition */
       }
@@ -642,9 +642,7 @@
 
       // Beside this file when mounted; a runtime without assetUrl keeps the plain path.
       const assetUrl = (path) =>
-        typeof __hyperframes !== "undefined" && __hyperframes.assetUrl
-          ? __hyperframes.assetUrl(path)
-          : path;
+        typeof __tagreel !== "undefined" && __tagreel.assetUrl ? __tagreel.assetUrl(path) : path;
       const textureLoader = new THREE.TextureLoader();
       const [photoSurface, photoNormal] = await Promise.all([
         textureLoader.loadAsync(assetUrl("assets/leaf-surface-color.webp")),

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Data","badge":"Stable","codeLines":739}}
   attribution={{"path":"registry/components/chart-story","tags":["motion-primitive","proof","stats","chart","bars","line","donut","progress","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/chart-story/chart-story.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/chart-story/chart-story.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html chart-story.html
 <!doctype html>
 <!--
-  chart-story: HyperFrames video primitive (proof and stats / prove)
+  chart-story: Tagreel video primitive (proof and stats / prove)
 
   One chart builds from data in reading order and lands the exact supplied
   values. Bars grow staggered from the baseline, a line draws left to right
@@ -158,8 +158,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var stage = root.querySelector(".cs-stage");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var typeOptions = { bars: 1, line: 1, donut: 1, progress: 1 };
@@ -768,7 +768,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add chart-story" item="chart-story" />
+<InstallCommand command="npx tagreel add chart-story" item="chart-story" />
 
 That writes one file: `compositions/components/chart-story.html`.
 

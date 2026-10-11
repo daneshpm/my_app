@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "rubber-band-bumper",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Rubber Band Bumper",
   "description": "An outgoing panel pulls against increasing resistance, holds at tension, then snaps past an edge with overshoot as the incoming panel settles behind it.",
   "tags": ["motion-primitive", "transition", "rubber-band", "resistance", "overshoot"],
@@ -14,7 +14,7 @@
     {
       "path": "rubber-band-bumper.html",
       "target": "compositions/components/rubber-band-bumper.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

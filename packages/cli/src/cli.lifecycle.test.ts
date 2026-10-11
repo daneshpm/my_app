@@ -42,7 +42,6 @@ describe("CLI lifecycle", () => {
       flush: () => new Promise<void>(() => {}),
       flushSync: () => order.push("flushSync"),
       incrementCommandCount: vi.fn(),
-      showTelemetryNotice: vi.fn(),
       shouldTrack: () => false,
       trackCliError: vi.fn(),
       trackCommand: vi.fn(),
@@ -117,7 +116,7 @@ describe("CLI lifecycle", () => {
     it("when a figma command reports its error code", async () => {
       mockInitCommand(async () => {
         const { withFigmaErrors } = await import("./commands/figma/cliError.js");
-        const { FigmaClientError } = await import("@hyperframes/core/figma");
+        const { FigmaClientError } = await import("@tagreel/core/figma");
         await withFigmaErrors("figma:asset", async () => {
           throw new FigmaClientError("NO_TOKEN", "No Figma token");
         });

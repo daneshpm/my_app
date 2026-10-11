@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "camera-scan-gate",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Camera Scan Gate",
   "description": "A camera and QR recognition moment with a viewfinder sweep, bracket lock, confirmation pulse, and verified next beat.",
   "tags": ["prop", "ui-props", "camera", "qr", "scan", "recognition", "interaction", "demonstrate"],
@@ -17,7 +17,7 @@
     {
       "path": "camera-scan-gate.html",
       "target": "compositions/components/camera-scan-gate.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

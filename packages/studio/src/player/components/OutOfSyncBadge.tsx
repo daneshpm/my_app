@@ -1,6 +1,6 @@
 import { memo, useCallback, useState, type SyntheticEvent } from "react";
 import { createPortal } from "react-dom";
-import { formatSyncOffset } from "@hyperframes/core/media-link";
+import { formatSyncOffset } from "@tagreel/core/media-link";
 import { useContextMenuDismiss } from "../../hooks/useContextMenuDismiss";
 import { useTimelineEditContextOptional } from "../../contexts/TimelineEditContext";
 import { useLinkedClipPreferences } from "../../utils/linkedClipPreferences";

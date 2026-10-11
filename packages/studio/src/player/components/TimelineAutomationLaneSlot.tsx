@@ -8,7 +8,7 @@
  */
 
 import { useEffect, useMemo } from "react";
-import { resolveAutomationRange, type HfAutomationLane } from "@hyperframes/core/audio-automation";
+import { resolveAutomationRange, type HfAutomationLane } from "@tagreel/core/audio-automation";
 import { TimelineAutomationLane } from "./TimelineAutomationLane";
 import { AUTOMATION_LANE_H } from "./automationLaneHeight";
 import { getTimelineLaneTop } from "./timelineLayout";

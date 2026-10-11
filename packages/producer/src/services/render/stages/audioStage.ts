@@ -22,7 +22,7 @@ import {
   MIXED_AUDIO_FILENAME,
   processCompositionAudio,
   type AudioProcessingFailure,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 import type { CompositionMetadata } from "../shared.js";
 import type { ProducerLogger } from "../../../logger.js";
 import { encoderFailureError } from "../encoderInterruption.js";

@@ -53,9 +53,7 @@
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
-        : {};
+      window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
     // Unrecognised overrides return to their declared defaults.
     var washes = {

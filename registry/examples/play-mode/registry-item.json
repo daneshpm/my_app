@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "play-mode",
-  "type": "hyperframes:example",
+  "type": "tagreel:example",
   "title": "Play Mode",
   "description": "Playful elastic animations",
   "dimensions": {
@@ -13,22 +13,22 @@
     {
       "path": "compositions/captions.html",
       "target": "compositions/captions.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "compositions/intro.html",
       "target": "compositions/intro.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "compositions/stats.html",
       "target": "compositions/stats.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "index.html",
       "target": "index.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

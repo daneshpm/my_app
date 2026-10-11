@@ -1,9 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import {
-  createFrameLookupTable,
-  type ExtractedFrames,
-  type VideoElement,
-} from "@hyperframes/engine";
+import { createFrameLookupTable, type ExtractedFrames, type VideoElement } from "@tagreel/engine";
 import {
   buildPlanVideosJson,
   parsePlanVideosJson,

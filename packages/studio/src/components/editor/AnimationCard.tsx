@@ -1,6 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
-import { SUPPORTED_EASES, SUPPORTED_PROPS } from "@hyperframes/core/gsap-constants";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
+import { SUPPORTED_EASES, SUPPORTED_PROPS } from "@tagreel/core/gsap-constants";
 import { trackStudioSegmentEaseEdit } from "../../telemetry/events";
 import { RESPONSIVE_GRID } from "./propertyPanelHelpers";
 import { MetricField, SelectField } from "./propertyPanelPrimitives";

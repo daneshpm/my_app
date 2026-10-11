@@ -26,7 +26,7 @@ function app(script: string): Hono {
   dirs.push(dir);
   const html = `<!DOCTYPE html><html><body data-duration="10">
 <div id="a"></div><div id="b"></div><div id="c"></div>
-<script data-hyperframes-gsap>
+<script data-tagreel-gsap>
 const tl = gsap.timeline({ paused: true });
 ${script}
 window.__timelines = { main: tl };

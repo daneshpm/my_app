@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { EXCLUDED_TAGS, mintHfId, walkCompositionDescendants } from "@hyperframes/parsers/hf-ids";
+import { EXCLUDED_TAGS, mintHfId, walkCompositionDescendants } from "@tagreel/parsers/hf-ids";
 import type { TimelineElement } from "../player";
 import { usePlayerStore } from "../player";
 import { toAuthoredStart } from "../player/store/timelineElement";

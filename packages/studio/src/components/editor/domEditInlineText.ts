@@ -1,4 +1,4 @@
-import { isRichTextFormattingTag } from "@hyperframes/core/rich-text-sanitize";
+import { isRichTextFormattingTag } from "@tagreel/core/rich-text-sanitize";
 import type { DomEditSelection } from "./domEditingTypes";
 import { isTextEditableSelection } from "./domEditingLayers";
 

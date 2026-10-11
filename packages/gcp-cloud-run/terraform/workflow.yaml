@@ -1,4 +1,4 @@
-# HyperFrames distributed render orchestration on Cloud Workflows.
+# Tagreel distributed render orchestration on Cloud Workflows.
 #
 #   Plan → BuildChunkList → AssertChunkCount → RenderChunks (parallel) → Assemble
 #
@@ -14,7 +14,7 @@
 #   { Plan: {...}, Chunks: [{...}, ...], Assemble: {...} }
 #
 # Deploy with `gcloud workflows deploy` (the Terraform module / the
-# `hyperframes cloudrun deploy` command do this for you).
+# `tagreel cloudrun deploy` command do this for you).
 
 main:
   params: [args]

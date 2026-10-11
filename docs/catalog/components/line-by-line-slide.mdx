@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":105}}
   attribution={{"path":"registry/components/line-by-line-slide","tags":["motion-primitive","typography"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/line-by-line-slide/line-by-line-slide.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/line-by-line-slide/line-by-line-slide.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html line-by-line-slide.html
 <!--
-  Line-by-Line Slide - typography primitive for HyperFrames.
+  Line-by-Line Slide - typography primitive for Tagreel.
 
   Paste the markup and CSS into a composition. Drive the timeline integration
   from a paused GSAP timeline so renders remain deterministic.
@@ -90,8 +90,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -134,7 +134,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add line-by-line-slide" item="line-by-line-slide" />
+<InstallCommand command="npx tagreel add line-by-line-slide" item="line-by-line-slide" />
 
 That writes one file: `compositions/components/line-by-line-slide.html`.
 

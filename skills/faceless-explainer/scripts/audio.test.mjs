@@ -42,7 +42,7 @@ writeFileSync(flag("--out"), JSON.stringify({ voices: [], bgm: null, sfx: [] }))
   );
   const result = spawnSync(
     process.execPath,
-    [script, "--hyperframes", dir, "--storyboard", join(dir, "STORYBOARD.md")],
+    [script, "--tagreel", dir, "--storyboard", join(dir, "STORYBOARD.md")],
     { encoding: "utf8", env: { ...process.env, HF_MEDIA_ENGINE: engine } },
   );
   return { dir, result };
@@ -79,14 +79,14 @@ test("music: none with narration keeps TTS but turns BGM off (not fully silent)"
   assert.equal(request.lines.length, 1);
 });
 
-test("a storyboard music mood still retrieves BGM (marker is exact, not fuzzy)", () => {
+test("a storyboard music mood still requests generated BGM (marker is exact, not fuzzy)", () => {
   const { dir, result } = runAudioRaw({
     storyboard: "---\nmessage: Test\nmusic: upbeat synthwave with heavy drums\n---\n",
   });
 
   assert.equal(result.status, 0, result.stderr);
   const request = JSON.parse(readFileSync(join(dir, "request.json"), "utf8"));
-  assert.equal(request.bgm.mode, "retrieve");
+  assert.equal(request.bgm.mode, "generate");
   assert.equal(request.bgm.query, "upbeat synthwave with heavy drums");
 });
 
@@ -111,7 +111,7 @@ writeFileSync(flag("--out"), ${JSON.stringify(JSON.stringify(neutralOut))});
   );
   const result = spawnSync(
     process.execPath,
-    [script, "fetch-sfx", "--hyperframes", dir, "--storyboard", join(dir, "STORYBOARD.md")],
+    [script, "fetch-sfx", "--tagreel", dir, "--storyboard", join(dir, "STORYBOARD.md")],
     { encoding: "utf8", env: { ...process.env, HF_MEDIA_ENGINE: engine } },
   );
   return { dir, result };

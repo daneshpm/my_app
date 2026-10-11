@@ -10,7 +10,7 @@ import {
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { ProjectRootMissingError } from "@hyperframes/core";
+import { ProjectRootMissingError } from "@tagreel/core";
 import { backupPathForResponse, snapshotBeforeWrite } from "./backupJournal";
 
 const tempDirs: string[] = [];
@@ -39,9 +39,7 @@ describe("snapshotBeforeWrite", () => {
 
     expect(result.backupPath && existsSync(result.backupPath)).toBe(true);
     expect(readFileSync(result.backupPath!, "utf-8")).toBe("before");
-    expect(backupPathForResponse(projectDir, result.backupPath)).toMatch(
-      /^\.hyperframes\/backup\//,
-    );
+    expect(backupPathForResponse(projectDir, result.backupPath)).toMatch(/^\.tagreel\/backup\//);
   });
 
   it("creates backups for zero-byte files", () => {
@@ -65,7 +63,7 @@ describe("snapshotBeforeWrite", () => {
       snapshotBeforeWrite(projectDir, file, { keepPerFile: 3 });
     }
 
-    expect(readdirSync(join(projectDir, ".hyperframes", "backup"))).toHaveLength(3);
+    expect(readdirSync(join(projectDir, ".tagreel", "backup"))).toHaveLength(3);
   });
 
   it("does not prune backups for paths with colliding sanitized names", () => {
@@ -78,11 +76,11 @@ describe("snapshotBeforeWrite", () => {
     snapshotBeforeWrite(projectDir, first, { keepPerFile: 1 });
     snapshotBeforeWrite(projectDir, second, { keepPerFile: 1 });
 
-    const backups = readdirSync(join(projectDir, ".hyperframes", "backup"));
+    const backups = readdirSync(join(projectDir, ".tagreel", "backup"));
     expect(backups).toHaveLength(2);
     expect(
       backups
-        .map((name) => readFileSync(join(projectDir, ".hyperframes", "backup", name), "utf-8"))
+        .map((name) => readFileSync(join(projectDir, ".tagreel", "backup", name), "utf-8"))
         .sort(),
     ).toEqual(["space", "underscore"]);
   });

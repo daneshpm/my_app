@@ -7,18 +7,18 @@ import {
   isPathInside,
   normalizeHfColorGrading,
   serializeHfColorGrading,
-} from "@hyperframes/core";
+} from "@tagreel/core";
 import {
   isColorGradingVariableRef,
   validateColorGradingContract,
-} from "@hyperframes/parsers/color-grading-contract";
+} from "@tagreel/parsers/color-grading-contract";
 import {
   cleanAssetUrl,
   isRemoteOrInlineUrl,
   resolveExistingLocalAsset,
-} from "@hyperframes/parsers/asset-resolution";
-import { rewriteAssetPath } from "@hyperframes/parsers/asset-paths";
-import { patchElementInHtml } from "@hyperframes/studio-server/source-mutation";
+} from "@tagreel/parsers/asset-resolution";
+import { rewriteAssetPath } from "@tagreel/parsers/asset-paths";
+import { patchElementInHtml } from "@tagreel/studio-server/source-mutation";
 import { defineCommand } from "citty";
 import { parseHTML } from "linkedom";
 import type { Example } from "./_examples.js";
@@ -252,7 +252,7 @@ export function getMediaTreatmentCapabilityDetail(id: string): unknown {
       description:
         "Deterministic source measurements for agent decisions; visual scopes remain a Studio display.",
       command:
-        "hyperframes media-treatment --file compositions/scene.html --selector '#hero' --analyze --json",
+        "tagreel media-treatment --file compositions/scene.html --selector '#hero' --analyze --json",
       output: [
         "source color metadata and HDR/LOG warnings",
         "luma percentile and clipping evidence",
@@ -288,8 +288,8 @@ export function getMediaTreatmentCapabilityDetail(id: string): unknown {
     overlays: {
       id,
       description: "Authored overlay blocks owned by the my_app Registry.",
-      discover: "hyperframes catalog",
-      apply: "hyperframes add <overlay> --dir <project> --no-clipboard --json",
+      discover: "tagreel catalog",
+      apply: "tagreel add <overlay> --dir <project> --no-clipboard --json",
     },
   } as const;
 
@@ -301,29 +301,26 @@ export function getMediaTreatmentCapabilityDetail(id: string): unknown {
 export const examples: Example[] = [
   [
     "Discover the complete treatment surface without loading every control",
-    `hyperframes media-treatment --capabilities --json`,
+    `tagreel media-treatment --capabilities --json`,
   ],
-  [
-    "Inspect one relevant effect in detail",
-    `hyperframes media-treatment --capability kuwahara --json`,
-  ],
+  ["Inspect one relevant effect in detail", `tagreel media-treatment --capability kuwahara --json`],
   [
     "Inspect the exhaustive machine-readable catalog",
-    `hyperframes media-treatment --capabilities --all --json`,
+    `tagreel media-treatment --capabilities --all --json`,
   ],
   [
     "Apply a resolved treatment to one media element",
-    `hyperframes media-treatment --selector '#hero' --grading '{"preset":"skin-soft","intensity":0.6}' --apply`,
+    `tagreel media-treatment --selector '#hero' --grading '{"preset":"skin-soft","intensity":0.6}' --apply`,
   ],
   [
     "Preview the exact mutation without writing",
-    `hyperframes media-treatment --file compositions/scene.html --selector 'video' --grading '{"preset":"warm-daylight"}' --apply --dry-run --json`,
+    `tagreel media-treatment --file compositions/scene.html --selector 'video' --grading '{"preset":"warm-daylight"}' --apply --dry-run --json`,
   ],
   [
     "Measure one local media source before choosing a correction",
-    `hyperframes media-treatment --selector '#hero' --analyze --json`,
+    `tagreel media-treatment --selector '#hero' --analyze --json`,
   ],
-  ["Remove a treatment", `hyperframes media-treatment --selector '#hero' --clear`],
+  ["Remove a treatment", `tagreel media-treatment --selector '#hero' --clear`],
 ];
 
 interface ApplyMediaTreatmentOptions {

@@ -1,4 +1,4 @@
-# HyperFrame Schema Compliance Review
+# Tagreel Schema Compliance Review
 
 ## Executive Summary
 

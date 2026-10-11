@@ -2,8 +2,8 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const reads = vi.hoisted(() => ({ shape: [] as string[] }));
 
-vi.mock("@hyperframes/parsers/gsap-parser-acorn", async (importOriginal) => {
-  const real = await importOriginal<typeof import("@hyperframes/parsers/gsap-parser-acorn")>();
+vi.mock("@tagreel/parsers/gsap-parser-acorn", async (importOriginal) => {
+  const real = await importOriginal<typeof import("@tagreel/parsers/gsap-parser-acorn")>();
   return {
     ...real,
     scriptShape: (code: string, mask?: boolean) => (

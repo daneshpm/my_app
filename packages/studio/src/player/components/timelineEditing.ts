@@ -402,7 +402,7 @@ export function buildTimelineAgentPrompt({
     )
     .join("\n");
 
-  return `Edit the following HyperFrames composition:
+  return `Edit the following Tagreel composition:
 
 Time range: ${formatTime(start)} - ${formatTime(end)}
 
@@ -414,7 +414,7 @@ ${prompt.trim() || "(no prompt provided)"}
 
 Instructions:
 Modify only the elements listed above within the specified time range.
-The composition uses HyperFrames data attributes (data-start, data-duration, data-track-index) and GSAP for animations.
+The composition uses Tagreel data attributes (data-start, data-duration, data-track-index) and GSAP for animations.
 Preserve all other elements and timing outside this range.`;
 }
 

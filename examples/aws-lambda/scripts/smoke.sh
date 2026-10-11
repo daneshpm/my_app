@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Real-AWS smoke + benchmark for the HyperFrames Lambda adapter.
+# Real-AWS smoke + benchmark for the Tagreel Lambda adapter.
 #
 # Run this from a workstation with `aws` CLI credentials. Builds the
 # handler ZIP, deploys the SAM template at examples/aws-lambda/ to your
@@ -27,7 +27,7 @@
 #   --fixture <name>           (default: mp4-h264-sdr)
 #   --chunk-counts <list>      (default: 2,4,8)
 #   --psnr-threshold <db>      (default: fixture meta.json minPsnr)
-#   --stack-name <name>        (default: hyperframes-lambda-smoke-<unique-run-id>)
+#   --stack-name <name>        (default: tagreel-lambda-smoke-<unique-run-id>)
 #   --region <region>          (default: $AWS_REGION or us-east-1)
 #   --profile <name>           (default: $AWS_PROFILE, otherwise the AWS
 #                               default profile resolution chain)
@@ -78,8 +78,8 @@ CHUNK_COUNTS="${CHUNK_COUNTS:-2,4,8}"
 # calibrated for that content/runtime boundary. Override it via
 # --psnr-threshold (or PSNR_THRESHOLD) for a stricter experiment.
 PSNR_THRESHOLD="${PSNR_THRESHOLD-}"
-SMOKE_RUN_ID="${HYPERFRAMES_SMOKE_RUN_ID:-$(hf_new_smoke_run_id)}"
-STACK_NAME="${STACK_NAME:-hyperframes-lambda-smoke-${SMOKE_RUN_ID}}"
+SMOKE_RUN_ID="${TAGREEL_SMOKE_RUN_ID:-$(hf_new_smoke_run_id)}"
+STACK_NAME="${STACK_NAME:-tagreel-lambda-smoke-${SMOKE_RUN_ID}}"
 AWS_REGION="${AWS_REGION:-us-east-1}"
 AWS_PROFILE="${AWS_PROFILE:-}"
 PLAN_PROTOCOL="${PLAN_PROTOCOL:-v2}"
@@ -98,7 +98,7 @@ usage() {
   cat <<'EOF'
 Usage: smoke.sh [flags]
 
-Real-AWS smoke + benchmark for the HyperFrames Lambda adapter. Builds the
+Real-AWS smoke + benchmark for the Tagreel Lambda adapter. Builds the
 handler ZIP, deploys the SAM stack to your AWS account, renders a fixture
 through Step Functions at several chunk counts, PSNR-compares each
 output against the in-process baseline, and tears the stack down.
@@ -107,7 +107,7 @@ Flags:
   --fixture <name>              fixture under packages/producer/tests/distributed/ (default: mp4-h264-sdr)
   --chunk-counts <list>         comma-separated chunk counts to benchmark (default: 2,4,8)
   --psnr-threshold <db>         PSNR floor (default: fixture meta.json minPsnr)
-  --stack-name <name>           SAM stack name (default: hyperframes-lambda-smoke-<unique-run-id>)
+  --stack-name <name>           SAM stack name (default: tagreel-lambda-smoke-<unique-run-id>)
   --region <region>             AWS region (default: $AWS_REGION or us-east-1)
   --profile <name>              AWS profile (default: $AWS_PROFILE)
   --plan-protocol <v1|v2|both>  plan transport(s) to compare (default: v2)
@@ -457,7 +457,7 @@ if ! (cd "$SAM_DIR" && sam deploy \
         --capabilities CAPABILITY_IAM \
         --no-confirm-changeset \
         --no-fail-on-empty-changeset \
-        --tags "HyperframesSmokeRun=$SMOKE_RUN_ID" \
+        --tags "TagreelSmokeRun=$SMOKE_RUN_ID" \
         --parameter-overrides \
           "ProjectName=$PROJECT_NAME" \
           ChromeSource=sparticuz \

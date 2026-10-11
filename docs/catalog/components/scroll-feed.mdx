@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":397}}
   attribution={{"path":"registry/components/scroll-feed","tags":["motion-primitive","effects","scroll","feed","loop","agitation"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/scroll-feed/scroll-feed.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/scroll-feed/scroll-feed.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html scroll-feed.html
 <!doctype html>
 <!--
-  scroll-feed: HyperFrames video primitive (effects / agitation / loop)
+  scroll-feed: Tagreel video primitive (effects / agitation / loop)
 
   Concept: a self-scrolling column of skeleton post cards recycles without
   a visible seam. The default register is a doomscroll: distinct thumb
@@ -282,8 +282,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var blurB = root.querySelector(".sf-blur-b");
             var columns = root.querySelectorAll(".sf-column");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var speed = vars.speed === "frantic" ? "frantic" : "doom";
@@ -426,7 +426,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add scroll-feed" item="scroll-feed" />
+<InstallCommand command="npx tagreel add scroll-feed" item="scroll-feed" />
 
 That writes one file: `compositions/components/scroll-feed.html`.
 

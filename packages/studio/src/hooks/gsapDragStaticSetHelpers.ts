@@ -1,4 +1,4 @@
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { RuntimeTweenChange, SetPatchProps } from "./gsapRuntimePatch";
 import { isInstantHold, tweenTargetsElement } from "./gsapShared";
 

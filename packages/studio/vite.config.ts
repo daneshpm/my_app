@@ -16,7 +16,7 @@ import { watch } from "chokidar";
 import { createProjectSignatureCache, createViteAdapter } from "./vite.adapter";
 import { previewConfigPayload } from "./vite.preview-config";
 import { loadStudioServerDevModule } from "./vite.studio-server-module";
-import type { openProjectHistory } from "@hyperframes/studio-server";
+import type { openProjectHistory } from "@tagreel/studio-server";
 import { previewChangeOwner } from "./vite.preview-watch";
 
 async function loadRuntimeSourceForDev(
@@ -24,10 +24,10 @@ async function loadRuntimeSourceForDev(
 ): Promise<string | null> {
   try {
     const mod = await server.ssrLoadModule(
-      resolve(__dirname, "../core/src/inline-scripts/hyperframe.ts"),
+      resolve(__dirname, "../core/src/inline-scripts/tagreel.ts"),
     );
-    if (typeof mod.loadHyperframeRuntimeSource === "function") {
-      return mod.loadHyperframeRuntimeSource();
+    if (typeof mod.loadTagreelRuntimeSource === "function") {
+      return mod.loadTagreelRuntimeSource();
     }
   } catch (err) {
     console.warn("[Studio] Failed to load runtime source from core:", err);
@@ -95,7 +95,7 @@ async function bridgeHonoResponse(
 
 function devProjectApi(): Plugin {
   const dataDir = resolve(__dirname, "data/projects");
-  const runtimePath = resolve(__dirname, "../core/dist/hyperframe.runtime.iife.js");
+  const runtimePath = resolve(__dirname, "../core/dist/tagreel.runtime.iife.js");
 
   return {
     name: "studio-dev-api",
@@ -173,11 +173,11 @@ function devProjectApi(): Plugin {
             "openProjectHistory",
           ] as const) {
             if (typeof mod[name] !== "function") {
-              throw new Error(`@hyperframes/studio-server dev module is missing ${name}()`);
+              throw new Error(`@tagreel/studio-server dev module is missing ${name}()`);
             }
           }
           if (typeof mod.MAX_UPLOAD_BYTES !== "number") {
-            throw new Error("@hyperframes/studio-server dev module is missing MAX_UPLOAD_BYTES");
+            throw new Error("@tagreel/studio-server dev module is missing MAX_UPLOAD_BYTES");
           }
           _studioServerModule = mod;
           // The engine records its write receipts in this module, where the watcher below reads them.
@@ -193,7 +193,7 @@ function devProjectApi(): Plugin {
       };
 
       server.middlewares.use((req, res, next) => {
-        if (req.url !== "/__hyperframes_config") return next();
+        if (req.url !== "/__tagreel_config") return next();
         const payload = previewConfigPayload(process.env, process.pid, studioPkg.version);
         if (!payload) return next();
         res.writeHead(200, { "Content-Type": "application/json", "Cache-Control": "no-store" });
@@ -332,8 +332,8 @@ export default defineConfig({
       // undefined — every composition containing a <canvas> then throws inside
       // openComposition and silently loses its SDK session. See the stub.
       canvas: resolve(__dirname, "src/shims/canvasBrowserStub.js"),
-      "@hyperframes/player": resolve(__dirname, "../player/src/hyperframes-player.ts"),
-      "@hyperframes/studio-server/source-mutation": resolve(
+      "@tagreel/player": resolve(__dirname, "../player/src/tagreel-player.ts"),
+      "@tagreel/studio-server/source-mutation": resolve(
         __dirname,
         "../studio-server/src/helpers/sourceMutation.ts",
       ),
@@ -366,7 +366,7 @@ export default defineConfig({
   },
   ssr: {
     // recast / @babel/parser are CommonJS and call `require("fs")`. They are
-    // reachable only server-side via the Node-only `@hyperframes/parsers/gsap-parser`
+    // reachable only server-side via the Node-only `@tagreel/parsers/gsap-parser`
     // subpath (studio-api GSAP mutations + the linter), which the dev server loads
     // through Vite SSR. Externalizing them makes SSR load the native Node modules
     // instead of esbuild-transforming the `require` into a shim that throws

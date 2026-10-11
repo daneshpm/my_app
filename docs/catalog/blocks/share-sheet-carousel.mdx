@@ -13,11 +13,11 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   compositionSrc="compositions/share-sheet-carousel.html"
   title="Share-Sheet Carousel"
   description="A share sheet springs up from the bottom of the phone and cycles previews inside its card on a fast cut rhythm while the blurred ground swaps behind it, ending on an accept tap"
-  variables={[{"id":"shareTitle","type":"string","role":"content","label":"Sheet title","description":"Heading at the top of the share sheet.","default":"Share"},{"id":"senderName","type":"string","role":"content","label":"Sender","description":"Name of the brand this video promotes, shown as the sender offering the item. Use the real name of that brand.","portrays":["subject_name"],"default":"HyperFrames"},{"id":"itemLabel","type":"string","role":"content","label":"Item","description":"What the sender is offering, completing the sentence \"… would like to share …\".","default":"a video"},{"id":"stripText","type":"string","role":"content","label":"Brand strip","description":"Positioning line of the brand this video promotes, in small caps beside its logo.","portrays":["subject_tagline"],"default":"OPEN-SOURCE VIDEO ENGINE · SHIP FROM HTML"},{"id":"acceptLabel","type":"string","role":"content","label":"Accept label","description":"Right-hand action button.","default":"Accept"},{"id":"declineLabel","type":"string","role":"content","label":"Decline label","description":"Left-hand action button.","default":"Decline"},{"id":"slideImage1","type":"image","role":"content","label":"Slide image 1","description":"First carousel image; also fills the blurred background.","default":"assets/slide-01.jpg"},{"id":"slideImage2","type":"image","role":"content","label":"Slide image 2","description":"Second carousel image; also fills the blurred background.","default":"assets/slide-02.jpg"},{"id":"slideImage3","type":"image","role":"content","label":"Slide image 3","description":"Third carousel image; also fills the blurred background.","default":"assets/slide-03.jpg"},{"id":"slideImage4","type":"image","role":"content","label":"Slide image 4","description":"Fourth carousel image; also fills the blurred background.","default":"assets/slide-04.jpg"},{"id":"brandLogo","type":"image","role":"content","label":"Brand logo","description":"Transparent horizontal wordmark of the brand this video promotes, in the preview strip.","portrays":["subject_logo"],"default":"assets/hyperframes-logo-black.svg"}]}
+  variables={[{"id":"shareTitle","type":"string","role":"content","label":"Sheet title","description":"Heading at the top of the share sheet.","default":"Share"},{"id":"senderName","type":"string","role":"content","label":"Sender","description":"Name of the brand this video promotes, shown as the sender offering the item. Use the real name of that brand.","portrays":["subject_name"],"default":"Tagreel"},{"id":"itemLabel","type":"string","role":"content","label":"Item","description":"What the sender is offering, completing the sentence \"… would like to share …\".","default":"a video"},{"id":"stripText","type":"string","role":"content","label":"Brand strip","description":"Positioning line of the brand this video promotes, in small caps beside its logo.","portrays":["subject_tagline"],"default":"OPEN-SOURCE VIDEO ENGINE · SHIP FROM HTML"},{"id":"acceptLabel","type":"string","role":"content","label":"Accept label","description":"Right-hand action button.","default":"Accept"},{"id":"declineLabel","type":"string","role":"content","label":"Decline label","description":"Left-hand action button.","default":"Decline"},{"id":"slideImage1","type":"image","role":"content","label":"Slide image 1","description":"First carousel image; also fills the blurred background.","default":"assets/slide-01.jpg"},{"id":"slideImage2","type":"image","role":"content","label":"Slide image 2","description":"Second carousel image; also fills the blurred background.","default":"assets/slide-02.jpg"},{"id":"slideImage3","type":"image","role":"content","label":"Slide image 3","description":"Third carousel image; also fills the blurred background.","default":"assets/slide-03.jpg"},{"id":"slideImage4","type":"image","role":"content","label":"Slide image 4","description":"Fourth carousel image; also fills the blurred background.","default":"assets/slide-04.jpg"},{"id":"brandLogo","type":"image","role":"content","label":"Brand logo","description":"Transparent horizontal wordmark of the brand this video promotes, in the preview strip.","portrays":["subject_logo"],"default":"assets/tagreel-logo-black.svg"}]}
   meta={{"duration":7.2333,"width":1080,"height":1920,"category":"Showcases","badge":"Stable","codeLines":392}}
   attribution={{"author":"Miao Yang","path":"registry/blocks/share-sheet-carousel","tags":["showcase","mock-ui","share-sheet","vertical","ad-template"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/share-sheet-carousel/share-sheet-carousel.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/share-sheet-carousel/share-sheet-carousel.html"
 >
 
 <CatalogSlot slot="code">
@@ -28,7 +28,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   lang="en"
   data-composition-variables='[
     { "id": "shareTitle", "type": "string", "role": "content", "label": "Sheet title", "description": "Heading at the top of the share sheet.", "default": "Share" },
-    { "id": "senderName", "type": "string", "role": "content", "label": "Sender", "description": "Name of the brand this video promotes, shown as the sender offering the item. Use the real name of that brand.", "portrays": ["subject_name"], "default": "HyperFrames" },
+    { "id": "senderName", "type": "string", "role": "content", "label": "Sender", "description": "Name of the brand this video promotes, shown as the sender offering the item. Use the real name of that brand.", "portrays": ["subject_name"], "default": "Tagreel" },
     { "id": "itemLabel", "type": "string", "role": "content", "label": "Item", "description": "What the sender is offering, completing the sentence \"… would like to share …\".", "default": "a video" },
     { "id": "stripText", "type": "string", "role": "content", "label": "Brand strip", "description": "Positioning line of the brand this video promotes, in small caps beside its logo.", "portrays": ["subject_tagline"], "default": "OPEN-SOURCE VIDEO ENGINE · SHIP FROM HTML" },
     { "id": "acceptLabel", "type": "string", "role": "content", "label": "Accept label", "description": "Right-hand action button.", "default": "Accept" },
@@ -37,7 +37,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     { "id": "slideImage2", "type": "image", "role": "content", "label": "Slide image 2", "description": "Second carousel image; also fills the blurred background.", "default": "assets/slide-02.jpg" },
     { "id": "slideImage3", "type": "image", "role": "content", "label": "Slide image 3", "description": "Third carousel image; also fills the blurred background.", "default": "assets/slide-03.jpg" },
     { "id": "slideImage4", "type": "image", "role": "content", "label": "Slide image 4", "description": "Fourth carousel image; also fills the blurred background.", "default": "assets/slide-04.jpg" },
-    { "id": "brandLogo", "type": "image", "role": "content", "label": "Brand logo", "description": "Transparent horizontal wordmark of the brand this video promotes, in the preview strip.", "portrays": ["subject_logo"], "default": "assets/hyperframes-logo-black.svg" }
+    { "id": "brandLogo", "type": "image", "role": "content", "label": "Brand logo", "description": "Transparent horizontal wordmark of the brand this video promotes, in the preview strip.", "portrays": ["subject_logo"], "default": "assets/tagreel-logo-black.svg" }
   ]'
 >
   <head>
@@ -267,7 +267,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         <div id="ssc-card">
           <div id="ssc-cardclipper">
             <div id="ssc-title">Share</div>
-            <div id="ssc-subtitle"><b>HyperFrames</b>&nbsp;would like to share a video</div>
+            <div id="ssc-subtitle"><b>Tagreel</b>&nbsp;would like to share a video</div>
             <div id="ssc-imagebox">
               <img
                 class="ssc-slide"
@@ -304,7 +304,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
               <div id="ssc-strip">
                 <img
                   data-var-src="brandLogo"
-                  src="assets/hyperframes-logo-black.svg"
+                  src="assets/tagreel-logo-black.svg"
                   alt="Brand logo"
                 />
                 <div id="ssc-strip-text">OPEN-SOURCE VIDEO ENGINE · SHIP FROM HTML</div>
@@ -325,8 +325,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
         /* -------- variables -------- */
         var vars =
-          window.__hyperframes && typeof window.__hyperframes.getVariables === "function"
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && typeof window.__tagreel.getVariables === "function"
+            ? window.__tagreel.getVariables()
             : {};
 
         function text(value, fallback) {
@@ -340,7 +340,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         var subtitle = document.getElementById("ssc-subtitle");
         subtitle.innerHTML = "";
         var sender = document.createElement("b");
-        sender.textContent = text(vars.senderName, "HyperFrames");
+        sender.textContent = text(vars.senderName, "Tagreel");
         subtitle.appendChild(sender);
         subtitle.appendChild(
           document.createTextNode(" would like to share " + text(vars.itemLabel, "a video")),
@@ -421,7 +421,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add share-sheet-carousel" item="share-sheet-carousel" />
+<InstallCommand command="npx tagreel add share-sheet-carousel" item="share-sheet-carousel" />
 
 That writes `compositions/share-sheet-carousel.html`, plus 6 supporting files under `assets/`.
 
@@ -456,7 +456,7 @@ want to change on the element:
 | Variable | Default | Accepts | What it does |
 | --- | --- | --- | --- |
 | `shareTitle` | `Share` | string | Heading at the top of the share sheet. |
-| `senderName` | `HyperFrames` | string | Name of the brand this video promotes, shown as the sender offering the item. Use the real name of that brand. |
+| `senderName` | `Tagreel` | string | Name of the brand this video promotes, shown as the sender offering the item. Use the real name of that brand. |
 | `itemLabel` | `a video` | string | What the sender is offering, completing the sentence "… would like to share …". |
 | `stripText` | `OPEN-SOURCE VIDEO ENGINE · SHIP FROM HTML` | string | Positioning line of the brand this video promotes, in small caps beside its logo. |
 | `acceptLabel` | `Accept` | string | Right-hand action button. |
@@ -465,7 +465,7 @@ want to change on the element:
 | `slideImage2` | `assets/slide-02.jpg` | image | Second carousel image; also fills the blurred background. |
 | `slideImage3` | `assets/slide-03.jpg` | image | Third carousel image; also fills the blurred background. |
 | `slideImage4` | `assets/slide-04.jpg` | image | Fourth carousel image; also fills the blurred background. |
-| `brandLogo` | `assets/hyperframes-logo-black.svg` | image | Transparent horizontal wordmark of the brand this video promotes, in the preview strip. |
+| `brandLogo` | `assets/tagreel-logo-black.svg` | image | Transparent horizontal wordmark of the brand this video promotes, in the preview strip. |
 
 Set them with `data-variable-values` on the element that mounts it. These are the
 defaults, so this behaves exactly like the preview above until you change one:
@@ -474,7 +474,7 @@ defaults, so this behaves exactly like the preview above until you change one:
 <div
   data-composition-id="share-sheet-carousel"
   data-composition-src="compositions/share-sheet-carousel.html"
-  data-variable-values='{"shareTitle":"Share","senderName":"HyperFrames","itemLabel":"a video","stripText":"OPEN-SOURCE VIDEO ENGINE · SHIP FROM HTML","acceptLabel":"Accept","declineLabel":"Decline","slideImage1":"assets/slide-01.jpg","slideImage2":"assets/slide-02.jpg","slideImage3":"assets/slide-03.jpg","slideImage4":"assets/slide-04.jpg","brandLogo":"assets/hyperframes-logo-black.svg"}'
+  data-variable-values='{"shareTitle":"Share","senderName":"Tagreel","itemLabel":"a video","stripText":"OPEN-SOURCE VIDEO ENGINE · SHIP FROM HTML","acceptLabel":"Accept","declineLabel":"Decline","slideImage1":"assets/slide-01.jpg","slideImage2":"assets/slide-02.jpg","slideImage3":"assets/slide-03.jpg","slideImage4":"assets/slide-04.jpg","brandLogo":"assets/tagreel-logo-black.svg"}'
 ></div>
 ```
 

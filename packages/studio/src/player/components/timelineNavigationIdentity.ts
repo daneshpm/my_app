@@ -1,4 +1,4 @@
-import type { PropertyGroupName } from "@hyperframes/core/gsap-parser";
+import type { PropertyGroupName } from "@tagreel/core/gsap-parser";
 import {
   timelineKeyframeSelectionKey,
   type TimelineKeyframeTarget,

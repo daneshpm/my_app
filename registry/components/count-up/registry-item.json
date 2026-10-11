@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "count-up",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Count Up",
   "description": "A token-native stat counter that eases between values, counting up or down, and lands with a restrained scale pulse.",
   "tags": ["motion-primitive", "proof", "stats", "counter", "number", "countdown", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "count-up.html",
       "target": "compositions/components/count-up.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

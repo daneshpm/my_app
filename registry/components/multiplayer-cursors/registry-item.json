@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "multiplayer-cursors",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Multiplayer Cursors",
   "description": "Labeled collaborator cursors with token-derived colors and soft glows drift from spread positions into a shared center zone, proving live multiplayer presence.",
   "tags": ["cursor", "pointer", "multiplayer", "collaboration", "presence", "loop", "prove"],
@@ -13,7 +13,7 @@
     {
       "path": "multiplayer-cursors.html",
       "target": "compositions/components/multiplayer-cursors.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

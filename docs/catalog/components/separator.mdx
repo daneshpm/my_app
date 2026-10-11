@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":238}}
   attribution={{"path":"registry/components/separator","tags":["video-primitive","separator","layout"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/separator/separator.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/separator/separator.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html separator.html
 <!--
-  Separator - Operator Black structural rule primitive for HyperFrames.
+  Separator - Operator Black structural rule primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Animate the CSS
   variables from a paused GSAP timeline for deterministic video renders.
@@ -226,8 +226,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -267,7 +267,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add separator" item="separator" />
+<InstallCommand command="npx tagreel add separator" item="separator" />
 
 That writes one file: `compositions/components/separator.html`.
 

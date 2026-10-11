@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":517}}
   attribution={{"path":"registry/components/segmentation-flood","tags":["motion-primitive","product-demo","ai","hud","canvas","deterministic","experiment"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/segmentation-flood/segmentation-flood.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/segmentation-flood/segmentation-flood.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html segmentation-flood.html
 <!doctype html>
 <!--
-  segmentation-flood: HyperFrames video primitive (product demo / AI)
+  segmentation-flood: Tagreel video primitive (product demo / AI)
 
   A machine-vision read of a slotted subject. Translucent accent
   segmentation masks FLOOD onto 2-4 regions in scanline steps: rows arrive
@@ -271,8 +271,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var canvas = root.querySelector(".sgf-canvas");
             var overlay = root.querySelector(".sgf-overlay");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var labels = String(vars.regions == null ? "" : vars.regions)
@@ -546,7 +546,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add segmentation-flood" item="segmentation-flood" />
+<InstallCommand command="npx tagreel add segmentation-flood" item="segmentation-flood" />
 
 That writes one file: `compositions/components/segmentation-flood.html`.
 

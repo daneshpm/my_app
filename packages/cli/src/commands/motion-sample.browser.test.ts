@@ -63,8 +63,8 @@ function installScript(): void {
 }
 
 function sample(options: { selectors?: string[]; livenessScopes?: string[] }): SampleResult {
-  const fn = (window as unknown as { __hyperframesMotionSample: (o: unknown) => SampleResult })
-    .__hyperframesMotionSample;
+  const fn = (window as unknown as { __tagreelMotionSample: (o: unknown) => SampleResult })
+    .__tagreelMotionSample;
   return fn(options);
 }
 
@@ -72,9 +72,9 @@ describe("motion-sample.browser", () => {
   afterEach(() => {
     vi.restoreAllMocks();
     document.body.innerHTML = "";
-    delete (window as unknown as { __hyperframesMotionSample?: unknown }).__hyperframesMotionSample;
-    Reflect.deleteProperty(window, "__hyperframesMotionSignature");
-    Reflect.deleteProperty(window, "__hyperframesLayoutGeometry");
+    delete (window as unknown as { __tagreelMotionSample?: unknown }).__tagreelMotionSample;
+    Reflect.deleteProperty(window, "__tagreelMotionSignature");
+    Reflect.deleteProperty(window, "__tagreelLayoutGeometry");
   });
 
   it("installs without the shared motion classifier and names it on the first call", () => {
@@ -163,8 +163,8 @@ describe("motion-sample.browser", () => {
       },
     });
     installScript();
-    const sweep = (window as unknown as { __hyperframesLayoutGeometry: () => string })
-      .__hyperframesLayoutGeometry;
+    const sweep = (window as unknown as { __tagreelLayoutGeometry: () => string })
+      .__tagreelLayoutGeometry;
 
     const livenessBefore = sample({ livenessScopes: ["*"] }).liveness["*"];
     const sweepBefore = sweep();

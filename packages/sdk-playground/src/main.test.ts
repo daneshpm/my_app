@@ -6,8 +6,8 @@ import { expect, it, vi } from "vitest";
 // the real static UI and its registered message listener.
 // The paused initializer never opens a composition. Keep unrelated SDK/parser
 // and raw animation-library transforms out of this message-boundary witness.
-vi.mock("@hyperframes/sdk", () => ({ openComposition: vi.fn() }));
-vi.mock("@hyperframes/core/gsap-parser-acorn", () => ({ parseGsapScriptAcorn: vi.fn() }));
+vi.mock("@tagreel/sdk", () => ({ openComposition: vi.fn() }));
+vi.mock("@tagreel/core/gsap-parser-acorn", () => ({ parseGsapScriptAcorn: vi.fn() }));
 vi.mock("gsap/dist/gsap.min.js?raw", () => ({ default: "" }));
 vi.mock("./fileAdapter.js", () => ({
   createFileAdapter: () => new Promise(() => {}),

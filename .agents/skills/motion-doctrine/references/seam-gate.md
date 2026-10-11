@@ -27,7 +27,7 @@ node <SKILL_DIR>/scripts/seam-gate.mjs verify --ledger ledger.json --url http://
 node <SKILL_DIR>/scripts/seam-gate.mjs probe --t 44.8 --project <project-dir>
 ```
 
-`--project` spawns a fresh preview server with `HYPERFRAME_RUNTIME_URL` unset and kills
+`--project` spawns a fresh preview server with `TAGREEL_RUNTIME_URL` unset and kills
 it after — preferred. `--json` for machine output. `--fps 30` default.
 
 ## ledger.json

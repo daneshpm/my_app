@@ -48,17 +48,17 @@ const MOTION_FPS = 20;
 const MOTION_MAX_SAMPLES = 300;
 
 export const examples: Example[] = [
-  ["Inspect visual layout across the current composition", "hyperframes layout"],
-  ["Inspect a specific project", "hyperframes layout ./my-video"],
-  ["Output agent-readable JSON", "hyperframes layout --json"],
-  ["Use explicit hero-frame timestamps", "hyperframes layout --at 1.5,4.0,7.25"],
+  ["Inspect visual layout across the current composition", "tagreel layout"],
+  ["Inspect a specific project", "tagreel layout ./my-video"],
+  ["Output agent-readable JSON", "tagreel layout --json"],
+  ["Use explicit hero-frame timestamps", "tagreel layout --at 1.5,4.0,7.25"],
   [
     "Also sample at tween boundaries to catch transient overlaps",
-    "hyperframes layout --at-transitions",
+    "tagreel layout --at-transitions",
   ],
   [
     "Verify motion intent (add a *.motion.json sidecar next to the composition)",
-    "hyperframes layout --json",
+    "tagreel layout --json",
   ],
 ];
 
@@ -165,7 +165,7 @@ async function collectTweenBoundaries(page: import("puppeteer-core").Page): Prom
 async function bundleProjectHtml(projectDir: string): Promise<string> {
   // `bundleToSingleHtml` now inlines the runtime IIFE by default, so the
   // previous post-bundle runtime substitution is no longer needed.
-  const { bundleToSingleHtml } = await import("@hyperframes/core/compiler");
+  const { bundleToSingleHtml } = await import("@tagreel/core/compiler");
   return bundleToSingleHtml(projectDir);
 }
 
@@ -204,7 +204,7 @@ async function runLayoutAudit(
 ): Promise<LayoutAuditResult> {
   const { ensureBrowser } = await import("../browser/manager.js");
   const puppeteer = await import("puppeteer-core");
-  const { buildChromeArgs } = await import("@hyperframes/engine");
+  const { buildChromeArgs } = await import("@tagreel/engine");
   const { assertWebGpuAdapterAvailable, compositionRequiresWebGpu, resolveLocalBrowserGpuMode } =
     await import("../browser/gpuPolicy.js");
   const html = await bundleProjectHtml(projectDir);
@@ -307,9 +307,9 @@ async function collectLayoutIssues(
     const sampleIssues = await page.evaluate(
       (auditOptions: { time: number; tolerance: number }) => {
         const win = window as unknown as {
-          __hyperframesLayoutAudit?: (options: { time: number; tolerance: number }) => unknown[];
+          __tagreelLayoutAudit?: (options: { time: number; tolerance: number }) => unknown[];
         };
-        return win.__hyperframesLayoutAudit?.(auditOptions) ?? [];
+        return win.__tagreelLayoutAudit?.(auditOptions) ?? [];
       },
       { time, tolerance },
     );
@@ -350,12 +350,12 @@ async function collectMotionFrames(
     const sample = await page.evaluate(
       (options: { selectors: string[]; livenessScopes: string[] }) => {
         const win = window as unknown as {
-          __hyperframesMotionSample?: (o: { selectors: string[]; livenessScopes: string[] }) => {
+          __tagreelMotionSample?: (o: { selectors: string[]; livenessScopes: string[] }) => {
             data: MotionFrame["data"];
             liveness: Record<string, string>;
           };
         };
-        return win.__hyperframesMotionSample?.(options) ?? { data: {}, liveness: {} };
+        return win.__tagreelMotionSample?.(options) ?? { data: {}, liveness: {} };
       },
       { selectors, livenessScopes },
     );

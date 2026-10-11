@@ -7,7 +7,7 @@
 > a carve owning its own lanes) and §9 (environment + process notes) still hold —
 > except the studio dev server, which now works via plain `bun run studio`.
 
-Written 2026-08-20. Worktree `~/src/wt/hyperframes/webaudio-fx`, branch
+Written 2026-08-20. Worktree `~/src/wt/tagreel/webaudio-fx`, branch
 `wa-25-review-fixes`, tip `baede8292`. **Nothing is pushed. No PR exists.**
 
 This continues the stack described in `plans/webaudio-stack-handoff.md`
@@ -19,16 +19,16 @@ session can pick up without re-deriving anything.
 
 ## 1. State of the branch
 
-|                                |                                                                   |
-| ------------------------------ | ----------------------------------------------------------------- |
-| Branch                         | `wa-25-review-fixes`                                              |
-| Tip                            | `baede8292 docs(skills): teach /hyperframes-audio the submix bus` |
-| Commits ahead of `origin/main` | **69**                                                            |
-| Commits behind `origin/main`   | **25** (main moved to `3e4b08cdc`, 2026-08-18)                    |
-| Diff vs main                   | 158 files, +10,360 / −742                                         |
-| New production files           | 23 (list in §7)                                                   |
-| Pushed?                        | **No.** Local only.                                               |
-| PR?                            | **None** (`gh pr list --head wa-25-review-fixes` → `[]`)          |
+|                                |                                                               |
+| ------------------------------ | ------------------------------------------------------------- |
+| Branch                         | `wa-25-review-fixes`                                          |
+| Tip                            | `baede8292 docs(skills): teach /tagreel-audio the submix bus` |
+| Commits ahead of `origin/main` | **69**                                                        |
+| Commits behind `origin/main`   | **25** (main moved to `3e4b08cdc`, 2026-08-18)                |
+| Diff vs main                   | 158 files, +10,360 / −742                                     |
+| New production files           | 23 (list in §7)                                               |
+| Pushed?                        | **No.** Local only.                                           |
+| PR?                            | **None** (`gh pr list --head wa-25-review-fixes` → `[]`)      |
 
 **Suites, all green as of the tip:**
 
@@ -304,7 +304,7 @@ imported from /Users/…/packages/producer/src/index.ts
 link verified:
 
 1. `packages/cli/src/server/studioServer.ts:58` — in dev mode the server imports
-   the producer's _source_: `isDevMode() ? import("../../../producer/src/index.js") : import("@hyperframes/producer")`.
+   the producer's _source_: `isDevMode() ? import("../../../producer/src/index.js") : import("@tagreel/producer")`.
 2. `isDevMode()` is `import.meta.url.endsWith(".ts")`.
 3. That source imports `./services/renderOrchestrator.js` — the TS convention of
    a `.js` specifier naming a `.ts` file. Bun resolves it; **Node does not**.
@@ -314,7 +314,7 @@ link verified:
 5. The process was `node …/node_modules/.bin/vite` (PID 59350). The user had
    correctly run `bun run studio`, but **vite's own shebang is
    `#!/usr/bin/env node`**, and vite hosts the render API in-process via
-   `ssrLoadModule("@hyperframes/studio-server")` — so Node _was_ the render
+   `ssrLoadModule("@tagreel/studio-server")` — so Node _was_ the render
    runtime.
 
 Reproduced exactly:
@@ -357,7 +357,7 @@ skill covered groups only as membership tags to carve against, and its example
 groups three clips with **no group element at all** — so an agent following it
 could never emit a group chain, fader, or automation.
 
-Added "One bus for many tracks" to `skills/hyperframes-audio/SKILL.md`, plus two
+Added "One bus for many tracks" to `skills/tagreel-audio/SKILL.md`, plus two
 statements that are the ways to get it wrong:
 
 - **Group automation is composition time.** A bus has no `data-start` (verified
@@ -373,7 +373,7 @@ three attributes go "on the audio/video element itself".
 
 Verified rather than asserted: the documented example was run through
 `resolveAudioGroups` + `parseAudioFxChain`, its params checked against
-`fx-registry.md` ranges, and the whole pattern linted with `hyperframes lint`
+`fx-registry.md` ranges, and the whole pattern linted with `tagreel lint`
 (only findings were the throwaway fixture's own missing `data-start` and timeline
 registration).
 
@@ -421,7 +421,7 @@ packages/studio/src/utils/hmrStableContext.ts
 ## 8. Open items, in the order I'd take them
 
 1. **Rebase onto `origin/main`** — 25 commits behind. This is the user's call.
-   Note `reference_hyperframes_git_traps`: unsigned pushes are rejected (GH013),
+   Note `reference_tagreel_git_traps`: unsigned pushes are rejected (GH013),
    and two LFS fixtures always read as modified and block rebases.
 2. **Push and open a PR.** 69 commits with no PR. The user's standing
    instruction is not to push until asked (`feedback_dont_push_early`).

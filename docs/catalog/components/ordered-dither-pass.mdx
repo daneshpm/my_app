@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":511}}
   attribution={{"path":"registry/components/ordered-dither-pass","tags":["motion-primitive","experiment","texture","dither","transition","quantize"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/ordered-dither-pass/ordered-dither-pass.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/ordered-dither-pass/ordered-dither-pass.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html ordered-dither-pass.html
 <!doctype html>
 <!--
-  ordered-dither-pass: HyperFrames video primitive (Wave M experiment,
+  ordered-dither-pass: Tagreel video primitive (Wave M experiment,
   texture / transitions)
 
   Bayer-matrix ordered dithering quantizes a slotted scene. The source is
@@ -159,8 +159,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var stage = root.querySelector(".odp-stage");
             var canvas = root.querySelector(".odp-canvas");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {
@@ -540,7 +540,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add ordered-dither-pass" item="ordered-dither-pass" />
+<InstallCommand command="npx tagreel add ordered-dither-pass" item="ordered-dither-pass" />
 
 That writes one file: `compositions/components/ordered-dither-pass.html`.
 

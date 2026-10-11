@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "colorama-wipe",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Colorama Wipe",
   "description": "Headline reveal through a feathered, leaning wipe front that is blurred and colour-mapped as it passes, then settles to clean type and wipes off again — the After Effects masked-text + Compound Blur + Colorama 'shiny wipe' as a deterministic canvas effect on any text element",
   "tags": ["text", "reveal", "wipe", "colorama", "gradient", "blur", "headline", "saas"],
@@ -9,7 +9,7 @@
     {
       "path": "colorama-wipe.html",
       "target": "compositions/components/colorama-wipe.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

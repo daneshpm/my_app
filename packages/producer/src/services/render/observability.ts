@@ -1,5 +1,5 @@
 import { createHash } from "node:crypto";
-import { redactTelemetryString } from "@hyperframes/core";
+import { redactTelemetryString } from "@tagreel/core";
 import type { ProducerLogger } from "../../logger.js";
 import { normalizeErrorMessage } from "../../utils/errorMessage.js";
 
@@ -182,7 +182,7 @@ export interface RenderCaptureObservability {
   pageNavigationTimeoutMs?: number;
   playerReadyTimeoutMs?: number;
   /**
-   * Render-reliability counters (see PostHog dashboard 1783183). Emitted so the
+   * Render-reliability counters (see analytics dashboard 1783183). Emitted so the
    * capture-hardening in #1842 is measurable from a metric, not just logs:
    * how often the bounded transient-tab-death retry fired on a render that
    * ultimately succeeded, and whether the failure was classified as an

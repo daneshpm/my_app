@@ -43,8 +43,8 @@ import {
   wrapInlineScriptWithErrorBoundary,
   wrapScopedCompositionScript,
 } from "./compositionScoping";
-import { validateHyperframeHtmlContract } from "./staticGuard";
-import { getHyperframeRuntimeScript } from "../generated/runtime-inline";
+import { validateTagreelHtmlContract } from "./staticGuard";
+import { getTagreelRuntimeScript } from "../generated/runtime-inline";
 import { readDeclaredDefaults } from "../runtime/getVariables";
 import {
   ensureExternalLinkTag,
@@ -53,13 +53,13 @@ import {
 } from "./inlineSubCompositions";
 import { queryByAttr } from "../utils/cssSelector";
 import { isSafePath, resolveWithinProject } from "../safePath.js";
-import { ensureHfIds } from "@hyperframes/parsers/hf-ids";
+import { ensureHfIds } from "@tagreel/parsers/hf-ids";
 import { HF_COLOR_GRADING_ATTR } from "../colorGrading";
 
 const DEFAULT_RUNTIME_SCRIPT_URL = "";
 
 function getRuntimeScriptUrl(): string {
-  const configured = (process.env.HYPERFRAME_RUNTIME_URL || "").trim();
+  const configured = (process.env.TAGREEL_RUNTIME_URL || "").trim();
   return configured || DEFAULT_RUNTIME_SCRIPT_URL;
 }
 
@@ -67,7 +67,7 @@ function injectInterceptor(html: string, runtimeMode: "inline" | "placeholder" =
   const sanitized = stripEmbeddedRuntimeScripts(html);
 
   // Three modes for the runtime <script>:
-  //   1. HYPERFRAME_RUNTIME_URL env var set → emit src="<url>" (production CDN deploy).
+  //   1. TAGREEL_RUNTIME_URL env var set → emit src="<url>" (production CDN deploy).
   //   2. runtime: "placeholder" passed         → emit src="" for the caller to substitute
   //                                              (studio + vite preview hot-load a local
   //                                              runtime endpoint via string replace).
@@ -81,7 +81,7 @@ function injectInterceptor(html: string, runtimeMode: "inline" | "placeholder" =
   } else if (runtimeMode === "placeholder") {
     tag = `<script ${RUNTIME_BOOTSTRAP_ATTR}="1" src=""></script>`;
   } else {
-    const inlinedRuntime = getHyperframeRuntimeScript();
+    const inlinedRuntime = getTagreelRuntimeScript();
     tag = `<script ${RUNTIME_BOOTSTRAP_ATTR}="1">${inlinedRuntime}</script>`;
   }
   return insertRuntimeTag(sanitized, tag);
@@ -353,7 +353,7 @@ function safeStatSize(filePath: string): number | null {
 function warnAssetTooLargeToInline(assetPath: string, byteLength: number): void {
   const mb = (byteLength / (1024 * 1024)).toFixed(1);
   console.warn(
-    `[HyperFrames] Not inlining "${assetPath}" (${mb} MB exceeds the ${MAX_INLINE_ASSET_BYTES / (1024 * 1024)} MB inline limit). The bundle may not be self-contained.`,
+    `[Tagreel] Not inlining "${assetPath}" (${mb} MB exceeds the ${MAX_INLINE_ASSET_BYTES / (1024 * 1024)} MB inline limit). The bundle may not be self-contained.`,
   );
 }
 
@@ -398,7 +398,7 @@ function warnColorGradingLutNotInlined(lutSrc: string): void {
   const trimmed = lutSrc.trim();
   if (!isRelativeUrl(trimmed)) return;
   console.warn(
-    `[HyperFrames] Could not inline color grading LUT "${trimmed}". The rendered bundle may not be self-contained.`,
+    `[Tagreel] Could not inline color grading LUT "${trimmed}". The rendered bundle may not be self-contained.`,
   );
 }
 
@@ -758,10 +758,10 @@ function coalesceHeadStylesAndBodyScripts(document: Document): void {
 function injectTextRenderingRule(document: Document): void {
   const head = document.head;
   if (!head) return;
-  if (document.querySelector("style[data-hyperframes-text-rendering]")) return;
+  if (document.querySelector("style[data-tagreel-text-rendering]")) return;
 
   const styleEl = document.createElement("style");
-  styleEl.setAttribute("data-hyperframes-text-rendering", "true");
+  styleEl.setAttribute("data-tagreel-text-rendering", "true");
   styleEl.textContent = "html,body,*{text-rendering:geometricPrecision}";
   head.insertBefore(styleEl, head.firstChild);
 }
@@ -808,7 +808,7 @@ export interface BundleOptions {
   /** Optional media duration prober (e.g., ffprobe). If omitted, media durations are not resolved. */
   probeMediaDuration?: MediaDurationProber;
   /**
-   * How to handle the HyperFrames runtime <script> tag. Default: `"inline"`.
+   * How to handle the Tagreel runtime <script> tag. Default: `"inline"`.
    *
    * - `"inline"` — embed the runtime IIFE body directly into the bundle. Produces
    *   genuinely self-contained HTML. Right for CLI render output, validate,
@@ -819,7 +819,7 @@ export interface BundleOptions {
    *   the runtime cacheable across hot-reloads instead of re-inlining ~150 KB
    *   on every change.
    *
-   * The `HYPERFRAME_RUNTIME_URL` env var, when set, takes precedence over both
+   * The `TAGREEL_RUNTIME_URL` env var, when set, takes precedence over both
    * modes and emits `<script ... src="<URL>">` directly.
    */
   runtime?: "inline" | "placeholder";
@@ -839,7 +839,7 @@ export interface BundleOptions {
   inlineAssets?: boolean;
   /** Preview only: tag each scene's host, styles and scripts (`data-hf-scene`) so one can be swapped. */
   sceneParts?: boolean;
-  /** Warn when the compiled HTML breaks the HyperFrames contract (default true). */
+  /** Warn when the compiled HTML breaks the Tagreel contract (default true). */
   staticGuard?: boolean;
   onRead?: (filePath: string) => void;
 }
@@ -848,7 +848,7 @@ export interface BundleOptions {
  * Bundle a project's index.html into a single self-contained HTML file.
  *
  * - Compiles timing attributes and optionally resolves media durations
- * - Injects the HyperFrames runtime script
+ * - Injects the Tagreel runtime script
  * - Inlines local CSS and JS files
  * - Inlines sub-composition HTML fragments (data-composition-src)
  * - Inlines textual assets, fonts and raster images as data URLs, up to a
@@ -937,14 +937,14 @@ function hoistCompositionScripts(
           ? wrapScopedCompositionScript(
               scriptEl.textContent || "",
               opts.compId,
-              "[HyperFrames] composition script error:",
+              "[Tagreel] composition script error:",
               opts.runtimeScope,
               opts.runtimeCompId || opts.compId,
               opts.authoredRootId,
             )
           : wrapInlineScriptWithErrorBoundary(
               scriptEl.textContent || "",
-              "[HyperFrames] composition script error:",
+              "[Tagreel] composition script error:",
             ),
       );
     }
@@ -975,11 +975,9 @@ async function bundleProject(projectDir: string, options?: BundleOptions): Promi
   const compiled = await compileHtml(rawHtml, sourceDir, options?.probeMediaDuration);
 
   if (options?.staticGuard !== false) {
-    const staticGuard = await validateHyperframeHtmlContract(compiled);
+    const staticGuard = await validateTagreelHtmlContract(compiled);
     if (!staticGuard.isValid) {
-      console.warn(
-        `[StaticGuard] Invalid HyperFrame contract: ${staticGuard.missingKeys.join("; ")}`,
-      );
+      console.warn(`[StaticGuard] Invalid Tagreel contract: ${staticGuard.missingKeys.join("; ")}`);
     }
   }
 
@@ -1050,7 +1048,7 @@ async function bundleProject(projectDir: string, options?: BundleOptions): Promi
     readVariableDefaults: readDeclaredDefaults,
     parseHostVariables: parseHostVariableValues,
     buildScopeSelector: (compId: string) => cssAttributeSelector("data-composition-id", compId),
-    scriptErrorLabel: "[HyperFrames] composition script error:",
+    scriptErrorLabel: "[Tagreel] composition script error:",
     onMissingComposition: (srcPath: string, reason?: string) => {
       console.warn(
         `[Bundler] Skipping sub-composition "${srcPath}": ${reason ?? "the file could not be found"}.`,

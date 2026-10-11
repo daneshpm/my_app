@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  screen-flow-carousel -- HyperFrames video primitive (product demo / feature tour)
+  screen-flow-carousel -- Tagreel video primitive (product demo / feature tour)
 
   Two to five app screens ride a horizontal rail. One screen is primary at
   center while its neighbors recede (smaller and dimmer). On each cue the
@@ -334,8 +334,8 @@
             var rail = root.querySelector(".sfc-rail");
             var captionsBand = root.querySelector(".sfc-captions");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var screensValue = Number(vars.screens);

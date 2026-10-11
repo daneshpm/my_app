@@ -1,5 +1,5 @@
 <!--
-  Tabs Slide Indicator - transitions.dev-inspired primitive for HyperFrames.
+  Tabs Slide Indicator - transitions.dev-inspired primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Use the timeline
   integration note at the bottom as the starting point for deterministic GSAP
@@ -104,9 +104,7 @@
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
-        : {};
+      window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
     // Unrecognised overrides return to their declared defaults.
     // The pill is the one accent-carrying element here, so the three chromatic

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  focus-swap: HyperFrames video primitive (ui-props / holdable / demonstrate)
+  focus-swap: Tagreel video primitive (ui-props / holdable / demonstrate)
 
   Concept: attention moves between two side-by-side cards. The card losing
   focus recedes to 0.92 scale, softens, and dims while the other card advances
@@ -219,8 +219,8 @@
             var cardA = root.querySelector('[data-focus-card="a"]');
             var cardB = root.querySelector('[data-focus-card="b"]');
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: focus is the only owner of which card advances and

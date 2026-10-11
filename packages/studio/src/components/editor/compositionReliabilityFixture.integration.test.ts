@@ -2,7 +2,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { patchElementInHtml } from "@hyperframes/studio-server/source-mutation";
+import { patchElementInHtml } from "@tagreel/studio-server/source-mutation";
 import { describe, expect, it } from "vitest";
 import { buildDomEditStylePatchOperation } from "./domEditing";
 

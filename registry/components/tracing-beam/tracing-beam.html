@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  tracing-beam: HyperFrames video primitive (product-demo / attention)
+  tracing-beam: Tagreel video primitive (product-demo / attention)
 
   Concept: one glowing dash follows one authored SVG path through three UI
   elements. Each element brightens and lifts on arrival, then settles as the
@@ -272,8 +272,8 @@
             var nodes = root.querySelectorAll(".tb-node");
             var labels = root.querySelectorAll(".tb-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var defaultLabels = ["Search", "Preview", "Export"];

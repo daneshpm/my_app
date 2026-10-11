@@ -16,8 +16,8 @@ import {
   audioFaderPositionToGain,
   audioGainToText,
   formatAudioGain,
-} from "@hyperframes/core/audio-gain";
-import type { StereoLevel } from "@hyperframes/core/runtime/levelTap";
+} from "@tagreel/core/audio-gain";
+import type { StereoLevel } from "@tagreel/core/runtime/levelTap";
 import { usePlayerStore } from "../../player";
 import { clampNumber } from "../../utils/studioHelpers";
 import { useAudioMetersVisible } from "../../utils/audioMeterVisibility";

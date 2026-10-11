@@ -11,7 +11,7 @@ import {
   type HfColorGradingActiveEffectKey,
   type HfColorGradingTarget,
   type NormalizedHfColorGrading,
-} from "@hyperframes/core/color-grading";
+} from "@tagreel/core/color-grading";
 import {
   addStudioPendingEditFlushListener,
   trackStudioPendingEdit,

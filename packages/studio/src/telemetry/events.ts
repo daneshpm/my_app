@@ -165,12 +165,12 @@ export function trackStudioFeedback(
     /**
      * Reproduction context from whatever produced the prompt: render settings,
      * outcome, counts. Flattened onto the event so each key is filterable in
-     * PostHog rather than buried in a JSON blob nobody can group by.
+     * analytics rather than buried in a JSON blob nobody can group by.
      */
     context?: Record<string, string | number | boolean | undefined>;
   },
 ): void {
-  // Plain product event, not a PostHog survey response: nothing here is served
+  // Plain product event, not a analytics survey response: nothing here is served
   // by the surveys product (no survey definition, no targeting, no popover).
   trackEvent("studio_feedback", {
     ...(props.rating === undefined ? {} : { rating: props.rating, rating_scale: 10 }),

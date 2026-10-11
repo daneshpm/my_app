@@ -1,16 +1,16 @@
 // fallow-ignore-file code-duplication
 import { failCommand } from "../utils/commandResult.js";
 /**
- * `hyperframes cloudrun` — deploy + drive distributed renders on Google
+ * `tagreel cloudrun` — deploy + drive distributed renders on Google
  * Cloud Run + Cloud Workflows.
  *
- * The GCP counterpart to `hyperframes lambda`. Thin glue: argument parsing
- * + help here; the work lives in `@hyperframes/gcp-cloud-run/sdk`
+ * The GCP counterpart to `tagreel lambda`. Thin glue: argument parsing
+ * + help here; the work lives in `@tagreel/gcp-cloud-run/sdk`
  * (`deploySite` / `renderToCloudRun` / `getRenderProgress`) plus `terraform`
  * and `gcloud` for provisioning + the image build.
  *
  * Stack coordinates (bucket / service URL / workflow id) are captured by
- * `deploy` into a small state file under `~/.hyperframes/` so `render` and
+ * `deploy` into a small state file under `~/.tagreel/` so `render` and
  * `progress` don't need them re-passed every call.
  */
 
@@ -20,7 +20,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { defineCommand } from "citty";
-import { type CanvasResolution } from "@hyperframes/core";
+import { type CanvasResolution } from "@tagreel/core";
 import { parseOutputResolutionFlag } from "../utils/parseOutputResolution.js";
 import type { Example } from "./_examples.js";
 import { c } from "../ui/colors.js";
@@ -33,33 +33,33 @@ import { normalizeErrorMessage } from "../utils/errorMessage.js";
 import { readAllowedCompositionFpsFromDir } from "../utils/compositionFps.js";
 
 export const examples: Example[] = [
-  ["Deploy the Cloud Run render stack", "hyperframes cloudrun deploy --project my-gcp-project"],
+  ["Deploy the Cloud Run render stack", "tagreel cloudrun deploy --project my-gcp-project"],
   [
     "Render a composition on the deployed stack",
-    "hyperframes cloudrun render ./my-project --width 1920 --height 1080 --wait",
+    "tagreel cloudrun render ./my-project --width 1920 --height 1080 --wait",
   ],
   [
     "Render a personalised template with variables",
-    'hyperframes cloudrun render ./my-template --width 1920 --height 1080 --variables \'{"title":"Hello Alice"}\'',
+    'tagreel cloudrun render ./my-template --width 1920 --height 1080 --variables \'{"title":"Hello Alice"}\'',
   ],
   [
     "Supersample a 1080p composition to 4K",
-    "hyperframes cloudrun render ./my-project --width 1920 --height 1080 --output-resolution 4k --wait",
+    "tagreel cloudrun render ./my-project --width 1920 --height 1080 --output-resolution 4k --wait",
   ],
   [
     "Batch-render N personalised videos from a JSONL file",
-    "hyperframes cloudrun render-batch ./my-template --batch ./users.jsonl --width 1920 --height 1080 --max-concurrent 10",
+    "tagreel cloudrun render-batch ./my-template --batch ./users.jsonl --width 1920 --height 1080 --max-concurrent 10",
   ],
-  ["Check progress for a started render", "hyperframes cloudrun progress <executionName>"],
+  ["Check progress for a started render", "tagreel cloudrun progress <executionName>"],
   [
     "Pre-upload a project so renders share the upload",
-    "hyperframes cloudrun sites create ./my-project",
+    "tagreel cloudrun sites create ./my-project",
   ],
-  ["Tear the stack down", "hyperframes cloudrun destroy --project my-gcp-project"],
+  ["Tear the stack down", "tagreel cloudrun destroy --project my-gcp-project"],
 ];
 
 const HELP = `
-${c.bold("hyperframes cloudrun")} ${c.dim("<subcommand> [args]")}
+${c.bold("tagreel cloudrun")} ${c.dim("<subcommand> [args]")}
 
 Deploy + drive distributed video renders on Google Cloud Run + Workflows.
 
@@ -72,8 +72,8 @@ ${c.bold("SUBCOMMANDS:")}
   ${c.accent("destroy")}       ${c.dim("Tear the stack down")}
 
 ${c.bold("FIRST RUN:")}
-  ${c.accent("hyperframes cloudrun deploy --project my-gcp-project")}
-  ${c.accent("hyperframes cloudrun render ./my-project --width 1920 --height 1080 --wait")}
+  ${c.accent("tagreel cloudrun deploy --project my-gcp-project")}
+  ${c.accent("tagreel cloudrun render ./my-project --width 1920 --height 1080 --wait")}
 
 ${c.bold("REQUIREMENTS:")}
   • gcloud authenticated; the target project must have billing enabled
@@ -88,14 +88,14 @@ interface StackState {
   workflowId: string;
 }
 
-type CloudRunAdapter = typeof import("@hyperframes/gcp-cloud-run/sdk") &
-  typeof import("@hyperframes/gcp-cloud-run/terraform");
+type CloudRunAdapter = typeof import("@tagreel/gcp-cloud-run/sdk") &
+  typeof import("@tagreel/gcp-cloud-run/terraform");
 let cloudRunAdapterPromise: Promise<CloudRunAdapter> | undefined;
 
 function loadCloudRunAdapter(): Promise<CloudRunAdapter> {
   cloudRunAdapterPromise ??= Promise.all([
-    import("@hyperframes/gcp-cloud-run/sdk"),
-    import("@hyperframes/gcp-cloud-run/terraform"),
+    import("@tagreel/gcp-cloud-run/sdk"),
+    import("@tagreel/gcp-cloud-run/terraform"),
   ]).then(([sdk, terraform]) => ({ ...sdk, ...terraform }));
   return cloudRunAdapterPromise;
 }
@@ -103,17 +103,17 @@ function loadCloudRunAdapter(): Promise<CloudRunAdapter> {
 export function isMissingCloudRunAdapterError(error: unknown): boolean {
   return (
     (error as NodeJS.ErrnoException)?.code === "ERR_MODULE_NOT_FOUND" &&
-    normalizeErrorMessage(error).includes("@hyperframes/gcp-cloud-run")
+    normalizeErrorMessage(error).includes("@tagreel/gcp-cloud-run")
   );
 }
 
 export function missingCloudRunAdapterMessage(subcommand: string): string {
   return (
-    `${c.error("@hyperframes/gcp-cloud-run is not installed.")} The ${c.accent(`hyperframes cloudrun ${subcommand}`)} command needs it at runtime.\n` +
+    `${c.error("@tagreel/gcp-cloud-run is not installed.")} The ${c.accent(`tagreel cloudrun ${subcommand}`)} command needs it at runtime.\n` +
     `Install it alongside the CLI:\n` +
-    `  ${c.accent("npm install -g @hyperframes/gcp-cloud-run")}\n` +
+    `  ${c.accent("npm install -g @tagreel/gcp-cloud-run")}\n` +
     `Or, for an opt-in project setup:\n` +
-    `  ${c.accent("npm install @hyperframes/gcp-cloud-run")}`
+    `  ${c.accent("npm install @tagreel/gcp-cloud-run")}`
   );
 }
 
@@ -149,7 +149,7 @@ export default defineCommand({
     },
     repo: {
       type: "string",
-      description: "Artifact Registry repo for the built image (default: hyperframes)",
+      description: "Artifact Registry repo for the built image (default: tagreel)",
     },
     // Machine sizing / scaling (deploy). Omitted flags keep the Terraform
     // module defaults (4 vCPU / 16Gi / 100 instances / 3600s).
@@ -275,7 +275,7 @@ export default defineCommand({
 // ── State helpers ─────────────────────────────────────────────────────────
 
 function stateDir(): string {
-  return join(homedir(), ".hyperframes");
+  return join(homedir(), ".tagreel");
 }
 function statePath(): string {
   return join(stateDir(), "cloudrun-state.json");
@@ -304,7 +304,7 @@ function readState(args: Record<string, unknown>): StackState {
   if (missing.length > 0) {
     console.error(
       `[cloudrun] missing stack coordinates: ${missing.join(", ")}. ` +
-        `Run \`hyperframes cloudrun deploy --project <id>\` first, or pass them as flags.`,
+        `Run \`tagreel cloudrun deploy --project <id>\` first, or pass them as flags.`,
     );
     failCommand();
   }
@@ -351,7 +351,7 @@ async function runDeploy(args: Record<string, unknown>): Promise<void> {
     failCommand();
   }
   const region = (args.region as string | undefined) ?? "us-central1";
-  const repo = (args.repo as string | undefined) ?? "hyperframes";
+  const repo = (args.repo as string | undefined) ?? "tagreel";
   const { getTerraformModuleDir } = await loadCloudRunAdapter();
   const tfDir = getTerraformModuleDir();
   const repoRoot = findRepoRoot(tfDir);
@@ -374,7 +374,7 @@ async function runDeploy(args: Record<string, unknown>): Promise<void> {
   if (!image) {
     if (!repoRoot) {
       console.error(
-        "[cloudrun deploy] --image is required when not running from a hyperframes checkout (no Dockerfile context found).",
+        "[cloudrun deploy] --image is required when not running from a tagreel checkout (no Dockerfile context found).",
       );
       failCommand();
     }
@@ -412,7 +412,7 @@ async function runDeploy(args: Record<string, unknown>): Promise<void> {
       .toISOString()
       .replace(/[^0-9]/g, "")
       .slice(0, 14);
-    image = `${region}-docker.pkg.dev/${project}/${repo}/hyperframes-render:${tag}`;
+    image = `${region}-docker.pkg.dev/${project}/${repo}/tagreel-render:${tag}`;
     console.log(`→ Building + pushing ${image} via Cloud Build`);
     run("gcloud", [
       "builds",
@@ -446,7 +446,7 @@ async function runDeploy(args: Record<string, unknown>): Promise<void> {
   console.log(`${c.accent("✓ deployed.")} bucket=${state.bucketName} workflow=${state.workflowId}`);
   console.log(`  service=${state.serviceUrl}`);
   console.log(
-    `  Next: ${c.accent("hyperframes cloudrun render ./my-project --width 1920 --height 1080 --wait")}`,
+    `  Next: ${c.accent("tagreel cloudrun render ./my-project --width 1920 --height 1080 --wait")}`,
   );
 }
 
@@ -521,7 +521,7 @@ async function runSites(args: Record<string, unknown>): Promise<void> {
   }
   const projectDir = args.extra as string | undefined;
   if (!projectDir) {
-    console.error("[cloudrun sites create] usage: hyperframes cloudrun sites create <projectDir>");
+    console.error("[cloudrun sites create] usage: tagreel cloudrun sites create <projectDir>");
     failCommand();
   }
   const state = readState(args);
@@ -560,7 +560,7 @@ async function runRender(args: Record<string, unknown>): Promise<void> {
   const projectDir = args.target as string | undefined;
   if (!projectDir) {
     console.error(
-      "[cloudrun render] usage: hyperframes cloudrun render <projectDir> --width <px> --height <px>",
+      "[cloudrun render] usage: tagreel cloudrun render <projectDir> --width <px> --height <px>",
     );
     failCommand();
   }
@@ -593,9 +593,7 @@ async function runRender(args: Record<string, unknown>): Promise<void> {
     else {
       console.log(`${c.accent("✓ render started")} renderId=${handle.renderId}`);
       console.log(`  output → ${handle.outputGcsUri}`);
-      console.log(
-        `  progress: ${c.accent(`hyperframes cloudrun progress ${handle.executionName}`)}`,
-      );
+      console.log(`  progress: ${c.accent(`tagreel cloudrun progress ${handle.executionName}`)}`);
     }
     return;
   }
@@ -627,7 +625,7 @@ async function runRender(args: Record<string, unknown>): Promise<void> {
 async function runProgress(args: Record<string, unknown>): Promise<void> {
   const executionName = args.target as string | undefined;
   if (!executionName) {
-    console.error("[cloudrun progress] usage: hyperframes cloudrun progress <executionName>");
+    console.error("[cloudrun progress] usage: tagreel cloudrun progress <executionName>");
     failCommand();
   }
   const { getRenderProgress } = await loadCloudRunAdapter();
@@ -657,7 +655,7 @@ const DEFAULT_BATCH_MAX_CONCURRENT = 50;
  * Fan out N personalised renders of the same project from a JSONL batch file
  * (one `{ outputKey, variables }` per line). Deploys the site once, then
  * starts an execution per entry with a concurrency cap. `--dry-run` prints the
- * resolved manifest without starting anything. Mirrors `hyperframes lambda
+ * resolved manifest without starting anything. Mirrors `tagreel lambda
  * render-batch`.
  */
 // fallow-ignore-next-line complexity
@@ -666,7 +664,7 @@ async function runRenderBatch(args: Record<string, unknown>): Promise<void> {
   const batchPath = args.batch as string | undefined;
   if (!projectDir || !batchPath) {
     console.error(
-      "[cloudrun render-batch] usage: hyperframes cloudrun render-batch <projectDir> --batch <file.jsonl> --width <px> --height <px>",
+      "[cloudrun render-batch] usage: tagreel cloudrun render-batch <projectDir> --batch <file.jsonl> --width <px> --height <px>",
     );
     failCommand();
   }
@@ -832,7 +830,7 @@ async function runDestroy(args: Record<string, unknown>): Promise<void> {
 
 /**
  * Build the serializable render config from CLI flags. `variables` is resolved
- * separately (it differs per batch entry). Mirrors the local `hyperframes
+ * separately (it differs per batch entry). Mirrors the local `tagreel
  * render` flag surface so the two stay consistent.
  */
 /**
@@ -871,7 +869,7 @@ export function buildRenderConfig(
 
 /**
  * Resolve --variables / --variables-file via the shared CLI parser (the same
- * one `hyperframes render` and `hyperframes lambda render` use), then validate
+ * one `tagreel render` and `tagreel lambda render` use), then validate
  * against the composition's `data-composition-variables` when an `index.html`
  * is on disk. `--strict-variables` turns mismatches into a hard failure.
  */

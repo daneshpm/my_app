@@ -2,7 +2,7 @@
 import { afterEach, expect, it, vi } from "vitest";
 import { createGsapLivePreview } from "./gsapLivePreview";
 import type { DomEditSelection } from "./domEditingTypes";
-import type { GsapAnimation } from "@hyperframes/parsers/gsap-parser";
+import type { GsapAnimation } from "@tagreel/parsers/gsap-parser";
 import { readGsapRuntimeValuesForPanel } from "./propertyPanelHelpers";
 
 afterEach(() => {

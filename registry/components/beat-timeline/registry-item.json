@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "beat-timeline",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Beat Timeline",
   "description": "A paused master-timeline orchestration spine that pins titled beat rows to evenly spaced named labels. Each row enters on its label, holds with the sequence, then exits with the group.",
   "tags": ["orchestration", "transitions", "sequencing", "bridge", "timeline"],
@@ -13,7 +13,7 @@
     {
       "path": "beat-timeline.html",
       "target": "compositions/components/beat-timeline.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  cut-the-curve -- HyperFrames video primitive (transitions / bridge)
+  cut-the-curve -- Tagreel video primitive (transitions / bridge)
 
   Concept: a velocity-matched directional hard cut. The outgoing subject
   accelerates along one straight screen vector with power4.in. At peak
@@ -387,8 +387,8 @@
             var outgoing = root.querySelector(".is-outgoing");
             var incoming = root.querySelector(".is-incoming");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var subject =

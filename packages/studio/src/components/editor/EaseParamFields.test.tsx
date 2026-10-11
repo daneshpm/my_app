@@ -2,7 +2,7 @@
 
 import React, { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
-import { parseWiggleEase } from "@hyperframes/core/wiggle-ease";
+import { parseWiggleEase } from "@tagreel/core/wiggle-ease";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { EaseBezierField, SpringBounceField, WiggleField } from "./EaseParamFields";
 

@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 
 import { describe, expect, it, vi, beforeEach } from "vitest";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
 
 const trackStudioEvent = vi.fn();
 vi.mock("../../utils/studioTelemetry", () => ({

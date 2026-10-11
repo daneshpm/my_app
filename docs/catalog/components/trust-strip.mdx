@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":226}}
   attribution={{"path":"registry/components/trust-strip","tags":["motion-primitive","proof","trust","logo-strip","wordmarks"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/trust-strip/trust-strip.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/trust-strip/trust-strip.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html trust-strip.html
 <!doctype html>
 <!--
-  trust-strip: HyperFrames video primitive (proof & stats / trust)
+  trust-strip: Tagreel video primitive (proof & stats / trust)
 
   A monochrome trust row: N text wordmarks set in wide-tracked uppercase mono,
   a single centered row with wide gaps, no boxes, no borders. Marks fade in
@@ -144,8 +144,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var strip = root.querySelector(".ts-strip");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var marks = String(vars.marks == null ? "" : vars.marks)
@@ -255,7 +255,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add trust-strip" item="trust-strip" />
+<InstallCommand command="npx tagreel add trust-strip" item="trust-strip" />
 
 That writes one file: `compositions/components/trust-strip.html`.
 

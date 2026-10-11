@@ -7,7 +7,7 @@ import type { TimelineElement } from "../player";
 import { usePlayerStore } from "../player";
 import { addBlockToProject } from "../utils/blockInstaller";
 import { selectAndRevealTimelineElement } from "../player/components/timelineDropReveal";
-import type { BlockParam } from "@hyperframes/core/registry";
+import type { BlockParam } from "@tagreel/core/registry";
 import type { RightPanelTab } from "../utils/studioHelpers";
 import type { MediaOverlayPlacement } from "../components/editor/propertyPanelTypes";
 
@@ -122,7 +122,7 @@ export function useBlockHandlers({
           }),
         );
         if (result === null) return;
-        const params = result?.block.type === "hyperframes:block" ? result.block.params : undefined;
+        const params = result?.block.type === "tagreel:block" ? result.block.params : undefined;
         if (params?.length) {
           setActiveBlockParams({
             blockName: result!.block.name,

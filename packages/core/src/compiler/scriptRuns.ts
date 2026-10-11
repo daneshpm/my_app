@@ -70,7 +70,7 @@ export const AFTER_FONTS_SCRIPTS = `script[type="${AFTER_FONTS_SCRIPT_TYPE}"], s
 
 export const AFTER_FONTS_CLAIM = "__hfAfterFontsClaimed";
 export const INLINED_FILE_ATTR = "data-hf-inlined-src";
-export const COMPOSITION_SOURCE_URL = "hyperframes-composition://body";
+export const COMPOSITION_SOURCE_URL = "tagreel-composition://body";
 
 export const DEFERRED_FILE = `[defer][src], [defer][${INLINED_FILE_ATTR}]`;
 const AFTER_FONTS_FALLBACK_ATTR = "data-hf-after-fonts-fallback";
@@ -81,7 +81,7 @@ const afterFontsFallback = () => `document.addEventListener("DOMContentLoaded", 
   var T = "${AFTER_FONTS_SCRIPT_TYPE}";
   var all = [].slice.call(document.querySelectorAll('${AFTER_FONTS_SCRIPTS}'));
   if (!all.length) return;
-  console.warn("[hyperframes] the runtime has no web-font gate; composition scripts run without waiting for fonts");
+  console.warn("[tagreel] the runtime has no web-font gate; composition scripts run without waiting for fonts");
   var late = function (el) { return el.type !== T || el.matches('${DEFERRED_FILE}'); };
   var queue = all.filter(function (el) { return !late(el); }).concat(all.filter(late));
   (function next() {
@@ -98,7 +98,7 @@ const afterFontsFallback = () => `document.addEventListener("DOMContentLoaded", 
     if (!waits) next();
   })();
 });
-//# sourceURL=hyperframes://after-fonts-fallback`;
+//# sourceURL=tagreel://after-fonts-fallback`;
 
 /** Gives each body script a type the browser does not run, so the runtime can run it once web fonts are ready. */
 export function deferScriptsUntilFonts(

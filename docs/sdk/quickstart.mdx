@@ -4,7 +4,7 @@ sidebarTitle: "SDK quickstart"
 description: "Open composition HTML, query and edit elements, serialize the result, and add persistence."
 ---
 
-Use `@hyperframes/sdk` when an application must inspect or change composition
+Use `@tagreel/sdk` when an application must inspect or change composition
 HTML without opening Studio. If you only need playback, use the
 [Player](/packages/player). If you only need a rendered file, use the
 [CLI](/developers/cli) or [Producer](/packages/producer).
@@ -18,7 +18,7 @@ elements.
 <Steps>
   <Step title="Install the package">
     ```bash
-    npm install @hyperframes/sdk
+    npm install @tagreel/sdk
     ```
   </Step>
 
@@ -26,7 +26,7 @@ elements.
     `openComposition` parses the HTML, stamps any elements that lack `data-hf-id` attributes, and returns a `Composition` session.
 
     ```typescript
-    import { openComposition } from "@hyperframes/sdk";
+    import { openComposition } from "@tagreel/sdk";
 
     const html = `<div class="clip" data-start="0" data-duration="5"
                     data-hf-id="hf-title">Launch day</div>`;
@@ -106,11 +106,11 @@ The headless pattern above is fine for one-shot transforms. When you want the SD
 pass a `PersistAdapter`. Rapid changes are coalesced and written in order, with the latest state
 winning rather than one disk write per UI event.
 
-The filesystem adapter (`@hyperframes/sdk/adapters/fs`) writes to a local directory and keeps a rolling version history.
+The filesystem adapter (`@tagreel/sdk/adapters/fs`) writes to a local directory and keeps a rolling version history.
 
 ```typescript
-import { openComposition } from "@hyperframes/sdk";
-import { createFsAdapter } from "@hyperframes/sdk/adapters/fs";
+import { openComposition } from "@tagreel/sdk";
+import { createFsAdapter } from "@tagreel/sdk/adapters/fs";
 import { readFile } from "node:fs/promises";
 
 // Load the current HTML from disk (or use a template string on first run).

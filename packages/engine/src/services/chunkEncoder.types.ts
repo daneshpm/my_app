@@ -1,8 +1,8 @@
 import type { HdrTransfer } from "../utils/hdr.js";
-import type { Fps } from "@hyperframes/core";
+import type { Fps } from "@tagreel/core";
 
 export interface EncoderOptions {
-  /** Frame rate as an exact rational; see `Fps` in @hyperframes/core. */
+  /** Frame rate as an exact rational; see `Fps` in @tagreel/core. */
   fps: Fps;
   width: number;
   height: number;

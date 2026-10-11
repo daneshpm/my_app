@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-// Thin wrapper over the shared packet builder in hyperframes — this file pins
+// Thin wrapper over the shared packet builder in tagreel — this file pins
 // this workflow's paths plus its two behavioral differences: a code frame must carry
 // an upstream-selected `### Source excerpt`, and code frames get a code-vocabulary
 // excerpt appended to their packet. Everything else has one owner:
-// ../../hyperframes/scripts/lib/frame-packets-core.mjs
+// ../../tagreel/scripts/lib/frame-packets-core.mjs
 
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -44,8 +44,8 @@ function codeVocabularySection(block) {
 }
 
 const CONFIG = {
-  animationDir: resolve(SKILL_DIR, "../hyperframes-animation"),
-  corePath: resolve(SKILL_DIR, "../hyperframes/references/frame-worker-core.md"),
+  animationDir: resolve(SKILL_DIR, "../tagreel-animation"),
+  corePath: resolve(SKILL_DIR, "../tagreel/references/frame-worker-core.md"),
   deltaPath: resolve(SKILL_DIR, "sub-agents/frame-worker.md"),
   validateFrame,
   extraSections: codeVocabularySection,

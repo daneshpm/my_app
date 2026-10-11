@@ -5,7 +5,7 @@ import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { thumbnailScheduler } from "../player/lib/thumbnailScheduler";
 // By package name, as a host imports it: the test fails if the export goes.
-import { useThumbnailStill, type ThumbnailStill } from "@hyperframes/studio";
+import { useThumbnailStill, type ThumbnailStill } from "@tagreel/studio";
 
 Object.defineProperty(globalThis, "IS_REACT_ACT_ENVIRONMENT", { configurable: true, value: true });
 

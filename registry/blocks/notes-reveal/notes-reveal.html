@@ -8,7 +8,7 @@
     { "id": "noteLine2", "type": "string", "role": "content", "label": "Note body line 2", "description": "Second typed line of the note.", "default": "my tools cost $$$" },
     { "id": "noteLine3", "type": "string", "role": "content", "label": "Note body line 3", "description": "Third typed line of the note.", "default": "and re-edits never end." },
     { "id": "noteLine4", "type": "string", "role": "content", "label": "Note body line 4", "description": "Fourth typed line of the note — the turn, where the brand enters.", "default": "then i tried writing html only" },
-    { "id": "noteLine5", "type": "string", "role": "content", "label": "Note body line 5", "description": "Fifth typed line of the note — name the brand here.", "default": "started HyperFrames three weeks ago" },
+    { "id": "noteLine5", "type": "string", "role": "content", "label": "Note body line 5", "description": "Fifth typed line of the note — name the brand here.", "default": "started Tagreel three weeks ago" },
     { "id": "noteLine6", "type": "string", "role": "content", "label": "Note body line 6", "description": "Sixth typed line of the note.", "default": "the grind is gone, but more than that —" },
     { "id": "noteLine7", "type": "string", "role": "content", "label": "Note body line 7", "description": "Last typed line of the note — the payoff.", "default": "I ship videos weekly." },
     { "id": "cardTop", "type": "string", "role": "content", "label": "Card headline top", "description": "First marker line on the closing card. The underline follows its last word.", "default": "THE POWER" },
@@ -20,8 +20,8 @@
     { "id": "check2Value", "type": "string", "role": "content", "label": "Checklist 2 value", "description": "Marker value of the second checklist row.", "default": "IN 4K" },
     { "id": "check3Label", "type": "string", "role": "content", "label": "Checklist 3 label", "description": "Typewriter label of the third checklist row.", "default": "SHIP" },
     { "id": "check3Value", "type": "string", "role": "content", "label": "Checklist 3 value", "description": "Marker value of the third checklist row.", "default": "TODAY" },
-    { "id": "brandLogo", "type": "image", "role": "content", "label": "Brand logo", "description": "Transparent mark of the brand this video promotes, in the sign-off strip under the card.", "portrays": ["subject_logo"], "default": "assets/hyperframes-logo-black.svg" },
-    { "id": "brandDomain", "type": "string", "role": "content", "label": "Sign-off domain", "description": "Domain of the brand this video promotes, closing the sign-off strip. Use the real domain, or a call to action when no domain fits.", "portrays": ["subject_domain"], "default": "hyperframes.heygen.com" }
+    { "id": "brandLogo", "type": "image", "role": "content", "label": "Brand logo", "description": "Transparent mark of the brand this video promotes, in the sign-off strip under the card.", "portrays": ["subject_logo"], "default": "assets/tagreel-logo-black.svg" },
+    { "id": "brandDomain", "type": "string", "role": "content", "label": "Sign-off domain", "description": "Domain of the brand this video promotes, closing the sign-off strip. Use the real domain, or a call to action when no domain fits.", "portrays": ["subject_domain"], "default": "acme.example" }
   ]'
 >
   <head>
@@ -482,8 +482,8 @@
             <div class="cl-rule" style="left: 58px; top: 1412px"></div>
           </div>
           <div id="brand-strip">
-            <img id="brand-mark" src="assets/hyperframes-logo-black.svg" alt="" />
-            <div id="brand-domain">hyperframes.heygen.com</div>
+            <img id="brand-mark" src="assets/tagreel-logo-black.svg" alt="" />
+            <div id="brand-domain">acme.example</div>
           </div>
           <div id="nrv-video">
             <div id="nrv-play">
@@ -1000,8 +1000,8 @@
       // variables: every override falls back to its declared default
       (function () {
         var vars =
-          window.__hyperframes && typeof window.__hyperframes.getVariables === "function"
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && typeof window.__tagreel.getVariables === "function"
+            ? window.__tagreel.getVariables()
             : {};
         // `mx` is a backstop, not the layout rule. Every text slot below is width-fitted at
         // build time, so the cap only has to be low enough that the fit floor can still hold
@@ -1022,13 +1022,13 @@
         // Body: build the per-character spans the reveal animation addresses by id, instead of
         // shipping them pre-split. Pre-split spans made the note's seven lines -- 46% of the
         // running time, and the only place the note says anything -- permanently unwritable,
-        // so every remix of this template kept HyperFrames' own copy about making videos.
+        // so every remix of this template kept Tagreel' own copy about making videos.
         var BODY_DEFAULTS = [
           "my videos sucked",
           "my tools cost $$$",
           "and re-edits never end.",
           "then i tried writing html only",
-          "started HyperFrames three weeks ago",
+          "started Tagreel three weeks ago",
           "the grind is gone, but more than that —",
           "I ship videos weekly.",
         ];
@@ -1072,7 +1072,7 @@
         values[2].textContent = t(vars.check3Value, "TODAY", 18);
         document.getElementById("brand-domain").textContent = t(
           vars.brandDomain,
-          "hyperframes.heygen.com",
+          "acme.example",
           30,
         );
         // An image slot arrives as a URL. Leave the packaged mark in place when it is absent,
@@ -1412,7 +1412,7 @@
       // check that would have caught this; those waivers are gone. `#hl1`/`#hl2`/`#hl3` are
       // fixed on a card that never moves, so any overflow there is a defect. The note's title
       // and body lines keep theirs: `#note-body` is translated upward across the whole scene, so
-      // they leave the canvas vertically by design. Note that `hyperframes check` only ever sees
+      // they leave the canvas vertically by design. Note that `tagreel check` only ever sees
       // the declared defaults -- it takes no variable values -- so the checker guards the
       // template and the fit is what guards a remix.
       // The floor and the character caps have to agree: a cap that admits a string still too wide

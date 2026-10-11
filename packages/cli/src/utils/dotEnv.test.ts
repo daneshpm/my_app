@@ -10,14 +10,14 @@ describe("applyDotEnv", () => {
 
   it("never takes the feedback email from a project file", () => {
     const env: NodeJS.ProcessEnv = {};
-    applyDotEnv("HYPERFRAMES_FEEDBACK_EMAIL=someone@example.com\nOTHER=1", env);
+    applyDotEnv("TAGREEL_FEEDBACK_EMAIL=someone@example.com\nOTHER=1", env);
     expect(env).toEqual({ OTHER: "1" });
   });
 
   it("never takes the feedback email under another letter case", () => {
     const env: NodeJS.ProcessEnv = {};
     applyDotEnv(
-      "hyperframes_feedback_email=a@example.com\nHyperFrames_Feedback_Email=b@example.com\nOTHER=1",
+      "tagreel_feedback_email=a@example.com\nTagreel_Feedback_Email=b@example.com\nOTHER=1",
       env,
     );
     expect(env).toEqual({ OTHER: "1" });

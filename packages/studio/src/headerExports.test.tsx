@@ -3,7 +3,7 @@
 import { createRoot } from "react-dom/client";
 import { act } from "react";
 import { describe, expect, it } from "vitest";
-import { HyperframesLogo, buttonSizes } from "@hyperframes/studio";
+import { TagreelLogo, buttonSizes } from "@tagreel/studio";
 
 Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
 
@@ -12,7 +12,7 @@ describe("header package exports", () => {
     const el = document.createElement("div");
     document.body.append(el);
     const root = createRoot(el);
-    await act(async () => root.render(<HyperframesLogo />));
+    await act(async () => root.render(<TagreelLogo />));
     expect(el.querySelector("svg")).not.toBeNull();
     await act(async () => root.unmount());
   });

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":495}}
   attribution={{"path":"registry/components/testimonial-proof-card","tags":["motion-primitive","proof","testimonial","quote","social-proof","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/testimonial-proof-card/testimonial-proof-card.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/testimonial-proof-card/testimonial-proof-card.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html testimonial-proof-card.html
 <!doctype html>
 <!--
-  testimonial-proof-card: HyperFrames video primitive (proof-stats / testimonial)
+  testimonial-proof-card: Tagreel video primitive (proof-stats / testimonial)
 
   A quote card: the quote reveals per measured line through a soft overflow
   mask, an avatar disc (initials by default, an image via the avatar slot),
@@ -279,8 +279,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var quoteEl = root.querySelector(".tq-quote");
             var bylineEl = root.querySelector(".tq-byline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function str(value, fallback) {
@@ -524,7 +524,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add testimonial-proof-card" item="testimonial-proof-card" />
+<InstallCommand command="npx tagreel add testimonial-proof-card" item="testimonial-proof-card" />
 
 That writes one file: `compositions/components/testimonial-proof-card.html`.
 

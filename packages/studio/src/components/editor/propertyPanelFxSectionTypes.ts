@@ -3,8 +3,8 @@
  * component file is mostly logic and JSX rather than documentation.
  */
 
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
-import type { HfAudioNameKind, HfCarveSettings } from "@hyperframes/core/audio-carve";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
+import type { HfAudioNameKind, HfCarveSettings } from "@tagreel/core/audio-carve";
 import type { AudioTrackOption } from "./propertyPanelFxCarveModule.js";
 import type { AudioFxSignalPath } from "./audioFxSignalPath.js";
 

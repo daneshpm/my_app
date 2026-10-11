@@ -12,7 +12,7 @@ import type { DomEditPersistOutcome } from "./domEditCommitTypes";
  */
 import type { RotationCommit } from "../components/editor/rotationDraft";
 import { useCallback } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import { tryGsapDragIntercept, tryGsapRotationIntercept } from "./gsapRuntimeBridge";
 import { tryGsapResizeIntercept } from "./gsapResizeIntercept";

@@ -10,9 +10,9 @@ import { hostname as osHostname, networkInterfaces } from "node:os";
  */
 
 export interface HostPolicy {
-  /** Bind host (`HYPERFRAMES_PREVIEW_HOST`). Unset/loopback means loopback-only. */
+  /** Bind host (`TAGREEL_PREVIEW_HOST`). Unset/loopback means loopback-only. */
   bindHost?: string;
-  /** Explicit extra hostnames (`HYPERFRAMES_PREVIEW_ALLOWED_HOSTS`). */
+  /** Explicit extra hostnames (`TAGREEL_PREVIEW_ALLOWED_HOSTS`). */
   allowedHosts?: readonly string[];
   /** Names this machine answers to; injectable for tests. */
   localNames?: () => ReadonlySet<string>;
@@ -84,7 +84,7 @@ export function isAllowedHost(host: string | undefined, policy: HostPolicy = {})
 /** Policy from the process environment, read per call so env changes apply. */
 export function hostPolicyFromEnv(env: NodeJS.ProcessEnv = process.env): HostPolicy {
   return {
-    bindHost: env["HYPERFRAMES_PREVIEW_HOST"],
-    allowedHosts: (env["HYPERFRAMES_PREVIEW_ALLOWED_HOSTS"] ?? "").split(","),
+    bindHost: env["TAGREEL_PREVIEW_HOST"],
+    allowedHosts: (env["TAGREEL_PREVIEW_ALLOWED_HOSTS"] ?? "").split(","),
   };
 }

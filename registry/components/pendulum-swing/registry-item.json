@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "pendulum-swing",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Pendulum Swing",
   "description": "Content hangs from a fixed pivot and swings into rest with gravity-damped oscillation, like a hanging sign settling on its hook.",
   "tags": ["motion-primitive", "physics", "swing", "settle", "reveal"],
@@ -9,7 +9,7 @@
     {
       "path": "pendulum-swing.html",
       "target": "compositions/components/pendulum-swing.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -64,8 +64,5 @@
         { "value": "accent", "label": "Accent" }
       ]
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/pendulum-swing.png"
-  }
+  ]
 }

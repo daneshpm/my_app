@@ -165,7 +165,7 @@ describe("trackCommandFailures: extra positionals", () => {
     }).catch((e: unknown) => e);
     expect(error).toBeInstanceOf(CliUsageError);
     expect((error as CliUsageError).result.presented).toBe(true);
-    expect((error as Error).message).toBe("2 unexpected extra arguments for hyperframes render");
+    expect((error as Error).message).toBe("2 unexpected extra arguments for tagreel render");
   });
 
   it("labels a required positional <NAME> and an optional one [NAME]", async () => {
@@ -177,9 +177,7 @@ describe("trackCommandFailures: extra positionals", () => {
     await expect(
       runCommand(await wrap(cmd as CommandDef), { rawArgs: ["a", "b", "c"] }),
     ).rejects.toThrow(CliUsageError);
-    expect(errorSpy.mock.calls.flat().join("\n")).toContain(
-      "Usage: hyperframes keyframes <FILE> [AT]",
-    );
+    expect(errorSpy.mock.calls.flat().join("\n")).toContain("Usage: tagreel keyframes <FILE> [AT]");
   });
 
   it.each([
@@ -206,7 +204,7 @@ describe("trackCommandFailures: extra positionals", () => {
     ).rejects.toThrow(CliUsageError);
     expect(run).not.toHaveBeenCalled();
     expect(errorSpy.mock.calls.flat().join("\n")).toBe(
-      "Unexpected extra argument for hyperframes render: out.mp4\nUsage: hyperframes render [DIR] [OPTIONS]",
+      "Unexpected extra argument for tagreel render: out.mp4\nUsage: tagreel render [DIR] [OPTIONS]",
     );
   });
 
@@ -218,8 +216,7 @@ describe("trackCommandFailures: extra positionals", () => {
       ).rejects.toThrow(CliUsageError);
       expect(JSON.parse(logSpy.mock.calls[0]![0] as string)).toEqual({
         ok: false,
-        error:
-          "Unexpected extra argument for hyperframes lint: b\nUsage: hyperframes lint [DIR] [OPTIONS]",
+        error: "Unexpected extra argument for tagreel lint: b\nUsage: tagreel lint [DIR] [OPTIONS]",
       });
     },
   );
@@ -231,7 +228,7 @@ describe("trackCommandFailures: extra positionals", () => {
     await expect(
       runCommand(await wrap(leaf("tts", run)), { rawArgs: [file, "extra"] }),
     ).rejects.toThrow(CliUsageError);
-    expect(errorSpy.mock.calls.flat().join("\n")).toContain("hyperframes tts: extra");
+    expect(errorSpy.mock.calls.flat().join("\n")).toContain("tagreel tts: extra");
     expect(run).not.toHaveBeenCalled();
   });
 
@@ -262,7 +259,7 @@ describe("trackCommandFailures: extra positionals", () => {
       runCommand(await wrap(bare as CommandDef), { rawArgs: ["a", "b", "--", "--json"] }),
     ).rejects.toThrow(CliUsageError);
     expect(logSpy).not.toHaveBeenCalled();
-    expect(errorSpy.mock.calls.flat().join("\n")).toContain("hyperframes docs: b, --json");
+    expect(errorSpy.mock.calls.flat().join("\n")).toContain("tagreel docs: b, --json");
   });
 
   it("reports JSON under --json=true for a command that declares no json flag", async () => {
@@ -287,7 +284,7 @@ describe("trackCommandFailures: extra positionals", () => {
       runCommand(await wrap(bare as CommandDef), { rawArgs: ["a", "b", "--json=false"] }),
     ).rejects.toThrow(CliUsageError);
     expect(logSpy).not.toHaveBeenCalled();
-    expect(errorSpy.mock.calls.flat().join("\n")).toContain("hyperframes snapshot: b");
+    expect(errorSpy.mock.calls.flat().join("\n")).toContain("tagreel snapshot: b");
   });
 
   it("runs a leaf given no more positionals than it declares", async () => {
@@ -306,7 +303,7 @@ describe("trackCommandFailures: extra positionals", () => {
       CliUsageError,
     );
     expect(errorSpy.mock.calls.flat().join("\n")).toContain(
-      "hyperframes cloud get: id2\nUsage: hyperframes cloud get [DIR]",
+      "tagreel cloud get: id2\nUsage: tagreel cloud get [DIR]",
     );
   });
 

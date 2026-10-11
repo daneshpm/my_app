@@ -3,7 +3,7 @@ import {
   slipIntoSyncMediaStart,
   syncOffsetFrames,
   type SyncTiming,
-} from "@hyperframes/core/media-link";
+} from "@tagreel/core/media-link";
 import { sameCompositionScope, type TimelineElement } from "../store/timelineElement";
 
 type SyncElement = Pick<

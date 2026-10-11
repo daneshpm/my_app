@@ -1,11 +1,11 @@
 // @vitest-environment happy-dom
 import { gsap } from "gsap";
-import { parseGsapScriptAcorn } from "@hyperframes/parsers/gsap-parser-acorn";
+import { parseGsapScriptAcorn } from "@tagreel/parsers/gsap-parser-acorn";
 import {
   replaceTweenWithKeyframesInScript,
   syncPositionHoldsBeforeKeyframes,
   updateKeyframeInScript,
-} from "@hyperframes/parsers/gsap-writer-acorn";
+} from "@tagreel/parsers/gsap-writer-acorn";
 import { afterEach, expect, it, vi } from "vitest";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import { usePlayerStore } from "../player/store/playerStore";

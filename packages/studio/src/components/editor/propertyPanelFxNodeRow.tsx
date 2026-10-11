@@ -19,10 +19,10 @@ import {
   type HfAudioFxNode,
   type HfAudioFxParam,
   type HfAudioFxParamValues,
-} from "@hyperframes/core/audio-fx";
-import { EFFECT_COPY, SUMMARY } from "@hyperframes/core/audio-fx-copy";
+} from "@tagreel/core/audio-fx";
+import { EFFECT_COPY, SUMMARY } from "@tagreel/core/audio-fx-copy";
 import { trackNodeBypassed } from "./audioFxTelemetry.js";
-import { getAudioFxProfile } from "@hyperframes/core/audio-fx-profiles";
+import { getAudioFxProfile } from "@tagreel/core/audio-fx-profiles";
 import { FX_FAMILY_TYPE, fxFamilyOf, fxFamilyTint } from "./propertyPanelFxFamily.js";
 import { FxNodeOpenBody } from "./propertyPanelFxNodeOpenBody.js";
 

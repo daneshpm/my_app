@@ -18,9 +18,8 @@ exactly what the words say.
 
 ## Voiceover (TTS)
 
-The agent picks a voice engine in a fixed order. HeyGen Starfish goes first if
-your HeyGen account is configured. ElevenLabs is next if that key is set.
-Otherwise the local Kokoro model runs, and it needs no API key.
+The agent picks a voice engine in a fixed order. ElevenLabs goes first if that
+key is set. Otherwise the local Kokoro model runs, and it needs no API key.
 
 Describe the content and let the agent pick a fitting voice. Or name the voice,
 tone, and speed yourself:
@@ -41,7 +40,7 @@ agent choose.
 ### Gemini voiceover
 
 Choose Gemini when you want to direct a narrator's delivery with a description.
-Configure [Gemini credentials](/guides/authentication#providers-used-by-agent-workflows),
+Configure Gemini credentials,
 then ask your agent:
 
 > Use Gemini 3.8 Flash TTS with the Kore voice to narrate this script. Make the
@@ -188,9 +187,9 @@ asset and builds a bounded H.264 proxy automatically, cached under
 playback. A render always decodes the original file, so nothing about final
 quality or color is touched.
 
-`hyperframes lint` also flags the asset at info level (`hevc_preview_codec`) so
+`tagreel lint` also flags the asset at info level (`hevc_preview_codec`) so
 you know a proxy is in play. Proxying is optional. Pass `--no-proxy` per
-command, or set `media.autoProxy: false` in `hyperframes.json` project-wide.
+command, or set `media.autoProxy: false` in `tagreel.json` project-wide.
 
 The same mechanism covers alpha-channel sources. ProRes 4444 and alpha WebM get
 a VP8 + Opus WebM proxy instead of being refused, so a transparent cutout in a

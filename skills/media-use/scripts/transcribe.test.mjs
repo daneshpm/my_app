@@ -6,7 +6,7 @@ import { join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 
-// The stub stands in for `npx hyperframes transcribe <in> --dir <dir> ...`: it records its args,
+// The stub stands in for `npx tagreel transcribe <in> --dir <dir> ...`: it records its args,
 // writes the CLI's flat array and prints the CLI's --json line naming `cliEngine`.
 function runScript(engine, cliEngine) {
   const root = mkdtempSync(join(tmpdir(), "media-use-transcribe-"));
@@ -24,13 +24,13 @@ function runScript(engine, cliEngine) {
     writeFileSync(input, "");
     const script = fileURLToPath(new URL("./transcribe.mjs", import.meta.url));
     const env = { ...process.env, PATH: `${bin}:${process.env.PATH}`, HOME: root };
-    delete env.HYPERFRAMES_PARAKEET;
+    delete env.TAGREEL_PARAKEET;
     const out = execFileSync(
       process.execPath,
       [script, "--input", input, "--engine", engine, "--json"],
       {
         encoding: "utf8",
-        env: { ...env, HYPERFRAMES_MEDIA_HOME: join(root, "home"), HYPERFRAMES_NO_TELEMETRY: "1" },
+        env: { ...env, TAGREEL_MEDIA_HOME: join(root, "home"), TAGREEL_NO_TELEMETRY: "1" },
       },
     );
     return { result: JSON.parse(out.trim()), args: readFileSync(join(root, "args"), "utf8") };
@@ -78,8 +78,7 @@ test(
     try {
       const bin = join(root, "bin");
       mkdirSync(bin);
-      const reason =
-        "Parakeet is not installed. Install it with: hyperframes models install parakeet";
+      const reason = "Parakeet is not installed. Install it with: tagreel models install parakeet";
       writeFileSync(
         join(bin, "npx"),
         `#!/bin/sh\necho '{"ok":false,"error":"${reason}"}'\nexit 1\n`,
@@ -95,16 +94,16 @@ test(
           encoding: "utf8",
           env: {
             ...process.env,
-            HYPERFRAMES_PARAKEET: "",
+            TAGREEL_PARAKEET: "",
             PATH: `${bin}:${process.env.PATH}`,
             HOME: root,
-            HYPERFRAMES_MEDIA_HOME: join(root, "home"),
-            HYPERFRAMES_NO_TELEMETRY: "1",
+            TAGREEL_MEDIA_HOME: join(root, "home"),
+            TAGREEL_NO_TELEMETRY: "1",
           },
         },
       );
       assert.equal(res.status, 1);
-      assert.match(JSON.parse(res.stdout.trim()).error, /hyperframes models install parakeet/);
+      assert.match(JSON.parse(res.stdout.trim()).error, /tagreel models install parakeet/);
     } finally {
       rmSync(root, { recursive: true, force: true });
     }

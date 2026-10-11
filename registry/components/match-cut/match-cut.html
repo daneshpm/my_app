@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  match-cut: HyperFrames video primitive (transitions / match-cut / connect)
+  match-cut: Tagreel video primitive (transitions / match-cut / connect)
 
   Concept: scene A drives a circle into a known center-frame geometry, then a
   hard single-frame swap reveals scene B with a different circle in the exact
@@ -206,8 +206,8 @@
             var labelB = root.querySelector(".mc-label-b");
             var revealB = root.querySelectorAll(".mc-kicker, .mc-label-b");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentName =

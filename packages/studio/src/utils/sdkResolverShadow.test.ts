@@ -12,7 +12,7 @@ import {
   type SdkResolverMismatch,
 } from "./sdkResolverShadow";
 import type { PatchOperation } from "./sourcePatcher";
-import { openComposition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
 
 // ─── Telemetry capture ────────────────────────────────────────────────────────
 
@@ -673,7 +673,7 @@ describe("G. recordAnimationResolverParity", () => {
 });
 
 // ─── G2. runResolverShadow cross-file guard ───────────────────────────────────
-// PostHog 0.7.41: one session emitted 479 element_not_found because the user
+// analytics 0.7.41: one session emitted 479 element_not_found because the user
 // edited elements whose sourceFile differed from the active composition — the
 // session models ONLY the active comp, so cross-file targets are structurally
 // unresolvable. The cutover gates already decline via wrongCompositionFile;
@@ -714,7 +714,7 @@ describe("G2. runResolverShadow cross-file guard", () => {
 
 // ─── H. Inlined sub-composition: bare leaf id resolves (regression) ───────────
 
-// PostHog showed ~445 false `element_not_found` events, all on a bare leaf id
+// analytics showed ~445 false `element_not_found` events, all on a bare leaf id
 // (hf-0ytc / #subscribe-btn) inside an inlined sub-composition. The studio reads
 // the bare data-hf-id off the DOM and the cutover dispatch resolves it via
 // resolveScoped (which locates the leaf inside the host subtree). But the shadow

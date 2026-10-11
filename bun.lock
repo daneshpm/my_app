@@ -7,7 +7,7 @@
       "devDependencies": {
         "@commitlint/cli": "^20.5.0",
         "@commitlint/config-conventional": "^20.5.0",
-        "@hyperframes/player": "workspace:*",
+        "@tagreel/player": "workspace:*",
         "@types/node": "^25.0.10",
         "concurrently": "^8.2.0",
         "esbuild": "^0.25.12",
@@ -24,13 +24,13 @@
       },
     },
     "packages/aws-lambda": {
-      "name": "@hyperframes/aws-lambda",
+      "name": "@tagreel/aws-lambda",
       "version": "0.8.137",
       "dependencies": {
         "@aws-sdk/client-s3": "^3.1146.0",
         "@aws-sdk/client-sfn": "^3.1146.0",
-        "@hyperframes/producer": "workspace:^",
         "@sparticuz/chromium": "148.0.0",
+        "@tagreel/producer": "workspace:^",
         "ffmpeg-static": "^5.2.0",
         "ffprobe-static": "^3.1.0",
         "puppeteer-core": "^25.10.0",
@@ -57,11 +57,11 @@
       ],
     },
     "packages/cli": {
-      "name": "@hyperframes/cli",
+      "name": "@tagreel/cli",
       "version": "0.8.137",
       "bin": {
-        "hyperframes": "./bin/hyperframes.mjs",
-        "hyperframes-localize-fonts": "./bin/hyperframes-localize-fonts.mjs",
+        "tagreel": "./bin/tagreel.mjs",
+        "tagreel-localize-fonts": "./bin/tagreel-localize-fonts.mjs",
       },
       "dependencies": {
         "@hono/node-server": "^2.0.5",
@@ -75,7 +75,6 @@
         "fontkit": "^2.0.4",
         "giget": "^3.2.0",
         "hono": "^4.6.0",
-        "ignore": "^5.3.2",
         "open": "^10.0.0",
         "postcss": "^8.5.8",
         "prettier": "^3.8.1",
@@ -85,15 +84,15 @@
       "devDependencies": {
         "@clack/prompts": "^1.1.0",
         "@google/genai": "1.52.0",
-        "@hyperframes/aws-lambda": "workspace:*",
-        "@hyperframes/core": "workspace:*",
-        "@hyperframes/engine": "workspace:*",
-        "@hyperframes/gcp-cloud-run": "workspace:*",
-        "@hyperframes/lint": "workspace:*",
-        "@hyperframes/parsers": "workspace:*",
-        "@hyperframes/producer": "workspace:*",
-        "@hyperframes/studio": "workspace:*",
-        "@hyperframes/studio-server": "workspace:*",
+        "@tagreel/aws-lambda": "workspace:*",
+        "@tagreel/core": "workspace:*",
+        "@tagreel/engine": "workspace:*",
+        "@tagreel/gcp-cloud-run": "workspace:*",
+        "@tagreel/lint": "workspace:*",
+        "@tagreel/parsers": "workspace:*",
+        "@tagreel/producer": "workspace:*",
+        "@tagreel/studio": "workspace:*",
+        "@tagreel/studio-server": "workspace:*",
         "@types/css-tree": "^3.2.0",
         "@types/fontkit": "^2.0.9",
         "@types/mime-types": "^3.0.1",
@@ -109,13 +108,13 @@
       },
     },
     "packages/core": {
-      "name": "@hyperframes/core",
+      "name": "@tagreel/core",
       "version": "0.8.137",
       "dependencies": {
         "@chenglou/pretext": "^0.0.5",
-        "@hyperframes/lint": "workspace:*",
-        "@hyperframes/parsers": "workspace:*",
-        "@hyperframes/studio-server": "workspace:*",
+        "@tagreel/lint": "workspace:*",
+        "@tagreel/parsers": "workspace:*",
+        "@tagreel/studio-server": "workspace:*",
         "bpm-detective": "^2.0.5",
         "linkedom": "^0.18.12",
         "postcss": "^8.5.8",
@@ -154,12 +153,12 @@
       },
     },
     "packages/engine": {
-      "name": "@hyperframes/engine",
+      "name": "@tagreel/engine",
       "version": "0.8.137",
       "dependencies": {
         "@hono/node-server": "^2.0.5",
-        "@hyperframes/core": "workspace:^",
-        "@hyperframes/parsers": "workspace:^",
+        "@tagreel/core": "workspace:^",
+        "@tagreel/parsers": "workspace:^",
         "hono": "^4.6.0",
         "linkedom": "^0.18.12",
         "puppeteer": "^25.8.0",
@@ -173,13 +172,13 @@
       },
     },
     "packages/gcp-cloud-run": {
-      "name": "@hyperframes/gcp-cloud-run",
+      "name": "@tagreel/gcp-cloud-run",
       "version": "0.8.137",
       "dependencies": {
         "@google-cloud/storage": "^7.14.0",
         "@google-cloud/workflows": "^4.2.0",
         "@hono/node-server": "^2.0.5",
-        "@hyperframes/producer": "workspace:^",
+        "@tagreel/producer": "workspace:^",
         "hono": "^4.6.0",
         "puppeteer-core": "^25.10.0",
         "tar": "^7.4.3",
@@ -194,10 +193,10 @@
       },
     },
     "packages/lint": {
-      "name": "@hyperframes/lint",
+      "name": "@tagreel/lint",
       "version": "0.8.137",
       "dependencies": {
-        "@hyperframes/parsers": "workspace:*",
+        "@tagreel/parsers": "workspace:*",
         "acorn": "^8.17.0",
         "acorn-walk": "^8.3.5",
         "htmlparser2": "^10.1.0",
@@ -214,7 +213,7 @@
       },
     },
     "packages/parsers": {
-      "name": "@hyperframes/parsers",
+      "name": "@tagreel/parsers",
       "version": "0.8.137",
       "dependencies": {
         "@babel/parser": "^7.27.0",
@@ -225,7 +224,7 @@
         "recast": "^0.23.11",
       },
       "devDependencies": {
-        "@hyperframes/core": "workspace:*",
+        "@tagreel/core": "workspace:*",
         "@types/node": "^25.0.10",
         "tsup": "^8.0.0",
         "tsx": "^4.21.0",
@@ -234,10 +233,10 @@
       },
     },
     "packages/player": {
-      "name": "@hyperframes/player",
+      "name": "@tagreel/player",
       "version": "0.8.137",
       "dependencies": {
-        "@hyperframes/core": "workspace:*",
+        "@tagreel/core": "workspace:*",
       },
       "devDependencies": {
         "@types/bun": "^1.1.0",
@@ -249,15 +248,15 @@
       },
     },
     "packages/producer": {
-      "name": "@hyperframes/producer",
+      "name": "@tagreel/producer",
       "version": "0.8.137",
       "dependencies": {
         "@hono/node-server": "^2.0.5",
-        "@hyperframes/core": "workspace:^",
-        "@hyperframes/engine": "workspace:^",
-        "@hyperframes/lint": "workspace:^",
-        "@hyperframes/parsers": "workspace:^",
-        "@hyperframes/studio-server": "workspace:^",
+        "@tagreel/core": "workspace:^",
+        "@tagreel/engine": "workspace:^",
+        "@tagreel/lint": "workspace:^",
+        "@tagreel/parsers": "workspace:^",
+        "@tagreel/studio-server": "workspace:^",
         "hono": "^4.6.0",
         "linkedom": "^0.18.12",
         "postcss": "^8.5.8",
@@ -265,7 +264,7 @@
         "puppeteer-core": "^25.10.0",
       },
       "devDependencies": {
-        "@hyperframes/aws-lambda": "workspace:*",
+        "@tagreel/aws-lambda": "workspace:*",
         "@types/node": "^25.0.10",
         "@webgpu/types": "^0.1.69",
         "esbuild": "^0.25.12",
@@ -275,11 +274,11 @@
       },
     },
     "packages/sdk": {
-      "name": "@hyperframes/sdk",
+      "name": "@tagreel/sdk",
       "version": "0.8.137",
       "dependencies": {
-        "@hyperframes/core": "workspace:*",
-        "@hyperframes/parsers": "workspace:*",
+        "@tagreel/core": "workspace:*",
+        "@tagreel/parsers": "workspace:*",
         "linkedom": "^0.18.12",
       },
       "devDependencies": {
@@ -290,11 +289,11 @@
       },
     },
     "packages/sdk-playground": {
-      "name": "@hyperframes/sdk-playground",
+      "name": "@tagreel/sdk-playground",
       "version": "0.6.106",
       "dependencies": {
-        "@hyperframes/core": "workspace:*",
-        "@hyperframes/sdk": "workspace:*",
+        "@tagreel/core": "workspace:*",
+        "@tagreel/sdk": "workspace:*",
         "gsap": "^3.15.0",
       },
       "devDependencies": {
@@ -305,7 +304,7 @@
       },
     },
     "packages/shader-transitions": {
-      "name": "@hyperframes/shader-transitions",
+      "name": "@tagreel/shader-transitions",
       "version": "0.8.137",
       "dependencies": {
         "html2canvas": "^1.4.1",
@@ -317,7 +316,7 @@
       },
     },
     "packages/studio": {
-      "name": "@hyperframes/studio",
+      "name": "@tagreel/studio",
       "version": "0.8.137",
       "dependencies": {
         "@base-ui/react": "1.7.0",
@@ -331,15 +330,15 @@
         "@codemirror/search": "^6.6.0",
         "@codemirror/state": "^6.6.0",
         "@codemirror/view": "6.40.0",
-        "@hyperframes/core": "workspace:*",
-        "@hyperframes/parsers": "workspace:*",
-        "@hyperframes/player": "workspace:*",
-        "@hyperframes/sdk": "workspace:*",
-        "@hyperframes/shader-transitions": "workspace:*",
-        "@hyperframes/studio-server": "workspace:*",
         "@lezer/highlight": "^1.2.3",
         "@mcp-b/global": "^5.0.1",
         "@phosphor-icons/react": "^2.1.10",
+        "@tagreel/core": "workspace:*",
+        "@tagreel/parsers": "workspace:*",
+        "@tagreel/player": "workspace:*",
+        "@tagreel/sdk": "workspace:*",
+        "@tagreel/shader-transitions": "workspace:*",
+        "@tagreel/studio-server": "workspace:*",
         "@tanstack/react-virtual": "^3.14.13",
         "bpm-detective": "^2.0.5",
         "cn": "0.2.4",
@@ -348,7 +347,7 @@
         "mediabunny": "^1.45.3",
       },
       "devDependencies": {
-        "@hyperframes/producer": "workspace:*",
+        "@tagreel/producer": "workspace:*",
         "@tailwindcss/vite": "^4.3.3",
         "@types/react": "19",
         "@types/react-dom": "19",
@@ -370,11 +369,11 @@
       },
     },
     "packages/studio-server": {
-      "name": "@hyperframes/studio-server",
+      "name": "@tagreel/studio-server",
       "version": "0.8.137",
       "dependencies": {
-        "@hyperframes/core": "workspace:*",
-        "@hyperframes/parsers": "workspace:*",
+        "@tagreel/core": "workspace:*",
+        "@tagreel/parsers": "workspace:*",
         "hono": "^4.6.0",
         "linkedom": "^0.18.12",
         "postcss": "^8.5.8",
@@ -716,34 +715,6 @@
     "@grpc/proto-loader": ["@grpc/proto-loader@0.8.1", "", { "dependencies": { "lodash.camelcase": "^4.3.0", "long": "^5.0.0", "protobufjs": "^7.5.5", "yargs": "^17.7.2" }, "bin": { "proto-loader-gen-types": "build/bin/proto-loader-gen-types.js" } }, "sha512-wtF6h+DY6M3YaDBPAmvuuA6jV8Sif9MjtOI5euKFWRgCDl5PeDpPsHR9u2l6St5ceY8AZgoNDww5+HvEsXFsGg=="],
 
     "@hono/node-server": ["@hono/node-server@2.0.12", "", { "peerDependencies": { "hono": "^4" } }, "sha512-eWpQYr67tqJLeaSUl0Q+TquuYfUdTibpOJlUMV2FfUP7+KqCC5TufnwnlXL6mobZBJbGAYRd7ZvEBDCbLInjhg=="],
-
-    "@hyperframes/aws-lambda": ["@hyperframes/aws-lambda@workspace:packages/aws-lambda"],
-
-    "@hyperframes/cli": ["@hyperframes/cli@workspace:packages/cli"],
-
-    "@hyperframes/core": ["@hyperframes/core@workspace:packages/core"],
-
-    "@hyperframes/engine": ["@hyperframes/engine@workspace:packages/engine"],
-
-    "@hyperframes/gcp-cloud-run": ["@hyperframes/gcp-cloud-run@workspace:packages/gcp-cloud-run"],
-
-    "@hyperframes/lint": ["@hyperframes/lint@workspace:packages/lint"],
-
-    "@hyperframes/parsers": ["@hyperframes/parsers@workspace:packages/parsers"],
-
-    "@hyperframes/player": ["@hyperframes/player@workspace:packages/player"],
-
-    "@hyperframes/producer": ["@hyperframes/producer@workspace:packages/producer"],
-
-    "@hyperframes/sdk": ["@hyperframes/sdk@workspace:packages/sdk"],
-
-    "@hyperframes/sdk-playground": ["@hyperframes/sdk-playground@workspace:packages/sdk-playground"],
-
-    "@hyperframes/shader-transitions": ["@hyperframes/shader-transitions@workspace:packages/shader-transitions"],
-
-    "@hyperframes/studio": ["@hyperframes/studio@workspace:packages/studio"],
-
-    "@hyperframes/studio-server": ["@hyperframes/studio-server@workspace:packages/studio-server"],
 
     "@img/colour": ["@img/colour@1.1.0", "", {}, "sha512-Td76q7j57o/tLVdgS746cYARfSyxk8iEfRxewL9h4OMzYhbW4TAcppl0mT4eyqXddh6L/jwoM75mo7ixa/pCeQ=="],
 
@@ -1106,6 +1077,34 @@
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
     "@swc/helpers": ["@swc/helpers@0.5.21", "", { "dependencies": { "tslib": "^2.8.0" } }, "sha512-jI/VAmtdjB/RnI8GTnokyX7Ug8c+g+ffD6QRLa6XQewtnGyukKkKSk3wLTM3b5cjt1jNh9x0jfVlagdN2gDKQg=="],
+
+    "@tagreel/aws-lambda": ["@tagreel/aws-lambda@workspace:packages/aws-lambda"],
+
+    "@tagreel/cli": ["@tagreel/cli@workspace:packages/cli"],
+
+    "@tagreel/core": ["@tagreel/core@workspace:packages/core"],
+
+    "@tagreel/engine": ["@tagreel/engine@workspace:packages/engine"],
+
+    "@tagreel/gcp-cloud-run": ["@tagreel/gcp-cloud-run@workspace:packages/gcp-cloud-run"],
+
+    "@tagreel/lint": ["@tagreel/lint@workspace:packages/lint"],
+
+    "@tagreel/parsers": ["@tagreel/parsers@workspace:packages/parsers"],
+
+    "@tagreel/player": ["@tagreel/player@workspace:packages/player"],
+
+    "@tagreel/producer": ["@tagreel/producer@workspace:packages/producer"],
+
+    "@tagreel/sdk": ["@tagreel/sdk@workspace:packages/sdk"],
+
+    "@tagreel/sdk-playground": ["@tagreel/sdk-playground@workspace:packages/sdk-playground"],
+
+    "@tagreel/shader-transitions": ["@tagreel/shader-transitions@workspace:packages/shader-transitions"],
+
+    "@tagreel/studio": ["@tagreel/studio@workspace:packages/studio"],
+
+    "@tagreel/studio-server": ["@tagreel/studio-server@workspace:packages/studio-server"],
 
     "@tailwindcss/node": ["@tailwindcss/node@4.3.3", "", { "dependencies": { "@jridgewell/remapping": "^2.3.5", "enhanced-resolve": "^5.24.1", "jiti": "^2.7.0", "lightningcss": "1.32.0", "magic-string": "^0.30.21", "source-map-js": "^1.2.1", "tailwindcss": "4.3.3" } }, "sha512-/T8IKEsf9VTU6tLjgC7+sv2mOPtQxzE2jMw7u4Tt40Tx+QSZxpzh95/H6cMKoja9XuW7iMdLJYBB0o9G1CaAgg=="],
 

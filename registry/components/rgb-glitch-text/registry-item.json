@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "rgb-glitch-text",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "RGB Glitch Text",
   "description": "RGB-offset text copies jitter briefly for a controlled glitch window.",
   "tags": ["motion-primitive", "typography"],
@@ -9,7 +9,7 @@
     {
       "path": "rgb-glitch-text.html",
       "target": "compositions/components/rgb-glitch-text.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -66,8 +66,5 @@
         }
       ]
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/rgb-glitch-text.png"
-  }
+  ]
 }

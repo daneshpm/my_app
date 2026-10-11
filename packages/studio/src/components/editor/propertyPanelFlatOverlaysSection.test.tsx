@@ -2,7 +2,7 @@
 
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
-import type { RegistryItem } from "@hyperframes/core/registry";
+import type { RegistryItem } from "@tagreel/core/registry";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   deriveMediaOverlayPlacement,
@@ -16,7 +16,7 @@ import {
 function registryItem(
   name: string,
   tags: string[],
-  type: RegistryItem["type"] = "hyperframes:component",
+  type: RegistryItem["type"] = "tagreel:component",
   preview?: RegistryItem["preview"],
 ): RegistryItem {
   const base = {
@@ -25,10 +25,10 @@ function registryItem(
     description: `${name} description`,
     tags,
     preview,
-    files: [{ path: `${name}.html`, target: `${name}.html`, type: "hyperframes:snippet" as const }],
+    files: [{ path: `${name}.html`, target: `${name}.html`, type: "tagreel:snippet" as const }],
   };
-  if (type === "hyperframes:component") return { ...base, type };
-  if (type === "hyperframes:block") {
+  if (type === "tagreel:component") return { ...base, type };
+  if (type === "tagreel:block") {
     return { ...base, type, dimensions: { width: 1920, height: 1080 }, duration: 2 };
   }
   return { ...base, type, dimensions: { width: 1920, height: 1080 }, duration: 2 };
@@ -58,11 +58,7 @@ describe("FlatOverlaysSection", () => {
   });
 
   it("keeps only tagged Registry overlay blocks", () => {
-    const overlay = registryItem(
-      "camcorder-hud",
-      [MEDIA_TREATMENT_OVERLAY_TAG],
-      "hyperframes:block",
-    );
+    const overlay = registryItem("camcorder-hud", [MEDIA_TREATMENT_OVERLAY_TAG], "tagreel:block");
     const ordinary = registryItem("caption", ["caption"]);
     const taggedComponent = registryItem("scene", [MEDIA_TREATMENT_OVERLAY_TAG]);
 
@@ -73,7 +69,7 @@ describe("FlatOverlaysSection", () => {
 
   it("loads tagged overlays and delegates installation by Registry name", async () => {
     const items = [
-      registryItem("camcorder-hud", [MEDIA_TREATMENT_OVERLAY_TAG], "hyperframes:block", {
+      registryItem("camcorder-hud", [MEDIA_TREATMENT_OVERLAY_TAG], "tagreel:block", {
         poster: "https://example.com/camcorder.png",
         video: "https://example.com/camcorder.mp4",
       }),

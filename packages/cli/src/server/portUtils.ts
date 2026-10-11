@@ -1,11 +1,11 @@
 /**
- * Port utilities for the HyperFrames preview server.
+ * Port utilities for the Tagreel preview server.
  *
  * The multi-host availability probe and instance-reuse port selection are
  * inspired by Remotion's approach to dev-server port management.
  *
  * - Multi-host availability testing (catches port-forwarding ghosts)
- * - HTTP probe for detecting existing HyperFrames instances
+ * - HTTP probe for detecting existing Tagreel instances
  * - PID detection for actionable conflict logging
  * - Smart port selection with instance reuse
  */
@@ -22,7 +22,7 @@ const execFileAsync = promisify(execFile);
 /** Max ports to scan before giving up. */
 export const MAX_PORT_SCAN = 100;
 
-/** Localhost HTTP probe timeout — HyperFrames responds in <1ms, so 300ms is generous. */
+/** Localhost HTTP probe timeout — Tagreel responds in <1ms, so 300ms is generous. */
 const PROBE_TIMEOUT_MS = 300;
 
 /** Max bytes to read from HTTP probe response (guards against malicious servers). */
@@ -95,8 +95,8 @@ export async function testPortOnAllHosts(
 
 // ── Existing instance detection ────────────────────────────────────────────
 
-interface HyperframesConfigResponse {
-  isHyperframes: boolean;
+interface TagreelConfigResponse {
+  isTagreel: boolean;
   pid?: number;
   projectName: string;
   projectDir: string;
@@ -108,13 +108,13 @@ interface HyperframesConfigResponse {
 export type DetectionResult =
   | { type: "match" }
   | { type: "mismatch"; projectName: string }
-  | { type: "not-hyperframes" };
+  | { type: "not-tagreel" };
 
 /**
- * Probe an occupied port to check if it's running a HyperFrames preview server.
- * HTTP GET to /__hyperframes_config with a short timeout.
+ * Probe an occupied port to check if it's running a Tagreel preview server.
+ * HTTP GET to /__tagreel_config with a short timeout.
  */
-export function detectHyperframesServer(
+export function detectTagreelServer(
   port: number,
   normalizedProjectDir: string,
   expectedServerBuildSignature: string | null = null,
@@ -125,13 +125,13 @@ export function detectHyperframesServer(
       {
         hostname: "127.0.0.1",
         port,
-        path: "/__hyperframes_config",
+        path: "/__tagreel_config",
         timeout: PROBE_TIMEOUT_MS,
       },
       (res) => {
         if (res.statusCode !== 200) {
           res.resume();
-          return resolveResult({ type: "not-hyperframes" });
+          return resolveResult({ type: "not-tagreel" });
         }
 
         let data = "";
@@ -140,18 +140,18 @@ export function detectHyperframesServer(
           bytes += typeof chunk === "string" ? chunk.length : chunk.byteLength;
           if (bytes > PROBE_MAX_BYTES) {
             req.destroy();
-            return resolveResult({ type: "not-hyperframes" });
+            return resolveResult({ type: "not-tagreel" });
           }
           data += chunk;
         });
         res.on("error", () => {
-          resolveResult({ type: "not-hyperframes" });
+          resolveResult({ type: "not-tagreel" });
         });
         res.on("end", () => {
           try {
-            const json = JSON.parse(data) as HyperframesConfigResponse;
-            if (json.isHyperframes !== true) {
-              return resolveResult({ type: "not-hyperframes" });
+            const json = JSON.parse(data) as TagreelConfigResponse;
+            if (json.isTagreel !== true) {
+              return resolveResult({ type: "not-tagreel" });
             }
 
             const normalize = (p: string) => resolve(p).replace(/\\/g, "/").toLowerCase();
@@ -174,19 +174,19 @@ export function detectHyperframesServer(
 
             return resolveResult({ type: "mismatch", projectName: json.projectName });
           } catch {
-            resolveResult({ type: "not-hyperframes" });
+            resolveResult({ type: "not-tagreel" });
           }
         });
       },
     );
 
     req.on("error", () => {
-      resolveResult({ type: "not-hyperframes" });
+      resolveResult({ type: "not-tagreel" });
     });
 
     req.on("timeout", () => {
       req.destroy();
-      resolveResult({ type: "not-hyperframes" });
+      resolveResult({ type: "not-tagreel" });
     });
   });
 }
@@ -258,13 +258,13 @@ export interface ActiveServer {
 }
 
 /**
- * Probe a single port for a HyperFrames config response.
- * Returns the full config or null if not a HyperFrames server.
+ * Probe a single port for a Tagreel config response.
+ * Returns the full config or null if not a Tagreel server.
  */
-function probePort(port: number): Promise<HyperframesConfigResponse | null> {
-  return new Promise<HyperframesConfigResponse | null>((resolveResult) => {
+function probePort(port: number): Promise<TagreelConfigResponse | null> {
+  return new Promise<TagreelConfigResponse | null>((resolveResult) => {
     const req = http.get(
-      { hostname: "127.0.0.1", port, path: "/__hyperframes_config", timeout: PROBE_TIMEOUT_MS },
+      { hostname: "127.0.0.1", port, path: "/__tagreel_config", timeout: PROBE_TIMEOUT_MS },
       (res) => {
         if (res.statusCode !== 200) {
           res.resume();
@@ -283,8 +283,8 @@ function probePort(port: number): Promise<HyperframesConfigResponse | null> {
         res.on("error", () => resolveResult(null));
         res.on("end", () => {
           try {
-            const json = JSON.parse(data) as HyperframesConfigResponse;
-            resolveResult(json.isHyperframes === true ? json : null);
+            const json = JSON.parse(data) as TagreelConfigResponse;
+            resolveResult(json.isTagreel === true ? json : null);
           } catch {
             resolveResult(null);
           }
@@ -300,7 +300,7 @@ function probePort(port: number): Promise<HyperframesConfigResponse | null> {
 }
 
 /**
- * Scan the default port range for active HyperFrames preview servers.
+ * Scan the default port range for active Tagreel preview servers.
  * Probes ports in parallel batches for speed.
  */
 export async function scanActiveServers(startPort = 3002): Promise<ActiveServer[]> {
@@ -324,11 +324,11 @@ export async function scanActiveServers(startPort = 3002): Promise<ActiveServer[
 }
 
 /**
- * Probe exactly one port and return its HyperFrames identity.
+ * Probe exactly one port and return its Tagreel identity.
  *
  * `pid` is the OS's answer for who holds the listening socket, NOT the pid the
  * response claims. That field is load-bearing — `--stop` and `--kill-all` send
- * signals to it — and `/__hyperframes_config` is unauthenticated, so any local
+ * signals to it — and `/__tagreel_config` is unauthenticated, so any local
  * process that answers on a scanned port could otherwise name an arbitrary PID
  * and have the CLI kill it. The self-reported value is used only where the OS
  * lookup is unavailable, which is also the only case where it is unfalsifiable.
@@ -357,7 +357,7 @@ export async function activeServerOnPort(
 }
 
 function identityFrom(
-  config: HyperframesConfigResponse,
+  config: TagreelConfigResponse,
   port: number,
 ): Omit<ActiveServer, "pid" | "pidSource"> {
   return {
@@ -370,10 +370,10 @@ function identityFrom(
 }
 
 /**
- * SIGTERM every active HyperFrames preview server whose PID the OS confirmed.
+ * SIGTERM every active Tagreel preview server whose PID the OS confirmed.
  *
  * This is a blind sweep of a port range: the only evidence that a given process
- * should be killed is that it answered `/__hyperframes_config`, which is
+ * should be killed is that it answered `/__tagreel_config`, which is
  * unauthenticated. So the decision here is deliberately FAIL CLOSED — a PID the
  * OS could not confirm is skipped rather than signalled, because the alternative
  * is letting any local process nominate a victim.
@@ -423,9 +423,9 @@ export type FindPortResult =
  * For each port in the scan range:
  *   1. Test availability on multiple hosts (catches port-forwarding ghosts)
  *   2. If available → bind the server and return
- *   3. If occupied and !forceNew → HTTP-probe for an existing HyperFrames server
+ *   3. If occupied and !forceNew → HTTP-probe for an existing Tagreel server
  *      - Same project → return "already-running" (caller reopens browser)
- *      - Different project or non-HyperFrames → log and skip to next port
+ *      - Different project or non-Tagreel → log and skip to next port
  *   4. If bind still fails with EADDRINUSE (race) → retry next port
  */
 export async function findPortAndServe(
@@ -442,9 +442,9 @@ export async function findPortAndServe(
   // unauthenticated project file read/write/delete + render-spawn endpoints;
   // a bare `listen(port)` binds the unspecified address (`::`/`0.0.0.0`),
   // handing those endpoints to anyone on the LAN. Operators who genuinely
-  // need LAN exposure opt in explicitly via the HYPERFRAMES_PREVIEW_HOST
-  // env var (e.g. HYPERFRAMES_PREVIEW_HOST=0.0.0.0).
-  const host = bindHost ?? (process.env.HYPERFRAMES_PREVIEW_HOST?.trim() || "127.0.0.1");
+  // need LAN exposure opt in explicitly via the TAGREEL_PREVIEW_HOST
+  // env var (e.g. TAGREEL_PREVIEW_HOST=0.0.0.0).
+  const host = bindHost ?? (process.env.TAGREEL_PREVIEW_HOST?.trim() || "127.0.0.1");
   const normalizedDir = resolve(projectDir).replace(/\\/g, "/").toLowerCase();
   const endPort = startPort + MAX_PORT_SCAN - 1;
 
@@ -480,9 +480,9 @@ export async function findPortAndServe(
       }
     }
 
-    // Port is occupied — probe for existing HyperFrames instance
+    // Port is occupied — probe for existing Tagreel instance
     if (!forceNew) {
-      const detection = await detectHyperframesServer(
+      const detection = await detectTagreelServer(
         port,
         normalizedDir,
         expectedServerBuildSignature,

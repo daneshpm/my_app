@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":360}}
   attribution={{"path":"registry/components/wordmark-tiles","tags":["typography","wordmark","tiles","raster","reveal"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/wordmark-tiles/wordmark-tiles.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/wordmark-tiles/wordmark-tiles.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html wordmark-tiles.html
 <!doctype html>
 <!--
-  wordmark-tiles: HyperFrames video primitive (typography / holdable / reveal)
+  wordmark-tiles: Tagreel video primitive (typography / holdable / reveal)
 
   Concept: a wordmark begins as a field of unresolved color tiles. A spatially
   modulated wave crosses the grid, and each tile swaps its noise face for the
@@ -67,7 +67,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   #root has position:absolute; inset:0; container-type:size and no data-width or
   data-height, so the host owns the box. The composition id is hardcoded as
   "wordmark-tiles" because mount flattening strips it from the live root.
-  Variables come from window.__hyperframes.getVariables(), which supplies the
+  Variables come from window.__tagreel.getVariables(), which supplies the
   declared defaults merged with host data-variable-values overrides.
 -->
 <html
@@ -224,8 +224,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             // EDIT ZONE: declarations above and clamped reads below are the
             // single source of truth for the three public variables.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "LAUNCH" : String(vars.text).trim().slice(0, 12);
@@ -389,7 +389,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add wordmark-tiles" item="wordmark-tiles" />
+<InstallCommand command="npx tagreel add wordmark-tiles" item="wordmark-tiles" />
 
 That writes one file: `compositions/components/wordmark-tiles.html`.
 

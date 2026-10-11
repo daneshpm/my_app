@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":331}}
   attribution={{"path":"registry/components/rubber-band-bumper","tags":["motion-primitive","transition","rubber-band","resistance","overshoot"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/rubber-band-bumper/rubber-band-bumper.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/rubber-band-bumper/rubber-band-bumper.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html rubber-band-bumper.html
 <!doctype html>
 <!--
-  rubber-band-bumper: HyperFrames video primitive
+  rubber-band-bumper: Tagreel video primitive
 
   The outgoing panel is pulled opposite its exit direction in progressively
   smaller steps, visibly loading two accent bands. After a still threshold
@@ -233,8 +233,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var incoming = root.querySelector(".rbb-incoming");
             var bands = root.querySelectorAll(".rbb-band");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var direction = vars.direction === "left" ? "left" : "up";
@@ -360,7 +360,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add rubber-band-bumper" item="rubber-band-bumper" />
+<InstallCommand command="npx tagreel add rubber-band-bumper" item="rubber-band-bumper" />
 
 That writes one file: `compositions/components/rubber-band-bumper.html`.
 

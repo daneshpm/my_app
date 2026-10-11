@@ -3,7 +3,7 @@
  * selector utilities, and composition source resolution.
  * No imports from other domEditing* modules — safe to import from anywhere.
  */
-import { COLOR_GRADING_SOURCE_HIDDEN_ATTR } from "@hyperframes/core/color-grading";
+import { COLOR_GRADING_SOURCE_HIDDEN_ATTR } from "@tagreel/core/color-grading";
 import { getSourceScopedSelectorIndex } from "../../utils/sourceScopedSelectorIndex";
 import { CURATED_STYLE_PROPERTIES } from "./domEditingTypes";
 
@@ -21,10 +21,10 @@ export function isHtmlElement(value: unknown): value is HTMLElement {
 
 // ─── Style parsing ────────────────────────────────────────────────────────────
 
-// Single source of truth lives in @hyperframes/core/editing so the studio
+// Single source of truth lives in @tagreel/core/editing so the studio
 // callers and the core resolver can't drift. Re-exported here to keep this
 // module's public surface (6 studio callers import parsePx from it).
-export { parsePx } from "@hyperframes/core/editing";
+export { parsePx } from "@tagreel/core/editing";
 
 export function isTextBearingTag(tagName: string): boolean {
   return ["div", "span", "p", "strong", "h1", "h2", "h3", "h4", "h5", "h6"].includes(tagName);

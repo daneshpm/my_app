@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "kinetic-center-build",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Kinetic Center Build",
   "description": "Words enter from the right and push the growing phrase left until the final line locks centered.",
   "tags": ["motion-primitive", "text-effects", "kinetic-type", "reveal", "remocn-port"],
@@ -23,7 +23,7 @@
     {
       "path": "kinetic-center-build.html",
       "target": "compositions/components/kinetic-center-build.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

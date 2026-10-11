@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "gloss-sweep",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Gloss Sweep",
   "description": "A card lands with a restrained slam, catches one diagonal specular gloss, and holds perfectly still.",
   "tags": ["motion-primitive", "celebration", "gloss", "card", "badge", "payoff"],
@@ -14,7 +14,7 @@
     {
       "path": "gloss-sweep.html",
       "target": "compositions/components/gloss-sweep.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

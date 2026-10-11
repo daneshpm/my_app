@@ -27,7 +27,7 @@ The [copy-paste examples](/prompting/examples) share one skeleton. Each part rem
 
 Assembled:
 
-> /motion-graphics Make an 8-second 1920x1080 video. Beat 1 (0-4s): dark macOS terminal types "npx skills add heygen-com/hyperframes" character by character, then hold on the blinking cursor. Beat 2 (4-5s): the terminal shatters into fragments. Beat 3 (5-8s): bold white kinetic text on black slams in word by word, snappy: "YOU JUST MADE THIS / WITH HYPERFRAMES." Adapt the `code-typing` and `vfx-shatter` registry blocks; hand-author the kinetic text. No narration, no image or media files.
+> /motion-graphics Make an 8-second 1920x1080 video. Beat 1 (0-4s): dark macOS terminal types "npx skills add daneshpm/my_app" character by character, then hold on the blinking cursor. Beat 2 (4-5s): the terminal shatters into fragments. Beat 3 (5-8s): bold white kinetic text on black slams in word by word, snappy: "YOU JUST MADE THIS / WITH TAGREEL." Adapt the `code-typing` and `vfx-shatter` registry blocks; hand-author the kinetic text. No narration, no image or media files.
 
 <DocsVideo
   title="my_app video: Validate Anatomy Terminal"
@@ -36,9 +36,6 @@ Assembled:
 />
 *Rendered from the prompt above, unedited.*
 
-<Note>
-  The skeleton isn't just prompting style — the framework enforces a version of it on itself. Since the composition-structure mandate (`0aaac7aa3`, PR #2599), a `hyperframes feedback` report on a visual defect requires a `COMPOSITION_STRUCTURE:` block — element census, attribute presence, timeline shape — auto-filled from the composition's own HTML; the CLI soft-warns (never blocks) when it's missing. Same idea as the six parts above: name the shape explicitly, and both you and the framework reason about it faster.
-</Note>
 
 ## The beat formula
 
@@ -98,7 +95,7 @@ The skeleton above is how you ask. This is what the agent writes, and it's worth
 | Footage with sound | `<video playsinline data-has-audio="true">` — the sound stays on the clip |
 | Music / voiceover | separate `<audio>` |
 
-You rarely write these by hand, but naming them in a prompt is legitimate and sometimes necessary — "put the captions on their own track index," "keep it one composition file, one timeline" — and it's the vocabulary every error message uses. The full contract lives in the `/hyperframes-core` skill; the [appendix](/prompting/rules-and-anti-patterns) carries the rules that most often bite.
+You rarely write these by hand, but naming them in a prompt is legitimate and sometimes necessary — "put the captions on their own track index," "keep it one composition file, one timeline" — and it's the vocabulary every error message uses. The full contract lives in the `/tagreel-core` skill; the [appendix](/prompting/rules-and-anti-patterns) carries the rules that most often bite.
 
 <Note>
 **Capstone thread** — the [Level 7 film](/prompting/capstone) makes this table its scenery. In the Mount region the timeline wire splits into three track lanes and clip chips seat onto them, tagging themselves with the very attributes above — the framework's own vocabulary, staged as a set. And the whole prompt is this chapter's skeleton at maximum scale: route, spec, beats (its nine regions), copy quoted exactly, technique pinned per region, and a hard negative list.

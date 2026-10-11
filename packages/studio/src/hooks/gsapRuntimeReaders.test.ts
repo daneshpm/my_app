@@ -1,11 +1,11 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from "vitest";
 import { gsap } from "gsap";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import {
   COLOR_GRADING_SOURCE_HIDDEN_ATTR,
   HF_COLOR_GRADING_CANVAS_ID_PREFIX,
-} from "@hyperframes/core/color-grading";
+} from "@tagreel/core/color-grading";
 import { readAllAnimatedProperties, readGsapProperty } from "./gsapRuntimeReaders";
 
 /**

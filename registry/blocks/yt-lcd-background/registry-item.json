@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "yt-lcd-background",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Scanline Board Background",
   "description": "Textured paper board: scanlines with slow drift, optional pixel grid, static grain, and display text with a blur-focus entrance and chromatic-fringe title",
   "tags": ["background", "texture", "creator"],
@@ -14,7 +14,7 @@
     {
       "path": "yt-lcd-background.html",
       "target": "compositions/yt-lcd-background.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

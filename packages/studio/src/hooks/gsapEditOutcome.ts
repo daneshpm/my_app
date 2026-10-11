@@ -1,4 +1,4 @@
-import { editabilityForProvenance, type GsapAnimation } from "@hyperframes/core/gsap-parser";
+import { editabilityForProvenance, type GsapAnimation } from "@tagreel/core/gsap-parser";
 
 export type GsapEditBlockReason =
   | "no-selector"

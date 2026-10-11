@@ -1,5 +1,5 @@
 import postcss from "postcss";
-import type { LintContext, HyperframeLintFinding, OpenTag } from "../context";
+import type { LintContext, TagreelLintFinding, OpenTag } from "../context";
 import { readAttr, truncateSnippet } from "../utils";
 
 const TEXTURE_BASE_CLASS = "hf-texture-text";
@@ -129,9 +129,9 @@ function collectTextureCss(styles: LintContext["styles"]): {
 }
 
 // fallow-ignore-next-line complexity
-export const textureRules: Array<(ctx: LintContext) => HyperframeLintFinding[]> = [
+export const textureRules: Array<(ctx: LintContext) => TagreelLintFinding[]> = [
   ({ tags, styles }) => {
-    const findings: HyperframeLintFinding[] = [];
+    const findings: TagreelLintFinding[] = [];
     const { definedTextureClasses, dropShadowRules } = collectTextureCss(styles);
 
     for (const { selector, directlyTargetsTexture } of dropShadowRules) {

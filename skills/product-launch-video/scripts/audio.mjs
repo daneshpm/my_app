@@ -9,16 +9,17 @@
 // STORYBOARD.md, which is product-launch-specific).
 //
 // Three modes (unchanged CLI surface):
-//   (default) generate — engine --only tts,bgm. BGM mode is "retrieve" (strict:
-//        no HeyGen credential ⇒ skip, never a detached generate, since this
-//        workflow has no wait-bgm step). Runs in the background during Step 4.
+//   (default) generate — engine --only tts,bgm. BGM mode is "generate" (Lyria with
+//        your own key, else local MusicGen; detached — the track is pending until
+//        `wait-bgm.mjs` confirms it, and assemble-index refuses to build without a
+//        bed unless --allow-pending-bgm). Runs in the background during Step 4.
 //   sync-durations — write real voice durations into STORYBOARD.md (local).
 //   fetch-sfx      — engine --only sfx, merged into the existing meta (Step 5,
 //        after the frames' `sfx:` cues exist).
 //
-//   node audio.mjs --script ./SCRIPT.md --storyboard ./STORYBOARD.md --hyperframes . --out ./audio_meta.json
+//   node audio.mjs --script ./SCRIPT.md --storyboard ./STORYBOARD.md --tagreel . --out ./audio_meta.json
 //   node audio.mjs sync-durations --audio-meta ./audio_meta.json --storyboard ./STORYBOARD.md
-//   node audio.mjs fetch-sfx --storyboard ./STORYBOARD.md --hyperframes .
+//   node audio.mjs fetch-sfx --storyboard ./STORYBOARD.md --tagreel .
 
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
@@ -65,8 +66,8 @@ function parseScript(md) {
 const neutralPath = (plOutPath) => join(dirname(plOutPath), "audio_engine_meta.json");
 
 // Run the shared engine. Returns nothing; dies on a non-zero exit.
-function runEngine({ request, hyperframesDir, neutral, only, extra = [] }, die) {
-  const reqPath = join(hyperframesDir, "audio_request.json");
+function runEngine({ request, tagreelDir, neutral, only, extra = [] }, die) {
+  const reqPath = join(tagreelDir, "audio_request.json");
   writeFileSync(reqPath, JSON.stringify(request, null, 2));
   const engine = process.env.HF_MEDIA_ENGINE || DEFAULT_ENGINE;
   if (!existsSync(engine)) die(`media audio engine not found at ${engine} (set $HF_MEDIA_ENGINE)`);
@@ -74,8 +75,8 @@ function runEngine({ request, hyperframesDir, neutral, only, extra = [] }, die) 
     engine,
     "--request",
     reqPath,
-    "--hyperframes",
-    hyperframesDir,
+    "--tagreel",
+    tagreelDir,
     "--out",
     neutral,
     "--only",
@@ -124,10 +125,10 @@ function runGenerate(argv) {
     console.error(`✗ audio generate: ${m}`);
     process.exit(1);
   };
-  const hyperframesDir = resolve(flag(argv, "hyperframes", "."));
-  const storyboardPath = resolve(flag(argv, "storyboard", join(hyperframesDir, "STORYBOARD.md")));
-  const scriptPath = resolve(flag(argv, "script", join(hyperframesDir, "SCRIPT.md")));
-  const outPath = resolve(flag(argv, "out", join(hyperframesDir, "audio_meta.json")));
+  const tagreelDir = resolve(flag(argv, "tagreel", "."));
+  const storyboardPath = resolve(flag(argv, "storyboard", join(tagreelDir, "STORYBOARD.md")));
+  const scriptPath = resolve(flag(argv, "script", join(tagreelDir, "SCRIPT.md")));
+  const outPath = resolve(flag(argv, "out", join(tagreelDir, "audio_meta.json")));
   const userVoice = flag(argv, "voice", null);
   const provider = flag(argv, "provider", process.env.HF_TTS_PROVIDER || "auto");
 
@@ -159,8 +160,8 @@ function runGenerate(argv) {
   }
   if (!lines.length) console.error("· no SCRIPT.md — silent film (BGM only)");
 
-  // BGM mood: storyboard `music:` → message → arc → default. `mode: retrieve` is
-  // strict here (no wait-bgm step downstream).
+  // BGM mood: storyboard `music:` → message → arc → default. `mode: generate` is
+  // detached; assemble-index refuses while the bed is still pending.
   const query = (g.extra && g.extra.music) || g.message || g.arc || "calm cinematic underscore";
   const request = {
     provider,
@@ -168,14 +169,14 @@ function runGenerate(argv) {
     lines,
     bgm: bgmOff
       ? { mode: "none" }
-      : { mode: "retrieve", query, blob: g.message || "", arc: g.arc || "" },
+      : { mode: "generate", query, blob: g.message || "", arc: g.arc || "" },
   };
   if (userVoice) request.voice = userVoice;
   if (flag(argv, "tts-model", null)) request.tts_model = flag(argv, "tts-model", null);
   if (flag(argv, "style", null)) request.style = flag(argv, "style", null);
 
   const neutral = neutralPath(outPath);
-  runEngine({ request, hyperframesDir, neutral, only: "tts,bgm" }, die);
+  runEngine({ request, tagreelDir, neutral, only: "tts,bgm" }, die);
 
   const meta = toProductLaunchMeta(JSON.parse(readFileSync(neutral, "utf8")));
   writeFileSync(outPath, JSON.stringify(meta, null, 2));
@@ -190,9 +191,9 @@ function runFetchSfx(argv) {
     console.error(`✗ audio fetch-sfx: ${m}`);
     process.exit(1);
   };
-  const hyperframesDir = resolve(flag(argv, "hyperframes", "."));
-  const storyboardPath = resolve(flag(argv, "storyboard", join(hyperframesDir, "STORYBOARD.md")));
-  const outPath = resolve(flag(argv, "audio-meta", join(hyperframesDir, "audio_meta.json")));
+  const tagreelDir = resolve(flag(argv, "tagreel", "."));
+  const storyboardPath = resolve(flag(argv, "storyboard", join(tagreelDir, "STORYBOARD.md")));
+  const outPath = resolve(flag(argv, "audio-meta", join(tagreelDir, "audio_meta.json")));
 
   if (!existsSync(storyboardPath)) die(`STORYBOARD.md not found at ${storyboardPath}`);
   const manifest = parseStoryboard(readFileSync(storyboardPath, "utf8"));
@@ -216,7 +217,7 @@ function runFetchSfx(argv) {
   // --only sfx is a MERGE, not an overwrite: the engine reads the existing neutral
   // sidecar (audio_engine_meta.json) and recomputes only the sfx section, so the
   // voices/bgm written by the earlier generate (--only tts,bgm) pass are preserved.
-  runEngine({ request, hyperframesDir, neutral, only: "sfx" }, die);
+  runEngine({ request, tagreelDir, neutral, only: "sfx" }, die);
 
   const meta = toProductLaunchMeta(JSON.parse(readFileSync(neutral, "utf8")));
   writeFileSync(outPath, JSON.stringify(meta, null, 2));
@@ -239,9 +240,9 @@ function runSyncDurations(argv) {
     console.error(`✗ audio sync-durations: ${m}`);
     process.exit(1);
   };
-  const hyperframesDir = resolve(flag(argv, "hyperframes", "."));
-  const audioMetaPath = resolve(flag(argv, "audio-meta", join(hyperframesDir, "audio_meta.json")));
-  const storyboardPath = resolve(flag(argv, "storyboard", join(hyperframesDir, "STORYBOARD.md")));
+  const tagreelDir = resolve(flag(argv, "tagreel", "."));
+  const audioMetaPath = resolve(flag(argv, "audio-meta", join(tagreelDir, "audio_meta.json")));
+  const storyboardPath = resolve(flag(argv, "storyboard", join(tagreelDir, "STORYBOARD.md")));
   if (!existsSync(audioMetaPath)) die(`audio_meta.json not found at ${audioMetaPath}`);
 
   const meta = JSON.parse(readFileSync(audioMetaPath, "utf8"));

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "sticky-mock-swap",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Sticky Mock Swap",
   "description": "A pinned product mock cross-fades through accent-tinted feature states while matching captions rise, hold, and exit beside it.",
   "tags": ["motion-primitive", "product-demo", "sticky", "mock", "crossfade", "feature-tour"],
@@ -13,7 +13,7 @@
     {
       "path": "sticky-mock-swap.html",
       "target": "compositions/components/sticky-mock-swap.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

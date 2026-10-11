@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * @hyperframes/producer — Public Server
+ * @tagreel/producer — Public Server
  *
  * Clean HTTP API for rendering HTML compositions to video.
  *
@@ -8,7 +8,7 @@
  *   POST /render         — blocking render, returns JSON
  *   POST /render/stream  — SSE streaming render with progress
  *   GET  /render/queue   — current render queue status
- *   POST /lint           — blocking Hyperframe lint
+ *   POST /lint           — blocking Tagreel lint
  *   GET  /health         — health check
  *   GET  /outputs/:token — download rendered MP4
  *
@@ -47,14 +47,14 @@ import {
   type RenderConfig,
   type RenderJob,
 } from "./services/renderOrchestrator.js";
-import { prepareHyperframeLintBody, runHyperframeLint } from "./services/hyperframeLint.js";
+import { prepareTagreelLintBody, runTagreelLint } from "./services/tagreelLint.js";
 import { startHealthWorker, type HealthWorkerHandle } from "./services/healthWorker.js";
 import {
   drainBrowserPool,
   fetchPublicHttpsText,
   isVideoFrameFormat,
   killTrackedProcesses,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 import { isPathInside, resolveRenderPaths } from "./utils/paths.js";
 import { defaultLogger, type ProducerLogger } from "./logger.js";
 import { Semaphore } from "./utils/semaphore.js";
@@ -63,7 +63,7 @@ import {
   normalizeResolutionFlag,
   isAspectAgnosticResolutionAlias,
   type CanvasResolution,
-} from "@hyperframes/core";
+} from "@tagreel/core";
 import { createRenderRequest, renderConfigFromRequest } from "./renderRequest.js";
 
 // ---------------------------------------------------------------------------
@@ -107,7 +107,7 @@ export interface ServerOptions extends HandlerOptions {
 interface RenderInput {
   projectDir: string;
   outputPath?: string | null;
-  fps: import("@hyperframes/core").Fps;
+  fps: import("@tagreel/core").Fps;
   quality: "draft" | "standard" | "high";
   format?: "mp4" | "webm" | "mov";
   videoFrameFormat?: RenderConfig["videoFrameFormat"];
@@ -875,12 +875,12 @@ export function createRenderHandlers(options: HandlerOptions = {}): RenderHandle
       return c.json({ success: false, requestId, error: "Invalid JSON body" }, 400);
     }
 
-    const preparedResult = prepareHyperframeLintBody(body);
+    const preparedResult = prepareTagreelLintBody(body);
     if ("error" in preparedResult) {
       return c.json({ success: false, requestId, error: preparedResult.error }, 400);
     }
 
-    const result = await runHyperframeLint(preparedResult.prepared);
+    const result = await runTagreelLint(preparedResult.prepared);
     log.info("lint completed", {
       requestId,
       entryFile: preparedResult.prepared.entryFile,

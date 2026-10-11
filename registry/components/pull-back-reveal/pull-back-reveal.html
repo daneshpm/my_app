@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  pull-back-reveal: HyperFrames video primitive (camera / reveal / recontextualize)
+  pull-back-reveal: Tagreel video primitive (camera / reveal / recontextualize)
 
   Concept: the frame starts tight on one stat chip, pauses long enough to
   establish it as the subject, then pulls back to reveal the headline and two
@@ -261,8 +261,8 @@
             var detail = root.querySelector(".pbr-detail-chip");
             var ground = root.querySelector(".pbr-ground");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var detailText = vars.detail_text == null ? "+312%" : String(vars.detail_text);

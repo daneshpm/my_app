@@ -1,6 +1,6 @@
 # Media treatments
 
-A media treatment is a source-aware plan that composes existing HyperFrames
+A media treatment is a source-aware plan that composes existing Tagreel
 color, effect, timeline, and Registry primitives. It is not a second runtime
 schema. Use this file to choose a primary direction. A matching recipe is an
 optional tested seed; bespoke requests may assemble a validated treatment from
@@ -105,14 +105,14 @@ cookbook for one request.
 When source intent is unclear, inspect the concise capability overview:
 
 ```bash
-hyperframes media-treatment --capabilities --json
+tagreel media-treatment --capabilities --json
 ```
 
 It lists the complete surface by family with one-line descriptions. Then load
 only the family, effect, preset, or palette relevant to the inspected source:
 
 ```bash
-hyperframes media-treatment --capability <id> --json
+tagreel media-treatment --capability <id> --json
 ```
 
 The focused result provides legal controls, recommended apply values, render
@@ -138,7 +138,7 @@ drops frames. Do not impose or claim a universal hard cap from one machine.
    one labeled sheet and read that one image:
 
    ```bash
-   hyperframes snapshot <project> --frames 3 --no-end --describe false \
+   tagreel snapshot <project> --frames 3 --no-end --describe false \
      --output snapshots/treatment-before
    ```
 
@@ -154,12 +154,12 @@ drops frames. Do not impose or claim a universal hard cap from one machine.
    resolver first; it adds irrelevant candidates and may download an unused
    LUT. Use `media-treatment --selector "#hero" --analyze --json` only when
    correction needs measured signal evidence.
-4. Persist pixel settings with `hyperframes media-treatment`; it validates and
+4. Persist pixel settings with `tagreel media-treatment`; it validates and
    merges a patch into the existing nested `data-color-grading` contract. Use registered
    GSAP only for supported animated values and Registry overlay blocks only
    for authored dressing.
    ```bash
-   hyperframes media-treatment --selector "<unique selector>" \
+   tagreel media-treatment --selector "<unique selector>" \
      --grading '<nested JSON patch>' --apply --json
    ```
    For a temporal reveal, use the focused capability result's `animation`
@@ -176,7 +176,7 @@ drops frames. Do not impose or claim a universal hard cap from one machine.
    pixelate, and related primitives. Do not duplicate them with CSS filters,
    SVG turbulence, opacity, or decorative DOM overlays.
 5. When the treatment calls for an overlay, install that named block with
-   `hyperframes add <name> --dir <project> --no-clipboard --json`, inspect its
+   `tagreel add <name> --dir <project> --no-clipboard --json`, inspect its
    returned `data-composition-src` host, and place it once using the block's
    timing contract. Check for the installed file and host element
    ID before insertion; never duplicate an existing overlay block. This is one

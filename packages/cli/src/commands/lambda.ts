@@ -1,63 +1,63 @@
 import { failCommand } from "../utils/commandResult.js";
 /**
- * `hyperframes lambda` — top-level dispatcher for AWS Lambda subcommands.
+ * `tagreel lambda` — top-level dispatcher for AWS Lambda subcommands.
  *
  * Each subverb lives in `./lambda/<name>.ts` and exports a single
  * `runXxx(args)` async function. The subcommand surface is intentionally
  * thin glue: argument parsing + help text here; the actual work
  * (`renderToLambda` / `getRenderProgress` / `deploySite` / SAM driver)
- * lives in `@hyperframes/aws-lambda/sdk`.
+ * lives in `@tagreel/aws-lambda/sdk`.
  */
 
 import { defineCommand } from "citty";
-import type { DistributedFormat } from "@hyperframes/aws-lambda/sdk";
-import { type CanvasResolution } from "@hyperframes/core";
+import type { DistributedFormat } from "@tagreel/aws-lambda/sdk";
+import { type CanvasResolution } from "@tagreel/core";
 import { parseOutputResolutionFlag } from "../utils/parseOutputResolution.js";
 import type { Example } from "./_examples.js";
 import { c } from "../ui/colors.js";
 import { readAllowedCompositionFpsFromDir } from "../utils/compositionFps.js";
 
 export const examples: Example[] = [
-  ["Deploy the Lambda render stack to AWS", "hyperframes lambda deploy"],
+  ["Deploy the Lambda render stack to AWS", "tagreel lambda deploy"],
   [
     "Render a composition on the deployed stack",
-    "hyperframes lambda render ./my-project --width 1920 --height 1080",
+    "tagreel lambda render ./my-project --width 1920 --height 1080",
   ],
   [
     "Render and stream progress until done",
-    "hyperframes lambda render ./my-project --width 1920 --height 1080 --wait",
+    "tagreel lambda render ./my-project --width 1920 --height 1080 --wait",
   ],
   [
     "Supersample a 1080p composition to 4K via Chrome deviceScaleFactor",
-    "hyperframes lambda render ./my-project --width 1920 --height 1080 --output-resolution 4k --wait",
+    "tagreel lambda render ./my-project --width 1920 --height 1080 --output-resolution 4k --wait",
   ],
   [
     "Render with composition variables (personalised template)",
-    'hyperframes lambda render ./my-template --site-id abc1234deadbeef0 --width 1920 --height 1080 --variables \'{"title":"Hello Alice","accent":"#ff0000"}\'',
+    'tagreel lambda render ./my-template --site-id abc1234deadbeef0 --width 1920 --height 1080 --variables \'{"title":"Hello Alice","accent":"#ff0000"}\'',
   ],
   [
     "Render with variables from a JSON file",
-    "hyperframes lambda render ./my-template --site-id abc1234deadbeef0 --width 1920 --height 1080 --variables-file ./alice.json",
+    "tagreel lambda render ./my-template --site-id abc1234deadbeef0 --width 1920 --height 1080 --variables-file ./alice.json",
   ],
   [
     "Batch-render N personalised videos from a JSONL file (deploys the site once)",
-    "hyperframes lambda render-batch ./my-template --batch ./users.jsonl --width 1920 --height 1080 --max-concurrent 10",
+    "tagreel lambda render-batch ./my-template --batch ./users.jsonl --width 1920 --height 1080 --max-concurrent 10",
   ],
-  ["Check progress for a started render", "hyperframes lambda progress hf-render-abcd1234"],
+  ["Check progress for a started render", "tagreel lambda progress hf-render-abcd1234"],
   [
     "Pre-upload a project so multiple renders share the upload",
-    "hyperframes lambda sites create ./my-project",
+    "tagreel lambda sites create ./my-project",
   ],
-  ["Tear the stack down", "hyperframes lambda destroy"],
-  ["Print the IAM policy the CLI needs", "hyperframes lambda policies user"],
+  ["Tear the stack down", "tagreel lambda destroy"],
+  ["Print the IAM policy the CLI needs", "tagreel lambda policies user"],
   [
     "Validate a checked-in IAM policy still covers the CLI",
-    "hyperframes lambda policies validate ./infra/iam/hyperframes.json",
+    "tagreel lambda policies validate ./infra/iam/tagreel.json",
   ],
 ];
 
 const HELP = `
-${c.bold("hyperframes lambda")} ${c.dim("<subcommand> [args]")}
+${c.bold("tagreel lambda")} ${c.dim("<subcommand> [args]")}
 
 Deploy + drive distributed video renders on AWS Lambda.
 
@@ -71,8 +71,8 @@ ${c.bold("SUBCOMMANDS:")}
   ${c.accent("policies")}          ${c.dim("Print or validate the IAM permissions the CLI needs")}
 
 ${c.bold("FIRST RUN:")}
-  ${c.accent("hyperframes lambda deploy")}
-  ${c.accent("hyperframes lambda render ./my-project --width 1920 --height 1080 --wait")}
+  ${c.accent("tagreel lambda deploy")}
+  ${c.accent("tagreel lambda render ./my-project --width 1920 --height 1080 --wait")}
 
 ${c.bold("REQUIREMENTS:")}
   • AWS CLI configured (env vars, ~/.aws/credentials, or SSO)
@@ -103,7 +103,7 @@ export default defineCommand({
     // Stack identity
     "stack-name": {
       type: "string",
-      description: "CloudFormation stack name (default: hyperframes-default)",
+      description: "CloudFormation stack name (default: tagreel-default)",
     },
     region: { type: "string", description: "AWS region (default: AWS_REGION env or us-east-1)" },
     profile: { type: "string", description: "AWS profile name (default: AWS_PROFILE env)" },
@@ -145,7 +145,7 @@ export default defineCommand({
       type: "string",
       description: "Final output S3 key (default: renders/<exec>/output.<ext>)",
     },
-    // Variables — mirrors the local `hyperframes render` UX. Inline JSON or
+    // Variables — mirrors the local `tagreel render` UX. Inline JSON or
     // file path, plus --strict-variables for type-checked validation against
     // the composition's `data-composition-variables` declaration.
     variables: {
@@ -214,7 +214,7 @@ export default defineCommand({
     const regionFlag = args.region as string | undefined;
     if (regionFlag) process.env.AWS_REGION = regionFlag;
 
-    // The lambda subverbs dynamic-import `@hyperframes/aws-lambda` at call
+    // The lambda subverbs dynamic-import `@tagreel/aws-lambda` at call
     // time. We keep aws-lambda as a workspace devDependency (not a runtime
     // dep) so the published CLI install stays small for users who don't
     // deploy to Lambda. Subverbs other than `policies` need aws-lambda;
@@ -229,15 +229,15 @@ export default defineCommand({
     ]);
     if (verbsNeedingSDK.has(subcommand)) {
       try {
-        await import("@hyperframes/aws-lambda/sdk");
+        await import("@tagreel/aws-lambda/sdk");
       } catch (err) {
         if ((err as NodeJS.ErrnoException).code === "ERR_MODULE_NOT_FOUND") {
           console.error(
-            `${c.error("@hyperframes/aws-lambda is not installed.")} The ${c.accent(`hyperframes lambda ${subcommand}`)} command needs it at runtime.\n` +
+            `${c.error("@tagreel/aws-lambda is not installed.")} The ${c.accent(`tagreel lambda ${subcommand}`)} command needs it at runtime.\n` +
               `Install it alongside the CLI:\n` +
-              `  ${c.accent("npm install -g @hyperframes/aws-lambda")}\n` +
+              `  ${c.accent("npm install -g @tagreel/aws-lambda")}\n` +
               `Or, for an opt-in dev setup:\n` +
-              `  ${c.accent("npm install @hyperframes/aws-lambda")}`,
+              `  ${c.accent("npm install @tagreel/aws-lambda")}`,
           );
           failCommand();
         }
@@ -268,9 +268,7 @@ export default defineCommand({
         }
         const projectDir = args.extra as string | undefined;
         if (!projectDir) {
-          console.error(
-            "[lambda sites create] usage: hyperframes lambda sites create <projectDir>",
-          );
+          console.error("[lambda sites create] usage: tagreel lambda sites create <projectDir>");
           failCommand();
         }
         const { runSitesCreate } = await import("./lambda/sites.js");
@@ -286,7 +284,7 @@ export default defineCommand({
         const projectDir = args.target as string | undefined;
         if (!projectDir) {
           console.error(
-            "[lambda render] usage: hyperframes lambda render <projectDir> --width <px> --height <px>",
+            "[lambda render] usage: tagreel lambda render <projectDir> --width <px> --height <px>",
           );
           failCommand();
         }
@@ -336,7 +334,7 @@ export default defineCommand({
         const projectDir = args.target as string | undefined;
         if (!projectDir) {
           console.error(
-            "[lambda render-batch] usage: hyperframes lambda render-batch <projectDir> --batch <path.jsonl> --width <px> --height <px>",
+            "[lambda render-batch] usage: tagreel lambda render-batch <projectDir> --batch <path.jsonl> --width <px> --height <px>",
           );
           failCommand();
         }
@@ -390,7 +388,7 @@ export default defineCommand({
         const target = args.target as string | undefined;
         if (!target) {
           console.error(
-            "[lambda progress] usage: hyperframes lambda progress <renderId | executionArn>",
+            "[lambda progress] usage: tagreel lambda progress <renderId | executionArn>",
           );
           failCommand();
         }
@@ -407,7 +405,7 @@ export default defineCommand({
         const verb = args.target as string | undefined;
         if (verb !== "role" && verb !== "user" && verb !== "validate") {
           console.error(
-            `[lambda policies] usage: hyperframes lambda policies <role|user|validate> [args]`,
+            `[lambda policies] usage: tagreel lambda policies <role|user|validate> [args]`,
           );
           failCommand();
         }

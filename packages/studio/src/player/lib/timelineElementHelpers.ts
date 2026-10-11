@@ -12,15 +12,15 @@ import { readTimelineText } from "./timelineText";
 import type { ClipManifestClip } from "./playbackTypes";
 import { isFinitePositive } from "./playbackAdapter";
 import { getSourceScopedSelectorIndex } from "../../utils/sourceScopedSelectorIndex";
-import { HF_AUDIO_GROUP_TAG } from "@hyperframes/core/audio-groups";
-import { readElementFades } from "@hyperframes/core/audio-fade";
-import { isHtmlElement, isImageElement, isMediaElement } from "@hyperframes/core/runtime/dom-realm";
+import { HF_AUDIO_GROUP_TAG } from "@tagreel/core/audio-groups";
+import { readElementFades } from "@tagreel/core/audio-fade";
+import { isHtmlElement, isImageElement, isMediaElement } from "@tagreel/core/runtime/dom-realm";
 import { elementVolume } from "./storedVolume";
 import {
   type AttrReader,
   clampPlaybackRate,
   readMediaOffsetSeconds,
-} from "@hyperframes/parsers/media-duration";
+} from "@tagreel/parsers/media-duration";
 
 // ---------------------------------------------------------------------------
 // Layer-reveal lift transparency
@@ -92,8 +92,8 @@ export function isTimelineIgnoredElement(el: Element): boolean {
   return Boolean(
     el.closest(
       [
-        "[data-hyperframes-ignore]",
-        "[data-hyperframes-picker-ignore]",
+        "[data-tagreel-ignore]",
+        "[data-tagreel-picker-ignore]",
         "[data-hf-ignore]",
         "[data-hf-color-grading-canvas]",
       ].join(","),
@@ -396,7 +396,7 @@ export function getTimelineElementIdentity(element: { key?: string | null; id: s
  * The id space the RUNTIME matches on — a bare DOM id, never a store key.
  *
  * Studio addresses rows by `buildTimelineElementKey`'s composite
- * `<sourceFile>#<domId>`, but everything audio in `@hyperframes/core` keys off
+ * `<sourceFile>#<domId>`, but everything audio in `@tagreel/core` keys off
  * the live document: `resolveAudioGroups` collects `member.id`,
  * `resolveCarveSourceIds` goes through `getElementById`. Anything crossing into
  * that space — a group membership list, a carve source — has to be

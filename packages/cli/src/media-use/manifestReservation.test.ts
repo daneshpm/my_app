@@ -2,7 +2,7 @@ import { mkdtempSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { isAtomicTempPath } from "@hyperframes/core/atomic-file";
+import { isAtomicTempPath } from "@tagreel/core/atomic-file";
 import { allocateId, typeDirPath, withReservedFileSync } from "./lib/manifest.mjs";
 
 // Studio's project history commits outside changes after a quiet time but skips atomic temp

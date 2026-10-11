@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "cross-warp-morph",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Cross Warp Morph",
   "description": "Shader transition with cross-warped morphing",
   "tags": ["transition", "shader"],
@@ -14,11 +14,7 @@
     {
       "path": "cross-warp-morph.html",
       "target": "compositions/cross-warp-morph.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/cross-warp-morph.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/cross-warp-morph.png"
-  }
+  ]
 }

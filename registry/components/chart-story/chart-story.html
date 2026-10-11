@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  chart-story: HyperFrames video primitive (proof and stats / prove)
+  chart-story: Tagreel video primitive (proof and stats / prove)
 
   One chart builds from data in reading order and lands the exact supplied
   values. Bars grow staggered from the baseline, a line draws left to right
@@ -133,8 +133,8 @@
             var root = document.getElementById("root");
             var stage = root.querySelector(".cs-stage");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var typeOptions = { bars: 1, line: 1, donut: 1, progress: 1 };

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "text-shimmer",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Text Shimmer",
   "description": "A static headline receives one clean specular gradient sweep through its glyphs, then returns to its ordinary text color.",
   "tags": ["motion-primitive", "text-effects", "shimmer", "specular", "emphasis"],
@@ -13,7 +13,7 @@
     {
       "path": "text-shimmer.html",
       "target": "compositions/components/text-shimmer.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

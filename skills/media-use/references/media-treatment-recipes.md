@@ -4,7 +4,7 @@ These are optional tested seeds, not the complete capability surface. Read the
 shared policy and choose one relevant section through `media-treatments.md`.
 Agents may modify or combine a seed with compatible canonical controls after
 inspecting the media, or assemble a bespoke payload from
-`hyperframes media-treatment --capabilities --json` when no seed fits.
+`tagreel media-treatment --capabilities --json` when no seed fits.
 
 ## Natural Portrait
 
@@ -305,7 +305,7 @@ When the narrative benefits from explicit recording-device language, install
 the Registry overlay block:
 
 ```bash
-npx hyperframes add camcorder-hud --no-clipboard
+npx tagreel add camcorder-hud --no-clipboard
 ```
 
 Insert the printed `data-composition-src` host over the intended media range.
@@ -407,7 +407,7 @@ The digital stage is used only for rare horizontal row tears: keep its color
 split, pixelation, block displacement, block opacity, and corruption values at
 zero. Leave blur, CRT curvature, generic pixelation, and a camera HUD off.
 
-These values are an original HyperFrames recipe calibrated on the same public
+These values are an original Tagreel recipe calibrated on the same public
 Orange Cat source used for the external visual reference. They are not copied
 shader code or a claim of pixel-identical output from the external reference. The scanline count is
 mapped to the reference's approximately 127-cycle primary line pattern; the HF
@@ -426,7 +426,7 @@ that competes with the subject.
 
 Use for personal archive, family-memory, childhood, travel-memory, or explicit
 small-gauge home-movie language. This is stronger and more materially film-like
-than Film Memory, but it is still an owned HyperFrames treatment rather than a
+than Film Memory, but it is still an owned Tagreel treatment rather than a
 claim to reproduce a named film stock, camera, or laboratory process.
 
 Do not use for literal UI, technical demonstrations, catalog products, clean
@@ -515,7 +515,7 @@ like a transparent dot texture laid over unchanged footage.
 
 Use for poster frames, editorial portraits, music/social cutaways, zine
 graphics, and bold print-led transitions where two visible spot inks are more
-appropriate than photographic color. This is a fixed original HyperFrames
+appropriate than photographic color. This is a fixed original Tagreel
 vermilion/teal treatment, not a claim to emulate a named printer, ink set, or
 commercial print process.
 
@@ -722,26 +722,26 @@ the six-color **Electric Ink** palette:
 }
 ```
 
-HyperFrames also owns these named ramps. The name is an authoring shortcut;
+Tagreel also owns these named ramps. The name is an authoring shortcut;
 persist the listed colors through the existing `palette` array:
 
-| Group       | Palette ID       | Ordered colors                                                   |
-| ----------- | ---------------- | ---------------------------------------------------------------- |
-| Classic     | `noir`           | `#000000`, `#ffffff`                                             |
-| Classic     | `ink-paper`      | `#1a1a2e`, `#f5f5dc`                                             |
-| Classic     | `terminal`       | `#001100`, `#00ff00`                                             |
-| Classic     | `amber-glow`     | `#1a0f00`, `#ffcc00`                                             |
-| Classic     | `handheld-green` | `#0f380f`, `#306230`, `#8bac0f`, `#9bbc0f`                       |
-| Mood        | `golden-hour`    | `#1a1205`, `#4a3510`, `#8b6914`, `#d4a017`, `#fff8dc`            |
-| Mood        | `deep-sea`       | `#0a1628`, `#1a3a5c`, `#2d6187`, `#5ba4c9`, `#a8dce8`            |
-| Mood        | `arctic-night`   | `#0a0a14`, `#1a2a4a`, `#3a5a8a`, `#6a9aca`, `#cae8ff`            |
-| Mood        | `synthwave`      | `#120458`, `#7b2cbf`, `#e040fb`, `#ff6ec7`, `#fff59d`            |
-| Mood        | `vaporwave`      | `#1a0a2e`, `#3d1a5c`, `#ff71ce`, `#01cdfe`, `#fffb96`            |
-| Mood        | `forest`         | `#1a2e1a`, `#2d4a2d`, `#4a7c4a`, `#7ab37a`, `#c8e6c8`            |
-| Mono        | `sepia`          | `#1a1610`, `#3d3020`, `#6b5a40`, `#a89070`, `#e8dcc8`            |
-| Mono        | `blueprint`      | `#001830`, `#003060`, `#0050a0`, `#0080e0`, `#e0f0ff`            |
-| HyperFrames | `warm-print`     | `#17121a`, `#824c50`, `#e09873`, `#f7ddb1`                       |
-| HyperFrames | `electric-ink`   | `#080717`, `#3c185f`, `#7e2278`, `#d9339f`, `#ff6b66`, `#aafae0` |
+| Group   | Palette ID       | Ordered colors                                                   |
+| ------- | ---------------- | ---------------------------------------------------------------- |
+| Classic | `noir`           | `#000000`, `#ffffff`                                             |
+| Classic | `ink-paper`      | `#1a1a2e`, `#f5f5dc`                                             |
+| Classic | `terminal`       | `#001100`, `#00ff00`                                             |
+| Classic | `amber-glow`     | `#1a0f00`, `#ffcc00`                                             |
+| Classic | `handheld-green` | `#0f380f`, `#306230`, `#8bac0f`, `#9bbc0f`                       |
+| Mood    | `golden-hour`    | `#1a1205`, `#4a3510`, `#8b6914`, `#d4a017`, `#fff8dc`            |
+| Mood    | `deep-sea`       | `#0a1628`, `#1a3a5c`, `#2d6187`, `#5ba4c9`, `#a8dce8`            |
+| Mood    | `arctic-night`   | `#0a0a14`, `#1a2a4a`, `#3a5a8a`, `#6a9aca`, `#cae8ff`            |
+| Mood    | `synthwave`      | `#120458`, `#7b2cbf`, `#e040fb`, `#ff6ec7`, `#fff59d`            |
+| Mood    | `vaporwave`      | `#1a0a2e`, `#3d1a5c`, `#ff71ce`, `#01cdfe`, `#fffb96`            |
+| Mood    | `forest`         | `#1a2e1a`, `#2d4a2d`, `#4a7c4a`, `#7ab37a`, `#c8e6c8`            |
+| Mono    | `sepia`          | `#1a1610`, `#3d3020`, `#6b5a40`, `#a89070`, `#e8dcc8`            |
+| Mono    | `blueprint`      | `#001830`, `#003060`, `#0050a0`, `#0080e0`, `#e0f0ff`            |
+| Tagreel | `warm-print`     | `#17121a`, `#824c50`, `#e09873`, `#f7ddb1`                       |
+| Tagreel | `electric-ink`   | `#080717`, `#3c185f`, `#7e2278`, `#d9339f`, `#ff6b66`, `#aafae0` |
 
 Choose by inspected source and project language, not by palette name alone.
 For example, `terminal` fits device/code language, `warm-print` fits editorial
@@ -784,7 +784,7 @@ node <SKILL_DIR>/scripts/dither.mjs \
   --palette '#17121a,#824c50,#e09873,#f7ddb1' \
   --point-size 3
 
-npx hyperframes media-use resolve \
+npx tagreel media-use resolve \
   --from .media/generated/video_001.atkinson.mp4 --type video --project .
 ```
 
@@ -804,7 +804,7 @@ texture, generic flash, or film-stock emulation.
 Install the Registry overlay block:
 
 ```bash
-npx hyperframes add organic-light-leak-overlay --no-clipboard
+npx tagreel add organic-light-leak-overlay --no-clipboard
 ```
 
 Insert the printed `data-composition-src` host at the intended beat and keep
@@ -824,9 +824,9 @@ Extract the exact deterministic source frame first, then remove its background:
 
 ```bash
 ffmpeg -ss <seconds> -i <source-video> -frames:v 1 -y .media/generated/freeze-source.png
-npx hyperframes remove-background .media/generated/freeze-source.png \
+npx tagreel remove-background .media/generated/freeze-source.png \
   -o .media/generated/freeze-cutout.png --json
-npx hyperframes add freeze-frame-dressing --no-clipboard
+npx tagreel add freeze-frame-dressing --no-clipboard
 ```
 
 Add the transparent result as a direct-root timed media layer and insert the
@@ -876,7 +876,7 @@ authored light/motion layers when they do not obscure required information.
 Install the Registry overlay block:
 
 ```bash
-npx hyperframes add editorial-flash-overlay --no-clipboard
+npx tagreel add editorial-flash-overlay --no-clipboard
 ```
 
 Insert the printed `data-composition-src` host so the block's midpoint lands

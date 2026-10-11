@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  state-chip-rail: HyperFrames video primitive (product demo / state machine)
+  state-chip-rail: Tagreel video primitive (product demo / state machine)
 
   A rail of mono status chips advances a data-state snap machine on a cue
   schedule. CSS alone responds to each chip's [data-state]; the timeline only
@@ -185,8 +185,8 @@
             var root = document.getElementById("root");
             var rail = root.querySelector(".scr-rail");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function commaList(value, max) {

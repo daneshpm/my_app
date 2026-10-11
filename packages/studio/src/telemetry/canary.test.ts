@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 
 import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
-import { evaluateCanary } from "@hyperframes/core/canary";
+import { evaluateCanary } from "@tagreel/core/canary";
 
 // Pin the registry: real entries move as rollouts ramp, and these tests are
 // about the BINDING (does the browser supply the right three inputs?), not
@@ -14,9 +14,9 @@ vi.mock("./policy", () => ({
   browserTelemetryAllowed: () => policyState.allowed,
 }));
 
-vi.mock("@hyperframes/core/canary-registry", async () => {
-  const actual = await vi.importActual<typeof import("@hyperframes/core/canary-registry")>(
-    "@hyperframes/core/canary-registry",
+vi.mock("@tagreel/core/canary-registry", async () => {
+  const actual = await vi.importActual<typeof import("@tagreel/core/canary-registry")>(
+    "@tagreel/core/canary-registry",
   );
   const defs = [
     {
@@ -190,7 +190,7 @@ describe("cohort identity", () => {
 });
 
 describe("telemetry", () => {
-  it("emits the same PostHog flag-shaped properties as the CLI", () => {
+  it("emits the same analytics flag-shaped properties as the CLI", () => {
     expect(canaryEventProperties()).toEqual({
       "$feature/canary-on-everywhere": "true",
       "$feature/canary-off-everywhere": "false",
@@ -206,7 +206,7 @@ describe("telemetry", () => {
 
 describe("telemetry opt-out is canary opt-out", () => {
   // The studio opt-out lever, per telemetry/config.ts.
-  const OPT_OUT_KEY = "hyperframes-studio:telemetryDisabled";
+  const OPT_OUT_KEY = "tagreel-studio:telemetryDisabled";
 
   it("does not enrol an opted-out browser profile", () => {
     policyState.allowed = false;
@@ -244,7 +244,7 @@ describe("telemetry opt-out is canary opt-out", () => {
 });
 
 describe("CLI-launched Studio adopts the CLI's decisions", () => {
-  const OPT_OUT_KEY = "hyperframes-studio:telemetryDisabled";
+  const OPT_OUT_KEY = "tagreel-studio:telemetryDisabled";
   const cohort = (enabled: boolean) => ({ enabled, forced: false });
   const forced = (enabled: boolean) => ({ enabled, forced: true });
 
@@ -293,7 +293,7 @@ describe("CLI-launched Studio adopts the CLI's decisions", () => {
     expect(resolveCanary("on-everywhere").enabled).toBe(true);
   });
 
-  // Miguel's P1: a percentage roll from the CLI must NOT be able to enrol a
+  // P1 review finding: a percentage roll from the CLI must NOT be able to enrol a
   // browser profile that opted out. The two surfaces have independent
   // opt-outs, and CLI telemetry being on says nothing about this profile.
   describe("precedence against Studio's own opt-out", () => {

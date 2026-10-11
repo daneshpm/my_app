@@ -408,8 +408,8 @@
           }
           var scopedVariables = {};
           try {
-            if (window.__hyperframes && typeof window.__hyperframes.getVariables === "function") {
-              scopedVariables = window.__hyperframes.getVariables() || {};
+            if (window.__tagreel && typeof window.__tagreel.getVariables === "function") {
+              scopedVariables = window.__tagreel.getVariables() || {};
             }
           } catch (error) {
             /* no scoped variables API in this context */

@@ -1,5 +1,5 @@
 /**
- * Boundary tests for the wire config emitted by `hyperframes lambda render`.
+ * Boundary tests for the wire config emitted by `tagreel lambda render`.
  * Pins that the aspect-agnostic resolution flag survives all the way into
  * `SerializableDistributedRenderConfig`, which is what the Lambda worker's
  * compile stage reads before remapping `landscape` → `portrait` for an

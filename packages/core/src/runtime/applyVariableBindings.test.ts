@@ -8,19 +8,19 @@ import { getVariables } from "./getVariables";
 type TestWindow = Window & {
   __hfVariables?: unknown;
   __hfVariablesByComp?: Record<string, Record<string, unknown>>;
-  __hyperframes?: { getVariables?: () => Record<string, unknown> };
+  __tagreel?: { getVariables?: () => Record<string, unknown> };
 };
 
 const win = window as TestWindow;
 
 beforeEach(() => {
-  win.__hyperframes = { getVariables };
+  win.__tagreel = { getVariables };
 });
 
 afterEach(() => {
   delete win.__hfVariables;
   delete win.__hfVariablesByComp;
-  delete win.__hyperframes;
+  delete win.__tagreel;
   document.documentElement.removeAttribute("data-composition-variables");
   document.body.innerHTML = "";
 });

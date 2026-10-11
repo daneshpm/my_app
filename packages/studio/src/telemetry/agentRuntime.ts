@@ -34,7 +34,7 @@ export function resolveAgentRuntime(): string | null {
   }
   const raw = window.__HF_CLI_AGENT_RUNTIME;
   // A non-empty string only. An empty string means the CLI had nothing to say,
-  // and sending `""` would land in PostHog as a distinct value from absent —
+  // and sending `""` would land in analytics as a distinct value from absent —
   // two encodings of the same fact, which is exactly what makes a breakdown
   // read as a gap that is not there.
   resolved = typeof raw === "string" && raw.length > 0 ? raw : null;

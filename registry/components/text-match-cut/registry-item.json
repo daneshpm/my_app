@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "text-match-cut",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Text Match Cut",
   "description": "One line of text becomes another mid-move: both ride a single 85 % easy-ease curve and hard-swap at the speed peak, as scale, tracking, or a same-direction slide.",
   "tags": ["motion-primitive", "transition", "typography", "match-cut", "hard-cut", "continuity"],
@@ -14,7 +14,7 @@
     {
       "path": "text-match-cut.html",
       "target": "compositions/components/text-match-cut.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

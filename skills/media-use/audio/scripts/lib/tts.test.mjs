@@ -1,21 +1,12 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import {
-  mkdirSync,
-  mkdtempSync,
-  readFileSync,
-  writeFileSync,
-  chmodSync,
-  rmSync,
-  existsSync,
-} from "node:fs";
+import { mkdtempSync, readFileSync, writeFileSync, chmodSync, rmSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { tmpdir } from "node:os";
 import {
   parseFfmpegDurationBanner,
   ffprobeDuration,
   synthesizeOne,
-  synthesizeHeygen,
   synthResult,
   pickProvider,
 } from "./tts.mjs";
@@ -93,7 +84,7 @@ test("synthesizeOne(elevenlabs) creates the output dir before writing", async ()
       text: "hi",
       voiceId: "v",
       wavAbs,
-      hyperframesDir: dir,
+      tagreelDir: dir,
     });
     assert.ok(existsSync(dirname(wavAbs)), "output directory should be created");
   } finally {
@@ -103,69 +94,13 @@ test("synthesizeOne(elevenlabs) creates the output dir before writing", async ()
   }
 });
 
-test("synthesizeHeygen surfaces a thrown HTTP error (e.g. 402) instead of swallowing it", async () => {
-  const res = await synthesizeHeygen(
-    { text: "hi", voiceId: "v1", lang: "en", speed: 1, wavAbs: "/tmp/x.wav" },
-    {
-      heygenAuthHeaders: () => ({}),
-      heygenJSON: async () => {
-        throw new Error("HeyGen POST /voices/speech → HTTP 402\nplan_upgrade_required");
-      },
-    },
-  );
-  assert.equal(res.ok, false);
-  assert.match(res.error, /402/);
-  assert.match(res.error, /plan_upgrade_required/);
-});
-
-test("synthesizeHeygen surfaces a failed audio_url fetch with its status", async () => {
-  const res = await synthesizeHeygen(
-    { text: "hi", voiceId: "v1", lang: "en", speed: 1, wavAbs: "/tmp/x.wav" },
-    {
-      heygenAuthHeaders: () => ({}),
-      heygenJSON: async () => ({ data: { audio_url: "http://audio.example/x" } }),
-      fetch: async () => ({ ok: false, status: 403 }),
-    },
-  );
-  assert.equal(res.ok, false);
-  assert.match(res.error, /HTTP 403/);
-});
-
-test("synthesizeHeygen reports a missing audio_url", async () => {
-  const res = await synthesizeHeygen(
-    { text: "hi", voiceId: "v1", lang: "en", speed: 1, wavAbs: "/tmp/x.wav" },
-    { heygenAuthHeaders: () => ({}), heygenJSON: async () => ({}) },
-  );
-  assert.equal(res.ok, false);
-  assert.match(res.error, /no audio_url/);
-});
-
-test("synthesizeHeygen reports wav transcode failures", async () => {
-  const dir = mkdtempSync(join(tmpdir(), "hf-tts-test-"));
-  try {
-    const res = await synthesizeHeygen(
-      { text: "hi", voiceId: "v1", lang: "en", speed: 1, wavAbs: join(dir, "voice.wav") },
-      {
-        heygenAuthHeaders: () => ({}),
-        heygenJSON: async () => ({ data: { audio_url: "http://audio.example/x" } }),
-        fetch: async () => ({ ok: true, status: 200, arrayBuffer: async () => new ArrayBuffer(0) }),
-        transcodeToWav: () => false,
-      },
-    );
-    assert.equal(res.ok, false);
-    assert.equal(res.error, "wav transcode failed (ffmpeg)");
-  } finally {
-    rmSync(dir, { recursive: true, force: true });
-  }
-});
-
 test("synthResult names a non-zero subprocess exit", () => {
-  const res = synthResult({ status: 2 }, "/tmp/none.wav", "kokoro (npx hyperframes tts)");
+  const res = synthResult({ status: 2 }, "/tmp/none.wav", "kokoro (npx tagreel tts)");
   assert.equal(res.ok, false);
   assert.match(res.error, /kokoro .* exited with status 2/);
 });
 
-// Kokoro shells out to `npx hyperframes tts`; a fake npx on PATH records the argv
+// Kokoro shells out to `npx tagreel tts`; a fake npx on PATH records the argv
 // synthesizeOne really builds, so a dropped flag fails here. Windows runs npx via
 // node directly, so the stub never resolves there.
 async function kokoroArgv(options) {
@@ -181,7 +116,7 @@ async function kokoroArgv(options) {
       text: "hi",
       voiceId: "am_michael",
       wavAbs: join(dir, "line-0.wav"),
-      hyperframesDir: dir,
+      tagreelDir: dir,
       ...options,
     });
     return readFileSync(argvLog, "utf8").trim().split("\n");
@@ -208,23 +143,6 @@ test(
   },
 );
 
-test("pickProvider heygen with an unreadable credentials path says to fix that path", () => {
-  const saved = ["HEYGEN_API_KEY", "HYPERFRAMES_API_KEY", "HEYGEN_CONFIG_DIR"].map((k) => [
-    k,
-    process.env[k],
-  ]);
-  const dir = mkdtempSync(join(tmpdir(), "tts-cred-"));
-  try {
-    delete process.env.HEYGEN_API_KEY;
-    delete process.env.HYPERFRAMES_API_KEY;
-    process.env.HEYGEN_CONFIG_DIR = dir;
-    mkdirSync(join(dir, "credentials"));
-    assert.throws(() => pickProvider("heygen"), /fix or remove that path/);
-  } finally {
-    for (const [k, v] of saved) {
-      if (v === undefined) delete process.env[k];
-      else process.env[k] = v;
-    }
-    rmSync(dir, { recursive: true, force: true });
-  }
+test("pickProvider rejects the removed heygen provider with the valid choices", () => {
+  assert.throws(() => pickProvider("heygen"), /invalid provider "heygen"/);
 });

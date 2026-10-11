@@ -81,7 +81,7 @@
           document.getElementById("csh-root").getAttribute("data-composition-variables"),
         );
         const defaults = Object.fromEntries(schema.map((v) => [v.id, v.default]));
-        const values = { ...defaults, ...(window.__hyperframes?.getVariables?.() || {}) };
+        const values = { ...defaults, ...(window.__tagreel?.getVariables?.() || {}) };
         const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
         const number = (key, a, b) =>
           Number.isFinite(Number(values[key])) ? clamp(Number(values[key]), a, b) : defaults[key];

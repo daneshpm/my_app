@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "ui-3d-reveal",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "3D UI Reveal",
   "description": "Perspective 3D reveal animation for UI elements",
   "tags": ["showcase", "3d", "reveal"],
@@ -14,11 +14,7 @@
     {
       "path": "ui-3d-reveal.html",
       "target": "compositions/ui-3d-reveal.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/ui-3d-reveal.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/ui-3d-reveal.png"
-  }
+  ]
 }

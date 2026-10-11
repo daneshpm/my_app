@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { useShallow } from "zustand/react/shallow";
 import { useTrackDesignInput } from "../../contexts/DesignPanelInputContext";
 import { usePlayerStore } from "../../player";

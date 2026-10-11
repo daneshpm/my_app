@@ -1,4 +1,4 @@
-# HyperFrames Core Changelog
+# Tagreel Core Changelog
 
 ## v0.1
 

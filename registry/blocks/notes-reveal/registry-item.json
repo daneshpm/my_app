@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "notes-reveal",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Notes Reveal",
   "description": "A personal note is typed character by character in a notes app - caret riding every letter, the page scrolling up on measured settle curves as each line lands - then cuts to a hand-lettered paper card with a marker headline and a ticked checklist",
   "tags": ["showcase", "mock-ui", "notes", "typing", "vertical", "ad-template"],
@@ -66,7 +66,7 @@
       "role": "content",
       "label": "Note body line 5",
       "description": "Fifth typed line of the note — name the brand here.",
-      "default": "started HyperFrames three weeks ago"
+      "default": "started Tagreel three weeks ago"
     },
     {
       "id": "noteLine6",
@@ -163,7 +163,7 @@
       "label": "Brand logo",
       "description": "Transparent mark of the brand this video promotes, in the sign-off strip under the card.",
       "portrays": ["subject_logo"],
-      "default": "assets/hyperframes-logo-black.svg"
+      "default": "assets/tagreel-logo-black.svg"
     },
     {
       "id": "brandDomain",
@@ -172,43 +172,39 @@
       "label": "Sign-off domain",
       "description": "Domain of the brand this video promotes, closing the sign-off strip. Use the real domain, or a call to action when no domain fits.",
       "portrays": ["subject_domain"],
-      "default": "hyperframes.heygen.com"
+      "default": "acme.example"
     }
   ],
   "files": [
     {
       "path": "notes-reveal.html",
       "target": "compositions/notes-reveal.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "assets/permanent-marker-400.woff2",
       "target": "assets/permanent-marker-400.woff2",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/courier-prime-400.woff2",
       "target": "assets/courier-prime-400.woff2",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/courier-prime-700.woff2",
       "target": "assets/courier-prime-700.woff2",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
-      "path": "assets/hyperframes-logo-black.svg",
-      "target": "assets/hyperframes-logo-black.svg",
-      "type": "hyperframes:asset"
+      "path": "assets/tagreel-logo-black.svg",
+      "target": "assets/tagreel-logo-black.svg",
+      "type": "tagreel:asset"
     },
     {
       "path": "TEMPLATE.md",
       "target": "TEMPLATE.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/notes-reveal/preview.mp4",
-    "poster": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/notes-reveal/poster.jpg"
-  }
+  ]
 }

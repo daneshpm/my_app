@@ -39,7 +39,7 @@ Give the composition a finite duration, create a paused timeline, and register i
       data-height="1080"
     >
       <h1 id="title" class="clip" data-start="0" data-duration="3" data-track-index="0">
-        HyperFrames
+        Tagreel
       </h1>
     </div>
 
@@ -71,7 +71,7 @@ The registry key must match `data-composition-id`.
 5. Animate transforms and opacity for movement. Avoid repeatedly animating layout properties such as `top`, `left`, `width`, or `height`.
 6. Let my_app control clip visibility and media playback.
 
-The normal timeline methods are `to()`, `from()`, `fromTo()`, and `set()`. GSAP supports many CSS properties, but the [my_app animation skill](https://github.com/heygen-com/hyperframes/tree/main/skills/hyperframes-animation) contains the render-safe patterns used by agents.
+The normal timeline methods are `to()`, `from()`, `fromTo()`, and `set()`. GSAP supports many CSS properties, but the [my_app animation skill](https://github.com/daneshpm/my_app/tree/main/skills/tagreel-animation) contains the render-safe patterns used by agents.
 
 ## Duration
 
@@ -115,9 +115,9 @@ Do not manually add the child timeline to the parent's GSAP timeline. my_app map
 ## Verify the motion
 
 ```bash
-npx hyperframes lint
-npx hyperframes check
-npx hyperframes snapshot --at 0,0.6,2.9
+npx tagreel lint
+npx tagreel check
+npx tagreel snapshot --at 0,0.6,2.9
 ```
 
 Check the first frame, the moving state, and the end state. A timeline that looks correct only during continuous browser playback may still fail when the renderer seeks directly to a frame.

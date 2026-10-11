@@ -2,7 +2,7 @@
 import { act, createElement, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import {
   applyArcKeyframeAtPlayhead,

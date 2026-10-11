@@ -1,4 +1,4 @@
-import { audioDbToGain, audioGainToDb, clampAudioGain } from "@hyperframes/core/audio-gain";
+import { audioDbToGain, audioGainToDb, clampAudioGain } from "@tagreel/core/audio-gain";
 
 export type AudioGainMode = "set" | "adjust" | "normalize-max" | "normalize-all";
 

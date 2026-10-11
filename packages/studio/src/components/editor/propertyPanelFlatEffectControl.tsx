@@ -2,7 +2,7 @@ import {
   HF_COLOR_GRADING_EFFECT_APPLY_DEFAULTS,
   type HfColorGradingEffectKey,
   type NormalizedHfColorGrading,
-} from "@hyperframes/core/color-grading";
+} from "@tagreel/core/color-grading";
 import { FlatSelectRow } from "./propertyPanelFlatSelectRow";
 import { FlatSlider } from "./propertyPanelFlatPrimitives";
 import { FlatToggle } from "./propertyPanelFlatToggle";

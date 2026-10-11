@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "freeze-frame-dressing",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Freeze-Frame Dressing",
   "description": "Timeline-driven paper, tape, and flash dressing for a freeze-frame or background-removed subject",
   "tags": [
@@ -22,11 +22,7 @@
     {
       "path": "freeze-frame-dressing.html",
       "target": "compositions/freeze-frame-dressing.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/freeze-frame-dressing.png",
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/freeze-frame-dressing.mp4"
-  }
+  ]
 }

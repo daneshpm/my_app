@@ -11,14 +11,14 @@ import {
 } from "./Player";
 import { usePlayerStore } from "../store/playerStore";
 
-vi.mock("@hyperframes/player", () => ({}));
+vi.mock("@tagreel/player", () => ({}));
 
 Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });
 
 let root: Root | null = null;
 let lifecycleLog: string[] = [];
 
-class TestHyperframesPlayer extends HTMLElement {
+class TestTagreelPlayer extends HTMLElement {
   readonly iframeElement = document.createElement("iframe");
 
   constructor() {
@@ -44,8 +44,8 @@ class TestHyperframesPlayer extends HTMLElement {
   }
 }
 
-if (!customElements.get("hyperframes-player")) {
-  customElements.define("hyperframes-player", TestHyperframesPlayer);
+if (!customElements.get("tagreel-player")) {
+  customElements.define("tagreel-player", TestTagreelPlayer);
 }
 
 afterEach(() => {
@@ -75,7 +75,7 @@ async function mountPlayer(props: Partial<PlayerProps> = {}) {
     });
   await render();
 
-  const player = host.querySelector<TestHyperframesPlayer>("hyperframes-player");
+  const player = host.querySelector<TestTagreelPlayer>("tagreel-player");
   if (!player) throw new Error("player did not mount");
   const rerender = (next: Partial<PlayerProps>) => {
     Object.assign(props, next);
@@ -188,9 +188,7 @@ describe("callbacks after the player is already mounted", () => {
     const { player, rerender } = await mountPlayer({ onLoad: first });
     await rerender({ onLoad: second });
 
-    act(
-      () => void (player as TestHyperframesPlayer).iframeElement.dispatchEvent(new Event("load")),
-    );
+    act(() => void (player as TestTagreelPlayer).iframeElement.dispatchEvent(new Event("load")));
 
     expect(second).toHaveBeenCalledTimes(1);
     expect(first).not.toHaveBeenCalled();
@@ -207,12 +205,12 @@ describe("callbacks after the player is already mounted", () => {
 });
 
 describe("ready to show", () => {
-  const loadAndReady = (player: TestHyperframesPlayer) =>
+  const loadAndReady = (player: TestTagreelPlayer) =>
     act(() => {
       player.iframeElement.dispatchEvent(new Event("load"));
       player.dispatchEvent(new Event("ready"));
     });
-  const shaderState = (player: TestHyperframesPlayer, loading: boolean) =>
+  const shaderState = (player: TestTagreelPlayer, loading: boolean) =>
     act(() => {
       player.dispatchEvent(
         new CustomEvent("shadertransitionstate", {
@@ -221,7 +219,7 @@ describe("ready to show", () => {
       );
     });
 
-  const painted = (player: TestHyperframesPlayer) =>
+  const painted = (player: TestTagreelPlayer) =>
     act(() => void player.dispatchEvent(new Event("painted")));
 
   it("waits two animation frames before notifying that the preview can show", async () => {
@@ -235,7 +233,7 @@ describe("ready to show", () => {
     try {
       const onReadyToShowChange = vi.fn();
       const { player } = await mountPlayer({ onReadyToShowChange });
-      const el = player as TestHyperframesPlayer;
+      const el = player as TestTagreelPlayer;
 
       loadAndReady(el);
       painted(el);
@@ -259,7 +257,7 @@ describe("ready to show", () => {
   it("promotes only once the player reports painted, not at ready or assetsready", async () => {
     const onReadyToShowChange = vi.fn();
     const { player } = await mountPlayer({ onReadyToShowChange });
-    const el = player as TestHyperframesPlayer;
+    const el = player as TestTagreelPlayer;
 
     loadAndReady(el);
     await twoFrames();
@@ -280,7 +278,7 @@ describe("ready to show", () => {
   it("can show a document whose player was ready and painted before its load event", async () => {
     const onReadyToShowChange = vi.fn();
     const { player } = await mountPlayer({ onReadyToShowChange });
-    const el = Object.assign(player as TestHyperframesPlayer, { ready: true, painted: true });
+    const el = Object.assign(player as TestTagreelPlayer, { ready: true, painted: true });
 
     act(() => {
       el.dispatchEvent(new Event("ready"));
@@ -303,7 +301,7 @@ describe("ready to show", () => {
   it("marks the preview booted when it can show and play, not at ready", async () => {
     usePlayerStore.setState({ previewBooted: false });
     const { player } = await mountPlayer({});
-    const el = player as TestHyperframesPlayer;
+    const el = player as TestTagreelPlayer;
 
     loadAndReady(el);
     act(() => void el.dispatchEvent(new Event("assetsready")));
@@ -319,7 +317,7 @@ describe("ready to show", () => {
     usePlayerStore.setState({ previewBooted: false });
     const onReadyToShowChange = vi.fn();
     const { player } = await mountPlayer({ onReadyToShowChange });
-    const el = player as TestHyperframesPlayer;
+    const el = player as TestTagreelPlayer;
     document.body.appendChild(el.iframeElement);
     const doc = el.iframeElement.contentDocument!;
     const audio = doc.createElement("audio");
@@ -353,10 +351,10 @@ describe("ready to show", () => {
     const now = vi.spyOn(performance, "now").mockReturnValue(100);
     const { player } = await mountPlayer({ onPainted });
 
-    painted(player as TestHyperframesPlayer);
+    painted(player as TestTagreelPlayer);
 
     expect(onPainted).toHaveBeenCalledWith({
-      iframe: (player as TestHyperframesPlayer).iframeElement,
+      iframe: (player as TestTagreelPlayer).iframeElement,
       startedAt: 100,
       loadId: 1,
     });
@@ -366,7 +364,7 @@ describe("ready to show", () => {
   it("holds while the shader transition loader is up and fires once it clears", async () => {
     const onReadyToShowChange = vi.fn();
     const { player } = await mountPlayer({ onReadyToShowChange });
-    const el = player as TestHyperframesPlayer;
+    const el = player as TestTagreelPlayer;
 
     shaderState(el, true);
     loadAndReady(el);

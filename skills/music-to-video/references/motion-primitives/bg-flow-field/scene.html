@@ -64,9 +64,7 @@
       const vars = Object.assign(
         {},
         defaults,
-        window.__hyperframes && window.__hyperframes.getVariables
-          ? window.__hyperframes.getVariables()
-          : {},
+        window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {},
       );
 
       // sRGB hex -> linear-light [r,g,b] (shader works in linear, gamma-encodes at end)

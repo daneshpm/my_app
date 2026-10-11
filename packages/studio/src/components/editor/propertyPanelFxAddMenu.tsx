@@ -12,13 +12,13 @@ import {
   HF_AUDIO_FX,
   type HfAudioFxChain,
   type HfAudioFxGroup,
-} from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-fx";
 import {
   HF_AUDIO_FX_JOBS,
   HF_AUDIO_FX_JOB_TYPES,
   type HfAudioFxJob,
-} from "@hyperframes/core/audio-fx-jobs";
-import { EFFECT_COPY } from "@hyperframes/core/audio-fx-copy";
+} from "@tagreel/core/audio-fx-jobs";
+import { EFFECT_COPY } from "@tagreel/core/audio-fx-copy";
 
 const GROUP_ORDER: HfAudioFxGroup[] = ["filter", "dynamics", "nonlinear", "time"];
 const GROUP_LABEL: Record<HfAudioFxGroup, string> = {

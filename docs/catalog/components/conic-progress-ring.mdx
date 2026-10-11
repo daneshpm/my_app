@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Data","badge":"Stable","codeLines":235}}
   attribution={{"path":"registry/components/conic-progress-ring","tags":["data","progress","ring","conic-gradient","prove","demonstrate"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/conic-progress-ring/conic-progress-ring.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/conic-progress-ring/conic-progress-ring.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,14 +25,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html conic-progress-ring.html
 <!doctype html>
 <!--
-  conic-progress-ring: HyperFrames video primitive (data / prove / demonstrate)
+  conic-progress-ring: Tagreel video primitive (data / prove / demonstrate)
 
   Concept: one registered percentage moves the hard frontier of a conic
   gradient while a radial mask cuts out the center. The center value is
   derived from that same percentage on every GSAP update, so fill and count
   cannot drift apart.
 
-  Compiled-from evidence: hyperframes-research-css-gems.md, section 10,
+  Compiled-from evidence: tagreel-research-css-gems.md, section 10,
   "Registered conic progress ring". The finding specifies a typed percentage
   as the seek handle for a conic-gradient frontier and a radial mask for the
   ring cutout.
@@ -188,8 +188,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var ring = root.querySelector(".ring");
             var label = root.querySelector(".ring-label");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             /* INVARIANT: zero is a valid progress value, so missing and zero
@@ -264,7 +264,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add conic-progress-ring" item="conic-progress-ring" />
+<InstallCommand command="npx tagreel add conic-progress-ring" item="conic-progress-ring" />
 
 That writes one file: `compositions/components/conic-progress-ring.html`.
 

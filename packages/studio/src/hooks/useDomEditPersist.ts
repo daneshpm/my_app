@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { findUnsafeDomPatchValues } from "@hyperframes/core/studio-api/finite-mutation";
+import { findUnsafeDomPatchValues } from "@tagreel/core/studio-api/finite-mutation";
 import { trackStudioEvent } from "../utils/studioTelemetry";
 import { buildDomEditPatchTarget, type DomEditSelection } from "../components/editor/domEditing";
 import type { PersistDomEditOperations } from "./domEditCommitTypes";

@@ -5,7 +5,7 @@
  * keeps the metric independent of the time axis' units. Exists for dense
  * producers: carve output and heavy hand edits.
  */
-import type { AutomationRange, HfAutomationPoint } from "@hyperframes/core/audio-automation";
+import type { AutomationRange, HfAutomationPoint } from "@tagreel/core/audio-automation";
 import { toUnit } from "./automationLaneGeometry";
 
 export function simplifyPoints(

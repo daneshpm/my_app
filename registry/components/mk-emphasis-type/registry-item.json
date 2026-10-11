@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "mk-emphasis-type",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Background Emphasis Type",
   "description": "Oversized low-contrast background word drifting slowly behind the subject \u2014 typography as texture",
   "tags": ["typography", "text-treatment", "minimal"],
@@ -9,7 +9,7 @@
     {
       "path": "mk-emphasis-type.html",
       "target": "compositions/components/mk-emphasis-type.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

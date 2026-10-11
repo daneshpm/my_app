@@ -7,8 +7,8 @@ import type {
   ExtractionResult,
   VideoElement,
   VideoExtractionFailure,
-} from "@hyperframes/engine";
-import { resolveProjectRelativeSrc } from "@hyperframes/engine";
+} from "@tagreel/engine";
+import { resolveProjectRelativeSrc } from "@tagreel/engine";
 import {
   appendAutoDetectedVideoAudio,
   assertVideoExtractionSucceeded,

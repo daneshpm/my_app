@@ -35,7 +35,7 @@ export {
   clearStudioMotionFromElement,
 } from "./studioMotionOps";
 
-import { isHtmlElement } from "@hyperframes/core/runtime/dom-realm";
+import { isHtmlElement } from "@tagreel/core/runtime/dom-realm";
 import { readStudioMotionFromElement as readMotionAttr } from "./studioMotionOps";
 import {
   STUDIO_MOTION_ATTR,

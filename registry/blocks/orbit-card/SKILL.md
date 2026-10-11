@@ -1,6 +1,6 @@
 ---
 name: orbit-card
-description: A single feature card orbits a dot sphere on approved Blender camera motion. HyperFrames block, 1920×1080, 10s, 4 variables.
+description: A single feature card orbits a dot sphere on approved Blender camera motion. Tagreel block, 1920×1080, 10s, 4 variables.
 ---
 
 # Orbit Card
@@ -25,7 +25,7 @@ Composition id: `orbit-card`. Duration 10 s at 30 fps, 1920×1080.
 
 ## Install
 
-Install with `npx hyperframes add orbit-card`; by default the files above land under `compositions/orbit-card/`. Then mount the block from the host `index.html`:
+Install with `npx tagreel add orbit-card`; by default the files above land under `compositions/orbit-card/`. Then mount the block from the host `index.html`:
 
 ```html
 <div
@@ -42,12 +42,12 @@ Install with `npx hyperframes add orbit-card`; by default the files above land u
 Render with custom values by targeting the composition file directly:
 
 ```sh
-npx --yes hyperframes@0.8.12 render 'compositions/orbit-card/orbit-card.html' --variables '{"feature1Title":"Always in sync","feature1Desc":"Changes reach every screen the moment they happen."}'
+npx --yes tagreel@0.8.12 render 'compositions/orbit-card/orbit-card.html' --variables '{"feature1Title":"Always in sync","feature1Desc":"Changes reach every screen the moment they happen."}'
 ```
 
 ## Variables
 
-Read at runtime via `window.__hyperframes.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
+Read at runtime via `window.__tagreel.getVariables()`; declared on the composition root as `data-composition-variables` (single-quoted attribute, plain JSON).
 
 | id                 | type   | default                                                | label / range                          |
 | ------------------ | ------ | ------------------------------------------------------ | -------------------------------------- |

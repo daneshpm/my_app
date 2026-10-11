@@ -3,13 +3,13 @@ import {
   sourceTimeAt,
   timeAtSourceTime,
   type RateSpec,
-} from "@hyperframes/core/speed-ramp";
+} from "@tagreel/core/speed-ramp";
 import {
   readDataDurationSeconds,
   readMediaOffsetSeconds,
   readPlaybackRate,
   type AttrReader,
-} from "@hyperframes/parsers/media-duration";
+} from "@tagreel/parsers/media-duration";
 
 /** Where a clip's audio starts in its file, how fast it plays, and for how long (null: to the end). */
 export interface ClipClock {

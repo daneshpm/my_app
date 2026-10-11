@@ -1,5 +1,5 @@
 <!--
-  Focus Blur Resolve - typography primitive for HyperFrames.
+  Focus Blur Resolve - typography primitive for Tagreel.
 
   Paste the markup and CSS into a composition. Drive the timeline integration
   from a paused GSAP timeline so renders remain deterministic.
@@ -59,9 +59,7 @@
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
-        : {};
+      window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
     // Unrecognised overrides return to their declared defaults.
     function pick(table, value, fallback) {

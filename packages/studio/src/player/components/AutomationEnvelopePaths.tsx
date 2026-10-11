@@ -1,6 +1,6 @@
 /** The base automation envelope plus the heavier segment grab affordance. */
 
-import type { AutomationRange, HfAutomationLane } from "@hyperframes/core/audio-automation";
+import type { AutomationRange, HfAutomationLane } from "@tagreel/core/audio-automation";
 import { envelopeSegmentPath } from "./automationLaneGeometry";
 
 interface AutomationEnvelopePathsProps {

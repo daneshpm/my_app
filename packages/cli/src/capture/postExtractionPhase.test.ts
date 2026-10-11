@@ -14,7 +14,7 @@ describe("runPostExtraction", () => {
   it.skipIf(process.platform === "win32")(
     "does not write the SVG contact sheet through a planted assets/svgs symlink under --skip-assets (#4304)",
     async () => {
-      const root = mkdtempSync(join(tmpdir(), "hyperframes-post-extraction-"));
+      const root = mkdtempSync(join(tmpdir(), "tagreel-post-extraction-"));
       onTestFinished(() => rmSync(root, { recursive: true, force: true }));
       const outputDir = join(root, "capture");
       const outside = join(root, "outside");

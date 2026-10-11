@@ -106,7 +106,7 @@ hf_reserve_smoke_stack() {
     --stack-name "$stack_name" \
     --template-body \
       '{"Resources":{"SmokeOwnershipHandle":{"Type":"AWS::CloudFormation::WaitConditionHandle"}}}' \
-    --tags "Key=HyperframesSmokeRun,Value=$run_id" >/dev/null &&
+    --tags "Key=TagreelSmokeRun,Value=$run_id" >/dev/null &&
     aws cloudformation wait stack-create-complete --stack-name "$stack_name"
 }
 
@@ -119,7 +119,7 @@ hf_stack_ownership_status() {
   error_file=$(mktemp)
   if aws cloudformation describe-stacks \
     --stack-name "$stack_name" \
-    --query "Stacks[0].Tags[?Key=='HyperframesSmokeRun'].Value | [0]" \
+    --query "Stacks[0].Tags[?Key=='TagreelSmokeRun'].Value | [0]" \
     --output text >"$output_file" 2>"$error_file"; then
     owner=$(tr -d '\r\n' <"$output_file")
     rm -f "$output_file" "$error_file"

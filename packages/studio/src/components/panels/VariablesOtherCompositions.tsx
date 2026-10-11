@@ -7,7 +7,7 @@
  */
 
 import { useCallback, useState } from "react";
-import type { Composition, CompositionVariable } from "@hyperframes/sdk";
+import type { Composition, CompositionVariable } from "@tagreel/sdk";
 import {
   useEditVariablesInFile,
   useProjectCompositionVariables,

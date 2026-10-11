@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "spotify-card",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Spotify Now Playing",
   "description": "Animated Spotify now-playing card with album art and progress bar",
   "tags": ["social", "overlay", "spotify"],
@@ -14,11 +14,7 @@
     {
       "path": "spotify-card.html",
       "target": "compositions/spotify-card.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/spotify-card.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/spotify-card.png"
-  }
+  ]
 }

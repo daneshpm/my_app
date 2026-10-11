@@ -536,7 +536,7 @@
         });
       }
 
-      // tl.eventCallback("onUpdate") is unavailable under the HyperFrames runtime proxy, so a
+      // tl.eventCallback("onUpdate") is unavailable under the Tagreel runtime proxy, so a
       // tracker tween's onUpdate fires on every seek. Sampling is deferred to a microtask:
       // seeking GSAP from inside its own render reads stale tween state, while the microtask
       // runs after the seek returns and before the frame is captured or painted.

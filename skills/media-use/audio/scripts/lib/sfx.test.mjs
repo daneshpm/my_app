@@ -6,7 +6,7 @@ import { tmpdir } from "node:os";
 import { appendRecord } from "../../../scripts/lib/manifest.mjs";
 import { resolveSfx } from "./sfx.mjs";
 
-// Offline (no HeyGen) SFX resolution: the bundled library may ship manifest.json
+// Bundled-library SFX resolution: the bundled library may ship manifest.json
 // without the actual mp3s. The old code copied only when the source existed but
 // pushed the sfx entry unconditionally — producing a dangling reference that
 // silently dropped downstream ("not on disk"). These tests lock in the loud
@@ -37,8 +37,7 @@ test("offline: copies and references a present bundled file", async () => {
     writeFileSync(join(libDir, "whoosh.mp3"), "ID3-fake-bytes");
     const { sfx, anomalies } = await resolveSfx({
       cues: [{ id: "s1", name: "whoosh" }],
-      heygenOK: false,
-      hyperframesDir: projDir,
+      tagreelDir: projDir,
       sfxLibDir: libDir,
     });
     assert.equal(sfx.length, 1);
@@ -58,8 +57,7 @@ test("offline: a matched-but-missing bundled file yields an anomaly and NO dangl
     );
     const { sfx, anomalies } = await resolveSfx({
       cues: [{ id: "s1", name: "whoosh" }],
-      heygenOK: false,
-      hyperframesDir: projDir,
+      tagreelDir: projDir,
       sfxLibDir: libDir,
     });
     assert.equal(sfx.length, 0, "no dangling entry for a file that was never copied");
@@ -81,8 +79,7 @@ const record = (projDir, source) =>
 const offline = (libDir, projDir) =>
   resolveSfx({
     cues: [{ id: "s1", name: "whoosh" }],
-    heygenOK: false,
-    hyperframesDir: projDir,
+    tagreelDir: projDir,
     sfxLibDir: libDir,
   });
 

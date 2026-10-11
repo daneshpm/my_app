@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "snow",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Snow",
   "description": "Seek-safe falling-snow overlay: sparse or dense flakes drift down with size, speed and opacity correlated per flake for depth, radial-masked so the frame center stays clear",
   "tags": [
@@ -50,11 +50,7 @@
     {
       "path": "snow.html",
       "target": "compositions/snow.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/snow.png",
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/snow.mp4"
-  }
+  ]
 }

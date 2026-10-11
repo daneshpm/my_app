@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "yt-feather-highlight",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Feathered Spotlight",
   "description": "Dims the frame except a feathered ellipse; the hole's position and size are CSS variables, so helpers glide the spotlight between targets",
   "tags": ["highlight", "spotlight", "effect", "overlay"],
@@ -9,7 +9,7 @@
     {
       "path": "yt-feather-highlight.html",
       "target": "compositions/components/yt-feather-highlight.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

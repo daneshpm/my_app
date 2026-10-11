@@ -70,8 +70,8 @@ esac
 MOCK_AWS
 chmod 755 "$WORK/bin/aws"
 
-name_a=$(hf_derive_project_name "hyperframes-lambda-smoke-a-very-long-shared-prefix-111")
-name_b=$(hf_derive_project_name "hyperframes-lambda-smoke-a-very-long-shared-prefix-222")
+name_a=$(hf_derive_project_name "tagreel-lambda-smoke-a-very-long-shared-prefix-111")
+name_b=$(hf_derive_project_name "tagreel-lambda-smoke-a-very-long-shared-prefix-222")
 [ "$name_a" != "$name_b" ]
 [ "${#name_a}" -le 49 ]
 [ "${#name_b}" -le 49 ]

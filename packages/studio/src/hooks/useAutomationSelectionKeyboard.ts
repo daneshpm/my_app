@@ -29,7 +29,7 @@ import {
   type AutomationRange,
   type HfAutomation,
   type HfAutomationLane,
-} from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-automation";
 import { clampNumber } from "../utils/studioHelpers";
 import { isTypingTarget } from "../utils/typingTarget";
 import type { AutomationSelection } from "../player/store/automationSelectionSlice";

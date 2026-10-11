@@ -14,10 +14,10 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   title="Pan Stations"
   description="A lateral camera move across a continuous row of labeled feature stations, with a steady dwell at each stop before the next pan."
   variables={[{"id":"stationCount","type":"number","role":"layout","label":"Station count","description":"Number of feature stations in the row.","default":4,"min":3,"max":6,"step":1},{"id":"labels","type":"string","role":"content","label":"Station labels","description":"Comma-separated labels shown on the station cards.","default":"Capture,Edit,Render,Share"},{"id":"dwell","type":"number","role":"timing","label":"Dwell","description":"Seconds the camera holds at each station before panning.","default":0.6,"min":0.2,"max":2,"step":0.1,"unit":"s"}]}
-  meta={{"category":"Camera & 3D","badge":"Stable","codeLines":364}}
+  meta={{"category":"Camera","badge":"Stable","codeLines":364}}
   attribution={{"path":"registry/components/pan-stations","tags":["camera","pan","stations","features","exhibit","agitate","cross-shelved"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/pan-stations/pan-stations.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/pan-stations/pan-stations.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html pan-stations.html
 <!doctype html>
 <!--
-  pan-stations -- HyperFrames video primitive (camera / holdable / exhibit)
+  pan-stations -- Tagreel video primitive (camera / holdable / exhibit)
 
   Concept: the camera pans laterally across a wide row of labeled feature
   stations, settling on each card before moving to the next. The exhibit
@@ -286,8 +286,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var clip = root.querySelector(".ps-clip");
             var strip = root.querySelector(".ps-strip");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: stationCount is always an integer in the declared 3-6 range.
@@ -393,7 +393,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add pan-stations" item="pan-stations" />
+<InstallCommand command="npx tagreel add pan-stations" item="pan-stations" />
 
 That writes one file: `compositions/components/pan-stations.html`.
 

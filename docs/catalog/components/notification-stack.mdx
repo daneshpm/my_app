@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":387}}
   attribution={{"path":"registry/components/notification-stack","tags":["motion-primitive","product-demo","notification","stack","stagger"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/notification-stack/notification-stack.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/notification-stack/notification-stack.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html notification-stack.html
 <!doctype html>
 <!--
-  notification-stack: HyperFrames video primitive (product demo)
+  notification-stack: Tagreel video primitive (product demo)
 
   1 to 5 token notification cards (accent icon dot, title, one body line)
   slide-settle into a vertical stack on cues, newest on top: each new card
@@ -195,8 +195,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var root = document.getElementById("root");
             var stage = root.querySelector(".ns-stage");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function toList(value, fallback) {
@@ -416,7 +416,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add notification-stack" item="notification-stack" />
+<InstallCommand command="npx tagreel add notification-stack" item="notification-stack" />
 
 That writes one file: `compositions/components/notification-stack.html`.
 

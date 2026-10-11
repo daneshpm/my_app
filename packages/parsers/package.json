@@ -1,9 +1,9 @@
 {
-  "name": "@hyperframes/parsers",
+  "name": "@tagreel/parsers",
   "version": "0.8.137",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heygen-com/hyperframes",
+    "url": "https://github.com/daneshpm/my_app",
     "directory": "packages/parsers"
   },
   "files": [
@@ -241,7 +241,7 @@
     "recast": "^0.23.11"
   },
   "devDependencies": {
-    "@hyperframes/core": "workspace:*",
+    "@tagreel/core": "workspace:*",
     "@types/node": "^25.0.10",
     "tsup": "^8.0.0",
     "tsx": "^4.21.0",

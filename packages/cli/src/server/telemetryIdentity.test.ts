@@ -269,7 +269,7 @@ describe("buildStudioHeadScriptsForHost — Host split", () => {
   });
 
   // ...but the decisions map is NOT identifying, and withholding it would send
-  // a supported LAN preview (HYPERFRAMES_PREVIEW_HOST=0.0.0.0) back to
+  // a supported LAN preview (TAGREEL_PREVIEW_HOST=0.0.0.0) back to
   // re-deriving locally and disagreeing with the CLI.
   it.each(["evil.example.com", "192.168.1.10:5173", "my-dev-box.local:5173", undefined])(
     "still publishes canary decisions for non-loopback Host %s",
@@ -304,16 +304,16 @@ function localHostCandidates(): string[] {
 }
 
 describe("identityAllowed — loopback-bound vs explicitly LAN-bound", () => {
-  const original = process.env["HYPERFRAMES_PREVIEW_HOST"];
+  const original = process.env["TAGREEL_PREVIEW_HOST"];
 
   afterEach(() => {
-    if (original === undefined) delete process.env["HYPERFRAMES_PREVIEW_HOST"];
-    else process.env["HYPERFRAMES_PREVIEW_HOST"] = original;
+    if (original === undefined) delete process.env["TAGREEL_PREVIEW_HOST"];
+    else process.env["TAGREEL_PREVIEW_HOST"] = original;
   });
 
   describe("loopback-bound (the default)", () => {
     beforeEach(() => {
-      delete process.env["HYPERFRAMES_PREVIEW_HOST"];
+      delete process.env["TAGREEL_PREVIEW_HOST"];
     });
 
     it.each(["localhost:5173", "127.0.0.1", "[::1]:3000"])("allows %s", (host) => {
@@ -331,11 +331,11 @@ describe("identityAllowed — loopback-bound vs explicitly LAN-bound", () => {
 
   describe("explicitly LAN-bound", () => {
     beforeEach(() => {
-      process.env["HYPERFRAMES_PREVIEW_HOST"] = "0.0.0.0";
+      process.env["TAGREEL_PREVIEW_HOST"] = "0.0.0.0";
     });
 
     // The mode this regressed: browsing your own LAN-exposed Studio lost the
-    // CLI stitch entirely, so the same human became two PostHog persons. The
+    // CLI stitch entirely, so the same human became two analytics persons. The
     // names come from this machine, because that is now the actual rule —
     // a hardcoded `192.168.1.10` asserted only that the check was absent.
     it.each(["0.0.0.0:3000", ...localHostCandidates().map((n) => `${n}:3000`)])(
@@ -364,7 +364,7 @@ describe("identityAllowed — loopback-bound vs explicitly LAN-bound", () => {
   // mitigation — previously ANY non-empty value disabled it wholesale.
   describe("bound to loopback explicitly", () => {
     beforeEach(() => {
-      process.env["HYPERFRAMES_PREVIEW_HOST"] = "127.0.0.1";
+      process.env["TAGREEL_PREVIEW_HOST"] = "127.0.0.1";
     });
 
     it.each(["localhost:5173", "127.0.0.1"])("still allows %s", (host) => {
@@ -408,7 +408,7 @@ describe("cross-process opt-out refresh", () => {
     shouldTrack.mockReturnValue(true);
     expect(buildStudioHeadScriptsForHost("", "localhost:3000")).toContain("__HF_CLI_DISTINCT_ID");
 
-    // `hyperframes telemetry disable` in another terminal.
+    // a telemetry opt-out in another terminal.
     shouldTrack.mockReturnValue(false);
     const after = buildStudioHeadScriptsForHost("", "localhost:3000");
     expect(after).not.toContain("__HF_CLI_DISTINCT_ID");

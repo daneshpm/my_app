@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":332}}
   attribution={{"path":"registry/components/slit-scan-reveal","tags":["motion-primitive","time","slit-scan","canvas","deterministic","experiment"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/slit-scan-reveal/slit-scan-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/slit-scan-reveal/slit-scan-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html slit-scan-reveal.html
 <!doctype html>
 <!--
-  slit-scan-reveal: HyperFrames video primitive (time)
+  slit-scan-reveal: Tagreel video primitive (time)
 
   The frame's rows sample the subject at offset times. The subject is an
   authored token mark (an accent-ringed disc with an orbit dot) whose
@@ -150,8 +150,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var stage = root.querySelector(".ssr-stage");
             var canvas = root.querySelector(".ssr-canvas");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var axis = vars.axis === "cols" ? "cols" : "rows";
@@ -361,7 +361,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add slit-scan-reveal" item="slit-scan-reveal" />
+<InstallCommand command="npx tagreel add slit-scan-reveal" item="slit-scan-reveal" />
 
 That writes one file: `compositions/components/slit-scan-reveal.html`.
 

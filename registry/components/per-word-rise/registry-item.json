@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "per-word-rise",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Per Word Rise",
   "description": "Words or characters rise into place in a controlled blur-to-sharp cascade, settle softly on landing, and hold still until the cut (optional fade or up exit).",
   "tags": ["motion-primitive", "text-effects", "typography", "stagger", "reveal"],
@@ -14,7 +14,7 @@
     {
       "path": "per-word-rise.html",
       "target": "compositions/components/per-word-rise.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

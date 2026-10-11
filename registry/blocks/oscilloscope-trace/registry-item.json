@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "oscilloscope-trace",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Oscilloscope Trace",
   "description": "CRT oscilloscope beam sweeping a waveform across a 10x8 graticule, with closed-form phosphor persistence: the tail decays as exp(-age/tau) and brightens where the beam slows",
   "tags": ["instrument", "data", "showcase", "retro"],
@@ -81,11 +81,7 @@
     {
       "path": "oscilloscope-trace.html",
       "target": "compositions/oscilloscope-trace.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/oscilloscope-trace.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/oscilloscope-trace.png"
-  }
+  ]
 }

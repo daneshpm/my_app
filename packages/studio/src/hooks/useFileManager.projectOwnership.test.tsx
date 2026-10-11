@@ -179,7 +179,7 @@ describe("useFileManager project ownership", () => {
 
     const writeTokens = fetchMock.mock.calls
       .filter(([, init]) => init?.method === "PUT")
-      .map(([, init]) => new Headers(init?.headers).get("X-Hyperframes-Write-Token"));
+      .map(([, init]) => new Headers(init?.headers).get("X-Tagreel-Write-Token"));
     expect(writeTokens).toHaveLength(2);
     expect(writeTokens[0]).toBeTruthy();
     expect(writeTokens[1]).not.toBe(writeTokens[0]);
@@ -265,7 +265,7 @@ describe("useFileManager uploads", () => {
 
   it("says which uploads were added without a media check, and why", async () => {
     const reason =
-      "not checked: ffprobe was not found. Install FFmpeg or set HYPERFRAMES_FFPROBE_PATH.";
+      "not checked: ffprobe was not found. Install FFmpeg or set TAGREEL_FFPROBE_PATH.";
     const { added, showToast } = await uploadClip({
       files: ["clip.mp4"],
       unchecked: [{ name: "clip.mp4", reason }],

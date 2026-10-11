@@ -4,7 +4,7 @@ import { dispatchModifierKey, dispatchPlainKey, type HotkeyCallbacks } from "./a
 import { liveTime, usePlayerStore } from "../player/store/playerStore";
 import type { DomEditSelection } from "../components/editor/domEditing";
 import { clearAutomationClipboard, copyRange } from "../player/components/automationClipboard";
-import { VOLUME_RANGE } from "@hyperframes/core/audio-automation";
+import { VOLUME_RANGE } from "@tagreel/core/audio-automation";
 import type { TimelineElement } from "../player/store/timelineElement";
 import { useAudioGainDialogStore } from "../player/components/audioGainDialogStore";
 

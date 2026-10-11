@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "yt-comment-card",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Comment Cards",
   "description": "Social comments typing on over footage: avatar pop, username and time, per-character typewriter, likes row; image avatars or initials chips",
   "tags": ["social", "comments", "creator", "overlay"],
@@ -14,7 +14,7 @@
     {
       "path": "yt-comment-card.html",
       "target": "compositions/yt-comment-card.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

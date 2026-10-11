@@ -22,7 +22,7 @@ function validateManifests(read) {
     "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
     "Unexpected Agent Plugins schema",
   );
-  assert.equal(portable.name, "hyperframes", "Invalid plugin identity");
+  assert.equal(portable.name, "tagreel", "Invalid plugin identity");
   assert.match(
     String(portable.version),
     /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/,
@@ -75,17 +75,8 @@ export function packagePlugin(root = ROOT) {
   for (const path of paths) git("cat-file", "-e", `HEAD:${path}`);
   const out = join(root, "dist");
   mkdirSync(out, { recursive: true });
-  const archive = join(out, "hyperframes-agent-plugin.zip");
-  git(
-    "archive",
-    "--format=zip",
-    "--prefix=hyperframes/",
-    "--output",
-    archive,
-    "HEAD",
-    "--",
-    ...paths,
-  );
+  const archive = join(out, "tagreel-agent-plugin.zip");
+  git("archive", "--format=zip", "--prefix=tagreel/", "--output", archive, "HEAD", "--", ...paths);
   const bytes = readFileSync(archive);
   const sha256 = createHash("sha256").update(bytes).digest("hex");
   const metadata = {
@@ -96,14 +87,8 @@ export function packagePlugin(root = ROOT) {
     bytes: bytes.length,
     skills: published,
   };
-  writeFileSync(
-    join(out, "hyperframes-agent-plugin.json"),
-    JSON.stringify(metadata, null, 2) + "\n",
-  );
-  writeFileSync(
-    join(out, "hyperframes-agent-plugin.sha256"),
-    `${sha256}  hyperframes-agent-plugin.zip\n`,
-  );
+  writeFileSync(join(out, "tagreel-agent-plugin.json"), JSON.stringify(metadata, null, 2) + "\n");
+  writeFileSync(join(out, "tagreel-agent-plugin.sha256"), `${sha256}  tagreel-agent-plugin.zip\n`);
   return metadata;
 }
 

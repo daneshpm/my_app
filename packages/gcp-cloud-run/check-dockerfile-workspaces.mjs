@@ -3,8 +3,8 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(import.meta.dirname, "../..");
-const ENTRY_PACKAGE = "@hyperframes/gcp-cloud-run";
-const PRODUCER_PACKAGE = "@hyperframes/producer";
+const ENTRY_PACKAGE = "@tagreel/gcp-cloud-run";
+const PRODUCER_PACKAGE = "@tagreel/producer";
 const RUNTIME_DEPENDENCY_FIELDS = ["dependencies", "optionalDependencies", "peerDependencies"];
 
 export function readWorkspacePackages(root = ROOT) {
@@ -62,7 +62,7 @@ function buildEntries(instruction, instructionPosition) {
   ].map((match) => [match[1], instructionPosition + match.index]);
   const filterEntries = [
     ...instruction.matchAll(
-      /bun run --filter\s+['"]?@hyperframes\/(\{[^}]+\}|[a-z0-9-]+)['"]?\s+build(?=\s|&&|$)/g,
+      /bun run --filter\s+['"]?@tagreel\/(\{[^}]+\}|[a-z0-9-]+)['"]?\s+build(?=\s|&&|$)/g,
     ),
   ].flatMap((match) => {
     const directories = match[1].startsWith("{") ? match[1].slice(1, -1).split(",") : [match[1]];

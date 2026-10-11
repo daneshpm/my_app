@@ -1,9 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { isSafeVersion, printDeprecationNotice, withMeta } from "./updateCheck.js";
 
-const dns = vi.hoisted(() => ({ answers: true }));
-vi.mock("./hostAnswers.js", () => ({ hostAnswers: async () => dns.answers }));
-
 describe("isSafeVersion", () => {
   it("accepts strict semver, incl. prerelease/build metadata", () => {
     expect(isSafeVersion("1.2.3")).toBe(true);
@@ -53,7 +50,7 @@ async function noticeWith(opts: {
     else process.env[k] = v;
   }
   // Default to a non-CI interactive terminal unless the test overrides env.
-  for (const name of ["CI", "HYPERFRAMES_NO_UPDATE_CHECK"]) {
+  for (const name of ["CI", "TAGREEL_NO_UPDATE_CHECK"]) {
     if (!(name in (opts.env ?? {}))) delete process.env[name];
   }
 
@@ -89,122 +86,38 @@ describe("printUpdateNotice — install-method-aware command", () => {
   });
 
   it("shows the detected manager's command for an owned global install", async () => {
-    const out = await noticeWith({ installerCommand: "brew upgrade hyperframes" });
+    const out = await noticeWith({ installerCommand: "brew upgrade tagreel" });
     expect(out).toContain("Update available");
-    expect(out).toContain("brew upgrade hyperframes");
-    expect(out).not.toContain("npx hyperframes@latest");
+    expect(out).toContain("brew upgrade tagreel");
+    expect(out).not.toContain("npx tagreel@latest");
   });
 
-  it("falls back to npx hyperframes@latest when the install method is skip/unknown", async () => {
+  it("falls back to npx tagreel@latest when the install method is skip/unknown", async () => {
     const out = await noticeWith({ installerCommand: null });
-    expect(out).toContain("npx hyperframes@latest");
+    expect(out).toContain("npx tagreel@latest");
   });
 
   it("is suppressed on a non-TTY stderr", async () => {
-    const out = await noticeWith({ installerCommand: "brew upgrade hyperframes", isTTY: false });
+    const out = await noticeWith({ installerCommand: "brew upgrade tagreel", isTTY: false });
     expect(out).toBe("");
   });
 
   it("is suppressed in CI", async () => {
     const out = await noticeWith({
-      installerCommand: "brew upgrade hyperframes",
+      installerCommand: "brew upgrade tagreel",
       env: { CI: "true" },
     });
     expect(out).toBe("");
   });
 
-  it("is suppressed by the HYPERFRAMES_NO_UPDATE_CHECK opt-out", async () => {
+  it("is suppressed by the TAGREEL_NO_UPDATE_CHECK opt-out", async () => {
     const out = await noticeWith({
-      installerCommand: "brew upgrade hyperframes",
-      env: { HYPERFRAMES_NO_UPDATE_CHECK: "1" },
+      installerCommand: "brew upgrade tagreel",
+      env: { TAGREEL_NO_UPDATE_CHECK: "1" },
     });
     expect(out).toBe("");
   });
 });
-
-/**
- * The registry-boundary guard: a poisoned or non-string data.version must
- * never be cached, because it flows into the auto-updater's install command.
- * This closes the injection class for every downstream consumer at one point.
- */
-async function checkWith(
-  registryVersion: unknown,
-  force = true,
-): Promise<{
-  latest: string;
-  wroteVersion: string | undefined;
-  fetched: boolean;
-}> {
-  vi.resetModules();
-  vi.doMock("./env.js", () => ({ isDevMode: () => false }));
-  const writes: Array<Record<string, unknown>> = [];
-  vi.doMock("../telemetry/config.js", () => ({
-    readConfig: () => ({}),
-    readConfigFresh: () => ({}),
-    writeConfig: (c: Record<string, unknown>) => writes.push({ ...c }),
-  }));
-  const origFetch = globalThis.fetch;
-  let fetched = false;
-  globalThis.fetch = (async () => {
-    fetched = true;
-    return { ok: true, json: async () => ({ version: registryVersion }) };
-  }) as unknown as typeof fetch;
-  try {
-    const mod = await import("./updateCheck.js");
-    const result = await mod.checkForUpdate(force);
-    const lastWrite = writes.at(-1);
-    return {
-      latest: result.latest,
-      wroteVersion: lastWrite ? (lastWrite["latestVersion"] as string | undefined) : undefined,
-      fetched,
-    };
-  } finally {
-    globalThis.fetch = origFetch;
-  }
-}
-
-async function checkAcrossConcurrentConfigWrite(): Promise<Record<string, unknown>> {
-  vi.resetModules();
-  const initial = {
-    telemetryEnabled: true,
-    anonymousId: "test-install",
-    telemetryNoticeShown: true,
-    commandCount: 0,
-    renderSuccessCount: 0,
-    lastFeedbackPromptAt: 0,
-  };
-  let persisted: Record<string, unknown> = { ...initial };
-  vi.doMock("../telemetry/config.js", () => ({
-    readConfig: () => ({ ...initial }),
-    readConfigFresh: () => ({ ...persisted }),
-    writeConfig: (config: Record<string, unknown>) => {
-      persisted = { ...config };
-      return true;
-    },
-  }));
-  const origFetch = globalThis.fetch;
-  let releaseResponse: (() => void) | undefined;
-  const responseReady = new Promise<void>((resolve) => {
-    releaseResponse = resolve;
-  });
-  globalThis.fetch = (async () => {
-    await responseReady;
-    return {
-      ok: true,
-      json: async () => ({ version: "9.9.9" }),
-    };
-  }) as unknown as typeof fetch;
-  try {
-    const mod = await import("./updateCheck.js");
-    const check = mod.checkForUpdate(true);
-    persisted = { ...persisted, telemetryEnabled: false };
-    releaseResponse?.();
-    await check;
-    return persisted;
-  } finally {
-    globalThis.fetch = origFetch;
-  }
-}
 
 /**
  * U5: validate/inspect/layout are deprecated in favor of `check`. withMeta's
@@ -263,112 +176,45 @@ describe("printDeprecationNotice", () => {
 
     expect(stdoutWrites).toEqual([]);
     expect(stderrWrites).toHaveLength(1);
-    expect(stderrWrites[0]).toContain("hyperframes validate");
-    expect(stderrWrites[0]).toContain("hyperframes check");
+    expect(stderrWrites[0]).toContain("tagreel validate");
+    expect(stderrWrites[0]).toContain("tagreel check");
   });
 });
 
-describe("checkForUpdate — registry boundary guard", () => {
+describe("checkForUpdate — remote version checks are disabled", () => {
   afterEach(() => {
     vi.doUnmock("../telemetry/config.js");
     vi.doUnmock("./env.js");
     vi.resetModules();
+    vi.unstubAllEnvs();
   });
 
-  function clearOptOuts(): void {
-    vi.stubEnv("CI", "");
-    vi.stubEnv("HYPERFRAMES_NO_UPDATE_CHECK", "");
-  }
-
-  it("still asks the registry from a run without a terminal", async () => {
-    clearOptOuts();
-    const origTTY = process.stderr.isTTY;
-    Object.defineProperty(process.stderr, "isTTY", { value: false, configurable: true });
-    try {
-      expect((await checkWith("99.0.0", false)).fetched).toBe(true);
-    } finally {
-      Object.defineProperty(process.stderr, "isTTY", { value: origTTY, configurable: true });
-      vi.unstubAllEnvs();
-    }
-  });
-
-  it("skips the background registry request when DNS does not answer", async () => {
-    clearOptOuts();
-    dns.answers = false;
-    try {
-      expect((await checkWith("99.0.0", false)).fetched).toBe(false);
-      expect((await checkWith("99.0.0")).fetched).toBe(true);
-    } finally {
-      dns.answers = true;
-      vi.unstubAllEnvs();
-    }
-  });
-
-  it.each(["CI", "HYPERFRAMES_NO_UPDATE_CHECK"])(
-    "skips the background registry request when %s=1",
-    async (name) => {
-      clearOptOuts();
-      vi.stubEnv(name, "1");
-      try {
-        expect((await checkWith("99.0.0", false)).fetched).toBe(false);
-        expect((await checkWith("99.0.0")).fetched).toBe(true);
-      } finally {
-        vi.unstubAllEnvs();
-      }
-    },
-  );
-
-  it("caches and returns a valid semver from the registry", async () => {
-    const { latest, wroteVersion } = await checkWith("9.9.9");
-    expect(latest).toBe("9.9.9");
-    expect(wroteVersion).toBe("9.9.9");
-  });
-
-  it("rejects a version carrying shell metacharacters (no cache, no surface)", async () => {
-    const { latest, wroteVersion } = await checkWith("1.2.3; rm -rf /");
-    expect(latest).not.toContain(";");
-    expect(latest).not.toBe("1.2.3; rm -rf /");
-    expect(wroteVersion).toBeUndefined(); // never written to config
-  });
-
-  it("rejects a non-string data.version", async () => {
-    const { latest, wroteVersion } = await checkWith({ evil: true });
-    expect(typeof latest).toBe("string");
-    expect(wroteVersion).toBeUndefined();
-  });
-
-  it("leaves no timer behind when the registry request fails fast", async () => {
+  it("never touches the network, even when forced, and never writes config", async () => {
     vi.resetModules();
+    vi.doMock("./env.js", () => ({ isDevMode: () => false }));
+    const writes: unknown[] = [];
     vi.doMock("../telemetry/config.js", () => ({
       readConfig: () => ({}),
       readConfigFresh: () => ({}),
-      writeConfig: () => {},
+      writeConfig: (c: unknown) => writes.push(c),
     }));
-    const origFetch = globalThis.fetch;
-    globalThis.fetch = (async () => {
-      throw new TypeError("fetch failed");
-    }) as unknown as typeof fetch;
-    vi.useFakeTimers();
+    const fetchSpy = vi.fn();
+    vi.stubGlobal("fetch", fetchSpy);
     try {
       const mod = await import("./updateCheck.js");
-      await mod.checkForUpdate(true);
-      expect(vi.getTimerCount()).toBe(0);
+      const result = await mod.checkForUpdate(true);
+      expect(fetchSpy).not.toHaveBeenCalled();
+      expect(writes).toEqual([]);
+      expect(result.updateAvailable).toBe(false);
+      expect(result.latest).toBe(result.current);
+      expect(mod.updateCheckDue()).toBe(false);
     } finally {
-      vi.useRealTimers();
-      globalThis.fetch = origFetch;
+      vi.unstubAllGlobals();
     }
-  });
-
-  it("merges update metadata into a fresh snapshot without re-enabling telemetry", async () => {
-    const persisted = await checkAcrossConcurrentConfigWrite();
-    expect(persisted).toMatchObject({
-      telemetryEnabled: false,
-      latestVersion: "9.9.9",
-    });
   });
 });
 
-describe("updateCheckDue / cachedUpdateCheck — what the parent reads without fetching", () => {
+describe("cachedUpdateCheck — what the parent reads without fetching", () => {
   afterEach(() => {
     vi.doUnmock("../telemetry/config.js");
     vi.doUnmock("./env.js");
@@ -379,7 +225,7 @@ describe("updateCheckDue / cachedUpdateCheck — what the parent reads without f
   async function load(config: Record<string, unknown>) {
     vi.resetModules();
     vi.stubEnv("CI", "");
-    vi.stubEnv("HYPERFRAMES_NO_UPDATE_CHECK", "");
+    vi.stubEnv("TAGREEL_NO_UPDATE_CHECK", "");
     vi.doMock("./env.js", () => ({ isDevMode: () => false }));
     vi.doMock("../telemetry/config.js", () => ({
       readConfig: () => ({ ...config }),
@@ -388,29 +234,6 @@ describe("updateCheckDue / cachedUpdateCheck — what the parent reads without f
     }));
     return import("./updateCheck.js");
   }
-
-  const hoursAgo = (h: number) => new Date(Date.now() - h * 3_600_000).toISOString();
-
-  it.each([
-    ["no cache", {}, true],
-    ["a cache from an hour ago", { lastUpdateCheck: hoursAgo(1), latestVersion: "9.9.9" }, false],
-    ["a cache from 25 hours ago", { lastUpdateCheck: hoursAgo(25), latestVersion: "9.9.9" }, true],
-    ["an unreadable timestamp", { lastUpdateCheck: "garbage", latestVersion: "9.9.9" }, true],
-    [
-      "an unsafe cached version",
-      { lastUpdateCheck: hoursAgo(1), latestVersion: "1.2.3; rm" },
-      true,
-    ],
-  ])("with %s, a check is due: %s", async (_, config, due) => {
-    const mod = await load(config);
-    expect(mod.updateCheckDue()).toBe(due);
-  });
-
-  it("is never due under CI", async () => {
-    const mod = await load({});
-    vi.stubEnv("CI", "1");
-    expect(mod.updateCheckDue()).toBe(false);
-  });
 
   it("reports a cached newer version, and never surfaces an unsafe one", async () => {
     expect((await load({ latestVersion: "999.0.0" })).cachedUpdateCheck()).toMatchObject({

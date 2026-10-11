@@ -14,10 +14,10 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   title="Multiplayer Cursors"
   description="Labeled collaborator cursors with token-derived colors and soft glows drift from spread positions into a shared center zone, proving live multiplayer presence."
   variables={[{"id":"cursorCount","type":"number","role":"content","label":"Cursor count","description":"Number of labeled collaborator cursors.","default":4,"min":2,"max":6,"step":1},{"id":"labels","type":"string","role":"content","label":"Labels","description":"Comma-separated cursor names, in order.","default":"Ana,Ken,Wen,Mia"}]}
-  meta={{"category":"Effects","badge":"Stable","codeLines":429}}
+  meta={{"category":"Cursors","badge":"Stable","codeLines":429}}
   attribution={{"path":"registry/components/multiplayer-cursors","tags":["cursor","pointer","multiplayer","collaboration","presence","loop","prove"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/multiplayer-cursors/multiplayer-cursors.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/multiplayer-cursors/multiplayer-cursors.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html multiplayer-cursors.html
 <!doctype html>
 <!--
-  multiplayer-cursors, HyperFrames video primitive (pointers / loop / prove)
+  multiplayer-cursors, Tagreel video primitive (pointers / loop / prove)
 
   Concept: labeled collaborator cursors, each with an SVG pointer, matching
   name chip, and soft color glow, reveal from spread positions and glide into
@@ -67,7 +67,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   stay container-relative. The root is styled by #root, never by a class. The
   hardcoded timeline key remains "multiplayer-cursors" after mount flattening
   strips data-composition-id from the mounted root. Variables come only from
-  window.__hyperframes.getVariables(), which owns merged defaults and host
+  window.__tagreel.getVariables(), which owns merged defaults and host
   overrides inside a mounted composition.
 -->
 <html
@@ -297,8 +297,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             // EDIT ZONE: variable defaults mirror the outer declaration.
             // getVariables owns the declared-defaults-plus-host-overrides merge.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: count is always an integer in the declared 2 to 6 range.
@@ -458,7 +458,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add multiplayer-cursors" item="multiplayer-cursors" />
+<InstallCommand command="npx tagreel add multiplayer-cursors" item="multiplayer-cursors" />
 
 That writes one file: `compositions/components/multiplayer-cursors.html`.
 

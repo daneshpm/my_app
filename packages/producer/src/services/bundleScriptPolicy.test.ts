@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import puppeteer, { type Browser } from "puppeteer";
-import { bundleToSingleHtml } from "@hyperframes/core/compiler";
+import { bundleToSingleHtml } from "@tagreel/core/compiler";
 
 const INLINE_ONLY_POLICY = `<meta http-equiv="Content-Security-Policy" content="script-src 'unsafe-inline'">`;
 const ROOT = `<div data-composition-id="root" data-start="0" data-duration="2" data-width="320" data-height="180">`;

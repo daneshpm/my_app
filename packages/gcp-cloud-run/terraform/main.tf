@@ -1,4 +1,4 @@
-# HyperFrames distributed render stack on Google Cloud.
+# Tagreel distributed render stack on Google Cloud.
 #
 # Topology (the GCP twin of the AWS Lambda adapter's SAM template):
 #
@@ -42,13 +42,13 @@ resource "google_storage_bucket" "render" {
 resource "google_service_account" "run_sa" {
   account_id   = "${local.name}-run"
   project      = var.project_id
-  display_name = "HyperFrames render service (Cloud Run)"
+  display_name = "Tagreel render service (Cloud Run)"
 }
 
 resource "google_service_account" "workflow_sa" {
   account_id   = "${local.name}-wf"
   project      = var.project_id
-  display_name = "HyperFrames render orchestration (Workflows)"
+  display_name = "Tagreel render orchestration (Workflows)"
 }
 
 # Render service reads inputs + writes outputs in the render bucket only.
@@ -101,7 +101,7 @@ resource "google_cloud_run_v2_service" "render" {
       env {
         # Scopes every event's GCS URIs to this bucket (the handler's
         # GCS_URI_NOT_ALLOWED guard). Defense against request injection.
-        name  = "HYPERFRAMES_RENDER_BUCKET"
+        name  = "TAGREEL_RENDER_BUCKET"
         value = google_storage_bucket.render.name
       }
 

@@ -2,7 +2,7 @@
 
 A single **hero number** reveal. Asset-free (the "input" is the number). ~4–6s.
 
-Read [data in motion](../../../hyperframes-creative/references/data-in-motion.md) before planning or building the number reveal.
+Read [data in motion](../../../tagreel-creative/references/data-in-motion.md) before planning or building the number reveal.
 
 ## Plan (Director)
 
@@ -11,7 +11,7 @@ Read [data in motion](../../../hyperframes-creative/references/data-in-motion.md
 ## Vocabulary / leans on
 
 - Block: **`apple-money-count`** (finance-flavoured: $ counter + green flash + money burst + SFX) when it fits; otherwise hand-author.
-- Rules: `hyperframes-animation/rules/{counting-dynamic-scale, stat-bars-and-fills}`.
+- Rules: `tagreel-animation/rules/{counting-dynamic-scale, stat-bars-and-fills}`.
 - Primitives: `count_up` (odometer) · `scale_pop` · `ring_fill` (arc) · `label_stagger` (after value) · `hold`.
 
 ## Build (reuse-first)

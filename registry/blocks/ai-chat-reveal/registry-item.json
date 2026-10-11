@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "ai-chat-reveal",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "AI Chat Reveal",
   "description": "A question is typed on a rising keyboard, sent, and answered by an AI that streams its reply word by word on a measured token rhythm - thinking dot, uneven bursts, bulleted list - before the app cuts to a branded closing card",
   "tags": ["showcase", "mock-ui", "ai", "chat", "vertical", "ad-template"],
@@ -35,7 +35,7 @@
       "role": "content",
       "label": "Answer paragraph 1",
       "description": "First streamed paragraph. It names the brand this video promotes and says what that brand does.",
-      "default": "You do not need an editor. HyperFrames renders the HTML you already write into deterministic, pixel-perfect video."
+      "default": "You do not need an editor. Tagreel renders the HTML you already write into deterministic, pixel-perfect video."
     },
     {
       "id": "answer2",
@@ -101,7 +101,7 @@
       "label": "End-card CTA",
       "description": "Closing-card button label, which names the brand this video promotes. Use the real name of that brand.",
       "portrays": ["subject_name"],
-      "default": "Try HyperFrames"
+      "default": "Try Tagreel"
     },
     {
       "id": "ecFooter",
@@ -110,7 +110,7 @@
       "label": "End-card footer",
       "description": "Domain of the brand this video promotes, letter-spaced at the very bottom. Use the real domain.",
       "portrays": ["subject_domain"],
-      "default": "HYPERFRAMES.HEYGEN.COM"
+      "default": "ACME.EXAMPLE"
     },
     {
       "id": "brandLogo",
@@ -119,28 +119,24 @@
       "label": "Brand logo",
       "description": "Transparent mark of the brand this video promotes, in the closing-card header.",
       "portrays": ["subject_logo"],
-      "default": "assets/hyperframes-logo-white.svg"
+      "default": "assets/tagreel-logo-white.svg"
     }
   ],
   "files": [
     {
       "path": "ai-chat-reveal.html",
       "target": "compositions/ai-chat-reveal.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
-      "path": "assets/hyperframes-logo-white.svg",
-      "target": "assets/hyperframes-logo-white.svg",
-      "type": "hyperframes:asset"
+      "path": "assets/tagreel-logo-white.svg",
+      "target": "assets/tagreel-logo-white.svg",
+      "type": "tagreel:asset"
     },
     {
       "path": "TEMPLATE.md",
       "target": "TEMPLATE.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/ai-chat-reveal/preview.mp4",
-    "poster": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/ai-chat-reveal/poster.jpg"
-  }
+  ]
 }

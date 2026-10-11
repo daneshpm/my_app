@@ -1,5 +1,5 @@
 /**
- * Decide whether the player should inject the HyperFrames runtime on the
+ * Decide whether the player should inject the Tagreel runtime on the
  * current probe tick.
  *
  * The player polls the loaded iframe every 200ms to discover either:

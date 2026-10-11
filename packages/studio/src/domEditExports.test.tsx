@@ -18,7 +18,7 @@ import {
   type UseDomEditSessionParams,
   type UsePreviewPersistenceParams,
   type ZOrderAction,
-} from "@hyperframes/studio";
+} from "@tagreel/studio";
 import { makeSelection } from "./hooks/domSelectionTestHarness";
 
 Object.assign(globalThis, { IS_REACT_ACT_ENVIRONMENT: true });

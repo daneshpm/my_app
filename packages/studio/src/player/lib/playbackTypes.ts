@@ -4,7 +4,7 @@
  * from here without creating circular dependencies.
  */
 
-import type { RuntimeTimelineClipIdentity } from "@hyperframes/core";
+import type { RuntimeTimelineClipIdentity } from "@tagreel/core";
 
 export interface PlaybackAdapter {
   play: () => void;

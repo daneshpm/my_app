@@ -37,7 +37,7 @@ for (const [name, html] of Object.entries({ "a-single": single(), "c-clips60": c
   writeFileSync(`${name}/index.html`, html);
   if (!existsSync(`${name}/assets/long.mp4`)) linkSync("assets/long.mp4", `${name}/assets/long.mp4`);
   writeFileSync(
-    `${name}/hyperframes.json`,
+    `${name}/tagreel.json`,
     JSON.stringify({ name, fps: 30, width: W, height: H }, null, 2),
   );
 }

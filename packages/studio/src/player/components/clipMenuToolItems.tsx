@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from "react";
-import { HF_AUDIO_FX_ATTR } from "@hyperframes/core/audio-fx";
-import { HF_COLOR_GRADING_ATTR } from "@hyperframes/core/color-grading";
+import { HF_AUDIO_FX_ATTR } from "@tagreel/core/audio-fx";
+import { HF_COLOR_GRADING_ATTR } from "@tagreel/core/color-grading";
 import type { TimelineElement } from "../store/playerStore";
 import { useTimelineEditContextOptional } from "../../contexts/TimelineEditContext";
 import { useCropPresetBarStore } from "../../components/editor/cropPresetStore";

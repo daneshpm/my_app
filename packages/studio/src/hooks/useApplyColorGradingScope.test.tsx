@@ -24,7 +24,7 @@ vi.mock("../contexts/FileManagerContext", () => ({
   useFileManagerContext: () => ({
     readProjectFile,
     writeProjectFile: vi.fn(),
-    fileTree: ["index.html", "scene.html", ".hyperframes/preview/4884df6e.html"],
+    fileTree: ["index.html", "scene.html", ".tagreel/preview/4884df6e.html"],
     compositions: ["index.html", "scene.html"],
   }),
 }));

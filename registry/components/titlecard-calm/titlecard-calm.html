@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  titlecard-calm: HyperFrames video primitive (typography / calm / orient)
+  titlecard-calm: Tagreel video primitive (typography / calm / orient)
 
   Concept: a restrained title card led by a small mono kicker and a large
   grotesque headline. The kicker fades and rises first, then the headline
@@ -125,8 +125,8 @@
             var kicker = root.querySelector(".tc-kicker");
             var headline = root.querySelector(".tc-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var headlineText = vars.headline == null ? "Less, but better" : String(vars.headline);

@@ -13,7 +13,7 @@ vi.mock("./hooks/useThumbnailLease", () => ({
   useThumbnailLease: leaseSpy,
 }));
 
-import { AudioWaveform, ImageThumbnail, useRenderClipContent } from "@hyperframes/studio";
+import { AudioWaveform, ImageThumbnail, useRenderClipContent } from "@tagreel/studio";
 
 installReactActEnvironment();
 

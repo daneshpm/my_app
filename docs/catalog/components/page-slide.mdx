@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":120}}
   attribution={{"path":"registry/components/page-slide","tags":["video-primitive","transition-primitive","transitions-dev-port","page","slide"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/page-slide/page-slide.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/page-slide/page-slide.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html page-slide.html
 <!--
-  Page Slide - transitions.dev-inspired primitive for HyperFrames.
+  Page Slide - transitions.dev-inspired primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Use the timeline
   integration note at the bottom as the starting point for deterministic GSAP
@@ -98,8 +98,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -149,7 +149,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add page-slide" item="page-slide" />
+<InstallCommand command="npx tagreel add page-slide" item="page-slide" />
 
 That writes one file: `compositions/components/page-slide.html`.
 

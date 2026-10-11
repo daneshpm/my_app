@@ -1,5 +1,5 @@
 /**
- * Resolve the HyperFrames repo root. Used by `lambda deploy`/`destroy`
+ * Resolve the Tagreel repo root. Used by `lambda deploy`/`destroy`
  * to find `examples/aws-lambda/template.yaml` and the handler ZIP build
  * script.
  *
@@ -13,11 +13,11 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 export function repoRoot(): string {
-  const override = process.env.HYPERFRAMES_REPO_ROOT;
+  const override = process.env.TAGREEL_REPO_ROOT;
   if (override) {
     if (existsSync(resolve(override, "packages", "aws-lambda", "package.json"))) return override;
     throw new Error(
-      "[hyperframes lambda] HYPERFRAMES_REPO_ROOT is not a hyperframes checkout " +
+      "[tagreel lambda] TAGREEL_REPO_ROOT is not a tagreel checkout " +
         "(no packages/aws-lambda/package.json there). Point it at the repo root, or unset it.",
     );
   }
@@ -31,7 +31,7 @@ export function repoRoot(): string {
     dir = parent;
   }
   throw new Error(
-    "[hyperframes lambda] could not find the repo root (no packages/aws-lambda/ above this CLI's source). " +
-      "Run `hyperframes lambda` from within a hyperframes checkout, or set HYPERFRAMES_REPO_ROOT explicitly.",
+    "[tagreel lambda] could not find the repo root (no packages/aws-lambda/ above this CLI's source). " +
+      "Run `tagreel lambda` from within a tagreel checkout, or set TAGREEL_REPO_ROOT explicitly.",
   );
 }

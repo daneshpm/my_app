@@ -187,7 +187,7 @@ your DOM or CSS for you — you do it in three steps:
    template or fragment.
 2. Pass each copy's values on its host element with `data-variable-values`.
 3. Read them inside the composition with
-   `window.__hyperframes.getVariables()`, which layers the host's values over
+   `window.__tagreel.getVariables()`, which layers the host's values over
    the declared defaults, one copy at a time.
 
 ```html index.html
@@ -227,7 +227,7 @@ And the source file both cards share:
       </style>
 
       <script>
-        const { title, color } = __hyperframes.getVariables();
+        const { title, color } = __tagreel.getVariables();
         const root = document.querySelector('[data-composition-id="card"]');
         root.querySelector(".title").textContent = title;
         root.style.setProperty("--card-color", color);
@@ -239,7 +239,7 @@ And the source file both cards share:
 
 [Variables](/concepts/variables) covers the types, the bindings that need no
 script, CLI overrides, and which value wins. If you are building tooling on
-`@hyperframes/core`, `extractCompositionMetadata()` reads the same
+`@tagreel/core`, `extractCompositionMetadata()` reads the same
 `data-composition-variables` array — that is how Studio builds its editing UI.
 
 ## Load a composition's own files from its script
@@ -248,7 +248,7 @@ When a composition is mounted, a `src` or `href` attribute that points at a
 file next to it is rewritten to where that file lives, so
 `<img src="assets/logo.png">` keeps working. A path your script builds is a
 plain string and is never rewritten, so resolve it with
-`window.__hyperframes.assetUrl()`. It takes a path written relative to the
+`window.__tagreel.assetUrl()`. It takes a path written relative to the
 composition's own file and returns a URL the page can load, whether the file is
 mounted, previewed or opened on its own.
 
@@ -261,7 +261,7 @@ folder, already resolves from the page. Leave it as a plain string:
 <div data-composition-id="globe" data-width="1920" data-height="1080">
   <script>
     const texture = new THREE.TextureLoader().load(
-      __hyperframes.assetUrl("assets/earth.jpg"),
+      __tagreel.assetUrl("assets/earth.jpg"),
     );
   </script>
 </div>
@@ -274,7 +274,7 @@ them over, for example on a global the file reads.
 ## See every composition in a project
 
 ```bash
-npx hyperframes compositions
+npx tagreel compositions
 ```
 
 ## Related topics

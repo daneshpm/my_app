@@ -19,7 +19,7 @@ try {
   );
 
   await page.evaluate(() => {
-    document.querySelector("hyperframes-player")?.setAttribute("sandbox-origin", "opaque");
+    document.querySelector("tagreel-player")?.setAttribute("sandbox-origin", "opaque");
   });
   await page.waitForFunction(() => (window.__sandboxProbeResults?.length ?? 0) >= 2);
   assert.equal(
@@ -29,7 +29,7 @@ try {
   );
 
   await page.evaluate(() => {
-    document.querySelector("hyperframes-player")?.setAttribute("sandbox-origin", "opaqu");
+    document.querySelector("tagreel-player")?.setAttribute("sandbox-origin", "opaqu");
   });
   await page.waitForFunction(() => (window.__sandboxProbeResults?.length ?? 0) >= 3);
   assert.equal(
@@ -39,7 +39,7 @@ try {
   );
 
   await page.evaluate(() => {
-    document.querySelector("hyperframes-player")?.removeAttribute("sandbox-origin");
+    document.querySelector("tagreel-player")?.removeAttribute("sandbox-origin");
   });
   await page.waitForFunction(() => (window.__sandboxProbeResults?.length ?? 0) >= 4);
   assert.equal(

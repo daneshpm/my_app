@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "stop-motion-cadence",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Stop Motion Cadence",
   "description": "The stepped-time law as a demo primitive: one driver quantizes timeline time to floor(t * fps) / fps and feeds ALL motion; four token paper-cut shapes throw-and-land with squash on hits, 2-frame boil jitter seeded per step, and sparkle accents living exactly 2 to 3 frames.",
   "tags": [
@@ -22,7 +22,7 @@
     {
       "path": "stop-motion-cadence.html",
       "target": "compositions/components/stop-motion-cadence.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

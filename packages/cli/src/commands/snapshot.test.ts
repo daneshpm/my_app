@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
 import { execFileSync } from "node:child_process";
 import { findFFmpeg, findFFprobe } from "../browser/ffmpeg.js";
-import { sourceTimeAt } from "@hyperframes/core";
+import { sourceTimeAt } from "@tagreel/core";
 
 const snapshotState = vi.hoisted(() => ({
   openSettledPage: vi.fn(async (): Promise<unknown> => {
@@ -140,14 +140,14 @@ describe("snapshot lint preflight", () => {
     const output = await runEntryMismatch("compositions/card.html");
 
     expect(output).toContain("compositions/card.html");
-    expect(output).not.toContain("hyperframes snapshot <project>/compositions");
+    expect(output).not.toContain("tagreel snapshot <project>/compositions");
     expect(output).toContain("snapshot accepts project directories, not individual HTML files");
   });
 
   it("suggests the reported index.html directory with the re-rooting caveat", async () => {
     const output = await runEntryMismatch("compositions/index.html");
 
-    expect(output).toContain("hyperframes snapshot <project>/compositions");
+    expect(output).toContain("tagreel snapshot <project>/compositions");
     expect(output).toContain("assets are self-contained under that directory");
   });
 });
@@ -653,7 +653,7 @@ describe("extractVideoFrameToBuffer", () => {
         await frameAt(time, index);
       }
       // Without ffprobe, the plain seek keeps main's first-frame-at-or-after behaviour.
-      vi.stubEnv("HYPERFRAMES_FFPROBE_PATH", join(dir, "missing-ffprobe"));
+      vi.stubEnv("TAGREEL_FFPROBE_PATH", join(dir, "missing-ffprobe"));
       for (const [time, index] of [
         [0, 0],
         [0.05, 2],
@@ -699,7 +699,7 @@ describe("extractVideoFrameToBuffer", () => {
 
   it.skipIf(!ffmpeg)("extracts without ffprobe, as before frame selection needed it", async () => {
     const dir = mkdtempSync(join(tmpdir(), "hf-snapshot-no-ffprobe-"));
-    vi.stubEnv("HYPERFRAMES_FFPROBE_PATH", join(dir, "missing-ffprobe"));
+    vi.stubEnv("TAGREEL_FFPROBE_PATH", join(dir, "missing-ffprobe"));
     try {
       const clip = join(dir, "clip.mp4");
       execFileSync(ffmpeg!, [

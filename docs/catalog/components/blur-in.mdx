@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":239}}
   attribution={{"path":"registry/components/blur-in","tags":["video-primitive","blur-in","text-effect"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/blur-in/blur-in.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/blur-in/blur-in.html"
 >
 
 <CatalogSlot slot="code">
@@ -221,8 +221,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -268,7 +268,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add blur-in" item="blur-in" />
+<InstallCommand command="npx tagreel add blur-in" item="blur-in" />
 
 That writes one file: `compositions/components/blur-in.html`.
 

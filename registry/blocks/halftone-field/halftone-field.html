@@ -63,7 +63,7 @@
       <div id="hlf-backdrop"></div>
       <canvas id="hlf-canvas" width="1920" height="1080"></canvas>
 
-      <!-- Driver clip: gives HyperFrames a timed element to own on track 0. -->
+      <!-- Driver clip: gives Tagreel a timed element to own on track 0. -->
       <div
         id="hlf-drv"
         class="clip"
@@ -80,7 +80,7 @@
         var W = 1920;
         var H = 1080;
 
-        var V = (window.__hyperframes && window.__hyperframes.getVariables()) || {};
+        var V = (window.__tagreel && window.__tagreel.getVariables()) || {};
         var CS = getComputedStyle(document.getElementById("hlf-root"));
 
         // The runtime defines every declared variable as `--<id>` on the root,

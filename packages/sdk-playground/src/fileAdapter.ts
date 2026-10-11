@@ -1,4 +1,4 @@
-import type { PersistAdapter, PersistErrorEvent, PersistVersionEntry } from "@hyperframes/sdk";
+import type { PersistAdapter, PersistErrorEvent, PersistVersionEntry } from "@tagreel/sdk";
 
 const API = "/api/composition";
 

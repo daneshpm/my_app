@@ -1,10 +1,10 @@
-# @hyperframes/gcp-cloud-run
+# @tagreel/gcp-cloud-run
 
-Google Cloud Run + Cloud Workflows adapter for HyperFrames distributed
+Google Cloud Run + Cloud Workflows adapter for Tagreel distributed
 rendering. The OSS render primitives (`plan` → `renderChunk` × N →
 `assemble`) are pure functions over local file paths; this package is the
 deployment, orchestration, and storage glue that runs them on Google Cloud —
-the GCP counterpart to [`@hyperframes/aws-lambda`](../aws-lambda).
+the GCP counterpart to [`@tagreel/aws-lambda`](../aws-lambda).
 
 Two surfaces, one package:
 
@@ -17,7 +17,7 @@ Two surfaces, one package:
   Call these from a Node process (CI, CLI, app backend) to drive a deployed
   stack without writing GCS / Workflows boilerplate.
 
-The package is **not** a dependency of `@hyperframes/producer`; install it
+The package is **not** a dependency of `@tagreel/producer`; install it
 separately.
 
 ## Architecture
@@ -79,7 +79,7 @@ Unlike the Lambda adapter — which fights a 250 MB ZIP ceiling and
 decompresses `@sparticuz/chromium` into `/tmp` at runtime — Cloud Run runs a
 container image. The `Dockerfile` installs the same pinned
 `chrome-headless-shell` build and font set the production renderer uses, at a
-fixed path, and exports `HYPERFRAMES_CHROME_PATH`. CDP-level `BeginFrame`
+fixed path, and exports `TAGREEL_CHROME_PATH`. CDP-level `BeginFrame`
 support is a binary/runtime capability, so the image build launches that
 exact executable and requires an enable + warm-up + PNG-returning
 `HeadlessExperimental.beginFrame` probe to pass. The end-to-end smoke also
@@ -97,14 +97,14 @@ the service), and a runaway-request alert.
 ```bash
 # 1. Build + push the image (Cloud Build or local docker).
 gcloud builds submit . \
-  --tag REGION-docker.pkg.dev/PROJECT/REPO/hyperframes-render:TAG
+  --tag REGION-docker.pkg.dev/PROJECT/REPO/tagreel-render:TAG
 
 # 2. Apply the module.
-terraform -chdir=node_modules/@hyperframes/gcp-cloud-run/terraform init
-terraform -chdir=node_modules/@hyperframes/gcp-cloud-run/terraform apply \
+terraform -chdir=node_modules/@tagreel/gcp-cloud-run/terraform init
+terraform -chdir=node_modules/@tagreel/gcp-cloud-run/terraform apply \
   -var project_id=PROJECT \
   -var region=us-central1 \
-  -var image=REGION-docker.pkg.dev/PROJECT/REPO/hyperframes-render:TAG
+  -var image=REGION-docker.pkg.dev/PROJECT/REPO/tagreel-render:TAG
 ```
 
 Terraform outputs `render_bucket_name`, `service_url`, `workflow_name`, and
@@ -113,16 +113,16 @@ Terraform outputs `render_bucket_name`, `service_url`, `workflow_name`, and
 ## Using the SDK
 
 ```ts
-import { renderToCloudRun, getRenderProgress } from "@hyperframes/gcp-cloud-run/sdk";
+import { renderToCloudRun, getRenderProgress } from "@tagreel/gcp-cloud-run/sdk";
 
 const handle = await renderToCloudRun({
   projectDir: "./my-composition",
   config: { fps: 30, width: 1920, height: 1080, format: "mp4" },
-  bucketName: "hyperframes-render-my-project", // from terraform output
+  bucketName: "tagreel-render-my-project", // from terraform output
   projectId: "my-project",
   location: "us-central1",
-  workflowId: "hyperframes-render",
-  serviceUrl: "https://hyperframes-render-abc.us-central1.run.app",
+  workflowId: "tagreel-render",
+  serviceUrl: "https://tagreel-render-abc.us-central1.run.app",
 });
 
 // Poll until done.

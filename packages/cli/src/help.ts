@@ -1,5 +1,5 @@
 /**
- * Custom help renderer for the hyperframes CLI.
+ * Custom help renderer for the tagreel CLI.
  *
  * Root-level: grouped command categories + examples.
  * Subcommands: citty's standard USAGE/ARGUMENTS/OPTIONS + appended examples.
@@ -25,9 +25,7 @@ const GROUPS: Group[] = [
       ["catalog", "Browse and install blocks and components"],
       ["preview", "Start the studio for previewing compositions"],
       ["present", "Open a slideshow deck in presenter mode (with audience sync)"],
-      ["publish", "Upload a project to a stable URL (private by default)"],
       ["render", "Render a composition to MP4 or WebM"],
-      ["open", "Open a project in the HyperFrames desktop app"],
     ],
   },
   {
@@ -79,7 +77,6 @@ const GROUPS: Group[] = [
   {
     title: "Deploy",
     commands: [
-      ["cloud", "Render compositions on HeyGen's cloud (no local Chrome/ffmpeg)"],
       ["lambda", "Deploy and drive distributed renders on AWS Lambda"],
       ["cloudrun", "Deploy and drive distributed renders on Google Cloud Run"],
     ],
@@ -97,46 +94,34 @@ const GROUPS: Group[] = [
       ["remove-background", "Remove background from a video or image to produce transparent media"],
     ],
   },
-  {
-    title: "Account",
-    commands: [["auth", "Sign in to HeyGen and manage credentials"]],
-  },
-  {
-    title: "Settings",
-    commands: [
-      ["feedback", "Submit anonymous feedback about your experience"],
-      ["telemetry", "Manage anonymous usage telemetry"],
-    ],
-  },
 ];
 
 // ── Root-level examples ────────────────────────────────────────────────────
 import type { Example } from "./commands/_examples.js";
 
 const ROOT_EXAMPLES: Example[] = [
-  ["Create a new project", "hyperframes init my-video"],
-  ["Start the live preview studio", "hyperframes preview"],
-  ["Publish to hyperframes.dev", "hyperframes publish"],
-  ["Render to MP4", "hyperframes render -o out.mp4"],
-  ["Transparent WebM overlay", "hyperframes render --format webm -o out.webm"],
-  ["Validate your composition", "hyperframes lint"],
-  ["Inspect visual layout", "hyperframes inspect"],
-  ["Check system dependencies", "hyperframes doctor"],
+  ["Create a new project", "tagreel init my-video"],
+  ["Start the live preview studio", "tagreel preview"],
+  ["Render to MP4", "tagreel render -o out.mp4"],
+  ["Transparent WebM overlay", "tagreel render --format webm -o out.webm"],
+  ["Validate your composition", "tagreel lint"],
+  ["Inspect visual layout", "tagreel inspect"],
+  ["Check system dependencies", "tagreel doctor"],
 ];
 
 // ── Per-command examples loaded from command files ────────────────────────
 // Each command file exports `examples: Example[]`. This function dynamically
 // imports them so examples live next to the command they document.
 //
-// For nested subverbs (e.g. `cloud render`), try the parent-scoped path
-// first (`commands/cloud/render.js`) so we don't collide with the
+// For nested subverbs (e.g. `lambda deploy`), try the parent-scoped path
+// first (`commands/lambda/deploy.js`) so we don't collide with the
 // top-level command of the same name (`commands/render.js`).
 // fallow-ignore-next-line complexity
 async function loadExamples(name: string, parentName?: string): Promise<Example[] | undefined> {
   // Skip the parent-scoped lookup for the root command — `parentName`
-  // is `'hyperframes'` for every top-level subcommand and no
-  // `./commands/hyperframes/<name>.js` directory will ever exist.
-  if (parentName && parentName !== "hyperframes") {
+  // is `'tagreel'` for every top-level subcommand and no
+  // `./commands/tagreel/<name>.js` directory will ever exist.
+  if (parentName && parentName !== "tagreel") {
     const examples = await tryLoadExamples(`./commands/${parentName}/${name}.js`);
     if (examples) return examples;
   }
@@ -158,7 +143,7 @@ async function tryLoadExamples(modulePath: string): Promise<Example[] | undefine
 
 // Commands without their own file (e.g. listed in help but not yet a real command)
 const STATIC_EXAMPLES: Record<string, Example[]> = {
-  skills: [["Install all skills to all supported AI tools", "hyperframes skills"]],
+  skills: [["Install all skills to all supported AI tools", "tagreel skills"]],
 };
 
 // ── Render root help ───────────────────────────────────────────────────────
@@ -168,10 +153,10 @@ function renderRootHelp(): string {
   const lines: string[] = [];
 
   lines.push(
-    `${c.bold("hyperframes")} ${c.dim(`v${VERSION}`)} — Create and render HTML video compositions`,
+    `${c.bold("tagreel")} ${c.dim(`v${VERSION}`)} — Create and render HTML video compositions`,
   );
   lines.push("");
-  lines.push(`${c.bold("Usage:")}  hyperframes ${c.cyan("<command>")} [options]`);
+  lines.push(`${c.bold("Usage:")}  tagreel ${c.cyan("<command>")} [options]`);
   lines.push("");
 
   for (const group of GROUPS) {
@@ -188,7 +173,7 @@ function renderRootHelp(): string {
   }
   lines.push("");
 
-  lines.push(`Run ${c.cyan("hyperframes <command> --help")} for more information about a command.`);
+  lines.push(`Run ${c.cyan("tagreel <command> --help")} for more information about a command.`);
 
   return lines.join("\n");
 }

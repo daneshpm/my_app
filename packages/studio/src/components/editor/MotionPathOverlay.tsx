@@ -11,7 +11,7 @@ import { nearestPointOnPath, nodeCentre, type MotionNodeRef } from "./motionPath
 import { editableAnimationId, selectorFor } from "./motionPathSelection";
 import { controlForNode, controlUnder, pressControl } from "./motionPathLayerNode";
 import { readGsapPositionFromIframe } from "../../hooks/gsapPositionDetection";
-import { isHtmlElement } from "@hyperframes/core/runtime/dom-realm";
+import { isHtmlElement } from "@tagreel/core/runtime/dom-realm";
 import { ACCENT, MotionPathLine, MotionPathNode } from "./MotionPathNode";
 import {
   KeyframeDiamondContextMenu,

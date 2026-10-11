@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "velocity-throw-snap",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Velocity Throw Snap",
   "description": "A five-shot rail whips past on a fast decaying curve, then overshoots and snaps the selected hero shot exactly to center.",
   "tags": ["motion-primitive", "feature-tour", "rail", "velocity", "throw", "snap", "physics"],
@@ -14,7 +14,7 @@
     {
       "path": "velocity-throw-snap.html",
       "target": "compositions/components/velocity-throw-snap.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

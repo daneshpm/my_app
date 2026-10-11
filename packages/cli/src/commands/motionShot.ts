@@ -398,7 +398,7 @@ async function openCompositionPage(
   size: FrameSize;
 }> {
   const puppeteer = await import("puppeteer-core");
-  const { buildChromeArgs } = await import("@hyperframes/engine");
+  const { buildChromeArgs } = await import("@tagreel/engine");
   const size = resolveCompositionViewportFromHtml(html);
   const requestedGpuMode = resolveLocalBrowserGpuMode();
   const resolvedGpuMode = await resolveManagedGpuMode(requestedGpuMode, executablePath);
@@ -773,7 +773,7 @@ export async function captureMotionPathShot(
 
   const { ensureBrowser } = await import("../browser/manager.js");
   const { serveStaticProjectHtml } = await import("../utils/staticProjectServer.js");
-  const { bundleToSingleHtml } = await import("@hyperframes/core/compiler");
+  const { bundleToSingleHtml } = await import("@tagreel/core/compiler");
 
   const html = await bundleToSingleHtml(projectDir, { entryFile: opts.entryFile });
   const server = await serveStaticProjectHtml(

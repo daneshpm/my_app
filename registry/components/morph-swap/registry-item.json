@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "morph-swap",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Morph Swap",
   "description": "Two slotted siblings stacked at one shared center: A holds, then condenses or reshapes into B on a shared 50% 50% transform origin. Condense shrink-fades A exactly as B scales up; reshape morphs the silhouette on scaleX/scaleY, never width or height tweens. Token card defaults render when a slot is left empty.",
   "tags": ["transition", "morph", "swap", "condense", "reshape", "holdable", "slots"],
@@ -14,7 +14,7 @@
     {
       "path": "morph-swap.html",
       "target": "compositions/components/morph-swap.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

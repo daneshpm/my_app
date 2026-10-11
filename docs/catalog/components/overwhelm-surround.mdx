@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":374}}
   attribution={{"path":"registry/components/overwhelm-surround","tags":["effects","agitate","overwhelm","pressure","notifications"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/overwhelm-surround/overwhelm-surround.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/overwhelm-surround/overwhelm-surround.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html overwhelm-surround.html
 <!doctype html>
 <!--
-  overwhelm-surround: HyperFrames video primitive (effects / holdable / agitate)
+  overwhelm-surround: Tagreel video primitive (effects / holdable / agitate)
 
   Concept: tasks, tabs, pings, and notification bubbles fly inward from every
   edge and crowd a calm central subject. Pressure is spatial: the still center
@@ -61,7 +61,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   composition. A host loads it via data-composition-src; the runtime only
   clones <template> contents (everything outside <template>, including the
   entire <head>, is discarded on mount), see
-  skills/hyperframes-core/references/sub-compositions.md. The root carries no
+  skills/tagreel-core/references/sub-compositions.md. The root carries no
   data-width/data-height: it is elastic, sized off whatever box the host clip
   gives it (position:absolute; inset:0; container-type:size), so the effect
   reads correctly whether the host mounts it into a 960x540 slot or a full
@@ -69,7 +69,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   renders scope this file's CSS to [data-composition-id="overwhelm-surround"],
   and a rule keyed on the root's own class would stop matching the root itself
   (sub-compositions.md, Pitfall 3). Variables are read via
-  window.__hyperframes.getVariables() (not by parsing this file's own <html>
+  window.__tagreel.getVariables() (not by parsing this file's own <html>
   tag at runtime): once mounted, document.documentElement is the HOST's <html>,
   so the loader's declared-defaults-plus-per-instance-overrides table is the
   only reliable source once the primitive is running inside a host page.
@@ -256,8 +256,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var centerLabelEl = root.querySelector(".os-center-label");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: one clamped value owns each visual decision. Empty
@@ -403,7 +403,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add overwhelm-surround" item="overwhelm-surround" />
+<InstallCommand command="npx tagreel add overwhelm-surround" item="overwhelm-surround" />
 
 That writes one file: `compositions/components/overwhelm-surround.html`.
 

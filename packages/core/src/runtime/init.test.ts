@@ -23,7 +23,7 @@ it("schedules WebAudio element gain from author volume without bridge volume", (
 
 // The page log crosses into the host as text, so it must be one string.
 function loggedRuntimeFps(infoSpy: { mock: { calls: unknown[][] } }): unknown {
-  const prefix = "[hyperframes] render runtime fps ";
+  const prefix = "[tagreel] render runtime fps ";
   const call = infoSpy.mock.calls.find(([message]) => String(message).startsWith(prefix));
   expect(call).toHaveLength(1);
   return JSON.parse(String(call?.[0]).slice(prefix.length));
@@ -1961,7 +1961,7 @@ describe("initSandboxRuntimeModular", () => {
 
     const warned = warnSpy.mock.calls.map((c) => String(c[0])).join("\n");
     expect(window.__player?.getDuration()).toBe(0);
-    expect(warned).toContain("[hyperframes]");
+    expect(warned).toContain("[tagreel]");
     expect(warned).toContain("Root timeline not bound");
     expect(warned).toContain("wrong-key-a");
     expect(warned).toContain("wrong-key-b");
@@ -5349,7 +5349,7 @@ describe("initSandboxRuntimeModular", () => {
     });
 
     it("reports the bypass at media discovery, without anyone calling play()", () => {
-      // `hyperframes check` seeks, it never plays. A diagnostic raised only
+      // `tagreel check` seeks, it never plays. A diagnostic raised only
       // from the schedule path would be invisible to the one gate whose job is
       // to surface this.
       mountAudio("https://cdn.example.com/track.mp3", { "data-fx-chain": "[]" });

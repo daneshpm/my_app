@@ -9,7 +9,7 @@ export function parseFeedbackSource(raw: string | undefined): FeedbackSource | n
   return SOURCES.includes(source) ? (source as FeedbackSource) : null;
 }
 
-export const FEEDBACK_EMAIL_ENV = "HYPERFRAMES_FEEDBACK_EMAIL";
+export const FEEDBACK_EMAIL_ENV = "TAGREEL_FEEDBACK_EMAIL";
 
 /** Set only by the launching app (never a flag or a project `.env`); unverified, so never proof of identity. */
 export function feedbackEmail(env: NodeJS.ProcessEnv = process.env): string | undefined {

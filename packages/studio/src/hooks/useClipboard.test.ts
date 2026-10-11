@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { ensureHfIds } from "@hyperframes/parsers";
+import { ensureHfIds } from "@tagreel/parsers";
 import { describe, expect, it } from "vitest";
 import {
   pasteElementHtml,

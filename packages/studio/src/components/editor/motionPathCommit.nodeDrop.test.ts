@@ -1,6 +1,6 @@
 // @vitest-environment happy-dom
 import { afterEach, expect, it, onTestFinished, vi } from "vitest";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "./domEditing";
 import { boxSteps, previewWith, tween } from "../../hooks/gsapParsedTween.test-helpers";
 import { usePlayerStore } from "../../player/store/playerStore";

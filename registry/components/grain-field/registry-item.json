@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "grain-field",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Grain Field",
   "description": "A clearly visible accent-tinted dot field drifts over a subtle luminance gradient in an exact ambient loop.",
   "tags": ["motion-primitive", "background", "grain", "dots", "texture", "ambient", "loopable"],
@@ -13,7 +13,7 @@
     {
       "path": "grain-field.html",
       "target": "compositions/components/grain-field.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

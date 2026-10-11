@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  ordered-dither-pass: HyperFrames video primitive (Wave M experiment,
+  ordered-dither-pass: Tagreel video primitive (Wave M experiment,
   texture / transitions)
 
   Bayer-matrix ordered dithering quantizes a slotted scene. The source is
@@ -134,8 +134,8 @@
             var stage = root.querySelector(".odp-stage");
             var canvas = root.querySelector(".odp-canvas");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {

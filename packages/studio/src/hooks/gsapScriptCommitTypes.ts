@@ -1,5 +1,5 @@
-import type { ParsedGsap } from "@hyperframes/core/gsap-parser";
-import type { Composition } from "@hyperframes/sdk";
+import type { ParsedGsap } from "@tagreel/core/gsap-parser";
+import type { Composition } from "@tagreel/sdk";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import type { PublishSdkSession } from "../utils/sdkCutover";
 import type { StudioEditInFlight } from "../utils/studioPendingEdits";

@@ -272,9 +272,9 @@ function jsonScriptLiteral(value: unknown): string {
   return JSON.stringify(value).replace(/</g, "\\u003c");
 }
 
-const SCOPED_HYPERFRAMES_EXPRESSION = `!__hfBaseHyperframes
-    ? __hfBaseHyperframes
-    : Object.assign({}, __hfBaseHyperframes, {
+const SCOPED_TAGREEL_EXPRESSION = `!__hfBaseTagreel
+    ? __hfBaseTagreel
+    : Object.assign({}, __hfBaseTagreel, {
         assetUrl: function(path) {
           var page = window.document.baseURI;
           return new URL(path, __hfCompositionSrc ? new URL(__hfCompositionSrc, page) : page).href;
@@ -290,9 +290,9 @@ export function scopedModulePrelude(
   timelineCompositionId: string,
   compositionSrc?: string | null,
 ): string {
-  return `const __hyperframes = (function(__hfBaseHyperframes, __hfTimelineCompId, __hfCompositionSrc) {
-  return ${SCOPED_HYPERFRAMES_EXPRESSION};
-})(window.__hyperframes, ${jsonScriptLiteral(timelineCompositionId)}, ${jsonScriptLiteral(compositionSrc?.trim() || null)});
+  return `const __tagreel = (function(__hfBaseTagreel, __hfTimelineCompId, __hfCompositionSrc) {
+  return ${SCOPED_TAGREEL_EXPRESSION};
+})(window.__tagreel, ${jsonScriptLiteral(timelineCompositionId)}, ${jsonScriptLiteral(compositionSrc?.trim() || null)});
 ${wrapScopedCompositionScript("", timelineCompositionId)}
 `;
 }
@@ -300,7 +300,7 @@ ${wrapScopedCompositionScript("", timelineCompositionId)}
 export function wrapScopedCompositionScript(
   source: string,
   compositionId: string,
-  errorLabel = "[HyperFrames] composition script error:",
+  errorLabel = "[Tagreel] composition script error:",
   scopeSelectorOverride?: string,
   timelineCompositionId = compositionId,
   authoredRootId?: string | null,
@@ -559,16 +559,16 @@ export function wrapScopedCompositionScript(
     ? new Proxy(window, {
         get: function(target, prop, receiver) {
           if (prop === "__timelines") return __hfGetTimelineRegistry();
-          // Inside a sub-composition, __hyperframes is passed as a bare script
+          // Inside a sub-composition, __tagreel is passed as a bare script
           // param bound to the SCOPED variant (per-comp getVariables). But
-          // authors routinely write the documented window.__hyperframes.
+          // authors routinely write the documented window.__tagreel.
           // getVariables() form, which would otherwise fall through to the host
-          // page's base __hyperframes and return the WRONG (or empty) variables
+          // page's base __tagreel and return the WRONG (or empty) variables
           // for this instance. Route it to the scoped variant too so both
           // spellings resolve to this composition's own variables.
-          // (__hfScopedHyperframes is a hoisted var assigned below, before any
+          // (__hfScopedTagreel is a hoisted var assigned below, before any
           // sub-comp script -- the only code that reads this -- runs.)
-          if (prop === "__hyperframes") return __hfScopedHyperframes;
+          if (prop === "__tagreel") return __hfScopedTagreel;
           // Native window methods must stay bound to the real window. Handed
           // back unbound, "this" at call time is this Proxy and Chrome rejects
           // it with "Illegal invocation", which broke window.addEventListener,
@@ -687,13 +687,13 @@ export function wrapScopedCompositionScript(
           return typeof value === "function" ? value.bind(target) : value;
         },
       });
-  var __hfBaseHyperframes = window.__hyperframes;
-  var __hfScopedHyperframes = ${SCOPED_HYPERFRAMES_EXPRESSION};
+  var __hfBaseTagreel = window.__tagreel;
+  var __hfScopedTagreel = ${SCOPED_TAGREEL_EXPRESSION};
   var __hfRun = function() {
     try {
-      (function(document, gsap, window, __hyperframes) {
+      (function(document, gsap, window, __tagreel) {
 ${source.replace(/<\/(script)/gi, "<\\/$1")}
-      }).call(window, __hfScopedDocument, __hfScopedGsap, __hfScopedWindow, __hfScopedHyperframes);
+      }).call(window, __hfScopedDocument, __hfScopedGsap, __hfScopedWindow, __hfScopedTagreel);
     } catch (_err) {
       console.error(__hfErrorLabel, __hfCompId, _err);
     }

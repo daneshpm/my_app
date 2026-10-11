@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "flash-through-white",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Flash Through White",
   "description": "Shader transition with white flash crossfade",
   "tags": ["transition", "shader"],
@@ -14,11 +14,7 @@
     {
       "path": "flash-through-white.html",
       "target": "compositions/flash-through-white.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/flash-through-white.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/flash-through-white.png"
-  }
+  ]
 }

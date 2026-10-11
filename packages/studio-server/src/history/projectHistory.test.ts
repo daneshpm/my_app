@@ -494,10 +494,10 @@ describe("openProjectHistory", () => {
     write("index.html", "<h1>Bye</h1>");
     write(".turn-record", "a tool's own record");
     write("sub/.DS_Store", "finder");
-    write(".hyperframes/studio-motion.json", "{}");
+    write(".tagreel/studio-motion.json", "{}");
     const entry = await turn.close();
     expect(entry!.files.map((file) => file.path)).toEqual([
-      ".hyperframes/studio-motion.json",
+      ".tagreel/studio-motion.json",
       "index.html",
     ]);
     const records = await history.beginWindow(agent, "Records only");
@@ -548,12 +548,12 @@ describe("openProjectHistory", () => {
     const entry = await change(history, agent, "add Flash Through White", () => {
       write("index.html", "<h1>Flash</h1>");
       write("new.html", "<p>new</p>");
-      write(".hyperframes/studio-manual-edits.json", "{}");
+      write(".tagreel/studio-manual-edits.json", "{}");
       rmSync(join(projectDir, "old.css"));
     });
     expect(entry.who).toEqual(agent);
     expect(entry.files.map((file) => [file.path, !!file.before, !!file.after])).toEqual([
-      [".hyperframes/studio-manual-edits.json", false, true],
+      [".tagreel/studio-manual-edits.json", false, true],
       ["index.html", true, true],
       ["new.html", false, true],
       ["old.css", true, false],
@@ -563,7 +563,7 @@ describe("openProjectHistory", () => {
     expect(read("index.html")).toBe("<h1>Hello</h1>");
     expect(read("old.css")).toBe("h1 {}");
     expect(has("new.html")).toBe(false);
-    expect(has(".hyperframes/studio-manual-edits.json")).toBe(false);
+    expect(has(".tagreel/studio-manual-edits.json")).toBe(false);
   });
 
   it("names a file changed since and the newer change, then takes 'undo just this' when asked", async () => {
@@ -1062,8 +1062,8 @@ describe("openProjectHistory", () => {
       const projectDir = tempDir("hf-history-legacy-");
       const historyRoot = tempDir("hf-history-legacy-root-");
       cpSync(join(fixture, "root"), historyRoot, { recursive: true });
-      mkdirSync(join(projectDir, ".hyperframes"));
-      cpSync(join(fixture, "history-id"), join(projectDir, ".hyperframes", "history-id"));
+      mkdirSync(join(projectDir, ".tagreel"));
+      cpSync(join(fixture, "history-id"), join(projectDir, ".tagreel", "history-id"));
       cpSync(join(fixture, "index.html"), join(projectDir, "index.html"));
       const record = join(historyRoot, fixtureId, "project.json");
       writeFileSync(record, JSON.stringify({ dir: recordedDir(projectDir) }));
@@ -1078,7 +1078,7 @@ describe("openProjectHistory", () => {
 
       const history = await open(projectDir, historyRoot);
       expect(history.projectId).toBe(fixtureId);
-      expect(inside(projectDir, ".hyperframes/history-id").trim()).toBe(fixtureId);
+      expect(inside(projectDir, ".tagreel/history-id").trim()).toBe(fixtureId);
       const entries = history.list();
       expect(entries.map((entry) => [entry.who.name, entry.label])).toEqual([
         ["You", "Moved Title"],
@@ -1122,11 +1122,11 @@ describe("openProjectHistory", () => {
   it("refuses to open, and leaves the file alone, when the history id cannot be read", async () => {
     const projectDir = tempDir("hf-history-bad-id-");
     writeFileSync(join(projectDir, "index.html"), "v1");
-    mkdirSync(join(projectDir, ".hyperframes"));
-    writeFileSync(join(projectDir, ".hyperframes", "history-id"), "not-an-id\n");
+    mkdirSync(join(projectDir, ".tagreel"));
+    writeFileSync(join(projectDir, ".tagreel", "history-id"), "not-an-id\n");
 
     await expect(open(projectDir, tempDir("hf-history-root-"))).rejects.toThrow(HistoryIdError);
-    expect(inside(projectDir, ".hyperframes/history-id")).toBe("not-an-id\n");
+    expect(inside(projectDir, ".tagreel/history-id")).toBe("not-an-id\n");
   });
 
   it("leaves the id alone for a history root that has no history under it, so the open one keeps recording", async () => {
@@ -1166,7 +1166,7 @@ describe("openProjectHistory", () => {
   it("counts a folder whose history id is gone as another project, as a recreated folder on a reused inode is", async () => {
     const { history, write, read, projectDir } = await project({ "index.html": "v1" });
     await change(history, you, "Second", () => write("index.html", "v2"));
-    rmSync(join(projectDir, ".hyperframes"), { recursive: true });
+    rmSync(join(projectDir, ".tagreel"), { recursive: true });
     write("index.html", "new project");
 
     expect(history.replacedAtPath()).toBe(true);
@@ -1466,13 +1466,13 @@ describe("openProjectHistory", () => {
     const victim = tempDir("hf-history-victim-");
     writeFileSync(join(projectDir, "index.html"), "v1");
     writeFileSync(join(victim, "project.json"), '{"precious":true}');
-    mkdirSync(join(projectDir, ".hyperframes"));
-    writeFileSync(join(projectDir, ".hyperframes", "history-id"), relative(historyRoot, victim));
+    mkdirSync(join(projectDir, ".tagreel"));
+    writeFileSync(join(projectDir, ".tagreel", "history-id"), relative(historyRoot, victim));
 
     await expect(open(projectDir, historyRoot)).rejects.toThrow(/history-id/);
     expect(readdirSync(victim)).toEqual(["project.json"]);
     expect(readFileSync(join(victim, "project.json"), "utf-8")).toBe('{"precious":true}');
-    const idFile = join(projectDir, ".hyperframes", "history-id");
+    const idFile = join(projectDir, ".tagreel", "history-id");
     expect(readFileSync(idFile, "utf-8")).toBe(relative(historyRoot, victim));
   });
 

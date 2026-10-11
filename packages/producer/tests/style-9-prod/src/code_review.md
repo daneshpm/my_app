@@ -1,4 +1,4 @@
-# HyperFrame Schema Compliance Review
+# Tagreel Schema Compliance Review
 
 ## Executive Summary
 
@@ -8,7 +8,7 @@
 
 ## Critical Issues
 
-None found. The compositions follow the deterministic requirements and structural rules of the HyperFrame schema.
+None found. The compositions follow the deterministic requirements and structural rules of the Tagreel schema.
 
 ## Compliance Checklist
 

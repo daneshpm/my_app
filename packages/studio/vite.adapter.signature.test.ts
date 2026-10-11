@@ -115,7 +115,7 @@ describe("createProjectSignatureCache", () => {
     const cache = createProjectSignatureCache({ compute: source.compute });
 
     cache.get(PROJECT);
-    cache.invalidate(resolve(PROJECT, ".hyperframes/studio-motion.json"));
+    cache.invalidate(resolve(PROJECT, ".tagreel/studio-motion.json"));
 
     expect(cache.get(PROJECT)).toBe("sig-2");
   });

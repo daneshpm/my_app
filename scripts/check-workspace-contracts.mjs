@@ -16,7 +16,7 @@ function hasSpecificReason(reason) {
 }
 
 function hasDocumentedOptOut(pkg, script) {
-  const optOut = pkg.hyperframesWorkspaceContract?.[script];
+  const optOut = pkg.tagreelWorkspaceContract?.[script];
   return optOut?.optOut === true && hasSpecificReason(optOut.reason);
 }
 
@@ -25,7 +25,7 @@ export function listWorkspaceContractIssues(workspace, pkg) {
     if (hasExecutableScript(pkg, script) || hasDocumentedOptOut(pkg, script)) return [];
     return [
       `${workspace}: missing executable \`${script}\` script or ` +
-        `hyperframesWorkspaceContract.${script} opt-out with a specific reason`,
+        `tagreelWorkspaceContract.${script} opt-out with a specific reason`,
     ];
   });
 }

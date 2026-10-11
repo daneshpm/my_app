@@ -59,8 +59,8 @@ function mockComputedStyle(element: HTMLElement, values: Record<string, string>)
 
 describe("studio manual edits", () => {
   it("recognizes studio file-change payloads", () => {
-    expect(readStudioFileChangePath({ path: ".hyperframes/studio-manual-edits.json" })).toBe(
-      ".hyperframes/studio-manual-edits.json",
+    expect(readStudioFileChangePath({ path: ".tagreel/studio-manual-edits.json" })).toBe(
+      ".tagreel/studio-manual-edits.json",
     );
     expect(readStudioFileChangePath({ filePath: "/nested/file.html" })).toBe("nested/file.html");
     // A still-wrapped delivery is a decoding bug upstream, never a path.

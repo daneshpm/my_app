@@ -121,7 +121,7 @@
       <div id="rf-backdrop"></div>
       <canvas id="rf-canvas" width="1920" height="1080"></canvas>
 
-      <!-- Driver clip: gives HyperFrames a timed element to own on track 0. -->
+      <!-- Driver clip: gives Tagreel a timed element to own on track 0. -->
       <div
         id="rf-drv"
         class="clip"
@@ -154,7 +154,7 @@
         // aliasing machine, so points in focus bottom out here.
         var MIN_R_PX = 0.75;
 
-        var V = (window.__hyperframes && window.__hyperframes.getVariables()) || {};
+        var V = (window.__tagreel && window.__tagreel.getVariables()) || {};
         var CS = getComputedStyle(document.getElementById("rf-root"));
 
         // The runtime defines every declared variable as `--<slug>` on the

@@ -12,7 +12,7 @@
 // the first that actually runs. `py` is the launcher, so it needs a `-3` arg to
 // select Python 3 — hence candidates are argv PREFIXES, not bare names.
 //
-// `HYPERFRAMES_PYTHON` (the documented PEP 668 venv setup) wins over the PATH probe, matching
+// `TAGREEL_PYTHON` (the documented PEP 668 venv setup) wins over the PATH probe, matching
 // the CLI's `findPython()`; ignoring it made BGM silently disable itself (#4614).
 
 import { spawnSync } from "node:child_process";
@@ -44,7 +44,7 @@ export function resolvePythonCommand(
   probe = defaultProbe,
   env = process.env,
 ) {
-  const override = env.HYPERFRAMES_PYTHON;
+  const override = env.TAGREEL_PYTHON;
   if (override && probe(override, ["--version"])) return [override];
   const candidates =
     platform === "win32" ? [["python3"], ["python"], ["py", "-3"]] : [["python3"], ["python"]];

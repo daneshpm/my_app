@@ -1,7 +1,7 @@
 import type { TimelineElement } from "../store/playerStore";
 import { getTimelineElementIdentity } from "../lib/timelineElementHelpers";
 import type { ResizingClipState } from "./timelineClipDragTypes";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { animationContributesLane } from "./TimelinePropertyLanes";
 
 function hasKeyframedTimelineClips(

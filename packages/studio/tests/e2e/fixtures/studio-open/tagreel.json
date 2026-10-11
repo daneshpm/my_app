@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/tagreel.json",
+  "registry": "https://raw.githubusercontent.com/daneshpm/my_app/main/registry",
+  "paths": {
+    "blocks": "compositions",
+    "components": "compositions/components",
+    "assets": "assets"
+  }
+}

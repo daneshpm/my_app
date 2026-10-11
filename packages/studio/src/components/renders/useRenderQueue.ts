@@ -1,6 +1,6 @@
 import { buildProjectApiPath } from "../../utils/projectRouting";
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
-import type { CanvasResolution } from "@hyperframes/parsers";
+import type { CanvasResolution } from "@tagreel/parsers";
 import { trackStudioRenderStart } from "../../telemetry/events";
 import { getAnonymousId } from "../../telemetry/config";
 import { browserTelemetryAllowed } from "../../telemetry/policy";
@@ -21,7 +21,7 @@ export interface RenderJob {
   durationMs?: number;
 }
 
-// The CLI consumes this same source through @hyperframes/core's re-export.
+// The CLI consumes this same source through @tagreel/core's re-export.
 // Importing from the browser-safe parsers package avoids the core barrel's
 // Node-only transitive modules without duplicating the preset union in Studio.
 export type ResolutionPreset = CanvasResolution;
@@ -41,7 +41,7 @@ export interface StartRenderOptions {
   /**
    * Composition-variable overrides ({variableId: value}), forwarded to the
    * render route and injected as window.__hfVariables — the same channel
-   * `hyperframes render --variables` uses.
+   * `tagreel render --variables` uses.
    */
   variables?: Record<string, unknown>;
 }
@@ -280,7 +280,7 @@ export function useRenderQueue(
           id: generateId(),
           status: "failed",
           progress: 0,
-          error: `Could not reach render server: ${cause}. Use \`hyperframes render\` from the CLI instead.`,
+          error: `Could not reach render server: ${cause}. Use \`tagreel render\` from the CLI instead.`,
           filename: "Export failed",
           createdAt: startTime,
         };

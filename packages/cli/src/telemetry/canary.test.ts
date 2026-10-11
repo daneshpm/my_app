@@ -30,9 +30,9 @@ vi.mock("./policy.js", () => ({
 
 // The registry is data; pin a known shape so these tests don't move when a
 // real canary is added or ramped.
-vi.mock("@hyperframes/core/canary-registry", async () => {
-  const actual = await vi.importActual<typeof import("@hyperframes/core/canary-registry")>(
-    "@hyperframes/core/canary-registry",
+vi.mock("@tagreel/core/canary-registry", async () => {
+  const actual = await vi.importActual<typeof import("@tagreel/core/canary-registry")>(
+    "@tagreel/core/canary-registry",
   );
   return {
     ...actual,
@@ -115,7 +115,7 @@ describe("telemetry opt-out is canary opt-out", () => {
     });
   });
 
-  it.each(["HYPERFRAMES_NO_TELEMETRY", "DO_NOT_TRACK", "dev_mode"])(
+  it.each(["TAGREEL_NO_TELEMETRY", "DO_NOT_TRACK", "dev_mode"])(
     "does not enrol under the %s runtime override, even with the preference on",
     (source) => {
       configState.telemetryEnabled = true;
@@ -136,7 +136,7 @@ describe("telemetry opt-out is canary opt-out", () => {
     expect(resolveCanary("test-beta")).toEqual({ enabled: true, reason: "forced_on" });
   });
 
-  it("reports every canary as false to PostHog shape when opted out", () => {
+  it("reports every canary as false to analytics shape when opted out", () => {
     configState.telemetryEnabled = false;
     expect(canaryEventProperties()).toEqual({
       "$feature/canary-test-alpha": "false",
@@ -151,7 +151,7 @@ describe("telemetry opt-out is canary opt-out", () => {
 
 describe("bucketing unit", () => {
   it("buckets on the bucketSeed when present — the unit that survives config wipes", async () => {
-    const { evaluateCanary } = await import("@hyperframes/core/canary");
+    const { evaluateCanary } = await import("@tagreel/core/canary");
     configState.bucketSeed = "5f1c9d2e-0000-4000-8000-aaaaaaaaaaaa";
     const viaBinding = resolveCanary("test-gamma").bucket;
     // 50, not 100: at 100 evaluateCanary short-circuits before bucketing and
@@ -172,7 +172,7 @@ describe("bucketing unit", () => {
   });
 
   it("falls back to the anonymousId when no seed exists (failed legacy backfill)", async () => {
-    const { evaluateCanary } = await import("@hyperframes/core/canary");
+    const { evaluateCanary } = await import("@tagreel/core/canary");
     const viaBinding = resolveCanary("test-gamma").bucket;
     const byId = evaluateCanary({
       feature: "test-gamma",
@@ -226,7 +226,7 @@ describe("CLI canary binding", () => {
     expect(isCanaryEnabled("test-beta")).toBe(true);
   });
 
-  it("emits PostHog flag-shaped properties for every registered canary", () => {
+  it("emits analytics flag-shaped properties for every registered canary", () => {
     expect(canaryEventProperties()).toEqual({
       "$feature/canary-test-alpha": "true",
       "$feature/canary-test-gamma": expect.stringMatching(/^(true|false)$/),

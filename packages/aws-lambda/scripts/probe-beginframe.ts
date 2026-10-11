@@ -212,7 +212,7 @@ export async function probe(options: ProbeOptions = {}): Promise<ProbeResult> {
     // the args the engine's `browserManager` passes when `captureMode !==
     // "screenshot"`. Without the surface-synchronization + threaded-disable
     // flags, Chrome's compositor returns `hasDamage: false` and skips the
-    // screenshot — the same observation pinned in the hyperframes memory
+    // screenshot — the same observation pinned in the tagreel memory
     // ("Chrome's beginFrame with `screenshot` param always reports
     // hasDamage=true").
     const beginFrameFlags = [

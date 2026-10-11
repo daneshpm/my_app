@@ -1,22 +1,20 @@
-import { lintHyperframeHtml } from "@hyperframes/lint";
+import { lintTagreelHtml } from "@tagreel/lint";
 
-export type HyperframeStaticFailureReason =
+export type TagreelStaticFailureReason =
   | "missing_composition_id"
   | "missing_composition_dimensions"
   | "missing_timeline_registry"
   | "invalid_script_syntax"
-  | "invalid_static_hyperframe_contract";
+  | "invalid_static_tagreel_contract";
 
-export type HyperframeStaticGuardResult = {
+export type TagreelStaticGuardResult = {
   isValid: boolean;
   missingKeys: string[];
-  failureReason: HyperframeStaticFailureReason | null;
+  failureReason: TagreelStaticFailureReason | null;
 };
 
-export async function validateHyperframeHtmlContract(
-  html: string,
-): Promise<HyperframeStaticGuardResult> {
-  const result = await lintHyperframeHtml(html);
+export async function validateTagreelHtmlContract(html: string): Promise<TagreelStaticGuardResult> {
+  const result = await lintTagreelHtml(html);
   const missingKeys = result.findings
     .filter((finding) => finding.severity === "error")
     .map((finding) => finding.message);
@@ -26,7 +24,7 @@ export async function validateHyperframeHtmlContract(
   }
 
   const joined = missingKeys.join(" ").toLowerCase();
-  let failureReason: HyperframeStaticFailureReason = "invalid_static_hyperframe_contract";
+  let failureReason: TagreelStaticFailureReason = "invalid_static_tagreel_contract";
   if (joined.includes("data-composition-id")) {
     failureReason = "missing_composition_id";
   } else if (joined.includes("data-width") || joined.includes("data-height")) {

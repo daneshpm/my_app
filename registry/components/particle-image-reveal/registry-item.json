@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "particle-image-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Particle Image Reveal",
   "description": "A seeded deterministic particle field converges and settles while a slotted image reveals beneath it, the trail thinning until the image holds clean.",
   "tags": ["motion-primitive", "intros-reveals", "particles", "reveal", "canvas", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "particle-image-reveal.html",
       "target": "compositions/components/particle-image-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

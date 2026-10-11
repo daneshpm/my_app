@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "caption-particle-burst",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Particle Burst",
   "description": "Keyword words trigger colored particle explosions",
   "tags": ["captions", "caption-style", "particles", "burst", "effects"],
@@ -9,11 +9,7 @@
     {
       "path": "caption-particle-burst.html",
       "target": "compositions/components/caption-particle-burst.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/registry/components/caption-particle-burst/preview.mp4?v=1779051416",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/caption-particle-burst.png"
-  }
+  ]
 }

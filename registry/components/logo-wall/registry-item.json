@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "logo-wall",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Logo Wall",
   "description": "A trusted-by wall of placeholder lettermark logos that fades and scales into place with a deterministic per-cell stagger.",
   "tags": ["data", "logos", "social-proof", "stagger", "prove"],
@@ -13,7 +13,7 @@
     {
       "path": "logo-wall.html",
       "target": "compositions/components/logo-wall.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

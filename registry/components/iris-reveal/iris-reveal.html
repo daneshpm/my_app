@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  iris-reveal: HyperFrames video primitive (transitions / bridge)
+  iris-reveal: Tagreel video primitive (transitions / bridge)
 
   Concept: a circle clip-path opens from an authored origin (iris_x/iris_y
   percent) revealing state B over state A. Classic register: A grayscale and
@@ -60,7 +60,7 @@
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "iris-reveal" key (mount flattening strips
   data-composition-id from the live root). Variables come from
-  window.__hyperframes.getVariables().
+  window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -311,8 +311,8 @@
             var rimCircle = root.querySelector(".ir-rim-circle");
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function clampNumber(raw, fallback, min, max) {

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":540}}
   attribution={{"path":"registry/components/whiteboard-ink","tags":["motion-primitive","intro","reveal","svg","whiteboard","line-draw","slot"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/whiteboard-ink/whiteboard-ink.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/whiteboard-ink/whiteboard-ink.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html whiteboard-ink.html
 <!doctype html>
 <!--
-  whiteboard-ink: HyperFrames video primitive (intros and reveals / ink draw)
+  whiteboard-ink: Tagreel video primitive (intros and reveals / ink draw)
 
   A hand-authored SVG sketch draws one stroke at a time while a pen nib
   samples the active path tip. The nib follows getPointAtLength during each
@@ -328,8 +328,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var penElement = root.querySelector(".wbi-pen");
             var penArt = root.querySelector(".wbi-pen-art");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var sketchGroups = {
@@ -437,8 +437,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var IN_BASE = DRAW_PHASE_BASE + CAPTION_BASE;
             var OUT_BASE = exitMode === "none" ? 0 : 0.45;
             var resolvedDuration =
-              window.__hyperframes && window.__hyperframes.getDuration
-                ? window.__hyperframes.getDuration()
+              window.__tagreel && window.__tagreel.getDuration
+                ? window.__tagreel.getDuration()
                 : undefined;
             var duration = Math.max(
               0.001,
@@ -569,7 +569,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add whiteboard-ink" item="whiteboard-ink" />
+<InstallCommand command="npx tagreel add whiteboard-ink" item="whiteboard-ink" />
 
 That writes one file: `compositions/components/whiteboard-ink.html`.
 

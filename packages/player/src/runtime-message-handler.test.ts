@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from "vitest";
 import { handleRuntimeMessage, type MessageHandlerCallbacks } from "./runtime-message-handler.js";
 import type { ParentMediaManager } from "./parent-media.js";
 import type { ShaderLoaderState } from "./shader-loader-state.js";
-import { runtimeProtocolMetadata } from "@hyperframes/core/runtime/protocol";
+import { runtimeProtocolMetadata } from "@tagreel/core/runtime/protocol";
 
 // Only the stage-size branch is exercised here; the rest of the callback
 // surface is satisfied with inert spies so the handler's type contract

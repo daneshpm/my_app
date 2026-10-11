@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "panel-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Panel Reveal",
   "description": "A panel reveal primitive with height expansion and content fade",
   "tags": ["transition-primitive", "transitions-dev-port", "panel", "reveal"],
@@ -9,7 +9,7 @@
     {
       "path": "panel-reveal.html",
       "target": "compositions/components/panel-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -58,8 +58,5 @@
         { "value": "solid", "label": "Solid" }
       ]
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/panel-reveal.png"
-  }
+  ]
 }

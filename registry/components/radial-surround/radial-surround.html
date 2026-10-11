@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  radial-surround: HyperFrames video primitive (problem setup)
+  radial-surround: Tagreel video primitive (problem setup)
 
   Labeled hairline chips assemble around a centered subject on an elliptical
   ring. Positions are baked exactly once via cos/sin before the timeline is
@@ -223,8 +223,8 @@
             var ring = root.querySelector(".rs-ring");
             var vignette = root.querySelector(".rs-vignette");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var centerLabel =

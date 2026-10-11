@@ -14,10 +14,10 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   title="Camera Scan Gate"
   description="A camera and QR recognition moment with a viewfinder sweep, bracket lock, confirmation pulse, and verified next beat."
   variables={[{"id":"scanColor","type":"string","role":"style","label":"Scan color","description":"Any CSS color value used by the scan line and recognition glow.","default":"var(--brand)"},{"id":"targetLabel","type":"string","role":"content","label":"Target label","description":"Confirmation label revealed at recognition lock. Blank hides the line.","default":"Verified"},{"id":"sweepSpeed","type":"number","role":"timing","label":"Sweep speed","description":"Speed multiplier for the scan sweep phase only.","default":1,"min":0.8,"max":1.6,"step":0.1,"unit":"x"}]}
-  meta={{"category":"Camera & 3D","badge":"Stable","codeLines":522}}
+  meta={{"category":"Camera","badge":"Stable","codeLines":522}}
   attribution={{"path":"registry/components/camera-scan-gate","tags":["prop","ui-props","camera","qr","scan","recognition","interaction","demonstrate"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/camera-scan-gate/camera-scan-gate.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/camera-scan-gate/camera-scan-gate.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html camera-scan-gate.html
 <!doctype html>
 <!--
-  camera-scan-gate -- HyperFrames video primitive (ui-props / interaction / demonstrate)
+  camera-scan-gate -- Tagreel video primitive (ui-props / interaction / demonstrate)
 
   Concept: a camera viewfinder scans once, tightens its four L-shaped corner
   brackets onto a detected target, then confirms recognition with a pulse,
@@ -74,7 +74,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   matching the root itself. The hardcoded "camera-scan-gate" composition id
   is required because the mounted flattening step strips data-composition-id
   before this script registers its timeline. Variables are read through
-  window.__hyperframes.getVariables(), which owns declared defaults merged
+  window.__tagreel.getVariables(), which owns declared defaults merged
   with per-instance host overrides after mounting.
 -->
 <html
@@ -387,10 +387,10 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var label = root.querySelector(".csg-label");
 
             // EDIT ZONE: declared defaults and per-instance overrides have one
-            // owner after mount, window.__hyperframes.getVariables().
+            // owner after mount, window.__tagreel.getVariables().
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             var scanColor =
               vars.scanColor == null || String(vars.scanColor).trim() === ""
@@ -551,7 +551,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add camera-scan-gate" item="camera-scan-gate" />
+<InstallCommand command="npx tagreel add camera-scan-gate" item="camera-scan-gate" />
 
 That writes one file: `compositions/components/camera-scan-gate.html`.
 

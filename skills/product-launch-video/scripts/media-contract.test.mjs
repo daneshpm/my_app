@@ -31,7 +31,7 @@ test("assemble hoists an approved timed frame video to the host root", () => {
 
   const result = spawnSync(
     process.execPath,
-    [join(skillDir, "scripts", "assemble-index.mjs"), "--hyperframes", project],
+    [join(skillDir, "scripts", "assemble-index.mjs"), "--tagreel", project],
     { encoding: "utf8" },
   );
   assert.equal(result.status, 0, result.stderr);
@@ -72,7 +72,7 @@ test("assemble preserves approved-video geometry through sanitized host CSS", ()
 
   const result = spawnSync(
     process.execPath,
-    [join(skillDir, "scripts", "assemble-index.mjs"), "--hyperframes", project],
+    [join(skillDir, "scripts", "assemble-index.mjs"), "--tagreel", project],
     { encoding: "utf8" },
   );
 
@@ -104,7 +104,7 @@ test("rejects partial or unsafe approved-video layout geometry", () => {
 
   const result = spawnSync(
     process.execPath,
-    [join(skillDir, "scripts", "assemble-index.mjs"), "--hyperframes", project],
+    [join(skillDir, "scripts", "assemble-index.mjs"), "--tagreel", project],
     { encoding: "utf8" },
   );
 
@@ -127,7 +127,7 @@ test("rejects an approved video without mandatory layout geometry", () => {
 
   const result = spawnSync(
     process.execPath,
-    [join(skillDir, "scripts", "assemble-index.mjs"), "--hyperframes", project],
+    [join(skillDir, "scripts", "assemble-index.mjs"), "--tagreel", project],
     { encoding: "utf8" },
   );
 
@@ -150,7 +150,7 @@ test("rejects empty approved-video layout coordinates", () => {
 
   const result = spawnSync(
     process.execPath,
-    [join(skillDir, "scripts", "assemble-index.mjs"), "--hyperframes", project],
+    [join(skillDir, "scripts", "assemble-index.mjs"), "--tagreel", project],
     { encoding: "utf8" },
   );
 
@@ -172,7 +172,7 @@ test("rejects an approved video with missing admission timing", () => {
   );
   const result = spawnSync(
     process.execPath,
-    [join(skillDir, "scripts", "assemble-index.mjs"), "--hyperframes", project],
+    [join(skillDir, "scripts", "assemble-index.mjs"), "--tagreel", project],
     { encoding: "utf8" },
   );
   assert.notEqual(result.status, 0);
@@ -192,7 +192,7 @@ test("does not hoist declarations hidden in comments or scripts", () => {
   );
   const result = spawnSync(
     process.execPath,
-    [join(skillDir, "scripts", "assemble-index.mjs"), "--hyperframes", project],
+    [join(skillDir, "scripts", "assemble-index.mjs"), "--tagreel", project],
     { encoding: "utf8" },
   );
   assert.equal(result.status, 0, result.stderr);

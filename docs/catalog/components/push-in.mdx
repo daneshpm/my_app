@@ -14,10 +14,10 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   title="Push In"
   description="A centered headline gains focus through one slow, continuous camera push and a gentle fade out."
   variables={[{"id":"text","type":"string","role":"content","label":"Headline","description":"Text centered in the camera frame.","default":"Focus"},{"id":"intensity","type":"enum","role":"motion","label":"Push intensity","description":"Final camera scale reached by the push.","default":"standard","options":[{"value":"subtle","label":"Subtle"},{"value":"standard","label":"Standard"},{"value":"bold","label":"Bold"}]}]}
-  meta={{"category":"Camera & 3D","badge":"Stable","codeLines":178}}
+  meta={{"category":"Camera","badge":"Stable","codeLines":178}}
   attribution={{"path":"registry/components/push-in","tags":["motion-primitive","camera","push-in","focus","emphasize","holdable"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/push-in/push-in.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/push-in/push-in.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html push-in.html
 <!doctype html>
 <!--
-  push-in: HyperFrames video primitive (camera / holdable / emphasize)
+  push-in: Tagreel video primitive (camera / holdable / emphasize)
 
   Concept: a centered headline stays composed while the full stage makes one
   slow camera push. The intensity variable owns the final scale, and a soft
@@ -154,8 +154,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var camera = root.querySelector(".pi-camera");
             var headline = root.querySelector(".pi-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "Focus" : String(vars.text);
@@ -207,7 +207,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add push-in" item="push-in" />
+<InstallCommand command="npx tagreel add push-in" item="push-in" />
 
 That writes one file: `compositions/components/push-in.html`.
 

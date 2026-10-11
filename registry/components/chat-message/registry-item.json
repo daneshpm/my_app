@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "chat-message",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Chat Message",
   "description": "One message arrives on the measured entry - scale 0.75, 0.12s, growing from its sender's corner. The type is an enum switched like marker-highlight's style: a received or sent bubble with a real tail, a large emoji row, an image, or a link card with title and domain. The atom that chat-thread builds conversations from",
   "tags": ["video-primitive", "chat", "mock-ui", "message"],
@@ -51,7 +51,7 @@
       "role": "content",
       "label": "Card title",
       "description": "Link-card title (Link card type only).",
-      "default": "HyperFrames — Write HTML, render pixel-perfect video"
+      "default": "Tagreel — Write HTML, render pixel-perfect video"
     },
     {
       "id": "cardDomain",
@@ -59,7 +59,7 @@
       "role": "content",
       "label": "Card domain",
       "description": "Link-card domain line (Link card type only).",
-      "default": "hyperframes.heygen.com"
+      "default": "acme.example"
     },
     {
       "id": "tail",
@@ -102,7 +102,7 @@
     {
       "path": "chat-message.html",
       "target": "compositions/components/chat-message.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

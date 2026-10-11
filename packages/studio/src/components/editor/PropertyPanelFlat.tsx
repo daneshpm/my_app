@@ -8,7 +8,7 @@ import type { PropertyPanelFlatProps } from "./propertyPanelFlatProps";
 import { useLinkedSpeedCommit, withLinkedPlaybackRate } from "./linkedSpeedEdits";
 import { formatPxMetricValue } from "./propertyPanelHelpers";
 import { audioFxSummary } from "./audioFxSummary";
-import { resolveAudioGroups } from "@hyperframes/core/audio-groups";
+import { resolveAudioGroups } from "@tagreel/core/audio-groups";
 import { usePanelHiddenToggle } from "./usePanelHiddenToggle";
 import { PropertyPanelFlatHeader } from "./PropertyPanelFlatHeader";
 import { PropertyPanelFlatFooter } from "./PropertyPanelFlatFooter";

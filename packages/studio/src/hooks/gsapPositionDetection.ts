@@ -5,7 +5,7 @@
  *
  * Extracted from gsapRuntimeBridge.ts to keep that file under the size cap.
  */
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { usePlayerStore } from "../player/store/playerStore";
 import { getIframeGsap, KEYFRAME_PCT_MATCH, queryIframeElement } from "./gsapShared";
 import { runEaseOf, timeAtProgress } from "../utils/gsapKeyframeEases";

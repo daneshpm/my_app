@@ -1,7 +1,7 @@
 <!doctype html>
 <!-- Demo plate for the catalog preview. Identical to shutter-slam.html except the
      body background, which is opaque here so the plate reads on the catalog card.
-     Not installed by `hyperframes add` - registry-item.json lists shutter-slam.html only. -->
+     Not installed by `tagreel add` - registry-item.json lists shutter-slam.html only. -->
 <html
   lang="en"
   data-composition-id="shutter-slam"
@@ -419,7 +419,7 @@
                 });
               }
 
-              // tl.eventCallback("onUpdate") is unavailable under the HyperFrames runtime proxy, so a
+              // tl.eventCallback("onUpdate") is unavailable under the Tagreel runtime proxy, so a
               // tracker tween's onUpdate fires on every seek. Sampling is deferred to a microtask:
               // seeking GSAP from inside its own render reads stale tween state, while the microtask
               // runs after the seek returns and before the frame is captured or painted.
@@ -672,8 +672,8 @@
             var root = document.getElementById("root");
             var word = root.querySelector(".ss-word");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null ? "MOTION" : String(vars.text);

@@ -3,8 +3,8 @@ import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "nod
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 
-vi.mock("@hyperframes/engine", async (importOriginal) => ({
-  ...(await importOriginal<typeof import("@hyperframes/engine")>()),
+vi.mock("@tagreel/engine", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@tagreel/engine")>()),
   assertConfiguredFfmpegBinariesExist: () => {},
   resolveBrowserGpuMode: async () => "software",
   resolveHeadlessShellPath: () => process.execPath,

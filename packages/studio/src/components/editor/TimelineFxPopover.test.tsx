@@ -2,7 +2,7 @@
 import { act } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { createRoot } from "react-dom/client";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
 import { TimelineFxPopover } from "./TimelineFxPopover.js";
 
 (globalThis as unknown as { IS_REACT_ACT_ENVIRONMENT: boolean }).IS_REACT_ACT_ENVIRONMENT = true;

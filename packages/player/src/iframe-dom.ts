@@ -48,7 +48,7 @@ export function createCompositionIframe(): {
   iframe.sandbox.add("allow-scripts", "allow-same-origin");
   iframe.allow = "autoplay; fullscreen";
   iframe.referrerPolicy = "no-referrer";
-  iframe.title = "HyperFrames Composition";
+  iframe.title = "Tagreel Composition";
 
   container.appendChild(iframe);
   return { container, iframe };

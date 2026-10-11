@@ -1,4 +1,4 @@
-import { parseStrictFiniteTimingNumber } from "@hyperframes/core";
+import { parseStrictFiniteTimingNumber } from "@tagreel/core";
 
 interface TimelineAttributeReader {
   getAttribute(name: string): string | null;

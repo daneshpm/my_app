@@ -35,7 +35,7 @@ function runInject(script, rootId) {
   );
   const result = spawnSync(
     process.execPath,
-    [script, "inject", "--storyboard", join(project, "STORYBOARD.md"), "--hyperframes", project],
+    [script, "inject", "--storyboard", join(project, "STORYBOARD.md"), "--tagreel", project],
     { encoding: "utf8" },
   );
   return {

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "magnetic-cursor",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Magnetic Cursor",
   "description": "A soft dot pointer glides across an editor toolbar, is pulled into each button and morphs into its rounded hover plate while the icon leans toward it, presses one, and leaves as a dot.",
   "tags": ["cursor", "motion-primitive", "pointer", "hover", "morph", "toolbar"],
@@ -9,7 +9,7 @@
     {
       "path": "magnetic-cursor.html",
       "target": "compositions/components/magnetic-cursor.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "jobs": ["demonstrate"],

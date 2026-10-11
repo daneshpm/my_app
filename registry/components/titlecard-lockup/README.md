@@ -5,7 +5,7 @@ The calm breather titlecard (intros and reveals). An optional mono kicker fades 
 ## Install
 
 ```bash
-npx hyperframes add titlecard-lockup
+npx tagreel add titlecard-lockup
 ```
 
 ## Mount
@@ -26,7 +26,7 @@ npx hyperframes add titlecard-lockup
 
 | Variable   | Type   | Default                     | Notes                                                                                              |
 | ---------- | ------ | --------------------------- | -------------------------------------------------------------------------------------------------- |
-| `wordmark` | string | `HYPERFRAMES`               | Display wordmark, auto-fitted to one line by character count.                                      |
+| `wordmark` | string | `TAGREEL`                   | Display wordmark, auto-fitted to one line by character count.                                      |
 | `label`    | string | `WRITE HTML. RENDER VIDEO.` | Mono caption under the rule. Empty string hides it.                                                |
 | `kicker`   | string | `INTRODUCING`               | Small mono label above the wordmark. Empty string hides it (the schedule keeps its beat of quiet). |
 | `rule`     | enum   | `show`                      | `show` or `hide` for the hairline rule and its draw.                                               |

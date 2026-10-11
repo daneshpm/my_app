@@ -6,7 +6,7 @@
   Mount contract: MOUNTABLE SUB-COMPOSITION. The runtime clones only <template>
   contents; #root fills the host box (inset: 0, container-type: size), and the
   file registers one paused timeline under the literal "zoom-through-transition"
-  key. Variables come from window.__hyperframes.getVariables().
+  key. Variables come from window.__tagreel.getVariables().
 
   This file owns its motion. It previously shipped as a fragment whose only
   executable timeline lived in demo.html, so an installed copy rendered the
@@ -163,8 +163,8 @@
             "use strict";
 
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // Unrecognised overrides return to their declared defaults.

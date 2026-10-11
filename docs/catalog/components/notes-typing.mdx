@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":347}}
   attribution={{"author":"Miao Yang","path":"registry/components/notes-typing","tags":["motion-primitive","notes","typing","mock-ui","vertical"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/notes-typing/notes-typing.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/notes-typing/notes-typing.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html notes-typing.html
 <!doctype html>
 <!--
-  notes-typing: HyperFrames motion primitive (scene)
+  notes-typing: Tagreel motion primitive (scene)
 
   The notes-app confession, as a mountable scene: a bold title, then body
   lines typed character by character on the measured human keystroke rhythm
@@ -265,8 +265,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             "use strict";
             var compositionId = "notes-typing";
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             function text(v, fb, mx) {
               if (typeof v !== "string") return fb;
@@ -376,7 +376,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add notes-typing" item="notes-typing" />
+<InstallCommand command="npx tagreel add notes-typing" item="notes-typing" />
 
 That writes one file: `compositions/components/notes-typing.html`.
 

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  pull-to-refresh: HyperFrames video primitive (pointers / interaction / demonstrate)
+  pull-to-refresh: Tagreel video primitive (pointers / interaction / demonstrate)
 
   Concept: a mobile list yields under a scripted pull, arms at a visible
   threshold, commits into a bounded loading state, then snaps exactly back
@@ -44,7 +44,7 @@
   container-type:size. It has no data-width or data-height. All internal
   geometry uses cqw/cqh, and the hardcoded composition id is required because
   FLATTENED_INNER_ROOT_STRIP_ATTRS removes the mounted root id attribute.
-  Variables come from window.__hyperframes.getVariables(), which owns merged
+  Variables come from window.__tagreel.getVariables(), which owns merged
   declared defaults and per-instance overrides after mounting.
 -->
 <html
@@ -430,8 +430,8 @@
             var dots = Array.prototype.slice.call(root.querySelectorAll(".ptr-dot"));
             var updated = root.querySelector(".ptr-updated");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: only finite 60–220 input reaches the physics owner.

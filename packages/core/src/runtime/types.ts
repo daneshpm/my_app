@@ -9,12 +9,12 @@ export type RuntimeJson =
   | RuntimeJson[]
   | { [key: string]: RuntimeJson };
 
-import type { HyperframeControlAction } from "../inline-scripts/runtimeContract.js";
-import type { HyperframePickerElementInfo } from "../inline-scripts/pickerApi.js";
+import type { TagreelControlAction } from "../inline-scripts/runtimeContract.js";
+import type { TagreelPickerElementInfo } from "../inline-scripts/pickerApi.js";
 import type { RuntimeProtocolV1 } from "./protocol.js";
 
 type RuntimeBridgeControlActionBase =
-  | HyperframeControlAction
+  | TagreelControlAction
   | "tick"
   | "set-volume"
   | "set-media-output-muted"
@@ -116,7 +116,7 @@ export type RuntimeDiagnosticMessage = {
   details: Record<string, RuntimeJson>;
 };
 
-export type RuntimePickerElementInfo = HyperframePickerElementInfo;
+export type RuntimePickerElementInfo = TagreelPickerElementInfo;
 
 export type RuntimePickerHoveredMessage = {
   source: "hf-preview";
@@ -210,7 +210,7 @@ export type RuntimeDataAppliedMessage = {
  * Analytics events emitted by the runtime.
  *
  * The host app receives these via postMessage and forwards to its analytics
- * provider (PostHog, Mixpanel, Amplitude, custom logging, etc.).
+ * provider (analytics, Mixpanel, Amplitude, custom logging, etc.).
  * No analytics SDK runs inside this iframe.
  */
 export type RuntimeAnalyticsMessage = {

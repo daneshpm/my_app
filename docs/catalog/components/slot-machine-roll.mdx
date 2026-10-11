@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":136}}
   attribution={{"path":"registry/components/slot-machine-roll","tags":["video-primitive","motion-primitive","typography"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/slot-machine-roll/slot-machine-roll.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/slot-machine-roll/slot-machine-roll.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html slot-machine-roll.html
 <!--
-  Slot Machine Roll - typography primitive for HyperFrames.
+  Slot Machine Roll - typography primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Drive the timeline
   integration from a paused GSAP timeline so renders remain deterministic.
@@ -109,8 +109,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -165,7 +165,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add slot-machine-roll" item="slot-machine-roll" />
+<InstallCommand command="npx tagreel add slot-machine-roll" item="slot-machine-roll" />
 
 That writes one file: `compositions/components/slot-machine-roll.html`.
 

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  kinetic-type-swap: HyperFrames video primitive (text effects / swap)
+  kinetic-type-swap: Tagreel video primitive (text effects / swap)
 
   A held sentence keeps its prefix and suffix fixed while one masked word
   slot rolls through comma-separated options. Every option remains in the
@@ -165,8 +165,8 @@
             var slotElement = root.querySelector(".kts-slot");
             var suffixElement = root.querySelector(".kts-suffix");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var defaultOptions = ["faster", "smarter", "together"];

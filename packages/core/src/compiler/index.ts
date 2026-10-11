@@ -77,9 +77,9 @@ export {
 
 // Static guard
 export {
-  validateHyperframeHtmlContract,
-  type HyperframeStaticFailureReason,
-  type HyperframeStaticGuardResult,
+  validateTagreelHtmlContract,
+  type TagreelStaticFailureReason,
+  type TagreelStaticGuardResult,
 } from "./staticGuard";
 
 // Composition isolation helpers

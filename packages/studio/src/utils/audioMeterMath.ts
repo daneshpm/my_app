@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { audioDbToGain, audioGainToDb } from "@hyperframes/core/audio-gain";
-import { audibleVideoNeedsWebAudio } from "@hyperframes/core/audible-video";
+import { audioDbToGain, audioGainToDb } from "@tagreel/core/audio-gain";
+import { audibleVideoNeedsWebAudio } from "@tagreel/core/audible-video";
 import { usePlayerStore, type TimelineElement } from "../player";
 import { isAudioTimelineElement } from "./timelineInspector";
 

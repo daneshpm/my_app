@@ -1,9 +1,9 @@
 /** Plain-field clip facts from the player store; feeds the Ask-agent prompt and `studio_look`. */
 import type { TimelineElement } from "../store/playerStore";
 import { elementAutomationLanes } from "../components/automationLaneData";
-import { byStart, formatClipLine, type ClipFact } from "@hyperframes/core/clip-facts";
-export { byStart } from "@hyperframes/core/clip-facts";
-export type { ClipFact } from "@hyperframes/core/clip-facts";
+import { byStart, formatClipLine, type ClipFact } from "@tagreel/core/clip-facts";
+export { byStart } from "@tagreel/core/clip-facts";
+export type { ClipFact } from "@tagreel/core/clip-facts";
 
 /** The store holds preview URLs; the agent edits project files, so drop the origin and preview prefix. */
 function projectRelativeSrc(src: string): string {

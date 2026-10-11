@@ -17,14 +17,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":148}}
   attribution={{"path":"registry/components/badge-pop","tags":["video-primitive","transition-primitive","transitions-dev-port","badge","microinteraction"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/badge-pop/badge-pop.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/badge-pop/badge-pop.html"
 >
 
 <CatalogSlot slot="code">
 
 ```html badge-pop.html
 <!--
-  Badge Pop - transitions.dev-inspired primitive for HyperFrames.
+  Badge Pop - transitions.dev-inspired primitive for Tagreel.
 
   Paste the markup, CSS and script into a composition. Use the timeline
   integration note at the bottom as the starting point for deterministic GSAP
@@ -122,8 +122,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -177,7 +177,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add badge-pop" item="badge-pop" />
+<InstallCommand command="npx tagreel add badge-pop" item="badge-pop" />
 
 That writes one file: `compositions/components/badge-pop.html`.
 

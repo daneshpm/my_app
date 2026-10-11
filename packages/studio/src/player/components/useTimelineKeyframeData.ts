@@ -1,5 +1,5 @@
 import { usePlayerStore, type KeyframeCacheEntry } from "../store/playerStore";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 
 const HIDDEN = {
   gsapAnimations: new Map<string, GsapAnimation[]>(),

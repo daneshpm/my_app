@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":3.5,"width":1920,"height":1080,"category":"Typography & Text","badge":"Stable","codeLines":346}}
   attribution={{"path":"registry/blocks/split-flap-board","tags":["text","kinetic","mechanical","split-flap","solari","departure-board","reveal"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/split-flap-board/split-flap-board.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/split-flap-board/split-flap-board.html"
 >
 
 <CatalogSlot slot="code">
@@ -186,8 +186,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
           }
 
           var vars =
-            window.__hyperframes && window.__hyperframes.getVariables
-              ? window.__hyperframes.getVariables()
+            window.__tagreel && window.__tagreel.getVariables
+              ? window.__tagreel.getVariables()
               : {};
 
           var alphabet = String(vars.flapAlphabet || DEFAULT_ALPHABET);
@@ -375,7 +375,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add split-flap-board" item="split-flap-board" />
+<InstallCommand command="npx tagreel add split-flap-board" item="split-flap-board" />
 
 That writes one file: `compositions/split-flap-board.html`.
 

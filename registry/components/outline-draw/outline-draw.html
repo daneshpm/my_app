@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  outline-draw: HyperFrames video primitive (effects / burst / prove)
+  outline-draw: Tagreel video primitive (effects / burst / prove)
 
   Concept: a conic-gradient sector draws a rounded outline clockwise. Two
   opaque masks, clipped to the padding box and border box, are excluded to
@@ -122,8 +122,8 @@
             var root = document.getElementById("root");
             var outline = root.querySelector(".od-outline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: invalid values return to declared defaults. Valid

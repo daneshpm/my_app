@@ -9,9 +9,9 @@
  * were still one thing to read.
  */
 
-import type { HfAudioFxChain, HfAudioFxNode } from "@hyperframes/core/audio-fx";
-import { readAudioEqBands } from "@hyperframes/core/audio-fx-eq";
-import { DEFAULT_CARVE, type HfCarveSettings } from "@hyperframes/core/audio-carve";
+import type { HfAudioFxChain, HfAudioFxNode } from "@tagreel/core/audio-fx";
+import { readAudioEqBands } from "@tagreel/core/audio-fx-eq";
+import { DEFAULT_CARVE, type HfCarveSettings } from "@tagreel/core/audio-carve";
 import { trackEqChanged, trackPresetAmount } from "./audioFxTelemetry.js";
 import { FxCarveModule, type AudioTrackOption } from "./propertyPanelFxCarveModule.js";
 import { FxEqModule } from "./propertyPanelFxEqModule.js";
@@ -48,10 +48,7 @@ export interface FxRackChainProps {
   onUpdateNode(index: number, patch: Partial<HfAudioFxNode>): void;
   onMoveNode(index: number, delta: number): void;
   onRemoveNode(index: number): void;
-  onPreviewNode(
-    index: number,
-    params: import("@hyperframes/core/audio-fx").HfAudioFxParamValues,
-  ): void;
+  onPreviewNode(index: number, params: import("@tagreel/core/audio-fx").HfAudioFxParamValues): void;
   trackKind?: string;
   collapsedRuns: ReadonlySet<string>;
   onToggleCollapse(runKey: string): void;

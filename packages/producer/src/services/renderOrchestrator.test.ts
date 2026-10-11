@@ -2,20 +2,20 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join, win32 } from "node:path";
 import { tmpdir } from "node:os";
-import type { CaptureOptions, EngineConfig, ExtractedFrames } from "@hyperframes/engine";
+import type { CaptureOptions, EngineConfig, ExtractedFrames } from "@tagreel/engine";
 import {
   DEFAULT_CONFIG,
   DrawElementCaptureError,
   executeParallelCapture,
   mergeWorkerFrames,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 import type { CompiledComposition } from "./htmlCompiler.js";
 
 // Replace only the two engine functions the adaptive-retry loop uses to touch
 // disk; everything else (distributeFrames, types, etc.) stays real so the loop
 // runs for real against a temp framesDir.
-vi.mock("@hyperframes/engine", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@hyperframes/engine")>();
+vi.mock("@tagreel/engine", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@tagreel/engine")>();
   return { ...actual, executeParallelCapture: vi.fn(), mergeWorkerFrames: vi.fn() };
 });
 
@@ -730,9 +730,9 @@ describe("createCompiledFrameSrcResolver", () => {
   it("maps extracted frame paths under compiledDir to encoded server URLs", () => {
     const resolver = createCompiledFrameSrcResolver("/tmp/hf job/compiled");
 
-    expect(
-      resolver("/tmp/hf job/compiled/__hyperframes_video_frames/video 1/frame_00001.jpg"),
-    ).toBe("/__hyperframes_video_frames/video%201/frame_00001.jpg");
+    expect(resolver("/tmp/hf job/compiled/__tagreel_video_frames/video 1/frame_00001.jpg")).toBe(
+      "/__tagreel_video_frames/video%201/frame_00001.jpg",
+    );
   });
 
   it("returns null for paths outside compiledDir", () => {
@@ -744,8 +744,8 @@ describe("createCompiledFrameSrcResolver", () => {
   it("resolves symlinked cache frames when materialized under compiledDir", () => {
     const resolver = createCompiledFrameSrcResolver("/tmp/hf-job/compiled");
 
-    expect(resolver("/tmp/hf-job/compiled/__hyperframes_video_frames/vid1/frame_00001.jpg")).toBe(
-      "/__hyperframes_video_frames/vid1/frame_00001.jpg",
+    expect(resolver("/tmp/hf-job/compiled/__tagreel_video_frames/vid1/frame_00001.jpg")).toBe(
+      "/__tagreel_video_frames/vid1/frame_00001.jpg",
     );
 
     expect(resolver("/tmp/cache/abc123/frame_00001.jpg")).toBeNull();
@@ -754,13 +754,13 @@ describe("createCompiledFrameSrcResolver", () => {
   it("encodes reserved characters in frame path segments", () => {
     const resolver = createCompiledFrameSrcResolver("/tmp/hf-job/compiled");
 
-    expect(
-      resolver("/tmp/hf-job/compiled/__hyperframes_video_frames/video#1/frame_00001.jpg"),
-    ).toBe("/__hyperframes_video_frames/video%231/frame_00001.jpg");
+    expect(resolver("/tmp/hf-job/compiled/__tagreel_video_frames/video#1/frame_00001.jpg")).toBe(
+      "/__tagreel_video_frames/video%231/frame_00001.jpg",
+    );
 
-    expect(
-      resolver("/tmp/hf-job/compiled/__hyperframes_video_frames/video?q=1/frame_00001.jpg"),
-    ).toBe("/__hyperframes_video_frames/video%3Fq%3D1/frame_00001.jpg");
+    expect(resolver("/tmp/hf-job/compiled/__tagreel_video_frames/video?q=1/frame_00001.jpg")).toBe(
+      "/__tagreel_video_frames/video%3Fq%3D1/frame_00001.jpg",
+    );
   });
 });
 
@@ -778,7 +778,7 @@ describe("materializeExtractedFramesForCompiledDir", () => {
 
   it("leaves Windows frame paths already under compiledDir unchanged", () => {
     const compiledDir = win32.resolve("C:\\compiled");
-    const outputDir = win32.join(compiledDir, "__hyperframes_video_frames", "video-1");
+    const outputDir = win32.join(compiledDir, "__tagreel_video_frames", "video-1");
     const framePath = win32.join(outputDir, "frame_000001.jpg");
     const extracted = createExtractedFrames(outputDir, framePath);
 
@@ -827,7 +827,7 @@ describe("materializeExtractedFramesForCompiledDir", () => {
       },
     });
 
-    const linkPath = win32.join(compiledDir, "__hyperframes_video_frames", "video-1");
+    const linkPath = win32.join(compiledDir, "__tagreel_video_frames", "video-1");
     expect(extracted.outputDir).toBe(linkPath);
     expect(extracted.framePaths.get(0)).toBe(win32.join(linkPath, "frame_000001.jpg"));
     expect(extracted.framePaths.get(0)).not.toContain(outputDir);
@@ -861,7 +861,7 @@ describe("materializeExtractedFramesForCompiledDir", () => {
       materializeSymlinks: true,
     });
 
-    const linkPath = win32.join(compiledDir, "__hyperframes_video_frames", "video-1");
+    const linkPath = win32.join(compiledDir, "__tagreel_video_frames", "video-1");
     expect(extracted.outputDir).toBe(linkPath);
     expect(extracted.framePaths.get(0)).toBe(win32.join(linkPath, "frame_000001.jpg"));
     expect(copies).toEqual([{ src: outputDir, dest: linkPath, recursive: true }]);
@@ -895,7 +895,7 @@ describe("materializeExtractedFramesForCompiledDir", () => {
       },
     });
 
-    const linkPath = win32.join(compiledDir, "__hyperframes_video_frames", "video-1");
+    const linkPath = win32.join(compiledDir, "__tagreel_video_frames", "video-1");
     expect(copies).toEqual([{ src: outputDir, dest: linkPath, recursive: true }]);
     expect(extracted.outputDir).toBe(linkPath);
     expect(extracted.framePaths.get(0)).toBe(win32.join(linkPath, "frame_000001.jpg"));
@@ -937,7 +937,7 @@ describe("materializeExtractedFramesForCompiledDir", () => {
     const outputDir = win32.resolve("D:\\cache\\abc123");
     const framePath = win32.join(outputDir, "frame_000001.jpg");
     const extracted = createExtractedFrames(outputDir, framePath);
-    const linkPath = win32.join(compiledDir, "__hyperframes_video_frames", "video-1");
+    const linkPath = win32.join(compiledDir, "__tagreel_video_frames", "video-1");
     const removed: string[] = [];
     const symlinks: Array<{ target: string; path: string }> = [];
     let symlinkCalls = 0;
@@ -999,7 +999,7 @@ describe("materializeExtractedFramesForCompiledDir", () => {
       },
     });
 
-    const linkPath = win32.join(compiledDir, "__hyperframes_video_frames", "video-1");
+    const linkPath = win32.join(compiledDir, "__tagreel_video_frames", "video-1");
     expect(copies).toEqual([{ src: outputDir, dest: linkPath, recursive: true }]);
     expect(extracted.framePaths.get(0)).toBe(win32.join(linkPath, "frame_000001.jpg"));
   });
@@ -1014,7 +1014,7 @@ describe("materializeExtractedFramesForCompiledDir", () => {
     const outputDir = win32.resolve("D:\\cache\\abc123");
     const framePath = win32.join(outputDir, "frame_000001.jpg");
     const extracted = createExtractedFrames(outputDir, framePath);
-    const linkPath = win32.join(compiledDir, "__hyperframes_video_frames", "video-1");
+    const linkPath = win32.join(compiledDir, "__tagreel_video_frames", "video-1");
     const removed: string[] = [];
     const copies: Array<{ src: string; dest: string }> = [];
     let cpCalls = 0;
@@ -2399,7 +2399,7 @@ describe("shouldPreferSingleWorkerDrawElement (DE priority inversion)", () => {
       expect(scan.hasLut).toBe(true);
     });
 
-    // Mirrors normalizeLut (@hyperframes/core colorGrading.ts): an empty
+    // Mirrors normalizeLut (@tagreel/core colorGrading.ts): an empty
     // string, an object with no `src`, or a blank `src` are all "no LUT",
     // matching the runtime consumer, not just "the key is present".
     it("reports hasLut false for an empty-string, srcless, or blank-src lut value", () => {

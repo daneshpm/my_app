@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Texture","badge":"Stable","codeLines":447}}
   attribution={{"path":"registry/components/ink-bleed-reveal","tags":["motion-primitive","texture","reveal","gooey","svg-filter","deterministic","experiment"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/ink-bleed-reveal/ink-bleed-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/ink-bleed-reveal/ink-bleed-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html ink-bleed-reveal.html
 <!doctype html>
 <!--
-  ink-bleed-reveal: HyperFrames video primitive (texture / reveals). Wave M7.
+  ink-bleed-reveal: Tagreel video primitive (texture / reveals). Wave M7.
 
   Liquid ink blooms through paper to reveal a mark. Several ink blobs bleed
   outward from the center and merge like liquid under the gooey chain
@@ -234,8 +234,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var canvas = root.querySelector(".ibr-canvas");
             var mark = root.querySelector(".ibr-mark");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var blobCount = Math.round(Number(vars.blobs));
@@ -476,7 +476,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add ink-bleed-reveal" item="ink-bleed-reveal" />
+<InstallCommand command="npx tagreel add ink-bleed-reveal" item="ink-bleed-reveal" />
 
 That writes one file: `compositions/components/ink-bleed-reveal.html`.
 

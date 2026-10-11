@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { audioGainToDb } from "@hyperframes/core/audio-gain";
+import { audioGainToDb } from "@tagreel/core/audio-gain";
 import type { TimelineElement } from "../store/timelineElement";
 import { usePlayerStore } from "../store/playerStore";
 import { useTimelineEditContextOptional } from "../../contexts/TimelineEditContext";

@@ -16,8 +16,8 @@ import {
   enabledAudioFxNodes,
   parseAudioFxChain,
   type HfAudioFxChain,
-} from "@hyperframes/core/audio-fx";
-import type { HfAudioNameKind } from "@hyperframes/core/audio-carve";
+} from "@tagreel/core/audio-fx";
+import type { HfAudioNameKind } from "@tagreel/core/audio-carve";
 import { TimelineFxPopover } from "../../components/editor/TimelineFxPopover.js";
 import { resolveFloatingPanelPosition } from "../../components/editor/floatingPanel.js";
 import {

@@ -1,1 +1,1 @@
-export { isRealmElement, isRealmHtmlMediaElement } from "@hyperframes/core/composition-readiness";
+export { isRealmElement, isRealmHtmlMediaElement } from "@tagreel/core/composition-readiness";

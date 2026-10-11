@@ -92,7 +92,7 @@ try {
     const dir = join(studio, "data/projects", id);
     mkdirSync(dir, { recursive: true });
     projects.push({ id, dir });
-    for (const name of ["index.html", "hyperframes.json"])
+    for (const name of ["index.html", "tagreel.json"])
       copyFileSync(join(fixture, name), join(dir, name));
     page = await browser.newPage();
     await page.bringToFront();

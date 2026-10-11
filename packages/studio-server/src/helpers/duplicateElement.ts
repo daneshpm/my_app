@@ -1,5 +1,5 @@
-import { sameInstant } from "@hyperframes/core/clip-facts";
-import { ensureHfIds } from "@hyperframes/parsers/hf-ids";
+import { sameInstant } from "@tagreel/core/clip-facts";
+import { ensureHfIds } from "@tagreel/parsers/hf-ids";
 import {
   findTargetElement,
   dedupeClonedCompositionId,

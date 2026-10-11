@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  particle-image-reveal: HyperFrames video primitive (intros & reveals)
+  particle-image-reveal: Tagreel video primitive (intros & reveals)
 
   A seeded deterministic particle field materializes a supplied image: accent
   particles converge and settle across the frame while the image reveals
@@ -175,8 +175,8 @@
             var imageLayer = root.querySelector(".pir-image");
             var canvas = root.querySelector(".pir-canvas");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var densityCounts = { low: 320, med: 640, high: 1100 };

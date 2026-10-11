@@ -1,18 +1,18 @@
-# Hyperframes
+# Tagreel
 
 Open-source video rendering framework: write HTML, render video.
 
 ## Skills
 
-This repo ships AI agent skills via [vercel-labs/skills](https://github.com/vercel-labs/skills). Install them before writing compositions — they encode framework-specific patterns that generic docs don't cover. **Default to the core set** — the `/hyperframes` router installs each creation workflow on demand; install everything only when the user explicitly asks for the full set.
+This repo ships AI agent skills via [vercel-labs/skills](https://github.com/vercel-labs/skills). Install them before writing compositions — they encode framework-specific patterns that generic docs don't cover. **Default to the core set** — the `/tagreel` router installs each creation workflow on demand; install everything only when the user explicitly asks for the full set.
 
 ```bash
-npx hyperframes skills update           # default: installs/refreshes the core set — workflows install on demand
-npx hyperframes skills                  # all 21 published skills at once
-npx skills add heygen-com/hyperframes   # interactive picker (terminal only; repo-internal skills are excluded by default)
+npx tagreel skills update           # default: installs/refreshes the core set — workflows install on demand
+npx tagreel skills                  # all 21 published skills at once
+npx skills add daneshpm/my_app   # interactive picker (terminal only; repo-internal skills are excluded by default)
 ```
 
-**Creation workflows** route through one entry skill — read `/hyperframes` first: it orients you to the whole surface, confirms the brief up front (the intent layer), and maps "make me a…" intent — usually a video, but also a navigable deck (`/slideshow`) or a composition port (`/remotion-to-hyperframes`) — to a concrete workflow. Consult it before invoking a specific workflow:
+**Creation workflows** route through one entry skill — read `/tagreel` first: it orients you to the whole surface, confirms the brief up front (the intent layer), and maps "make me a…" intent — usually a video, but also a navigable deck (`/slideshow`) or a composition port (`/remotion-to-tagreel`) — to a concrete workflow. Consult it before invoking a specific workflow:
 
 - `/product-launch-video` — any **website** URL (or a pre-written script / text brief in no-capture mode) → a product launch / promo video, or a site tour / showcase featuring the site's own captured screens; up to ~3 min (sweet spot ~30-90s).
 - `/faceless-explainer` — arbitrary text, **no URL and no website capture** → faceless explainer, up to ~3 min (sweet spot ~30-90s); every visual is LLM-invented (typography / abstract graphics / diagram / data-viz).
@@ -22,9 +22,9 @@ npx skills add heygen-com/hyperframes   # interactive picker (terminal only; rep
 - `/motion-graphics` — a short (typically under 10s) design-led **motion graphic**, motion-is-the-message, no narration: kinetic type, a stat / number count-up, a chart, a logo sting, a lower-third / overlay, or an animated tweet / headline / captured-page highlight; rendered to MP4 or a transparent overlay. Longer / narrated / custom → `/general-video`.
 - `/music-to-video` — a **music track** (audio file, video to pull audio from, or one generated from a mood brief) → beat-synced video (lyric / slideshow / kinetic promo). Music drives pacing; user-supplied images / videos are cut onto the same beat grid.
 - `/slideshow` — a **presentation / pitch deck / interactive deck** — discrete slides, fragment reveals, branching, hotspot navigation, presenter mode. Output is a navigable deck, not a rendered video.
-- `/general-video` — fallback for any other video creation (title card, longer brand / sizzle reel, multi-scene montage, static loop, custom composition) and the home of **companion mode** — co-create with the full HyperFrames toolbox; the original hyperframes flow — design → plan → layout → build → validate, any length.
+- `/general-video` — fallback for any other video creation (title card, longer brand / sizzle reel, multi-scene montage, static loop, custom composition) and the home of **companion mode** — co-create with the full Tagreel toolbox; the original tagreel flow — design → plan → layout → build → validate, any length.
 
-**Porting an existing composition?** `/remotion-to-hyperframes` translates a Remotion (React) video composition into HyperFrames HTML — a source migration, separate from the creation workflows above.
+**Porting an existing composition?** `/remotion-to-tagreel` translates a Remotion (React) video composition into Tagreel HTML — a source migration, separate from the creation workflows above.
 
 ## Issue and PR triage
 
@@ -45,7 +45,7 @@ tests or typecheck. After editing a package that another package imports, run
 that package's `build` again before the dependent package's tests. Core's
 `src/generated/` is git-ignored build output: if you see
 `Cannot find module '../generated/runtime-inline'`, run
-`bun run build:hyperframes-runtime`.
+`bun run build:tagreel-runtime`.
 
 One file: `bun run --cwd packages/<pkg> test <path>`. Each package's `test`
 script picks its runner (vitest in most, `bun test` in aws-lambda and
@@ -71,8 +71,8 @@ Always lint and format changed files before committing. Lefthook pre-commit hook
 After creating or editing any `.html` composition:
 
 ```bash
-npx hyperframes lint       # Static HTML structure check
-npx hyperframes check      # Browser gate (headless Chrome — runtime errors, layout, motion, WCAG contrast)
+npx tagreel lint       # Static HTML structure check
+npx tagreel check      # Browser gate (headless Chrome — runtime errors, layout, motion, WCAG contrast)
 ```
 
 Both must pass before previewing or considering work complete.
@@ -81,10 +81,10 @@ Both must pass before previewing or considering work complete.
 
 ```
 packages/
-  cli/                  → hyperframes CLI (create, preview, lint, render)
+  cli/                  → tagreel CLI (create, preview, lint, render)
   core/                 → Types, parsers, generators, linter, runtime, frame adapters
   engine/               → Seekable page-to-video capture engine (Puppeteer + FFmpeg)
-  player/               → Embeddable <hyperframes-player> web component
+  player/               → Embeddable <tagreel-player> web component
   producer/             → Full rendering pipeline (capture + encode + audio mix)
   shader-transitions/   → WebGL shader transitions for compositions
   studio/               → Browser-based composition editor UI (read packages/studio/AGENTS.md first)
@@ -92,7 +92,7 @@ registry/
   blocks/               → Installable sub-composition scenes (50+)
   components/           → Installable effects and snippets
   examples/             → Starter project templates
-docs/                   → Mintlify documentation site (hyperframes.heygen.com)
+docs/                   → Mintlify documentation site (github.com/daneshpm/my_app/tree/main/docs)
 skills/                 → AI agent skill definitions
 ```
 
@@ -107,5 +107,5 @@ skills/                 → AI agent skill definitions
 
 ## Documentation
 
-- Docs: https://hyperframes.heygen.com/introduction
-- Catalog (50+ blocks): https://hyperframes.heygen.com/catalog/blocks/data-chart
+- Docs: https://github.com/daneshpm/my_app/tree/main/docs/introduction
+- Catalog (50+ blocks): https://github.com/daneshpm/my_app/tree/main/docs/catalog/blocks/data-chart

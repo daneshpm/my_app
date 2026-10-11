@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "mk-callout-highlight",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Word-Sweep Highlight",
   "description": "A sentence whose word-by-word emphasis is driven by a single scalar \u2014 tween it to sync the highlight with a voiceover",
   "tags": ["typography", "karaoke", "captions", "minimal"],
@@ -14,7 +14,7 @@
     {
       "path": "mk-callout-highlight.html",
       "target": "compositions/mk-callout-highlight.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

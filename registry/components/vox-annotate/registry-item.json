@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "vox-annotate",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Vox Annotate",
   "description": "The Vox-style annotate gesture: a keyword in a held sentence gets a hand-drawn marker while a thin connector draws up to a mono callout label, all as one choreographed beat on the cue.",
   "tags": ["motion-primitive", "typography", "annotation", "marker", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "vox-annotate.html",
       "target": "compositions/components/vox-annotate.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

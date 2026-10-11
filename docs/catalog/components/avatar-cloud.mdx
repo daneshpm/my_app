@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":470}}
   attribution={{"path":"registry/components/avatar-cloud","tags":["effects","avatars","community","network","social-proof","prove"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/avatar-cloud/avatar-cloud.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/avatar-cloud/avatar-cloud.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html avatar-cloud.html
 <!doctype html>
 <!--
-  avatar-cloud: HyperFrames video primitive (effects / holdable / prove)
+  avatar-cloud: Tagreel video primitive (effects / holdable / prove)
 
   Concept: lettermark avatars populate a loose elliptical cloud around a
   central proof label. Fine SVG links draw from the hub to every avatar, plus
@@ -65,7 +65,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   the host with inset:0 and container-type:size and has no data-width or
   data-height. The hardcoded id "avatar-cloud" matches the host id and timeline
   key after mount flattening. Variables come from
-  window.__hyperframes.getVariables(), which merges declarations with host
+  window.__tagreel.getVariables(), which merges declarations with host
   data-variable-values overrides.
 -->
 <html
@@ -295,8 +295,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             // EDIT ZONE: getVariables is the only owner of declared defaults
             // plus host overrides. Values are normalized exactly once here.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var rawCount = Number(vars.avatarCount);
@@ -499,7 +499,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add avatar-cloud" item="avatar-cloud" />
+<InstallCommand command="npx tagreel add avatar-cloud" item="avatar-cloud" />
 
 That writes one file: `compositions/components/avatar-cloud.html`.
 

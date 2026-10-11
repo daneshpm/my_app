@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "blur-out-up",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Blur Out Up",
   "description": "Words arrive clean and depart upward with increasing blur for airy exits.",
   "tags": ["motion-primitive", "typography"],
@@ -9,7 +9,7 @@
     {
       "path": "blur-out-up.html",
       "target": "compositions/components/blur-out-up.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -66,8 +66,5 @@
         { "value": "accent", "label": "Accent" }
       ]
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/blur-out-up.png"
-  }
+  ]
 }

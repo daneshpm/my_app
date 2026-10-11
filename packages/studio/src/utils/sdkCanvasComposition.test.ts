@@ -2,7 +2,7 @@
 import { describe, expect, it } from "vitest";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { openComposition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
 
 /**
  * linkedom's HTMLCanvasElement constructor calls `createCanvas(300, 150)` from

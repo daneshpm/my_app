@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "hw-scribble-transition",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Scribble Transition",
   "description": "Overlay transition: scribble bands accumulate to cover the frame with a solid backstop, the host cuts beneath, and the scribble clears",
   "tags": ["handwritten", "transition", "wipe"],
@@ -14,7 +14,7 @@
     {
       "path": "hw-scribble-transition.html",
       "target": "compositions/hw-scribble-transition.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

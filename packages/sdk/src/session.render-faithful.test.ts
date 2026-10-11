@@ -4,7 +4,7 @@
  * Contract: after a representative op batch (setStyle + setText + setTiming +
  * addGsapTween + moveElement), session.serialize() emits fully override-baked,
  * render-ready HTML containing ALL edits. This is the guarantee that
- * HyperframesRenderActivityInput{ source_s3_key(baked HTML) + variables } can
+ * TagreelRenderActivityInput{ source_s3_key(baked HTML) + variables } can
  * be satisfied without a separate override-set field.
  *
  * Also asserts:

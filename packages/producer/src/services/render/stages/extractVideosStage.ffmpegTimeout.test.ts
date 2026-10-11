@@ -1,4 +1,4 @@
-import { resolveConfig, type EngineConfig, type ExtractionResult } from "@hyperframes/engine";
+import { resolveConfig, type EngineConfig, type ExtractionResult } from "@tagreel/engine";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 /** The optional engine-config argument the stage passes to `extractAllVideoFrames`. */
@@ -6,8 +6,8 @@ type ExtractionConfigArg = Partial<EngineConfig> | undefined;
 
 const capturedConfigs = vi.hoisted(() => new Array<ExtractionConfigArg>());
 
-vi.mock("@hyperframes/engine", async (importOriginal) => {
-  const real = await importOriginal<typeof import("@hyperframes/engine")>();
+vi.mock("@tagreel/engine", async (importOriginal) => {
+  const real = await importOriginal<typeof import("@tagreel/engine")>();
   return {
     ...real,
     extractAllVideoFrames: async (

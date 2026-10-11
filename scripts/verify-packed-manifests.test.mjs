@@ -28,25 +28,25 @@ describe("packed manifest verifier", () => {
   });
 
   it("keeps every browser package live even when it declares sideEffects false", () => {
-    const consumer = renderBrowserConsumer(["@hyperframes/parsers", "@hyperframes/lint/browser"]);
+    const consumer = renderBrowserConsumer(["@tagreel/parsers", "@tagreel/lint/browser"]);
 
-    assert.match(consumer, /import \* as packedBrowserModule0 from "@hyperframes\/parsers";/);
-    assert.match(consumer, /import \* as packedBrowserModule1 from "@hyperframes\/lint\/browser";/);
+    assert.match(consumer, /import \* as packedBrowserModule0 from "@tagreel\/parsers";/);
+    assert.match(consumer, /import \* as packedBrowserModule1 from "@tagreel\/lint\/browser";/);
     assert.match(consumer, /packedBrowserModules\.map\(\(module\) => Object\.keys\(module\)\)/);
-    assert.doesNotMatch(consumer, /import "@hyperframes\/parsers"/);
+    assert.doesNotMatch(consumer, /import "@tagreel\/parsers"/);
   });
 
   it("derives consumer specifiers from the packed export map", () => {
-    assert.equal(packageExportSpecifier("@hyperframes/sdk", "."), "@hyperframes/sdk");
+    assert.equal(packageExportSpecifier("@tagreel/sdk", "."), "@tagreel/sdk");
     assert.equal(
-      packageExportSpecifier("@hyperframes/sdk", "./adapters/fs"),
-      "@hyperframes/sdk/adapters/fs",
+      packageExportSpecifier("@tagreel/sdk", "./adapters/fs"),
+      "@tagreel/sdk/adapters/fs",
     );
     assert.deepEqual(
       listPackedExportContracts([
         {
           packedPackage: {
-            name: "@hyperframes/example",
+            name: "@tagreel/example",
             exports: {
               ".": { import: "./dist/index.js", types: "./dist/index.d.ts" },
               "./runtime": "./dist/runtime.js",
@@ -56,12 +56,12 @@ describe("packed manifest verifier", () => {
       ]),
       [
         {
-          specifier: "@hyperframes/example",
+          specifier: "@tagreel/example",
           typechecked: true,
           environments: ["browser", "node"],
         },
         {
-          specifier: "@hyperframes/example/runtime",
+          specifier: "@tagreel/example/runtime",
           typechecked: false,
           environments: ["browser", "node"],
         },
@@ -74,7 +74,7 @@ describe("packed manifest verifier", () => {
       listPackedExportContracts([
         {
           packedPackage: {
-            name: "@hyperframes/example",
+            name: "@tagreel/example",
             exports: { ".": { import: "./dist/index.js", types: "./dist/index.d.ts" } },
           },
           descriptor: {
@@ -86,7 +86,7 @@ describe("packed manifest verifier", () => {
       ]),
       [
         {
-          specifier: "@hyperframes/example",
+          specifier: "@tagreel/example",
           typechecked: true,
           environments: ["browser"],
         },
@@ -95,7 +95,7 @@ describe("packed manifest verifier", () => {
   });
 
   function withPackedFiles(files, packedFiles, callback) {
-    const dir = mkdtempSync(join(tmpdir(), "hyperframes-pack-test-"));
+    const dir = mkdtempSync(join(tmpdir(), "tagreel-pack-test-"));
     try {
       const packageDir = join(dir, "package");
       mkdirSync(packageDir, { recursive: true });

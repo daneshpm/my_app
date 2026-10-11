@@ -1,4 +1,4 @@
-import { MEDIA_LINK_ATTR, linkScopeOf } from "@hyperframes/core/media-link";
+import { MEDIA_LINK_ATTR, linkScopeOf } from "@tagreel/core/media-link";
 import type { HfId } from "../types.js";
 import { escapeHfId, querySelectorAllDeep, resolveScoped } from "./model.js";
 

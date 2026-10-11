@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  svg-stroke-trace: HyperFrames video primitive (intros and reveals)
+  svg-stroke-trace: Tagreel video primitive (intros and reveals)
 
   An authored SVG path draws from start to finish using its measured length.
   Closed paths receive a restrained fill after the stroke completes. Open
@@ -133,8 +133,8 @@
             var fillPath = root.querySelector(".sst-fill");
             var strokePath = root.querySelector(".sst-stroke");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var suppliedPath = vars.path == null ? DEFAULT_PATH : String(vars.path).trim();

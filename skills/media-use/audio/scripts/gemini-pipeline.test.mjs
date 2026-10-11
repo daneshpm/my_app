@@ -7,26 +7,17 @@ import { spawnSync } from "node:child_process";
 
 // Exercise the actual engine and provider together; only the paid API and
 // external audio tools are fixtures. This is not a live synthesis/render test.
-for (const expired of [false, true]) {
+for (const hasOwnVoice of [false, true]) {
   for (const only of ["tts", "tts,bgm,sfx"]) {
-    // With expired credentials the person already has an assets/voice/intro.wav, which the engine must keep.
-    const voicePath = expired ? "assets/voice/intro-2.wav" : "assets/voice/intro.wav";
-    test(`Gemini engine returns caption metadata with ${expired ? "expired" : "absent"} HeyGen credentials (${only})`, (t) => {
+    // When the person already has an assets/voice/intro.wav, the engine must keep it.
+    const voicePath = hasOwnVoice ? "assets/voice/intro-2.wav" : "assets/voice/intro.wav";
+    test(`Gemini engine returns caption metadata ${hasOwnVoice ? "next to the person's own voice file" : "in a fresh project"} (${only})`, (t) => {
       const dir = mkdtempSync(join(tmpdir(), "hf-gemini-pipeline-"));
       t.after(() => rmSync(dir, { recursive: true, force: true }));
-      if (expired) {
+      if (hasOwnVoice) {
         mkdirSync(join(dir, "assets/voice"), { recursive: true });
         writeFileSync(join(dir, "assets/voice/intro.wav"), "the person's own intro");
       }
-      const config = join(dir, "heygen");
-      mkdirSync(config);
-      if (expired)
-        writeFileSync(
-          join(config, "credentials"),
-          JSON.stringify({
-            oauth: { access_token: "expired-fixture", expires_at: "2000-01-01T00:00:00Z" },
-          }),
-        );
       const bin = join(dir, "bin");
       mkdirSync(bin);
       const preload = join(dir, "fetch.mjs");
@@ -54,7 +45,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const args = process.argv.slice(2);
-assert.deepEqual(args.slice(0, 3), ['hyperframes', 'transcribe', '${voicePath}']);
+assert.deepEqual(args.slice(0, 3), ['tagreel', 'transcribe', '${voicePath}']);
 assert.ok(fs.existsSync(args[2]));
 assert.equal(args[args.indexOf('--model')+1], 'small.en');
 fs.writeFileSync(path.join(args[args.indexOf('--dir')+1], 'transcript.json'), JSON.stringify([
@@ -81,7 +72,7 @@ fs.writeFileSync(path.join(args[args.indexOf('--dir')+1], 'transcript.json'), JS
           "--import",
           preload,
           new URL("./audio.mjs", import.meta.url).pathname,
-          "--hyperframes",
+          "--tagreel",
           dir,
           "--only",
           only,
@@ -90,9 +81,6 @@ fs.writeFileSync(path.join(args[args.indexOf('--dir')+1], 'transcript.json'), JS
           encoding: "utf8",
           env: {
             ...process.env,
-            HEYGEN_CONFIG_DIR: config,
-            HEYGEN_API_KEY: "",
-            HYPERFRAMES_API_KEY: "",
             GEMINI_API_KEY: "fixture-key",
             PATH: `${bin}:${process.env.PATH}`,
           },
@@ -121,7 +109,7 @@ fs.writeFileSync(path.join(args[args.indexOf('--dir')+1], 'transcript.json'), JS
           .map(({ path, type, source }) => [path, type, source]),
         [[voicePath, "voice", "generated"]],
       );
-      if (expired)
+      if (hasOwnVoice)
         assert.equal(
           readFileSync(join(dir, "assets/voice/intro.wav"), "utf8"),
           "the person's own intro",

@@ -1,6 +1,6 @@
 # GSAP Animation
 
-HyperFrames uses GSAP for animation. Timelines are paused and controlled by the runtime.
+Tagreel uses GSAP for animation. Timelines are paused and controlled by the runtime.
 
 ## Setup
 

@@ -1,6 +1,6 @@
 // ── Types and Constants for Studio Motion ──
 
-export const STUDIO_MOTION_PATH = ".hyperframes/studio-motion.json";
+export const STUDIO_MOTION_PATH = ".tagreel/studio-motion.json";
 export const STUDIO_MOTION_TIMELINE_ID = "studio-motion";
 
 export const STUDIO_MOTION_ATTR = "data-hf-studio-motion";

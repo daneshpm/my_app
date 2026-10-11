@@ -9,7 +9,7 @@ export const ExamplePlayer = ({ src, poster, title, className }) => {
     fallback.style.cssText = "display:block;width:100%;height:100%;object-fit:contain";
     document.body.appendChild(fallback);
     const upgrade = () => {
-      if (!customElements.get("hyperframes-player") || !Number.isFinite(fallback.duration)) return;
+      if (!customElements.get("tagreel-player") || !Number.isFinite(fallback.duration)) return;
       const width = fallback.videoWidth || 1920;
       const height = fallback.videoHeight || 1080;
       const composition = document.createElement("div");
@@ -25,7 +25,7 @@ export const ExamplePlayer = ({ src, poster, title, className }) => {
       clip.setAttribute("playsinline", "");
       clip.style.cssText = "width:100%;height:100%;object-fit:contain";
       composition.appendChild(clip);
-      const player = document.createElement("hyperframes-player");
+      const player = document.createElement("tagreel-player");
       // Fit posters in published player builds that predate the sizing fix.
       const posterStyle = document.createElement("style");
       posterStyle.textContent = ".hfp-poster{width:100%;height:100%}";
@@ -52,7 +52,7 @@ export const ExamplePlayer = ({ src, poster, title, className }) => {
       document.body.appendChild(player);
     };
     const script = document.createElement("script");
-    script.src = "https://cdn.jsdelivr.net/npm/@hyperframes/player@latest/dist/hyperframes-player.global.js";
+    script.src = "https://cdn.jsdelivr.net/npm/@tagreel/player@latest/dist/tagreel-player.global.js";
     script.onload = () => {
       if (fallback.readyState >= 1) upgrade();
       else fallback.addEventListener("loadedmetadata", upgrade, { once: true });

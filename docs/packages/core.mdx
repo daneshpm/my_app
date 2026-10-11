@@ -1,9 +1,9 @@
 ---
-title: "@hyperframes/core"
+title: "@tagreel/core"
 description: "Composition types, generation, compilation, and browser runtime."
 ---
 
-`@hyperframes/core` contains the shared composition model and browser runtime
+`@tagreel/core` contains the shared composition model and browser runtime
 used across my_app.
 
 Most people should use the [CLI](/developers/cli), [Studio](/studio), or
@@ -12,18 +12,18 @@ HTML, compiling projects, building tooling around the shared types, or embedding
 the runtime.
 
 ```bash
-npm install @hyperframes/core
+npm install @tagreel/core
 ```
 
 ## Main surfaces
 
 | Need                                    | Import                                   |
 | --------------------------------------- | ---------------------------------------- |
-| Types, generators, and common utilities | `@hyperframes/core`                      |
-| Timing compilation and project bundling | `@hyperframes/core/compiler`             |
-| Variable declarations and validation    | `@hyperframes/core/variables`            |
-| Composition contract helpers            | `@hyperframes/core/composition-contract` |
-| Prebuilt browser runtime                | `@hyperframes/core/runtime`              |
+| Types, generators, and common utilities | `@tagreel/core`                      |
+| Timing compilation and project bundling | `@tagreel/core/compiler`             |
+| Variable declarations and validation    | `@tagreel/core/variables`            |
+| Composition contract helpers            | `@tagreel/core/composition-contract` |
+| Prebuilt browser runtime                | `@tagreel/core/runtime`              |
 
 The standalone [Parsers](/packages/parsers) and [Linter](/packages/lint)
 packages own those concerns for new integrations. Core retains compatibility
@@ -40,7 +40,7 @@ import type {
   TimelineElement,
   TimelineMediaElement,
   TimelineTextElement,
-} from "@hyperframes/core";
+} from "@tagreel/core";
 ```
 
 Composition variables support `string`, `number`, `color`, `boolean`, `enum`,
@@ -51,7 +51,7 @@ Composition variables support `string`, `number`, `color`, `boolean`, `enum`,
 Core re-exports the common parsing helpers:
 
 ```ts
-import { extractCompositionMetadata, parseHtml } from "@hyperframes/core";
+import { extractCompositionMetadata, parseHtml } from "@tagreel/core";
 
 const parsed = parseHtml(html);
 const metadata = extractCompositionMetadata(html);
@@ -62,9 +62,9 @@ console.log(metadata.compositionId, metadata.compositionDuration, metadata.varia
 Generate a complete composition from `TimelineElement` data:
 
 ```ts
-import { generateHyperframesHtml } from "@hyperframes/core";
+import { generateTagreelHtml } from "@tagreel/core";
 
-const html = generateHyperframesHtml(elements, 6, {
+const html = generateTagreelHtml(elements, 6, {
   compositionId: "product-intro",
   resolution: "landscape",
   animations,
@@ -76,7 +76,7 @@ The second argument is the requested duration in seconds. Pass a stable
 `compositionId` when output must be reproducible.
 
 Composition generators require trusted authors for code-bearing inputs. `styles` and
-`generateHyperframesStyles` preserve authored CSS, which can load external resources.
+`generateTagreelStyles` preserve authored CSS, which can load external resources.
 `animations` may contain `__raw:` values that are emitted as JavaScript;
 `includeScripts: true` includes executable timeline code. `serializeGsapAnimations`
 also accepts raw `preamble`, `postamble`, and a code-bearing `timelineVar`. Never fill
@@ -94,7 +94,7 @@ Inside a composition script, `getVariables()` reads declared defaults plus the
 values supplied for the current preview or render:
 
 ```ts
-import { getVariables } from "@hyperframes/core";
+import { getVariables } from "@tagreel/core";
 
 const { title } = getVariables<{ title: string }>();
 ```
@@ -103,7 +103,7 @@ In Node tooling, validate a values object against declarations parsed from the
 composition:
 
 ```ts
-import { formatVariableValidationIssue, validateVariables } from "@hyperframes/core";
+import { formatVariableValidationIssue, validateVariables } from "@tagreel/core";
 
 const issues = validateVariables({ title: "Launch day" }, metadata.variables);
 
@@ -118,7 +118,7 @@ Use the compiler entry when your integration needs resolved media timing or a
 single bundled document.
 
 ```ts
-import { bundleToSingleHtml, compileHtml } from "@hyperframes/core/compiler";
+import { bundleToSingleHtml, compileHtml } from "@tagreel/core/compiler";
 
 const compiled = await compileHtml(rawHtml, "./project", async (mediaPath) =>
   probeDuration(mediaPath),
@@ -135,17 +135,17 @@ The compiler also exposes lower-level timing helpers such as
 ## Check the static contract
 
 ```ts
-import { validateHyperframeHtmlContract } from "@hyperframes/core/compiler";
+import { validateTagreelHtmlContract } from "@tagreel/core/compiler";
 
-const result = await validateHyperframeHtmlContract(html);
+const result = await validateTagreelHtmlContract(html);
 
 if (!result.isValid) {
   console.error(result.missingKeys);
 }
 ```
 
-For the full composition lint result, use [`@hyperframes/lint`](/packages/lint)
-or run `npx hyperframes lint`.
+For the full composition lint result, use [`@tagreel/lint`](/packages/lint)
+or run `npx tagreel lint`.
 
 ## Build a frame adapter
 
@@ -153,7 +153,7 @@ Frame adapters make an animation runtime seekable by frame. Core includes the
 GSAP adapter:
 
 ```ts
-import { createGSAPFrameAdapter } from "@hyperframes/core";
+import { createGSAPFrameAdapter } from "@tagreel/core";
 
 const adapter = createGSAPFrameAdapter({
   id: "product-intro",
@@ -177,13 +177,13 @@ await adapter.seekFrame(42);
   <Card title="Composition schema" icon="code" href="/reference/html-schema">
     Learn the HTML contract that Core reads and writes.
   </Card>
-  <Card title="@hyperframes/parsers" icon="brackets-curly" href="/packages/parsers">
+  <Card title="@tagreel/parsers" icon="brackets-curly" href="/packages/parsers">
     Work directly with HTML and GSAP parsing.
   </Card>
-  <Card title="@hyperframes/lint" icon="circle-check" href="/packages/lint">
+  <Card title="@tagreel/lint" icon="circle-check" href="/packages/lint">
     Validate composition HTML in your own tooling.
   </Card>
-  <Card title="@hyperframes/producer" icon="video" href="/packages/producer">
+  <Card title="@tagreel/producer" icon="video" href="/packages/producer">
     Turn a project into a finished video from Node.js.
   </Card>
 </CardGroup>

@@ -1,4 +1,4 @@
-import { HF_AUDIO_GROUP_TAG } from "@hyperframes/core/audio-groups";
+import { HF_AUDIO_GROUP_TAG } from "@tagreel/core/audio-groups";
 import type { TimelineElement } from "../player";
 
 const AUDIO_TIMELINE_TAGS = new Set(["audio", "music", "sfx", "sound", "narration"]);

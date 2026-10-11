@@ -7,8 +7,8 @@
  */
 
 import type { StudioEditPersistenceProps } from "./panels/VariablesPanel";
-import type { BlockParam } from "@hyperframes/core/registry";
-import type { Composition } from "@hyperframes/sdk";
+import type { BlockParam } from "@tagreel/core/registry";
+import type { Composition } from "@tagreel/sdk";
 import type { UseSlideshowPersistParams } from "../hooks/useSlideshowPersist";
 import type { AddMediaOverlayHandler } from "./editor/propertyPanelTypes";
 import type { ToggleHiddenHandler } from "../utils/studioHelpers";

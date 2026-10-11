@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "social-proof-card",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Social Proof Card",
   "description": "The app-store close as one mountable scene: wordmark, five stars, a proof line, three feature icons and a CTA capsule build in a quiet stagger and hold - measured from reference ad footage. For an animated star sweep use star-rating-fill; for a quote card use testimonial-proof-card; for a bare lockup use cta-lockup",
   "tags": ["motion-primitive", "social-proof", "end-card", "cta", "vertical"],
@@ -13,7 +13,7 @@
       "role": "content",
       "label": "Brand",
       "description": "Wordmark at the top of the card.",
-      "default": "HyperFrames"
+      "default": "Tagreel"
     },
     {
       "id": "proof",
@@ -60,7 +60,7 @@
     {
       "path": "social-proof-card.html",
       "target": "compositions/components/social-proof-card.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

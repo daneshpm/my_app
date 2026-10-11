@@ -11,7 +11,7 @@ import { audioGroupsById, isMemberGroupHidden, isSelfOrAncestorHidden } from "./
 import { copyFileSync, existsSync, linkSync, mkdirSync, rmSync } from "fs";
 import { join } from "path";
 import { parseHTML } from "linkedom";
-import { resolveProjectRelativeSrc } from "@hyperframes/parsers/asset-resolution";
+import { resolveProjectRelativeSrc } from "@tagreel/parsers/asset-resolution";
 import {
   MEDIA_RENDER_ID_ATTR,
   isAudibleVideoElement,
@@ -34,7 +34,7 @@ import {
   firstFrameColourArgs,
   hdrToSdrToneMapFilter,
   parseFirstFrameColour,
-} from "@hyperframes/core";
+} from "@tagreel/core";
 import { resolveReferencedStart, type RefResolverEl } from "./referenceResolver.js";
 import { isKnownInactiveTimelineWindow } from "./mediaTimelineWindow.js";
 import {
@@ -245,7 +245,7 @@ async function hdrToSdrTransformKey(): Promise<string> {
   if (!warnedMissingZscale) {
     warnedMissingZscale = true;
     process.stderr.write(
-      "[hyperframes:render] WARNING: this ffmpeg has no zscale filter, so forced-SDR HDR footage " +
+      "[tagreel:render] WARNING: this ffmpeg has no zscale filter, so forced-SDR HDR footage " +
         "is tone-mapped by Chrome instead of the hable curve used on Linux and in Studio, and " +
         "renders darker. Install an ffmpeg built with libzimg to match.\n",
     );
@@ -402,7 +402,7 @@ function downloadFailureGroup(
 }
 
 export class VideoSourceExtractionError extends Error {
-  readonly hyperframesVideoSourceExtractionError = true as const;
+  readonly tagreelVideoSourceExtractionError = true as const;
 
   constructor(
     readonly kind: VideoExtractionFailureKind,
@@ -419,8 +419,8 @@ export function isVideoSourceExtractionError(error: unknown): error is VideoSour
   return (
     typeof error === "object" &&
     error !== null &&
-    "hyperframesVideoSourceExtractionError" in error &&
-    error.hyperframesVideoSourceExtractionError === true
+    "tagreelVideoSourceExtractionError" in error &&
+    error.tagreelVideoSourceExtractionError === true
   );
 }
 
@@ -1761,7 +1761,7 @@ export async function extractAllVideoFrames(
         if (!warnedSrcs.has(video.src)) {
           warnedSrcs.add(video.src);
           process.stderr.write(
-            `[hyperframes:render] WARNING: video src="${video.src}" ` +
+            `[tagreel:render] WARNING: video src="${video.src}" ` +
               `could not be resolved on disk (looked for ${videoPath}). ` +
               `The rendered output will show this video's first frame for the entire clip duration. ` +
               `If your <video> lives inside a sub-composition, prefer project-root-relative paths ` +
@@ -1969,7 +1969,7 @@ export async function extractAllVideoFrames(
       cacheRootDir = configuredCacheRootDir;
     } catch {
       process.stderr.write(
-        `[hyperframes:render] WARNING: extraction cache dir ${configuredCacheRootDir} is not writable; caching disabled for this render\n`,
+        `[tagreel:render] WARNING: extraction cache dir ${configuredCacheRootDir} is not writable; caching disabled for this render\n`,
       );
     }
   }

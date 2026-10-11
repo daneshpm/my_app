@@ -18,7 +18,7 @@
  * effect upstream never re-colours its siblings.
  */
 
-import { HF_AUDIO_FX, type HfAudioFxNode } from "@hyperframes/core/audio-fx";
+import { HF_AUDIO_FX, type HfAudioFxNode } from "@tagreel/core/audio-fx";
 
 export type FxFamily = "filter" | "dynamics" | "nonlinear" | "time" | "smart";
 

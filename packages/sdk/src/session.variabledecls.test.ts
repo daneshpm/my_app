@@ -7,7 +7,7 @@
 import { describe, it, expect } from "vitest";
 import { openComposition } from "./session.js";
 import { variableDeclPath, pathToKey, keyToPath } from "./engine/patches.js";
-import type { CompositionVariable } from "@hyperframes/core/variables";
+import type { CompositionVariable } from "@tagreel/core/variables";
 
 const TITLE_DECL: CompositionVariable = {
   id: "title",

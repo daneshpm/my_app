@@ -1,4 +1,4 @@
-import { spansOverlap } from "@hyperframes/core/clip-facts";
+import { spansOverlap } from "@tagreel/core/clip-facts";
 import type { TimelineElement } from "../store/playerStore";
 import { isAudioTimelineElement } from "../../utils/timelineInspector";
 import { isTransitionPair } from "./timelineTransitionSeams";

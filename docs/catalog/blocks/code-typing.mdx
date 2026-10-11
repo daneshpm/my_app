@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":5,"width":1920,"height":1080,"category":"Code Animations","badge":"Stable","codeLines":763}}
   attribution={{"path":"registry/blocks/code-typing","tags":["code","code-animation","typing","developer"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/code-typing/code-typing.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/code-typing/code-typing.html"
 >
 
 <CatalogSlot slot="code">
@@ -558,10 +558,10 @@ import { InstallCommand } from "/snippets/install-command.jsx";
       window.__BLOCK = { id: "code-typing", effect: "typing", seq: "feature", duration: 5 };
     </script>
     <script>
-      // hf-code-anim.js — self-contained code-animation engine for HyperFrames registry blocks.
+      // hf-code-anim.js — self-contained code-animation engine for Tagreel registry blocks.
       //
       // Reuses Shiki Magic Move's baked output (window.__TOKENS, baked at author time) and
-      // drives the animation as a PAUSED GSAP timeline the HyperFrames engine seeks per frame —
+      // drives the animation as a PAUSED GSAP timeline the Tagreel engine seeks per frame —
       // NOT CSS transitions (those break under non-sequential frame seeking). FLIP measurement
       // runs once inside document.fonts.ready (glyph metrics must be final). Each block sets
       // window.__BLOCK = { id, effect, seq, line?, duration } and includes this engine; the
@@ -792,7 +792,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add code-typing" item="code-typing" />
+<InstallCommand command="npx tagreel add code-typing" item="code-typing" />
 
 That writes one file: `compositions/code-typing.html`.
 

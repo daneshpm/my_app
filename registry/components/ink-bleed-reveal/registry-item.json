@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "ink-bleed-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Ink Bleed Reveal",
   "description": "Liquid ink blooms through paper under a gooey blur-plus-threshold filter, merges, then contracts as a crisp slotted mark resolves beneath it, with static seeded paper grain riding the result.",
   "tags": [
@@ -22,7 +22,7 @@
     {
       "path": "ink-bleed-reveal.html",
       "target": "compositions/components/ink-bleed-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

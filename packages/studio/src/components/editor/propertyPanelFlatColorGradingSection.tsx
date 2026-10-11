@@ -6,7 +6,7 @@ import {
   type HfColorGradingAdjustKey,
   type HfColorGradingDetailKey,
   type NormalizedHfColorGrading,
-} from "@hyperframes/core/color-grading";
+} from "@tagreel/core/color-grading";
 import { Plus, Settings } from "../../icons/SystemIcons";
 import { useTrackDesignInput } from "../../contexts/DesignPanelInputContext";
 import { LUT_EXT } from "../../utils/mediaTypes";

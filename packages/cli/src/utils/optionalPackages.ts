@@ -37,7 +37,7 @@ export const PINNED_PACKAGES = {
 
 type PinnedPackage = keyof typeof PINNED_PACKAGES;
 
-export const CACHE_DIR = join(homedir(), ".cache", "hyperframes", "optional");
+export const CACHE_DIR = join(homedir(), ".cache", "tagreel", "optional");
 
 export interface OptionalPackageDeps {
   cacheDir: string;

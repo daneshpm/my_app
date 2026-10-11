@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":515}}
   attribution={{"path":"registry/components/soft-blob-touch","tags":["motion-primitive","product-demo","material","blob","touch","grain"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/soft-blob-touch/soft-blob-touch.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/soft-blob-touch/soft-blob-touch.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html soft-blob-touch.html
 <!doctype html>
 <!--
-  soft-blob-touch: HyperFrames video primitive (product demo / material)
+  soft-blob-touch: Tagreel video primitive (product demo / material)
 
   A granular soft blob idles with slow internal drift; a scripted touch dot
   decel-arrives at a caller-positioned point; the blob deforms toward it
@@ -169,8 +169,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var canvas = root.querySelector(".sbt-canvas");
             var touchDot = root.querySelector(".sbt-touch");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {
@@ -544,7 +544,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add soft-blob-touch" item="soft-blob-touch" />
+<InstallCommand command="npx tagreel add soft-blob-touch" item="soft-blob-touch" />
 
 That writes one file: `compositions/components/soft-blob-touch.html`.
 

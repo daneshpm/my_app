@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":306}}
   attribution={{"author":"Miao Yang","path":"registry/components/marker-checklist-card","tags":["motion-primitive","handwritten","checklist","paper","marker"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/marker-checklist-card/marker-checklist-card.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/marker-checklist-card/marker-checklist-card.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html marker-checklist-card.html
 <!doctype html>
 <!--
-  marker-checklist-card: HyperFrames motion primitive (scene)
+  marker-checklist-card: Tagreel motion primitive (scene)
 
   A hand-lettered paper card, measured from reference ad footage: a marker
   headline with an underline and a drawn ellipse around one word, then three
@@ -246,8 +246,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             "use strict";
             var compositionId = "marker-checklist-card";
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             function text(v, fb, mx) {
               if (typeof v !== "string") return fb;
@@ -335,7 +335,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add marker-checklist-card" item="marker-checklist-card" />
+<InstallCommand command="npx tagreel add marker-checklist-card" item="marker-checklist-card" />
 
 That writes `compositions/components/marker-checklist-card.html`, plus 2 supporting files under `assets/fonts/`.
 

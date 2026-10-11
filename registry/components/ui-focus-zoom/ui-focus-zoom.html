@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  ui-focus-zoom -- HyperFrames video primitive (product demo / camera)
+  ui-focus-zoom -- Tagreel video primitive (product demo / camera)
 
   A full app surface establishes with one settle, then the camera zooms and
   pans to an anchored region on its cue and holds the zoomed state. An
@@ -378,8 +378,8 @@
             var surface = root.querySelector(".ufz-surface");
             var halo = root.querySelector(".ufz-halo");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             function num(value, fallback, min, max) {

@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  ink-bleed-reveal: HyperFrames video primitive (texture / reveals). Wave M7.
+  ink-bleed-reveal: Tagreel video primitive (texture / reveals). Wave M7.
 
   Liquid ink blooms through paper to reveal a mark. Several ink blobs bleed
   outward from the center and merge like liquid under the gooey chain
@@ -209,8 +209,8 @@
             var canvas = root.querySelector(".ibr-canvas");
             var mark = root.querySelector(".ibr-mark");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var blobCount = Math.round(Number(vars.blobs));

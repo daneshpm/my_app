@@ -82,7 +82,7 @@ describe("downloadFile", () => {
     [{ "content-length": "invalid" }, null],
   ])("reports actual response bytes with total %j", async (headers, totalBytes) => {
     mockGet.mockImplementation(httpsResponse(200, headers as Record<string, string>, "hello"));
-    const dir = mkdtempSync(join(tmpdir(), "hyperframes-download-"));
+    const dir = mkdtempSync(join(tmpdir(), "tagreel-download-"));
     tempDirs.push(dir);
     const events: unknown[] = [];
     await downloadFile("https://example.test/model", join(dir, "model"), {
@@ -95,7 +95,7 @@ describe("downloadFile", () => {
   it("keeps concurrent partial downloads separate", async () => {
     mockGet.mockImplementation(httpsResponse(200, {}, (url) => url));
 
-    const dir = mkdtempSync(join(tmpdir(), "hyperframes-download-"));
+    const dir = mkdtempSync(join(tmpdir(), "tagreel-download-"));
     tempDirs.push(dir);
     const dest = join(dir, "model.onnx");
     const first = "https://example.test/first";
@@ -108,7 +108,7 @@ describe("downloadFile", () => {
   it("rejects a response that exceeds its byte limit", async () => {
     mockGet.mockImplementation(httpsResponse(200, {}, "too large"));
 
-    const dir = mkdtempSync(join(tmpdir(), "hyperframes-download-"));
+    const dir = mkdtempSync(join(tmpdir(), "tagreel-download-"));
     tempDirs.push(dir);
     const dest = join(dir, "model.onnx");
 
@@ -167,7 +167,7 @@ describe("downloadFile", () => {
       return request as unknown as ClientRequest;
     }) as typeof httpsGet);
 
-    const dir = mkdtempSync(join(tmpdir(), "hyperframes-download-"));
+    const dir = mkdtempSync(join(tmpdir(), "tagreel-download-"));
     tempDirs.push(dir);
     const dest = join(dir, "model.onnx");
 
@@ -189,7 +189,7 @@ describe("redirect handling", () => {
         throw new TypeError('Protocol "http:" not supported');
       });
 
-    const dir = mkdtempSync(join(tmpdir(), "hyperframes-download-"));
+    const dir = mkdtempSync(join(tmpdir(), "tagreel-download-"));
     tempDirs.push(dir);
     await expect(
       downloadFile("https://example.test/model.onnx", join(dir, "model.onnx")),

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { attachPlayerStoreDevHandle } from "./playerStoreDevHandle";
 import { nextSelectionSet, revealTargetsSelection } from "./playerStoreSelection";
-import type { MusicBeatAnalysis } from "@hyperframes/core/beats";
+import type { MusicBeatAnalysis } from "@tagreel/core/beats";
 import type { BeatEditState } from "../../utils/beatEditing";
 import type { ClipManifestClip } from "../lib/playbackTypes";
 import {

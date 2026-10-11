@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "success-check",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Success Check",
   "description": "A success check primitive with ring pop, path draw, and subtle rotate blur",
   "tags": ["video-primitive", "transition-primitive", "transitions-dev-port", "success", "check"],
@@ -9,7 +9,7 @@
     {
       "path": "success-check.html",
       "target": "compositions/components/success-check.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -105,8 +105,5 @@
         }
       ]
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/success-check.png"
-  }
+  ]
 }

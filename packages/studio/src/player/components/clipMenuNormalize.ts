@@ -2,7 +2,7 @@ import { buildProjectApiPath } from "../../utils/projectRouting";
 import { resolvePreviewRelative } from "../../utils/previewRelativePath";
 import { resolveMediaPreviewUrl } from "./thumbnailUtils";
 import type { TimelineElement } from "../store/timelineElement";
-import { parseAutomation, VOLUME_TARGET } from "@hyperframes/core/audio-automation";
+import { parseAutomation, VOLUME_TARGET } from "@tagreel/core/audio-automation";
 import type { TimelineEditOutcome } from "../../hooks/timelineEditPermission";
 import { studioApiFetch } from "../../utils/studioApiFetch";
 

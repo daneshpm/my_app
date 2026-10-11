@@ -6,13 +6,13 @@ import {
   getAudioFxDef,
   HF_AUDIO_FX,
   type HfAudioFxChain,
-} from "@hyperframes/core/audio-fx";
-import { DEFAULT_CARVE } from "@hyperframes/core/audio-carve";
-import { BANDS, EFFECT_COPY, PRESET_PROBLEM } from "@hyperframes/core/audio-fx-copy";
-import { HF_AUDIO_FX_JOBS, HF_AUDIO_FX_JOB_TYPES } from "@hyperframes/core/audio-fx-jobs";
-import { audioFxProfileStrength } from "@hyperframes/core/audio-fx-profiles";
+} from "@tagreel/core/audio-fx";
+import { DEFAULT_CARVE } from "@tagreel/core/audio-carve";
+import { BANDS, EFFECT_COPY, PRESET_PROBLEM } from "@tagreel/core/audio-fx-copy";
+import { HF_AUDIO_FX_JOBS, HF_AUDIO_FX_JOB_TYPES } from "@tagreel/core/audio-fx-jobs";
+import { audioFxProfileStrength } from "@tagreel/core/audio-fx-profiles";
 import { fxPresetStyle } from "./propertyPanelFxPresetStyle.js";
-import { applyAudioFxPreset, getAudioFxPreset } from "@hyperframes/core/audio-fx-presets";
+import { applyAudioFxPreset, getAudioFxPreset } from "@tagreel/core/audio-fx-presets";
 
 /**
  * What a knob is CALLED in the panel, looked up rather than spelled out.

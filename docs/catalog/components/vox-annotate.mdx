@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":477}}
   attribution={{"path":"registry/components/vox-annotate","tags":["motion-primitive","typography","annotation","marker","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/vox-annotate/vox-annotate.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/vox-annotate/vox-annotate.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html vox-annotate.html
 <!doctype html>
 <!--
-  vox-annotate: HyperFrames video primitive (text effects / annotation)
+  vox-annotate: Tagreel video primitive (text effects / annotation)
 
   The Vox-style annotate gesture: a keyword inside a held sentence gets a
   hand-drawn marker WHILE a thin connector draws from the marker up to a
@@ -242,8 +242,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var stage = root.querySelector(".va-stage");
             var textEl = root.querySelector(".va-text");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text =
@@ -506,7 +506,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add vox-annotate" item="vox-annotate" />
+<InstallCommand command="npx tagreel add vox-annotate" item="vox-annotate" />
 
 That writes one file: `compositions/components/vox-annotate.html`.
 

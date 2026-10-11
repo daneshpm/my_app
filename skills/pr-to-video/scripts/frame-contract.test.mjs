@@ -110,7 +110,7 @@ test("assembler rejects malformed worker output before writing index.html", () =
     () =>
       execFileSync(
         process.execPath,
-        [assembleScript, "--storyboard", join(project, "STORYBOARD.md"), "--hyperframes", project],
+        [assembleScript, "--storyboard", join(project, "STORYBOARD.md"), "--tagreel", project],
         { encoding: "utf8", stdio: "pipe" },
       ),
     /bare <template>|full HTML document/i,
@@ -129,7 +129,7 @@ test("validated bare frames survive assembly and transition injection", () => {
 
   execFileSync(
     process.execPath,
-    [assembleScript, "--storyboard", join(project, "STORYBOARD.md"), "--hyperframes", project],
+    [assembleScript, "--storyboard", join(project, "STORYBOARD.md"), "--tagreel", project],
     { encoding: "utf8" },
   );
   execFileSync(
@@ -139,7 +139,7 @@ test("validated bare frames survive assembly and transition injection", () => {
       "inject",
       "--storyboard",
       join(project, "STORYBOARD.md"),
-      "--hyperframes",
+      "--tagreel",
       project,
     ],
     { encoding: "utf8" },
@@ -160,7 +160,7 @@ test("validated bare frames survive assembly and transition injection", () => {
   assert.doesNotThrow(() =>
     execFileSync(
       process.execPath,
-      [assembleScript, "--storyboard", join(project, "STORYBOARD.md"), "--hyperframes", project],
+      [assembleScript, "--storyboard", join(project, "STORYBOARD.md"), "--tagreel", project],
       { encoding: "utf8" },
     ),
   );
@@ -172,7 +172,7 @@ test("Code editorial preset stages renderer-parity fonts for an empty PR token s
 
   execFileSync(
     process.execPath,
-    [buildFrameScript, "--preset", "code-editorial", "--hyperframes", project],
+    [buildFrameScript, "--preset", "code-editorial", "--tagreel", project],
     { encoding: "utf8" },
   );
 
@@ -199,10 +199,7 @@ test("Code editorial preset stages renderer-parity fonts for an empty PR token s
 });
 
 test("bundled Code editorial font licenses are shipped beside the assets", () => {
-  const fontDir = resolve(
-    scriptDir,
-    "../../hyperframes-creative/frame-presets/code-editorial/fonts",
-  );
+  const fontDir = resolve(scriptDir, "../../tagreel-creative/frame-presets/code-editorial/fonts");
   for (const family of ["eb-garamond", "inter", "jetbrains-mono"]) {
     assert.equal(existsSync(join(fontDir, `OFL-${family}.txt`)), true);
   }

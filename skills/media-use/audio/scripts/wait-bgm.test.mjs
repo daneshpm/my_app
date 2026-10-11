@@ -82,7 +82,7 @@ test("records locally made music as generated once it is ready", () => {
       }),
     );
     const script = new URL("./wait-bgm.mjs", import.meta.url).pathname;
-    const args = ["--audio-meta", join(dir, "audio_meta.json"), "--hyperframes", dir];
+    const args = ["--audio-meta", join(dir, "audio_meta.json"), "--tagreel", dir];
 
     const run = spawnSync(process.execPath, [script, ...args, "--timeout-ms", "1000"], {
       encoding: "utf8",

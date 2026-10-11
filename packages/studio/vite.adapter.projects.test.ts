@@ -13,7 +13,7 @@ import {
 import { tmpdir } from "node:os";
 import { join, win32 } from "node:path";
 import { isValidProjectId } from "./src/utils/projectRouting";
-import { createStudioApi, type ProjectHistory } from "@hyperframes/studio-server";
+import { createStudioApi, type ProjectHistory } from "@tagreel/studio-server";
 import type { ViteDevServer } from "vite";
 import { createProjectSignatureCache, createViteAdapter } from "./vite.adapter";
 
@@ -75,7 +75,7 @@ describe("Studio's dev server keeps each project's history", () => {
 
     const list = await app.request("http://localhost/projects/demo/history");
     expect(list.status).toBe(200);
-    expect(existsSync(join(data, "demo", ".hyperframes", "history-id"))).toBe(true);
+    expect(existsSync(join(data, "demo", ".tagreel", "history-id"))).toBe(true);
     const fresh = await adapter.history!(adapter.resolveProject("demo")!);
     expect(fresh?.projectId).not.toBe(old?.projectId);
     await fresh?.close();
@@ -237,7 +237,7 @@ describe("dynamic preview ownership", () => {
 });
 
 describe("Studio's dev server and the catalog", () => {
-  it("answers every install with a 501 that points to hyperframes preview", async () => {
+  it("answers every install with a 501 that points to tagreel preview", async () => {
     const { data, app } = fixture();
     mkdirSync(join(data, "demo"));
     writeFileSync(join(data, "demo", "index.html"), "A");
@@ -249,7 +249,7 @@ describe("Studio's dev server and the catalog", () => {
 
     expect(response.status).toBe(501);
     expect(await response.json()).toEqual({
-      error: "Installing catalog items needs hyperframes preview",
+      error: "Installing catalog items needs tagreel preview",
     });
   });
 });

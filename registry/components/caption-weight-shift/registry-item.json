@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "caption-weight-shift",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Weight Shift",
   "description": "Elegant font-weight transition between caption lines",
   "tags": ["captions", "caption-style", "minimal", "typography"],
@@ -9,11 +9,7 @@
     {
       "path": "caption-weight-shift.html",
       "target": "compositions/components/caption-weight-shift.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/registry/components/caption-weight-shift/preview-v2.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/caption-weight-shift.png"
-  }
+  ]
 }

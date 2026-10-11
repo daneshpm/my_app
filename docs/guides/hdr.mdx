@@ -21,7 +21,7 @@ and a brightness round-trip: 4000 nits authored, 4012 measured back out.
 ## Render and verify
 
 ```bash
-npx hyperframes render --output final-hdr.mp4
+npx tagreel render --output final-hdr.mp4
 ```
 
 Check the result:
@@ -48,9 +48,9 @@ HLG reports `arib-std-b67` as the transfer.
 
 | Command | Use it when |
 | --- | --- |
-| `hyperframes render` | Let source metadata decide between HDR and SDR |
-| `hyperframes render --hdr` | Force HDR; without detected HDR media, my_app uses HLG and warns |
-| `hyperframes render --sdr` | Deliver an SDR version even when the project contains HDR media |
+| `tagreel render` | Let source metadata decide between HDR and SDR |
+| `tagreel render --hdr` | Force HDR; without detected HDR media, my_app uses HLG and warns |
+| `tagreel render --sdr` | Deliver an SDR version even when the project contains HDR media |
 
 The source files must contain correct color metadata. my_app recognizes video tagged as BT.2020 with PQ (`smpte2084`) or HLG (`arib-std-b67`). It can also preserve supported HDR still images through the native HDR image path.
 
@@ -66,7 +66,7 @@ This is why a lower third or animated interface can remain visually consistent o
 - HDR and `--resolution` supersampling cannot be combined in one render. Author at the target dimensions or resize in a separate step.
 - Distributed AWS Lambda and Cloud Run renders are currently SDR.
 - Hardware H.265 encoding carries the color tags but does not include the same static mastering metadata as the software `libx265` path. Use software encoding for HDR10 delivery.
-- Browser playback depends on the host browser, display, and operating system; `<hyperframes-player>` does not add its own HDR playback pipeline.
+- Browser playback depends on the host browser, display, and operating system; `<tagreel-player>` does not add its own HDR playback pipeline.
 
 If the file looks SDR, run `ffprobe` on both the source and output before changing the composition. Missing or incorrect source metadata is the most common cause.
 

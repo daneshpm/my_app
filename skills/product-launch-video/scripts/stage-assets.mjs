@@ -4,7 +4,7 @@
 // (Step 3 / Step 6) shows them. Runs at Step 4 close, once visual design is
 // locked. assemble-index.mjs re-runs the same staging idempotently as a backstop.
 //
-// Reads:  --storyboard STORYBOARD.md, --hyperframes <project root>.
+// Reads:  --storyboard STORYBOARD.md, --tagreel <project root>.
 // Writes: assets/<basename> for each named, found asset.
 // Exit 0 always once the storyboard parses — a missing asset is a non-fatal
 // anomaly (the frame would 404 it), not a contract break.
@@ -24,13 +24,13 @@ function die(msg) {
   process.exit(1);
 }
 
-const hyperframesDir = resolve(flag("hyperframes", "."));
-const storyboardPath = resolve(flag("storyboard", join(hyperframesDir, "STORYBOARD.md")));
+const tagreelDir = resolve(flag("tagreel", "."));
+const storyboardPath = resolve(flag("storyboard", join(tagreelDir, "STORYBOARD.md")));
 
 if (!existsSync(storyboardPath)) die(`STORYBOARD.md not found at ${storyboardPath}`);
 const manifest = parseStoryboard(readFileSync(storyboardPath, "utf8"));
 
-const { staged, wanted, anomalies } = stageAssets({ hyperframesDir, frames: manifest.frames });
+const { staged, wanted, anomalies } = stageAssets({ tagreelDir, frames: manifest.frames });
 
 console.log(`✓ staged ${staged}/${wanted.size} asset(s) into assets/`);
 if (anomalies.length) {

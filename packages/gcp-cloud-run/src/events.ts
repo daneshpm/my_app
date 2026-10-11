@@ -1,5 +1,5 @@
 /**
- * Request + result types for the HyperFrames distributed render handler
+ * Request + result types for the Tagreel distributed render handler
  * running on Cloud Run.
  *
  * The Cloud Workflows definition in `packages/gcp-cloud-run/terraform/workflow.yaml`
@@ -17,7 +17,7 @@
  * step's memory; chunk results stay well under 1 KB so the orchestration
  * can hold one per Map iteration).
  *
- * These shapes are intentionally identical to `@hyperframes/aws-lambda`'s
+ * These shapes are intentionally identical to `@tagreel/aws-lambda`'s
  * `events.ts` apart from the URI scheme (`gs://` vs `s3://`): the wire
  * contract is the adapter's, the primitives underneath are shared.
  */
@@ -25,9 +25,9 @@
 import type {
   DistributedFormat,
   SerializableDistributedRenderConfig,
-} from "@hyperframes/producer/distributed";
+} from "@tagreel/producer/distributed";
 
-export type { SerializableDistributedRenderConfig } from "@hyperframes/producer/distributed";
+export type { SerializableDistributedRenderConfig } from "@tagreel/producer/distributed";
 
 /** Discriminator for the three roles the one Cloud Run image fulfills. */
 export type CloudRunAction = "plan" | "renderChunk" | "assemble";

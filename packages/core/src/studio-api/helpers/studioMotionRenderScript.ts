@@ -1,2 +1,2 @@
-/** @deprecated Import from @hyperframes/studio-server/studio-motion-render-script */
-export * from "@hyperframes/studio-server/studio-motion-render-script";
+/** @deprecated Import from @tagreel/studio-server/studio-motion-render-script */
+export * from "@tagreel/studio-server/studio-motion-render-script";

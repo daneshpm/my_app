@@ -169,10 +169,10 @@ function codeStep(code: string, name: string): string {
 function bootstrapScript(item: string, steps: string[]): string {
   return `<script>(function(){
 const vendor=(url)=>fetch(url).then((r)=>r.json()).then((j)=>j.text);
-const run=(code,name)=>{const s=document.createElement("script");s.text=code+"\\n//# sourceURL=hyperframes-catalog://${item}/"+name;document.head.append(s);};
+const run=(code,name)=>{const s=document.createElement("script");s.text=code+"\\n//# sourceURL=tagreel-catalog://${item}/"+name;document.head.append(s);};
 (async()=>{
 ${steps.join("\n")}
-})().catch((error)=>console.error("[HyperFrames catalog] ${item} could not load its scripts",error));
+})().catch((error)=>console.error("[Tagreel catalog] ${item} could not load its scripts",error));
 })();</script>`;
 }
 

@@ -1,7 +1,7 @@
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
-import { parseGsapScriptAcorn, scriptShape } from "@hyperframes/parsers/gsap-parser-acorn";
-import { hasExplicitTime } from "@hyperframes/parsers/gsap-writer-acorn";
-import { RUNTIME_FILLER } from "@hyperframes/core/runtime/protocol";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
+import { parseGsapScriptAcorn, scriptShape } from "@tagreel/parsers/gsap-parser-acorn";
+import { hasExplicitTime } from "@tagreel/parsers/gsap-writer-acorn";
+import { RUNTIME_FILLER } from "@tagreel/core/runtime/protocol";
 import {
   applySoftReloadFinalization,
   findGsapScriptElements,

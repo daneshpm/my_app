@@ -81,7 +81,7 @@ function warnOnUnscopedTimedMedia(doc: Document): void {
   if (orphans.length === 0) return;
 
   console.warn(
-    "[hyperframes-player] selectMediaObserverTargets: composition hosts are present, " +
+    "[tagreel-player] selectMediaObserverTargets: composition hosts are present, " +
       `but ${orphans.length} body-level timed media element(s) sit outside every ` +
       "[data-composition-id] subtree and will not be observed. Move them inside a " +
       "composition host or the parent-frame proxy will never adopt them.",

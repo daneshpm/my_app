@@ -1,17 +1,17 @@
-# Contributing to Hyperframes
+# Contributing to Tagreel
 
-Thanks for your interest in contributing to Hyperframes! This guide will help you get started.
+Thanks for your interest in contributing to Tagreel! This guide will help you get started.
 
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/hyperframes.git`
+2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/tagreel.git`
 3. Install dependencies: `bun install`
 4. Create a branch: `git checkout -b my-feature`
 
 ## Choosing work
 
-Start with [available newcomer issues](https://github.com/heygen-com/hyperframes/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+no%3Aassignee) or [help-wanted issues](https://github.com/heygen-com/hyperframes/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+no%3Aassignee). Read the discussion and check existing PRs before starting; an unassigned issue may already have work in progress. Comment with your intended approach and coordinate a claim with a maintainer.
+Start with [available newcomer issues](https://github.com/daneshpm/my_app/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+no%3Aassignee) or [help-wanted issues](https://github.com/daneshpm/my_app/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+no%3Aassignee). Read the discussion and check existing PRs before starting; an unassigned issue may already have work in progress. Comment with your intended approach and coordinate a claim with a maintainer.
 
 `difficulty/easy`, `difficulty/medium`, and `difficulty/hard` describe the work. `triage/ready` means the scope is accepted; `help wanted` means it is available. A `good first issue` also has a testing path and a maintainer willing to help. See [TRIAGE.md](TRIAGE.md) for the full definitions and ways to discover useful issues yourself.
 
@@ -31,9 +31,9 @@ bun run format:check   # Check formatting
 ### Running Tests
 
 ```bash
-bun run --filter @hyperframes/core test          # Core unit tests (vitest)
-bun run --filter @hyperframes/engine test        # Engine unit tests (vitest)
-bun run --filter @hyperframes/core test:hyperframe-runtime-ci  # Runtime contract tests
+bun run --filter @tagreel/core test          # Core unit tests (vitest)
+bun run --filter @tagreel/engine test        # Engine unit tests (vitest)
+bun run --filter @tagreel/core test:tagreel-runtime-ci  # Runtime contract tests
 ```
 
 ### Linting & Formatting
@@ -101,7 +101,7 @@ Run both checks before pushing: `node scripts/check-comment-citations.mjs` and `
 
 ## Adding Registry Items (Blocks & Components)
 
-The registry at `registry/` contains reusable items installable via `hyperframes add <name>`. Each item lives in its own directory under `registry/blocks/` or `registry/components/`.
+The registry at `registry/` contains reusable items installable via `tagreel add <name>`. Each item lives in its own directory under `registry/blocks/` or `registry/components/`.
 
 ### Directory structure
 
@@ -135,8 +135,8 @@ before merge, listed at the end.
 
 1. Create `registry/<blocks|components>/<name>/registry-item.json` following the [schema](packages/core/schemas/registry-item.json)
 2. For components: include a `demo.html`
-3. Run `npx hyperframes lint` and `npx hyperframes validate` on your HTML
-4. Test the install flow: `hyperframes add <name> --dir /tmp/test-project`
+3. Run `npx tagreel lint` and `npx tagreel validate` on your HTML
+4. Test the install flow: `tagreel add <name> --dir /tmp/test-project`
 5. Generate and validate the catalog: `bun run check:catalog-drift`
 
 ### Generated catalog files
@@ -185,13 +185,13 @@ the item PR if you cannot upload its hosted image.
 
 ## Packages
 
-| Package                 | Description                                 |
-| ----------------------- | ------------------------------------------- |
-| `@hyperframes/core`     | Types, HTML generation, runtime, linter     |
-| `@hyperframes/engine`   | Seekable page-to-video capture engine       |
-| `@hyperframes/producer` | Full rendering pipeline (capture + encode)  |
-| `@hyperframes/studio`   | Composition editor UI                       |
-| `hyperframes`           | CLI for creating, previewing, and rendering |
+| Package             | Description                                 |
+| ------------------- | ------------------------------------------- |
+| `@tagreel/core`     | Types, HTML generation, runtime, linter     |
+| `@tagreel/engine`   | Seekable page-to-video capture engine       |
+| `@tagreel/producer` | Full rendering pipeline (capture + encode)  |
+| `@tagreel/studio`   | Composition editor UI                       |
+| `tagreel`           | CLI for creating, previewing, and rendering |
 
 ## Releasing (Maintainers)
 
@@ -223,7 +223,7 @@ bun run set-version 0.2.0-rc.1       # release candidate (--tag rc)
 bun run set-version 0.2.0            # final stable release (--tag latest)
 ```
 
-Consumers install pre-releases with `npm install @hyperframes/core@alpha` (or `@beta`, `@rc`). The `latest` tag is never touched by pre-releases, so `npm install @hyperframes/core` always gets the last stable version.
+Consumers install pre-releases with `npm install @tagreel/core@alpha` (or `@beta`, `@rc`). The `latest` tag is never touched by pre-releases, so `npm install @tagreel/core` always gets the last stable version.
 
 Pre-releases also create GitHub Releases marked as **pre-release**.
 
@@ -237,7 +237,7 @@ bun run set-version 0.2.0 --no-tag   # updates package.json files only
 
 ## Reporting Issues
 
-- Use [GitHub Issues](https://github.com/heygen-com/hyperframes/issues) for bug reports and feature requests
+- Use [GitHub Issues](https://github.com/daneshpm/my_app/issues) for bug reports and feature requests
 - Search existing issues before creating a new one
 - Include reproduction steps for bugs
 
@@ -251,7 +251,7 @@ We welcome contributions that use AI tools (GitHub Copilot, Claude, ChatGPT, etc
 
 ## Governance
 
-Hyperframes uses a **BDFL (Benevolent Dictator for Life)** governance model. The core maintainers at HeyGen have final say on the project's direction, API design, and what gets merged. This keeps the project focused and moving fast.
+Tagreel uses a **BDFL (Benevolent Dictator for Life)** governance model. The project maintainers have final say on the project's direction, API design, and what gets merged. This keeps the project focused and moving fast.
 
 Community input is valued and encouraged — open issues, propose RFCs, and discuss in PRs. But final decisions rest with the maintainers.
 

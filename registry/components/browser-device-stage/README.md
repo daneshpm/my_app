@@ -72,7 +72,7 @@ Set `swap_at` to the moment the narration lands the change; the stage fades the 
   <div
     style="position:absolute; inset:0; display:grid; place-items:center; background:var(--surface); color:var(--fg); font-family:var(--font-mono); font-size:3cqmin;"
   >
-    $ hyperframes render scene.html
+    $ tagreel render scene.html
   </div>
 </template>
 ```

@@ -1,6 +1,6 @@
 /**
- * Thin wrappers around the AWS SAM CLI used by `hyperframes lambda deploy`
- * and `hyperframes lambda destroy`.
+ * Thin wrappers around the AWS SAM CLI used by `tagreel lambda deploy`
+ * and `tagreel lambda destroy`.
  *
  * We shell out instead of programmatically driving the CloudFormation API
  * because:
@@ -13,7 +13,7 @@
  *   3. SAM's `--resolve-s3` auto-creates an artifact bucket for the
  *      handler ZIP upload, which we'd otherwise have to re-implement.
  *
- * CDK adopters use `HyperframesRenderStack` directly from their own
+ * CDK adopters use `TagreelRenderStack` directly from their own
  * CDK app — this CLI path is for users who don't want to write a CDK
  * project.
  */
@@ -71,8 +71,8 @@ export function locateSamTemplate(repoRoot: string): string {
   if (!existsSync(candidate)) {
     throw new Error(
       `[lambda] SAM template not found at ${candidate}. ` +
-        "`hyperframes lambda deploy` needs a HyperFrames repo checkout: run it from one, " +
-        "or set HYPERFRAMES_REPO_ROOT to point at one.",
+        "`tagreel lambda deploy` needs a Tagreel repo checkout: run it from one, " +
+        "or set TAGREEL_REPO_ROOT to point at one.",
     );
   }
   return candidate;

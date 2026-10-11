@@ -87,8 +87,7 @@ export function registerRuntimeDataHandler(
   channel: string,
   handler: RuntimeDataHandler,
 ): () => void {
-  if (!validChannel(channel))
-    throw new Error(`Invalid HyperFrames runtime-data channel: ${channel}`);
+  if (!validChannel(channel)) throw new Error(`Invalid Tagreel runtime-data channel: ${channel}`);
   handlers.set(channel, handler);
   const retainedData = retained.get(channel);
   if (retainedData) deliver(channel, retainedData);

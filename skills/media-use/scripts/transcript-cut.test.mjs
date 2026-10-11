@@ -73,7 +73,7 @@ test(
     const output = join(dir, "out.wav");
     // Two "ugly" removal ranges: neither aligned to the 440Hz period, so the kept
     // segments' cut edges land at unrelated phases of the same continuous tone --
-    // exactly the shape that clicks without a fade, and the shape jrusso1020's
+    // exactly the shape that clicks without a fade, and the shape a prior
     // review proved this branch never actually fades.
     const result = run([
       "--input",

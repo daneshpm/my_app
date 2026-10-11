@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "beat-accent",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Beat Accent",
   "description": "A single music-hit sting: impact flash, micro scale-pulse on the subject, immediate decay.",
   "tags": ["motion-primitive", "effects", "burst", "sting", "emphasize", "impact"],
@@ -14,7 +14,7 @@
     {
       "path": "beat-accent.html",
       "target": "compositions/components/beat-accent.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

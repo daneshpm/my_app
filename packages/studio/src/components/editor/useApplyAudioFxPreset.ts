@@ -5,9 +5,9 @@
  * applied from either surface counts the same way.
  */
 
-import { applyAudioFxPreset, getAudioFxPreset } from "@hyperframes/core/audio-fx-presets";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
-import type { HfAudioNameKind } from "@hyperframes/core/audio-carve";
+import { applyAudioFxPreset, getAudioFxPreset } from "@tagreel/core/audio-fx-presets";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
+import type { HfAudioNameKind } from "@tagreel/core/audio-carve";
 import { trackPresetApplied } from "./audioFxTelemetry.js";
 
 export function applyPresetToChain(

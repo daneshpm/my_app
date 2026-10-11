@@ -1,42 +1,6 @@
-/* HyperFrames Design System — Mintlify Theme Overrides */
+/* Tagreel Design System — Mintlify Theme Overrides */
 
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
-
-@font-face {
-  font-family: "TT Norms Pro";
-  src: url("https://www-static-assets.heygen.com/fonts/tt-norms/TT_Norms_Pro_Normal.woff2")
-    format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "TT Norms Pro";
-  src: url("https://www-static-assets.heygen.com/fonts/tt-norms/TT_Norms_Pro_Medium.woff2")
-    format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "TT Norms Pro";
-  src: url("https://www-static-assets.heygen.com/fonts/tt-norms/TT_Norms_Pro_DemiBold.woff2")
-    format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "TT Norms Pro";
-  src: url("https://www-static-assets.heygen.com/fonts/tt-norms/TT_Norms_Pro_Bold.woff2")
-    format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
 
 /* ── Light mode (default) ── */
 /*
@@ -119,7 +83,6 @@
 
 body {
   font-family:
-    "TT Norms Pro",
     "Inter",
     -apple-system,
     BlinkMacSystemFont,
@@ -134,7 +97,6 @@ h4,
 h5,
 h6 {
   font-family:
-    "TT Norms Pro",
     "Inter",
     -apple-system,
     BlinkMacSystemFont,
@@ -509,7 +471,7 @@ samp {
   }
 
   /* Keep the repository compact, but retain its useful live star count. */
-  #navbar a[title="heygen-com/hyperframes"] {
+  #navbar a[title="daneshpm/my_app"] {
     width: 7.5rem;
     min-width: 7.5rem;
     height: 2.25rem;
@@ -517,11 +479,11 @@ samp {
     justify-content: center;
   }
 
-  #navbar a[title="heygen-com/hyperframes"] > span.truncate {
+  #navbar a[title="daneshpm/my_app"] > span.truncate {
     display: none;
   }
 
-  #navbar a[title="heygen-com/hyperframes"] > span:not(.truncate) {
+  #navbar a[title="daneshpm/my_app"] > span:not(.truncate) {
     display: flex !important;
     color: var(--hf-heading);
     font-variant-numeric: tabular-nums;
@@ -532,7 +494,7 @@ samp {
    * client-side navigation. Keep a truthful placeholder in its place so the
    * control does not collapse while the live count reloads.
    */
-  #navbar a[title="heygen-com/hyperframes"]:not(:has(> span:not(.truncate)))::after {
+  #navbar a[title="daneshpm/my_app"]:not(:has(> span:not(.truncate)))::after {
     color: var(--hf-heading);
     content: "★";
     font-variant-numeric: tabular-nums;
@@ -1306,7 +1268,7 @@ samp {
     margin-left: 16px;
   }
 
-  /* Paint the Playground pill with the HyperFrames mark's own cyan→green gradient
+  /* Paint the Playground pill with the Tagreel mark's own cyan→green gradient
      (#06E3FA → #4FDB5E) instead of the muted primary-dark, with dark text for contrast. */
   #navbar a.group > span.bg-primary-dark {
     background: linear-gradient(100deg, #06e3fa 0%, #4fdb5e 100%) !important;

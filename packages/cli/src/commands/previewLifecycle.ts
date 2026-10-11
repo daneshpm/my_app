@@ -85,7 +85,7 @@ function normalized(path: string): string {
 }
 
 function sessionDirectory(stateHome = defaultStateHome()): string {
-  return join(stateHome, "hyperframes", "previews");
+  return join(stateHome, "tagreel", "previews");
 }
 
 export function previewSessionPath(projectDir: string, stateHome = defaultStateHome()): string {

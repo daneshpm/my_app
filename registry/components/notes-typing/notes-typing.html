@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  notes-typing: HyperFrames motion primitive (scene)
+  notes-typing: Tagreel motion primitive (scene)
 
   The notes-app confession, as a mountable scene: a bold title, then body
   lines typed character by character on the measured human keystroke rhythm
@@ -240,8 +240,8 @@
             "use strict";
             var compositionId = "notes-typing";
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             function text(v, fb, mx) {
               if (typeof v !== "string") return fb;

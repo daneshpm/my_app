@@ -1,7 +1,7 @@
-import type { HyperframeLintFinding } from "./types";
+import type { TagreelLintFinding } from "./types";
 import { stripHtmlComments } from "./utils";
 
-export type SourceLocation = Pick<HyperframeLintFinding, "file" | "line" | "column">;
+export type SourceLocation = Pick<TagreelLintFinding, "file" | "line" | "column">;
 
 /** Keep the existing fixpoint deletion semantics and map only retained UTF-16 units. */
 export function mappedHtmlSource(original: string) {

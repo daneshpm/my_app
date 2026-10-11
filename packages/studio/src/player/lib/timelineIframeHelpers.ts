@@ -12,8 +12,8 @@
 
 import type { TimelineElement } from "../store/playerStore";
 import type { IframeWindow } from "./playbackTypes";
-import { readClipTiming } from "@hyperframes/core/composition-contract";
-import { createRuntimeStartTimeResolver } from "@hyperframes/core/runtime/start-resolver";
+import { readClipTiming } from "@tagreel/core/composition-contract";
+import { createRuntimeStartTimeResolver } from "@tagreel/core/runtime/start-resolver";
 import {
   getTimelineElementSelector,
   getTimelineElementSourceFile,
@@ -182,7 +182,7 @@ export function setPreviewPlaybackRate(
 /**
  * Resolve the underlying iframe from any host element. Supports:
  * - Direct `<iframe>` element (most common — studio's own `Player.tsx`)
- * - Custom elements (e.g. `<hyperframes-player>`) whose shadow DOM contains an iframe
+ * - Custom elements (e.g. `<tagreel-player>`) whose shadow DOM contains an iframe
  * - Wrapper elements whose light DOM contains a descendant iframe
  *
  * Exported so web-component consumers can pre-resolve the iframe before
@@ -192,7 +192,7 @@ export function setPreviewPlaybackRate(
  * @example
  * ```tsx
  * const { iframeRef } = useTimelinePlayer();
- * const playerElRef = useRef<HyperframesPlayer>(null);
+ * const playerElRef = useRef<TagreelPlayer>(null);
  *
  * useEffect(() => {
  *   iframeRef.current = resolveIframe(playerElRef.current);

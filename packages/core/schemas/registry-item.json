@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://hyperframes.heygen.com/schema/registry-item.json",
-  "title": "Hyperframes Registry Item",
+  "$id": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
+  "title": "Tagreel Registry Item",
   "description": "Manifest for a single distributable item (example, block, or component).",
   "type": "object",
   "required": ["name", "type", "title", "description", "files"],
@@ -17,7 +17,7 @@
     },
     "type": {
       "type": "string",
-      "enum": ["hyperframes:example", "hyperframes:block", "hyperframes:component"]
+      "enum": ["tagreel:example", "tagreel:block", "tagreel:component"]
     },
     "title": {
       "type": "string",
@@ -51,7 +51,7 @@
     "minCliVersion": {
       "type": "string",
       "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$",
-      "description": "Minimum `hyperframes` CLI version required to install this item."
+      "description": "Minimum `tagreel` CLI version required to install this item."
     },
     "deprecated": {
       "type": "string",
@@ -113,11 +113,11 @@
           "type": {
             "type": "string",
             "enum": [
-              "hyperframes:composition",
-              "hyperframes:asset",
-              "hyperframes:snippet",
-              "hyperframes:style",
-              "hyperframes:timeline"
+              "tagreel:composition",
+              "tagreel:asset",
+              "tagreel:snippet",
+              "tagreel:style",
+              "tagreel:timeline"
             ]
           }
         }
@@ -140,7 +140,7 @@
     {
       "if": {
         "required": ["type"],
-        "properties": { "type": { "const": "hyperframes:component" } }
+        "properties": { "type": { "const": "tagreel:component" } }
       },
       "then": {
         "not": {

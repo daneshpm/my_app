@@ -2,7 +2,7 @@ import type {
   GsapAnimation,
   GsapKeyframesData,
   SourcedGsapPercentageKeyframe,
-} from "@hyperframes/core/gsap-parser";
+} from "@tagreel/core/gsap-parser";
 import { PROPERTY_DEFAULTS } from "./gsapShared";
 
 /**

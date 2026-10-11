@@ -1,6 +1,6 @@
 // fallow-ignore-file code-duplication
 import { mkdirSync, readFileSync } from "node:fs";
-import type { CanvasResolution, OutputResolutionIssueKind } from "@hyperframes/core";
+import type { CanvasResolution, OutputResolutionIssueKind } from "@tagreel/core";
 import { c } from "../../ui/colors.js";
 import { errorBox, formatBytes } from "../../ui/format.js";
 import { formatLintStartupMessage } from "../../utils/lintFormat.js";
@@ -212,11 +212,7 @@ async function ensureRenderBrowser(plan: RenderPlan, signal?: AbortSignal): Prom
   } catch (error: unknown) {
     browserSpinner?.stop(c.error("Browser not available"));
     if (signal?.aborted) signal.throwIfAborted();
-    errorBox(
-      "Chrome not found",
-      normalizeErrorMessage(error),
-      "Run: npx hyperframes browser ensure",
-    );
+    errorBox("Chrome not found", normalizeErrorMessage(error), "Run: npx tagreel browser ensure");
     failCommand();
   }
 }
@@ -360,8 +356,6 @@ export function batchRowRenderOptions(
     bestEffort: plan.bestEffort,
     exitAfterComplete: false,
     throwOnError: true,
-    skipFeedback: true,
-    desktopHint: false,
     manageDeParallelRouterBreaker: plan.batchConcurrency <= 1,
   };
 }

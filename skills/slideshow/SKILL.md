@@ -1,45 +1,45 @@
 ---
 name: slideshow
 description: >
-  Author a HyperFrames slideshow — a presentation, pitch deck, or interactive
+  Author a Tagreel slideshow — a presentation, pitch deck, or interactive
   deck with discrete slides, fragment reveals, branching, hotspot navigation,
   and built-in presenter mode with speaker notes; also converts an existing
   page into a deck. Output is a navigable deck, not a rendered MP4. If the
   user didn't explicitly ask for a slideshow, confirm before authoring.
-  Unclear → /hyperframes.
+  Unclear → /tagreel.
 ---
 
-**Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../hyperframes/references/plugin-installation.md) when this skill is inside a HyperFrames plugin. Standalone installs keep the update instructions below.
+**Plugin installs:** Before setup or freshness commands, follow [plugin execution rules](../tagreel/references/plugin-installation.md) when this skill is inside a Tagreel plugin. Standalone installs keep the update instructions below.
 
-> **First, keep this skill fresh — confirm with the user before running:** `npx hyperframes skills update slideshow`. A fast no-op when everything is current; otherwise it refreshes this skill plus the core domain skills it depends on before you rely on them.
+> **First, keep this skill fresh — confirm with the user before running:** `npx tagreel skills update slideshow`. A fast no-op when everything is current; otherwise it refreshes this skill plus the core domain skills it depends on before you rely on them.
 
 > **figma source**: If the deck's content or storyboard comes from a figma.com URL, run `/figma` first — asset export, brand tokens, and storyboard reconstruction if the source is a strip of scene frames — then build from its output. Don't drive Figma via raw MCP tools directly: that skips SVG sanitization, `.media/manifest.jsonl` provenance, and brand-token `var()` binding, so a later brand change can't propagate without a full re-import.
 
 # Slideshow authoring contract
 
-A HyperFrames slideshow is a normal HyperFrames composition — scenes, clips, GSAP timelines — with one extra ingredient: a **JSON island** that declares which scenes are slides and how they connect. The player's `SlideshowController` reads the island and turns the continuous GSAP timeline into a discrete, navigable deck.
+A Tagreel slideshow is a normal Tagreel composition — scenes, clips, GSAP timelines — with one extra ingredient: a **JSON island** that declares which scenes are slides and how they connect. The player's `SlideshowController` reads the island and turns the continuous GSAP timeline into a discrete, navigable deck.
 
-**Read `/hyperframes-core` first** for the base composition contract (clips, tracks, `data-*` attributes, determinism rules). This skill covers only what is new: the island schema, slide writing rules, fragments, branching, validation, and the wrapping component.
+**Read `/tagreel-core` first** for the base composition contract (clips, tracks, `data-*` attributes, determinism rules). This skill covers only what is new: the island schema, slide writing rules, fragments, branching, validation, and the wrapping component.
 
 ## Output — a navigable deck, not a linear MP4
 
-A slideshow's output is the **running deck**: serve it with `hyperframes present <project-dir>` (or Studio present mode) — the player's `SlideshowController` reads the island and drives navigation, fragments, branching, and presenter mode. See **Presenting and handoff** below.
+A slideshow's output is the **running deck**: serve it with `tagreel present <project-dir>` (or Studio present mode) — the player's `SlideshowController` reads the island and drives navigation, fragments, branching, and presenter mode. See **Presenting and handoff** below.
 
-**Do not `hyperframes render` a slideshow into a single MP4.** A deck is authored as several top-level scene compositions (one `data-composition-id` per slide) with **no master-root composition** wrapping them, so `render` resolves only the **first** composition and emits a **silently truncated** MP4 (e.g. 6s of a 40-second deck). A linear main-line export (main slides only, branch sequences excluded) is **deferred** — until it ships, the supported outputs are the live `present` deck and per-slide `snapshot` stills. If a user needs a linear MP4 today, surface this limitation rather than pointing `render` at the deck.
+**Do not `tagreel render` a slideshow into a single MP4.** A deck is authored as several top-level scene compositions (one `data-composition-id` per slide) with **no master-root composition** wrapping them, so `render` resolves only the **first** composition and emits a **silently truncated** MP4 (e.g. 6s of a 40-second deck). A linear main-line export (main slides only, branch sequences excluded) is **deferred** — until it ships, the supported outputs are the live `present` deck and per-slide `snapshot` stills. If a user needs a linear MP4 today, surface this limitation rather than pointing `render` at the deck.
 
 ## Intent confirmation
 
-If the user explicitly asks for a slideshow, slide show, or HyperFrames slideshow, proceed with this skill. When the request arrived through `/hyperframes`, the intent layer's triage owns this confirmation — routed here means already confirmed, so don't re-ask; the layer's run-shape questions don't apply (the deliverable is a deck, not a rendered video). A `BRIEF.md`, when present, carries the confirmed intent — read it.
+If the user explicitly asks for a slideshow, slide show, or Tagreel slideshow, proceed with this skill. When the request arrived through `/tagreel`, the intent layer's triage owns this confirmation — routed here means already confirmed, so don't re-ask; the layer's run-shape questions don't apply (the deliverable is a deck, not a rendered video). A `BRIEF.md`, when present, carries the confirmed intent — read it.
 
-If the skill triggered from an adjacent request such as "presentation", "pitch deck", "deck", "interactive deck", or "convert this page", pause before authoring and frame the choice before asking for confirmation. Briefly explain that a HyperFrames slideshow means a runnable deck with discrete slides, built-in navigation and presenter mode, editable speaker notes, shared media handling, and validation before handoff. For source-page conversions, also mention that the goal is to preserve the original page's visual design, interactions, motion, and media behavior while translating page movement into slide-to-slide transitions.
+If the skill triggered from an adjacent request such as "presentation", "pitch deck", "deck", "interactive deck", or "convert this page", pause before authoring and frame the choice before asking for confirmation. Briefly explain that a Tagreel slideshow means a runnable deck with discrete slides, built-in navigation and presenter mode, editable speaker notes, shared media handling, and validation before handoff. For source-page conversions, also mention that the goal is to preserve the original page's visual design, interactions, motion, and media behavior while translating page movement into slide-to-slide transitions.
 
 Then ask a short confirmation question:
 
-> Do you want this as a HyperFrames slideshow?
+> Do you want this as a Tagreel slideshow?
 
 Use a yes/no choice UI when the environment provides one; otherwise ask the question in plain text.
 
-Do not implement the slideshow until the user says yes. If they say no, stop using this skill — read `/hyperframes` and let the intent layer re-route. This confirmation is a **routing decision**, not a preference gate — per `../hyperframes/references/brief-contract.md` § 1 it survives autonomous mode ("surprise me" does not skip it): building the wrong deliverable type is a quality failure, not a creative call.
+Do not implement the slideshow until the user says yes. If they say no, stop using this skill — read `/tagreel` and let the intent layer re-route. This confirmation is a **routing decision**, not a preference gate — per `../tagreel/references/brief-contract.md` § 1 it survives autonomous mode ("surprise me" does not skip it): building the wrong deliverable type is a quality failure, not a creative call.
 
 ---
 
@@ -66,10 +66,10 @@ Branch slides (reachable only via a hotspot, excluded from the main line) are de
 
 ### 2. The JSON island — one script block per composition
 
-Add exactly one `<script type="application/hyperframes-slideshow+json">` block to the composition HTML. It holds all slideshow metadata:
+Add exactly one `<script type="application/tagreel-slideshow+json">` block to the composition HTML. It holds all slideshow metadata:
 
 ```html
-<script type="application/hyperframes-slideshow+json">
+<script type="application/tagreel-slideshow+json">
   {
     "slides": [...],
     "slideSequences": [...]
@@ -79,7 +79,7 @@ Add exactly one `<script type="application/hyperframes-slideshow+json">` block t
 
 The island is the single source of truth for slide order, notes, fragment hold-points, hotspots, and branch sequences. Keep it near the top of the `<body>`, before the scene divs, so it is easy to find.
 
-Do not hide the slideshow manifest behind an alternate `<script type="application/json">` block plus runtime code that creates the island. The `present` command reads the composition HTML statically and expects the real `application/hyperframes-slideshow+json` island to already be present.
+Do not hide the slideshow manifest behind an alternate `<script type="application/json">` block plus runtime code that creates the island. The `present` command reads the composition HTML statically and expects the real `application/tagreel-slideshow+json` island to already be present.
 
 ---
 
@@ -166,7 +166,7 @@ These are hard constraints, not suggestions. A slide that violates them will be 
 - **Lead with the punchline.** The strongest point goes first — on the slide and in the deck order. Investors read left-to-right, top-to-bottom, and they stop.
 - **Bottom-up market sizing only.** Never write "$50B TAM" without showing the math. Build from unit economics up: accounts × ACV, or transactions × take-rate.
 - **Font minimum 30pt equivalent.** At 1920×1080, a headline is 72–96px; body copy is 48px. Never go below 40px for any text the audience must read.
-- **Search the live catalog before hand-building any named visual.** For every look, effect, chart, treatment or transition a slide needs — "CRT scanlines", "glitch", "bar chart race", "shimmer sweep", "terminal window" — run `npx hyperframes catalog --query "<the visual, in plain English>" --json` and read the top results before you author the slide's clips. The search needs **nothing installed**: no project, no prior `add`, no account. It ranks the whole hosted registry (~400 blocks and components) from any directory. `npx hyperframes add <name>` drops the block's source into the deck, where you customize it in place. This applies with extra force when porting a source page: a real block beats the simplified approximation the porting rules below forbid.
+- **Search the live catalog before hand-building any named visual.** For every look, effect, chart, treatment or transition a slide needs — "CRT scanlines", "glitch", "bar chart race", "shimmer sweep", "terminal window" — run `npx tagreel catalog --query "<the visual, in plain English>" --json` and read the top results before you author the slide's clips. The search needs **nothing installed**: no project, no prior `add`, no account. It ranks the whole hosted registry (~400 blocks and components) from any directory. `npx tagreel add <name>` drops the block's source into the deck, where you customize it in place. This applies with extra force when porting a source page: a real block beats the simplified approximation the porting rules below forbid.
 
 ## Porting source pages
 
@@ -175,7 +175,7 @@ When converting an existing page into a slideshow, source fidelity is part of th
 - Preserve the original page's visual design, motion language, interactive behavior, media behavior, and presentation affordances as closely as practical. When the slideshow system supports presenter mode, include speaker notes using the shared editable-notes behavior rather than a deck-specific implementation.
 - Port mechanical visuals from the source DOM/CSS/JS as exactly as practical: custom players, canvas visualizers, timelines, playheads, stems, expanding circles, hover states, and other interactive details should survive the conversion.
 - Treat native `<video>` / `<audio>` elements as the source of truth for any custom media chrome, canvas visualizer, waveform, beat grid, or playhead. Wire the source's media events (`play`, `pause`, `timeupdate`, `seeking`, `seeked`, `ended`, `ratechange`, `volumechange`) and derive visual state from `media.currentTime`; do not run a separate timer that can drift away from actual playback.
-- Every copied `<video>` or `<audio>` with `src` must have HyperFrames timing attributes before lint: `data-start` and `data-duration`, plus `data-has-audio="true"` when audible native audio should be preserved. Use the scene's time range for slide-specific media; for user-controlled evidence videos that may be played from multiple focused slides, use a deck-wide range. Do not leave `preload="none"` on media; use `metadata` or `auto`.
+- Every copied `<video>` or `<audio>` with `src` must have Tagreel timing attributes before lint: `data-start` and `data-duration`, plus `data-has-audio="true"` when audible native audio should be preserved. Use the scene's time range for slide-specific media; for user-controlled evidence videos that may be played from multiple focused slides, use a deck-wide range. Do not leave `preload="none"` on media; use `metadata` or `auto`.
 - Resolve source font tokens before validation. If preserving custom source fonts, add `@font-face` rules for local/captured font files. If using system fallbacks, replace tokenized declarations such as `font-family: var(--f-body)` with concrete render-safe stacks such as `system-ui, sans-serif` or `ui-monospace, monospace`; do not leave `var(...)` as the font family value.
 - Audit the source for atypical page movement, especially behavior driven by scroll, wheel, touch, hash state, resize, or a requestAnimationFrame loop. Treat fixed viewports with translated/scaled "world" layers, parallax, pinned panels, horizontal scrollers, scroll-scrubbed timelines, section snapping, and zoom-to-element cameras as source behavior. Scroll is often the source's transition trigger, so preserve the transition by extracting its progress stops, easing, and camera/focus states, then re-host that motion on slideshow navigation through timeline positions, fragments, or a reusable player/harness hook. Standalone wrappers that jump to slide hold-points still need an explicit navigation-camera transition hook; computing per-slide camera transforms is not enough. Do not simulate a literal page-scroll-down transition inside the slide; the viewer should feel camera travel/zoom from one focal point to another, not see a webpage being scrolled. Keep each slide-to-slide camera move continuous: avoid intermediate route stops that reverse x/y direction or zoom unless the source visibly does that at the same boundary. A transition that darts around before landing is worse than a simpler direct focal move.
 - Preserve the source's media crop semantics. Treat screenshots, tweets/social posts, product UI captures, charts, docs, code, leaderboards, and any image with readable text as content evidence, not decorative media: use the source aspect ratio (`height: auto`) or `object-fit: contain` inside a stable frame. Use `object-fit: cover` only when the source did, or for intentionally decorative/background/cinematic thumbnails. After fitting these captures into a slide, inspect all four edges for truncated text, logos, controls, or captions; a visible crop on meaningful content is a bug unless the source itself cropped it.
@@ -244,7 +244,7 @@ Branch slides are real scenes in the same composition timeline. They are listed 
 
 ```html
 <body style="margin: 0">
-  <script type="application/hyperframes-slideshow+json">
+  <script type="application/tagreel-slideshow+json">
     {
       "slides": [
         {
@@ -404,23 +404,23 @@ Branch slides are real scenes in the same composition timeline. They are listed 
 - `mkt-math` appears only in `slideSequences` — it is never in the top-level `slides` array.
 - Fragment times (`11.0`, `15.0`) are within the `problem` scene's `[6, 21]` range (times are absolute composition-timeline positions).
 - The hotspot `region` (`x: 55, y: 60, w: 40, h: 20`) positions the clickable area in the lower-right quadrant of the problem slide.
-- GSAP timelines are registered on `window.__timelines` and are paused — the HyperFrames engine drives playback; do not call `.play()` at construction time.
+- GSAP timelines are registered on `window.__timelines` and are paused — the Tagreel engine drives playback; do not call `.play()` at construction time.
 
 ---
 
 ## Wrapping component
 
-Wrap the composition in `<hyperframes-slideshow>` around `<hyperframes-player>` in any embedding context:
+Wrap the composition in `<tagreel-slideshow>` around `<tagreel-player>` in any embedding context:
 
 ```html
-<hyperframes-slideshow>
-  <hyperframes-player src="deck.html"></hyperframes-player>
-</hyperframes-slideshow>
+<tagreel-slideshow>
+  <tagreel-player src="deck.html"></tagreel-player>
+</tagreel-slideshow>
 ```
 
-`<hyperframes-slideshow>` provides the navigation chrome (Present, Prev / Next, counter, global mute when `sound` is present, fullscreen), keyboard handling (← / →, Space / Backspace, and P for Present), touch swipe, and hotspot overlays.
+`<tagreel-slideshow>` provides the navigation chrome (Present, Prev / Next, counter, global mute when `sound` is present, fullscreen), keyboard handling (← / →, Space / Backspace, and P for Present), touch swipe, and hotspot overlays.
 
-The slideshow automatically sets the `interactive` attribute on every inner `<hyperframes-player>` at mount time, so clickable controls, links, native media controls, and custom players inside the composition iframe receive pointer events as expected. (Outside a slideshow wrapper, you must add `interactive` manually on `<hyperframes-player>` — the player defaults to `pointer-events: none` on the iframe so clicks on the player host don't get hijacked into toggling timeline playback.)
+The slideshow automatically sets the `interactive` attribute on every inner `<tagreel-player>` at mount time, so clickable controls, links, native media controls, and custom players inside the composition iframe receive pointer events as expected. (Outside a slideshow wrapper, you must add `interactive` manually on `<tagreel-player>` — the player defaults to `pointer-events: none` on the iframe so clicks on the player host don't get hijacked into toggling timeline playback.)
 
 **Presenter mode:** use the built-in Present icon button in the slideshow nav capsule, or press P. It calls `window.open('?mode=audience')` for a fullscreen audience tab; the originating tab becomes the presenter view (current slide reduced, next-slide preview, notes, elapsed timer). The two tabs sync via `BroadcastChannel('hf-slideshow:' + location.pathname)`. Do not add a custom wrapper-level Present button; the shared component owns its placement, icon, styling, and audience-mode hiding.
 
@@ -435,7 +435,7 @@ Presenter notes are editable in the presenter view. Edits are stored in `localSt
 
 ### Media cleanup on slide exit
 
-The slideshow controller owns slide-exit media cleanup. When navigation changes slide or sequence, it calls `hyperframes-player.stopMedia()` before entering the next slide. That command:
+The slideshow controller owns slide-exit media cleanup. When navigation changes slide or sequence, it calls `tagreel-player.stopMedia()` before entering the next slide. That command:
 
 - posts `stop-media` to the iframe runtime, which stops WebAudio and pauses native `<video>` / `<audio>` elements;
 - pauses same-origin iframe media directly as a fallback; and
@@ -451,9 +451,9 @@ When implementing direct iframe fallback cleanup, treat iframe media as cross-re
 
 ### Global nav mute
 
-When `<hyperframes-slideshow sound>` renders the nav mute button, that button is the global mute control for the page. It must mute:
+When `<tagreel-slideshow sound>` renders the nav mute button, that button is the global mute control for the page. It must mute:
 
-- child `<hyperframes-player>` instances, including same-origin iframe media;
+- child `<tagreel-player>` instances, including same-origin iframe media;
 - top-level page `<audio>` / `<video>` elements; and
 - wrapper-owned SFX/global `Audio` objects via the `hf-sound` event.
 
@@ -461,13 +461,13 @@ Do not add a second mute button inside the composition. If a wrapper script crea
 
 The same cross-realm rule applies here: global mute must reach iframe `<video>` / `<audio>` elements through the child frame's DOM realm. A passing unit test in a single DOM realm is not enough; verify in a browser that the actual iframe media elements report `muted: true` after clicking the nav mute button.
 
-`hyperframes present` serves built bundles from `packages/player/dist`. After changing player or slideshow chrome behavior, run `bun run build` in `packages/player` and restart the present server before testing in a browser.
+`tagreel present` serves built bundles from `packages/player/dist`. After changing player or slideshow chrome behavior, run `bun run build` in `packages/player` and restart the present server before testing in a browser.
 
 ---
 
 ## Running a slideshow standalone (interim)
 
-The **durable answer** is engine-hosted: `hyperframes preview --slideshow` / studio present mode will host the composition over the real HyperFrames engine, which drives seek-timelines, owns the gesture frame, and reads the island from the composition. That path is coming; prefer it once it ships.
+The **durable answer** is engine-hosted: `tagreel preview --slideshow` / studio present mode will host the composition over the real Tagreel engine, which drives seek-timelines, owns the gesture frame, and reads the island from the composition. That path is coming; prefer it once it ships.
 
 Until then, standalone demos (a composition opened via the bare player bundle in a browser, without the engine) require workarounds for three gaps: the composition must expose a seekable root timeline, the island must be duplicated into the wrapper, and wrapper-owned SFX/global audio should live in the parent frame. These patterns are documented in:
 
@@ -479,16 +479,16 @@ Do not treat the patterns there as the blessed model — they exist only to brid
 
 ## Handoff
 
-For a public or user-facing slideshow project, the root `index.html` should be a runnable slideshow entrypoint. Opening it in a browser should show slideshow navigation and respond to Next/Prev; it should not expose only the raw composition and require the user to know about Studio or an internal wrapper file. If the raw HyperFrames composition must remain separate for CLI compatibility, put it in a subdirectory such as `composition/index.html` and point scripts/commands at that directory.
+For a public or user-facing slideshow project, the root `index.html` should be a runnable slideshow entrypoint. Opening it in a browser should show slideshow navigation and respond to Next/Prev; it should not expose only the raw composition and require the user to know about Studio or an internal wrapper file. If the raw Tagreel composition must remain separate for CLI compatibility, put it in a subdirectory such as `composition/index.html` and point scripts/commands at that directory.
 
-The direct-open wrapper must rely on the built-in Present icon button rendered by `<hyperframes-slideshow>`. Do not add a bespoke `#present-btn`, fixed-position button, or wrapper-specific Present styling. The shared component owns the control bar, hides Present in `?mode=audience`, and supports P as a keyboard shortcut.
+The direct-open wrapper must rely on the built-in Present icon button rendered by `<tagreel-slideshow>`. Do not add a bespoke `#present-btn`, fixed-position button, or wrapper-specific Present styling. The shared component owns the control bar, hides Present in `?mode=audience`, and supports P as a keyboard shortcut.
 
 Validate the direct-open path before handoff. If `file://` browser restrictions break iframe media, local scripts, or same-origin player access, use a self-contained wrapper or make the handoff command start a local server and open the working URL; do not leave `index.html` in a broken or ambiguous state.
 
 For a completed slideshow deck, the primary user-facing next step is presenter mode, not Studio. Run or provide:
 
 ```bash
-npx hyperframes present <project-dir>
+npx tagreel present <project-dir>
 ```
 
 Studio/`preview` is useful for editing a composition, but it is not a clear final destination for a slideshow user. If you create a `package.json` for a slideshow project where the raw composition lives in `composition/`, make the default runnable script start presenter mode:
@@ -496,8 +496,8 @@ Studio/`preview` is useful for editing a composition, but it is not a clear fina
 ```json
 {
   "scripts": {
-    "dev": "npx hyperframes present ./composition",
-    "studio": "npx hyperframes preview ./composition --background"
+    "dev": "npx tagreel present ./composition",
+    "studio": "npx tagreel preview ./composition --background"
   }
 }
 ```
@@ -511,7 +511,7 @@ At handoff, include the local presenter URL printed by the command and the minim
 After authoring or editing a slideshow composition, run validation (it reruns lint before opening the browser):
 
 ```bash
-npx hyperframes check
+npx tagreel check
 ```
 
 Treat lint errors and validation `StaticGuard` contract messages as blockers even if a command exits successfully. Fix the file and rerun until `check` reports no lint or runtime errors.

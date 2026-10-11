@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":305}}
   attribution={{"path":"registry/components/store-badge-lockup","tags":["prop","ui-props","mobile","store-badges","cta","ask"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/store-badge-lockup/store-badge-lockup.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/store-badge-lockup/store-badge-lockup.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html store-badge-lockup.html
 <!doctype html>
 <!--
-  store-badge-lockup: HyperFrames video primitive (ui-props / holdable / ask)
+  store-badge-lockup: Tagreel video primitive (ui-props / holdable / ask)
 
   Concept: a short headline settles first, followed by equal-size App Store
   and Google Play download badges that rise and fade into a standard mobile
@@ -249,8 +249,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var appleBadge = root.querySelector(".sbl-apple");
             var googleBadge = root.querySelector(".sbl-google");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             /* INVARIANT: getVariables() owns all three public decisions.
@@ -334,7 +334,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add store-badge-lockup" item="store-badge-lockup" />
+<InstallCommand command="npx tagreel add store-badge-lockup" item="store-badge-lockup" />
 
 That writes one file: `compositions/components/store-badge-lockup.html`.
 

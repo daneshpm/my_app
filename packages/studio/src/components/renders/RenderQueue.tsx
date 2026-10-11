@@ -1,6 +1,6 @@
 import { memo, useState, useRef, useEffect, useLayoutEffect, useId } from "react";
 import { createPortal } from "react-dom";
-import { CANVAS_DIMENSIONS } from "@hyperframes/parsers";
+import { CANVAS_DIMENSIONS } from "@tagreel/parsers";
 import { RenderQueueItem } from "./RenderQueueItem";
 import { FfmpegRequiredNotice } from "./FfmpegRequiredNotice";
 import type { FfmpegStatus } from "./useFfmpegStatus";

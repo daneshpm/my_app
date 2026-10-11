@@ -12,7 +12,7 @@ variable "region" {
 variable "project_name" {
   type        = string
   description = "Name prefix applied to the service / workflow / bucket / service accounts."
-  default     = "hyperframes"
+  default     = "tagreel"
 
   validation {
     condition = (
@@ -26,7 +26,7 @@ variable "project_name" {
 
 variable "image" {
   type        = string
-  description = "Fully-qualified container image for the render service (e.g. us-central1-docker.pkg.dev/PROJECT/REPO/hyperframes-render:TAG), built from packages/gcp-cloud-run/Dockerfile."
+  description = "Fully-qualified container image for the render service (e.g. us-central1-docker.pkg.dev/PROJECT/REPO/tagreel-render:TAG), built from packages/gcp-cloud-run/Dockerfile."
 }
 
 variable "cpu" {

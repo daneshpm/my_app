@@ -6,7 +6,7 @@
  * attribute the same way.
  */
 
-import type { HfAutomationLane } from "@hyperframes/core/audio-automation";
+import type { HfAutomationLane } from "@tagreel/core/audio-automation";
 import {
   HF_AUDIO_AUTOMATION_ATTR,
   HF_AUDIO_AUTOMATION_DATA_KEY,
@@ -15,8 +15,8 @@ import {
   resolveAutomationRange,
   serializeAutomation,
   type HfAutomation,
-} from "@hyperframes/core/audio-automation";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-automation";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
 import { mergeInsertPoint } from "../../player/components/automationLaneGeometry";
 
 const EMPTY: HfAutomation = { version: 1, lanes: [] };

@@ -57,7 +57,7 @@ format: 1920x1080
 
   const result = spawnSync(
     process.execPath,
-    [script, "inject", "--storyboard", join(project, "STORYBOARD.md"), "--hyperframes", project],
+    [script, "inject", "--storyboard", join(project, "STORYBOARD.md"), "--tagreel", project],
     { encoding: "utf8" },
   );
 

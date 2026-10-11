@@ -1,5 +1,5 @@
 import { expect, it } from "vitest";
-import { buildStudioTools, collectStudioLookScene } from "@hyperframes/studio";
+import { buildStudioTools, collectStudioLookScene } from "@tagreel/studio";
 
 it("exports Studio's agent tools for a host's own edit session", () => {
   const names = buildStudioTools({ current: {} as never }).map((tool) => tool.name);

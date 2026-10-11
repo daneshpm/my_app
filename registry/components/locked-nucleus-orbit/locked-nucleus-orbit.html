@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  locked-nucleus-orbit: HyperFrames video primitive (intros / reveals / orbit)
+  locked-nucleus-orbit: Tagreel video primitive (intros / reveals / orbit)
 
   One nucleus stays dead center for the full composition. Satellite rings and
   copy chips fade in while orbiting on deterministic index-based phases, then
@@ -223,8 +223,8 @@
             var satelliteLayer = root.querySelector(".lno-satellites");
             var rings = root.querySelectorAll(".lno-ring");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentColors = {

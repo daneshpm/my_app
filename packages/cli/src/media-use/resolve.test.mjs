@@ -11,12 +11,10 @@ import {
 } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
-import { createServer } from "node:http";
-import { execFileSync, spawn, spawnSync } from "node:child_process";
+import { execFileSync, spawnSync } from "node:child_process";
 import { appendRecord, findByPrompt, readManifest } from "./lib/manifest.mjs";
 import { regenerateIndex } from "./lib/index-gen.mjs";
 import { getProvider } from "./lib/providers.mjs";
-import { HEYGEN_NOT_FOUND_MESSAGE } from "./lib/heygen-cli.mjs";
 import { freezeLocalFile } from "./lib/freeze.mjs";
 import { cachePut, cacheGet, importFromCache } from "./lib/cache.mjs";
 import { validateCubeFile } from "./lib/cube-validate.mjs";
@@ -33,14 +31,14 @@ const CAN_TSX =
   spawnSync(process.execPath, ["--import", "tsx", "--input-type=module", "-e", "0"], {
     stdio: "ignore",
   }).status === 0;
-process.env.HYPERFRAMES_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-resolve-home-"));
+process.env.TAGREEL_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-resolve-home-"));
 
 let tmp;
 
 function setup() {
   tmp = mkdtempSync(join(tmpdir(), "mu-resolve-test-"));
   // A fresh global cache per test, apart from the project so the two manifests never coincide.
-  process.env.HYPERFRAMES_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-resolve-home-"));
+  process.env.TAGREEL_MEDIA_HOME = mkdtempSync(join(tmpdir(), "mu-resolve-home-"));
 }
 
 function cleanup() {
@@ -80,26 +78,6 @@ function spawnResolve(args, opts = {}) {
     encoding: "utf8",
     env: { ...process.env, DO_NOT_TRACK: "1", ...env },
     ...rest,
-  });
-}
-
-function spawnResolveAsync(args, opts = {}) {
-  const { env, ...rest } = opts;
-  return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, [RESOLVE_CLI, ...args], {
-      cwd: REPO_ROOT,
-      env: { ...process.env, DO_NOT_TRACK: "1", ...env },
-      stdio: ["ignore", "pipe", "pipe"],
-      ...rest,
-    });
-    let stdout = "";
-    let stderr = "";
-    child.stdout.setEncoding("utf8");
-    child.stderr.setEncoding("utf8");
-    child.stdout.on("data", (chunk) => (stdout += chunk));
-    child.stderr.on("data", (chunk) => (stderr += chunk));
-    child.once("error", reject);
-    child.once("close", (status, signal) => resolve({ status, signal, stdout, stderr }));
   });
 }
 
@@ -156,7 +134,7 @@ function test(name, fn) {
 
 // --- manifest cache hit ---
 
-test("bundled SFX resolve without HeyGen on PATH", () => {
+test("bundled SFX resolve with an empty PATH", () => {
   setup();
   const result = spawnResolve(["--type", "sfx", "--intent", "whoosh", "--project", tmp, "--json"], {
     env: { HOME: tmp, PATH: tmp },
@@ -165,8 +143,7 @@ test("bundled SFX resolve without HeyGen on PATH", () => {
   const parsed = JSON.parse(result.stdout);
   assert.equal(parsed.ok, true);
   assert.equal(parsed.provenance.provider, "bundled.sfx");
-  assert.equal(parsed.advisory?.message, HEYGEN_NOT_FOUND_MESSAGE);
-  assert.equal(parsed.advisory.message.includes("| bash"), false);
+  assert.equal(parsed.advisory, undefined);
   assert.ok(existsSync(join(tmp, parsed.path)));
   cleanup();
 });
@@ -180,7 +157,7 @@ test("missing bundled SFX install returns a typed recovery command", () => {
       env: {
         HOME: tmp,
         PATH: tmp,
-        HYPERFRAMES_MEDIA_USE_SFX_DIR: missingLibrary,
+        TAGREEL_MEDIA_USE_SFX_DIR: missingLibrary,
       },
     },
   );
@@ -188,44 +165,9 @@ test("missing bundled SFX install returns a typed recovery command", () => {
   const parsed = JSON.parse(result.stdout);
   assert.equal(parsed.ok, false);
   assert.equal(parsed.code, "bundled_sfx_assets_missing");
-  assert.equal(parsed.fix, "npx hyperframes skills update media-use");
+  assert.equal(parsed.fix, "npx tagreel skills update media-use");
   assert.match(parsed.error, /bundled SFX assets are missing or incomplete/);
   assert.match(parsed.error, /manifest not found/);
-  cleanup();
-});
-
-function writeFakeHeygen(body, exitCode = 0) {
-  const binDir = join(tmp, "bin");
-  mkdirSync(binDir, { recursive: true });
-  const command = join(binDir, "heygen");
-  writeFileSync(command, `#!/bin/sh\n${body}\nexit ${exitCode}\n`);
-  chmodSync(command, 0o755);
-  return binDir;
-}
-
-test("bundled SFX advises update when the HeyGen CLI is outdated", () => {
-  setup();
-  const binDir = writeFakeHeygen('echo "heygen v0.1.5 does not support --headers" >&2', 1);
-  const result = spawnResolve(["--type", "sfx", "--intent", "whoosh", "--project", tmp, "--json"], {
-    env: { HOME: tmp, PATH: binDir },
-  });
-  assert.equal(result.status, 0, result.stderr);
-  const parsed = JSON.parse(result.stdout);
-  assert.equal(parsed.provenance.provider, "bundled.sfx");
-  assert.match(parsed.advisory?.message ?? "", /heygen update/);
-  cleanup();
-});
-
-test("bundled SFX does not advise installation after a healthy catalog miss", () => {
-  setup();
-  const binDir = writeFakeHeygen(`echo '{"data":[]}'`);
-  const result = spawnResolve(["--type", "sfx", "--intent", "whoosh", "--project", tmp, "--json"], {
-    env: { HOME: tmp, PATH: binDir },
-  });
-  assert.equal(result.status, 0, result.stderr);
-  const parsed = JSON.parse(result.stdout);
-  assert.equal(parsed.provenance.provider, "bundled.sfx");
-  assert.equal(parsed.advisory, undefined);
   cleanup();
 });
 
@@ -242,20 +184,6 @@ test("explicit local bundled SFX resolution does not advise installation", () =>
     assert.equal(parsed.advisory, undefined);
     cleanup();
   }
-});
-
-test("human bundled fallback prints the install hint once", () => {
-  setup();
-  const result = spawnResolve(["--type", "sfx", "--intent", "whoosh", "--project", tmp], {
-    env: { HOME: tmp, PATH: tmp },
-  });
-  assert.equal(result.status, 0, result.stderr);
-  assert.equal(
-    result.stderr.match(/Install the CLI from https:\/\/developers\.heygen\.com\/cli/g)?.length,
-    1,
-  );
-  assert.match(result.stdout, /resolved sfx_001/);
-  cleanup();
 });
 
 test("project manifest hit skips providers", () => {
@@ -308,84 +236,6 @@ test("entity hit matches across icon/image (figma-imported brand marks)", () => 
   cleanup();
 });
 
-// --- auth_method provenance (U6) ---
-
-test("manifest hit for an OAuth-credentialed heygen resolve surfaces authMethod: oauth", () => {
-  setup();
-  const record = makeRecord({
-    id: "voice_001",
-    type: "voice",
-    path: ".media/audio/voice/voice_001.wav",
-    provenance: { provider: "heygen.tts", authMethod: "oauth", prompt: "oauth voice" },
-  });
-  appendRecord(tmp, record);
-  const filePath = join(tmp, record.path);
-  mkdirSync(join(filePath, ".."), { recursive: true });
-  writeFileSync(filePath, "cached voice");
-
-  const out = runResolve([
-    "--type",
-    "voice",
-    "--intent",
-    "oauth voice",
-    "--project",
-    tmp,
-    "--json",
-  ]);
-  const parsed = JSON.parse(out.trim());
-  assert.equal(parsed.ok, true);
-  assert.equal(parsed.provenance.authMethod, "oauth");
-  cleanup();
-});
-
-test("manifest hit for an API-key-credentialed heygen resolve surfaces authMethod: api_key", () => {
-  setup();
-  const record = makeRecord({
-    id: "voice_001",
-    type: "voice",
-    path: ".media/audio/voice/voice_001.wav",
-    provenance: { provider: "heygen.tts", authMethod: "api_key", prompt: "api key voice" },
-  });
-  appendRecord(tmp, record);
-  const filePath = join(tmp, record.path);
-  mkdirSync(join(filePath, ".."), { recursive: true });
-  writeFileSync(filePath, "cached voice");
-
-  const out = runResolve([
-    "--type",
-    "voice",
-    "--intent",
-    "api key voice",
-    "--project",
-    tmp,
-    "--json",
-  ]);
-  const parsed = JSON.parse(out.trim());
-  assert.equal(parsed.ok, true);
-  assert.equal(parsed.provenance.authMethod, "api_key");
-  cleanup();
-});
-
-test("manifest hit for a non-heygen provider omits authMethod entirely", () => {
-  setup();
-  const record = makeRecord({
-    id: "logo_001",
-    type: "logo",
-    path: ".media/images/logo_001.svg",
-    provenance: { provider: "thesvg", prompt: "acme logo" },
-  });
-  appendRecord(tmp, record);
-  const filePath = join(tmp, record.path);
-  mkdirSync(join(filePath, ".."), { recursive: true });
-  writeFileSync(filePath, "<svg/>");
-
-  const out = runResolve(["--type", "logo", "--intent", "acme logo", "--project", tmp, "--json"]);
-  const parsed = JSON.parse(out.trim());
-  assert.equal(parsed.ok, true);
-  assert.equal("authMethod" in parsed.provenance, false);
-  cleanup();
-});
-
 // --- global cache hit ---
 
 test("global cache hit copies to project and registers", () => {
@@ -416,8 +266,8 @@ test("global cache hit copies to project and registers", () => {
 // --- provider interface ---
 
 test("getProvider returns provider with type", () => {
-  const p = getProvider("bgm");
-  assert.equal(p.type, "bgm");
+  const p = getProvider("sfx");
+  assert.equal(p.type, "sfx");
   assert.ok(typeof p.search === "function");
 });
 
@@ -436,43 +286,6 @@ test("freezeLocalFile creates parent dirs and copies", () => {
   assert.ok(existsSync(dest));
   assert.equal(readFileSync(dest, "utf8"), "freeze test data");
   cleanup();
-});
-
-test("failed remote freeze removes its reserved placeholder", async () => {
-  setup();
-  const server = createServer((_req, res) => {
-    res.writeHead(503);
-    res.end("unavailable");
-  });
-  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
-  const port = server.address().port;
-  const binDir = writeFakeHeygen(
-    `printf '%s\\n' '{"data":[{"id":"asset.jpg","url":"http://127.0.0.1:${port}/asset.jpg"}]}'`,
-  );
-
-  try {
-    const result = await spawnResolveAsync(
-      [
-        "--type",
-        "image",
-        "--intent",
-        "download failure",
-        "--provider",
-        "heygen",
-        "--project",
-        tmp,
-        "--json",
-      ],
-      { env: { HOME: tmp, PATH: binDir } },
-    );
-
-    assert.equal(result.status, 1, result.stderr);
-    assert.deepStrictEqual(readdirSync(join(tmp, ".media/images")), []);
-    assert.deepStrictEqual(readManifest(tmp), []);
-  } finally {
-    await new Promise((resolve) => server.close(resolve));
-    cleanup();
-  }
 });
 
 test("failed URL ingest removes its reserved placeholder", () => {
@@ -514,18 +327,18 @@ test("--adopt registers existing assets/ files", () => {
   cleanup();
 });
 
-test("--adopt stops, adopting nothing, when HYPERFRAMES_FFPROBE_PATH cannot run", () => {
+test("--adopt stops, adopting nothing, when TAGREEL_FFPROBE_PATH cannot run", () => {
   setup();
   mkdirSync(join(tmp, "assets/bgm"), { recursive: true });
   writeFileSync(join(tmp, "assets/bgm/track.mp3"), "fake mp3");
 
   const result = spawnResolve(["--adopt", "--project", tmp, "--json"], {
-    env: { HYPERFRAMES_FFPROBE_PATH: join(tmp, "no-ffprobe") },
+    env: { TAGREEL_FFPROBE_PATH: join(tmp, "no-ffprobe") },
   });
   assert.equal(result.status, 1);
   const report = JSON.parse(result.stdout.trim());
   assert.equal(report.ok, false);
-  assert.match(report.error, /HYPERFRAMES_FFPROBE_PATH names .*no-ffprobe.*fix it or unset it/);
+  assert.match(report.error, /TAGREEL_FFPROBE_PATH names .*no-ffprobe.*fix it or unset it/);
   assert.equal(readManifest(tmp).length, 0);
   cleanup();
 });
@@ -664,7 +477,7 @@ test("resolve does not relabel a recorded file in assets/ as the person's own", 
     path: "assets/bgm/ambient-track.mp3",
     source: "search",
     description: "calm underscore",
-    provenance: { provider: "heygen" },
+    provenance: { provider: "test" },
   });
 
   const out = runResolve([
@@ -758,28 +571,6 @@ test("--from uses .mp4 as the default video extension", () => {
   cleanup();
 });
 
-test("--avatar-id/--voice-id parse as real CLI flags (regression guard: docs promise them, parseArgs must not reject them)", () => {
-  setup();
-  const result = spawnResolve(
-    [
-      "--type",
-      "video",
-      "--intent",
-      "regression guard",
-      "--local-only",
-      "--avatar-id",
-      "avatar-override",
-      "--voice-id",
-      "voice-override",
-      "--project",
-      tmp,
-    ],
-    { stdio: "pipe" },
-  );
-  assert.doesNotMatch(result.stderr || "", /ERR_PARSE_ARGS_UNKNOWN_OPTION/);
-  cleanup();
-});
-
 test("unknown type error lists grade and lut", () => {
   try {
     runResolve(["--type", "bogus", "--intent", "x"], { stdio: "pipe" });
@@ -810,7 +601,7 @@ test("--json returns error JSON on stub provider failure", () => {
     const output = err.stdout || "";
     const parsed = JSON.parse(output.trim());
     assert.equal(parsed.ok, false);
-    assert.ok(parsed.error.includes("no provider"));
+    assert.ok(parsed.error.includes("no catalog provider for bgm"));
   }
   cleanup();
 });
@@ -824,15 +615,7 @@ test("--doctor --json reports dependency checks and top-level ok requires ffmpeg
   const parsed = JSON.parse(result.stdout.trim());
   assert.ok(Array.isArray(parsed.checks));
 
-  const expected = [
-    "bundled SFX assets",
-    "heygen on PATH",
-    "heygen version",
-    "heygen authenticated",
-    "ffmpeg on PATH",
-    "ffprobe on PATH",
-    "node version",
-  ];
+  const expected = ["bundled SFX assets", "ffmpeg on PATH", "ffprobe on PATH", "node version"];
   const byName = new Map(parsed.checks.map((check) => [check.name, check]));
   for (const name of expected) {
     assert.ok(byName.has(name), `missing check: ${name}`);
@@ -851,7 +634,7 @@ test("--doctor --json reports dependency checks and top-level ok requires ffmpeg
   assert.equal(result.status, strictOk ? 0 : 1);
 });
 
-test("--doctor checks the ffmpeg and ffprobe that HYPERFRAMES_FFMPEG_PATH and HYPERFRAMES_FFPROBE_PATH name", () => {
+test("--doctor checks the ffmpeg and ffprobe that TAGREEL_FFMPEG_PATH and TAGREEL_FFPROBE_PATH name", () => {
   const dir = mkdtempSync(join(tmpdir(), "mu-doctor-ff-"));
   for (const tool of ["ffmpeg", "ffprobe"]) {
     writeFileSync(join(dir, tool), `#!/bin/sh\necho '${tool} version 9.9-fake'\n`);
@@ -860,8 +643,8 @@ test("--doctor checks the ffmpeg and ffprobe that HYPERFRAMES_FFMPEG_PATH and HY
   try {
     const result = spawnResolve(["--doctor", "--json"], {
       env: {
-        HYPERFRAMES_FFMPEG_PATH: join(dir, "ffmpeg"),
-        HYPERFRAMES_FFPROBE_PATH: join(dir, "ffprobe"),
+        TAGREEL_FFMPEG_PATH: join(dir, "ffmpeg"),
+        TAGREEL_FFPROBE_PATH: join(dir, "ffprobe"),
       },
     });
     const byName = new Map(JSON.parse(result.stdout.trim()).checks.map((c) => [c.name, c]));
@@ -875,10 +658,10 @@ test("--doctor checks the ffmpeg and ffprobe that HYPERFRAMES_FFMPEG_PATH and HY
   }
 });
 
-test("--doctor fails a HYPERFRAMES_FFPROBE_PATH that cannot run and says to fix or unset it", () => {
+test("--doctor fails a TAGREEL_FFPROBE_PATH that cannot run and says to fix or unset it", () => {
   const missing = join(tmpdir(), "mu-doctor-no-ffprobe", "ffprobe");
   const result = spawnResolve(["--doctor", "--json"], {
-    env: { HYPERFRAMES_FFPROBE_PATH: missing },
+    env: { TAGREEL_FFPROBE_PATH: missing },
   });
   const report = JSON.parse(result.stdout.trim());
   const check = report.checks.find((c) => c.name === "ffprobe on PATH");
@@ -887,23 +670,23 @@ test("--doctor fails a HYPERFRAMES_FFPROBE_PATH that cannot run and says to fix 
     [check.ok, check.detail, check.fix],
     [
       false,
-      `HYPERFRAMES_FFPROBE_PATH names "${missing}", which is not a working ffprobe: fix it or unset it.`,
+      `TAGREEL_FFPROBE_PATH names "${missing}", which is not a working ffprobe: fix it or unset it.`,
       "fix or unset that variable",
     ],
   );
 });
 
-test("--analyze refuses a HYPERFRAMES_FFPROBE_PATH that cannot run instead of reporting unknown", () => {
+test("--analyze refuses a TAGREEL_FFPROBE_PATH that cannot run instead of reporting unknown", () => {
   const missing = join(tmpdir(), "mu-analyze-no-ffprobe", "ffprobe");
   const result = spawnResolve(["--analyze", "--type", "grade", "--for", RESOLVE_CLI, "--json"], {
-    env: { HYPERFRAMES_FFPROBE_PATH: missing },
+    env: { TAGREEL_FFPROBE_PATH: missing },
   });
   assert.equal(result.status, 1);
   const report = JSON.parse(result.stdout.trim());
   assert.equal(report.ok, false);
   assert.match(
     report.error,
-    /HYPERFRAMES_FFPROBE_PATH names ".*mu-analyze-no-ffprobe.*fix it or unset it/,
+    /TAGREEL_FFPROBE_PATH names ".*mu-analyze-no-ffprobe.*fix it or unset it/,
   );
 });
 
@@ -914,14 +697,14 @@ test("--doctor fails a configured ffprobe that exists but exits with an error", 
   chmodSync(broken, 0o755);
   try {
     const result = spawnResolve(["--doctor", "--json"], {
-      env: { HYPERFRAMES_FFPROBE_PATH: broken },
+      env: { TAGREEL_FFPROBE_PATH: broken },
     });
     const check = JSON.parse(result.stdout.trim()).checks.find((c) => c.name === "ffprobe on PATH");
     assert.deepEqual(
       [check.ok, check.detail, check.fix],
       [
         false,
-        `HYPERFRAMES_FFPROBE_PATH names "${broken}", which is not a working ffprobe: fix it or unset it.`,
+        `TAGREEL_FFPROBE_PATH names "${broken}", which is not a working ffprobe: fix it or unset it.`,
         "fix or unset that variable",
       ],
     );
@@ -930,7 +713,7 @@ test("--doctor fails a configured ffprobe that exists but exits with an error", 
   }
 });
 
-test("a broken HYPERFRAMES_FFPROBE_PATH is named when local voice cannot run, not a generic miss", () => {
+test("a broken TAGREEL_FFPROBE_PATH is named when local voice cannot run, not a generic miss", () => {
   setup();
   const missing = join(tmp, "no-ffprobe");
   const result = spawnResolve(
@@ -945,12 +728,12 @@ test("a broken HYPERFRAMES_FFPROBE_PATH is named when local voice cannot run, no
       tmp,
       "--json",
     ],
-    { env: { HYPERFRAMES_FFPROBE_PATH: missing } },
+    { env: { TAGREEL_FFPROBE_PATH: missing } },
   );
   assert.equal(result.status, 1);
   assert.equal(
     JSON.parse(result.stdout.trim()).error,
-    `HYPERFRAMES_FFPROBE_PATH names "${missing}", which is not a working ffprobe: fix it or unset it.`,
+    `TAGREEL_FFPROBE_PATH names "${missing}", which is not a working ffprobe: fix it or unset it.`,
   );
   cleanup();
 });
@@ -1223,149 +1006,23 @@ test("identical grade resolve hits the project cache without re-freezing", () =>
   cleanup();
 });
 
-// --- telemetry isolation (U7) ---
+// --- telemetry removal ---
 
-// Every other test relies on runResolve/spawnResolve's default DO_NOT_TRACK:
-// "1" to keep track() a no-op. That default is fragile on its own (a future
-// call site or test could forget to set it), so telemetry.mjs also exposes a
-// MEDIA_USE_TELEMETRY_HOST override read at the point the POST URL is built.
-// This test proves that seam actually intercepts a real event end to end: a
-// resolve that reaches track("media_use_resolve", ...) with tracking allowed
-// posts to a local HTTP server instead of production, and the server actually
-// receives it (not just "nothing happened because nothing was listening").
-// Spawns a real resolve that hits the manifest for `provider`, intercepts the
-// telemetry POST it makes, and hands back the media_use_resolve event actually
-// sent. Nothing is stubbed: the CLI runs as its own process, telemetry.mjs builds
-// the URL, and a local server reads the payload off the wire.
-async function captureResolveEvent({ provider, type = "bgm", intent }) {
-  const received = [];
-  const server = createServer((req, res) => {
-    let body = "";
-    req.on("data", (chunk) => (body += chunk));
-    req.on("end", () => {
-      try {
-        received.push(JSON.parse(body));
-      } catch {
-        // ignore malformed body; callers assert on empty `received`
-      }
-      res.writeHead(200, { "Content-Type": "application/json" });
-      res.end("{}");
-    });
-  });
-  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
-  const port = server.address().port;
-  const sandboxHome = mkdtempSync(join(tmpdir(), "mu-resolve-telemetry-home-"));
-
+test("track() is a no-op: it never touches the network", async () => {
+  const { track } = await import("./lib/telemetry.mjs");
+  const realFetch = globalThis.fetch;
+  let calls = 0;
+  globalThis.fetch = async () => {
+    calls++;
+    return new Response("{}");
+  };
   try {
-    // The record's type must match the --type below, otherwise the manifest
-    // never matches, the cascade calls a live provider, and the run fails for
-    // reasons that have nothing to do with the tier.
-    const record = makeRecord({
-      id: `${type}_tier_001`,
-      type,
-      path: `.media/audio/${type}/${type}_tier_001.wav`,
-      provenance: { prompt: intent, provider },
-    });
-    appendRecord(tmp, record);
-    const filePath = join(tmp, record.path);
-    mkdirSync(join(filePath, ".."), { recursive: true });
-    writeFileSync(filePath, "telemetry seam audio");
-
-    // Override this one invocation's env only: allow tracking (DO_NOT_TRACK
-    // default flipped off), sandbox HOME so anonymousId()/showTelemetryNotice()
-    // never touch the real developer machine, and point the host at the local
-    // server. HEYGEN_CONFIG_DIR is sandboxed too -- runResolve's env is
-    // {...process.env, ...env}, so a developer with that var set to a real
-    // credentials dir would otherwise have heygenAccountDistinctId() read
-    // their real email into this test's local-server payload despite HOME
-    // being sandboxed (HEYGEN_CONFIG_DIR, not HOME, resolves the credentials
-    // path). Every other test in this file keeps its untouched default env.
-    runResolve(["--type", type, "--intent", intent, "--project", tmp, "--json"], {
-      env: {
-        DO_NOT_TRACK: "0",
-        HYPERFRAMES_NO_TELEMETRY: "0",
-        CI: "",
-        NODE_ENV: "test",
-        HOME: sandboxHome,
-        HEYGEN_CONFIG_DIR: join(sandboxHome, ".heygen"),
-        MEDIA_USE_TELEMETRY_HOST: `http://127.0.0.1:${port}`,
-      },
-    });
-
-    // runResolve blocks synchronously (execFileSync) until the child exits, which
-    // pauses this process's own event loop for that whole span -- the child's
-    // request to our local server sits accepted-but-unprocessed in the kernel
-    // backlog until control returns here. Poll briefly to let the event loop
-    // drain it rather than asserting before the server has had a turn to run.
-    for (let i = 0; i < 100 && received.length === 0; i++) {
-      await new Promise((resolve) => setTimeout(resolve, 20));
-    }
+    await track("media_use_resolve", { type: "bgm", provider: "test" });
   } finally {
-    await new Promise((resolve) => server.close(resolve));
-    rmSync(sandboxHome, { recursive: true, force: true });
+    globalThis.fetch = realFetch;
   }
-
-  assert.ok(received.length > 0, "expected the local telemetry server to receive a POST");
-  const event = received[0].batch.find((e) => e.event === "media_use_resolve");
-  assert.ok(event, "expected a media_use_resolve event in the intercepted batch");
-  return event;
-}
-
-test("track() posts to MEDIA_USE_TELEMETRY_HOST when set, proving real interception", async () => {
-  setup();
-  try {
-    const event = await captureResolveEvent({ provider: "test", intent: "telemetry seam test" });
-    assert.equal(event.properties.provider, "test");
-    assert.equal(event.properties.type, "bgm");
-    // "test" is not a declared registry provider, so the tier is absent rather
-    // than guessed, the same sparseness rule auth_method follows.
-    assert.equal(
-      "provider_tier" in event.properties && event.properties.provider_tier !== undefined,
-      false,
-      "an undeclared provider must not be assigned a cost tier",
-    );
-  } finally {
-    cleanup();
-  }
+  assert.equal(calls, 0, "track() must not call fetch");
 });
-
-// The registry-derived tier has to survive the whole path -- registry lookup,
-// result(), track(), JSON body -- not just a unit call to providerTierFor. Each
-// case names a provider the registry declares at a different tier and asserts the
-// tier that actually reaches the wire.
-for (const [provider, type, expected] of [
-  ["heygen.tts", "voice", "network_paid"],
-  ["heygen.audio.sounds", "bgm", "network_free"],
-  ["bundled.sfx", "sfx", "local"],
-]) {
-  test(`a resolve won by ${provider} sends provider_tier: ${expected}`, async () => {
-    setup();
-    try {
-      const event = await captureResolveEvent({
-        provider,
-        type,
-        intent: `tier seam ${provider}`,
-      });
-      assert.equal(event.properties.provider, provider);
-      assert.equal(
-        event.properties.provider_tier,
-        expected,
-        `${provider} must reach the wire as ${expected}`,
-      );
-      // The tier is derived from the registry and the auth method from the
-      // credential state; they must not become entangled. A non-heygen provider
-      // carries a tier and no auth method, whatever credentials exist locally.
-      if (!provider.startsWith("heygen."))
-        assert.equal(
-          event.properties.auth_method,
-          undefined,
-          "a non-heygen provider must carry a tier without an auth method",
-        );
-    } finally {
-      cleanup();
-    }
-  });
-}
 
 // --- run ---
 

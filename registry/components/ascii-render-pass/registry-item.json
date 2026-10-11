@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "ascii-render-pass",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "ASCII Render Pass",
   "description": "A slotted scene renders as live ASCII: a canvas samples the source's luminance grid (rasterized once at mount) and draws glyphs from a density ramp charset; resolution steps coarse to fine as the piece resolves, then holds legible-fine.",
   "tags": ["motion-primitive", "experiment", "texture", "ascii", "quantize"],
@@ -20,7 +20,7 @@
     {
       "path": "ascii-render-pass.html",
       "target": "compositions/components/ascii-render-pass.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

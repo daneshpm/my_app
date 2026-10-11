@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "ordered-dither-pass",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Ordered Dither Pass",
   "description": "Bayer-matrix ordered dithering quantizes a slotted scene (rasterized once at mount): the image emerges from pure 2-tone noise to clean, or dissolves the reverse. Stateless per frame, never error diffusion.",
   "tags": ["motion-primitive", "experiment", "texture", "dither", "transition", "quantize"],
@@ -20,7 +20,7 @@
     {
       "path": "ordered-dither-pass.html",
       "target": "compositions/components/ordered-dither-pass.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

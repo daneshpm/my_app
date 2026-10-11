@@ -3,7 +3,7 @@
 import React, { act } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { usePlayerStore } from "../player/store/playerStore";
 import { makeSelection } from "../hooks/domSelectionTestHarness";
 import { useAudioMetersVisible } from "../utils/audioMeterVisibility";

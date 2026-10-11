@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// seam-gate.mjs — numeric Seam Gate verifier for HyperFrames films (motion-doctrine).
+// seam-gate.mjs — numeric Seam Gate verifier for Tagreel films (motion-doctrine).
 // Zero npm dependencies: drives chrome-headless-shell over raw CDP (node >= 22).
 //
 //   verify  node seam-gate.mjs verify --ledger ledger.json --project <dir> [--json]
@@ -7,7 +7,7 @@
 //   probe   node seam-gate.mjs probe --t 44.8 --project <dir>   # list movers around a cut
 //
 // --project spawns a FRESH preview server (avoids the stale-bundle cache) with
-// HYPERFRAME_RUNTIME_URL unset. --url reuses a running server: restart it after
+// TAGREEL_RUNTIME_URL unset. --url reuses a running server: restart it after
 // comp edits or you verify a stale build.
 // Ledger schema: see references/seam-gate.md next to this skill.
 
@@ -70,12 +70,12 @@ async function ensureServer() {
     if (!project) throw new Error("need --url or --project");
     const port = 5380 + Math.floor(Math.random() * 20);
     const env = { ...process.env };
-    delete env.HYPERFRAME_RUNTIME_URL; // wrong value fails silently as 200 HTML
+    delete env.TAGREEL_RUNTIME_URL; // wrong value fails silently as 200 HTML
     // `preview` backgrounds itself when stdin/stdout aren't TTYs, which they never are here: the
     // launcher would exit 0 before the server is up and detach it out of our process group.
     // Default to the REPO-LOCAL CLI whenever this skill is running from its repo
     // checkout. The gate this script backs is defined against that build, and the
-    // skill forbids `npx hyperframes@latest` for it, so defaulting to the published
+    // skill forbids `npx tagreel@latest` for it, so defaulting to the published
     // package here would let the two gates measure different runtimes. npx stays the
     // fallback for a copy of the skill living outside the repo.
     const repoCli = join(
@@ -87,13 +87,13 @@ async function ensureServer() {
       "packages",
       "cli",
       "bin",
-      "hyperframes.mjs",
+      "tagreel.mjs",
     );
     const cmd = flag(
       "server-cmd",
       existsSync(repoCli)
         ? `node "${repoCli}" preview --foreground --no-open --port ${port}`
-        : `npx --yes hyperframes preview --foreground --no-open --port ${port}`,
+        : `npx --yes tagreel preview --foreground --no-open --port ${port}`,
     );
     const child = spawn("sh", ["-c", cmd.replace(/\{port\}/g, String(port))], {
       cwd: project,

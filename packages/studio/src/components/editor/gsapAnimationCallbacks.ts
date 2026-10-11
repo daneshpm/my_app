@@ -1,4 +1,4 @@
-import type { ArcPathSegment } from "@hyperframes/parsers/gsap-parser";
+import type { ArcPathSegment } from "@tagreel/parsers/gsap-parser";
 import type { AnimationKeyframeTarget } from "../../hooks/gsapTweenSynth";
 
 /**

@@ -13,17 +13,10 @@ const REPO_ROOT = join(fileURLToPath(new URL(".", import.meta.url)), "..", "..",
 const read = (...parts: string[]): string => readFileSync(join(REPO_ROOT, ...parts), "utf8");
 const SKILL_MD = read("skills", "figma", "SKILL.md");
 
-describe("figma SKILL.md telemetry beacons", () => {
-  it("instructs the beacon for every MCP-only phase", () => {
-    expect(SKILL_MD).toContain("figma-motion");
-    expect(SKILL_MD).toContain("figma-shaders");
-    expect(SKILL_MD).toContain("figma-storyboard");
-    expect(SKILL_MD).toContain("hyperframes events");
-  });
-
-  it("instructs the completion beacon with an outcome", () => {
-    expect(SKILL_MD).toContain("--event=skill_completed");
-    expect(SKILL_MD).toMatch(/--outcome=success\|error/);
+describe("figma SKILL.md has no telemetry beacons", () => {
+  it("does not instruct any usage beacon", () => {
+    expect(SKILL_MD).not.toContain("tagreel events");
+    expect(SKILL_MD).not.toContain("--event=skill_completed");
   });
 });
 
@@ -39,7 +32,7 @@ describe("figma storyboard doctrine pins", () => {
     ["CLAUDE.md", ["CLAUDE.md"]],
     ["README.md", ["README.md"]],
     ["docs/guides/skills.mdx", ["docs", "guides", "skills.mdx"]],
-    ["skills/hyperframes/SKILL.md", ["skills", "hyperframes", "SKILL.md"]],
+    ["skills/tagreel/SKILL.md", ["skills", "tagreel", "SKILL.md"]],
   ];
 
   it("every catalog surface says reconstructed motion, never animatics", () => {

@@ -2,7 +2,7 @@
 // fallow-ignore-file code-duplication
 
 import { act } from "react";
-import { MAX_AUDIO_GAIN } from "@hyperframes/core/audio-gain";
+import { MAX_AUDIO_GAIN } from "@tagreel/core/audio-gain";
 import { createRoot, type Root } from "react-dom/client";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { usePlayerStore } from "../../player/store/playerStore";

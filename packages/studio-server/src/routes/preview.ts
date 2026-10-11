@@ -12,11 +12,11 @@ import {
   insertRuntimeTag,
   stripEmbeddedRuntimeScripts,
   type BundleOptions,
-} from "@hyperframes/core/compiler";
-import { STUDIO_PREVIEW_MARK_META } from "@hyperframes/core/studio-preview-mark";
-import { gsapCdnDist, motionPathPluginUrl } from "@hyperframes/core/gsap-cdn";
-import { findStartTags, injectTagsAtHeadStart } from "@hyperframes/core/compiler/html-document";
-import { isWithinProjectRoot } from "@hyperframes/parsers/asset-resolution";
+} from "@tagreel/core/compiler";
+import { STUDIO_PREVIEW_MARK_META } from "@tagreel/core/studio-preview-mark";
+import { gsapCdnDist, motionPathPluginUrl } from "@tagreel/core/gsap-cdn";
+import { findStartTags, injectTagsAtHeadStart } from "@tagreel/core/compiler/html-document";
+import { isWithinProjectRoot } from "@tagreel/parsers/asset-resolution";
 import type { ResolvedProject, StudioApiAdapter } from "../types.js";
 import { isProjectRootMissing, resolveWithinProject } from "../helpers/safePath.js";
 import { getMimeType } from "../helpers/mime.js";
@@ -30,7 +30,7 @@ import {
   createStudioMotionRenderBodyScript,
   STUDIO_MOTION_PATH,
 } from "../helpers/studioMotionRenderScript.js";
-import { ensureHfIds } from "@hyperframes/parsers/hf-ids";
+import { ensureHfIds } from "@tagreel/parsers/hf-ids";
 import { settledFileTag } from "../helpers/fileVersion.js";
 import {
   recordPreviewBuilt,
@@ -66,7 +66,7 @@ import {
 import { requestSubPath } from "../helpers/requestSubPath.js";
 import { lazyPreviewImages } from "../helpers/lazyPreviewImages.js";
 
-const PROJECT_SIGNATURE_META = "hyperframes-project-signature";
+const PROJECT_SIGNATURE_META = "tagreel-project-signature";
 const GSAP_CDN_SCRIPT = `<script src="${gsapCdnDist()}gsap.min.js"></script>`;
 const GSAP_CUSTOM_EASE_CDN_SCRIPT = `<script src="${gsapCdnDist()}CustomEase.min.js"></script>`;
 const GSAP_MOTION_PATH_CDN_SCRIPT = `<script src="${motionPathPluginUrl()}"></script>`;

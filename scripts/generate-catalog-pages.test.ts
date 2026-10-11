@@ -26,7 +26,6 @@ import {
   groupForItem,
   mdxStringAttribute,
   sectionEntry,
-  stageProps,
   variableBootstrap,
   variablePreviewWrapper,
 } from "./generate-catalog-pages.ts";
@@ -146,7 +145,7 @@ function runBootstrap(search: string): {
 }
 
 /** A player build that form-encodes the whole query, which is what every
- *  already-published @hyperframes/player on the CDN does. The reader has to
+ *  already-published @tagreel/player on the CDN does. The reader has to
  *  survive it, because the docs load the player from a CDN and cannot wait for
  *  a release. */
 function formEncodingPlayer(src: string): string {
@@ -236,14 +235,6 @@ describe("WebGPU stage fallback props", () => {
   const page = (name: string) =>
     readFileSync(join(here, "..", "docs", "catalog", "blocks", `${name}.mdx`), "utf-8");
 
-  it("gives a live WebGPU item its recorded clip, poster and the webgpu flag", () => {
-    const mdx = page("frost-sequence-camera-orbit");
-    assert.match(mdx, /^ {2}previewSrc=/m);
-    assert.match(mdx, /^ {2}video=".*frost-sequence-camera-orbit\.mp4"/m);
-    assert.match(mdx, /^ {2}poster=/m);
-    assert.match(mdx, /^ {2}webgpu$/m);
-  });
-
   it("leaves a live item that does not need WebGPU without a recorded fallback", () => {
     const mdx = page("ai-chat-reveal");
     assert.match(mdx, /^ {2}previewSrc=/m);
@@ -288,20 +279,6 @@ describe("snippet scope", () => {
       "utf-8",
     );
     assert.deepEqual(source.match(/^(?:function|const|let|var|class) .*/gm), null);
-  });
-});
-
-describe("stageProps recorded-clip guard", () => {
-  const frost = JSON.parse(
-    readFileSync(
-      join(here, "..", "registry", "blocks", "frost-sequence-camera-orbit", "registry-item.json"),
-      "utf-8",
-    ),
-  );
-
-  it("offers the recorded fallback only when the manifest has a clip", () => {
-    assert.ok(stageProps("block", frost).includes("  webgpu"));
-    assert.deepEqual(stageProps("block", { ...frost, preview: undefined }), []);
   });
 });
 

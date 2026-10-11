@@ -12,7 +12,7 @@ import {
   type MarqueeGestures,
   type MarqueeGesturesDeps,
   type MarqueeRect,
-} from "@hyperframes/studio";
+} from "@tagreel/studio";
 import { installReactActEnvironment, mountReactHarness } from "./hooks/domSelectionTestHarness";
 import {
   collectDomEditLayerItems,

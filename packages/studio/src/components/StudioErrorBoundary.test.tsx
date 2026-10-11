@@ -86,7 +86,7 @@ describe("StudioErrorBoundary", () => {
   });
 
   it("stays quiet when the user already gave feedback recently", () => {
-    localStorage.setItem("hyperframes-studio:feedbackAnsweredAt", String(Date.now()));
+    localStorage.setItem("tagreel-studio:feedbackAnsweredAt", String(Date.now()));
     renderCrashed();
     // The crash screen itself still works; only the ask is suppressed.
     expect(container.textContent).toContain("Something went wrong");

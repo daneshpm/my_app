@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":10,"width":1920,"height":1080,"category":"Showcases","badge":"Experimental","codeLines":431}}
   attribution={{"path":"registry/blocks/cosmic-orb","tags":["webgl","shader","background","showcase","3d"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/cosmic-orb/cosmic-orb.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/cosmic-orb/cosmic-orb.html"
 >
 
 <CatalogSlot slot="code">
@@ -86,7 +86,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
       <div id="co-backdrop"></div>
       <canvas id="co-canvas" width="1920" height="1080"></canvas>
 
-      <!-- Driver clip: gives HyperFrames a timed element to own on track 0. -->
+      <!-- Driver clip: gives Tagreel a timed element to own on track 0. -->
       <div
         id="co-drv"
         class="clip"
@@ -108,7 +108,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
         // `data-composition-variables` is the single owner of every declared
         // default — parse it rather than repeating each default a second time
-        // in JS. `window.__hyperframes` is NOT guaranteed to exist yet when this
+        // in JS. `window.__tagreel` is NOT guaranteed to exist yet when this
         // inline script runs, so it can only ever be an override, never the
         // source. Precedence: host CSS custom property, runtime variable bag,
         // declared default.
@@ -116,7 +116,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         JSON.parse(ROOT.getAttribute("data-composition-variables") || "[]").forEach(function (v) {
           DECL[v.id] = v.default;
         });
-        var HF = window.__hyperframes;
+        var HF = window.__tagreel;
         var V = (HF && HF.getVariables && HF.getVariables()) || {};
 
         function raw(id) {
@@ -460,7 +460,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add cosmic-orb" item="cosmic-orb" />
+<InstallCommand command="npx tagreel add cosmic-orb" item="cosmic-orb" />
 
 That writes one file: `compositions/cosmic-orb.html`.
 

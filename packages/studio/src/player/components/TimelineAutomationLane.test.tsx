@@ -6,15 +6,15 @@ import { TimelineAutomationLane } from "./TimelineAutomationLane";
 import { TimelineReadOnlyContext } from "./timelineReadOnly";
 import { PAD_X } from "./automationLaneGeometry";
 import { AUTOMATION_LANE_H } from "./automationLaneHeight";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
-import { MAX_AUDIO_GAIN } from "@hyperframes/core/audio-gain";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
+import { MAX_AUDIO_GAIN } from "@tagreel/core/audio-gain";
 import {
   normalizeAutomation,
   resolveAutomationRange,
   sampleAutomationLane,
   VOLUME_RANGE,
   type HfAutomation,
-} from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-automation";
 
 const chain: HfAudioFxChain = {
   version: 1,

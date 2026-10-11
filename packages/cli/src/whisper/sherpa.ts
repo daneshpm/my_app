@@ -4,7 +4,7 @@ import { createReadStream, mkdirSync, renameSync, rmSync, statSync } from "node:
 import { homedir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { downloadToFile } from "../cloud/download.js";
+import { downloadToFile } from "./downloadToFile.js";
 import { stoppedByCancelSignal } from "../utils/renderCancellation.js";
 import {
   CACHE_DIR,
@@ -44,7 +44,7 @@ const MODEL_REVISION = "2bda32ec70b097a55adaa07d9a7173915b43cc78";
 export const PARAKEET_MODEL_DIR = join(
   homedir(),
   ".cache",
-  "hyperframes",
+  "tagreel",
   "parakeet",
   "parakeet-tdt-0.6b-v3-int8",
 );
@@ -404,7 +404,7 @@ function decode(
       process.execPath,
       args,
       {
-        env: { ...process.env, HYPERFRAMES_PARAKEET_INPUT: JSON.stringify(input) },
+        env: { ...process.env, TAGREEL_PARAKEET_INPUT: JSON.stringify(input) },
         maxBuffer: 256 * 1024 * 1024,
         timeout: decodeTimeoutMs(getPreparedWavDurationSeconds(wavPath) ?? 0),
         signal,
@@ -465,7 +465,7 @@ export async function transcribeWithSherpa(
   );
   if (selected.status === "unavailable") {
     throw new Error(
-      `Parakeet runtime does not load (${selected.error}). Run hyperframes models install parakeet to repair it, or use --engine whisper.`,
+      `Parakeet runtime does not load (${selected.error}). Run tagreel models install parakeet to repair it, or use --engine whisper.`,
     );
   }
   const windows = await decode(wavPath, selected.path, options.signal);

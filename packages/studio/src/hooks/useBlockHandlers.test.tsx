@@ -9,7 +9,7 @@ import { useBlockHandlers, type UseBlockHandlersResult } from "./useBlockHandler
 
 vi.mock("../utils/blockInstaller", () => ({
   addBlockToProject: async (opts: { showToast: (message: string) => void }) => {
-    opts.showToast("Installing catalog items needs hyperframes preview");
+    opts.showToast("Installing catalog items needs tagreel preview");
     return null;
   },
 }));
@@ -57,7 +57,7 @@ describe("useBlockHandlers", () => {
 
     expect(events).toEqual([
       "show Adding x-post…",
-      "show Installing catalog items needs hyperframes preview",
+      "show Installing catalog items needs tagreel preview",
       "dismiss 1",
     ]);
     act(() => root.unmount());

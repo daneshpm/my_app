@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":10,"width":1920,"height":1080,"category":"Texture","badge":"Experimental","codeLines":378}}
   attribution={{"path":"registry/blocks/halftone-field","tags":["webgl","shader","background","texture","halftone"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/halftone-field/halftone-field.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/halftone-field/halftone-field.html"
 >
 
 <CatalogSlot slot="code">
@@ -88,7 +88,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
       <div id="hlf-backdrop"></div>
       <canvas id="hlf-canvas" width="1920" height="1080"></canvas>
 
-      <!-- Driver clip: gives HyperFrames a timed element to own on track 0. -->
+      <!-- Driver clip: gives Tagreel a timed element to own on track 0. -->
       <div
         id="hlf-drv"
         class="clip"
@@ -105,7 +105,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
         var W = 1920;
         var H = 1080;
 
-        var V = (window.__hyperframes && window.__hyperframes.getVariables()) || {};
+        var V = (window.__tagreel && window.__tagreel.getVariables()) || {};
         var CS = getComputedStyle(document.getElementById("hlf-root"));
 
         // The runtime defines every declared variable as `--<id>` on the root,
@@ -407,7 +407,7 @@ void main() {
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add halftone-field" item="halftone-field" />
+<InstallCommand command="npx tagreel add halftone-field" item="halftone-field" />
 
 That writes one file: `compositions/halftone-field.html`.
 

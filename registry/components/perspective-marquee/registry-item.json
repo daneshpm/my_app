@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "perspective-marquee",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Perspective Marquee",
   "description": "A 3D tilted marquee with depth feel as items roll toward the horizon.",
   "tags": ["motion-primitive", "typography"],
@@ -9,7 +9,7 @@
     {
       "path": "perspective-marquee.html",
       "target": "compositions/components/perspective-marquee.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -60,8 +60,5 @@
       "description": "Comma separated pill labels. The list is laid down twice so the strip still reads as a continuous loop.",
       "default": "COMPONENTS, PRIMITIVES, TRANSITIONS, AGENTS"
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/perspective-marquee.png"
-  }
+  ]
 }

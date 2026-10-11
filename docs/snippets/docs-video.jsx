@@ -475,7 +475,7 @@ export const ShowcaseWall = () => {
           }}
         >
           <span style={{ fontSize: "0.875rem", opacity: 0.75 }}>
-            <strong>{open.title}</strong> · {open.length} · made with HyperFrames
+            <strong>{open.title}</strong> · {open.length} · made with Tagreel
           </span>
           <button
             type="button"

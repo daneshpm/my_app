@@ -1,19 +1,19 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "tracing-beam",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Tracing Beam",
   "description": "A glowing dash follows one SVG path through three UI elements, lifting and brightening each element in sequence.",
   "tags": ["motion-primitive", "product-demo", "attention", "beam", "path", "spotlight"],
   "jobs": ["demonstrate"],
   "family": "product-demo",
   "profile": "attention",
-  "evidence": "Aceternity Tracing Beam class, adapted from scroll progress to a deterministic HyperFrames timeline",
+  "evidence": "Aceternity Tracing Beam class, adapted from scroll progress to a deterministic Tagreel timeline",
   "files": [
     {
       "path": "tracing-beam.html",
       "target": "compositions/components/tracing-beam.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

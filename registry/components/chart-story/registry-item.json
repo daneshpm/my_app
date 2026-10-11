@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "chart-story",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Chart Story",
   "description": "One chart builds from data in reading order and lands the exact supplied values: staggered bars, a left-to-right line with area fill, a sweeping donut, or filling progress bars, with an accented value callout on the emphasized datum.",
   "tags": [
@@ -24,7 +24,7 @@
     {
       "path": "chart-story.html",
       "target": "compositions/components/chart-story.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

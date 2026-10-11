@@ -7,7 +7,7 @@
  */
 
 import { useCallback, useEffect, useRef } from "react";
-import type { HfAudioFxChain } from "@hyperframes/core/audio-fx";
+import type { HfAudioFxChain } from "@tagreel/core/audio-fx";
 
 export function useFxAudition(
   chain: HfAudioFxChain,

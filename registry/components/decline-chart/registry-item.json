@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "decline-chart",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Decline Chart",
   "description": "A metric line draws downward as its value counts down and the ambient background darkens in lockstep.",
   "tags": ["motion-primitive", "data", "chart", "decline", "metric", "problem"],
@@ -13,7 +13,7 @@
     {
       "path": "decline-chart.html",
       "target": "compositions/components/decline-chart.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

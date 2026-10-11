@@ -23,9 +23,9 @@ const SAMPLES = 48; // frames cached across the clip (windows aggregate the cach
 
 const HF_ROOTS = [
   process.argv[2] && path.resolve(process.argv[2]), // project-owned helper dependencies
-  process.env.HYPERFRAMES_ROOT,
+  process.env.TAGREEL_ROOT,
   path.resolve(__dirname, "../../.."),
-  path.join(os.homedir(), "Downloads", "hyperframes"),
+  path.join(os.homedir(), "Downloads", "tagreel"),
 ].filter(Boolean);
 let sharp = null;
 for (const root of HF_ROOTS) {

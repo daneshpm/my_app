@@ -353,9 +353,7 @@
         "use strict";
         var compositionId = "marker-checklist-card-demo";
         var vars =
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
-            : {};
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
         function text(v, fb, mx) {
           if (typeof v !== "string") return fb;
           var t = v.trim();

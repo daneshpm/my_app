@@ -1,5 +1,5 @@
 # This module is applied directly (by `examples/gcp-cloud-run/scripts/smoke.sh`
-# and `hyperframes cloudrun deploy`), so it configures the google provider
+# and `tagreel cloudrun deploy`), so it configures the google provider
 # from its own variables. Credentials come from the environment — either
 # Application Default Credentials (`gcloud auth application-default login`)
 # or a `GOOGLE_OAUTH_ACCESS_TOKEN` env var.

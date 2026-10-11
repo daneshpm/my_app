@@ -60,21 +60,21 @@ Do not start with the rendering engine when the CLI already performs the complet
 
 ## CLI: operate complete projects
 
-The CLI is the highest-level technical surface. It creates projects, opens Studio, validates compositions, captures review frames, renders files, publishes projects, and drives cloud render backends.
+The CLI is the highest-level technical surface. It creates projects, opens Studio, validates compositions, captures review frames, and renders files.
 
 ```bash
-npx hyperframes check
-npx hyperframes render --output video.mp4
+npx tagreel check
+npx tagreel render --output video.mp4
 ```
 
 Use the [CLI guide](/developers/cli) for the everyday commands and the [complete CLI reference](/packages/cli) for flags and automation.
 
 ## SDK: inspect and edit
 
-`@hyperframes/sdk` opens composition HTML, gives elements stable `data-hf-id` identifiers, applies typed edit operations, emits JSON patches, supports undo and redo, and persists through adapters.
+`@tagreel/sdk` opens composition HTML, gives elements stable `data-hf-id` identifiers, applies typed edit operations, emits JSON patches, supports undo and redo, and persists through adapters.
 
 ```ts
-import { openComposition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
 
 const html = `<div class="clip" data-start="0" data-duration="5"
   data-hf-id="hf-title">Old title</div>`;
@@ -90,18 +90,18 @@ Start with the [SDK quickstart](/sdk/quickstart).
 
 ## Player: embed and seek
 
-`@hyperframes/player` is a web component that loads a composition in an isolated iframe and exposes video-like playback controls.
+`@tagreel/player` is a web component that loads a composition in an isolated iframe and exposes video-like playback controls.
 
 ```html title="index.html"
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@hyperframes/player"
+  src="https://cdn.jsdelivr.net/npm/@tagreel/player"
 ></script>
 
-<hyperframes-player
+<tagreel-player
   src="/compositions/intro.html"
   controls
-></hyperframes-player>
+></tagreel-player>
 ```
 
 Use its JavaScript API to play, pause, seek, change playback rate, and listen for timeline events. It does not edit or render the composition.
@@ -113,7 +113,6 @@ See the [Player reference](/packages/player).
 - **CLI** — complete local and automated rendering.
 - **Producer** — the Node rendering pipeline: capture, encode, and audio mix.
 - **Engine** — lower-level seekable page capture and exact-frame control.
-- **Managed cloud** — hosted rendering without operating Chrome or FFmpeg.
 - **AWS Lambda or Google Cloud Run** — infrastructure you deploy and control.
 
 Most applications should begin with the CLI or Producer. Reach for Engine only when building a specialized capture or rendering system.

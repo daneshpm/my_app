@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "vignelli",
-  "type": "hyperframes:example",
+  "type": "tagreel:example",
   "title": "Vignelli",
   "description": "Bold typography with red accents",
   "dimensions": {
@@ -13,17 +13,17 @@
     {
       "path": "compositions/captions.html",
       "target": "compositions/captions.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "compositions/overlays.html",
       "target": "compositions/overlays.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "index.html",
       "target": "index.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

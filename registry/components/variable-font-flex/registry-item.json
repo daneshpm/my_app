@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "variable-font-flex",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Variable Font Flex",
   "description": "A word lands while its variable-font weight and width axes flex from hairline-condensed to black-wide with per-character stagger; font-size eases inversely so the letterforms gain mass while the box holds.",
   "tags": ["motion-primitive", "experiment", "type", "variable-font", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "variable-font-flex.html",
       "target": "compositions/components/variable-font-flex.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

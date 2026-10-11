@@ -2,16 +2,16 @@ import { defineCommand } from "citty";
 import type { Example } from "./_examples.js";
 
 export const examples: Example[] = [
-  ["List all blocks and components", "hyperframes catalog"],
-  ["List blocks only", "hyperframes catalog --type block"],
-  ["Filter by tag", "hyperframes catalog --type block --tag social"],
-  ["Machine-readable JSON", "hyperframes catalog --json"],
-  ["Interactive picker (install on select)", "hyperframes catalog --human-friendly"],
-  ["Search (positional, same as --query)", 'hyperframes catalog "crossfade"'],
+  ["List all blocks and components", "tagreel catalog"],
+  ["List blocks only", "tagreel catalog --type block"],
+  ["Filter by tag", "tagreel catalog --type block --tag social"],
+  ["Machine-readable JSON", "tagreel catalog --json"],
+  ["Interactive picker (install on select)", "tagreel catalog --human-friendly"],
+  ["Search (positional, same as --query)", 'tagreel catalog "crossfade"'],
 ];
 
 import * as clack from "@clack/prompts";
-import { realpath, type ItemType, type RegistryItem } from "@hyperframes/core";
+import { realpath, type ItemType, type RegistryItem } from "@tagreel/core";
 import { c } from "../ui/colors.js";
 import { loadAllItems } from "../registry/resolver.js";
 import { fetchRegistryManifest } from "../registry/remote.js";
@@ -89,7 +89,7 @@ async function prepareOnDeviceTier(opts: {
       warn(
         recordLocalModelConsent(false) === false
           ? "on-device search skipped: the download was declined."
-          : "on-device search skipped: the download was declined, but could not save the answer in settings; `hyperframes doctor` says why.",
+          : "on-device search skipped: the download was declined, but could not save the answer in settings; `tagreel doctor` says why.",
       );
       // Return, or the decline is the only thing that does not happen: the
       // runtime check below is skipped precisely because consent is now false,
@@ -111,7 +111,7 @@ async function prepareOnDeviceTier(opts: {
       agreed === false && (unwatchedYes || !asked)
         ? declined
         : asked
-          ? "on-device search skipped: could not save the answer in settings; `hyperframes doctor` says why."
+          ? "on-device search skipped: could not save the answer in settings; `tagreel doctor` says why."
           : nonInteractiveConsentMessage(),
     );
     return warnings;
@@ -213,8 +213,8 @@ export default defineCommand({
     const config = loadProjectConfig(dir) ?? DEFAULT_PROJECT_CONFIG;
 
     let typeFilter: ItemType | undefined;
-    if (args.type === "block") typeFilter = "hyperframes:block";
-    else if (args.type === "component") typeFilter = "hyperframes:component";
+    if (args.type === "block") typeFilter = "tagreel:block";
+    else if (args.type === "component") typeFilter = "tagreel:component";
     else if (args.type) {
       console.error(`Invalid --type: "${args.type}". Use "block" or "component".`);
       finishCommand(1);
@@ -225,7 +225,7 @@ export default defineCommand({
     const manifest = await fetchRegistryManifest(config.registry);
     const entries = manifest?.items ?? [];
     const artifactRevision = manifest?.catalogArtifact?.revision;
-    const catalog = entries.filter((e) => e.type !== "hyperframes:example");
+    const catalog = entries.filter((e) => e.type !== "tagreel:example");
     const registryNames = new Set(catalog.map((e) => e.name));
     const filtered = typeFilter ? catalog.filter((e) => e.type === typeFilter) : catalog;
 
@@ -316,12 +316,6 @@ export default defineCommand({
               total: tagged.length,
               ...(warnings.length ? { warnings } : {}),
               ...(unsearchable ? { unsearchable_query: true } : {}),
-              // Withheld when the query never parsed: the catalog has not been
-              // shown to be missing anything, so inviting a gap report here
-              // would file noise against a search that never ran.
-              ...(unsearchable
-                ? {}
-                : { report_gap: searchMissCommand(query, tierToken(searched)) }),
               results: [],
             },
             null,
@@ -349,13 +343,6 @@ export default defineCommand({
           );
         } else {
           console.log(`No items match ${criteria.join(" and ")}.`);
-          // Zero results is the unambiguous case: no tier judgement to make and
-          // nothing to install, so name the gap channel outright.
-          if (query) {
-            console.log("");
-            console.log(c.dim("  Nothing in the catalog does this? Report the gap:"));
-            console.log(c.dim(`  ${searchMissCommand(query, tierToken(searched))}`));
-          }
         }
       }
       if (query) await offerLocalModel(0, json, config.registry, artifactRevision);
@@ -387,12 +374,6 @@ export default defineCommand({
             shown: output.length,
             total: tagged.length,
             ...(warnings.length ? { warnings } : {}),
-            // Carried on hits too, not just on zero results. The gaps that
-            // actually get reported are the ones where the search returned
-            // plausible items and none of them did the thing — a judgement
-            // only the reader can make, so the command has to already be in
-            // the envelope by the time they make it.
-            report_gap: searchMissCommand(query, tierToken(searched)),
             results: output,
           },
           null,
@@ -436,19 +417,6 @@ export default defineCommand({
           if (hint) console.error(hint);
           await offerLocalModel(matching.length, json, config.registry, artifactRevision);
         }
-      }
-      if (query) {
-        // Both tiers, deliberately. Gating this on on-device sounded right --
-        // a thin word-match result is explainable, a thin meaning-match result
-        // is a real gap -- but it silences the line in the case that produces
-        // essentially every search: the on-device tier needs a consented 33 MB
-        // download, so an agent run is on `words` unless it explicitly opted
-        // in. Every catalog gap reported to date came from the word tier. The
-        // tier rides along in the command so a vocabulary miss stays
-        // distinguishable from a meaning miss when the reports are read.
-        console.log(
-          c.dim(`  None of these do it? ${searchMissCommand(query, tierToken(searched))}`),
-        );
       }
     }
 
@@ -500,7 +468,7 @@ export default defineCommand({
     console.log("-".repeat(80));
 
     for (const item of matching) {
-      const type = item.type.replace("hyperframes:", "");
+      const type = item.type.replace("tagreel:", "");
       const tags = item.tags?.length ? c.dim(` [${item.tags.join(", ")}]`) : "";
       console.log(
         `${c.cyan(item.name.padEnd(NAME_COL))}${type.padEnd(TYPE_COL)}${item.description}${tags}`,
@@ -508,7 +476,7 @@ export default defineCommand({
     }
 
     console.log("");
-    console.log(c.dim(`${matching.length} items. Run "hyperframes add <name>" to install.`));
+    console.log(c.dim(`${matching.length} items. Run "tagreel add <name>" to install.`));
   },
 });
 
@@ -516,7 +484,7 @@ export default defineCommand({
 export function catalogRow(item: RegistryItem) {
   return {
     name: item.name,
-    type: item.type.replace("hyperframes:", ""),
+    type: item.type.replace("tagreel:", ""),
     title: item.title,
     description: item.description,
     tags: item.tags ?? [],
@@ -673,31 +641,6 @@ function tierDetail(searched: { localMode: LocalMode } | null): string {
   return searched?.localMode === "local-model" ? "on-device meaning search" : "local word match";
 }
 
-/**
- * The command that turns a fruitless search into a catalog gap report.
- *
- * A search that returns nothing usable is the only moment anyone knows what
- * the catalog is missing, and it was also the one moment we said nothing:
- * `feedback --search-miss` was documented in the skill and printed by
- * `feedback --help`, neither of which is open when a query comes back wrong.
- * Handing back the exact line, with the query already in it, is the whole
- * difference between a gap someone reports and a gap someone works around.
- *
- * Only the command is built here. Sending it stays a separate deliberate act,
- * so plain `catalog --query` keeps its promise that the query text never
- * leaves the machine.
- */
-export function searchMissCommand(query: string, tier: "on-device" | "words"): string {
-  // Double quotes with the shell metacharacters escaped: the queries that
-  // matter are plain-language phrases, and half the real ones so far were
-  // CJK, which single-quoting renders no more safely and reads worse.
-  const quoted = query.replace(/(["\\$`])/g, "\\$1");
-  return (
-    `npx hyperframes feedback --search-miss "${quoted}" ` +
-    `--wanted "<the move you needed>" --tier ${tier}`
-  );
-}
-
 type LocalMode = "local-model" | "words";
 
 /**
@@ -743,7 +686,7 @@ async function offerLocalModel(
   });
   if (clack.isCancel(answer)) return;
   if (recordLocalModelConsent(answer === true) !== (answer === true)) {
-    console.error("  Could not save the answer in settings; `hyperframes doctor` says why.");
+    console.error("  Could not save the answer in settings; `tagreel doctor` says why.");
     return;
   }
   if (answer !== true) return;

@@ -24,7 +24,7 @@ import { resolve, dirname, join } from "node:path";
 import type { StudioApiAdapter } from "../types.js";
 import { isAudioFile } from "../helpers/mime.js";
 import { lengthIsTimeline } from "../helpers/compositionInputs.js";
-import { createFileAtomically, replaceFileAtomically } from "@hyperframes/core/atomic-file";
+import { createFileAtomically, replaceFileAtomically } from "@tagreel/core/atomic-file";
 import { generateWaveformCache } from "../helpers/waveform.js";
 import { validateUploadedMediaBuffer } from "../helpers/mediaValidation.js";
 import {
@@ -49,10 +49,10 @@ import {
   findUnsafeMutationValues,
   type UnsafeMutationValue,
 } from "../helpers/finiteMutation.js";
-import type { GsapAnimation } from "@hyperframes/parsers";
-import { classifyPropertyGroup } from "@hyperframes/parsers/gsap-constants";
-import { findTimelineScript, parseGsapScriptAcorn } from "@hyperframes/parsers/gsap-parser-acorn";
-import { unrollComputedTimeline } from "@hyperframes/parsers";
+import type { GsapAnimation } from "@tagreel/parsers";
+import { classifyPropertyGroup } from "@tagreel/parsers/gsap-constants";
+import { findTimelineScript, parseGsapScriptAcorn } from "@tagreel/parsers/gsap-parser-acorn";
+import { unrollComputedTimeline } from "@tagreel/parsers";
 import {
   updateAnimationInScript,
   addAnimationToScript,
@@ -83,7 +83,7 @@ import {
   syncPositionHoldsBeforeKeyframes,
   trimTrailingKeyframeSpans,
   clipQueryRoot,
-} from "@hyperframes/parsers/gsap-writer-acorn";
+} from "@tagreel/parsers/gsap-writer-acorn";
 import {
   removeElementFromHtml,
   removeElementsFromHtml,
@@ -100,7 +100,7 @@ import {
 } from "../helpers/sourceMutation.js";
 import { ensureStudioFontFaceCss, isStudioFontFaceCss } from "../helpers/studioFontFace.js";
 import { parseHTML } from "linkedom";
-import { ensureHfIds } from "@hyperframes/parsers/hf-ids";
+import { ensureHfIds } from "@tagreel/parsers/hf-ids";
 import {
   CompositionInsertionError,
   insertCompositionIntoSource,
@@ -110,7 +110,7 @@ import { requestSubPath } from "../helpers/requestSubPath.js";
 import {
   hasCompositionOutsideTemplates,
   insertBeforeCloseTag,
-} from "@hyperframes/core/compiler/html-document";
+} from "@tagreel/core/compiler/html-document";
 
 // ── Server cutover flag ─────────────────────────────────────────────────────
 
@@ -124,7 +124,7 @@ import {
  * for the recast write path (the default until the migration gate graduates).
  */
 async function loadGsapParser() {
-  return import("@hyperframes/parsers/gsap-parser-recast");
+  return import("@tagreel/parsers/gsap-parser-recast");
 }
 
 // ── Shared helpers ──────────────────────────────────────────────────────────
@@ -516,7 +516,7 @@ function commitElementPatchBatchesWithReceipts(
     projectDir,
     batches,
     undefined,
-    c.req.header("X-Hyperframes-Write-Token"),
+    c.req.header("X-Tagreel-Write-Token"),
   );
 }
 
@@ -540,7 +540,7 @@ function writeFileWithReceipt(
   replaceFileAtomically(absPath, html, statSync(absPath).mode);
   // The synchronous write cannot yield before its receipt is recorded; keep this block await-free.
   const version = fileContentVersion(html);
-  const writeToken = createWriteToken(c.req.header("X-Hyperframes-Write-Token"));
+  const writeToken = createWriteToken(c.req.header("X-Tagreel-Write-Token"));
   recordFileWriteReceipt(absPath, { path: filePath, version, writeToken, overwrote });
   return { version, writeToken };
 }
@@ -1458,7 +1458,7 @@ async function prepareGsapMutationScript(
   let block = extractGsapScriptBlock(html);
   if (!block && (firstMutation.type === "add" || firstMutation.type === "add-with-keyframes")) {
     const compId = html.match(/data-composition-id="([^"]+)"/)?.[1] ?? "main";
-    const { GSAP_CDN } = await import("@hyperframes/core");
+    const { GSAP_CDN } = await import("@tagreel/core");
     const bootstrap = [
       `<script src="${GSAP_CDN}"></script>`,
       "<script>",
@@ -1557,7 +1557,7 @@ async function applyGsapMutations(
   let writer: "recast" | "acorn";
   try {
     writer = resolveGsapWriter({
-      HYPERFRAMES_GSAP_WRITER: process.env["HYPERFRAMES_GSAP_WRITER"],
+      TAGREEL_GSAP_WRITER: process.env["TAGREEL_GSAP_WRITER"],
     });
   } catch (error) {
     return c.json({ error: error instanceof Error ? error.message : String(error) }, 400);
@@ -2690,7 +2690,7 @@ export function registerFileRoutes(api: Hono, adapter: StudioApiAdapter): void {
       }
     }
     const version = fileContentVersion(body);
-    const writeToken = createWriteToken(c.req.header("X-Hyperframes-Write-Token"));
+    const writeToken = createWriteToken(c.req.header("X-Tagreel-Write-Token"));
     recordFileWriteReceipt(res.absPath, { path: res.filePath, version, writeToken, overwrote });
     c.header("ETag", version);
 
@@ -2901,7 +2901,7 @@ export function registerFileRoutes(api: Hono, adapter: StudioApiAdapter): void {
     let writer: "recast" | "acorn";
     try {
       writer = resolveGsapWriter({
-        HYPERFRAMES_GSAP_WRITER: process.env["HYPERFRAMES_GSAP_WRITER"],
+        TAGREEL_GSAP_WRITER: process.env["TAGREEL_GSAP_WRITER"],
       });
     } catch (error) {
       return c.json({ error: error instanceof Error ? error.message : String(error) }, 400);
@@ -2976,7 +2976,7 @@ export function registerFileRoutes(api: Hono, adapter: StudioApiAdapter): void {
       const writeToken = createWriteToken(
         typeof body.transactionToken === "string"
           ? body.transactionToken
-          : c.req.header("X-Hyperframes-Write-Token"),
+          : c.req.header("X-Tagreel-Write-Token"),
       );
       const written: FoldedAtomicCutFile[] = [];
       try {

@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "device-frame-stage",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Device Frame Stage",
   "description": "A phone or tablet mockup staged as a physical scene prop with a screen slot for arbitrary reconstructed UI, rising onto the stage, settling, and holding an idle float",
   "tags": ["prop", "device", "mobile", "tablet", "ui-props", "holdable"],
@@ -13,7 +13,7 @@
     {
       "path": "device-frame-stage.html",
       "target": "compositions/components/device-frame-stage.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

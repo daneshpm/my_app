@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "tracking-in",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Tracking In",
   "description": "A precise letter-spacing reveal for premium headings and interface labels",
   "tags": ["motion-primitive", "text", "reveal", "typography"],
@@ -9,7 +9,7 @@
     {
       "path": "tracking-in.html",
       "target": "compositions/components/tracking-in.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -53,8 +53,5 @@
         { "value": "accent", "label": "Accent" }
       ]
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/tracking-in.png"
-  }
+  ]
 }

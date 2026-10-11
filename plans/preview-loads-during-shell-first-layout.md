@@ -1,7 +1,7 @@
 # Preview loads during the shell's first layout
 
 **Path:** `plans/preview-loads-during-shell-first-layout.md`
-**Repo:** heygen-com/hyperframes · measured against v0.8.35
+**Repo:** daneshpm/my_app · measured against v0.8.35
 **Status:** proposal, needs owner decisions (see Open questions)
 
 Every claim below is tagged **[fact]** (read from the code or the trace), **[inference]** (reasoning from those facts, falsifiable), or **[recommendation]**.
@@ -33,7 +33,7 @@ Nine dirty objects taking 3.04 s is the tell: the cost is not proportional to ou
 **Non-goals.**
 
 - Shrinking the 3.04 s stall. See "Why fonts is a dead end" — there is nothing of ours in it.
-- Any change to the `<hyperframes-player>` public API, its attributes, events, or lifecycle. **[fact]** None of the recommended units touch `packages/player/**` at all.
+- Any change to the `<tagreel-player>` public API, its attributes, events, or lifecycle. **[fact]** None of the recommended units touch `packages/player/**` at all.
 - Any change to deterministic render or export. The preview route (`/api/projects/:id/preview`) is already the studio-only path; the render path goes through the producer.
 - Making the preview _itself_ faster (its 30 ms layout is not the problem).
 
@@ -48,12 +48,12 @@ Nine dirty objects taking 3.04 s is the tell: the cost is not proportional to ou
 3. `App.tsx:497` → `EditorShell` → `packages/studio/src/components/EditorShell.tsx` → `nle/PreviewPane.tsx:125` → `nle/NLEPreview.tsx:467` → `player/components/Player.tsx`.
 4. `packages/studio/src/player/components/Player.tsx:158-282` is where the DOM work happens, inside `useMountEffect` (a plain `useEffect`, `hooks/useMountEffect.ts:15`):
    - `:163` `previewSource = directUrl || buildProjectApiPath(projectId, "/preview")`
-   - `:170` `await import("@hyperframes/player")` — a **dynamic import**, deliberately deferred to the browser (comment at `:6-8`: a module-scope import registers a custom element and throws under SSR)
-   - `:174` `document.createElement("hyperframes-player")`
+   - `:170` `await import("@tagreel/player")` — a **dynamic import**, deliberately deferred to the browser (comment at `:6-8`: a module-scope import registers a custom element and throws under SSR)
+   - `:174` `document.createElement("tagreel-player")`
    - `:273-274` `shader-capture-scale="1"`, `shader-loading="player"` — **hard-coded constants**
    - `:281-282` `setAttribute("src", src)` then `container.appendChild(player)`
-5. `packages/player/src/hyperframes-player.ts:220-236` — `attributeChangedCallback` for `src` **bails when `!isConnected`** (`:227`). So the navigation actually starts in `connectedCallback` (`:177-189`), on the `appendChild` at `Player.tsx:282`, via `prepareSrcForElement`.
-6. `packages/player/src/iframe-dom.ts:39-55` — `createCompositionIframe()` builds the iframe in the element's **constructor** (`hyperframes-player.ts:121`), inside the shadow root. There is no seam to hand the element a pre-existing iframe.
+5. `packages/player/src/tagreel-player.ts:220-236` — `attributeChangedCallback` for `src` **bails when `!isConnected`** (`:227`). So the navigation actually starts in `connectedCallback` (`:177-189`), on the `appendChild` at `Player.tsx:282`, via `prepareSrcForElement`.
+6. `packages/player/src/iframe-dom.ts:39-55` — `createCompositionIframe()` builds the iframe in the element's **constructor** (`tagreel-player.ts:121`), inside the shadow root. There is no seam to hand the element a pre-existing iframe.
 
 **So the serial chain today is:** parse index.html → deferred module bundle → React mount → `/api/projects` round trip → shell commit → **3.04 s layout stall** → passive mount effects → dynamic import of the player chunk → `createElement` + `appendChild` → _now_ the preview request is sent.
 
@@ -102,14 +102,14 @@ Nine dirty objects taking 3.04 s is the tell: the cost is not proportional to ou
 
 Say the honest bound up front: **`max(stall, network+server part of composition load) + composition main-thread part`**, not `max(stall, composition load)`.
 
-### (a) Static `<hyperframes-player>` in `index.html`, adopted by React
+### (a) Static `<tagreel-player>` in `index.html`, adopted by React
 
 Two sub-variants, both **rejected**:
 
 - **Real adoption (React re-parents the pre-made element into the preview pane).** **[fact]** Removing and re-inserting an iframe discards its nested browsing context; the document reloads. Re-parenting throws away exactly the work we started early. Dead on arrival.
 - **Never re-parent: the player lives in a fixed-position layer that tracks the preview pane's rect.** Preserves the load, but breaks: preview-only fullscreen (`PreviewPane.tsx:88-96` calls `requestFullscreen()` on the pane container — a fixed overlay outside it would not be included), the zoom/pan stage transform (`NLEPreview.tsx:190-197,437-447`), the drag-drop hit testing (`usePreviewBlockDrop`), and the overlay z-stack. Large diff, permanent complexity, for a win we can get another way.
 
-Also **[fact]**: a `<hyperframes-player src>` in `index.html` does nothing until the custom element is _defined_ and upgraded (`hyperframes-player.ts:227` bails when `!isConnected`… and an undefined element has no callbacks at all). That means shipping the player bundle as a second head script — more startup bytes on the main thread, for a start no earlier than a plain `<iframe>`.
+Also **[fact]**: a `<tagreel-player src>` in `index.html` does nothing until the custom element is _defined_ and upgraded (`tagreel-player.ts:227` bails when `!isConnected`… and an undefined element has no callbacks at all). That means shipping the player bundle as a second head script — more startup bytes on the main thread, for a start no earlier than a plain `<iframe>`.
 
 ### (a′) Throwaway warm subframe in `index.html` — **the one that works**
 
@@ -129,7 +129,7 @@ Cheap and risk-free, but **[inference]** likely does not warm the browser cache 
 
 ### (c) Mount the preview column before the font-dependent panels
 
-**[fact]** The stall is one layout of the whole document, and passive effects run **after** layout — `Player.tsx:158` is `useMountEffect` = `useEffect` (`useMountEffect.ts:15`). Reordering React children cannot get an effect in front of the first layout. Making it work would need a static import of `@hyperframes/player` (explicitly avoided, `Player.tsx:6-8`) _plus_ `useLayoutEffect`, and would still only recover the **0.11 s** between stall-end and iframe-creation in the trace. Not worth the SSR/registration risk on its own.
+**[fact]** The stall is one layout of the whole document, and passive effects run **after** layout — `Player.tsx:158` is `useMountEffect` = `useEffect` (`useMountEffect.ts:15`). Reordering React children cannot get an effect in front of the first layout. Making it work would need a static import of `@tagreel/player` (explicitly avoided, `Player.tsx:6-8`) _plus_ `useLayoutEffect`, and would still only recover the **0.11 s** between stall-end and iframe-creation in the trace. Not worth the SSR/registration risk on its own.
 
 **[recommendation]** Keep one crumb of it: kick the chunk fetch at module scope (U4), so the dynamic import is already resolved when the effect runs.
 
@@ -137,8 +137,8 @@ Cheap and risk-free, but **[inference]** likely does not warm the browser cache 
 
 **[fact]** The first preview request pays a **cold module load of the compiler**, on both server paths:
 
-- Vite dev: `packages/studio/vite.adapter.ts:127-138` — `server.ssrLoadModule("@hyperframes/core/compiler")`, memoised in `_bundler` after the first call.
-- CLI bundle: `packages/cli/src/server/studioServer.ts:395-402` — `await import("@hyperframes/core/compiler")`.
+- Vite dev: `packages/studio/vite.adapter.ts:127-138` — `server.ssrLoadModule("@tagreel/core/compiler")`, memoised in `_bundler` after the first call.
+- CLI bundle: `packages/cli/src/server/studioServer.ts:395-402` — `await import("@tagreel/core/compiler")`.
   Plus `transformPreviewHtml` dynamically importing `producer/services/deterministicFonts.js` (`vite.adapter.ts:249`), the project signature cache, and the media-codec probe cache (`routes/preview.ts:318`).
 
 **[inference — the single most testable claim in this document]** Most of the measured **0.74 s** between iframe creation and document commit is that first-request server cost, not the network. If so, one `fetch()` from the CLI _before it spawns the browser_ removes it from the user's critical path entirely, with **zero** browser-side risk.
@@ -182,20 +182,20 @@ Rejected for this plan: (a) real adoption (re-parenting reloads the frame; the f
 
 ### U4 — Start the player chunk fetch at module scope
 
-**DoD:** In a cold trace, the request for the `@hyperframes/player` chunk appears before the shell's first layout, and `Player.test.ts` still passes unchanged.
-**Files:** `packages/studio/src/player/components/Player.tsx:170` — hoist to a module-scope `const playerModule = typeof window === "undefined" ? null : import("@hyperframes/player")`, awaited in the effect. The `typeof window` guard preserves the SSR contract documented at `:6-8`.
+**DoD:** In a cold trace, the request for the `@tagreel/player` chunk appears before the shell's first layout, and `Player.test.ts` still passes unchanged.
+**Files:** `packages/studio/src/player/components/Player.tsx:170` — hoist to a module-scope `const playerModule = typeof window === "undefined" ? null : import("@tagreel/player")`, awaited in the effect. The `typeof window` guard preserves the SSR contract documented at `:6-8`.
 
 ---
 
 ## Verification
 
-**[fact]** The rig already exists: `hyperframes preview --browser-path <chrome> --user-data-dir <fresh dir> --remote-debugging-port 9222` (`packages/cli/src/utils/openBrowser.ts:44-66`, validated at `packages/cli/src/commands/preview.ts:437-441`).
+**[fact]** The rig already exists: `tagreel preview --browser-path <chrome> --user-data-dir <fresh dir> --remote-debugging-port 9222` (`packages/cli/src/utils/openBrowser.ts:44-66`, validated at `packages/cli/src/commands/preview.ts:437-441`).
 
 Procedure, per run (baseline and candidate, 5 runs each, same machine, same load, report the median and note idle vs. loaded):
 
 1. Kill any running preview server. a **fresh** `--user-data-dir` per run; a warm profile has the preview HTML cached and hides the whole effect.
 2. Start with `--no-open` so the browser launch is under the harness's control, and note the URL.
-3. Throwaway node script (puppeteer-core is already a dependency of `@hyperframes/engine`): launch Chrome with the fresh profile, `page.tracing.start({ path: "<out-dir>/run-N.json", categories: ["devtools.timeline", "blink.user_timing", "disabled-by-default-devtools.timeline.frame"] })`, `page.goto(<deep link>)`, wait 15 s, `tracing.stop()`. Do not commit the script.
+3. Throwaway node script (puppeteer-core is already a dependency of `@tagreel/engine`): launch Chrome with the fresh profile, `page.tracing.start({ path: "<out-dir>/run-N.json", categories: ["devtools.timeline", "blink.user_timing", "disabled-by-default-devtools.timeline.frame"] })`, `page.goto(<deep link>)`, wait 15 s, `tracing.stop()`. Do not commit the script.
 4. Extract four timestamps from the JSON: (i) `navigationStart` of the top frame; (ii) `ts` of the ≥ 1 s `Layout` event in the top frame (the stall) and its `dur`; (iii) `ts` of the `ResourceSendRequest` whose `args.data.url` ends in `/preview?__hf_shader_capture_scale=1&__hf_shader_loading=player`; (iv) `ts` of the `Layout` in the preview frame with ~1,602 objects.
 
 **Pass criterion (all three):**
@@ -240,7 +240,7 @@ A prose argument that "it must be faster now" does not close this. Only the trac
 
 ## Open questions for the owner
 
-1. **Which server is on the measured path** — `hyperframes preview` (CLI bundle, `studioServer.ts:395`) or the Vite dev server (`vite.adapter.ts:129`)? U1 lands in one place or two. _No default taken._
+1. **Which server is on the measured path** — `tagreel preview` (CLI bundle, `studioServer.ts:395`) or the Vite dev server (`vite.adapter.ts:129`)? U1 lands in one place or two. _No default taken._
 2. **Is a phantom double-execution of the composition acceptable** (memory, duplicate media fetch, agent-observable second request in logs)? Yes → U3 as specified. No → fall back to the weaker top-frame `fetch` warm.
 3. **Should the warm follow a restored non-master `activeCompPath`?** It cannot be known at parse time (needs the file-tree fetch). Master-only, or add a URL param carrying the comp path so the warm can be exact?
 4. **May the shell mount before `/api/projects` answers when the hash names a project** (`App.tsx:453`, `useServerConnection.ts:26`)? That moves the whole timeline earlier but weakens the dead-server detection this gate exists for. Out of scope here; it is the next-largest structural lever.

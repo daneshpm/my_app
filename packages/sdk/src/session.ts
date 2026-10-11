@@ -37,15 +37,15 @@ import { parseMutable } from "./engine/model.js";
 import type { ParsedDocument } from "./engine/model.js";
 import { applyOp, validateOp, type MutationResult } from "./engine/mutate.js";
 import { getGsapScripts, resolveScoped, declarationCarriers } from "./engine/model.js";
-import { extractGsapLabels } from "@hyperframes/core/gsap-parser-acorn";
-import { stripEmbeddedRuntimeScripts } from "@hyperframes/core/compiler/html-document";
-import { readClipTiming, type ClipTiming } from "@hyperframes/core/composition-contract";
+import { extractGsapLabels } from "@tagreel/core/gsap-parser-acorn";
+import { stripEmbeddedRuntimeScripts } from "@tagreel/core/compiler/html-document";
+import { readClipTiming, type ClipTiming } from "@tagreel/core/composition-contract";
 import {
   readDeclaredDefaults,
   validateVariables,
   scanVariableUsage,
-} from "@hyperframes/core/variables";
-import type { CompositionVariable, VariableValidationIssue } from "@hyperframes/core/variables";
+} from "@tagreel/core/variables";
+import type { CompositionVariable, VariableValidationIssue } from "@tagreel/core/variables";
 import { readVariableDeclarations } from "./engine/variableModel.js";
 import { serializeDocument } from "./engine/serialize.js";
 import { applyPatchesToDocument, applyOverrideSet } from "./engine/apply-patches.js";
@@ -809,7 +809,7 @@ class CompositionImpl implements Composition {
 
   serialize(opts?: { stripRuntime?: boolean }): string {
     const html = serializeDocument(this.parsed);
-    // Newer agent-generated compositions embed hyperframe.runtime.iife.js in their own
+    // Newer agent-generated compositions embed tagreel.runtime.iife.js in their own
     // HTML. Any host driving its own clock (not just an editing iframe — anything that
     // owns seeking/playback itself) must not let that runtime self-init: it races the
     // host's first seek and resets the timeline to t=0. Opt-in (default false) since a

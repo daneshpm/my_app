@@ -12,7 +12,7 @@
  * siblings (full painting family, visible or not — unchanged semantics).
  *
  * ── Visibility ───────────────────────────────────────────────────────────────
- * In HyperFrames compositions the nearest z-neighbor is often INVISIBLE at the
+ * In Tagreel compositions the nearest z-neighbor is often INVISIBLE at the
  * paused frame: the runtime hides time-inactive clips with inline
  * `visibility:hidden` / `display:none` (see core runtime
  * syncTimedElementVisibility), and GSAP timelines park elements at `opacity:0`.
@@ -41,7 +41,7 @@
  * (project convention clamps z ≥ 0).
  */
 
-import { COLOR_GRADING_SOURCE_HIDDEN_ATTR } from "@hyperframes/core/color-grading";
+import { COLOR_GRADING_SOURCE_HIDDEN_ATTR } from "@tagreel/core/color-grading";
 import { readLayerRevealPriorZ } from "../../player/lib/timelineElementHelpers";
 
 export type ZOrderAction = "bring-forward" | "send-backward" | "bring-to-front" | "send-to-back";

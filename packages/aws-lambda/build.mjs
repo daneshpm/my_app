@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build script for @hyperframes/aws-lambda (public OSS package).
+ * Build script for @tagreel/aws-lambda (public OSS package).
  *
  * Bundles each subpath barrel via esbuild → dist/, then emits .d.ts via tsc.
  *
@@ -33,8 +33,8 @@ const sharedOpts = {
   external: [
     "@aws-sdk/client-s3",
     "@aws-sdk/client-sfn",
-    "@hyperframes/producer",
-    "@hyperframes/producer/distributed",
+    "@tagreel/producer",
+    "@tagreel/producer/distributed",
     "@sparticuz/chromium",
     "aws-cdk-lib",
     "constructs",
@@ -53,7 +53,7 @@ await Promise.all([
 ]);
 
 // esbuild doesn't emit .d.ts. tsc does, with a build-only tsconfig that
-// drops the workspace `paths` overrides so `@hyperframes/producer` resolves
+// drops the workspace `paths` overrides so `@tagreel/producer` resolves
 // through node_modules to the sibling package's already-built `dist/`
 // types instead of pulling its full source tree into emit (which would
 // violate rootDir).

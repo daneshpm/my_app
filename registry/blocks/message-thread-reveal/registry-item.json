@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "message-thread-reveal",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Message Thread Reveal",
   "description": "A full text conversation plays out on a phone - bubbles popping in, typing indicators, a shared link card, emoji, delivered receipts - with the whole thread scrolling up beat by beat until a closing card lands. The complete chat ad-template, measured message by message",
   "tags": ["showcase", "mock-ui", "chat", "vertical", "ad-template"],
@@ -51,7 +51,7 @@
       "label": "Link card title",
       "description": "Title of the shared link card. It leads with the real name of the brand this video promotes.",
       "portrays": ["subject_name"],
-      "default": "HyperFrames | Write HTML, render pixel-perfect video"
+      "default": "Tagreel | Write HTML, render pixel-perfect video"
     },
     {
       "id": "cardDomain",
@@ -60,7 +60,7 @@
       "label": "Link card domain",
       "description": "Domain of the brand this video promotes, under the card title. Use the real domain.",
       "portrays": ["subject_domain"],
-      "default": "hyperframes.heygen.com"
+      "default": "acme.example"
     },
     {
       "id": "reactionMessage",
@@ -100,7 +100,7 @@
       "role": "content",
       "label": "Source reply",
       "description": "Typed outgoing reply naming where to find the brand this video promotes.",
-      "default": "on heygen"
+      "default": "on acme"
     },
     {
       "id": "workflowMessage",
@@ -141,7 +141,7 @@
       "label": "Brand logo",
       "description": "Transparent horizontal wordmark of the brand this video promotes, on the closing card.",
       "portrays": ["subject_logo"],
-      "default": "assets/hyperframes-logo-black.svg"
+      "default": "assets/tagreel-logo-black.svg"
     },
     {
       "id": "ecProof",
@@ -189,26 +189,22 @@
     {
       "path": "message-thread-reveal.html",
       "target": "compositions/message-thread-reveal.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "assets/card-image.jpg",
       "target": "assets/card-image.jpg",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
-      "path": "assets/hyperframes-logo-black.svg",
-      "target": "assets/hyperframes-logo-black.svg",
-      "type": "hyperframes:asset"
+      "path": "assets/tagreel-logo-black.svg",
+      "target": "assets/tagreel-logo-black.svg",
+      "type": "tagreel:asset"
     },
     {
       "path": "TEMPLATE.md",
       "target": "TEMPLATE.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/message-thread-reveal/preview.mp4",
-    "poster": "https://static.heygen.ai/hyperframes/templates/promoted/254fe4bd8a3f00c1e70ac5e38a1bce25060f7590/message-thread-reveal/poster.jpg"
-  }
+  ]
 }

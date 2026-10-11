@@ -1,16 +1,16 @@
 /**
- * SDK document model — adaptation layer on top of @hyperframes/core.
+ * SDK document model — adaptation layer on top of @tagreel/core.
  *
  * F6 decision: SDK builds ON core, no parser duplication.
  * - ensureHfIds (from core) is the parse entry point: all construction starts here.
  * - DOMParser is NOT used (browser-only). linkedom is the node-safe primitive.
  * - ParsedHtml (core) is the Studio timeline view (timed elements only).
- *   HyperFramesElement is the editing view (ALL editable elements, with raw attrs).
+ *   TagreelElement is the editing view (ALL editable elements, with raw attrs).
  */
 
 import { parseHTML } from "linkedom";
-import { ensureHfIds, isCompositionTemplate } from "@hyperframes/parsers/hf-ids";
-import { parseGsapScriptAcornForWrite } from "@hyperframes/core/gsap-parser-acorn";
+import { ensureHfIds, isCompositionTemplate } from "@tagreel/parsers/hf-ids";
+import { parseGsapScriptAcornForWrite } from "@tagreel/core/gsap-parser-acorn";
 import {
   findRoot,
   getElementStyles,
@@ -19,7 +19,7 @@ import {
   isNewHostBoundary,
   querySelectorAllDeep,
 } from "./engine/model.js";
-import type { HyperFramesElement, SdkDocument } from "./types.js";
+import type { TagreelElement, SdkDocument } from "./types.js";
 
 // Tags that carry no editable content and must not enter the element tree.
 const EXCLUDED_TAGS = new Set([
@@ -128,8 +128,8 @@ function buildChildren(
   parent: Element,
   scopePrefix: string,
   animationIdsByHfId: Map<string, string[]>,
-): HyperFramesElement[] {
-  const out: HyperFramesElement[] = [];
+): TagreelElement[] {
+  const out: TagreelElement[] = [];
   for (const child of Array.from(parent.children)) {
     if (child.tagName.toLowerCase() === "template") {
       if (isCompositionTemplate(child)) {
@@ -148,7 +148,7 @@ function buildElement(
   el: Element,
   scopePrefix: string,
   animationIdsByHfId: Map<string, string[]>,
-): HyperFramesElement | null {
+): TagreelElement | null {
   const tag = el.tagName.toLowerCase();
   if (EXCLUDED_TAGS.has(tag)) return null;
 
@@ -247,7 +247,7 @@ function extractDuration(doc: Document): number | null {
  * Walks the live DOM directly — no serialize/re-parse round trip. This is what
  * the session's query API uses against its mutable document.
  */
-export function buildRoots(document: Document): HyperFramesElement[] {
+export function buildRoots(document: Document): TagreelElement[] {
   const body = document.body;
   if (!body) return [];
   return buildChildren(body, "", buildAnimationIdMap(document));
@@ -281,9 +281,9 @@ export function buildDocument(html: string): SdkDocument {
 }
 
 /** Flat walk of the element tree — returns every element in document order */
-export function flatElements(roots: readonly HyperFramesElement[]): HyperFramesElement[] {
-  const result: HyperFramesElement[] = [];
-  function walk(el: HyperFramesElement) {
+export function flatElements(roots: readonly TagreelElement[]): TagreelElement[] {
+  const result: TagreelElement[] = [];
+  function walk(el: TagreelElement) {
     result.push(el);
     for (const child of el.children) walk(child);
   }

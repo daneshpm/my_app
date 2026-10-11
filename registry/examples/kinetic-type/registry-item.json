@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "kinetic-type",
-  "type": "hyperframes:example",
+  "type": "tagreel:example",
   "title": "Kinetic Type",
   "description": "Bold kinetic typography promo",
   "dimensions": {
@@ -13,12 +13,12 @@
     {
       "path": "compositions/main-graphics.html",
       "target": "compositions/main-graphics.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "index.html",
       "target": "index.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ]
 }

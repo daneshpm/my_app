@@ -1,5 +1,5 @@
 /**
- * HTML Editor — Utility functions for parsing and manipulating HyperFrame HTML source.
+ * HTML Editor — Utility functions for parsing and manipulating Tagreel HTML source.
  */
 
 /**

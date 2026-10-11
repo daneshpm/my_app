@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":463}}
   attribution={{"path":"registry/components/notification-pileup","tags":["notification","mobile","ui-props","overload","pileup","loop","agitate"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/notification-pileup/notification-pileup.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/notification-pileup/notification-pileup.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html notification-pileup.html
 <!doctype html>
 <!--
-  notification-pileup, HyperFrames video primitive (ui-props / loop / agitate)
+  notification-pileup, Tagreel video primitive (ui-props / loop / agitate)
 
   Concept: mobile notification cards arrive faster than they can be read.
   Every new card lands at the top and pushes the existing stack downward,
@@ -62,7 +62,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   Mount contract: this is a mountable sub-composition. The runtime clones
   only <template> contents. #root fills the host box, owns no width or height
   metadata, and establishes the container query basis. Variables come only
-  from window.__hyperframes.getVariables(). The hardcoded timeline key stays
+  from window.__tagreel.getVariables(). The hardcoded timeline key stays
   "notification-pileup" after mount flattening strips data-composition-id.
 -->
 <html
@@ -265,8 +265,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             // EDIT ZONE: defaults mirror the outer variable declarations.
             // getVariables owns the declared-defaults-plus-host-overrides merge.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             // INVARIANT: count is always an integer in the declared 4 to 10 range.
@@ -492,7 +492,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add notification-pileup" item="notification-pileup" />
+<InstallCommand command="npx tagreel add notification-pileup" item="notification-pileup" />
 
 That writes one file: `compositions/components/notification-pileup.html`.
 

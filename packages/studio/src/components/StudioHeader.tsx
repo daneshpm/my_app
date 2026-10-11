@@ -6,8 +6,7 @@ import { trackStudioEvent } from "../utils/studioTelemetry";
 import { Button, buttonBase, buttonSizes, buttonVariants, cn, Tooltip } from "./ui";
 import { Dock } from "./dock/Dock";
 import { InspectorIcon } from "./icons/InspectorIcon";
-import { OpenInDesktopButton } from "./OpenInDesktopButton";
-import { HyperframesLogo } from "./ui/HyperframesLogo";
+import { TagreelLogo } from "./ui/TagreelLogo";
 import { ShowThemeToggle, ThemeToggle } from "./ThemeToggle";
 
 interface StudioHeaderProps {
@@ -56,7 +55,7 @@ export const StudioHeader = memo(function StudioHeader({
     <div className="flex items-center justify-between h-10 px-3 bg-surface border-b border-border-strong shrink-0">
       {/* Left: logo + project name */}
       <div className="flex items-center gap-3">
-        <HyperframesLogo />
+        <TagreelLogo />
         <span className="text-text-5 select-none" aria-hidden="true">
           |
         </span>
@@ -152,7 +151,6 @@ export const StudioHeader = memo(function StudioHeader({
         </div>
         {showThemeToggle && <ThemeToggle />}
         <Dock.WindowMenu />
-        <OpenInDesktopButton />
         <Tooltip
           label={
             ffmpegMissing

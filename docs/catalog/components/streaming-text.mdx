@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":255}}
   attribution={{"author":"Miao Yang","path":"registry/components/streaming-text","tags":["video-primitive","text-effect","ai","chat"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/streaming-text/streaming-text.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/streaming-text/streaming-text.html"
 >
 
 <CatalogSlot slot="code">
@@ -63,7 +63,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   <p class="hf-st-p">
     <span class="w">You</span> <span class="w">don&#39;t</span> <span class="w">need</span>
     <span class="w">a</span> <span class="w">video</span> <span class="w">editor.</span>
-    <span class="w">HyperFrames</span> <span class="w">renders</span> <span class="w">the</span>
+    <span class="w">Tagreel</span> <span class="w">renders</span> <span class="w">the</span>
     <span class="w">HTML</span> <span class="w">you</span> <span class="w">already</span>
     <span class="w">write</span> <span class="w">into</span> <span class="w">pixel-perfect,</span>
     <span class="w">deterministic</span> <span class="w">video.</span>
@@ -227,8 +227,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -284,7 +284,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add streaming-text" item="streaming-text" />
+<InstallCommand command="npx tagreel add streaming-text" item="streaming-text" />
 
 That writes one file: `compositions/components/streaming-text.html`.
 

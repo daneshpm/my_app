@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Product Demo","badge":"Stable","codeLines":607}}
   attribution={{"path":"registry/components/spring-stack-shuffle","tags":["motion-primitive","product-demo","physics","stack","interruptible-spring"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/spring-stack-shuffle/spring-stack-shuffle.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/spring-stack-shuffle/spring-stack-shuffle.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html spring-stack-shuffle.html
 <!doctype html>
 <!--
-  spring-stack-shuffle: HyperFrames video primitive (product demo / physics)
+  spring-stack-shuffle: Tagreel video primitive (product demo / physics)
 
   A stack of 3 to 5 cards reshuffles on cues: on each cue the card at the
   back of the stack throws over the top and lands at the front with real
@@ -79,7 +79,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   size), has no data-width/data-height, and registers one paused timeline
   under the literal "spring-stack-shuffle" key. Stack geometry is measured
   in px from the mounted root once (cq-unit transform tweens are not
-  seek-safe); variables come from window.__hyperframes.getVariables().
+  seek-safe); variables come from window.__tagreel.getVariables().
 -->
 <html
   lang="en"
@@ -316,8 +316,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var compositionId = "spring-stack-shuffle";
             var stage = root.querySelector(".sss-stage");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var accentColors = {
@@ -636,7 +636,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add spring-stack-shuffle" item="spring-stack-shuffle" />
+<InstallCommand command="npx tagreel add spring-stack-shuffle" item="spring-stack-shuffle" />
 
 That writes one file: `compositions/components/spring-stack-shuffle.html`.
 

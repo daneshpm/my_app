@@ -19,8 +19,8 @@ import type { FeedbackContext } from "./feedbackTrigger";
 import { isMediaFile } from "../../utils/mediaTypes";
 import { studioApiFetch } from "../../utils/studioApiFetch";
 
-/** Written by `hyperframes init`; absent in a hand-made or copied project. */
-const CONFIG_FILE = "hyperframes.json";
+/** Written by `tagreel init`; absent in a hand-made or copied project. */
+const CONFIG_FILE = "tagreel.json";
 
 /** Matches the CLI's own slug gate, so a hand-edited value cannot leak text. */
 const SKILL_SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -33,7 +33,7 @@ function countMedia(files: string[]): number {
 
 /**
  * Record what we can see from the project listing, then fill in the authoring
- * skill from `hyperframes.json` if the project has one. Failure is silent and
+ * skill from `tagreel.json` if the project has one. Failure is silent and
  * partial: a report with the counts but no skill still beats no report.
  */
 export async function captureProjectProvenance(

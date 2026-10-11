@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":392}}
   attribution={{"path":"registry/components/particle-image-reveal","tags":["motion-primitive","intros-reveals","particles","reveal","canvas","deterministic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/particle-image-reveal/particle-image-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/particle-image-reveal/particle-image-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html particle-image-reveal.html
 <!doctype html>
 <!--
-  particle-image-reveal: HyperFrames video primitive (intros & reveals)
+  particle-image-reveal: Tagreel video primitive (intros & reveals)
 
   A seeded deterministic particle field materializes a supplied image: accent
   particles converge and settle across the frame while the image reveals
@@ -200,8 +200,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var imageLayer = root.querySelector(".pir-image");
             var canvas = root.querySelector(".pir-canvas");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var densityCounts = { low: 320, med: 640, high: 1100 };
@@ -421,7 +421,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add particle-image-reveal" item="particle-image-reveal" />
+<InstallCommand command="npx tagreel add particle-image-reveal" item="particle-image-reveal" />
 
 That writes one file: `compositions/components/particle-image-reveal.html`.
 

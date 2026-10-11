@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { generateShape } from "./automationShapes";
-import { resolveAutomationRange, VOLUME_RANGE } from "@hyperframes/core/audio-automation";
-import type { HfAutomationLane } from "@hyperframes/core/audio-automation";
+import { resolveAutomationRange, VOLUME_RANGE } from "@tagreel/core/audio-automation";
+import type { HfAutomationLane } from "@tagreel/core/audio-automation";
 
 const flat: HfAutomationLane = {
   target: "volume",

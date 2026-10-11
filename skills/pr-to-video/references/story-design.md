@@ -2,11 +2,11 @@
 
 Use this reference in Step 3 to write `STORYBOARD.md` and `SCRIPT.md` for a **PR-to-video** — a code change (the diff, commits, files, +/− stats, and the people behind it) turned into an explainer. There is **no website and no captured assets**; the PR was ingested into `capture/extracted/` in Step 1.
 
-This file defines the story: what the video explains, in what order, and why each frame exists. It does not define layout, effects, animation, or file syntax. For exact storyboard syntax follow `../../hyperframes/references/storyboard-format.md` and `../../hyperframes/references/script-format.md`.
+This file defines the story: what the video explains, in what order, and why each frame exists. It does not define layout, effects, animation, or file syntax. For exact storyboard syntax follow `../../tagreel/references/storyboard-format.md` and `../../tagreel/references/script-format.md`.
 
 ## Read first
 
-1. `hyperframes.json` — locked brief: angle (archetype), audience, length, aspect, language.
+1. `tagreel.json` — locked brief: angle (archetype), audience, length, aspect, language.
 2. `frame.md` — tone, type, design system (the shipped preset is **code-editorial**: warm editorial, a serif that thinks, scarce coral, a navy code surface).
 3. `capture/extracted/visible-text.txt` — the assembled PR brief: title, meta (`base ← head · +N/−M across F files`), people, body, commits, changed files, and a budget-bounded set of **representative diff hunks**. This is your source of **information**.
 4. `capture/diff.patch` — the full unified diff, for deeper hunk selection than the brief's excerpt.
@@ -25,7 +25,7 @@ A diff is a list of edits. A video is a guided act of understanding.
 
 Do **not** narrate the diff file-by-file or read the PR description aloud — that is the single most common failure. **Explain the change** — and where the change has a runtime behavior, **show that behavior in motion** (a `mechanism` beat — see "Show the behavior" below), don't just display the lines that changed. Reorder, merge, omit, compress: surface the one change that matters and drop the incidental churn (lockfile bumps, formatting, generated files) unless it _is_ the story. Scene order comes from narrative design, not from the diff's file order or the commit list.
 
-**Value before evidence** (`../../hyperframes-creative/references/story-spine.md`): the viewer-facing payoff — what the change unlocks, fixes, or speeds up — lands by the second beat; the diff and the mechanism are the **evidence** for that claim, never the opening. Implementation is the footnote of the story, not the spine.
+**Value before evidence** (`../../tagreel-creative/references/story-spine.md`): the viewer-facing payoff — what the change unlocks, fixes, or speeds up — lands by the second beat; the diff and the mechanism are the **evidence** for that claim, never the opening. Implementation is the footnote of the story, not the spine.
 
 Default to a **plain, technical, unhurried developer voice** — accurate, specific, no hype, no marketing gloss. You are explaining a real change to engineers; respect their time and intelligence. `frame.md` (code-editorial) tunes the voice toward considered and literary; it does not change the structure.
 
@@ -159,7 +159,7 @@ A PR is shipped by people, and every PR video closes with a `credits` frame nami
 
 The `credits` frame is an avatar row with names + roles + an "approved" check. On that frame only, set `asset_candidates` to 1–6 entries of `assets/<login>.png — <login>, <role>` (commit authors by `commitCount` first, then reviewers; only `avatarFetched: true` logins). The body stays code-only — avatars appear **only** on this close, never decorating a diff frame. The frame sits in the Step 3 proposal like any other, so the user can cut it there; skip it yourself only when no avatar was fetched.
 
-> **Narrate the name, not the handle.** `people.json` carries a `name` field (GitHub display name, e.g. "Miguel Angel Simon Sierra") next to `login` for whichever contributors `gh` already named (author, commit authors, `mergedBy`); it's `null` for reviewers/commenters/assignees, which `gh pr view` only ever gives a bare login. Before writing this frame, resolve any `null` name yourself for the 1-6 people going on the close: `gh api users/<login> --jq .name`. Voiceover always says the **name** (first name is enough — "Shipped by Miguel, reviewed by Wenbo") and **never** reads a raw `@login` aloud (`@miguAng18947550` spoken by TTS is the failure mode this exists to avoid). On-screen text under each avatar can show both, name first, handle small and secondary: `Miguel Angel Simon Sierra` / `@miguel-heygen`. When a name still doesn't resolve (GitHub has no public name for that user either), fall back to the login on-screen and skip that person from the spoken line rather than reading the handle.
+> **Narrate the name, not the handle.** `people.json` carries a `name` field (GitHub display name, e.g. "Ada Lovelace") next to `login` for whichever contributors `gh` already named (author, commit authors, `mergedBy`); it's `null` for reviewers/commenters/assignees, which `gh pr view` only ever gives a bare login. Before writing this frame, resolve any `null` name yourself for the 1-6 people going on the close: `gh api users/<login> --jq .name`. Voiceover always says the **name** (first name is enough — "Shipped by Miguel, reviewed by Wenbo") and **never** reads a raw `@login` aloud (`@miguAng18947550` spoken by TTS is the failure mode this exists to avoid). On-screen text under each avatar can show both, name first, handle small and secondary: `Ada Lovelace` / `@ada-lovelace`. When a name still doesn't resolve (GitHub has no public name for that user either), fall back to the login on-screen and skip that person from the spoken line rather than reading the handle.
 
 Every other frame has **no** `asset_candidates` (the visuals are invented downstream from `scene` + the diff).
 

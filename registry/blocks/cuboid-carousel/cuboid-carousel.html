@@ -107,11 +107,9 @@
       import { MOTION } from "cuboid-carousel/motion";
 
       const DUR = MOTION.endFrame / MOTION.fps;
-      // Bare __hyperframes is this composition's own in a module.
+      // Bare __tagreel is this composition's own in a module.
       const V =
-        typeof __hyperframes !== "undefined" && __hyperframes.getVariables
-          ? __hyperframes.getVariables()
-          : {};
+        typeof __tagreel !== "undefined" && __tagreel.getVariables ? __tagreel.getVariables() : {};
 
       // ---- variable readers (every one clamped to the DialKit range) ----
       const num = (v, d, lo, hi) => {

@@ -12,14 +12,14 @@ import {
   HF_AUDIO_FX_ATTR,
   serializeAudioFxChain,
   type HfAudioFxChain,
-} from "@hyperframes/core/audio-fx";
+} from "@tagreel/core/audio-fx";
 import {
   clipsOverlap,
   DEFAULT_CARVE,
   HF_AUDIO_CARVE_ATTR,
   type HfCarveSettings,
-} from "@hyperframes/core/audio-carve";
-import { resolveAudioGroups, resolveCarveSourceIds } from "@hyperframes/core/audio-groups";
+} from "@tagreel/core/audio-carve";
+import { resolveAudioGroups, resolveCarveSourceIds } from "@tagreel/core/audio-groups";
 import {
   carveBedRoles,
   carverAgainst,
@@ -28,7 +28,7 @@ import {
   isPromiseLike,
   resolveNextCarveSettings,
 } from "./useFxCarveGrouping.js";
-import { type HfAutomation } from "@hyperframes/core/audio-automation";
+import { type HfAutomation } from "@tagreel/core/audio-automation";
 import { trackCarveChanged } from "./audioFxTelemetry.js";
 import type { DomEditSelection } from "./domEditingTypes";
 import { usePlayerStore } from "../../player";

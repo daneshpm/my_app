@@ -1811,12 +1811,12 @@ export const CatalogDetail = ({
   const bootstrap = [
     "<!doctype html><html><head><meta charset='utf-8'>",
     "<style>html,body{margin:0;height:100%;overflow:hidden;background:transparent}",
-    "hyperframes-player{display:block;width:100%;height:100%}</style>",
+    "tagreel-player{display:block;width:100%;height:100%}</style>",
     // `latest`, not a pinned line. A pin here is a number nothing reads back:
     // the panel keeps working on whatever build the pin names, so a stale one
     // is invisible until someone wonders why a shipped fix never arrived.
     // `scripts/player-cdn-pin.test.ts` fails if a pin comes back.
-    '<script src="https://cdn.jsdelivr.net/npm/@hyperframes/player@latest/dist/hyperframes-player.global.js"></' +
+    '<script src="https://cdn.jsdelivr.net/npm/@tagreel/player@latest/dist/tagreel-player.global.js"></' +
       "script>",
     "</head><body><script>",
     "(function(){",
@@ -1865,7 +1865,7 @@ export const CatalogDetail = ({
     "    player.setAttribute('srcdoc', withValues(html, values));",
     "    arm(resumeAt || 0);",
     "  }",
-    "  player = document.createElement('hyperframes-player');",
+    "  player = document.createElement('tagreel-player');",
     "  player.setAttribute('controls', ''); player.setAttribute('muted', '');",
     "  document.body.appendChild(player);",
     "  player.addEventListener('ended', function () { player.seek(0); player.play(); });",
@@ -1945,11 +1945,11 @@ export const CatalogDetail = ({
   const renderCommand = (() => {
     const changed = changedValues();
     const vars = Object.keys(changed).length ? ` --variables '${JSON.stringify(changed).replace(/'/g, "'\\''")}'` : "";
-    return `# Run from the installed project's root.\nnpx hyperframes render --composition '${compositionSrc}'${vars}`;
+    return `# Run from the installed project's root.\nnpx tagreel render --composition '${compositionSrc}'${vars}`;
   })();
   const agentRequest = (() => {
     const changed = changedValues();
-    const base = `Install the HyperFrames catalog item "${compositionId}" (${title || compositionId}) into my project with \`npx hyperframes add ${compositionId}\`, mount it at the point of my composition where it should play, and verify with \`npx hyperframes check\`.`;
+    const base = `Install the Tagreel catalog item "${compositionId}" (${title || compositionId}) into my project with \`npx tagreel add ${compositionId}\`, mount it at the point of my composition where it should play, and verify with \`npx tagreel check\`.`;
     const set = Object.entries(changed).map(([id, value]) => `${id} = ${JSON.stringify(value)}`);
     return set.length ? `${base} Set ${set.join(", ")}; keep the other variables at their defaults.` : `${base} Keep the default variables unless I say otherwise.`;
   })();
@@ -2062,7 +2062,7 @@ export const CatalogDetail = ({
   if (adapterMissing) webgpuStage = recorded;
   const stageNode = webgpu ? webgpuStage : recorded ?? flagNotice ?? player;
 
-  let caption = "Live composition · HyperFrames Player";
+  let caption = "Live composition · Tagreel Player";
   if (adapterMissing) caption = "Recorded preview · live playback needs WebGPU, which this browser does not offer";
   else if (!webgpu && (video || needsFlag)) caption = "Recorded preview";
 
@@ -2232,11 +2232,11 @@ export const CatalogDetail = ({
               ) : null}
               Registry item{" "}
               <a
-                href={`https://github.com/heygen-com/hyperframes/tree/main/${attribution.path}`}
+                href={`https://github.com/daneshpm/my_app/tree/main/${attribution.path}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                heygen-com/hyperframes
+                daneshpm/my_app
               </a>{" "}
               · <code>{attribution.path}</code>
               {attribution.tags.length > 0 ? ` · ${attribution.tags.join(", ")}` : ""}

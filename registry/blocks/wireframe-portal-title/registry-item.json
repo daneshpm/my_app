@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "wireframe-portal-title",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Wireframe Portal Title",
   "description": "A wireframe portal bursts open, the title comes through, then its letters swap into a second phrase.",
   "tags": [
@@ -23,36 +23,32 @@
     {
       "path": "wireframe-portal-title.html",
       "target": "compositions/wireframe-portal-title/wireframe-portal-title.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     },
     {
       "path": "assets/fonts/Geist-Bold.ttf",
       "target": "compositions/wireframe-portal-title/assets/fonts/Geist-Bold.ttf",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/Geist-Regular.ttf",
       "target": "compositions/wireframe-portal-title/assets/fonts/Geist-Regular.ttf",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/Geist-SemiBold.ttf",
       "target": "compositions/wireframe-portal-title/assets/fonts/Geist-SemiBold.ttf",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "assets/fonts/Geist-OFL.txt",
       "target": "compositions/wireframe-portal-title/assets/fonts/Geist-OFL.txt",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     },
     {
       "path": "SKILL.md",
       "target": "compositions/wireframe-portal-title/SKILL.md",
-      "type": "hyperframes:asset"
+      "type": "tagreel:asset"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/wireframe-portal-title.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/wireframe-portal-title.png"
-  }
+  ]
 }

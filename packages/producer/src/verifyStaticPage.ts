@@ -2,8 +2,8 @@
 // error, catching a script-fetched asset a static markup scan can't see.
 
 import puppeteer, { type Browser } from "puppeteer";
-import { injectScriptsAtHeadStart } from "@hyperframes/core/compiler";
-import { getVerifiedHyperframeRuntimeSource } from "./services/hyperframeRuntimeLoader.js";
+import { injectScriptsAtHeadStart } from "@tagreel/core/compiler";
+import { getVerifiedTagreelRuntimeSource } from "./services/tagreelRuntimeLoader.js";
 
 export interface PageCheckResult {
   failures: string[];
@@ -44,7 +44,7 @@ export async function checkPageLoads(
     // into <head> before any composition script runs, so window.__timelines
     // exists by the time it does. Without this, every payload's own script
     // throws on first paint and the check reports it as broken.
-    const htmlWithRuntime = injectScriptsAtHeadStart(html, [getVerifiedHyperframeRuntimeSource()]);
+    const htmlWithRuntime = injectScriptsAtHeadStart(html, [getVerifiedTagreelRuntimeSource()]);
     await page.setContent(htmlWithRuntime, { waitUntil: "load" });
     await new Promise((r) => setTimeout(r, settleMs));
   } finally {

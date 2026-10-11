@@ -1,19 +1,19 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "variable-axis-type",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Variable Axis Type",
   "description": "A locked one-line headline whose weight or width axis morphs into a decisive emphasis beat.",
   "tags": ["typography", "variable-font", "kinetic-type", "axis", "emphasize"],
   "jobs": ["emphasize"],
   "family": "typography",
   "profile": "burst",
-  "evidence": "hyperframes-research-type-svg.md, VariableAxisType: stable complete axis lists, font-ready registration, layout lock, and midpoint verification.",
+  "evidence": "tagreel-research-type-svg.md, VariableAxisType: stable complete axis lists, font-ready registration, layout lock, and midpoint verification.",
   "files": [
     {
       "path": "variable-axis-type.html",
       "target": "compositions/components/variable-axis-type.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

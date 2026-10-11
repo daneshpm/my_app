@@ -1,10 +1,10 @@
 import { useEffect, useId, useRef, useState } from "react";
-import { evaluateSpringEase, parseSpringBounce } from "@hyperframes/core/spring-ease";
+import { evaluateSpringEase, parseSpringBounce } from "@tagreel/core/spring-ease";
 import {
   evaluateWiggleEase,
   parseWiggleEase,
   type WiggleEaseConfig,
-} from "@hyperframes/core/wiggle-ease";
+} from "@tagreel/core/wiggle-ease";
 import { easePresetLabel } from "./easePresetLibrary";
 import {
   DEFAULT_CURVE,

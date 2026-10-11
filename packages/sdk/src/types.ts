@@ -1,4 +1,4 @@
-import type { CompositionVariable, VariableValidationIssue } from "@hyperframes/core/variables";
+import type { CompositionVariable, VariableValidationIssue } from "@tagreel/core/variables";
 
 /**
  * Cross-referenced variable usage for a whole composition: the per-script
@@ -22,7 +22,7 @@ export interface VariableUsageReport {
 // ─── Document model ───────────────────────────────────────────────────────────
 
 /** Full DOM-level view of one editable element. Built by the SDK adaptation layer. */
-export interface HyperFramesElement {
+export interface TagreelElement {
   readonly id: string;
   /**
    * Fully-qualified scoped id — host-chain prefix + leaf, separated by "/".
@@ -33,7 +33,7 @@ export interface HyperFramesElement {
    */
   readonly scopedId: string;
   readonly tag: string;
-  readonly children: readonly HyperFramesElement[];
+  readonly children: readonly TagreelElement[];
   /** camelCase property names — mirrors CSSStyleDeclaration convention */
   readonly inlineStyles: Readonly<Record<string, string>>;
   readonly classNames: readonly string[];
@@ -51,7 +51,7 @@ export interface HyperFramesElement {
 
 /** The SDK's in-memory document. Built from ensureHfIds + linkedom DOM walk. */
 export interface SdkDocument {
-  readonly roots: readonly HyperFramesElement[];
+  readonly roots: readonly TagreelElement[];
   readonly gsapScript: string | null;
   readonly styles: string | null;
   readonly width: number | null;
@@ -344,7 +344,7 @@ export interface PatchEvent {
  * may forward patch events across. The namespace prefix keeps collision risk
  * with host-chosen origins negligible.
  */
-export const ORIGIN_APPLY_PATCHES = "@hyperframes/sdk:applyPatches" as const;
+export const ORIGIN_APPLY_PATCHES = "@tagreel/sdk:applyPatches" as const;
 
 /** Default origin when none specified — UI-driven dispatch. */
 export const ORIGIN_LOCAL = "local" as const;
@@ -358,7 +358,7 @@ export interface PersistErrorEvent {
 // ─── Element query / snapshot (F1 query API) ─────────────────────────────────
 
 /** Flat read-only snapshot returned by getElements() / getElement() */
-export type ElementSnapshot = HyperFramesElement;
+export type ElementSnapshot = TagreelElement;
 
 export interface FindQuery {
   tag?: string;

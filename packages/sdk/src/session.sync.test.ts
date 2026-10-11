@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { readMediaOffsetSeconds } from "@hyperframes/parsers/media-duration";
+import { readMediaOffsetSeconds } from "@tagreel/parsers/media-duration";
 import { openComposition } from "./session.js";
 
 const DRIFTED = `

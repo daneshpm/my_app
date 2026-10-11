@@ -1,4 +1,4 @@
-import type { GsapAnimation, PropertyGroupName } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation, PropertyGroupName } from "@tagreel/core/gsap-parser";
 import type { DomEditSelection } from "../components/editor/domEditingTypes";
 import { hasNonHoldTweenForElement } from "./gsapRuntimeKeyframes";
 import { selectorFromSelection } from "./gsapShared";

@@ -1,6 +1,6 @@
 // @vitest-environment happy-dom
 import { gsap } from "gsap";
-import { retimeClipTweensInScript } from "@hyperframes/parsers/gsap-writer-acorn";
+import { retimeClipTweensInScript } from "@tagreel/parsers/gsap-writer-acorn";
 import { afterEach, beforeEach, expect, it, vi } from "vitest";
 import { finishTimelineTimingFallback } from "../hooks/timelineTimingSync";
 import { applyLiveRetime, planLiveRetime, planLiveRetimeFromPreview } from "./gsapLiveRetime";

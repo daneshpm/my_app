@@ -1,20 +1,17 @@
-// bgm.mjs — background music for the media audio engine. Two routes, gated the
-// same way as TTS/SFX:
+// bgm.mjs — background music for the media audio engine. There is no hosted
+// music catalog: music is GENERATED locally/with your own key.
 //
-//   retrieve (default when HeyGen is configured) — search HeyGen's music library
-//        by mood, download the top track. Synchronous. assets/bgm/track.mp3.
-//   generate (the alternative; the automatic choice when HeyGen is absent) —
-//        Lyria (cloud, $GEMINI_API_KEY/$GOOGLE_API_KEY + google-genai) preferred,
-//        else local MusicGen (facebook/musicgen-small via transformers). Spawned
-//        DETACHED so the engine can return while audio renders; the caller marks
-//        bgm_pending and runs wait-bgm.mjs before assembling. assets/bgm/track.wav.
+//   generate — Lyria (cloud, $GEMINI_API_KEY/$GOOGLE_API_KEY + google-genai)
+//        preferred, else local MusicGen (facebook/musicgen-small via
+//        transformers). Spawned DETACHED so the engine can return while audio
+//        renders; the caller marks bgm_pending and runs wait-bgm.mjs before
+//        assembling. assets/bgm/track.wav.
 //
 // Missing/failed BGM never blocks a render.
 
 import { spawn, spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, openSync, closeSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import { downloadTo, searchSounds } from "./heygen.mjs";
 import { agentWritePath } from "./media-record.mjs";
 import { pythonInvocation } from "./python.mjs";
 
@@ -43,23 +40,6 @@ function pyOk(probe) {
 function pipInstall(deps) {
   const { cmd, args } = pythonInvocation(["-m", "pip", "install", "-q", ...deps]);
   return spawnSync(cmd, args, { stdio: "ignore" }).status === 0;
-}
-
-// ── retrieval (HeyGen music library) ──────────────────────────────────────────
-export async function retrieveBgm({ query, headers, hyperframesDir, hasVoice, anomalies }) {
-  const q = query || "calm cinematic underscore";
-  const results = await searchSounds(q, "music", headers, { limit: 5 });
-  if (!results.length) return null;
-  const top = results[0];
-  const rel = agentWritePath(hyperframesDir, "assets/bgm/track.mp3", { anomalies });
-  await downloadTo(top.audio_url, join(hyperframesDir, rel));
-  return {
-    path: rel,
-    volume: bgmDefaultVolume(hasVoice),
-    query: q,
-    mode: "retrieve",
-    duration_s: typeof top.duration === "number" ? r3(top.duration) : null,
-  };
 }
 
 // ── mood inference (for the generate path's prompt) ──────────────────────────
@@ -110,16 +90,16 @@ export function inferBgmPrompt({ blob = "", archetype = "", arc = "", userPrompt
 export function generateBgmDetached({
   prompt,
   durationS,
-  hyperframesDir,
+  tagreelDir,
   lyriaRecipe,
   seedSeconds = 28,
   hasVoice,
   anomalies,
 }) {
-  const rel = agentWritePath(hyperframesDir, "assets/bgm/track.wav", { anomalies });
-  const abs = join(hyperframesDir, rel);
-  mkdirSync(join(hyperframesDir, "assets", "bgm"), { recursive: true });
-  const log = join(hyperframesDir, "assets", "bgm", `bgm-${Date.now()}.log`);
+  const rel = agentWritePath(tagreelDir, "assets/bgm/track.wav", { anomalies });
+  const abs = join(tagreelDir, rel);
+  mkdirSync(join(tagreelDir, "assets", "bgm"), { recursive: true });
+  const log = join(tagreelDir, "assets", "bgm", `bgm-${Date.now()}.log`);
   const targetS = Math.max(1, durationS);
   const baseMeta = { path: rel, mode: null, volume: bgmDefaultVolume(hasVoice), pending: true };
 

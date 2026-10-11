@@ -1,19 +1,19 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "svg-mask-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "SVG Mask Reveal",
   "description": "A soft token-colored sweep reveals media only through an editable SVG wordmark mask.",
   "tags": ["effect", "svg", "mask", "wordmark", "reveal", "exhibit"],
   "jobs": ["exhibit"],
   "family": "effects",
   "profile": "burst",
-  "evidence": "hyperframes-research-css-masks.md: SvgMaskReveal and SVG text as mask over image or video",
+  "evidence": "tagreel-research-css-masks.md: SvgMaskReveal and SVG text as mask over image or video",
   "files": [
     {
       "path": "svg-mask-reveal.html",
       "target": "compositions/components/svg-mask-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

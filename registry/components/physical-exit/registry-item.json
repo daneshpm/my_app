@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "physical-exit",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Physical Exit",
   "description": "A card exits with physical momentum in toss, drop, or slide mode, carrying acceleration and rotation through the final offscreen pose without fading.",
   "tags": ["motion-primitive", "exit", "momentum", "toss", "drop", "slide"],
@@ -13,7 +13,7 @@
     {
       "path": "physical-exit.html",
       "target": "compositions/components/physical-exit.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

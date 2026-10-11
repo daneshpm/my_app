@@ -63,10 +63,10 @@ function resetRuntimeGlobals(): void {
   delete window.__renderReady;
   delete window.__hfTimelinesBuilding;
   const win = window as {
-    __hyperframeRuntimeBootstrapped?: boolean;
+    __tagreelRuntimeBootstrapped?: boolean;
     __hfFirstPassHidden?: boolean;
   };
-  delete win.__hyperframeRuntimeBootstrapped;
+  delete win.__tagreelRuntimeBootstrapped;
   delete win.__hfFirstPassHidden;
   delete (document as { readyState?: unknown }).readyState;
 }

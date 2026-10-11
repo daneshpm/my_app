@@ -5,8 +5,8 @@ import {
   pastePoints,
   readClipboard,
 } from "./automationClipboard";
-import { resolveAutomationRange, VOLUME_RANGE } from "@hyperframes/core/audio-automation";
-import type { HfAutomationLane } from "@hyperframes/core/audio-automation";
+import { resolveAutomationRange, VOLUME_RANGE } from "@tagreel/core/audio-automation";
+import type { HfAutomationLane } from "@tagreel/core/audio-automation";
 
 /** The fixture's values double as unit positions, so pin it to a 0..1 axis. */
 const UNIT_RANGE = { ...VOLUME_RANGE, max: 1 };

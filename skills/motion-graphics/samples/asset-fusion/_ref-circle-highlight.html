@@ -192,7 +192,7 @@
         W: 1998,
         H: 1368, // EVEN dims (odd width => encode fails)
         box: [0.244, 0.277, 0.607, 0.425], // [x0,y0,x1,y1] normalized, from locate.mjs
-        label: "HyperFrames",
+        label: "Tagreel",
         mode: "full", // 'full' = ring+connector+label+brackets+scan ; 'circle' = ring only
       };
       // =====================================================
@@ -285,7 +285,7 @@
       }
       window.__timelines["circle-highlight"] = tl;
       tl.seek(0);
-      if (!window.__HYPERFRAMES_HOST__) {
+      if (!window.__TAGREEL_HOST__) {
         const fit = () => {
           const s = Math.min(innerWidth / CFG.W, innerHeight / CFG.H) * 0.96;
           S.style.transform = `scale(${s})`;

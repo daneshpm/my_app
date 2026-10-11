@@ -19,7 +19,7 @@ interface ProjectUnreachableBannerProps {
  * lands. The user sees a normal-looking editor that does not save. In the
  * CLI-embedded host — the only host that reports telemetry, since
  * `telemetry/policy.ts` suppresses Vite dev — the cause is almost always that
- * this Studio is serving a *different* project: `hyperframes preview` reuses
+ * this Studio is serving a *different* project: `tagreel preview` reuses
  * port 3002, so starting it on another folder takes the port from under an
  * open tab, and the project it was pointed at is untouched on disk.
  *

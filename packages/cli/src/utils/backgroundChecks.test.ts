@@ -43,7 +43,7 @@ describe("launchBackgroundChecks", () => {
     spawn.mockClear();
     disk.config = {};
     env.dev = false;
-    for (const name of ["CI", "HYPERFRAMES_NO_UPDATE_CHECK", "HYPERFRAMES_SKIP_SKILLS"]) {
+    for (const name of ["CI", "TAGREEL_NO_UPDATE_CHECK", "TAGREEL_SKIP_SKILLS"]) {
       vi.stubEnv(name, "");
     }
     origTTY = process.stderr.isTTY;
@@ -55,7 +55,7 @@ describe("launchBackgroundChecks", () => {
     Object.defineProperty(process.stderr, "isTTY", { value: origTTY, configurable: true });
   });
 
-  it("runs both stale checks in one detached child the parent does not wait for", () => {
+  it("runs the stale skills check in a detached child the parent does not wait for", () => {
     launchBackgroundChecks();
     expect(spawn).toHaveBeenCalledTimes(1);
     const [execPath, , opts] = spawn.mock.calls[0] as unknown as [
@@ -64,7 +64,7 @@ describe("launchBackgroundChecks", () => {
       Record<string, unknown>,
     ];
     expect(execPath).toBe(process.execPath);
-    expect(spawnedChecks()).toEqual(["update", "skills"]);
+    expect(spawnedChecks()).toEqual(["skills"]);
     expect(opts).toMatchObject({ detached: true, stdio: "ignore", windowsHide: true });
     expect(child.unref).toHaveBeenCalled();
     expect(child.on).toHaveBeenCalledWith("error", expect.any(Function));
@@ -81,7 +81,7 @@ describe("launchBackgroundChecks", () => {
   it("retries a check that did not refresh its cache at most once an hour", () => {
     vi.useFakeTimers({ toFake: ["Date"] });
     launchBackgroundChecks();
-    expect(spawnedChecks()).toEqual(["update", "skills"]);
+    expect(spawnedChecks()).toEqual(["skills"]);
 
     // The child failed (offline): no cache written. The next command within the hour starts nothing.
     spawn.mockClear();
@@ -91,14 +91,14 @@ describe("launchBackgroundChecks", () => {
 
     vi.advanceTimersByTime(2 * 60 * 1000);
     launchBackgroundChecks();
-    expect(spawnedChecks()).toEqual(["update", "skills"]);
+    expect(spawnedChecks()).toEqual(["skills"]);
   });
 
   it("ignores an attempt stamp dated in the future, as after a clock correction", () => {
     const later = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
     disk.config = { lastUpdateAttemptAt: later, lastSkillsAttemptAt: later };
     launchBackgroundChecks();
-    expect(spawnedChecks()).toEqual(["update", "skills"]);
+    expect(spawnedChecks()).toEqual(["skills"]);
   });
 
   it("does not start a second skills check while one started this hour", () => {
@@ -114,12 +114,12 @@ describe("launchBackgroundChecks", () => {
     ["dev mode", () => (env.dev = true), null],
     ["CI=1", () => vi.stubEnv("CI", "1"), null],
     ["CI=true", () => vi.stubEnv("CI", "true"), null],
-    ["HYPERFRAMES_NO_UPDATE_CHECK=1", () => vi.stubEnv("HYPERFRAMES_NO_UPDATE_CHECK", "1"), null],
-    ["HYPERFRAMES_SKIP_SKILLS=1", () => vi.stubEnv("HYPERFRAMES_SKIP_SKILLS", "1"), ["update"]],
+    ["TAGREEL_NO_UPDATE_CHECK=1", () => vi.stubEnv("TAGREEL_NO_UPDATE_CHECK", "1"), null],
+    ["TAGREEL_SKIP_SKILLS=1", () => vi.stubEnv("TAGREEL_SKIP_SKILLS", "1"), null],
     [
       "no terminal",
       () => Object.defineProperty(process.stderr, "isTTY", { value: false, configurable: true }),
-      ["update"],
+      null,
     ],
   ])("with %s, hands the child only what the parent used to check", (_, arrange, checks) => {
     arrange();

@@ -1,4 +1,4 @@
-# HyperFrame Schema Compliance Review
+# Tagreel Schema Compliance Review
 
 ## Executive Summary
 
@@ -8,7 +8,7 @@
 
 ## Critical Issues
 
-None found. The compositions follow the HyperFrame schema correctly, including deterministic code, finite timelines, and proper registration.
+None found. The compositions follow the Tagreel schema correctly, including deterministic code, finite timelines, and proper registration.
 
 ## Compliance Checklist
 

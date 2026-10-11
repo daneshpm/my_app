@@ -1,8 +1,8 @@
 # Captions
 
-<!-- registry-items: allow=max-width,data-composition-src,hyperframes-registry,blend-mode,caption-style,font-family -->
+<!-- registry-items: allow=max-width,data-composition-src,tagreel-registry,blend-mode,caption-style,font-family -->
 
-**The live search is the source of truth for what the registry has.** The table(s) below are a hand-maintained sample and under-cover by design: run `npx hyperframes catalog --query "<what you want>" --json` — it needs nothing installed — before concluding the registry lacks something. Item names here are checked against `registry/registry.json` by `bun run lint:skills`.
+**The live search is the source of truth for what the registry has.** The table(s) below are a hand-maintained sample and under-cover by design: run `npx tagreel catalog --query "<what you want>" --json` — it needs nothing installed — before concluding the registry lacks something. Item names here are checked against `registry/registry.json` by `bun run lint:skills`.
 
 Before authoring: confirm the transcript came from the right Whisper model. CLI default `small.en` silently translates non-English audio — see [`../transcribe.md`](../transcribe.md) → "Language Rule" and [`transcript-handling.md`](transcript-handling.md) for the mandatory quality check.
 
@@ -17,7 +17,7 @@ Analyze spoken content to determine caption style. If user specifies a style, us
 ]
 ```
 
-`id` (`w0`, `w1`, …) is the stable reference for per-word overrides and is added by `hyperframes transcribe`. It's optional for backwards compatibility with hand-authored transcripts. See [`../transcribe.md`](../transcribe.md) → "Output Shape" for how this is produced, and [`transcript-handling.md`](transcript-handling.md) for cleanup before consumption.
+`id` (`w0`, `w1`, …) is the stable reference for per-word overrides and is added by `tagreel transcribe`. It's optional for backwards compatibility with hand-authored transcripts. See [`../transcribe.md`](../transcribe.md) → "Output Shape" for how this is produced, and [`transcript-handling.md`](transcript-handling.md) for cleanup before consumption.
 
 ## Style Detection (When No Style Specified)
 
@@ -40,7 +40,7 @@ Scan for words deserving distinct treatment:
 - **Numbers/statistics** — bold weight, accent color
 - **Emotional keywords** — exaggerated animation (overshoot, bounce)
 - **Call-to-action** — highlight, underline, color pop
-- **Marker highlight** — for beyond-color emphasis (highlight sweep, circle, burst, scribble, sketchout), see `hyperframes-animation/rules/css-marker-patterns.md`.
+- **Marker highlight** — for beyond-color emphasis (highlight sweep, circle, burst, scribble, sketchout), see `tagreel-animation/rules/css-marker-patterns.md`.
 
 ## Script-to-Style Mapping
 
@@ -70,10 +70,10 @@ Break on sentence boundaries, 150ms+ pauses, or max word count.
 
 ## Text Overflow Prevention
 
-Use `window.__hyperframes.fitTextFontSize()`:
+Use `window.__tagreel.fitTextFontSize()`:
 
 ```js
-var result = window.__hyperframes.fitTextFontSize(group.text.toUpperCase(), {
+var result = window.__tagreel.fitTextFontSize(group.text.toUpperCase(), {
   fontFamily: "Outfit",
   fontWeight: 900,
   maxWidth: 1600,
@@ -117,11 +117,11 @@ tl.seek(0);
 
 ## Pre-Built Caption Components
 
-Before building caption styles from scratch, check the registry — 15 ready-to-use caption components cover the most common styles. Install with `npx hyperframes add <name>` and wire as a sub-composition via `data-composition-src` (see `hyperframes-registry`).
+Before building caption styles from scratch, check the registry — 15 ready-to-use caption components cover the most common styles. Install with `npx tagreel add <name>` and wire as a sub-composition via `data-composition-src` (see `tagreel-registry`).
 
 ```bash
-npx hyperframes catalog --tag caption-style   # list all caption components
-npx hyperframes add caption-highlight         # install a specific one
+npx tagreel catalog --tag caption-style   # list all caption components
+npx tagreel add caption-highlight         # install a specific one
 ```
 
 | Style                     | Component                    | Best for                     |
@@ -144,7 +144,7 @@ npx hyperframes add caption-highlight         # install a specific one
 
 Related: `caption-blend-difference` (tagged `text` / `blend-mode`, not `caption-style`, so it won't appear under the filter above) auto-inverts text against any background via `mix-blend-mode: difference` — useful when the background is busy or unpredictable.
 
-Browse all with previews: [hyperframes.heygen.com/catalog](https://hyperframes.heygen.com/catalog)
+Browse all with previews: [github.com/daneshpm/my_app/tree/main/docs/catalog](https://github.com/daneshpm/my_app/tree/main/docs/catalog)
 
 Caption components ship with transparent backgrounds — they're pure overlays. If the underlying video is bright or busy, add a contrast layer (e.g. a semi-transparent dark div) in the host composition beneath the caption sub-composition, not inside the component itself.
 
@@ -152,7 +152,7 @@ Caption components ship with transparent backgrounds — they're pure overlays. 
 
 - [`motion.md`](motion.md) — karaoke, marker effects, audio-reactive modulation, scatter exits.
 - [`transcript-handling.md`](transcript-handling.md) — input formats, quality checks, cleaning, external API fallback.
-- `hyperframes-animation/rules/css-marker-patterns.md` — marker highlighting (deterministic, fully seekable).
+- `tagreel-animation/rules/css-marker-patterns.md` — marker highlighting (deterministic, fully seekable).
 
 ## Constraints
 

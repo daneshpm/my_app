@@ -1,5 +1,5 @@
 // Caption HTML Generator
-// Serializes a CaptionModel into a complete captions.html HyperFrames composition.
+// Serializes a CaptionModel into a complete captions.html Tagreel composition.
 
 import type {
   CaptionModel,

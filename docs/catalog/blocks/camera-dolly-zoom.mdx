@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"duration":4,"width":1920,"height":1080,"category":"Showcases","badge":"Stable","codeLines":354}}
   attribution={{"path":"registry/blocks/camera-dolly-zoom","tags":["camera","depth","3d","cinematic"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/blocks/camera-dolly-zoom/camera-dolly-zoom.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/blocks/camera-dolly-zoom/camera-dolly-zoom.html"
 >
 
 <CatalogSlot slot="code">
@@ -308,8 +308,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
           easing: "power2.inOut",
         };
         var declared =
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && window.__tagreel.getVariables
+            ? window.__tagreel.getVariables()
             : {};
         var vars = Object.assign({}, DEFAULTS, declared);
 
@@ -383,7 +383,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add camera-dolly-zoom" item="camera-dolly-zoom" />
+<InstallCommand command="npx tagreel add camera-dolly-zoom" item="camera-dolly-zoom" />
 
 That writes one file: `compositions/camera-dolly-zoom.html`.
 

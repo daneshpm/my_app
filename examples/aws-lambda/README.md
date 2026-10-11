@@ -1,6 +1,6 @@
 # AWS Lambda + Step Functions deployment
 
-Reference SAM template for deploying HyperFrames distributed rendering on
+Reference SAM template for deploying Tagreel distributed rendering on
 AWS. One Lambda function, three roles (Plan / RenderChunk / Assemble),
 choreographed by a Step Functions standard workflow with a Map state for
 parallel chunk rendering.
@@ -50,7 +50,7 @@ Upload your project as a zip to the render bucket, then start a Step
 Functions execution:
 
 ```bash
-STACK_NAME=hyperframes-render          # whatever you picked at deploy
+STACK_NAME=tagreel-render          # whatever you picked at deploy
 RENDER_BUCKET=$(aws cloudformation describe-stacks \
   --stack-name "$STACK_NAME" \
   --query 'Stacks[0].Outputs[?OutputKey==`RenderBucketName`].OutputValue' \
@@ -207,19 +207,19 @@ with `--profile <name>` or `AWS_PROFILE=<name>`.
 
 ## Parameters
 
-| Parameter                       | Default       | Notes                                                                                           |
-| ------------------------------- | ------------- | ----------------------------------------------------------------------------------------------- |
-| `ProjectName`                   | `hyperframes` | Prefix for created resource names.                                                              |
-| `LambdaMemoryMb`                | `10240`       | Lambda memory; Lambda allocates CPU proportionally. 10 GB recommended for 1080p.                |
-| `LambdaTimeoutSec`              | `900`         | Per-invocation timeout. 15 min is Lambda's hard ceiling.                                        |
-| `ReservedConcurrency`           | `-1`          | Hard cap on simultaneous Lambda invocations. `-1` = unreserved. Set to e.g. `50` to bound cost. |
-| `ChromeSource`                  | `sparticuz`   | Must match the `--source=` flag passed to `build-zip.ts`.                                       |
-| `ChunkInvocationAlarmThreshold` | `1000`        | CloudWatch alarm threshold (RenderChunk invocations per hour).                                  |
+| Parameter                       | Default     | Notes                                                                                           |
+| ------------------------------- | ----------- | ----------------------------------------------------------------------------------------------- |
+| `ProjectName`                   | `tagreel`   | Prefix for created resource names.                                                              |
+| `LambdaMemoryMb`                | `10240`     | Lambda memory; Lambda allocates CPU proportionally. 10 GB recommended for 1080p.                |
+| `LambdaTimeoutSec`              | `900`       | Per-invocation timeout. 15 min is Lambda's hard ceiling.                                        |
+| `ReservedConcurrency`           | `-1`        | Hard cap on simultaneous Lambda invocations. `-1` = unreserved. Set to e.g. `50` to bound cost. |
+| `ChromeSource`                  | `sparticuz` | Must match the `--source=` flag passed to `build-zip.ts`.                                       |
+| `ChunkInvocationAlarmThreshold` | `1000`      | CloudWatch alarm threshold (RenderChunk invocations per hour).                                  |
 
 ## Cleanup
 
 ```bash
-sam delete --stack-name hyperframes-render
+sam delete --stack-name tagreel-render
 ```
 
 S3 buckets are `Retain`ed on delete to protect rendered artifacts.
@@ -256,6 +256,6 @@ numbers when you run it against your own AWS account.
 ## What's NOT in this directory
 
 - CDK construct shipping the same topology programmatically — follow-up.
-- `hyperframes lambda deploy / render / progress / destroy` CLI — follow-up.
+- `tagreel lambda deploy / render / progress / destroy` CLI — follow-up.
 - Migration guide — follow-up.
 - Lambda RIE local smoke harness mode — follow-up.

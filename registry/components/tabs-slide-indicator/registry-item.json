@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "tabs-slide-indicator",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Tabs Slide Indicator",
   "description": "A pill indicator transition that slides between active tabs",
   "tags": ["transition-primitive", "transitions-dev-port", "tabs", "indicator"],
@@ -9,7 +9,7 @@
     {
       "path": "tabs-slide-indicator.html",
       "target": "compositions/components/tabs-slide-indicator.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -61,8 +61,5 @@
       "description": "The tab names, separated by commas. Two or more names rebuild the row.",
       "default": "Plan,Debug,Ask"
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/tabs-slide-indicator.png"
-  }
+  ]
 }

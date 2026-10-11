@@ -16,4 +16,4 @@ export {
   parseNumeric,
   parseStartExpression,
   type ReferenceExpression,
-} from "@hyperframes/parsers/composition-contract";
+} from "@tagreel/parsers/composition-contract";

@@ -38,15 +38,11 @@ describe("ensureProducerDist", () => {
       built: true,
       producerDistEntry: resolve("/repo/packages/producer/dist/index.js"),
     });
-    expect(exec).toHaveBeenCalledWith(
-      "bun",
-      ["run", "--filter", "@hyperframes/producer", "build"],
-      {
-        cwd: resolve("/repo"),
-        stdio: "pipe",
-        env,
-      },
-    );
+    expect(exec).toHaveBeenCalledWith("bun", ["run", "--filter", "@tagreel/producer", "build"], {
+      cwd: resolve("/repo"),
+      stdio: "pipe",
+      env,
+    });
   });
 });
 

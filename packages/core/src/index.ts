@@ -94,7 +94,7 @@ export {
 
 // Parsers — GSAP helpers. The AST parser (parseGsapScriptAcorn and write ops)
 // is browser-safe; mutation helpers are in gsapWriterAcorn.
-export type { GsapAnimation, GsapMethod, ParsedGsap } from "@hyperframes/parsers";
+export type { GsapAnimation, GsapMethod, ParsedGsap } from "@tagreel/parsers";
 
 export {
   serializeGsapAnimations,
@@ -102,8 +102,8 @@ export {
   validateCompositionGsap,
   keyframesToGsapAnimations,
   gsapAnimationsToKeyframes,
-} from "@hyperframes/parsers";
-export type { ParsedHtml, CompositionMetadata } from "@hyperframes/parsers";
+} from "@tagreel/parsers";
+export type { ParsedHtml, CompositionMetadata } from "@tagreel/parsers";
 
 export {
   parseHtml,
@@ -112,16 +112,16 @@ export {
   removeElementFromHtml,
   validateCompositionHtml,
   extractCompositionMetadata,
-} from "@hyperframes/parsers";
+} from "@tagreel/parsers";
 
 // Generators
-export type { SerializeOptions } from "./generators/hyperframes";
+export type { SerializeOptions } from "./generators/tagreel";
 
 export {
-  generateHyperframesHtml,
+  generateTagreelHtml,
   generateGsapTimelineScript,
-  generateHyperframesStyles,
-} from "./generators/hyperframes";
+  generateTagreelStyles,
+} from "./generators/tagreel";
 
 // Compiler (timing only — browser-safe, no linkedom/esbuild)
 export type {
@@ -164,8 +164,8 @@ export {
   renderFrameIdForRenderId,
 } from "./runtime/renderFrameSibling";
 
-// Lint moved to @hyperframes/lint. Import lint APIs from @hyperframes/lint
-// directly, or via the back-compat stub at @hyperframes/core/lint. Not
+// Lint moved to @tagreel/lint. Import lint APIs from @tagreel/lint
+// directly, or via the back-compat stub at @tagreel/core/lint. Not
 // re-exported here — doing so would cycle core's main entry through the lint
 // package (which imports core utilities back).
 export {
@@ -267,22 +267,22 @@ export {
 
 // Inline scripts
 export {
-  HYPERFRAME_RUNTIME_ARTIFACTS,
-  HYPERFRAME_RUNTIME_CONTRACT,
-  loadHyperframeRuntimeSource,
-  type HyperframeRuntimeContract,
-} from "./inline-scripts/hyperframe";
+  TAGREEL_RUNTIME_ARTIFACTS,
+  TAGREEL_RUNTIME_CONTRACT,
+  loadTagreelRuntimeSource,
+  type TagreelRuntimeContract,
+} from "./inline-scripts/tagreel";
 export {
-  HYPERFRAME_RUNTIME_GLOBALS,
-  HYPERFRAME_BRIDGE_SOURCES,
-  HYPERFRAME_CONTROL_ACTIONS,
-  type HyperframeControlAction,
+  TAGREEL_RUNTIME_GLOBALS,
+  TAGREEL_BRIDGE_SOURCES,
+  TAGREEL_CONTROL_ACTIONS,
+  type TagreelControlAction,
 } from "./inline-scripts/runtimeContract";
-export { getHyperframeRuntimeScript } from "./generated/runtime-inline";
+export { getTagreelRuntimeScript } from "./generated/runtime-inline";
 export {
-  buildHyperframesRuntimeScript,
-  type HyperframesRuntimeBuildOptions,
-} from "./inline-scripts/hyperframesRuntime.engine";
+  buildTagreelRuntimeScript,
+  type TagreelRuntimeBuildOptions,
+} from "./inline-scripts/tagreelRuntime.engine";
 export {
   MEDIA_VISUAL_STYLE_PROPERTIES,
   copyMediaVisualStyles,
@@ -302,11 +302,11 @@ export {
   realProjectRoot,
   resolveWithinProject,
 } from "./safePath";
-export { isHyperframesProject, PROJECT_MARKER_FILES } from "./projectRule";
+export { isTagreelProject, PROJECT_MARKER_FILES } from "./projectRule";
 export type {
-  HyperframePickerApi,
-  HyperframePickerBoundingBox,
-  HyperframePickerElementInfo,
+  TagreelPickerApi,
+  TagreelPickerBoundingBox,
+  TagreelPickerElementInfo,
 } from "./inline-scripts/pickerApi";
 
 // Frame adapters

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-// Thin wrapper over the shared packet builder in hyperframes — this file only
+// Thin wrapper over the shared packet builder in tagreel — this file only
 // pins the paths that are specific to this workflow skill. The logic (frame
 // splitting, rule citation, packet bounds, `_role.md` assembly) has one owner:
-// ../../hyperframes/scripts/lib/frame-packets-core.mjs
+// ../../tagreel/scripts/lib/frame-packets-core.mjs
 
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -11,8 +11,8 @@ import * as core from "./lib/frame-packets-core.mjs";
 
 const SKILL_DIR = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const CONFIG = {
-  animationDir: resolve(SKILL_DIR, "../hyperframes-animation"),
-  corePath: resolve(SKILL_DIR, "../hyperframes/references/frame-worker-core.md"),
+  animationDir: resolve(SKILL_DIR, "../tagreel-animation"),
+  corePath: resolve(SKILL_DIR, "../tagreel/references/frame-worker-core.md"),
   deltaPath: resolve(SKILL_DIR, "sub-agents/frame-worker.md"),
 };
 

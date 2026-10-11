@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "paper-collage-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Paper Collage Reveal",
   "description": "A scrapbook patchwork of torn paper scraps, each with its own texture and tilt, flutters away in a staggered scatter to reveal the content underneath.",
   "tags": ["collage", "scrapbook", "torn paper", "reveal", "transition", "motion-primitive"],
@@ -9,7 +9,7 @@
     {
       "path": "paper-collage-reveal.html",
       "target": "compositions/components/paper-collage-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":324}}
   attribution={{"path":"registry/components/text-match-cut","tags":["motion-primitive","transition","typography","match-cut","hard-cut","continuity"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/text-match-cut/text-match-cut.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/text-match-cut/text-match-cut.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html text-match-cut.html
 <!doctype html>
 <!--
-  text-match-cut: HyperFrames video primitive (transitions / match-cut / connect)
+  text-match-cut: Tagreel video primitive (transitions / match-cut / connect)
 
   Concept: one line of text becomes another in the middle of a move. Both texts
   ride ONE value curve — the After Effects recipe is a single keyframe pair,
@@ -202,8 +202,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var shell = root.querySelector(".tmx-shell");
             var texts = [root.querySelector(".tmx-text-a"), root.querySelector(".tmx-text-b")];
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var MODES = {
@@ -353,7 +353,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add text-match-cut" item="text-match-cut" />
+<InstallCommand command="npx tagreel add text-match-cut" item="text-match-cut" />
 
 That writes one file: `compositions/components/text-match-cut.html`.
 

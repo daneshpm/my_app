@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Typography & Text","badge":"Stable","codeLines":321}}
   attribution={{"path":"registry/components/ticker-takeover","tags":["motion-primitive","typography","ticker","slot-machine","headline","reveal"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/ticker-takeover/ticker-takeover.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/ticker-takeover/ticker-takeover.html"
 >
 
 <CatalogSlot slot="code">
@@ -199,8 +199,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var flash = root.querySelector(".tt-flash");
             var headline = root.querySelector(".tt-headline");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var defaultOptions = ["faster", "smarter", "together", "everywhere"];
@@ -350,7 +350,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add ticker-takeover" item="ticker-takeover" />
+<InstallCommand command="npx tagreel add ticker-takeover" item="ticker-takeover" />
 
 That writes one file: `compositions/components/ticker-takeover.html`.
 

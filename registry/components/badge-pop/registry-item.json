@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "badge-pop",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Badge Pop",
   "description": "A transitions.dev-inspired notification badge pop with elastic scale and count reveal",
   "tags": [
@@ -15,7 +15,7 @@
     {
       "path": "badge-pop.html",
       "target": "compositions/components/badge-pop.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -72,8 +72,5 @@
         }
       ]
     }
-  ],
-  "preview": {
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/badge-pop.png"
-  }
+  ]
 }

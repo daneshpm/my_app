@@ -43,7 +43,6 @@ import {
 } from "../packages/producer/src/index.js";
 import { compileForRender } from "../packages/producer/src/services/htmlCompiler.js";
 import { resolveContainedCopies } from "./registry-target-paths.mjs";
-import { fetchHostedFiles } from "./catalog-hosted-files.js";
 import { withHostedDefaults } from "./registry-hosted-assets.ts";
 import { withHostedRefs } from "./catalog-script-inlining.ts";
 import type { RegistryItem } from "../packages/core/src/index.js";
@@ -54,10 +53,10 @@ const scriptDir = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(scriptDir, "..");
 const registryDir = resolve(repoRoot, "registry");
 
-if (!process.env.PRODUCER_HYPERFRAME_MANIFEST_PATH) {
-  process.env.PRODUCER_HYPERFRAME_MANIFEST_PATH = resolve(
+if (!process.env.PRODUCER_TAGREEL_MANIFEST_PATH) {
+  process.env.PRODUCER_TAGREEL_MANIFEST_PATH = resolve(
     repoRoot,
-    "packages/core/dist/hyperframe.manifest.json",
+    "packages/core/dist/tagreel.manifest.json",
   );
 }
 
@@ -84,9 +83,7 @@ const catalogKinds: { kind: ItemKind; dir: string }[] = [
 
 function compositionEntry(manifestPath: string, name: string): string {
   const manifest = JSON.parse(readFileSync(manifestPath, "utf-8"));
-  const compFile = manifest.files?.find(
-    (f: { type: string }) => f.type === "hyperframes:composition",
-  );
+  const compFile = manifest.files?.find((f: { type: string }) => f.type === "tagreel:composition");
   return compFile?.path ?? `${name}.html`;
 }
 
@@ -158,8 +155,8 @@ async function materializeHostedAssets(
   projectDir: string,
   mode: PrepareOptions["hostedAssets"],
 ): Promise<void> {
+  // Registry items no longer declare remotely hosted files, so there is nothing to download.
   if (mode === "cdn") return pointHostedAssetsAtCdn(projectDir);
-  await fetchHostedFiles(projectDir);
 }
 
 function pointHostedAssetsAtCdn(projectDir: string): void {
@@ -179,7 +176,7 @@ function pointHostedAssetsAtCdn(projectDir: string): void {
 
 /** The item's own composition file, when it is where the manifest says it is. */
 function compositionPathOf(projectDir: string, manifest: RegistryItem): string | undefined {
-  const entry = manifest.files?.find((file) => file.type === "hyperframes:composition");
+  const entry = manifest.files?.find((file) => file.type === "tagreel:composition");
   if (entry === undefined) return undefined;
   const entryPath = join(projectDir, entry.path);
   return existsSync(entryPath) ? entryPath : undefined;
@@ -344,7 +341,7 @@ function manifestSize(manifest: WrapperManifest): { width: number; height: numbe
 
 /**
  * Mount the mirrored install-layout copy when one exists: blocks reference assets the way they
- * will after `hyperframes add`, which only resolves from the target path.
+ * will after `tagreel add`, which only resolves from the target path.
  */
 function wrapperEntrySrc(tmpDir: string, manifest: WrapperManifest, entryFile: string): string {
   const target = manifest.files?.find((f) => f.path === entryFile)?.target;

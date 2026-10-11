@@ -64,15 +64,15 @@ export const GSAP_MUTATION_CAPABILITIES = {
 } as const satisfies Record<GsapMutationType, GsapMutationCapability>;
 
 const GSAP_WRITER_MIGRATION = Object.freeze({
-  flag: "HYPERFRAMES_GSAP_WRITER",
+  flag: "TAGREEL_GSAP_WRITER",
   owner: "studio-foundations",
   deadline: "2026-09-30",
   graduationCriteria:
-    "Acorn is the default writer. Recast is retained one watch window as HYPERFRAMES_GSAP_WRITER=recast, then deleted (spec 2026-09-17 §5).",
+    "Acorn is the default writer. Recast is retained one watch window as TAGREEL_GSAP_WRITER=recast, then deleted (spec 2026-09-17 §5).",
 });
 
-export function resolveGsapWriter(env: { HYPERFRAMES_GSAP_WRITER?: string }): "recast" | "acorn" {
-  const configured = env.HYPERFRAMES_GSAP_WRITER ?? "acorn";
+export function resolveGsapWriter(env: { TAGREEL_GSAP_WRITER?: string }): "recast" | "acorn" {
+  const configured = env.TAGREEL_GSAP_WRITER ?? "acorn";
   if (configured === "recast" || configured === "acorn") return configured;
   throw new Error(`Invalid ${GSAP_WRITER_MIGRATION.flag}=${configured}; expected recast or acorn`);
 }

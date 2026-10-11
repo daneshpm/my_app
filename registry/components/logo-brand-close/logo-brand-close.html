@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  logo-brand-close: HyperFrames video primitive (brand close)
+  logo-brand-close: Tagreel video primitive (brand close)
 
   The identity close that ends films. The wordmark lands at display scale,
   a chars-aware fit sizing it to roughly three quarters of the frame width.
@@ -36,9 +36,9 @@
   data-composition-id="logo-brand-close"
   data-composition-duration="4"
   data-composition-variables='[
-    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Brand name whose letters cascade into the centered lockup.", "default": "HYPERFRAMES" },
+    { "id": "wordmark", "type": "string", "role": "content", "label": "Wordmark", "description": "Brand name whose letters cascade into the centered lockup.", "default": "TAGREEL" },
     { "id": "tagline", "type": "string", "role": "content", "label": "Tagline", "description": "Optional tagline that settles beneath the wordmark. Empty hides it.", "default": "Write HTML. Render video." },
-    { "id": "url", "type": "string", "role": "content", "label": "URL", "description": "Optional mono URL line beneath the tagline. Empty hides it.", "default": "hyperframes.heygen.com" },
+    { "id": "url", "type": "string", "role": "content", "label": "URL", "description": "Optional mono URL line beneath the tagline. Empty hides it.", "default": "acme.example" },
     { "id": "accent", "type": "enum", "role": "style", "label": "Accent", "description": "Contract color used by the brand period at the end of the wordmark.", "default": "green", "options": [{ "value": "green", "label": "Green" }, { "value": "blue", "label": "Blue" }, { "value": "violet", "label": "Violet" }] },
     { "id": "exit", "type": "enum", "role": "style", "label": "Exit", "description": "Optional departure. Films end on the still hold, so the default is none.", "default": "none", "options": [{ "value": "none", "label": "None" }, { "value": "fade", "label": "Fade" }, { "value": "up", "label": "Up" }] }
   ]'
@@ -165,20 +165,18 @@
             var taglineElement = root.querySelector(".lbc-tagline");
             var urlElement = root.querySelector(".lbc-url");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var wordmark =
-              vars.wordmark == null
-                ? "HYPERFRAMES"
-                : String(vars.wordmark).trim().replace(/\s+/g, " ");
-            if (wordmark.length === 0) wordmark = "HYPERFRAMES";
+              vars.wordmark == null ? "TAGREEL" : String(vars.wordmark).trim().replace(/\s+/g, " ");
+            if (wordmark.length === 0) wordmark = "TAGREEL";
             var tagline =
               vars.tagline == null
                 ? "Write HTML. Render video."
                 : String(vars.tagline).trim().replace(/\s+/g, " ");
-            var url = vars.url == null ? "hyperframes.heygen.com" : String(vars.url).trim();
+            var url = vars.url == null ? "acme.example" : String(vars.url).trim();
             var accentColors = {
               green: "var(--brand, #71f5a7)",
               blue: "var(--accent, #61a8ff)",

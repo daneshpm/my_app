@@ -1,6 +1,6 @@
 # Documentation Guidelines
 
-Standards for writing and maintaining Hyperframes documentation. Based on patterns from Remotion, Stripe, Tailwind CSS, and Astro.
+Standards for writing and maintaining Tagreel documentation. Based on patterns from Remotion, Stripe, Tailwind CSS, and Astro.
 
 ## Core Principles
 
@@ -90,7 +90,7 @@ window.__timelines["my-video"] = tl;
 After CLI commands, show what the user should see:
 
 ```bash
-npx hyperframes preview
+npx tagreel preview
 # Studio running at http://localhost:3002
 ```
 

@@ -15,7 +15,7 @@
  * names the group it feeds, "so the routing is readable from either end".
  */
 
-import type { HfAudioGroup } from "@hyperframes/core/audio-groups";
+import type { HfAudioGroup } from "@tagreel/core/audio-groups";
 
 export interface AudioFxSignalPath {
   /** After the word "In". */

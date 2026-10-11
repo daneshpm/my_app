@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  star-rating-fill: HyperFrames video primitive (data / holdable / prove)
+  star-rating-fill: Tagreel video primitive (data / holdable / prove)
 
   Concept: one token-colored star layer is clipped over a muted copy. A
   single left-to-right clip-path sweep resolves at the target rating, so a
@@ -183,8 +183,8 @@
             var valueElement = root.querySelector(".srf-value");
             var starTemplate = root.querySelector("#star-rating-fill-star-template");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             /* INVARIANT: zero is a valid rating. Missing values and zero are

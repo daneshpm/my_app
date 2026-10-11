@@ -2,8 +2,8 @@ import {
   HF_AUDIO_FX_ATTR,
   serializeAudioFxChain,
   type HfAudioFxChain,
-} from "@hyperframes/core/audio-fx";
-import { type HfAutomation } from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-fx";
+import { type HfAutomation } from "@tagreel/core/audio-automation";
 import { isCarveVoiceElement } from "./useFxCarveGrouping.js";
 import { automationAttrValue, HF_AUDIO_AUTOMATION_ATTR } from "./propertyPanelAutomation";
 import type { CarveClip } from "./useFxCarveNodes.js";

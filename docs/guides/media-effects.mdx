@@ -76,14 +76,14 @@ Keep the product shape and label readable.
 The agent can look up what is available before it changes anything:
 
 ```bash
-npx hyperframes media-treatment --capabilities --json
-npx hyperframes media-treatment --capability twoInkPrint --json
+npx tagreel media-treatment --capabilities --json
+npx tagreel media-treatment --capability twoInkPrint --json
 ```
 
 Then apply it:
 
 ```bash
-npx hyperframes media-treatment \
+npx tagreel media-treatment \
   --selector '#product' \
   --grading '{"preset":"two-ink-print"}' \
   --apply --json

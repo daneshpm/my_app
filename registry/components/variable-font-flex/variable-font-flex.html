@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  variable-font-flex: HyperFrames video primitive (type / Wave M experiment M5)
+  variable-font-flex: Tagreel video primitive (type / Wave M experiment M5)
 
   A word lands while its variable-font axes flex: each character rises from
   hairline-condensed to black-wide (weight 120 to 840, width 40 to 128) with
@@ -154,8 +154,8 @@
             var stage = root.querySelector(".vff-stage");
             var word = root.querySelector(".vff-word");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var text = vars.text == null || vars.text === "" ? "FLEX" : String(vars.text);

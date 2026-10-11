@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "headline-slam",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Headline Slam",
   "description": "A heavyweight headline scales down into frame, lands with a deterministic three-frame shake, holds with subtle drift, and whips upward on exit.",
   "tags": ["motion-primitive", "typography", "headline", "slam", "impact", "exit"],
@@ -14,7 +14,7 @@
     {
       "path": "headline-slam.html",
       "target": "compositions/components/headline-slam.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

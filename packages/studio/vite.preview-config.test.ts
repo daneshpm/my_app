@@ -6,15 +6,15 @@ describe("previewConfigPayload", () => {
     expect(
       previewConfigPayload(
         {
-          HYPERFRAMES_PREVIEW_PROJECT_DIR: "/tmp/video",
-          HYPERFRAMES_PREVIEW_PROJECT_NAME: "video",
-          HYPERFRAMES_PREVIEW_BROWSER_GPU_MODE: "software",
+          TAGREEL_PREVIEW_PROJECT_DIR: "/tmp/video",
+          TAGREEL_PREVIEW_PROJECT_NAME: "video",
+          TAGREEL_PREVIEW_BROWSER_GPU_MODE: "software",
         },
         4321,
         "0.7.109",
       ),
     ).toEqual({
-      isHyperframes: true,
+      isTagreel: true,
       pid: 4321,
       projectName: "video",
       projectDir: "/tmp/video",

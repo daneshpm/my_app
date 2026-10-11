@@ -33,7 +33,7 @@ import {
   PROVENANCE_VERSION,
   readRenderProvenance,
   renderProvenanceArgs,
-} from "@hyperframes/engine";
+} from "@tagreel/engine";
 import type { ChunkSliceJson } from "../render/stages/freezePlan.js";
 import { assemble } from "./assemble.js";
 import type { DistributedFormat } from "./shared.js";

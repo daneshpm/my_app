@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { openComposition } from "@hyperframes/sdk";
-import type { Composition } from "@hyperframes/sdk";
+import { openComposition } from "@tagreel/sdk";
+import type { Composition } from "@tagreel/sdk";
 import { isSelfWriteEcho } from "./sdkSelfWriteRegistry";
 import { trackStudioEvent } from "../utils/studioTelemetry";
 import type { PublishSdkSession } from "../utils/sdkCutover";

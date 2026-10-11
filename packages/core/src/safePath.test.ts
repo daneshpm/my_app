@@ -202,8 +202,8 @@ describe("mkdirWithinProject", () => {
 
   it("creates the missing folders below a project folder that exists", () => {
     const root = tempDir();
-    mkdirWithinProject(root, join(root, ".hyperframes", "backup"));
-    expect(existsSync(join(root, ".hyperframes", "backup"))).toBe(true);
+    mkdirWithinProject(root, join(root, ".tagreel", "backup"));
+    expect(existsSync(join(root, ".tagreel", "backup"))).toBe(true);
   });
 
   it("does not bring back a project folder that was renamed away", () => {

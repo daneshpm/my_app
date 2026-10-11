@@ -89,7 +89,7 @@ experimental Chromium API [HTML in Canvas](/guides/html-in-canvas) uses. In a
 normal browser preview, enable `chrome://flags/#canvas-draw-element` in a
 compatible Chrome or Brave build and restart it before opening a composition
 that uses a capturing chain. Without it — or on a browser build with no
-WebGL2 — a chain fails loudly (a `[HyperFrames] composition script error:`
+WebGL2 — a chain fails loudly (a `[Tagreel] composition script error:`
 console line naming the flag) rather than silently rendering the wrong thing.
 `none`-capture chains (like `fractal-noise`) need only WebGL2, not the flag.
 
@@ -110,7 +110,7 @@ a chain by hand:
   path seeks per frame, so this only matters for Studio scrubbing-free
   playback, where a chain does not repaint between seeks.
 - **Known conflict with page-side shader transitions.** A composition running
-  both `@hyperframes/shader-transitions`' page-side compositing and a
+  both `@tagreel/shader-transitions`' page-side compositing and a
   capturing `data-vfx-chain` node can have the chain painted from a stale
   texture outside a transition's own active window. If your composition uses
   both features together and a chain looks wrong outside a transition, this is

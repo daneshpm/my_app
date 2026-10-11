@@ -1,6 +1,6 @@
 import type { BrowserInstallFacts } from "../browser/installFacts.js";
-import { redactTelemetryString, type OutputResolutionIssueKind } from "@hyperframes/core";
-import type { SubTimelineWaitOutcome } from "@hyperframes/engine";
+import { redactTelemetryString, type OutputResolutionIssueKind } from "@tagreel/core";
+import type { SubTimelineWaitOutcome } from "@tagreel/engine";
 import { FEEDBACK_RATING_SCALE } from "../utils/feedbackRating.js";
 import type { CatalogUsage } from "../utils/catalogUsage.js";
 import { flush, shouldTrack, trackEvent } from "./client.js";
@@ -29,8 +29,8 @@ function powerStateFields(): { on_battery?: boolean; low_power_mode?: boolean } 
   };
 }
 
-// run_id is attached only when the orchestrator set HYPERFRAMES_RUN_ID — an
-// absent property, never null/"" (PostHog treats those as real values).
+// run_id is attached only when the orchestrator set TAGREEL_RUN_ID — an
+// absent property, never null/"" (analytics treats those as real values).
 function runIdField(runId: string | undefined): { run_id?: string } {
   return runId !== undefined ? { run_id: runId } : {};
 }
@@ -330,7 +330,7 @@ export function trackRenderComplete(
     authoringSkillSource?: string;
     /** Raw --skill value when it failed skill-slug normalization (an unrecognized skill name). */
     authoringSkillInvalid?: string;
-    /** Names of HF_-/HYPERFRAMES_-prefixed env vars present at plan time (never values), capped at 20. */
+    /** Names of HF_-/TAGREEL_-prefixed env vars present at plan time (never values), capped at 20. */
     hfEnvOverrides?: readonly string[];
     /**
      * Catalog items installed in this project, and those the rendered
@@ -343,7 +343,7 @@ export function trackRenderComplete(
     // Worker auto-sizing provenance (RenderPerfSummary.workerSizing). Answers
     // "why N workers?" fleet-wide, and validates the advisory per-worker heap
     // budget before it's enforced (field OOM: 6 auto workers on a 24GB/4GB-heap
-    // machine — see computeWorkerSizing in @hyperframes/engine).
+    // machine — see computeWorkerSizing in @tagreel/engine).
     workersBoundBy?: string;
     workersCpuBased?: number;
     workersMemoryBased?: number;
@@ -416,7 +416,7 @@ export function trackRenderComplete(
     deBoundaryFrames?: number;
     deNcprFallbacks?: number;
     deFrameTimeouts?: number;
-    // "cli" when triggered by `hyperframes render` (default), "studio" when
+    // "cli" when triggered by `tagreel render` (default), "studio" when
     // triggered by a studio preview-server render (POST /api/projects/:id/render).
     source?: "cli" | "studio";
     // Composition metadata
@@ -629,7 +629,7 @@ export function trackRenderComplete(
   // command's normal teardown (agent-pipe EPIPE → process.exit(0), or an
   // explicit process.exit) kills the lazy beforeExit flush mid-flight, which
   // is why only ~10-15% of successful renders ever produced a render_complete
-  // — and the survivors skewed toward users with low RTT to PostHog. The
+  // — and the survivors skewed toward users with low RTT to analytics. The
   // process is alive and idle here; if it still dies mid-request, the queue
   // keeps the event for the exit-time flushSync() fallback.
   void flush();
@@ -645,7 +645,7 @@ export function trackRenderError(
     authoringSkillSource?: string;
     /** Raw --skill value when it failed skill-slug normalization (an unrecognized skill name). */
     authoringSkillInvalid?: string;
-    /** Names of HF_-/HYPERFRAMES_-prefixed env vars present at plan time (never values), capped at 20. */
+    /** Names of HF_-/TAGREEL_-prefixed env vars present at plan time (never values), capped at 20. */
     hfEnvOverrides?: readonly string[];
     docker: boolean;
     workers?: number;
@@ -787,7 +787,7 @@ export function trackInitTemplate(templateId: string, props?: { tailwind?: boole
  *
  * Item names are public registry identifiers, never user content or project
  * data. This routes through `trackEvent`, so an install that opted out
- * (`hyperframes telemetry disable`, `HYPERFRAMES_NO_TELEMETRY`, `DO_NOT_TRACK`)
+ * (a telemetry opt-out, `TAGREEL_NO_TELEMETRY`, `DO_NOT_TRACK`)
  * emits nothing.
  */
 export function trackRegistryItemAdded(props: {
@@ -848,8 +848,8 @@ export function trackAuthLoginFailed(
   trackEvent("auth_login_failed", { method, reason }, distinctId);
 }
 
-// Associate this install with the signed-in HeyGen account after a completed
-// sign-in. Emits a PostHog `$identify` alias whose `$anon_distinct_id` is the
+// Associate this install with the signed-in account after a completed
+// sign-in. Emits a analytics `$identify` alias whose `$anon_distinct_id` is the
 // install's anonymousId, so events recorded before sign-in stitch to the same
 // person instead of stranding as a separate anonymous profile. Routed through
 // trackEvent so it shares the opt-out gate and flush path — a no-op when
@@ -1000,13 +1000,13 @@ export function trackRenderFeedback(props: {
   /**
    * Join key shared with the forwarded feedback report (Slack/backend): the
    * same uuid rides in the report's env string as `fid=…`, so a wild report
-   * resolves to exactly one PostHog `cli_render_feedback` event and vice versa.
+   * resolves to exactly one analytics `cli_render_feedback` event and vice versa.
    */
   feedbackId?: string;
   /** render_job_id values of this install's recent renders (newest last). */
   recentRenderIds?: string[];
 }): void {
-  // Plain product event, not a PostHog survey response: nothing here is served
+  // Plain product event, not a analytics survey response: nothing here is served
   // by the surveys product (no survey definition, no targeting, no popover).
   trackEvent("cli_render_feedback", {
     rating: props.rating,

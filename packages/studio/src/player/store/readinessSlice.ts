@@ -4,7 +4,7 @@
  * guards an in-flight settlement, not something a component reads, so
  * bumping it shouldn't trigger a render. */
 import type { StoreApi } from "zustand";
-import { settleCompositionReadiness } from "@hyperframes/core/composition-readiness";
+import { settleCompositionReadiness } from "@tagreel/core/composition-readiness";
 
 export interface PlaybackReadinessSlice {
   timelineReady: boolean;

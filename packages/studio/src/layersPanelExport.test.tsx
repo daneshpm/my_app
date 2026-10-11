@@ -8,7 +8,7 @@ import {
   TimelineEditProvider,
   usePlayerStore,
   type LayersPanelHost,
-} from "@hyperframes/studio";
+} from "@tagreel/studio";
 import { installReactActEnvironment, mountReactHarness } from "./hooks/domSelectionTestHarness";
 import { deriveTimelineStoreKeyForDomId } from "./player/lib/timelineElementHelpers";
 

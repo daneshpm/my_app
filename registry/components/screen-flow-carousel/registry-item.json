@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "screen-flow-carousel",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Screen Flow Carousel",
   "description": "Two to five app screens ride a horizontal rail: one primary at center, neighbors receded, advancing on cues with a velocity-matched throw and a smooth long-tail catch while a mono caption swaps with each advance. Screens are slots with token skeleton defaults.",
   "tags": ["product-demo", "feature-tour", "carousel", "rail", "slot", "screens"],
@@ -13,7 +13,7 @@
     {
       "path": "screen-flow-carousel.html",
       "target": "compositions/components/screen-flow-carousel.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

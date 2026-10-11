@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "caption-clip-wipe",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Clip Wipe",
   "description": "Left-to-right clip-path wipe reveal per word",
   "tags": ["captions", "caption-style", "wipe", "clip-path", "reveal"],
@@ -9,11 +9,7 @@
     {
       "path": "caption-clip-wipe.html",
       "target": "compositions/components/caption-clip-wipe.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/registry/components/caption-clip-wipe/preview-v2.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/components/caption-clip-wipe.png"
-  }
+  ]
 }

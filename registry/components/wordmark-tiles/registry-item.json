@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "wordmark-tiles",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Wordmark Tiles",
   "description": "A wordmark resolves from deterministic color noise into correctly cropped glyph tiles through a spatially modulated GSAP wave.",
   "tags": ["typography", "wordmark", "tiles", "raster", "reveal"],
@@ -14,7 +14,7 @@
     {
       "path": "wordmark-tiles.html",
       "target": "compositions/components/wordmark-tiles.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

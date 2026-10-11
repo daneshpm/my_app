@@ -4,11 +4,11 @@ import {
   parseAutomation,
   serializeAutomation,
   type HfAutomationLane,
-} from "@hyperframes/core/audio-automation";
-import { HF_AUDIO_CARVE_ATTR } from "@hyperframes/core/audio-carve";
-import { HF_AUDIO_FADE_IN_ATTR, HF_AUDIO_FADE_OUT_ATTR } from "@hyperframes/core/audio-fade";
-import { HF_AUDIO_FX_ATTR } from "@hyperframes/core/audio-fx";
-import { HF_AUDIO_GROUP_ATTR } from "@hyperframes/core/audio-groups";
+} from "@tagreel/core/audio-automation";
+import { HF_AUDIO_CARVE_ATTR } from "@tagreel/core/audio-carve";
+import { HF_AUDIO_FADE_IN_ATTR, HF_AUDIO_FADE_OUT_ATTR } from "@tagreel/core/audio-fade";
+import { HF_AUDIO_FX_ATTR } from "@tagreel/core/audio-fx";
+import { HF_AUDIO_GROUP_ATTR } from "@tagreel/core/audio-groups";
 import {
   escapeHtmlAttribute,
   findTagByTarget,
@@ -27,7 +27,7 @@ import {
   MEDIA_LINK_ATTR,
   SYNC_ORIGIN_ATTR,
   mintLinkId as mintLinkIdFrom,
-} from "@hyperframes/core/media-link";
+} from "@tagreel/core/media-link";
 const SOUND_KEPT_ON_LINKED_AUDIO_STAGE = "Background removed. Sound kept on a linked audio track.";
 
 const SOUND_NOT_KEPT_MESSAGE =

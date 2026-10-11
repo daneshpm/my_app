@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "native-notification-pop",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Native Notification Pop",
   "description": "One system-faithful notification banner (iOS or macOS) drops in over any scene on an accurate interruptible spring: fast arrival, soft overshoot, settled mass, backdrop blur, app dot, title, one body line. Holds; tucks away only via exit.",
   "tags": ["motion-primitive", "product-demo", "overlay", "notification", "spring"],
@@ -14,7 +14,7 @@
     {
       "path": "native-notification-pop.html",
       "target": "compositions/components/native-notification-pop.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [
@@ -40,7 +40,7 @@
       "role": "content",
       "label": "App label",
       "description": "Small-caps app name row beside the app dot.",
-      "default": "HyperFrames"
+      "default": "Tagreel"
     },
     {
       "id": "os",

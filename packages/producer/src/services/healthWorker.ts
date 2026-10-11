@@ -4,8 +4,8 @@
  * Runs an HTTP server (`/health`, returns 200 OK with uptime+timestamp JSON)
  * on a *separate* Node worker_thread so probe responses don't depend on the
  * main event loop. The main thread can be deep in a long-running synchronous
- * task (Chrome teardown, large file I/O, GC pause, the post-Miguel guard
- * "impossible duration" math, etc.) and this endpoint still answers within
+ * task (Chrome teardown, large file I/O, GC pause, the "impossible duration"
+ * guard math, etc.) and this endpoint still answers within
  * milliseconds because it lives in a different V8 isolate with its own
  * event loop.
  *
@@ -19,7 +19,7 @@
  *
  * Today's incident (2026-06-26): an infinite GSAP timeline caused the
  * distributed planner to try to enumerate ~300_000_000_000 frames, and
- * the sidecar got killed mid-arithmetic. Miguel's upstream `plan()`
+ * the sidecar got killed mid-arithmetic. The `plan()`
  * duration guard kills that input class at the source. This module is
  * defense-in-depth: future wedge classes (sync I/O on video-heavy comps,
  * runaway loops, GC pauses) shouldn't kill an otherwise-alive pod either.
@@ -39,8 +39,8 @@
  *   so existing observability keeps working.
  *
  * The main thread still serves `/health` on the main port (9847) for
- * backwards compatibility; k8s probe config in `heygen-com/app` can migrate
- * to the worker port at its own pace.
+ * backwards compatibility; deployment probe configs can migrate
+ * to the worker port at their own pace.
  */
 
 import { Worker } from "node:worker_threads";

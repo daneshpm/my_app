@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Primitives","badge":"Stable","codeLines":290}}
   attribution={{"author":"Miao Yang","path":"registry/components/typing-indicator","tags":["video-primitive","chat","mock-ui","overlay"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/typing-indicator/typing-indicator.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/typing-indicator/typing-indicator.html"
 >
 
 <CatalogSlot slot="code">
@@ -261,8 +261,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
     "use strict";
 
     var vars =
-      window.__hyperframes && window.__hyperframes.getVariables
-        ? window.__hyperframes.getVariables()
+      window.__tagreel && window.__tagreel.getVariables
+        ? window.__tagreel.getVariables()
         : {};
 
     // Unrecognised overrides return to their declared defaults.
@@ -319,7 +319,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add typing-indicator" item="typing-indicator" />
+<InstallCommand command="npx tagreel add typing-indicator" item="typing-indicator" />
 
 That writes one file: `compositions/components/typing-indicator.html`.
 

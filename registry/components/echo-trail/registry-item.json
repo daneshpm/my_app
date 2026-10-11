@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "echo-trail",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Echo Trail",
   "description": "A moving element renders with N ghosted copies of itself at t minus i times delta, opacity stepped down per ghost; one traversal, echoes collapsing into the settled element at rest.",
   "tags": ["motion-primitive", "demonstrate", "trail", "onion-skin", "ghosts", "deterministic"],
@@ -14,7 +14,7 @@
     {
       "path": "echo-trail.html",
       "target": "compositions/components/echo-trail.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

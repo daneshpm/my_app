@@ -1,5 +1,5 @@
 {
-  "package": "@hyperframes/shader-transitions",
+  "package": "@tagreel/shader-transitions",
   "subpaths": {
     ".": {
       "source": "./src/index.ts",

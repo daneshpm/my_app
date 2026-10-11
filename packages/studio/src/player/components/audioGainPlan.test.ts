@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { audioGainToDb, MAX_AUDIO_GAIN } from "@hyperframes/core/audio-gain";
+import { audioGainToDb, MAX_AUDIO_GAIN } from "@tagreel/core/audio-gain";
 import { peakAmplitudeDb, planAudioGain, type AudioGainClip } from "./audioGainPlan";
 
 const clip = (key: string, gain: number, sourcePeak: number | null): AudioGainClip => ({

@@ -655,9 +655,9 @@ describe("resolveDomEditSelection", () => {
       findElementForSelection(
         document,
         {
-          id: "index.html:Hyperframes Logo Light:0",
+          id: "index.html:Tagreel Logo Light:0",
           selector:
-            '[data-composition-id="index.html:Hyperframes Logo Light:0"],#index.html:Hyperframes Logo Light:0',
+            '[data-composition-id="index.html:Tagreel Logo Light:0"],#index.html:Tagreel Logo Light:0',
           sourceFile: "index.html",
         },
         null,
@@ -667,9 +667,9 @@ describe("resolveDomEditSelection", () => {
       findElementForSelection(
         document,
         {
-          id: "index.html:Hyperframes Logo Light:0",
+          id: "index.html:Tagreel Logo Light:0",
           selector:
-            '[data-composition-id="index.html:Hyperframes Logo Light:0"],#index.html:Hyperframes Logo Light:0',
+            '[data-composition-id="index.html:Tagreel Logo Light:0"],#index.html:Tagreel Logo Light:0',
           sourceFile: "index.html",
         },
         null,
@@ -957,7 +957,7 @@ describe("resolveDomEditSelection", () => {
     expect(
       findElementForTimelineElement(
         document,
-        { id: "index.html:Hyperframes Logo Light:0", sourceFile: "index.html" },
+        { id: "index.html:Tagreel Logo Light:0", sourceFile: "index.html" },
         {
           activeCompositionPath: null,
           isMasterView: true,
@@ -978,7 +978,7 @@ describe("resolveDomEditSelection", () => {
     expect(
       findElementForTimelineElement(
         document,
-        { id: "compositions/hook.html:Hyperframes Logo Light:0" },
+        { id: "compositions/hook.html:Tagreel Logo Light:0" },
         {
           activeCompositionPath: "compositions/hook.html",
           isMasterView: false,
@@ -1129,7 +1129,7 @@ describe("patch builders and prompt builder", () => {
       tagSnippet: `<div id="editable-card" style="position:absolute; left: 108px; top: 112px; width: 380px; height: 196px; color: rgb(248, 250, 252)"`,
     });
 
-    expect(prompt).toContain("## HyperFrames element edit request v1");
+    expect(prompt).toContain("## Tagreel element edit request v1");
     expect(prompt).toContain("Schema version: 1");
     expect(prompt).toContain("Source file: index.html");
     expect(prompt).toContain("Selector: #editable-card");
@@ -1262,7 +1262,7 @@ describe("patch builders and prompt builder", () => {
       <div data-composition-id="hook" data-composition-file="compositions/hook.html">
         <section class="scene-shell">
           <div class="topline">
-            <span class="brand">HyperFrames</span>
+            <span class="brand">Tagreel</span>
             <span class="badge">Alpha</span>
           </div>
         </section>
@@ -1299,7 +1299,7 @@ describe("patch builders and prompt builder", () => {
           <svg class="brand-mark" viewBox="0 0 24 24">
             <path class="brand-path" d="M0 0h24v24H0z"></path>
           </svg>
-          <div class="title">HyperFrames</div>
+          <div class="title">Tagreel</div>
         </section>
       </div>
     `);

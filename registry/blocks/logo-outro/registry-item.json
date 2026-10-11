@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "logo-outro",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Logo Outro",
   "description": "Cinematic logo reveal with piece-by-piece assembly, glow bloom, tagline fade-in, and URL pill",
   "tags": ["branding", "outro", "logo"],
@@ -14,13 +14,9 @@
     {
       "path": "logo-outro.html",
       "target": "compositions/logo-outro.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
   ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/logo-outro.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/logo-outro.png"
-  },
   "params": [
     {
       "key": "--bg-color",

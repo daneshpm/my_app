@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":329}}
   attribution={{"path":"registry/components/testimonial-card","tags":["prop","ui-props","testimonial","social-proof","quote","prove"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/testimonial-card/testimonial-card.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/testimonial-card/testimonial-card.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html testimonial-card.html
 <!doctype html>
 <!--
-  testimonial-card: HyperFrames video primitive (ui-props / holdable / prove)
+  testimonial-card: Tagreel video primitive (ui-props / holdable / prove)
 
   Concept: a token-themed testimonial card proves a claim in one clean reveal.
   The rating and quote rise into reading position first, then the avatar,
@@ -264,8 +264,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var ratingValueEl = root.querySelector(".tc-rating-value");
             var attributionItems = root.querySelectorAll(".tc-attribution-item");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             /* INVARIANT: getVariables() is the sole owner of content. Missing
@@ -358,7 +358,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add testimonial-card" item="testimonial-card" />
+<InstallCommand command="npx tagreel add testimonial-card" item="testimonial-card" />
 
 That writes one file: `compositions/components/testimonial-card.html`.
 

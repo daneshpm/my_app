@@ -5,7 +5,7 @@ import { RULER_H, getTimelineBeatEntries } from "./timelineLayout";
 import { formatTimelineTickLabel } from "./timelineRulerGeometry";
 import { usePlayerStore } from "../store/playerStore";
 import { secondsToFrame } from "../lib/time";
-import type { MusicBeatAnalysis } from "@hyperframes/core/beats";
+import type { MusicBeatAnalysis } from "@tagreel/core/beats";
 import type { TimelineTimeRange } from "../lib/timelineClipIndex";
 
 interface TimelineRulerProps {

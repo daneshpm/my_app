@@ -11,7 +11,7 @@ import {
   sampleAutomationLane,
   type AutomationRange,
   type HfAutomationLane,
-} from "@hyperframes/core/audio-automation";
+} from "@tagreel/core/audio-automation";
 import { SEGMENT_GRAB_PX } from "./automationLaneGeometry";
 import { armSegmentDrag, computeGroupMove, type GroupDragSnapshot } from "./automationLaneDragMath";
 

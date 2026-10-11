@@ -1,15 +1,15 @@
 export type {
-  HyperframeLintSeverity,
-  HyperframeLintFinding,
-  HyperframeLintResult,
-  HyperframeLinterOptions,
+  TagreelLintSeverity,
+  TagreelLintFinding,
+  TagreelLintResult,
+  TagreelLinterOptions,
   LintTimings,
 } from "./types.js";
 export {
-  lintHyperframeHtml,
+  lintTagreelHtml,
   lintMediaUrls,
   LINT_RULE_COUNT,
   LINT_RULE_GROUP_COUNTS,
-} from "./hyperframeLinter.js";
+} from "./tagreelLinter.js";
 export { lintProject, shouldBlockRender } from "./project.js";
 export type { ProjectLintResult } from "./project.js";

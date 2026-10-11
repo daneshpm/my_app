@@ -5,7 +5,7 @@ import {
   resolveEditingAffordances,
   resolveEditingSections,
   type EditableElementFacts,
-} from "@hyperframes/core/editing";
+} from "@tagreel/core/editing";
 import { groupScopedLayerRoots, resolveGroupCapture } from "./domEditingGroups";
 import type {
   DomEditCapabilities,

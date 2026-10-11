@@ -1,16 +1,16 @@
 {
-  "name": "@hyperframes/cli",
+  "name": "@tagreel/cli",
   "version": "0.8.137",
-  "description": "HyperFrames CLI — create, preview, and render HTML video compositions",
+  "description": "Tagreel CLI — create, preview, and render HTML video compositions",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heygen-com/hyperframes",
+    "url": "https://github.com/daneshpm/my_app",
     "directory": "packages/cli"
   },
   "bin": {
-    "hyperframes": "./bin/hyperframes.mjs",
-    "hyperframes-localize-fonts": "./bin/hyperframes-localize-fonts.mjs"
+    "tagreel": "./bin/tagreel.mjs",
+    "tagreel-localize-fonts": "./bin/tagreel-localize-fonts.mjs"
   },
   "files": [
     "bin",
@@ -42,7 +42,6 @@
     "fontkit": "^2.0.4",
     "giget": "^3.2.0",
     "hono": "^4.6.0",
-    "ignore": "^5.3.2",
     "open": "^10.0.0",
     "postcss": "^8.5.8",
     "prettier": "^3.8.1",
@@ -52,15 +51,15 @@
   "devDependencies": {
     "@clack/prompts": "^1.1.0",
     "@google/genai": "1.52.0",
-    "@hyperframes/aws-lambda": "workspace:*",
-    "@hyperframes/core": "workspace:*",
-    "@hyperframes/engine": "workspace:*",
-    "@hyperframes/gcp-cloud-run": "workspace:*",
-    "@hyperframes/lint": "workspace:*",
-    "@hyperframes/parsers": "workspace:*",
-    "@hyperframes/producer": "workspace:*",
-    "@hyperframes/studio": "workspace:*",
-    "@hyperframes/studio-server": "workspace:*",
+    "@tagreel/aws-lambda": "workspace:*",
+    "@tagreel/core": "workspace:*",
+    "@tagreel/engine": "workspace:*",
+    "@tagreel/gcp-cloud-run": "workspace:*",
+    "@tagreel/lint": "workspace:*",
+    "@tagreel/parsers": "workspace:*",
+    "@tagreel/producer": "workspace:*",
+    "@tagreel/studio": "workspace:*",
+    "@tagreel/studio-server": "workspace:*",
     "@types/css-tree": "^3.2.0",
     "@types/fontkit": "^2.0.9",
     "@types/mime-types": "^3.0.1",

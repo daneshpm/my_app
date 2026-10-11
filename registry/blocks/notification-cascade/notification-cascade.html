@@ -7,11 +7,11 @@
     { "id": "message2", "type": "string", "role": "content", "label": "Message 2", "description": "Subtitle of the second banner.", "default": "All checks passed." },
     { "id": "message3", "type": "string", "role": "content", "label": "Message 3", "description": "Subtitle of the third banner.", "default": "4K render done in 92s." },
     { "id": "message4", "type": "string", "role": "content", "label": "Message 4", "description": "Subtitle of the fourth banner.", "default": "Published to the catalog." },
-    { "id": "appName", "type": "string", "role": "content", "label": "App name", "description": "Name of the brand this video promotes, credited in the corner of every banner. Use the real name of that brand.", "portrays": ["subject_name"], "default": "HyperFrames" },
+    { "id": "appName", "type": "string", "role": "content", "label": "App name", "description": "Name of the brand this video promotes, credited in the corner of every banner. Use the real name of that brand.", "portrays": ["subject_name"], "default": "Tagreel" },
     { "id": "headlineTop", "type": "string", "role": "content", "label": "End-card line 1", "description": "First line of the closing card.", "default": "SHIP VIDEO" },
     { "id": "headlineAccent", "type": "string", "role": "content", "label": "End-card line 2", "description": "Accented second line of the closing card.", "default": "FROM HTML" },
-    { "id": "footerText", "type": "string", "role": "content", "label": "End-card footer", "description": "Domain of the brand this video promotes, under the end-card headline. Use the real domain, or a call to action when no domain fits.", "portrays": ["subject_domain"], "default": "hyperframes.heygen.com" },
-    { "id": "brandLogo", "type": "image", "role": "content", "label": "Brand logo", "description": "Transparent mark of the brand this video promotes, centered on the closing card.", "portrays": ["subject_logo"], "default": "assets/hyperframes-logo-white.svg" }
+    { "id": "footerText", "type": "string", "role": "content", "label": "End-card footer", "description": "Domain of the brand this video promotes, under the end-card headline. Use the real domain, or a call to action when no domain fits.", "portrays": ["subject_domain"], "default": "acme.example" },
+    { "id": "brandLogo", "type": "image", "role": "content", "label": "Brand logo", "description": "Transparent mark of the brand this video promotes, centered on the closing card.", "portrays": ["subject_logo"], "default": "assets/tagreel-logo-white.svg" }
   ]'
 >
   <head>
@@ -300,7 +300,7 @@
             <div class="nc-title">New render</div>
             <div class="nc-subtitle">Launch video is ready.</div>
             <div class="nc-now">NOW</div>
-            <div class="nc-credit">HyperFrames</div>
+            <div class="nc-credit">Tagreel</div>
           </div>
           <div class="nc-banner" id="nc-banner-2" style="top: 1260px">
             <div class="nc-icon">
@@ -314,7 +314,7 @@
             <div class="nc-title">New render</div>
             <div class="nc-subtitle">All checks passed.</div>
             <div class="nc-now">NOW</div>
-            <div class="nc-credit">HyperFrames</div>
+            <div class="nc-credit">Tagreel</div>
           </div>
           <div class="nc-banner" id="nc-banner-3" style="top: 1260px">
             <div class="nc-icon">
@@ -328,7 +328,7 @@
             <div class="nc-title">New render</div>
             <div class="nc-subtitle">4K render done in 92s.</div>
             <div class="nc-now">NOW</div>
-            <div class="nc-credit">HyperFrames</div>
+            <div class="nc-credit">Tagreel</div>
           </div>
           <div class="nc-banner" id="nc-banner-4" style="top: 1260px">
             <div class="nc-icon">
@@ -342,7 +342,7 @@
             <div class="nc-title">New render</div>
             <div class="nc-subtitle">Published to the catalog.</div>
             <div class="nc-now">NOW</div>
-            <div class="nc-credit">HyperFrames</div>
+            <div class="nc-credit">Tagreel</div>
           </div>
         </div>
       </section>
@@ -362,10 +362,10 @@
           <img
             id="nc-ec-mark"
             data-var-src="brandLogo"
-            src="assets/hyperframes-logo-white.svg"
+            src="assets/tagreel-logo-white.svg"
             alt="Brand logo"
           />
-          <div id="nc-ec-footer">hyperframes.heygen.com</div>
+          <div id="nc-ec-footer">acme.example</div>
         </div>
       </section>
 
@@ -381,8 +381,8 @@
 
         /* -------- variables: every override falls back to its declared default -------- */
         var vars =
-          window.__hyperframes && typeof window.__hyperframes.getVariables === "function"
-            ? window.__hyperframes.getVariables()
+          window.__tagreel && typeof window.__tagreel.getVariables === "function"
+            ? window.__tagreel.getVariables()
             : {};
 
         function text(value, fallback) {
@@ -399,7 +399,7 @@
         }
 
         setAll(".nc-title", text(vars.notifTitle, "New render"));
-        setAll(".nc-credit", text(vars.appName, "HyperFrames"));
+        setAll(".nc-credit", text(vars.appName, "Tagreel"));
         var messages = [
           text(vars.message1, "Launch video is ready."),
           text(vars.message2, "All checks passed."),
@@ -414,10 +414,7 @@
           vars.headlineAccent,
           "FROM HTML",
         );
-        document.getElementById("nc-ec-footer").textContent = text(
-          vars.footerText,
-          "hyperframes.heygen.com",
-        );
+        document.getElementById("nc-ec-footer").textContent = text(vars.footerText, "acme.example");
 
         /* -------- timeline: every decisive number is measured from the reference -------- */
         window.__timelines = window.__timelines || {};

@@ -31,7 +31,7 @@ import {
   type PlanV2ArtifactPublisher,
   type PlanV2Manifest,
   publishPlanV2FromExecutionPlan,
-} from "@hyperframes/producer/distributed";
+} from "@tagreel/producer/distributed";
 import { recomputePlanHashFromPlanDir } from "../../producer/src/services/render/stages/freezePlan.js";
 import { asStorage, FakeGcs } from "./__fixtures__/fakeGcs.js";
 import type { AssembleEvent, CloudRunEvent, PlanEvent, RenderChunkEvent } from "./events.js";
@@ -404,8 +404,8 @@ describe("dispatch", () => {
 describe("bucket allowlist guard", () => {
   it("throws GCS_URI_NOT_ALLOWED for an off-bucket URI", async () => {
     const gcs = new FakeGcs();
-    const prev = process.env.HYPERFRAMES_RENDER_BUCKET;
-    process.env.HYPERFRAMES_RENDER_BUCKET = "allowed-bucket";
+    const prev = process.env.TAGREEL_RENDER_BUCKET;
+    process.env.TAGREEL_RENDER_BUCKET = "allowed-bucket";
     try {
       const event: RenderChunkEvent = {
         Action: "renderChunk",
@@ -418,14 +418,14 @@ describe("bucket allowlist guard", () => {
       };
       await expect(dispatch(event, depsWith(gcs))).rejects.toThrow(/GCS_URI_NOT_ALLOWED/);
     } finally {
-      if (prev === undefined) delete process.env.HYPERFRAMES_RENDER_BUCKET;
-      else process.env.HYPERFRAMES_RENDER_BUCKET = prev;
+      if (prev === undefined) delete process.env.TAGREEL_RENDER_BUCKET;
+      else process.env.TAGREEL_RENDER_BUCKET = prev;
     }
   });
 
   it("checks both v2 manifest and artifact-prefix buckets", async () => {
-    const prev = process.env.HYPERFRAMES_RENDER_BUCKET;
-    process.env.HYPERFRAMES_RENDER_BUCKET = "allowed-bucket";
+    const prev = process.env.TAGREEL_RENDER_BUCKET;
+    process.env.TAGREEL_RENDER_BUCKET = "allowed-bucket";
     try {
       const event: RenderChunkEvent = {
         Action: "renderChunk",
@@ -439,16 +439,16 @@ describe("bucket allowlist guard", () => {
       };
       await expect(dispatch(event, depsWith(new FakeGcs()))).rejects.toThrow(/GCS_URI_NOT_ALLOWED/);
     } finally {
-      if (prev === undefined) delete process.env.HYPERFRAMES_RENDER_BUCKET;
-      else process.env.HYPERFRAMES_RENDER_BUCKET = prev;
+      if (prev === undefined) delete process.env.TAGREEL_RENDER_BUCKET;
+      else process.env.TAGREEL_RENDER_BUCKET = prev;
     }
   });
 
-  it('treats HYPERFRAMES_RENDER_BUCKET="*" as an explicit opt-out (off-bucket allowed)', async () => {
+  it('treats TAGREEL_RENDER_BUCKET="*" as an explicit opt-out (off-bucket allowed)', async () => {
     const gcs = new FakeGcs();
     await seedPlanTar(gcs, "gs://any-bucket/renders/r1/plan.tar.gz", PLAN_HASH);
-    const prev = process.env.HYPERFRAMES_RENDER_BUCKET;
-    process.env.HYPERFRAMES_RENDER_BUCKET = "*";
+    const prev = process.env.TAGREEL_RENDER_BUCKET;
+    process.env.TAGREEL_RENDER_BUCKET = "*";
     try {
       const event: RenderChunkEvent = {
         Action: "renderChunk",
@@ -462,8 +462,8 @@ describe("bucket allowlist guard", () => {
       const res = await dispatch(event, depsWith(gcs));
       expect(res.Action).toBe("renderChunk");
     } finally {
-      if (prev === undefined) delete process.env.HYPERFRAMES_RENDER_BUCKET;
-      else process.env.HYPERFRAMES_RENDER_BUCKET = prev;
+      if (prev === undefined) delete process.env.TAGREEL_RENDER_BUCKET;
+      else process.env.TAGREEL_RENDER_BUCKET = prev;
     }
   });
 });

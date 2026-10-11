@@ -15,8 +15,8 @@ import {
 import { FlatSelectRow, FlatSlider } from "./propertyPanelFlatPrimitives";
 import { FlatToggle } from "./propertyPanelFlatToggle";
 import { AutomationToggle } from "./propertyPanelFxControls";
-import { RATE_RANGE } from "@hyperframes/core/audio-automation";
-import { type SpeedPresetId } from "@hyperframes/core/speed-ramp";
+import { RATE_RANGE } from "@tagreel/core/audio-automation";
+import { type SpeedPresetId } from "@tagreel/core/speed-ramp";
 import { SPEED_PRESET_OPTIONS, type RateBinding } from "./useVolumeAutomation";
 import { fromUnit, toUnit } from "../../player/components/automationLaneGeometry";
 import {
@@ -26,14 +26,14 @@ import {
   formatAudioGain,
   audioGainToFaderPosition,
   audioGainToText,
-} from "@hyperframes/core/audio-gain";
+} from "@tagreel/core/audio-gain";
 import {
   HF_AUDIO_FADE_IN_DATA_KEY,
   HF_AUDIO_FADE_OUT_DATA_KEY,
   clampFadesToDuration,
   formatFadeSeconds,
   readFadeSeconds,
-} from "@hyperframes/core/audio-fade";
+} from "@tagreel/core/audio-fade";
 import { parseGainInput, parseRateInput, parseSecondsInput } from "./audioInspectorInput";
 import type { CommitDomAttributeBatch } from "../../hooks/domEditCommitTypes";
 import { commitCutout, commitHasAudioToggle, commitMutedToggle } from "./mediaAudioEdits";

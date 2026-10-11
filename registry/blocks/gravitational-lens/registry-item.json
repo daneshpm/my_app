@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "gravitational-lens",
-  "type": "hyperframes:block",
+  "type": "tagreel:block",
   "title": "Gravitational Lens",
   "description": "Shader transition with gravitational lensing distortion",
   "tags": ["transition", "shader"],
@@ -14,11 +14,7 @@
     {
       "path": "gravitational-lens.html",
       "target": "compositions/gravitational-lens.html",
-      "type": "hyperframes:composition"
+      "type": "tagreel:composition"
     }
-  ],
-  "preview": {
-    "video": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/gravitational-lens.mp4",
-    "poster": "https://static.heygen.ai/hyperframes-oss/docs/images/catalog/blocks/gravitational-lens.png"
-  }
+  ]
 }

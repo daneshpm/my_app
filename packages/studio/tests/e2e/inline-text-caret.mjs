@@ -25,7 +25,7 @@ async function read(page) {
   // A selection change is told to listeners a task later.
   await pause(150);
   const seen = await page.evaluate(() => {
-    const frame = document.querySelector("hyperframes-player").shadowRoot.querySelector("iframe");
+    const frame = document.querySelector("tagreel-player").shadowRoot.querySelector("iframe");
     const doc = frame.contentDocument;
     const selection = doc.getSelection();
     const rects = selection.rangeCount ? [...selection.getRangeAt(0).getClientRects()] : [];
@@ -64,7 +64,7 @@ async function read(page) {
 /** The character before the caret, on Studio's screen: its right edge is where a line's end stands. */
 const charBefore = (page) =>
   page.evaluate(() => {
-    const frame = document.querySelector("hyperframes-player").shadowRoot.querySelector("iframe");
+    const frame = document.querySelector("tagreel-player").shadowRoot.querySelector("iframe");
     const box = frame.getBoundingClientRect();
     const scale = box.width / frame.contentWindow.innerWidth;
     const { anchorNode, anchorOffset } = frame.contentDocument.getSelection();
@@ -78,7 +78,7 @@ const charBefore = (page) =>
 /** Where an element of the composition stands on Studio's screen. */
 const onScreen = (page, selector) =>
   page.evaluate((selector) => {
-    const frame = document.querySelector("hyperframes-player").shadowRoot.querySelector("iframe");
+    const frame = document.querySelector("tagreel-player").shadowRoot.querySelector("iframe");
     const box = frame.getBoundingClientRect();
     const scale = box.width / frame.contentWindow.innerWidth;
     const rect = frame.contentDocument.querySelector(selector).getBoundingClientRect();
@@ -148,7 +148,7 @@ try {
   await page.waitForFunction(
     () =>
       document
-        .querySelector("hyperframes-player")
+        .querySelector("tagreel-player")
         ?.shadowRoot?.querySelector("iframe")
         ?.contentDocument?.querySelector("#body"),
     { timeout: 60_000 },
@@ -273,14 +273,14 @@ try {
     // What the preview showed without this change: the browser's own caret, the drawn one hidden.
     await page.evaluate(() => {
       document.querySelector("[data-inline-text-caret]").style.visibility = "hidden";
-      const frame = document.querySelector("hyperframes-player").shadowRoot.querySelector("iframe");
+      const frame = document.querySelector("tagreel-player").shadowRoot.querySelector("iframe");
       frame.contentDocument.querySelector("#title").style.caretColor = "";
     });
     await page.screenshot({ path: join(EVIDENCE_DIR, "before-caret.png"), clip });
     await page.screenshot({ path: join(EVIDENCE_DIR, "inline-text-caret-title.png") });
   }
   await page.evaluate(() =>
-    document.querySelector("hyperframes-player").shadowRoot.querySelector("iframe").blur(),
+    document.querySelector("tagreel-player").shadowRoot.querySelector("iframe").blur(),
   );
   await page.mouse.click(5, 5);
   await pause(500);

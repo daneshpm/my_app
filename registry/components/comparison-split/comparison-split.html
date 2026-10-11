@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  comparison-split: HyperFrames video primitive (ui-props / holdable / compare)
+  comparison-split: Tagreel video primitive (ui-props / holdable / compare)
 
   Concept: two full-bleed treatments share one frame. The muted before panel
   stays fully visible as the base, while the vivid after panel wipes over it
@@ -45,7 +45,7 @@
   the cqw/cqh container, and has no data-width or data-height. The composition
   id is the hardcoded literal "comparison-split" because mount flattening
   strips data-composition-id from the live root. Variables come from
-  window.__hyperframes.getVariables(), which merges declared defaults with
+  window.__tagreel.getVariables(), which merges declared defaults with
   per-instance host overrides.
 -->
 <html
@@ -368,8 +368,8 @@
             // EDIT ZONE: declarations above and registry metadata change
             // together. This API owns defaults plus per-instance overrides.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var rawSplit = vars.split == null ? 50 : Number(vars.split);

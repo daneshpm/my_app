@@ -1,5 +1,5 @@
 import { memo } from "react";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import { Film } from "../../icons/SystemIcons";
 import { Section } from "./propertyPanelPrimitives";
 import type { GsapAnimationEditCallbacks } from "./gsapAnimationCallbacks";

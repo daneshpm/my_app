@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "iris-reveal",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Iris Reveal",
   "description": "A circle clip-path opens from an authored origin revealing state B over state A in one confident pass, then holds on B. Classic register dims and desaturates the before state so the after state lands in full color; a thin accent rim rides the iris edge. Callers fill the named before/after slot panels; token-styled defaults render when a slot is left empty.",
   "tags": ["transition", "iris", "circle-reveal", "clip-path", "bridge", "slots"],
@@ -14,7 +14,7 @@
     {
       "path": "iris-reveal.html",
       "target": "compositions/components/iris-reveal.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ],
   "variables": [

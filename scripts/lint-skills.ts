@@ -264,7 +264,7 @@ function lintInlinePatterns(file: string, stripped: string): Violation[] {
 //
 // A skill doc that snapshots part of the component registry rots in silence:
 // nothing fails when an item is renamed or dropped, and the agent that follows
-// the doc runs `hyperframes add <gone>` and dies. A doc opts into this check
+// the doc runs `tagreel add <gone>` and dies. A doc opts into this check
 // with a marker line, after which every registry-item-shaped identifier in a
 // backtick span must name a real item in registry/registry.json:
 //

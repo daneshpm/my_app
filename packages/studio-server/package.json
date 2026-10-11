@@ -1,9 +1,9 @@
 {
-  "name": "@hyperframes/studio-server",
+  "name": "@tagreel/studio-server",
   "version": "0.8.137",
   "repository": {
     "type": "git",
-    "url": "https://github.com/heygen-com/hyperframes",
+    "url": "https://github.com/daneshpm/my_app",
     "directory": "packages/studio-server"
   },
   "files": [
@@ -174,8 +174,8 @@
     "prepublishOnly": "echo skip"
   },
   "dependencies": {
-    "@hyperframes/core": "workspace:*",
-    "@hyperframes/parsers": "workspace:*",
+    "@tagreel/core": "workspace:*",
+    "@tagreel/parsers": "workspace:*",
     "hono": "^4.6.0",
     "linkedom": "^0.18.12",
     "postcss": "^8.5.8",

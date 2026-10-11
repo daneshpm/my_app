@@ -1,6 +1,6 @@
 import { buildProjectApiPath } from "../utils/projectRouting";
 import { useCallback } from "react";
-import { findUnsafeDomPatchValues } from "@hyperframes/core/studio-api/finite-mutation";
+import { findUnsafeDomPatchValues } from "@tagreel/core/studio-api/finite-mutation";
 import { FONT_EXT } from "../utils/mediaTypes";
 import { primaryFontFamilyValue } from "../utils/studioFontHelpers";
 import { StudioSaveHttpError, trackStudioSaveFailure } from "../utils/studioSaveDiagnostics";

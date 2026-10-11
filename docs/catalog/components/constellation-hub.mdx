@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Motion Scenes","badge":"Stable","codeLines":427}}
   attribution={{"path":"registry/components/constellation-hub","tags":["motion-primitive","feature-tour","hub","nodes","connector","reveal"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/constellation-hub/constellation-hub.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/constellation-hub/constellation-hub.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,7 +25,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html constellation-hub.html
 <!doctype html>
 <!--
-  constellation-hub: HyperFrames video primitive (feature tour / exhibit)
+  constellation-hub: Tagreel video primitive (feature tour / exhibit)
 
   Feature nodes form an orbit around one fixed hub. Each connector draws
   from the hub to its node in narration order while that node brightens,
@@ -233,8 +233,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             var nodesLayer = root.querySelector(".ch-nodes");
             var hub = root.querySelector(".ch-hub");
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             var hubLabel = vars.hub_label == null ? "Product" : String(vars.hub_label).trim();
@@ -456,7 +456,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add constellation-hub" item="constellation-hub" />
+<InstallCommand command="npx tagreel add constellation-hub" item="constellation-hub" />
 
 That writes one file: `compositions/components/constellation-hub.html`.
 

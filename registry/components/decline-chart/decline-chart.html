@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  decline-chart: HyperFrames video primitive
+  decline-chart: Tagreel video primitive
 
   One metric line draws downward while its numeric value counts down and the
   ambient background dims and desaturates from the same progress value.
@@ -198,8 +198,8 @@
             var endpoint = root.querySelector(".dc-endpoint");
             var lineLength = line.getTotalLength();
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
 
             line.style.strokeDasharray = lineLength + " " + lineLength;

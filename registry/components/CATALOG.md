@@ -6,7 +6,7 @@ How to use this file, frame worker:
 2. Mount via `data-composition-src` on a `class="clip"` div pointing at the installed component HTML, with `data-start`, `data-duration`, `data-track-index`.
 3. Pass variables as JSON in `data-variable-values` on the clip. Every variable has a default; pass only what you change.
 4. Slots: units that show media or custom content expose named `data-slot` elements (filled in your installed copy) or host-page `<template data-slot="...">` elements (browser-device-stage). Each unit's README documents its exact slot mechanism.
-5. The accent enum is shared: `green` rides `--brand`, `blue` rides `--accent`, `violet` rides `--accent-2`. Theme tokens do the coloring; never hardcode brand colors into a mount. Accent marks ONE element per composition and never a placeholder: stand-in screens, cards, avatars and chart series are monochrome, built from alpha steps of the ink. See `skills/hyperframes-registry/references/placeholder-material.md`.
+5. The accent enum is shared: `green` rides `--brand`, `blue` rides `--accent`, `violet` rides `--accent-2`. Theme tokens do the coloring; never hardcode brand colors into a mount. Accent marks ONE element per composition and never a placeholder: stand-in screens, cards, avatars and chart series are monochrome, built from alpha steps of the ink. See `skills/tagreel-registry/references/placeholder-material.md`.
 6. `exit` defaults to `none` everywhere: primitives hold their final frame and the frame root owns transitions. Opt into `fade` or `up` only when the frame itself must depart.
 7. `cues` (where present) is comma-separated seconds from mount start for each beat of the unit's sequence; empty keeps the authored rhythm. Use it to lock reveals to narration.
 8. All units are elastic: no fixed dimensions, they fill the host clip's box. Extra duration becomes HOLD, never a time-stretched animation.
@@ -31,7 +31,7 @@ what: A deterministic hacker-style reveal that cycles fixed glyph rows and locks
 use_when: A product name, feature name, or technical claim should resolve with a terminal or engineering flavor.
 avoid_when: The brand voice is calm or premium; the glyph churn reads noisy against quiet scenes (use titlecard-lockup or per-word-rise).
 pairs_with: titlecard-lockup, cut-the-curve.
-variables: text (string, default "HYPERFRAMES"): target string. style (enum terminal or clean, default terminal): framed terminal or bare text. accent (enum green, blue, violet, default green): text, prefix, and frame color. exit (enum none, fade, up, default none).
+variables: text (string, default "TAGREEL"): target string. style (enum terminal or clean, default terminal): framed terminal or bare text. accent (enum green, blue, violet, default green): text, prefix, and frame color. exit (enum none, fade, up, default none).
 
 ### kinetic-type-swap
 
@@ -96,7 +96,7 @@ what: The calm breather titlecard: an optional mono kicker fades up, the wordmar
 use_when: The film needs a breath: the opening card, a chapter break, or a name reveal where low motion IS the statement.
 avoid_when: The scene needs energy or a second development phase; this unit refuses spring chains by design (use per-word-rise or scramble-reveal).
 pairs_with: scramble-reveal, logo-brand-close, titlecard-lockup.
-variables: wordmark (string, default "HYPERFRAMES"): the centered display line. label (string, default "WRITE HTML. RENDER VIDEO."): mono caption under the rule; empty hides. kicker (string, default "INTRODUCING"): small mono label above; empty hides. rule (enum show or hide, default show): the hairline rule and its draw. accent (enum green, blue, violet, default green): carried by the rule. exit (enum none, fade, up, default none).
+variables: wordmark (string, default "TAGREEL"): the centered display line. label (string, default "WRITE HTML. RENDER VIDEO."): mono caption under the rule; empty hides. kicker (string, default "INTRODUCING"): small mono label above; empty hides. rule (enum show or hide, default show): the hairline rule and its draw. accent (enum green, blue, violet, default green): carried by the rule. exit (enum none, fade, up, default none).
 
 ### svg-stroke-trace
 
@@ -134,7 +134,7 @@ what: Wordmark letters cascade left to right into a centered lockup, an optional
 use_when: The final frame is the brand: name, tagline, URL, held to the last frame.
 avoid_when: The ending should push a button-press or signup; that is cta-close, which is action, not identity.
 pairs_with: cta-close, titlecard-lockup, count-up.
-variables: wordmark (string, default "HYPERFRAMES"): letters cascade individually; a brand period is appended in accent. tagline (string, default "Write HTML. Render video."): settles beneath; empty hides. url (string, default "hyperframes.heygen.com"): mono line below; empty hides. accent (enum green, blue, violet, default green): colors the brand period. exit (enum none, fade, up, default none): a film ender, keep none.
+variables: wordmark (string, default "TAGREEL"): letters cascade individually; a brand period is appended in accent. tagline (string, default "Write HTML. Render video."): settles beneath; empty hides. url (string, default "acme.example"): mono line below; empty hides. accent (enum green, blue, violet, default green): colors the brand period. exit (enum none, fade, up, default none): a film ender, keep none.
 
 ## Feature tour
 

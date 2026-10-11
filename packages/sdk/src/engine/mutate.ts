@@ -17,7 +17,7 @@ import type {
   JsonPatchOp,
 } from "../types.js";
 import type { ParsedDocument } from "./model.js";
-import { MEDIA_LINK_ATTR, linkScopeOf } from "@hyperframes/core/media-link";
+import { MEDIA_LINK_ATTR, linkScopeOf } from "@tagreel/core/media-link";
 import { idsToUnlink, linkedPartnerIds } from "./linkedTiming.js";
 import {
   resolveScoped,
@@ -55,11 +55,11 @@ import {
   patchRemove,
 } from "./patches.js";
 import { upsertCssRule } from "./cssWriter.js";
-import { mintHfId, EXCLUDED_TAGS } from "@hyperframes/core/hf-ids";
-import { EDIT_BASE_X_ATTR, EDIT_BASE_Y_ATTR } from "@hyperframes/core/runtime/position-edits";
-import { readClipTiming, writeClipTiming } from "@hyperframes/core/composition-contract";
-import { parseGsapScriptAcornForWrite } from "@hyperframes/core/gsap-parser-acorn";
-import type { GsapAnimation } from "@hyperframes/core/gsap-parser";
+import { mintHfId, EXCLUDED_TAGS } from "@tagreel/core/hf-ids";
+import { EDIT_BASE_X_ATTR, EDIT_BASE_Y_ATTR } from "@tagreel/core/runtime/position-edits";
+import { readClipTiming, writeClipTiming } from "@tagreel/core/composition-contract";
+import { parseGsapScriptAcornForWrite } from "@tagreel/core/gsap-parser-acorn";
+import type { GsapAnimation } from "@tagreel/core/gsap-parser";
 import {
   addAnimationToScript,
   addAnimationWithKeyframesToScript,
@@ -83,7 +83,7 @@ import {
   clipQueryRoot,
   clipTweenMatcher,
   hasExplicitTime,
-} from "@hyperframes/core/gsap-writer-acorn";
+} from "@tagreel/core/gsap-writer-acorn";
 import { deriveKeyframeBackfillDefaults } from "./keyframeBackfill.js";
 import {
   readVariableDefault,
@@ -92,16 +92,13 @@ import {
   writeVariableDeclaration,
   removeVariableDeclarationEntry,
 } from "./variableModel.js";
-import {
-  isCompositionVariable,
-  isScalarVariableValue as isScalar,
-} from "@hyperframes/core/variables";
-import type { CompositionVariable } from "@hyperframes/core/variables";
+import { isCompositionVariable, isScalarVariableValue as isScalar } from "@tagreel/core/variables";
+import type { CompositionVariable } from "@tagreel/core/variables";
 import {
   URI_BEARING_ATTRS,
   DANGEROUS_URI_SCHEMES,
   DANGEROUS_DATA_URI,
-} from "@hyperframes/core/html-attr-safety";
+} from "@tagreel/core/html-attr-safety";
 
 export interface MutationResult {
   forward: JsonPatchOp[];
@@ -480,7 +477,7 @@ function handleMoveElement(
   y: number,
 ): MutationResult {
   // HF elements are positioned via data-x / data-y (parsed by htmlParser.ts,
-  // emitted by hyperframes generator). CSS left/top is not the convention.
+  // emitted by tagreel generator). CSS left/top is not the convention.
   //
   // The pre-edit values are captured once per element into
   // data-hf-edit-base-x/y. The runtime (core runtime/positionEdits.ts) renders

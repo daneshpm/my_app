@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { pointsIn, replaceRange, retimeRange } from "./automationLaneSelection";
-import { sampleAutomationLane, VOLUME_RANGE } from "@hyperframes/core/audio-automation";
-import type { HfAutomationLane } from "@hyperframes/core/audio-automation";
+import { sampleAutomationLane, VOLUME_RANGE } from "@tagreel/core/audio-automation";
+import type { HfAutomationLane } from "@tagreel/core/audio-automation";
 
 const ramp: HfAutomationLane = {
   target: "volume",

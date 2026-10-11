@@ -39,7 +39,7 @@ function rawFnv(input: string): number {
  * genuinely random draw: measured at ~4 failures per 1500 runs for the share
  * bound (the pct=50 case has a binomial SD of 0.354pp, so 1pp is only 2.8
  * sigma) and 1 per 1000 for chi-square by its own construction. That made the
- * whole @hyperframes/core suite flaky for unrelated PRs. Seeded means the
+ * whole @tagreel/core suite flaky for unrelated PRs. Seeded means the
  * population is fixed, so a failure is a real change in the hash — which is
  * the only thing these tests are for.
  */
@@ -313,7 +313,7 @@ describe("registry", () => {
   });
 
   // Deliberately NOT `overdueCanaries()` with the ambient date. That assertion
-  // reads wall-clock time, so it turns the entire @hyperframes/core suite red
+  // reads wall-clock time, so it turns the entire @tagreel/core suite red
   // on a calendar date for every unrelated PR — a broken build nobody caused
   // and whose fix is unrelated to the change under test.
   //
@@ -341,8 +341,8 @@ describe("registry", () => {
   });
 });
 
-describe("PostHog flag-shaped properties", () => {
-  it("namespaces keys so a canary can never alias a real PostHog flag", () => {
+describe("analytics flag-shaped properties", () => {
+  it("namespaces keys so a canary can never alias a real analytics flag", () => {
     // A real flag namespace already exists in this project, owned by the web
     // app (e.g. `enable-chat-tab`). Without the `canary-` infix a canary named
     // after a real flag would fight it for the same property.
@@ -364,7 +364,7 @@ describe("PostHog flag-shaped properties", () => {
     });
   });
 
-  it("uses string values, matching how PostHog records boolean flags", () => {
+  it("uses string values, matching how analytics records boolean flags", () => {
     const props = canaryFeatureProperties([{ name: "a", enabled: true }]);
     expect(typeof props["$feature/canary-a"]).toBe("string");
   });

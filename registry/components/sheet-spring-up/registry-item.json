@@ -1,7 +1,7 @@
 {
-  "$schema": "https://hyperframes.heygen.com/schema/registry-item.json",
+  "$schema": "https://raw.githubusercontent.com/daneshpm/my_app/main/docs/schema/registry-item.json",
   "name": "sheet-spring-up",
-  "type": "hyperframes:component",
+  "type": "tagreel:component",
   "title": "Sheet Spring-Up",
   "description": "A bottom sheet rushes up from below the frame on a real spring sampled frame by frame from reference footage, overshooting its resting place and settling back without an approximated ease",
   "tags": ["video-primitive", "sheet", "spring", "mock-ui", "overlay"],
@@ -48,7 +48,7 @@
     {
       "path": "sheet-spring-up.html",
       "target": "compositions/components/sheet-spring-up.html",
-      "type": "hyperframes:snippet"
+      "type": "tagreel:snippet"
     }
   ]
 }

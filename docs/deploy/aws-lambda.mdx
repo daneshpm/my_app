@@ -6,9 +6,9 @@ description: "Deploy distributed my_app rendering to AWS Lambda and drive render
 my_app ships a first-class AWS Lambda deployment: one Lambda function fronts a Step Functions standard workflow that fans renders out across many parallel chunk workers, with intermediate artifacts in S3. End-to-end is three commands once your AWS credentials are configured.
 
 ```bash
-hyperframes lambda deploy
-hyperframes lambda render ./my-project --width 1920 --height 1080 --wait
-hyperframes lambda destroy
+tagreel lambda deploy
+tagreel lambda render ./my-project --width 1920 --height 1080 --wait
+tagreel lambda destroy
 ```
 
 Templates with [variables](/concepts/variables) work on the same Lambda stack — declare `data-composition-variables` on the composition, then pass values per render with `--variables` or fan a whole batch out with `lambda render-batch`. See the [Templates on Lambda](/deploy/templates-on-lambda) guide for the personalised-render pipeline (single render, batch from JSONL, programmatic SDK) and the 256 KiB Step Functions execution-input cap.
@@ -25,9 +25,9 @@ Templates with [variables](/concepts/variables) work on the same Lambda stack �
 ┌──────────────────────────────────────────────────────────────────┐
 │ One Lambda function (packages/aws-lambda/dist/handler.zip)       │
 │   handler.mjs                                                    │
-│     ├─ Action="plan"        → @hyperframes/producer/distributed  │
-│     ├─ Action="renderChunk" → @hyperframes/producer/distributed  │
-│     └─ Action="assemble"    → @hyperframes/producer/distributed  │
+│     ├─ Action="plan"        → @tagreel/producer/distributed  │
+│     ├─ Action="renderChunk" → @tagreel/producer/distributed  │
+│     └─ Action="assemble"    → @tagreel/producer/distributed  │
 │   bin/ffmpeg                — ffmpeg-static                      │
 │   node_modules/@sparticuz/chromium/ — Lambda-optimised Chromium  │
 └──────────────────────────────────────────────────────────────────┘
@@ -38,27 +38,27 @@ Templates with [variables](/concepts/variables) work on the same Lambda stack �
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-The Lambda handler is a thin dispatch: parse the Step Functions event, download inputs from S3 into `/tmp`, call the OSS primitive from `@hyperframes/producer/distributed`, upload outputs back, return a small JSON result. Everything heavy — capture, encode, audio mix — happens inside the OSS primitives.
+The Lambda handler is a thin dispatch: parse the Step Functions event, download inputs from S3 into `/tmp`, call the OSS primitive from `@tagreel/producer/distributed`, upload outputs back, return a small JSON result. Everything heavy — capture, encode, audio mix — happens inside the OSS primitives.
 
 ## Prerequisites
 
 | Tool | Why | Install |
 |------|-----|---------|
 | AWS credentials | The CLI and the deploy step both call AWS APIs. | Env vars, `~/.aws/credentials`, SSO, or IMDS — any chain the AWS SDK for JavaScript v3 would resolve. |
-| AWS SAM CLI | `hyperframes lambda deploy/destroy` shells out to `sam deploy`/`sam delete`. | [Install guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html) |
+| AWS SAM CLI | `tagreel lambda deploy/destroy` shells out to `sam deploy`/`sam delete`. | [Install guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-sam-cli.html) |
 | `bun` | Used to build `packages/aws-lambda/dist/handler.zip` at deploy time. | `npm install -g bun` or [bun.sh](https://bun.sh) |
-| Lambda adapter | The published CLI loads the AWS adapter only for Lambda commands. | `npm install -g @hyperframes/aws-lambda` alongside the CLI |
-| my_app repo checkout | `lambda deploy` builds the Lambda handler ZIP from source. Adopters who deploy outside a checkout can set `HYPERFRAMES_REPO_ROOT` to point at one. | `git clone https://github.com/heygen-com/hyperframes` |
+| Lambda adapter | The published CLI loads the AWS adapter only for Lambda commands. | `npm install -g @tagreel/aws-lambda` alongside the CLI |
+| my_app repo checkout | `lambda deploy` builds the Lambda handler ZIP from source. Adopters who deploy outside a checkout can set `TAGREEL_REPO_ROOT` to point at one. | `git clone https://github.com/daneshpm/my_app` |
 
 ## Three deployment paths
 
-### Path 1 — `hyperframes lambda` CLI (recommended)
+### Path 1 — `tagreel lambda` CLI (recommended)
 
-The CLI is a thin wrapper around the SAM template + the `@hyperframes/aws-lambda` SDK. For most adopters this is the right starting point.
+The CLI is a thin wrapper around the SAM template + the `@tagreel/aws-lambda` SDK. For most adopters this is the right starting point.
 
 ```bash
-hyperframes lambda deploy \
-  --stack-name=hyperframes-prod \
+tagreel lambda deploy \
+  --stack-name=tagreel-prod \
   --region=us-east-1 \
   --concurrency=8 \
   --memory=10240
@@ -72,22 +72,22 @@ limits and budget.
 After `deploy`, render anything with:
 
 ```bash
-hyperframes lambda render ./my-project --width 1920 --height 1080 --wait
+tagreel lambda render ./my-project --width 1920 --height 1080 --wait
 ```
 
-The `--wait` flag blocks and streams per-chunk progress + accrued cost; drop it to fire-and-forget, then poll with `hyperframes lambda progress <renderId>` on your own cadence.
+The `--wait` flag blocks and streams per-chunk progress + accrued cost; drop it to fire-and-forget, then poll with `tagreel lambda progress <renderId>` on your own cadence.
 
-See the [CLI reference](/packages/cli#hyperframes-lambda) for full flag documentation.
+See the [CLI reference](/packages/cli#tagreel-lambda) for full flag documentation.
 
 #### Pre-staging a project with `sites create`
 
 Re-rendering the same project tree on every `lambda render` call re-tars and re-uploads it each time. For tight inner loops (CI smoke jobs, prompt iteration in a demo flow), pre-stage the project once and reuse the upload:
 
 ```bash
-hyperframes lambda sites create ./my-project
+tagreel lambda sites create ./my-project
 # → Site ID: a1b2c3d4e5f6g7h8 (content-addressed)
 
-hyperframes lambda render ./my-project --site-id=a1b2c3d4e5f6g7h8 \
+tagreel lambda render ./my-project --site-id=a1b2c3d4e5f6g7h8 \
   --width 1920 --height 1080 --wait
 ```
 
@@ -102,7 +102,7 @@ cd packages/aws-lambda
 bun run build:zip                     # produces dist/handler.zip
 cd ../../examples/aws-lambda
 sam deploy \
-  --stack-name=hyperframes-prod \
+  --stack-name=tagreel-prod \
   --region=us-east-1 \
   --resolve-s3 \
   --capabilities CAPABILITY_IAM \
@@ -122,16 +122,16 @@ The SAM template's own default for `ReservedConcurrency` is `-1` (unreserved, ac
 
 ### Path 3 — CDK construct
 
-For users already running CDK, the `@hyperframes/aws-lambda` package exports a `HyperframesRenderStack` L2 construct that emits the same topology as the SAM template:
+For users already running CDK, the `@tagreel/aws-lambda` package exports a `TagreelRenderStack` L2 construct that emits the same topology as the SAM template:
 
 ```ts
 import { App, CfnOutput, Stack } from "aws-cdk-lib";
-import { HyperframesRenderStack } from "@hyperframes/aws-lambda/cdk";
+import { TagreelRenderStack } from "@tagreel/aws-lambda/cdk";
 
 const app = new App();
 const stack = new Stack(app, "MyApp");
-const render = new HyperframesRenderStack(stack, "Render", {
-  projectName: "hyperframes",
+const render = new TagreelRenderStack(stack, "Render", {
+  projectName: "tagreel",
   lambdaMemoryMb: 10240,
   reservedConcurrency: 8,
   chromeSource: "sparticuz",
@@ -141,7 +141,7 @@ new CfnOutput(stack, "RenderBucketName", { value: render.bucket.bucketName });
 new CfnOutput(stack, "StateMachineArn", { value: render.stateMachine.stateMachineArn });
 ```
 
-`aws-cdk-lib` and `constructs` are declared as **optional peer dependencies** of `@hyperframes/aws-lambda`, so consumers who only need the SDK don't pay the CDK import cost.
+`aws-cdk-lib` and `constructs` are declared as **optional peer dependencies** of `@tagreel/aws-lambda`, so consumers who only need the SDK don't pay the CDK import cost.
 
 The construct exposes `.bucket`, `.renderFunction`, and `.stateMachine` so you can wire dashboards, SNS topics, or other AWS resources alongside it without re-deriving ARNs.
 
@@ -151,29 +151,29 @@ The CLI ships a built-in IAM bootstrap to avoid the "User is not authorized to p
 
 ```bash
 # Print an inline policy doc to attach to the IAM user that runs the CLI.
-hyperframes lambda policies user
+tagreel lambda policies user
 
 # Print { TrustRelationship, InlinePolicy } for a CloudFormation service role.
-hyperframes lambda policies role
+tagreel lambda policies role
 
 # Validate a checked-in policy still covers the CLI's needs (exit non-zero on missing).
-hyperframes lambda policies validate ./infra/iam/hyperframes-deploy.json
+tagreel lambda policies validate ./infra/iam/tagreel-deploy.json
 ```
 
 The generated documents grant `Resource: "*"` for the CLI's required action set. After your first successful deploy you can narrow `Resource` to the deployed ARNs — predictable per the CloudFormation outputs above. Adopters running the CLI in CI typically check the policy doc into source control and run `policies validate` as a pre-deploy step to catch drift.
 
 ## Cost shape
 
-Lambda renders are billed by GB-seconds (Lambda billed duration × configured memory) plus a tiny per-state-transition fee for Step Functions standard workflows. `hyperframes lambda progress` exposes the running tally:
+Lambda renders are billed by GB-seconds (Lambda billed duration × configured memory) plus a tiny per-state-transition fee for Step Functions standard workflows. `tagreel lambda progress` exposes the running tally:
 
 ```bash
-hyperframes lambda progress my-render-id
+tagreel lambda progress my-render-id
 # Status:    SUCCEEDED
 # Progress:  100%
 # Frames:    480 / 480
 # Lambdas:   5
 # Cost:      $0.0214 (Lambda $0.0210 + SFN $0.0004)
-# Output:    s3://hyperframes-renders/.../output.mp4
+# Output:    s3://tagreel-renders/.../output.mp4
 ```
 
 The cost number is an estimate: Lambda duration comes from the handler result,
@@ -187,11 +187,11 @@ Pass the same `--stack-name` you used the first time. SAM is idempotent — re-r
 
 ### `User is not authorized to perform iam:CreateRole`
 
-The IAM credential running `lambda deploy` doesn't have permission to create the service role CloudFormation needs. Run `hyperframes lambda policies user` and attach the printed policy to your IAM user (or take the `policies role` output and have your admin create a deploy role).
+The IAM credential running `lambda deploy` doesn't have permission to create the service role CloudFormation needs. Run `tagreel lambda policies user` and attach the printed policy to your IAM user (or take the `policies role` output and have your admin create a deploy role).
 
 ### `Lambda function failed: PLAN_HASH_MISMATCH`
 
-Step Functions invoked a `renderChunk` with a plan hash that didn't match the planDir on S3. Almost always means the producer version differs between the local `plan()` build and the deployed Lambda ZIP. Re-run `hyperframes lambda deploy` (which rebuilds the ZIP) and re-render.
+Step Functions invoked a `renderChunk` with a plan hash that didn't match the planDir on S3. Almost always means the producer version differs between the local `plan()` build and the deployed Lambda ZIP. Re-run `tagreel lambda deploy` (which rebuilds the ZIP) and re-render.
 
 ### `Lambda function failed: BROWSER_GPU_NOT_SOFTWARE`
 
@@ -199,24 +199,24 @@ The handler launched Chromium but the runtime probe found a non-SwiftShader GL b
 
 ```bash
 bun run --cwd packages/aws-lambda build:zip
-hyperframes lambda deploy --stack-name=<your-stack>
+tagreel lambda deploy --stack-name=<your-stack>
 ```
 
 The build pipeline pins `@sparticuz/chromium` + the Chrome flags (`--use-gl=swiftshader --use-angle=swiftshader`) so a fresh deploy almost always resolves this. If it persists, your stack's Lambda function is pointing at a stale handler ZIP from a previous deploy — `lambda deploy` always rebuilds, so re-running unsticks it.
 
 ### Render seems stuck at `RUNNING`
 
-Most often a Lambda cold-start chain on a many-chunk render. The Map state's reserved concurrency caps how many chunks can run in parallel — if you set `--concurrency=4` and your render has 16 chunks, the state machine processes them in batches of 4. `hyperframes lambda progress <id>` shows how many invocations are in flight.
+Most often a Lambda cold-start chain on a many-chunk render. The Map state's reserved concurrency caps how many chunks can run in parallel — if you set `--concurrency=4` and your render has 16 chunks, the state machine processes them in batches of 4. `tagreel lambda progress <id>` shows how many invocations are in flight.
 
 If progress doesn't advance for >10 minutes, check the Step Functions execution in the AWS console — failed Lambda invocations include the typed error name (`FONT_FETCH_FAILED`, `FFMPEG_VERSION_MISMATCH`, etc.) which short-circuits the state machine.
 
 ### Tearing down doesn't reclaim S3 storage
 
-The render bucket is created with CloudFormation `Retain` on delete — `hyperframes lambda destroy` (or `sam delete`) tears the function + state machine down but the bucket survives. This is intentional: it protects final-rendered MP4s from being lost when you re-deploy. To fully reclaim storage, empty + delete the bucket via the AWS console / `aws s3 rb`.
+The render bucket is created with CloudFormation `Retain` on delete — `tagreel lambda destroy` (or `sam delete`) tears the function + state machine down but the bucket survives. This is intentional: it protects final-rendered MP4s from being lost when you re-deploy. To fully reclaim storage, empty + delete the bucket via the AWS console / `aws s3 rb`.
 
 ## Current limits
 
-- There is no completion webhook. Poll with `hyperframes lambda progress` or
+- There is no completion webhook. Poll with `tagreel lambda progress` or
   watch the Step Functions execution.
 - There is no Lambda-specific composition-discovery verb. Point
   `lambda render` at the project directory containing `index.html`.

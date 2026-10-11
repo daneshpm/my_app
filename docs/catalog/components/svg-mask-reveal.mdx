@@ -17,7 +17,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
   meta={{"category":"Effects","badge":"Stable","codeLines":316}}
   attribution={{"path":"registry/components/svg-mask-reveal","tags":["effect","svg","mask","wordmark","reveal","exhibit"]}}
   hasCode
-  rawUrl="https://raw.githubusercontent.com/heygen-com/hyperframes/main/registry/components/svg-mask-reveal/svg-mask-reveal.html"
+  rawUrl="https://raw.githubusercontent.com/daneshpm/my_app/main/registry/components/svg-mask-reveal/svg-mask-reveal.html"
 >
 
 <CatalogSlot slot="code">
@@ -25,14 +25,14 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 ```html svg-mask-reveal.html
 <!doctype html>
 <!--
-  svg-mask-reveal -- HyperFrames video primitive (effects / burst / exhibit)
+  svg-mask-reveal -- Tagreel video primitive (effects / burst / exhibit)
 
   Concept: token-colored media is visible only through an SVG wordmark mask.
   A soft alpha band crosses the mask from left to right, making the wordmark
   act as a window into the fill beneath it. One mechanic, one job: exhibiting
   a wordmark through a vector mask reveal.
 
-  Compiled-from evidence: hyperframes-research-css-masks.md, SvgMaskReveal and
+  Compiled-from evidence: tagreel-research-css-masks.md, SvgMaskReveal and
   "SVG text as mask over image or video". The implementation follows its
   inline SVG, explicit user-space bounds, namespaced fragment IDs, and soft
   reveal geometry guidance.
@@ -269,8 +269,8 @@ import { InstallCommand } from "/snippets/install-command.jsx";
             // EDIT ZONE: declared defaults are merged with per-instance host
             // overrides by the runtime. Missing and zero are distinct here.
             var vars =
-              window.__hyperframes && window.__hyperframes.getVariables
-                ? window.__hyperframes.getVariables()
+              window.__tagreel && window.__tagreel.getVariables
+                ? window.__tagreel.getVariables()
                 : {};
             var textValue = vars.text == null ? "REVEAL" : String(vars.text);
             var progressValue = vars.revealProgress == null ? NaN : Number(vars.revealProgress);
@@ -345,7 +345,7 @@ import { InstallCommand } from "/snippets/install-command.jsx";
 
 <CatalogSlot slot="install">
 
-<InstallCommand command="npx hyperframes add svg-mask-reveal" item="svg-mask-reveal" />
+<InstallCommand command="npx tagreel add svg-mask-reveal" item="svg-mask-reveal" />
 
 That writes one file: `compositions/components/svg-mask-reveal.html`.
 

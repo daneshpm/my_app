@@ -2,7 +2,7 @@
 import { describe, it, expect } from "vitest";
 import * as core from "./index.js";
 
-describe("@hyperframes/core public API exports", () => {
+describe("@tagreel/core public API exports", () => {
   describe("type-related constants and utilities", () => {
     it("exports CANVAS_DIMENSIONS", () => {
       expect(core.CANVAS_DIMENSIONS).toBeDefined();
@@ -65,8 +65,8 @@ describe("@hyperframes/core public API exports", () => {
 
     it("exports resolveResolutionFlagPair — the pair every distributed entrypoint must forward", () => {
       // The single source of truth every distributed adapter reads
-      // (`hyperframes cloudrun render`, `hyperframes lambda render`,
-      // `hyperframes lambda render-batch`). Divergent copies across those
+      // (`tagreel cloudrun render`, `tagreel lambda render`,
+      // `tagreel lambda render-batch`). Divergent copies across those
       // callers is what shipped the portrait-1080p failure this helper
       // exists to prevent (PR #2529). Case-insensitive on the raw input.
       expect(core.resolveResolutionFlagPair("1080p")).toEqual({
@@ -170,10 +170,10 @@ describe("@hyperframes/core public API exports", () => {
   });
 
   describe("generator exports", () => {
-    it("exports hyperframes generator functions", () => {
-      expect(typeof core.generateHyperframesHtml).toBe("function");
+    it("exports tagreel generator functions", () => {
+      expect(typeof core.generateTagreelHtml).toBe("function");
       expect(typeof core.generateGsapTimelineScript).toBe("function");
-      expect(typeof core.generateHyperframesStyles).toBe("function");
+      expect(typeof core.generateTagreelStyles).toBe("function");
     });
   });
 
@@ -189,12 +189,12 @@ describe("@hyperframes/core public API exports", () => {
   });
 
   describe("lint exports", () => {
-    it("exposes lintHyperframeHtml via the @hyperframes/core/lint back-compat stub", async () => {
-      // Lint moved to @hyperframes/lint; core's main entry no longer re-exports
+    it("exposes lintTagreelHtml via the @tagreel/core/lint back-compat stub", async () => {
+      // Lint moved to @tagreel/lint; core's main entry no longer re-exports
       // it (that would cycle through the lint package). The subpath stub keeps
-      // existing @hyperframes/core/lint imports working.
+      // existing @tagreel/core/lint imports working.
       const lint = await import("./lint/index.js");
-      expect(typeof lint.lintHyperframeHtml).toBe("function");
+      expect(typeof lint.lintTagreelHtml).toBe("function");
     });
   });
 
@@ -205,20 +205,20 @@ describe("@hyperframes/core public API exports", () => {
   });
 
   describe("inline-script exports", () => {
-    it("exports hyperframe runtime artifacts", () => {
-      expect(core.HYPERFRAME_RUNTIME_ARTIFACTS).toBeDefined();
-      expect(core.HYPERFRAME_RUNTIME_CONTRACT).toBeDefined();
-      expect(typeof core.loadHyperframeRuntimeSource).toBe("function");
+    it("exports tagreel runtime artifacts", () => {
+      expect(core.TAGREEL_RUNTIME_ARTIFACTS).toBeDefined();
+      expect(core.TAGREEL_RUNTIME_CONTRACT).toBeDefined();
+      expect(typeof core.loadTagreelRuntimeSource).toBe("function");
     });
 
     it("exports runtime contract constants", () => {
-      expect(core.HYPERFRAME_RUNTIME_GLOBALS).toBeDefined();
-      expect(core.HYPERFRAME_BRIDGE_SOURCES).toBeDefined();
-      expect(core.HYPERFRAME_CONTROL_ACTIONS).toBeDefined();
+      expect(core.TAGREEL_RUNTIME_GLOBALS).toBeDefined();
+      expect(core.TAGREEL_BRIDGE_SOURCES).toBeDefined();
+      expect(core.TAGREEL_CONTROL_ACTIONS).toBeDefined();
     });
 
-    it("exports buildHyperframesRuntimeScript", () => {
-      expect(typeof core.buildHyperframesRuntimeScript).toBe("function");
+    it("exports buildTagreelRuntimeScript", () => {
+      expect(typeof core.buildTagreelRuntimeScript).toBe("function");
     });
 
     it("exports MEDIA_VISUAL_STYLE_PROPERTIES", () => {

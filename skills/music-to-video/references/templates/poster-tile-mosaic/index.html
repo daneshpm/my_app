@@ -167,9 +167,7 @@
         var vars = Object.assign(
           {},
           defaults,
-          window.__hyperframes && window.__hyperframes.getVariables
-            ? window.__hyperframes.getVariables()
-            : {},
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {},
         );
         var N = Math.max(2, parseInt(vars.tiles, 10) || 12);
         var BANDS = Math.max(1, parseInt(vars.bands, 10) || 3);

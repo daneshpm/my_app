@@ -303,9 +303,7 @@
         var vars = Object.assign(
           {},
           defaults,
-          window.__tagreel && window.__tagreel.getVariables
-            ? window.__tagreel.getVariables()
-            : {},
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {},
         );
 
         // ── 2. DEFAULT LOGO HALVES (line-art; swap via leftMark / rightMark) ─

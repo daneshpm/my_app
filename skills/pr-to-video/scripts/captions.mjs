@@ -516,9 +516,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
   const sub = process.argv[2];
   if (sub === "build" || sub === undefined) runBuild(process.argv.slice(sub === "build" ? 3 : 2));
   else {
-    console.error(
-      "usage: node captions.mjs build [--storyboard …] [--audio-meta …] [--tagreel .]",
-    );
+    console.error("usage: node captions.mjs build [--storyboard …] [--audio-meta …] [--tagreel .]");
     process.exit(2);
   }
 }

@@ -153,8 +153,7 @@ function runCli(cliEngine) {
       );
     }
     const produced = join(workDir, "transcript.json");
-    if (!existsSync(produced))
-      throw new Error("tagreel transcribe produced no transcript.json");
+    if (!existsSync(produced)) throw new Error("tagreel transcribe produced no transcript.json");
     const tmp = `${outPath}.tmp-${process.pid}`;
     copyFileSync(produced, tmp);
     renameSync(tmp, outPath); // atomic publish

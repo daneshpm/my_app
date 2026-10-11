@@ -69,9 +69,7 @@
     "use strict";
 
     var vars =
-      window.__tagreel && window.__tagreel.getVariables
-        ? window.__tagreel.getVariables()
-        : {};
+      window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
     // Unrecognised overrides return to their declared defaults.
     var lifts = { close: 0.5, standard: 1, far: 1.75 };

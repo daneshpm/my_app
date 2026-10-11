@@ -283,9 +283,7 @@
           easing: "power2.inOut",
         };
         var declared =
-          window.__tagreel && window.__tagreel.getVariables
-            ? window.__tagreel.getVariables()
-            : {};
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
         var vars = Object.assign({}, DEFAULTS, declared);
 
         function clamp(value, lo, hi, fallback) {

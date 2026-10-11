@@ -18,9 +18,7 @@ const { values, positionals } = parseArgs({
 const project = resolve(positionals[0] ?? ".");
 const runs = Number(values.runs);
 if (!Number.isInteger(runs) || runs < 1) throw new Error("--runs must be a positive integer");
-const cli = resolve(
-  values.cli ?? fileURLToPath(new URL("../bin/tagreel.mjs", import.meta.url)),
-);
+const cli = resolve(values.cli ?? fileURLToPath(new URL("../bin/tagreel.mjs", import.meta.url)));
 const env = { ...process.env, CI: "1" };
 if (values["no-telemetry"]) env.TAGREEL_NO_TELEMETRY = "1";
 

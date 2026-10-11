@@ -168,9 +168,7 @@
         var vars = Object.assign(
           {},
           defaults,
-          window.__tagreel && window.__tagreel.getVariables
-            ? window.__tagreel.getVariables()
-            : {},
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {},
         );
 
         // sRGB hex -> linear-light vec3 (the shader works in linear space and

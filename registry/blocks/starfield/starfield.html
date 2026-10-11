@@ -92,9 +92,7 @@
         // Mounted, the runtime strips data-duration off this file's root; the host clip carries it.
         var host = field.closest("[data-composition-id]");
         var vars =
-          window.__tagreel && window.__tagreel.getVariables
-            ? window.__tagreel.getVariables()
-            : {};
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
         var TONES = {
           warm: ["#fff7e0", "#ffe08a"],

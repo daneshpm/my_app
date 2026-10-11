@@ -642,9 +642,7 @@
 
       // Beside this file when mounted; a runtime without assetUrl keeps the plain path.
       const assetUrl = (path) =>
-        typeof __tagreel !== "undefined" && __tagreel.assetUrl
-          ? __tagreel.assetUrl(path)
-          : path;
+        typeof __tagreel !== "undefined" && __tagreel.assetUrl ? __tagreel.assetUrl(path) : path;
       const textureLoader = new THREE.TextureLoader();
       const [photoSurface, photoNormal] = await Promise.all([
         textureLoader.loadAsync(assetUrl("assets/leaf-surface-color.webp")),

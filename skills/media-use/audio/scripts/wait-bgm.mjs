@@ -134,8 +134,7 @@ while (Date.now() - started <= timeoutMs) {
     });
     console.log(`✓ bgm: ready (${bgmPath}, ${size}B)`);
     const generated = { path: bgmPath, type: "bgm", source: "generated", provider: base.provider };
-    for (const anomaly of recordInManifest(tagreelDir, [generated]))
-      console.error(`  ${anomaly}`);
+    for (const anomaly of recordInManifest(tagreelDir, [generated])) console.error(`  ${anomaly}`);
     process.exit(0);
   }
 

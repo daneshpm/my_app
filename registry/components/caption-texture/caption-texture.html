@@ -106,9 +106,7 @@
         window.__timelines = window.__timelines || {};
 
         var vars =
-          window.__tagreel && window.__tagreel.getVariables
-            ? window.__tagreel.getVariables()
-            : {};
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
         var TEXTURE = vars.texture || "lava";
         var TEXTURE_URL = "compositions/components/" + TEXTURE + ".png";
 

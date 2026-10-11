@@ -770,9 +770,7 @@
 
         /* ---- self-preview (not part of the snippet) ----------------------- */
         var vars =
-          window.__tagreel && window.__tagreel.getVariables
-            ? window.__tagreel.getVariables()
-            : {};
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
         var PROFILE = vars.shakeProfile || "handheld-normal-mild";
         var INTENSITY = vars.shakeIntensity === undefined ? 1 : Number(vars.shakeIntensity);
         var FREQUENCY = vars.shakeFrequency === undefined ? 1 : Number(vars.shakeFrequency);

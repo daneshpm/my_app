@@ -63,9 +63,7 @@
         const vars = Object.assign(
           {},
           defaults,
-          window.__tagreel && window.__tagreel.getVariables
-            ? window.__tagreel.getVariables()
-            : {},
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {},
         );
 
         const canvas = document.querySelector(".vfx-canvas");

@@ -76,9 +76,7 @@
     "use strict";
 
     var vars =
-      window.__tagreel && window.__tagreel.getVariables
-        ? window.__tagreel.getVariables()
-        : {};
+      window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
     // Unrecognised overrides return to their declared defaults.
     var tilts = { flat: "6deg", standard: "18deg", steep: "34deg" };

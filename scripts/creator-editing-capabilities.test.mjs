@@ -62,10 +62,7 @@ test("router loads the owning skills for creator picture and sound edits", async
     /match cut.*whip pan[\s\S]{0,500}tagreel-animation[\s\S]{0,300}tagreel-keyframes[\s\S]{0,300}tagreel-registry/i,
   );
   assert.match(router, /fade.*crossfade.*gain.*duck[\s\S]{0,700}tagreel-audio/i);
-  assert.match(
-    router,
-    /picture and sound[\s\S]{0,700}tagreel-core[\s\S]{0,300}tagreel-audio/i,
-  );
+  assert.match(router, /picture and sound[\s\S]{0,700}tagreel-core[\s\S]{0,300}tagreel-audio/i);
   assert.match(router, /media-use[\s\S]{0,180}sourc|sourc[\s\S]{0,180}media-use/i);
 });
 

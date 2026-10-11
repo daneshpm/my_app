@@ -109,9 +109,7 @@
       const DUR = MOTION.endFrame / MOTION.fps;
       // Bare __tagreel is this composition's own in a module.
       const V =
-        typeof __tagreel !== "undefined" && __tagreel.getVariables
-          ? __tagreel.getVariables()
-          : {};
+        typeof __tagreel !== "undefined" && __tagreel.getVariables ? __tagreel.getVariables() : {};
 
       // ---- variable readers (every one clamped to the DialKit range) ----
       const num = (v, d, lo, hi) => {

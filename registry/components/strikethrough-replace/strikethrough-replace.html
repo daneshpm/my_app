@@ -73,9 +73,7 @@
     "use strict";
 
     var vars =
-      window.__tagreel && window.__tagreel.getVariables
-        ? window.__tagreel.getVariables()
-        : {};
+      window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
     // Unrecognised overrides return to their declared defaults.
     var origins = { left: "left center", center: "center", right: "right center" };

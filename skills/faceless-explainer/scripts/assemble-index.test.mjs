@@ -31,14 +31,7 @@ function assembleWith({ audioMeta, extraArgs = [], beforeAssemble }) {
   if (beforeAssemble) beforeAssemble(dir);
   const r = spawnSync(
     process.execPath,
-    [
-      assembleScript,
-      "--storyboard",
-      join(dir, "STORYBOARD.md"),
-      "--tagreel",
-      dir,
-      ...extraArgs,
-    ],
+    [assembleScript, "--storyboard", join(dir, "STORYBOARD.md"), "--tagreel", dir, ...extraArgs],
     { encoding: "utf8" },
   );
   return { dir, r };

@@ -60,9 +60,7 @@
 <script>
   (function () {
     const vars =
-      window.__tagreel && window.__tagreel.getVariables
-        ? window.__tagreel.getVariables()
-        : {};
+      window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
     // Unrecognised overrides return to their declared defaults.
     const spins = { single: 0, double: 1, triple: 2 };

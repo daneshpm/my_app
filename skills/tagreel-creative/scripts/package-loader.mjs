@@ -170,9 +170,7 @@ function resolvePackageEntry(packageName) {
     seen.add(normalized);
 
     try {
-      return createRequire(join(normalized, "__tagreel_skill_loader__.cjs")).resolve(
-        packageName,
-      );
+      return createRequire(join(normalized, "__tagreel_skill_loader__.cjs")).resolve(packageName);
     } catch {
       const packageDir = findPackageDir(normalized, rootName);
       const packageEntry = packageDir ? readPackageEntry(packageDir, subpath) : null;

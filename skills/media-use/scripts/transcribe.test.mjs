@@ -78,8 +78,7 @@ test(
     try {
       const bin = join(root, "bin");
       mkdirSync(bin);
-      const reason =
-        "Parakeet is not installed. Install it with: tagreel models install parakeet";
+      const reason = "Parakeet is not installed. Install it with: tagreel models install parakeet";
       writeFileSync(
         join(bin, "npx"),
         `#!/bin/sh\necho '{"ok":false,"error":"${reason}"}'\nexit 1\n`,

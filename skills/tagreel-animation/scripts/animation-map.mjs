@@ -27,10 +27,7 @@ import {
 const packages = await importPackagesOrBootstrap(
   ["@tagreel/producer", "@tagreel/core", "@tagreel/core/compiler"],
   {
-    npmPackages: [
-      tagreelPackageSpec("@tagreel/producer"),
-      tagreelPackageSpec("@tagreel/core"),
-    ],
+    npmPackages: [tagreelPackageSpec("@tagreel/producer"), tagreelPackageSpec("@tagreel/core")],
   },
 );
 const { createFileServer, createCaptureSession, closeCaptureSession, getCompositionDuration } =

@@ -76,16 +76,7 @@ export function packagePlugin(root = ROOT) {
   const out = join(root, "dist");
   mkdirSync(out, { recursive: true });
   const archive = join(out, "tagreel-agent-plugin.zip");
-  git(
-    "archive",
-    "--format=zip",
-    "--prefix=tagreel/",
-    "--output",
-    archive,
-    "HEAD",
-    "--",
-    ...paths,
-  );
+  git("archive", "--format=zip", "--prefix=tagreel/", "--output", archive, "HEAD", "--", ...paths);
   const bytes = readFileSync(archive);
   const sha256 = createHash("sha256").update(bytes).digest("hex");
   const metadata = {
@@ -96,14 +87,8 @@ export function packagePlugin(root = ROOT) {
     bytes: bytes.length,
     skills: published,
   };
-  writeFileSync(
-    join(out, "tagreel-agent-plugin.json"),
-    JSON.stringify(metadata, null, 2) + "\n",
-  );
-  writeFileSync(
-    join(out, "tagreel-agent-plugin.sha256"),
-    `${sha256}  tagreel-agent-plugin.zip\n`,
-  );
+  writeFileSync(join(out, "tagreel-agent-plugin.json"), JSON.stringify(metadata, null, 2) + "\n");
+  writeFileSync(join(out, "tagreel-agent-plugin.sha256"), `${sha256}  tagreel-agent-plugin.zip\n`);
   return metadata;
 }
 

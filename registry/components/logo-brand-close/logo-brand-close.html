@@ -170,9 +170,7 @@
                 : {};
 
             var wordmark =
-              vars.wordmark == null
-                ? "TAGREEL"
-                : String(vars.wordmark).trim().replace(/\s+/g, " ");
+              vars.wordmark == null ? "TAGREEL" : String(vars.wordmark).trim().replace(/\s+/g, " ");
             if (wordmark.length === 0) wordmark = "TAGREEL";
             var tagline =
               vars.tagline == null

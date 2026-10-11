@@ -131,10 +131,7 @@ for (const { code, cancel, expectedStatus } of cases) {
     t.after(() => unrelated.kill());
     t.after(() => cleanupRenderFixture(dir, pidFile));
     execFileSync("unzip", ["-q", resolve("dist/tagreel-agent-plugin.zip"), "-d", dir]);
-    const script = join(
-      dir,
-      "tagreel/skills/embedded-captions/scripts/render-and-composite.sh",
-    );
+    const script = join(dir, "tagreel/skills/embedded-captions/scripts/render-and-composite.sh");
     const project = join(dir, "project");
     const bin = join(dir, "bin");
     mkdirSync(join(project, "frames_fg"), { recursive: true });

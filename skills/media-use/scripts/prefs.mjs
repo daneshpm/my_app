@@ -64,7 +64,5 @@ if (verb === "get") {
     fail(err instanceof Error ? err.message : String(err));
   }
 } else {
-  fail(
-    "usage: prefs.mjs <get|record> --tagreel . [--key <k> --value <v> --workflow <w>] [--json]",
-  );
+  fail("usage: prefs.mjs <get|record> --tagreel . [--key <k> --value <v> --workflow <w>] [--json]");
 }

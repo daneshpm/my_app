@@ -239,12 +239,7 @@ function runInject(argv) {
     const baseDuration = outgoing.duration;
     outgoing.duration = r3(baseDuration + dur); // extend outgoing only
     extendFrameTail(tagreelDir, order[i - 1].frame, baseDuration, outgoing.duration, die);
-    padFrameInternalDuration(
-      tagreelDir,
-      order[i - 1].frame.src,
-      outgoing.id,
-      outgoing.duration,
-    );
+    padFrameInternalDuration(tagreelDir, order[i - 1].frame.src, outgoing.id, outgoing.duration);
     gsapLines.push(
       ...buildGsap(rec, outgoing.id, incoming.id, dur, T, spec.direction, CW, CH, die),
     );

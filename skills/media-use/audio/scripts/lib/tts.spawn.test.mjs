@@ -140,13 +140,11 @@ test("spawnP warns once with an accurate diagnostic when neither npx path exists
     const env = { npm_execpath: "C:/missing/npm-cli.js", npm_node_execpath: "C:/node/node.exe" };
     const missing = () => false;
     assert.equal(
-      (await spawnP("npx", ["tagreel", "tts"], {}, "win32", fakeSpawn([]), env, missing))
-        .status,
+      (await spawnP("npx", ["tagreel", "tts"], {}, "win32", fakeSpawn([]), env, missing)).status,
       -1,
     );
     assert.equal(
-      (await spawnP("npx", ["tagreel", "tts"], {}, "win32", fakeSpawn([]), env, missing))
-        .status,
+      (await spawnP("npx", ["tagreel", "tts"], {}, "win32", fakeSpawn([]), env, missing)).status,
       -1,
     );
   } finally {

@@ -96,9 +96,7 @@
         // Mounted, the runtime strips data-duration off this file's root; the host clip carries it.
         var host = field.closest("[data-composition-id]");
         var vars =
-          window.__tagreel && window.__tagreel.getVariables
-            ? window.__tagreel.getVariables()
-            : {};
+          window.__tagreel && window.__tagreel.getVariables ? window.__tagreel.getVariables() : {};
 
         // The host's data-width/data-height are authoritative over this file's own root
         // (compositionLoader.ts) — read them instead of a third hardcoded 1920x1080.

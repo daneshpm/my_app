@@ -102,9 +102,7 @@
 
         // Beside this file when mounted; a runtime without assetUrl keeps the plain path.
         const assetUrl = (path) =>
-          typeof __tagreel !== "undefined" && __tagreel.assetUrl
-            ? __tagreel.assetUrl(path)
-            : path;
+          typeof __tagreel !== "undefined" && __tagreel.assetUrl ? __tagreel.assetUrl(path) : path;
         // The character's body acting (walk, stop, point, idle) lives in the Lottie file.
         // The runtime seeks every player on window.__hfLottie to composition time.
         var mascot = lottie.loadAnimation({

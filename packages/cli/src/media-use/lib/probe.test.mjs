@@ -111,10 +111,7 @@ test(
       for (const broken of [noInterpreter, failing, otherTool]) {
         chmodSync(broken, 0o755);
         withFfprobePath(broken, () =>
-          assert.throws(
-            () => probe("clip.wav"),
-            /TAGREEL_FFPROBE_PATH names .*fix it or unset it/,
-          ),
+          assert.throws(() => probe("clip.wav"), /TAGREEL_FFPROBE_PATH names .*fix it or unset it/),
         );
       }
     } finally {

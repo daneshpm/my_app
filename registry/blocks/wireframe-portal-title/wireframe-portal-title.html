@@ -802,9 +802,7 @@
       // ---------- font: local Geist Bold TTF -> three Font (blocks the load event) ----------
       // Beside this file when mounted; a runtime without assetUrl keeps the plain path.
       const assetUrl = (path) =>
-        typeof __tagreel !== "undefined" && __tagreel.assetUrl
-          ? __tagreel.assetUrl(path)
-          : path;
+        typeof __tagreel !== "undefined" && __tagreel.assetUrl ? __tagreel.assetUrl(path) : path;
       const ttfBuffer = await fetch(assetUrl("assets/fonts/Geist-Bold.ttf")).then((r) =>
         r.arrayBuffer(),
       );

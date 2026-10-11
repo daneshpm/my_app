@@ -449,15 +449,11 @@ function verifyPackedConsumer(packDir, packedWorkspaces) {
     encoding: "utf8",
     stdio: "pipe",
   });
-  const cliOutput = execFileSync(
-    join(fixtureDir, "node_modules", ".bin", "tagreel"),
-    ["--help"],
-    {
-      cwd: fixtureDir,
-      encoding: "utf8",
-      env: { ...process.env, TAGREEL_TELEMETRY_DISABLED: "1" },
-    },
-  );
+  const cliOutput = execFileSync(join(fixtureDir, "node_modules", ".bin", "tagreel"), ["--help"], {
+    cwd: fixtureDir,
+    encoding: "utf8",
+    env: { ...process.env, TAGREEL_TELEMETRY_DISABLED: "1" },
+  });
   if (!cliOutput.toLowerCase().includes("tagreel")) {
     throw new Error("Packed CLI help did not identify Tagreel");
   }
